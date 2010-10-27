@@ -1,87 +1,18 @@
 
 PhoneGap
-=============================================================
-PhoneGap is a development tool that allows web developers to 
-take advantage of the core features in the iPhone and Android 
-SDK using JavaScript.
+========
+PhoneGap is a web platform that exposes native mobile device apis and data to JavaScript.
 
-
-Get Started
--------------------------------------------------------------
-Download the source.
-
-    git clone git://github.com/sintaxi/phonegap.git
-    
-PhoneGap project is separated into a native project for each 
-device, javascript files and a rakefile.
-
-    phonegap
-      |- README.md
-      |- Rakefile
-      |- android/
-      |- blackberry/
-      |- iphone/
-      `- javascripts/
-      
-Each project has a respective README.md file. view that file 
-for detailed information on how to work with that device. PhoneGap 
-offers one unified API for accessing core functionality on all 
-devices. Where possible, phonegap follows the **HTML5 spec**.
-
-
-API
--------------------------------------------------------------
-
-### Device
-
-Exposes properties of the phone, such as its device ID, model, and OS version number.
-
-### Location
-
-Gain access to the Latitude / Longitude of the device, and depending on the type of device, the course, speed, and altitude.
-    
-### Accelerometer
-
-Monitor the accelerometer on the device to detect orientation, shaking and other similar actions.
-    
-### Contacts
-
-Query the phone addressbook to read the users contacts.
-
-### Orientation
-
-Read the device layout orientation, e.g. landscape vs portrait.
-
-### Camera
-
-Brings up the camera or photo browser on the phone to allow the user to upload a photo.
-
-### Vibrate
-
-Triggers the vibration alert on the phone, if it is supported.
-
-### Sound
-
-Play sound files (WAV, MP3, etc).
-
-### Telephony
-
-Trigger and activate phone calls.
-
-XUI
--------------------------------------------------------------
-You may work with any Javascript framework within a PhoneGap 
-application. [XUI](http://xuijs.com) is the "officially preferred" 
-framework of the phonegap core team. XUI is inspired by JQuery, 
-optimized for web browsers and weighs in at 6.2k (2.4k minified and gziped).
-
+Get started
+-----------
+* http://phonegap.com/start
 
 Community
--------------------------------------------------------------
-  * Website - [phonegap.com](http://phonegap.com)
-  * Google Group - [groups.google.com/group/phonegap](http://groups.google.com/group/phonegap)
-  * Wiki - [phonegap.pbwiki.com/](http://phonegap.pbwiki.com/)
-  * Twitter - [twitter.com/phonegap](http://twitter.com/phonegap)
+---------
+* Website - [phonegap.com](http://phonegap.com)
+* Mailing List- [groups.google.com/group/phonegap](http://groups.google.com/group/phonegap)
+* Wiki - [phonegap.pbwiki.com/](http://phonegap.pbwiki.com/)
+* Twitter - [twitter.com/phonegap](http://twitter.com/phonegap)
   
   
 The MIT License
