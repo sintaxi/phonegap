@@ -36,8 +36,7 @@ The text of the MIT and BSD licenses is reproduced below.
 
 ---
 
-The "New" BSD License
----------------------
+### The "New" BSD License
 
 Copyright (c) 2005-2010, Nitobi Software Inc.
 All rights reserved.
@@ -67,8 +66,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ---
 
-The MIT License
----------------
+### The MIT License
 
 Copyright (c) <2010> <Nitobi Software Inc., et. al., >
 
