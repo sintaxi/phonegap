@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widget xmlns       = "http://www.w3.org/ns/widgets"
+        id          = "http://example.org/exampleWidget"
+        version     = "2.0 Beta"
+        height      = "200"
+        width       = "200"
+        viewmodes   = "widget">
+ 
+	<name short="Example 2.0">The example Widget!</name>
+
+	<feature name="http://example.com/camera">
+		<param name="autofocus" value="true"/>
+	</feature>
+
+	<preference name     = "apikey"
+				value    = "ea31ad3a23fd2f"
+				readonly = "true" />
+
+	<description>
+		A sample widget to demonstrate some of the possibilities.
+	</description>
+
+	<author href  = "http://foo-bar.example.org/"
+			email = "foo-bar@example.org">Foo Bar Corp</author>
+
+	<icon src="icons/example.png"/>
+	<icon src="icons/boo.png"/>
+
+	<content src="myWidget.html"/>
+
+	<license>
+Example license (based on MIT License)
+Copyright (c) 2008 The Foo Bar Corp.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+INSULT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+	</license>
+</widget>

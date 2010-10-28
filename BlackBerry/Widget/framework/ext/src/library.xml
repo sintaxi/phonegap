@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+	<extension>
+		<entryClass>com.phonegap.PhoneGapExtension</entryClass>
+	</extension>
+	<features>
+		<feature id="phonegap" version="1.0.0">PhoneGap framework</feature>
+	</features>
+</library>

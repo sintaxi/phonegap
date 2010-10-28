@@ -1,0 +1,339 @@
+<!--
+PhoneGap is available under *either* the terms of the modified BSD license *or* the MIT License (2008). 
+See  http://opensource.org/licenses/alphabetical for full text.
+
+Copyright (c) 2005-2010, Nitobi Software Inc.
+Copyright (c) 2010, IBM Corporation
+
+website: http://phonegap.com
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" id="viewport" content="initial-scale=1.0,user-scalable=no">
+    <script src="javascript/json2.js" type="text/javascript"></script>
+    <script src="javascript/phonegap.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+      function deviceInfo() {
+        document.getElementById('window.device.platform').innerHTML = 'window.device.platform = ' + window.device.platform;
+        document.getElementById('window.device.version').innerHTML  = 'window.device.version  = ' + window.device.version;
+        document.getElementById('window.device.uuid').innerHTML     = 'window.device.uuid     = ' + window.device.uuid;
+        document.getElementById('window.device.phonegap').innerHTML = 'window.device.phonegap = ' + window.device.phonegap;
+
+        navigator.network.isReachable("phonegap.com", function(reachability) {
+          var states = {};
+          states[NetworkStatus.NOT_REACHABLE]                      = 'No network connection';
+          states[NetworkStatus.REACHABLE_VIA_CARRIER_DATA_NETWORK] = 'Carrier data connection';
+          states[NetworkStatus.REACHABLE_VIA_WIFI_NETWORK]         = 'WiFi connection';
+
+          document.getElementById('networkStatus').innerHTML = 'isReachable = ' + states[reachability];
+        }, 
+        { isIpAddress: false });        
+      }
+
+      function init(){
+        document.addEventListener("deviceready", deviceInfo, true);     
+      } 
+        
+      function fail(error) {
+        alert(error);
+      }
+    
+      function callBeep() {
+        navigator.notification.beep(2);
+      }
+
+      function callVibrate() {
+        navigator.notification.vibrate(1000);
+      }
+      
+      function alertDismissed() {
+        alert('Alert dialog dismissed.');
+      }
+      
+      function callAlert() {
+      	navigator.notification.alert(
+      	    "You rock!", 
+      	    alertDismissed,
+      	    "Woohoo!", 
+      	    "Thanks");
+      }
+
+      function confirmResult(button) {
+        console.log('Confirm: you pressed button ' + button);
+      }
+
+      function callConfirm() {
+        navigator.notification.confirm(
+            "Please confirm", 
+            confirmResult,
+            "Are you sure?", 
+            "Yes,No,Maybe");
+      }
+
+      function showAcceleration(acceleration) {
+        alert('Acceleration X: ' + acceleration.x + '\n' +
+              'Acceleration Y: ' + acceleration.y + '\n' +
+              'Acceleration Z: ' + acceleration.z + '\n');
+      }
+
+      var accelWatchId = null;
+      var watchAcceleration = function() {
+        var success = function(a) {
+          document.getElementById('x').innerHTML = a.x;
+          document.getElementById('y').innerHTML = a.y;
+          document.getElementById('z').innerHTML = a.z;
+        };
+        var options = {};
+        options.frequency = 200;
+        accelWatchId = navigator.accelerometer.watchAcceleration(success, fail, options);
+      }
+      
+      function clearAccelWatch() {
+        if (accelWatchId != null) {
+          navigator.accelerometer.clearWatch(accelWatchId);
+          accelWatchId = null;
+        }
+      }
+
+      function getAcceleration() {
+        navigator.accelerometer.getCurrentAcceleration(showAcceleration, fail);
+      }
+
+      function getLocation() {
+        var success = function(p) {
+            alert('Latitude: '  + p.coords.latitude + '\n' + 
+                  'Longitude: ' + p.coords.longitude);
+        };
+        var options = {};
+        options.enableHighAccuracy = true;
+        options.timeout = 5000;
+        options.maximumAge = 5000;
+        navigator.geolocation.getCurrentPosition(success, onLocationFail, options);
+      }
+
+      var locationWatchId = null;
+      var watchLocation = function() {
+        var success = function(p) {
+          document.getElementById('lat').innerHTML = p.coords.latitude;
+          document.getElementById('long').innerHTML = p.coords.longitude;
+        };
+        var options = {};
+        options.enableHighAccuracy = true;
+        options.timeout = 5000;
+        options.maximumAge = 5000;
+        locationWatchId = navigator.geolocation.watchPosition(success, onLocationFail, options);
+      }
+
+      function clearLocationWatch() {
+        if (locationWatchId != null) {
+          navigator.geolocation.clearWatch(locationWatchId);
+          locationWatchId = null;
+        }
+      }
+      
+      function onLocationFail(error) {
+        alert('code: ' + error.code + '\n' +
+              'message: ' + error.message + '\n');
+      }
+      
+      function onCapturePhotoSuccess(imageData) {
+     	if (imageData != null) {
+          var smallImage = document.getElementById('cameraImage');
+
+          // Unhide image elements
+          smallImage.style.display = 'block';
+
+          // Show the captured photo
+          // The inline CSS rules are used to resize the image
+          smallImage.src = "data:image/jpeg;base64," + imageData;
+      	}
+      }
+
+      function onCapturePhotoURISuccess(imageURI) {
+        if (imageURI != null) {
+          var smallImage = document.getElementById('cameraImage');
+
+          // Unhide image elements
+          smallImage.style.display = 'block';
+          
+          // Show the captured photo
+          // The inline CSS rules are used to resize the image
+          smallImage.src = imageURI;
+        }
+      }
+      
+      function capturePhoto() {
+      	navigator.camera.getPicture(onCapturePhotoSuccess, fail, 
+      	  { destinationType: Camera.DestinationType.DATA_URL, quality: 50 });
+      }
+
+      function capturePhotoURI() {
+        navigator.camera.getPicture(onCapturePhotoURISuccess, fail, 
+          { destinationType: Camera.DestinationType.FILE_URI, quality: 50 });
+      }
+
+      function onContactSaved(contact) {
+        alert("Contact " + contact.id + " saved.");      
+      }
+
+      function onContactUpdated(contact) {
+        alert('Contact ' + contact.id + ' updated.');
+      }
+
+      function onContactRemoved(contact) {
+        alert("Contact " + contact.id + " removed.");      
+      }
+
+      function createContact() {
+        var myContact = navigator.service.contacts.create({"displayName": "Shosh"});        
+        myContact.gender = "female";
+        myContact.note = "Workout queen.";
+        myContact.birthday = new Date("May 11, 1979 05:32:00");
+        myContact.anniversary = "15 March 2005";
+        
+        // add name
+        var myName = new ContactName();
+        myName.givenName = "Shoshana";
+        myName.familyName = "Lowenstein";
+        myContact.name = myName;
+
+        // add email
+        var emails = [];
+        emails[0] = new ContactField("work","im@work.com");
+        emails[1] = new ContactField("home","im@home.com",true);
+        emails[2] = new ContactField(null,"im@other.com");
+        emails[3] = new ContactField(null,"im@aloss.com"); // 4th will be ignored
+        myContact.emails = emails;
+
+        // add phone numbers
+        var phoneNumbers = [];
+        phoneNumbers[0] = new ContactField("work","555-111-1111");
+        phoneNumbers[1] = new ContactField("home","555-222-1111");
+        phoneNumbers[2] = new ContactField("home","555-222-2222");
+        phoneNumbers[3] = new ContactField(null,"555-333-1234");
+        phoneNumbers[4] = new ContactField("fax","555-444-1234");
+        phoneNumbers[5] = new ContactField("work","555-111-2222");
+        phoneNumbers[6] = new ContactField("mobile","555-555-5555",true);
+        phoneNumbers[7] = new ContactField("work","555-111-3333"); // 3rd 'work' phone will be ignored
+        phoneNumbers[8] = new ContactField("pager","555-666-1111");
+        myContact.phoneNumbers = phoneNumbers;
+        
+        // add address
+        var addresses = [];
+        addresses[0] = new ContactAddress(null, "123 Astor Place", "Phoenix", "AZ", "58392", "United States");
+        addresses[1] = new ContactAddress(null, "290 Farmers Mills Rd", "Riverdale", "AZ", "58399", "United States");
+        myContact.addresses = addresses;
+
+        // add urls
+        var urls = [];
+        urls[0] = new ContactField(null,"http://my.domain.com");
+        myContact.urls = urls;
+                
+        // add company info
+        var orgs = [];
+        orgs[0] = new ContactOrganization("Beach Fitness", null, "Instructor", null, null, null, null);
+        myContact.organizations = orgs;
+        
+        // saves the contact to device
+        myContact.save(onContactSaved);
+      }
+
+      function updateContact() {
+        // find a contact to update
+        navigator.service.contacts.find(
+            null,
+            function(contacts) {
+                var now = new Date();         
+                // update contact and save
+                for (var i in contacts) {
+                    contacts[i].note = 'updated: ' + now;
+                    console.log('contact: ' + contacts[i].id + ' ' + contacts[i].note);
+                    contacts[i].save(onContactUpdated);
+                }
+            },
+            fail);
+      }
+      
+      function findContacts() {
+        var filterText = document.getElementById('filterText').value;
+        navigator.service.contacts.find(
+            ['name', 'emails', 'addresses', 'organizations'], 
+            function(contacts) {
+                alert('Found ' + contacts.length + ' contacts.');
+            }, 
+            fail,
+            { 
+                multiple: true, filter: filterText
+            });
+      }
+
+      function removeContact() {
+        // find a contact to remove
+        navigator.service.contacts.find(
+            null,
+            function(contacts) {
+                // remove contact
+                for (var i in contacts) {
+                    contacts[i].remove(onContactRemoved);
+                }
+            },
+            fail);
+      }
+      
+    </script>
+    <title>Insert title here</title>
+  </head>
+  <body onload="init()">
+    <h3>window.device</h3>
+    <p id="window.device.platform">[window.device.platform]</p>
+    <p id="window.device.version">[window.device.version]</p>
+    <p id="window.device.uuid">[window.device.uuid]</p>
+    <p id="window.device.phonegap">[window.device.phonegap]</p>
+
+    <h3>window.notification</h3>
+    <input type="button" value="Beep" onclick="callBeep();return false;" />
+    <input type="button" value="Vibrate" onclick="callVibrate();return false;" />
+    <input type="button" value="Alert" onclick="callAlert();return false;" />
+    <input type="button" value="Confirm" onclick="callConfirm();return false;" />
+    
+    <h3>navigator.network</h3>
+    <p id="networkStatus">[navigator.network.isReachable]</p>
+
+    <h3>navigator.geolocation</h3>
+    <dl id="location-data">
+      <dt>Latitude:</dt><dd id="lat">&nbsp;</dd>
+      <dt>Longitude:</dt><dd id="long">&nbsp;</dd>
+    </dl>
+    <input type="button" value="Get Location" onclick="getLocation();return false;" /> 
+    <input type="button" value="Watch Location" onclick="watchLocation();return false;" /> 
+    <input type="button" value="Clear Geo" onclick="clearLocationWatch();return false;" /> 
+
+    <h3>navigator.accelerometer</h3>
+    <dl id="accel-data">
+      <dt>X:</dt><dd id="x">&nbsp;</dd>
+      <dt>Y:</dt><dd id="y">&nbsp;</dd>
+      <dt>Z:</dt><dd id="z">&nbsp;</dd>
+    </dl>
+    <input type="button" value="Get Acceleration" onclick="getAcceleration();return false;" /> 
+    <input type="button" value="Watch Acceleration" onclick="watchAcceleration();return false;" /> 
+    <input type="button" value="Clear Watch" onclick="clearAccelWatch();return false;" /> 
+    
+    <h3>navigator.camera</h3>
+    <input type="button" value="Get Photo (Data)" onclick="capturePhoto();return false;" /> 
+    <input type="button" value="Get Photo (URI)" onclick="capturePhotoURI();return false;" /> 
+    <img style="display:none;width:120px;height:120px;" id="cameraImage" src="" />
+
+    <h3>navigator.services.contact</h3>
+    <input type="button" value="Create Contact" onclick="createContact();return false;" /> 
+    <input type="button" value="Update Contact" onclick="updateContact();return false;" /> 
+    <input type="button" value="Remove Contact" onclick="removeContact();return false;" />
+    <p>
+    <input type="text" id="filterText" />
+    <input type="button" value="Find Contacts" onclick="findContacts();return false;" />
+    </p>
+  </body>
+</html>

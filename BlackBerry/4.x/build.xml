@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="phonegap" default="help">
+	<taskdef resource="bb-ant-defs.xml" />
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+
+	<property name="framework.dir" location="framework" />
+	<property name="framework.build.dir" location="${framework.dir}/build" />
+	<property name="app.resources.dir" location="app" />
+	<property name="js.dir" location="js" />
+
+	<property prefix="project" file="${framework.dir}/project.properties" /> 
+	<property file="${framework.dir}/common.properties" />
+
+	<available file="${jde.home}" property="jde.home.available" />
+	<fail unless="jde.home.available" message="jde.home path not set correctly in ${framework.dir}/common.properties." />
+
+	<!--
+	<path id="import.jars">
+		<fileset dir="${framework.dir}/lib" includes="*.jar" />
+	</path>
+	-->
+
+	<path id="src.files">
+		<fileset dir="${framework.dir}/src" />
+	</path>
+	
+	<target name="build" depends="clean">
+		<!-- depends on doing the plugin stuff -->
+		<mkdir dir="${framework.build.dir}" />
+		<rapc output="${project.output}" destdir="${framework.build.dir}" generatesourcelist="true">
+			<!--<import refid="import.jars" />-->
+			<src refid="src.files" />
+			<jdp file="${framework.dir}/project.properties" />
+		</rapc>
+		<echo>PhoneGapBlackbBerryLib built to ${framework.build.dir}</echo>
+	</target>
+	
+	<target name="sign" depends="build">
+		<sigtool codfile="${framework.build.dir}/${project.output}.cod" jdehome="${sigtool.jde}" password="${sigtool.password}" />
+		<delete file="LogFile.txt" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${framework.build.dir}"></delete>
+	</target>
+
+	<target name="clean-simulator">
+		<exec executable="${simulator.home}/clean.bat" dir="${simulator.home}"></exec>
+	</target>
+	
+	<target name="clean-javascript">
+		<delete dir="${js.dir}/lib"></delete>
+	</target>
+	
+	<target name="build-javascript" depends="clean-javascript">
+		<mkdir dir="${js.dir}/lib" />
+		<concat destfile="${js.dir}/lib/phonegap.js" append="true">
+			<fileset dir="${js.dir}/src">
+				<include name="*.js" />
+			</fileset>
+		</concat>
+		<echo>phonegap.js built to ${js.dir}/lib folder.</echo>
+	</target>
+	
+	<target name="check-javascript" depends="build-javascript">
+		<delete dir="${basedir}/js/lib/phonegap-lint.js"/>
+		<echo file="${basedir}/js/lib/lint.js">
+/*jslint browser: true, evil: true, forin: true, onevar: true, undef: true, nomen: true, eqeqeq: true, maxerr: 1000, maxlen: 80 */
+
+var alert=function(){},device={},Element={};
+		</echo>
+		<concat destfile="${basedir}/js/lib/phonegap-lint.js" append="true">
+			<fileset dir="${basedir}/js/lib">
+				<include name="lint.js" />
+				<include name="phonegap.js" />
+			</fileset>
+		</concat>
+
+		<exec executable="cmd" os="Windows 7">
+			<arg value="/c"/>
+			<arg value="java"/>
+			<arg value="-cp"/>
+			<arg value="${basedir}/util/js.jar"/>
+			<arg value="org.mozilla.javascript.tools.shell.Main"/>
+			<arg value="${basedir}/util/jslint.js"/>
+			<arg value="${basedir}/js/lib/phonegap-lint.js"/>
+		</exec>
+	</target>
+	
+	<target name="create" depends="build,build-javascript">
+		<property name="app.name" value="MyApp" />
+		<property name="output.dir" location="MyApp" />
+		<property name="package" value="com.foo" />
+
+		<propertyregex property="package.path"
+               input="${package}"
+               regexp="\."
+               replace="/"
+               global="true" />
+
+		<propertyregex property="app.jde.home"
+               input="${jde.home}"
+               regexp="\\"
+               replace="\\\\\\\\"
+               global="true" />
+		
+		<mkdir dir="${output.dir}" />
+		<mkdir dir="${output.dir}/src/${package.path}" />
+		<echo file="${output.dir}/src/${package.path}/${app.name}.java">
+package ${package};
+
+public class ${app.name} extends com.phonegap.PhoneGap {
+	public static void main(String[] args) {
+		${app.name} bridge = args.length > 0 ? new ${app.name}(args[0]) : new ${app.name}();
+		bridge.enterEventDispatcher();
+	}
+	
+	public ${app.name}() {
+		super();
+	}
+
+	public ${app.name}(final String url) {
+		super(url);
+	}
+}
+		</echo>
+
+		<mkdir dir="${output.dir}/lib" />
+		<copy todir="${output.dir}/lib">
+			<fileset dir="${framework.dir}/build" includes="*.cod,*.cso,*.debug,*.jad,*.jar,*.csl,*.rapc"  />
+		</copy>
+
+		<mkdir dir="${output.dir}/www" />
+		<copy todir="${output.dir}/www">
+			<fileset dir="${app.resources.dir}/www" />
+		</copy>
+
+		<copy todir="${output.dir}/www" file="${js.dir}/lib/phonegap.js" />
+
+		<echo file="${output.dir}/common.properties">
+jde.java.home = $${java.home}
+jde.home = ${app.jde.home}
+simulator.home = $${jde.home}\\simulator
+mds.home = $${jde.home}\\MDS
+sigtool.jde = $${jde.home}
+sigtool.password = YourPassword
+		</echo>
+
+		<echo file="${output.dir}/project.properties">
+output=${app.name}
+title=${app.name}
+type=cldc
+icon=www/icon.png
+		</echo>
+
+		<copy file="${app.resources.dir}/build.xml" tofile="${output.dir}/build.xml" />
+
+		<copy file="${app.resources.dir}/BlackBerry_App_Descriptor.xml" tofile="${output.dir}/BlackBerry_App_Descriptor.xml" />
+		
+		<echo>Your PhoneGapBlackBerry app has been generated in ${output.dir}.</echo>
+
+	</target>
+	
+	<!-- ant test -Dapp.name=PhoneGapTest -Doutput.dir=PhoneGapTest -Dpackage=com.phonegaptest -->
+	<target name="test" depends="">
+		<!--
+		get the latest mobile-spec from repo
+		create a new project
+		-->
+	</target>
+	
+	<target name="update" depends="build-javascript,build,sign">
+		<property name="output.dir" location="MyApp" />
+
+		<copy todir="${output.dir}/lib" overwrite="true">
+			<fileset dir="${framework.dir}/build" includes="*.cod,*.cso,*.debug,*.jad,*.jar,*.csl,*.rapc"  />
+		</copy>
+
+		<copy todir="${output.dir}/www" file="${js.dir}/lib/phonegap.js" overwrite="true"/>
+	</target>
+
+	<target name="help">
+		<echo>
+Targets available in this ant build.xml file are:
+build ................. Builds the PhoneGapBlackBerryLib
+build-javascript ...... Builds the phonegap.js file for BlackBerry
+clean ................. Deletes remnants of previous builds
+clean-simulator ....... Deletes old apps on the simulator (it takes a while)
+create ................ Creates a new basic BlackBerry application that depends on the PhoneGapBlackBerryLib
+			   Options: app.name, output.dir, package
+update ................ Updates a BlackBerry application with a fresh PhoneGapBlackBerryLib and PhoneGap.js
+			   Options: output.dir
+		</echo>
+	</target>
+
+</project>

@@ -1,0 +1,125 @@
+<project name="Create &amp; Update a PhoneGap BlackBerry Widget Project" default="help">
+    
+    <!-- LOAD PROPERTIES -->
+    
+    <property name="template.dir"     location="template" />
+    <property name="phonegap-js.file" location="lib/javascript/phonegap.js" />
+    <property name="phonegap-js.src"  location="js" />
+    <property name="ext.file"         location="lib/ext/phonegap.jar" />
+    <property name="ext.src"          location="framework/ext/src" />
+    
+    <!-- BUILD JAVASCRIPT -->
+    
+    <target name="build-javascript">
+        <dirname property="phonegap-js.dir" file="${phonegap-js.file}" />
+        <mkdir dir="${phonegap-js.dir}" />
+        
+        <concat destfile="${phonegap-js.file}" append="false">
+            <fileset dir="${phonegap-js.src}">
+                <include name="*.js" />
+            </fileset>
+        </concat>
+        
+        <echo message="Created: ${phonegap-js.file}" />
+    </target>
+    
+    <!-- BUILD WIDGET EXTENSION -->
+    
+    <target name="build-extension">
+        <dirname property="ext.dir" file="${ext.file}" />
+        <mkdir dir="${ext.dir}" />
+        
+        <zip destfile="${ext.file}">
+            <fileset dir="${ext.src}" includes="library.xml" />
+            <fileset dir="${ext.src}" includes="**/*.java" />
+        </zip>
+        
+        <echo message="Created: ${ext.file}" />
+    </target>
+    
+    <!-- CREATE A PROJECT -->
+    
+    <target name="create" depends="build-javascript, build-extension">
+        <fail unless="project.path" message="You must give a project PATH. Use the argument -Dproject.path=&#34;C:\dev\my_project&#34;" />
+        
+        <available file="${project.path}" property="project.exists" />
+        <fail if="project.exists" message="The project path must be an empty directory." />
+        
+        <!-- copy template directory -->
+        <mkdir dir="${project.path}" />
+        <copy todir="${project.path}">
+            <fileset dir="${template.dir}" />
+        </copy>
+        
+        <!-- copy phonegap.js -->
+        <copy todir="${project.path}/www/javascript">
+            <fileset dir="${phonegap-js.dir}" />
+        </copy>
+        
+        <!-- copy ext/ -->
+        <copy todir="${project.path}/www/ext">
+            <fileset dir="${ext.dir}" />
+        </copy>
+        
+        <echo>
+Congratulations! Your new project has been created.
+
+GETTING STARTED
+  cd ${project.path}
+  ant help
+        </echo>
+    </target>
+    
+    <!-- UPDATE A PROJECT -->
+    
+    <target name="update" depends="build-javascript, build-extension">
+        <fail unless="project.path" message="You must give a project PATH. Use the argument -Dproject.path=&#34;C:\dev\my_project&#34;" />
+        
+        <available file="${project.path}" property="project.exists" />
+        <fail unless="project.exists" message="The project path cannot be empty." />
+        
+        <!-- build.xml -->
+        <copy todir="${project.path}" file="${template.dir}/build.xml" />
+        
+        <!-- phonegap.js -->
+        <copy todir="${project.path}/www/javascript">
+            <fileset dir="${phonegap-js.dir}" />
+        </copy>
+        
+        <!-- ext/phonegap.jar -->
+        <copy todir="${project.path}/www/ext">
+            <fileset dir="${ext.dir}" />
+        </copy>
+        
+    </target>
+    
+    <!-- HELP -->
+    
+    <target name="help">
+        <echo>
+NAME
+  ${ant.project.name}
+
+SYNOPSIS
+  ant COMMAND [-D&lt;argument&gt;=&lt;value&gt;]...
+
+DESCRIPTION
+  This tool allows you to create and update PhoneGap-BlackBerry-Widget projects.
+  You will want to run update after you have updated the framework source.
+  In other words, when you &lt;git pull origin master&gt;.
+
+COMMANDS
+  help ..... Show this help menu.
+               ant, ant help
+
+  create ... Create a new project
+               ant create PATH
+               ant create -Dproject.path="C:\dev\my_project"
+
+  update ... Update an existing project
+               ant update PATH
+               ant update -Dproject.path="C:\dev\my_project"
+        </echo>
+    </target>
+    
+</project>

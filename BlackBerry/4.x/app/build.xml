@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="app" default="help">
+	<taskdef resource="bb-ant-defs.xml" />
+
+	<!-- import project properties (project basedir is searched) -->
+	<property prefix="project" file="project.properties" />
+
+	<property file="common.properties" />
+
+	<property name="build.dir" location="build" />
+	<property name="temp.dir" location="temp" />
+	<property name="lib.dir" location="lib" />
+	<property name="dist.dir" location="dist" />
+	<property name="www.dir" location="www" />
+
+	<path id="import.jars">
+		<fileset dir="build/lib" includes="*.jar" />
+	</path>
+
+	<path id="src.files">
+		<fileset dir="src" />
+		<fileset dir="${build.dir}/www" />
+	</path>
+
+	<target name="build" depends="clean">
+		<!-- phonegap.js ... wtf -->
+		<!-- Copy over the PhoneGapBlackBerryLibrary -->
+		<mkdir dir="${build.dir}/lib" />
+		<copy todir="${build.dir}/lib">
+			<fileset dir="${lib.dir}" includes="**/*" />
+		</copy>
+		<!-- Copy over the www stuff since RAPC won't keep folder structure otherwise -->
+		<mkdir dir="${build.dir}/www" />
+		<copy todir="${build.dir}/www">
+			<fileset dir="${www.dir}" includes="**/*" />
+		</copy>
+		<rapc output="${project.output}" destdir="${build.dir}" generatesourcelist="true">
+			<import refid="import.jars" />
+			<src refid="src.files" />
+			<jdp file="${basedir}/project.properties" />
+		</rapc>
+		<delete dir="${build.dir}/www" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete dir="${dest.dir}" />
+		<delete dir="${temp.dir}" />
+	</target>
+
+	<target name="sign" depends="build">
+		<sigtool codfile="${build.dir}/${project.output}.cod" jdehome="${sigtool.jde}" password="${sigtool.password}" />
+		<delete file="LogFile.txt" />
+	</target>
+
+	<target name="package" depends="sign">
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${temp.dir}" />
+		<copy todir="${temp.dir}">
+			<fileset dir="${build.dir}" includes="**/*" />
+		</copy>
+		<jadtool input="${temp.dir}/${project.output}.jad" destdir="${dist.dir}">
+			<fileset dir="${temp.dir}" includes="**/*.cod" />
+		</jadtool>
+	</target>
+
+	<target name="clean-device">
+		<exec executable="${jde.home}/bin/JavaLoader.exe">
+			<arg value="-usb" />
+			<arg value="erase" />
+			<arg value="-f" />
+			<arg value="PhoneGapBlackBerryLib.cod" />
+		</exec>
+		<exec executable="${jde.home}/bin/JavaLoader.exe">
+			<arg value="-usb" />
+			<arg value="erase" />
+			<arg value="-f" />
+			<arg value="${project.output}.cod" />
+		</exec>
+	</target>
+
+	<target name="load-device" depends="sign,clean-device">
+		<exec executable="${jde.home}/bin/JavaLoader.exe">
+			<arg value="-usb" />
+			<arg value="load" />
+			<arg file="${lib.dir}/PhoneGapBlackBerryLib.cod" />
+		</exec>
+		<exec executable="${jde.home}/bin/JavaLoader.exe">
+			<arg value="-usb" />
+			<arg value="load" />
+			<arg file="${build.dir}/${project.output}.cod" />
+		</exec>
+	</target>
+
+	<target name="load-simulator" depends="build">
+		<copy todir="${simulator.home}">
+			<fileset dir="${build.dir}/lib" includes="*.*" />
+			<fileset dir="${build.dir}" includes="*.cod,*.csl,*.cso,*.debug,*.jar" />
+		</copy>
+
+		<exec executable="${mds.home}/run.bat" dir="${mds.home}" spawn="true"></exec>
+		<exec executable="${simulator.home}/defaultSimulator.bat" dir="${simulator.home}" spawn="true"></exec>
+	</target>
+
+	<target name="clean-simulator">
+		<exec executable="${simulator.home}/clean.bat" dir="${simulator.home}"></exec>
+		
+		<delete>
+			<fileset dir="${simulator.home}" includes="*.cod,*.csl,*.cso,*.debug,*.jar" />
+		</delete>
+	</target>
+
+	<target name="help">
+		<echo>
+Targets available in this ant build.xml file are:
+build ................. Builds the application
+sign .................. Signs the application so that it can be deployed to a device
+load-device ........... Puts the application onto the connected device
+load-simulator ........ Puts the application onto the default device simulator
+package ............... Creates a JAD file that includes the PhoneGapBlackBerryLib.cod
+clean ................. Deletes remnants of previous builds
+clean-simulator ....... Deletes old apps on the simulator (it takes a while)
+clean-device .......... Deletes old apps on the connected device
+		</echo>
+	</target>
+</project>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Widget Configuration Reference:
+       http://docs.blackberry.com/en/developers/deliverables/15274/ -->
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:rim="http://www.blackberry.com/ns/widgets" version="1.0.0.0">
+  <name>PhoneGap Sample</name>
+  <description>
+      A sample application written with PhoneGap.
+      The application uses the BlackBerry Widget SDK and can be deployed to BlackBerry OS 5.0+
+  </description>
+  <license href="http://opensource.org/licenses/alphabetical">
+  PhoneGap is available under *either* the terms of the modified BSD license *or* the MIT License (2008). 
+  See  http://opensource.org/licenses/alphabetical for full text.
+  Copyright (c) 2005-2010, Nitobi Software Inc.  
+  Copyright (c) 2010, IBM Corporation
+  website: http://phonegap.com</license>
+  <feature id="blackberry.system" required="true" version="1.0.0.0"/>
+  <feature id="phonegap" required="false" version="1.0.0"/>
+  <feature id="blackberry.find" required="true" version="1.0.0.0"/>
+  <feature id="blackberry.identity" required="true" version="1.0.0.0"/>
+  <feature id="blackberry.pim.Address" required="true" version="1.0.0.0"/>
+  <feature id="blackberry.pim.Contact" required="true" version="1.0.0.0"/>
+  <access subdomains="true" uri="file:///store/home"/>
+  <access subdomains="true" uri="file:///SDCard"/>
+  <icon rim:hover="false" src="resources/icon.png"/>
+  <icon rim:hover="true" src="resources/icon_hover.png"/>
+  <content src="index.html"/>
+  <rim:loadingScreen backgroundColor="#000000" foregroundImage="resources/loading_foreground.png" onFirstLaunch="true">
+    <rim:transitionEffect type="fadeOut"/>
+  </rim:loadingScreen>
+</widget>
