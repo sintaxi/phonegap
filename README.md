@@ -5,14 +5,16 @@ PhoneGap is a web platform that exposes native mobile device apis and data to Ja
 
 Get started
 -----------
-* http://phonegap.com/start
+[phonegap.com/start](http://phonegap.com/start)
 
 Community
 ---------
-* Website - [phonegap.com](http://phonegap.com)
-* Mailing List- [groups.google.com/group/phonegap](http://groups.google.com/group/phonegap)
-* Wiki - [phonegap.pbwiki.com/](http://phonegap.pbwiki.com/)
-* Twitter - [twitter.com/phonegap](http://twitter.com/phonegap)
+
+    Website ........ [phonegap.com](http://phonegap.com)
+    Mailing List ... [groups.google.com/group/phonegap](http://groups.google.com/group/phonegap)
+    Wiki ........... [phonegap.pbwiki.com/](http://phonegap.pbwiki.com/)
+    Twitter ........ [twitter.com/phonegap](http://twitter.com/phonegap)
+    Issues ......... [phonegap.lighthouseapp.com](http://phonegap.lighthouseapp.com)
   
   
 License
