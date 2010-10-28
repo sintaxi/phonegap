@@ -1,10 +1,11 @@
-
 PhoneGap
 ========
+
 PhoneGap is a web platform that exposes native mobile device apis and data to JavaScript.
 
 Get started
 -----------
+
 [phonegap.com/start](http://phonegap.com/start)
 
 Community
@@ -15,10 +16,13 @@ Community
     Wiki ........... [phonegap.pbwiki.com/](http://phonegap.pbwiki.com/)
     Twitter ........ [twitter.com/phonegap](http://twitter.com/phonegap)
     Issues ......... [phonegap.lighthouseapp.com](http://phonegap.lighthouseapp.com)
-  
-  
+
+Directory Structure
+-------------------
+
 License
--------------------------------------------------------------
+-------
+
 PhoneGap is available under *either* the terms of the modified BSD license *or* the
 MIT License (2008). As a recipient of PhonegGap, you may choose which
 license to receive this code under (except as noted in per-module LICENSE
@@ -30,9 +34,10 @@ with the MIT or BSD licenses that PhoneGap is distributed under.
 
 The text of the MIT and BSD licenses is reproduced below. 
 
--------------------------------------------------------------------------------
-The "New" BSD License:
-**********************
+---
+
+The "New" BSD License
+---------------------
 
 Copyright (c) 2005-2010, Nitobi Software Inc.
 All rights reserved.
@@ -60,9 +65,10 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
--------------------------------------------------------------------------------
+---
+
 The MIT License
-*****************
+---------------
 
 Copyright (c) <2010> <Nitobi Software Inc., et. al., >
 
@@ -83,6 +89,7 @@ Copyright (c) <2010> <Nitobi Software Inc., et. al., >
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
- -------------------------------------------------------------
+
+---
 
 *phonegap is a [nitobi](http://nitobi.com) sponsored project*
