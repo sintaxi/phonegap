@@ -1,22 +1,3 @@
-
-PhoneGap
-========
-PhoneGap is a web platform that exposes native mobile device apis and data to JavaScript.
-
-Get started
------------
-* http://phonegap.com/start
-
-Community
----------
-* Website - [phonegap.com](http://phonegap.com)
-* Mailing List- [groups.google.com/group/phonegap](http://groups.google.com/group/phonegap)
-* Wiki - [phonegap.pbwiki.com/](http://phonegap.pbwiki.com/)
-* Twitter - [twitter.com/phonegap](http://twitter.com/phonegap)
-  
-  
-License
--------------------------------------------------------------
 PhoneGap is available under *either* the terms of the modified BSD license *or* the
 MIT License (2008). As a recipient of PhonegGap, you may choose which
 license to receive this code under (except as noted in per-module LICENSE
@@ -81,6 +62,3 @@ Copyright (c) <2010> <Nitobi Software Inc., et. al., >
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
- -------------------------------------------------------------
-
-*phonegap is a [nitobi](http://nitobi.com) sponsored project*
