@@ -578,6 +578,9 @@ PhoneGap.run_command = function() {
 
 };
 
+PhoneGap.JSCallbackPort = CallbackServer.getPort();
+PhoneGap.JSCallbackToken = CallbackServer.getToken();
+
 /**
  * This is only for Android.
  *
@@ -623,7 +626,7 @@ PhoneGap.JSCallback = function() {
         }
     }
 
-    xmlhttp.open("GET", "http://127.0.0.1:"+CallbackServer.getPort()+"/" , true);
+    xmlhttp.open("GET", "http://127.0.0.1:"+PhoneGap.JSCallbackPort+"/"+PhoneGap.JSCallbackToken , true);
     xmlhttp.send();
 };
 
@@ -737,7 +740,6 @@ Accelerometer.ERROR_MSG = ["Not running", "Starting", "", "Failed to start"];
  * @param {AccelerationOptions} options The options for getting the accelerometer data such as timeout. (OPTIONAL)
  */
 Accelerometer.prototype.getCurrentAcceleration = function(successCallback, errorCallback, options) {
-    console.log("Accelerometer.getCurrentAcceleration()");
 
     // successCallback required
     if (typeof successCallback != "function") {
@@ -1447,13 +1449,16 @@ File._createEvent = function(type, target) {
 function FileError() {
    // File error codes
    // Found in DOMException
-   this.NOT_FOUND_ERR = 8;
-   this.SECURITY_ERR = 18;
-   this.ABORT_ERR = 20;
+   this.NOT_FOUND_ERR = 1;
+   this.SECURITY_ERR = 2;
+   this.ABORT_ERR = 3;
 
    // Added by this specification
-   this.NOT_READABLE_ERR = 24;
-   this.ENCODING_ERR = 26;
+   this.NOT_READABLE_ERR = 4;
+   this.ENCODING_ERR = 5;
+   this.NO_MODIFICATION_ALLOWED_ERR = 6;
+   this.INVALID_STATE_ERR = 7;
+   this.SYNTAX_ERR = 8;
 
    this.code = null;
 };
@@ -1498,6 +1503,10 @@ FileMgr.prototype.getFreeDiskSpace = function(successCallback, errorCallback) {
 
 FileMgr.prototype.writeAsText = function(fileName, data, append, successCallback, errorCallback) {
     PhoneGap.exec(successCallback, errorCallback, "File", "writeAsText", [fileName, data, append]);
+};
+
+FileMgr.prototype.truncate = function(fileName, size, successCallback, errorCallback) {
+    PhoneGap.exec(successCallback, errorCallback, "File", "truncate", [fileName, size]);
 };
 
 FileMgr.prototype.readAsText = function(fileName, encoding, successCallback, errorCallback) {
@@ -1738,6 +1747,16 @@ FileReader.prototype.readAsBinaryString = function(file) {
     this.fileName = file;
 };
 
+/**
+ * Read file and return data as a binary data.
+ *
+ * @param file          The name of the file
+ */
+FileReader.prototype.readAsArrayBuffer = function(file) {
+    // TODO - Can't return binary data to browser.
+    this.fileName = file;
+};
+
 //-----------------------------------------------------------------------------
 // File Writer
 //-----------------------------------------------------------------------------
@@ -1751,31 +1770,67 @@ FileReader.prototype.readAsBinaryString = function(file) {
  */
 function FileWriter() {
     this.fileName = "";
-    this.result = null;
+
     this.readyState = 0; // EMPTY
+
     this.result = null;
-    this.onerror = null;
-    this.oncomplete = null;
+
+    // Error
+    this.error = null;
+
+    // Event handlers
+    this.onwritestart = null;	// When writing starts
+    this.onprogress = null;		// While writing the file, and reporting partial file data
+    this.onwrite = null;		// When the write has successfully completed.
+    this.onwriteend = null;		// When the request has completed (either in success or failure).
+    this.onabort = null;		// When the write has been aborted. For instance, by invoking the abort() method.
+    this.onerror = null;		// When the write has failed (see errors).
 };
 
 // States
-FileWriter.EMPTY = 0;
-FileWriter.LOADING = 1;
+FileWriter.INIT = 0;
+FileWriter.WRITING = 1;
 FileWriter.DONE = 2;
 
+/**
+ * Abort writing file.
+ */
+FileWriter.prototype.abort = function() {
+    this.readyState = FileWriter.DONE;
+
+    // If abort callback
+    if (typeof this.onabort == "function") {
+        var evt = File._createEvent("abort", this);
+        this.onabort(evt);
+    }
+
+    // TODO: Anything else to do?  Maybe sent to native?
+};
+
 FileWriter.prototype.writeAsText = function(file, text, bAppend) {
-    if (bAppend != true) {
+	// Throw an exception if we are already writing a file
+	if (this.readyState == FileWriter.WRITING) {
+		throw FileError.INVALID_STATE_ERR;
+	}
+
+	if (bAppend != true) {
         bAppend = false; // for null values
     }
 
     this.fileName = file;
 
-    // LOADING state
-    this.readyState = FileWriter.LOADING;
+    // WRITING state
+    this.readyState = FileWriter.WRITING;
 
     var me = this;
 
-    // Read file
+    // If onwritestart callback
+    if (typeof me.onwritestart == "function") {
+        var evt = File._createEvent("writestart", me);
+        me.onwritestart(evt);
+    }
+
+    // Write file
     navigator.fileMgr.writeAsText(file, text, bAppend,
 
         // Success callback
@@ -1789,13 +1844,19 @@ FileWriter.prototype.writeAsText = function(file, text, bAppend) {
             // Save result
             me.result = r;
 
+            // If onwrite callback
+            if (typeof me.onwrite == "function") {
+                var evt = File._createEvent("write", me);
+                me.onwrite(evt);
+            }
+
             // DONE state
             me.readyState = FileWriter.DONE;
 
-            // If oncomplete callback
-            if (typeof me.oncomplete == "function") {
-                var evt = File._createEvent("complete", me);
-                me.oncomplete(evt);
+            // If onwriteend callback
+            if (typeof me.onwriteend == "function") {
+                var evt = File._createEvent("writeend", me);
+                me.onwriteend(evt);
             }
         },
 
@@ -1810,17 +1871,101 @@ FileWriter.prototype.writeAsText = function(file, text, bAppend) {
             // Save error
             me.error = e;
 
+            // If onerror callback
+            if (typeof me.onerror == "function") {
+                var evt = File._createEvent("error", me);
+                me.onerror(evt);
+            }
+
             // DONE state
             me.readyState = FileWriter.DONE;
+
+            // If onwriteend callback
+            if (typeof me.onwriteend == "function") {
+                var evt = File._createEvent("writeend", me);
+                me.onwriteend(evt);
+            }
+        }
+        );
+
+};
+
+FileWriter.prototype.truncate = function(file, size) {
+	// Throw an exception if we are already writing a file
+	if (this.readyState == FileWriter.WRITING) {
+		throw FileError.INVALID_STATE_ERR;
+	}
+
+    this.fileName = file;
+
+    // WRITING state
+    this.readyState = FileWriter.WRITING;
+
+    var me = this;
+
+    // If onwritestart callback
+    if (typeof me.onwritestart == "function") {
+        var evt = File._createEvent("writestart", me);
+        me.onwritestart(evt);
+    }
+
+    // Write file
+    navigator.fileMgr.truncate(file, size,
+
+        // Success callback
+        function(r) {
+
+            // If DONE (cancelled), then don't do anything
+            if (me.readyState == FileWriter.DONE) {
+                return;
+            }
+
+            // Save result
+            me.result = r;
+
+            // If onwrite callback
+            if (typeof me.onwrite == "function") {
+                var evt = File._createEvent("write", me);
+                me.onwrite(evt);
+            }
+
+            // DONE state
+            me.readyState = FileWriter.DONE;
+
+            // If onwriteend callback
+            if (typeof me.onwriteend == "function") {
+                var evt = File._createEvent("writeend", me);
+                me.onwriteend(evt);
+            }
+        },
+
+        // Error callback
+        function(e) {
+
+            // If DONE (cancelled), then don't do anything
+            if (me.readyState == FileWriter.DONE) {
+                return;
+            }
+
+            // Save error
+            me.error = e;
 
             // If onerror callback
             if (typeof me.onerror == "function") {
                 var evt = File._createEvent("error", me);
                 me.onerror(evt);
             }
+
+            // DONE state
+            me.readyState = FileWriter.DONE;
+
+            // If onwriteend callback
+            if (typeof me.onwriteend == "function") {
+                var evt = File._createEvent("writeend", me);
+                me.onwriteend(evt);
+            }
         }
         );
-
 };
 
 /*
@@ -2433,7 +2578,7 @@ PhoneGap.addConstructor(function() {
  */
 function Position(coords, timestamp) {
 	this.coords = coords;
-        this.timestamp = new Date().getTime();
+	this.timestamp = (timestamp != 'undefined') ? timestamp : new Date().getTime();
 }
 
 function Coordinates(lat, lng, alt, acc, head, vel, altacc) {
