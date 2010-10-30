@@ -80,10 +80,13 @@ public class CapturePhotoAction implements FileSystemJournalListener
 			Invoke.invokeApplication(Invoke.APP_TYPE_CAMERA, new CameraArguments());
 		}
 		
-		// Return null PluginResult so plugin manager does not invoke a callback. 
 		// We invoked the native camera application, which runs in a separate
 		// process, and must now wait for the listener to retrieve the photo taken. 
-		return null;
+		// Return NO_RESULT status so plugin manager does not invoke a callback,
+		// but set keep callback to true so we can invoke the callback later.
+		PluginResult result = new PluginResult(PluginResult.Status.NO_RESULT);
+		result.setKeepCallback(true);
+		return result;
 	}
 
 	/**

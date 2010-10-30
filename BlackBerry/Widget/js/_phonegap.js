@@ -81,7 +81,7 @@ PhoneGap.Channel.prototype.subscribeOnce = function(f, c) {
         _this.unsubscribe(g);
     }
     if (this.fired) {
-	    if (typeof c == "object" && f instanceof Function) { f = PhoneGap.close(c, f); }
+        if (typeof c == "object" && f instanceof Function) { f = PhoneGap.close(c, f); }
         f.apply(this, this.fireArgs);
     } else {
         g = this.subscribe(m);
@@ -269,33 +269,33 @@ Element.prototype.addEventListener = function(evt, handler, capture) {
  * @return
  */
 PhoneGap.clone = function(obj) {
-	if(!obj) { 
-		return obj;
-	}
-	
-	if(obj instanceof Array){
-		var retVal = new Array();
-		for(var i = 0; i < obj.length; ++i){
-			retVal.push(PhoneGap.clone(obj[i]));
-		}
-		return retVal;
-	}
-	
-	if (obj instanceof Function) {
-		return obj;
-	}
-	
-	if(!(obj instanceof Object)){
-		return obj;
-	}
+    if(!obj) { 
+        return obj;
+    }
+    
+    if(obj instanceof Array){
+        var retVal = new Array();
+        for(var i = 0; i < obj.length; ++i){
+            retVal.push(PhoneGap.clone(obj[i]));
+        }
+        return retVal;
+    }
+    
+    if (obj instanceof Function) {
+        return obj;
+    }
+    
+    if(!(obj instanceof Object)){
+        return obj;
+    }
 
-	retVal = new Object();
-	for(i in obj){
-		if(!(i in retVal) || retVal[i] != obj[i]) {
-			retVal[i] = PhoneGap.clone(obj[i]);
-		}
-	}
-	return retVal;
+    retVal = new Object();
+    for(i in obj){
+        if(!(i in retVal) || retVal[i] != obj[i]) {
+            retVal[i] = PhoneGap.clone(obj[i]);
+        }
+    }
+    return retVal;
 };
 
 PhoneGap.close = function(context, func, params) {
@@ -312,6 +312,18 @@ PhoneGap.close = function(context, func, params) {
 
 PhoneGap.callbackId = 0;
 PhoneGap.callbacks  = {};
+PhoneGap.callbackStatus = {
+    NO_RESULT: 0,
+    OK: 1,
+    CLASS_NOT_FOUND_EXCEPTION: 2,
+    ILLEGAL_ACCESS_EXCEPTION: 3,
+    INSTANTIATION_EXCEPTION: 4,
+    MALFORMED_URL_EXCEPTION: 5,
+    IO_EXCEPTION: 6,
+    INVALID_ACTION: 7,
+    JSON_EXCEPTION: 8,
+    ERROR: 9
+};
 
 /**
  * Called by native code when returning successful result from an action.
@@ -320,16 +332,24 @@ PhoneGap.callbacks  = {};
  * @param args
  */
 PhoneGap.callbackSuccess = function(callbackId, args) {
-	if (PhoneGap.callbacks[callbackId]) {
-        try {
-            if (PhoneGap.callbacks[callbackId].success) {
-                PhoneGap.callbacks[callbackId].success(args.message);
+    if (PhoneGap.callbacks[callbackId]) {
+
+        // If result is to be sent to callback
+        if (args.status == PhoneGap.callbackStatus.OK) {
+            try {
+                if (PhoneGap.callbacks[callbackId].success) {
+                    PhoneGap.callbacks[callbackId].success(args.message);
+                }
+            }
+            catch (e) {
+                console.log("Error in success callback: "+callbackId+" = "+e);
             }
         }
-        catch (e) {
-            console.log("Error in success callback: "+callbackId+" = "+e);
+
+        // Clear callback if not expecting any more results
+        if (!args.keepCallback) {
+            delete PhoneGap.callbacks[callbackId];
         }
-        delete PhoneGap.callbacks[callbackId];
     }
 };
 
@@ -349,7 +369,11 @@ PhoneGap.callbackError = function(callbackId, args) {
         catch (e) {
             console.log("Error in error callback: "+callbackId+" = "+e);
         }
-        delete PhoneGap.callbacks[callbackId];
+
+        // Clear callback if not expecting any more results
+        if (!args.keepCallback) {
+            delete PhoneGap.callbacks[callbackId];
+        }
     }
 };
 
@@ -382,24 +406,49 @@ PhoneGap.exec = function(success, fail, service, action, args) {
             eval("var v="+r+";");
         
             // If status is OK, then return value back to caller
-            if (v.status == 0) {
+            if (v.status == PhoneGap.callbackStatus.OK) {
 
                 // If there is a success callback, then call it now with returned value
                 if (success) {
-                    success(v.message);
-                    delete PhoneGap.callbacks[callbackId];
+                    try {
+                        success(v.message);
+                    }
+                    catch (e) {
+                        console.log("Error in success callback: "+callbackId+" = "+e);
+                    }
+
+                    // Clear callback if not expecting any more results
+                    if (!v.keepCallback) {
+                        delete PhoneGap.callbacks[callbackId];
+                    }
                 }
                 return v.message;
             }
-
+            // If no result
+            else if (v.status == PhoneGap.callbackStatus.NO_RESULT) {
+                    
+                // Clear callback if not expecting any more results
+                if (!v.keepCallback) {
+                    delete PhoneGap.callbacks[callbackId];
+                }
+            }
             // If error, then display error
             else {
                 console.log("Error: Status="+r.status+" Message="+v.message);
 
                 // If there is a fail callback, then call it now with returned value
                 if (fail) {
-                    fail(v.message);
-                    delete PhoneGap.callbacks[callbackId];
+                    try {
+                        fail(v.message);
+                    }
+                    catch (e) {
+                        console.log("Error in error callback: "+callbackId+" = "+e);
+                    }
+
+                    // Clear callback if not expecting any more results
+                    if (!v.keepCallback) {
+                        delete PhoneGap.callbacks[callbackId];
+                    }
                 }
                 return null;
             }

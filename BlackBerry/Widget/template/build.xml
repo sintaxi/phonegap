@@ -133,9 +133,7 @@
             <if>
                 <equals arg1="@{code-sign}" arg2="true" />
                 <then>
-                    <exec executable="cmd">
-                        <arg value="/c " />
-                        <arg value="${properties.bbwp.bin}" />
+                    <exec executable="${properties.bbwp.bin}">
                         <arg file="${build.dir}/${cod.name}.zip" />
                         <arg value="/g" />
                         <arg value="${properties.sigtool.password}" />
@@ -144,9 +142,7 @@
                     </exec>
                 </then>
                 <else>
-                    <exec executable="cmd">
-                        <arg value="/c " />
-                        <arg value="${properties.bbwp.bin}" />
+                    <exec executable="${properties.bbwp.bin}">
                         <arg file="${build.dir}/${cod.name}.zip" />
                         <arg value="/o" />
                         <arg file="${build.dir}" />

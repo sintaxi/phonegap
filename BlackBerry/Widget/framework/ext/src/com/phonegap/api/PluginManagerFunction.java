@@ -91,16 +91,22 @@ public class PluginManagerFunction extends ScriptableFunction {
 					Thread thread = new Thread(new Runnable() {
 						public void run() {
 							// Call execute on the plugin so that it can do it's thing
-							final PluginResult result = plugin.execute(action, args, callbackId);
-							
-							if (result != null) {
-								// Check if the 
-								if (result.getStatus() == PluginResult.Status.OK.ordinal()) {
-									PhoneGapExtension.invokeSuccessCallback(callbackId, result);
-								} else {
-									PhoneGapExtension.invokeErrorCallback(callbackId, result);
-								}
-							}
+						    final PluginResult result = plugin.execute(action, args, callbackId);
+
+						    if (result != null) {
+						        int status = result.getStatus();
+
+						        // If plugin status is OK, 
+						        // or plugin is not going to send an immediate result (NO_RESULT) 
+						        if (status == PluginResult.Status.OK.ordinal() || 
+						            status == PluginResult.Status.NO_RESULT.ordinal()) {
+						            PhoneGapExtension.invokeSuccessCallback(callbackId, result);
+						        } 
+						        // error
+						        else {
+						            PhoneGapExtension.invokeErrorCallback(callbackId, result);
+						        }
+						    }
 						}
 					});
 					thread.start();

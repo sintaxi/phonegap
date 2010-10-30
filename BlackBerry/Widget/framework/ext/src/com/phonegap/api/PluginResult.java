@@ -17,6 +17,7 @@ public class PluginResult {
 
     private final int status;
     private final String message;
+    private boolean keepCallback = false;
 
     public PluginResult(Status status) {
         this.status = status.ordinal();
@@ -41,8 +42,16 @@ public class PluginResult {
         return message;
     }
 
+    public void setKeepCallback(boolean b) {
+        this.keepCallback = b;
+    }
+
+    public boolean getKeepCallback() {
+        return this.keepCallback;
+    }
+    
     public String getJSONString() {
-        return "{ status: " + this.getStatus() + ", message: " + this.getMessage() + " }";
+        return "{status:" + this.status + ",message:" + this.message + ",keepCallback:" + this.keepCallback + "}";
     }
 
     /**
@@ -92,15 +101,16 @@ public class PluginResult {
             return this.message;
         }
 
-        public static final Status OK = new Status(0, "OK");
-        public static final Status CLASSNOTFOUNDEXCEPTION = new Status(1, "Class not found");
-        public static final Status ILLEGALACCESSEXCEPTION = new Status(2, "Illegal access");
-        public static final Status INSTANTIATIONEXCEPTION = new Status(3, "Instantiation error");
-        public static final Status MALFORMEDURLEXCEPTION = new Status(4, "Malformed URL");
-        public static final Status IOEXCEPTION = new Status(5, "IO error");
-        public static final Status INVALIDACTION = new Status(6, "Invalid action");
-        public static final Status JSONEXCEPTION = new Status(7, "JSON error");
-        public static final Status ERROR = new Status(8, "Error");
-        public static final Status ILLEGAL_ARGUMENT_EXCEPTION = new Status(9, "Illegal argument");
+        public static final Status NO_RESULT = new Status(0, "No result");
+        public static final Status OK = new Status(1, "OK");
+        public static final Status CLASSNOTFOUNDEXCEPTION = new Status(2, "Class not found");
+        public static final Status ILLEGALACCESSEXCEPTION = new Status(3, "Illegal access");
+        public static final Status INSTANTIATIONEXCEPTION = new Status(4, "Instantiation error");
+        public static final Status MALFORMEDURLEXCEPTION = new Status(5, "Malformed URL");
+        public static final Status IOEXCEPTION = new Status(6, "IO error");
+        public static final Status INVALIDACTION = new Status(7, "Invalid action");
+        public static final Status JSONEXCEPTION = new Status(8, "JSON error");
+        public static final Status ERROR = new Status(9, "Error");
+        public static final Status ILLEGAL_ARGUMENT_EXCEPTION = new Status(10, "Illegal argument");
     }
 }
