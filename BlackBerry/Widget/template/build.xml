@@ -17,67 +17,6 @@
     <!-- BlackBerry Widget Packager directory is required. -->
     <fail unless="properties.bbwp.dir" message="Please specify BlackBerry Widget Packager directory using 'bbwp.dir' in your 'project.properties' file." />    
 
-    <!-- Simulator directory: Use sim.dir property if set in project.properties file. 
-         Otherwise, use bbwp simulator directory. -->
-
-    <condition 
-        property="simulator.dir" 
-        value="${properties.sim.dir}" 
-        else="${properties.bbwp.dir}/simpack">
-            <available file="${properties.sim.dir}" type="dir" />
-    </condition>
-    <echo message="Simulator directory=${simulator.dir}" />
-
-    <!-- Simulator binary: Use sim.bin property if set in project.properties file  
-         or try setting to 'defaultSimulator.bat' in simulator directory. -->
-
-    <condition 
-        property="sim.bin" 
-        value="${properties.sim.bin}" 
-        else="defaultSimulator.bat">
-            <available file="${simulator.dir}/${properties.sim.bin}"/>
-    </condition>
-
-    <!-- If simulator executable does not exist, use the first device listed 
-         in the 'handhelds.manifest.txt' file in the simulator directory. -->
-
-    <loadfile 
-        property="device.list"
-        srcFile="${simulator.dir}/handhelds.manifest.txt">
-        <filterchain>
-            <tokenFilter>
-                <stringtokenizer/>
-            </tokenFilter>
-        </filterchain>
-    </loadfile>
-
-    <propertyregex property="device"
-        input="${device.list}"
-        regexp="^\d{4}"
-        select="\0"
-        override="true" />
-    <property name="device.bin" value="${device}.bat" />
-
-    <condition
-        property="simulator.bin" 
-        value="${sim.bin}"
-        else="${device.bin}">
-            <available file="${simulator.dir}/${sim.bin}" />
-    </condition>
-        
-    <echo message="Simulator executable=${simulator.dir}/${simulator.bin}" />
- 
-    <!-- MDS directory: Use mds.dir property if set in project.properties file. 
-         Otherwise, use bbwp MDS directory. -->
-
-    <condition 
-        property="mds.dir" 
-        value="${properties.mds.dir}" 
-        else="${properties.bbwp.dir}/mds">
-            <available file="${properties.mds.dir}" type="dir" />
-    </condition>
-    <echo message="MDS directory=${mds.dir}" />
-        
     <!-- LOAD DEVICE -->
     
     <target name="load-device" depends="package-app">
@@ -92,6 +31,74 @@
     <!-- LOAD SIMULATOR -->
     
     <target name="load-simulator" depends="build">
+
+        <!-- Locate BBWP simulator directory. There may be multiple, so choose the first. -->
+        <path id="bbwp.sim.path">
+            <first>
+                <fileset dir="${properties.bbwp.dir}/simpack">
+                    <include name="**/handhelds.manifest.txt" />
+                </fileset>
+            </first>
+        </path>
+        <dirname property="bbwp.sim.dir" file="${toString:bbwp.sim.path}" />
+
+        <!-- Simulator directory: Use sim.dir property if set in project.properties file. 
+             Otherwise, use bbwp simulator directory. -->
+        <condition 
+            property="simulator.dir" 
+            value="${properties.sim.dir}" 
+            else="${bbwp.sim.dir}">
+                <available file="${properties.sim.dir}" type="dir" />
+        </condition>
+        <echo message="Simulator directory=${simulator.dir}" />
+
+        <!-- Simulator binary: Use sim.bin property if set in project.properties file  
+             or try setting to 'defaultSimulator.bat' in simulator directory. -->
+        <condition 
+            property="sim.bin" 
+            value="${properties.sim.bin}" 
+            else="defaultSimulator.bat">
+                <available file="${simulator.dir}/${properties.sim.bin}"/>
+        </condition>
+
+        <!-- If simulator executable does not exist, use the first device listed 
+             in the 'handhelds.manifest.txt' file in the simulator directory. -->
+        <loadfile 
+            property="device.list"
+            srcFile="${simulator.dir}/handhelds.manifest.txt">
+            <filterchain>
+                <tokenFilter>
+                    <stringtokenizer/>
+                </tokenFilter>
+            </filterchain>
+        </loadfile>
+
+        <propertyregex property="device"
+            input="${device.list}"
+            regexp="^\d{4}"
+            select="\0"
+            override="true" />
+        <property name="device.bin" value="${device}.bat" />
+
+        <condition
+            property="simulator.bin" 
+            value="${sim.bin}"
+            else="${device.bin}">
+                <available file="${simulator.dir}/${sim.bin}" />
+        </condition>
+        
+        <echo message="Simulator executable=${simulator.dir}/${simulator.bin}" />
+ 
+        <!-- MDS directory: Use mds.dir property if set in project.properties file. 
+             Otherwise, use bbwp MDS directory. -->
+        <condition 
+            property="mds.dir" 
+            value="${properties.mds.dir}" 
+            else="${properties.bbwp.dir}/mds">
+                <available file="${properties.mds.dir}" type="dir" />
+        </condition>
+        <echo message="MDS directory=${mds.dir}" />
+        
         <copy todir="${simulator.dir}">
             <fileset dir="${build.dir}/StandardInstall" includes="*.cod, *.cso, *.csl, *.alx" />
         </copy>
