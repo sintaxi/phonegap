@@ -2785,6 +2785,13 @@ Media.prototype.stopRecord = function() {
     PhoneGap.exec(null, null, "Media", "stopRecordingAudio", [this.id]);
 };
 
+/**
+ * Release the resources.
+ */
+Media.prototype.release = function() {
+    PhoneGap.exec(null, null, "Media", "release", [this.id]);
+};
+
 
 
 /*
