@@ -20,14 +20,14 @@
 				var s = document.getElementsByTagName('script')[0];
 				s.parentNode.insertBefore(ga, s);
 			})();
-			
+
 			function moveToSection(dropdown) {
 				document.location="#" + dropdown.options[dropdown.selectedIndex].value;
 			}
 		</script>
 </head>
 <body onload="prettyPrint();">
-		
+
 		<div id="header">
 			<h1><a href="index.html">Phone<strong>Gap</strong> Documentation</a></h1>
 		</div>
@@ -64,26 +64,30 @@
 <option value="device.version_quick_example">      - Quick Example</option>
 <option value="device.version_full_example">      - Full Example</option></select></small>
 		</div>
-		
+
 		<div id="sidebar">
 			<div class="vertical_divider"></div>
 			<h1>API Reference</h1>
 			<ul>
 <li><a href="phonegap_accelerometer_accelerometer.md.html">Accelerometer</a></li>
 				<li><a href="phonegap_camera_camera.md.html">Camera</a></li>
+				<li><a href="phonegap_compass_compass.md.html">Compass</a></li>
 				<li><a href="phonegap_contacts_contacts.md.html">Contacts</a></li>
 				<li><a href="phonegap_device_device.md.html">Device</a></li>
 				<li><a href="phonegap_events_events.md.html">Events</a></li>
+				<li><a href="phonegap_file_file.md.html">File</a></li>
 				<li><a href="phonegap_geolocation_geolocation.md.html">Geolocation</a></li>
+				<li><a href="phonegap_media_media.md.html">Media</a></li>
 				<li><a href="phonegap_network_network.md.html">Network</a></li>
 				<li><a href="phonegap_notification_notification.md.html">Notification</a></li>
+				<li><a href="phonegap_storage_storage.md.html">Storage</a></li>
 			</ul>
 <h1></h1>
 			<ul>
 <li><a href="_index.html">Keyword Index</a></li>
 			</ul>
 </div>
-		
+
 		<div id="scrollable">
     		<div id="content">
     			<h1><a name="Device">Device</a></h1>
@@ -114,14 +118,14 @@ var phoneName = <a href="phonegap_device_device.md.html#device.name">device.name
 <hr>
 <h1><a name="device.name">device.name</a></h1>
 
-<p>Get the device's model name.</p>
+<p>Get the device's model <a href="phonegap_storage_storage.md.html#name">name</a>.</p>
 
 <pre class="prettyprint"><code>var string = <a href="phonegap_device_device.md.html#device.name">device.name</a>;
 </code></pre>
 
 <h2><a name="device.name_description">Description</a></h2>
 
-<p><code><a href="phonegap_device_device.md.html#device.name">device.name</a></code> returns the name of the device's model or product. This value is set by the device manufacturer and may be different across versions of the same product.</p>
+<p><code><a href="phonegap_device_device.md.html#device.name">device.name</a></code> returns the <a href="phonegap_storage_storage.md.html#name">name</a> of the device's model or product. This value is set by the device manufacturer and may be different across versions of the same product.</p>
 
 <h2><a name="device.name_supported_platforms">Supported Platforms</a></h2>
 
@@ -133,12 +137,12 @@ var phoneName = <a href="phonegap_device_device.md.html#device.name">device.name
 </ul>
 <h2><a name="device.name_quick_example">Quick Example</a></h2>
 
-<pre class="prettyprint"><code>// Android:    Nexus One       returns "Passion" (Nexus One code name)
+<pre class="prettyprint"><code>// Android:    Nexus One       returns "Passion" (Nexus One code <a href="phonegap_storage_storage.md.html#name">name</a>)
 //             Motorola Droid  returns "voles"
 // BlackBerry: Bold 8900       returns "8900"
-// iPhone:     All devices     returns a name set by iTunes e.g. "Joe's iPhone"
+// iPhone:     All devices     returns a <a href="phonegap_storage_storage.md.html#name">name</a> set by iTunes e.g. "Joe's iPhone"
 //
-var name = <a href="phonegap_device_device.md.html#device.name">device.name</a>;
+var <a href="phonegap_storage_storage.md.html#name">name</a> = <a href="phonegap_device_device.md.html#device.name">device.name</a>;
 </code></pre>
 
 <h2><a name="device.name_full_example">Full Example</a></h2>
@@ -183,7 +187,7 @@ var name = <a href="phonegap_device_device.md.html#device.name">device.name</a>;
 <ul>
 <li>Gets the <a class="external" href="http://developer.android.com/reference/android/os/Build.html#PRODUCT">product name</a> instead of the <a class="external" href="http://developer.android.com/reference/android/os/Build.html#MODEL">model name</a>.
 <ul>
-<li>The product name is often the code name given during production.</li>
+<li>The product <a href="phonegap_storage_storage.md.html#name">name</a> is often the code <a href="phonegap_storage_storage.md.html#name">name</a> given during production.</li>
 <li>e.g. Nexus One returns "Passion", Motorola Droid returns "voles"</li>
 </ul>
 </li>
@@ -193,7 +197,7 @@ var name = <a href="phonegap_device_device.md.html#device.name">device.name</a>;
 <ul>
 <li>Gets the <a class="external" href="http://developer.apple.com/iphone/library/documentation/uikit/reference/UIDevice_Class/Reference/UIDevice.html#//apple_ref/doc/uid/TP40006902-CH3-SW13">device's custom name</a> instead of the <a class="external" href="http://developer.apple.com/iphone/library/documentation/uikit/reference/UIDevice_Class/Reference/UIDevice.html#//apple_ref/doc/uid/TP40006902-CH3-SW1">device model name</a>.
 <ul>
-<li>The custom name is set by the owner in iTunes.</li>
+<li>The custom <a href="phonegap_storage_storage.md.html#name">name</a> is set by the owner in iTunes.</li>
 <li>e.g. "Joe's iPhone"</li>
 </ul>
 </li>
@@ -201,14 +205,14 @@ var name = <a href="phonegap_device_device.md.html#device.name">device.name</a>;
 <hr>
 <h1><a name="device.phonegap">device.phonegap</a></h1>
 
-<p>Get the version of phonegap running on the device.</p>
+<p>Get the <a href="phonegap_storage_storage.md.html#version">version</a> of phonegap running on the device.</p>
 
 <pre class="prettyprint"><code>var string = <a href="phonegap_device_device.md.html#device.phonegap">device.phonegap</a>;
 </code></pre>
 
 <h2><a name="device.phonegap_description">Description</a></h2>
 
-<p><code><a href="phonegap_device_device.md.html#device.phonegap">device.phonegap</a></code> returns the version of phonegap running on the device.</p>
+<p><code><a href="phonegap_device_device.md.html#device.phonegap">device.phonegap</a></code> returns the <a href="phonegap_storage_storage.md.html#version">version</a> of phonegap running on the device.</p>
 
 <h2><a name="device.phonegap_supported_platforms">Supported Platforms</a></h2>
 
@@ -220,7 +224,7 @@ var name = <a href="phonegap_device_device.md.html#device.name">device.name</a>;
 </ul>
 <h2><a name="device.phonegap_quick_example">Quick Example</a></h2>
 
-<pre class="prettyprint"><code>var name = <a href="phonegap_device_device.md.html#device.phonegap">device.phonegap</a>;
+<pre class="prettyprint"><code>var <a href="phonegap_storage_storage.md.html#name">name</a> = <a href="phonegap_device_device.md.html#device.phonegap">device.phonegap</a>;
 </code></pre>
 
 <h2><a name="device.phonegap_full_example">Full Example</a></h2>
@@ -263,7 +267,7 @@ var name = <a href="phonegap_device_device.md.html#device.name">device.name</a>;
 <hr>
 <h1><a name="device.platform">device.platform</a></h1>
 
-<p>Get the device's operating system name.</p>
+<p>Get the device's operating system <a href="phonegap_storage_storage.md.html#name">name</a>.</p>
 
 <pre class="prettyprint"><code>var string = <a href="phonegap_device_device.md.html#device.platform">device.platform</a>;
 </code></pre>
@@ -330,7 +334,7 @@ var devicePlatform = <a href="phonegap_device_device.md.html#device.platform">de
 
 <h2><a name="device.platform_blackberry_quirks">BlackBerry Quirks</a></h2>
 
-<p>Devices may return the <a href="#device%20platform">device platform</a> version instead of the platform name.  For example, the Storm2 9550 would return '2.13.0.95' or similar.</p>
+<p>Devices may return the <a href="#device%20platform">device platform</a> <a href="phonegap_storage_storage.md.html#version">version</a> instead of the platform <a href="phonegap_storage_storage.md.html#name">name</a>.  For example, the Storm2 9550 would return '2.13.0.95' or similar.</p>
 
 <hr>
 <h1><a name="device.uuid">device.uuid</a></h1>
@@ -408,7 +412,7 @@ var deviceID = <a href="phonegap_device_device.md.html#device.uuid">device.uuid<
 <hr>
 <h1><a name="device.version">device.version</a></h1>
 
-<p>Get the operating system version.</p>
+<p>Get the operating system <a href="phonegap_storage_storage.md.html#version">version</a>.</p>
 
 <pre class="prettyprint"><code>var string = <a href="phonegap_device_device.md.html#device.version">device.version</a>;
 </code></pre>
@@ -473,6 +477,6 @@ var deviceVersion = <a href="phonegap_device_device.md.html#device.version">devi
 
     		</div>
 		</div>
-		
+
 	</body>
 </html>

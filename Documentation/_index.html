@@ -20,14 +20,14 @@
 				var s = document.getElementsByTagName('script')[0];
 				s.parentNode.insertBefore(ga, s);
 			})();
-			
+
 			function moveToSection(dropdown) {
 				document.location="#" + dropdown.options[dropdown.selectedIndex].value;
 			}
 		</script>
 </head>
 <body onload="prettyPrint();">
-		
+
 		<div id="header">
 			<h1><a href="index.html">Phone<strong>Gap</strong> Documentation</a></h1>
 		</div>
@@ -35,26 +35,30 @@
 			<h1>Keyword Index</h1>
 			<small></small>
 		</div>
-		
+
 		<div id="sidebar">
 			<div class="vertical_divider"></div>
 			<h1>API Reference</h1>
 			<ul>
 <li><a href="phonegap_accelerometer_accelerometer.md.html">Accelerometer</a></li>
 				<li><a href="phonegap_camera_camera.md.html">Camera</a></li>
+				<li><a href="phonegap_compass_compass.md.html">Compass</a></li>
 				<li><a href="phonegap_contacts_contacts.md.html">Contacts</a></li>
 				<li><a href="phonegap_device_device.md.html">Device</a></li>
 				<li><a href="phonegap_events_events.md.html">Events</a></li>
+				<li><a href="phonegap_file_file.md.html">File</a></li>
 				<li><a href="phonegap_geolocation_geolocation.md.html">Geolocation</a></li>
+				<li><a href="phonegap_media_media.md.html">Media</a></li>
 				<li><a href="phonegap_network_network.md.html">Network</a></li>
 				<li><a href="phonegap_notification_notification.md.html">Notification</a></li>
+				<li><a href="phonegap_storage_storage.md.html">Storage</a></li>
 			</ul>
 <h1></h1>
 			<ul>
 <li><a href="_index.html">Keyword Index</a></li>
 			</ul>
 </div>
-		
+
 		<div id="scrollable">
     		<div id="content">
     			
@@ -73,7 +77,7 @@
 <li><a href="phonegap_accelerometer_accelerometer.md.html#accelerometerError">accelerometerError</a></li>
 <li><a href="phonegap_accelerometer_accelerometer.md.html#accelerometerOptions">accelerometerOptions</a></li>
 <li><a href="phonegap_accelerometer_accelerometer.md.html#accelerometerSuccess">accelerometerSuccess</a></li>
-<li><a href="index.md.html#API%20Reference">API Reference</a></li>
+<li><a href="index.html#API%20Reference">API Reference</a></li>
 </ul>
 <h2>C</h2>
 
@@ -83,6 +87,13 @@
 <li><a href="phonegap_camera_camera.md.html#cameraError">cameraError</a></li>
 <li><a href="phonegap_camera_camera.md.html#cameraOptions">cameraOptions</a></li>
 <li><a href="phonegap_camera_camera.md.html#cameraSuccess">cameraSuccess</a></li>
+<li><a href="phonegap_compass_compass.md.html#Compass">Compass</a></li>
+<li><a href="phonegap_compass_compass.md.html#compass.clearWatch">compass.clearWatch</a></li>
+<li><a href="phonegap_compass_compass.md.html#compass.getCurrentHeading">compass.getCurrentHeading</a></li>
+<li><a href="phonegap_compass_compass.md.html#compass.watchHeading">compass.watchHeading</a></li>
+<li><a href="phonegap_compass_compass.md.html#compassError">compassError</a></li>
+<li><a href="phonegap_compass_compass.md.html#compassOptions">compassOptions</a></li>
+<li><a href="phonegap_compass_compass.md.html#compassSuccess">compassSuccess</a></li>
 <li><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></li>
 <li><a href="phonegap_contacts_contacts.md.html#ContactAccount">ContactAccount</a></li>
 <li><a href="phonegap_contacts_contacts.md.html#ContactAddress">ContactAddress</a></li>
@@ -103,6 +114,7 @@
 <h2>D</h2>
 
 <ul>
+<li><a href="phonegap_storage_storage.md.html#Database">Database</a></li>
 <li><a href="phonegap_device_device.md.html#Device">Device</a></li>
 <li><a href="phonegap_device_device.md.html#device.name">device.name</a></li>
 <li><a href="phonegap_device_device.md.html#device.phonegap">device.phonegap</a></li>
@@ -110,11 +122,20 @@
 <li><a href="phonegap_device_device.md.html#device.uuid">device.uuid</a></li>
 <li><a href="phonegap_device_device.md.html#device.version">device.version</a></li>
 <li><a href="phonegap_events_events.md.html#deviceready">deviceready</a></li>
+<li><a href="phonegap_storage_storage.md.html#display_name">display_name</a></li>
 </ul>
 <h2>E</h2>
 
 <ul>
 <li><a href="phonegap_events_events.md.html#Events">Events</a></li>
+</ul>
+<h2>F</h2>
+
+<ul>
+<li><a href="phonegap_file_file.md.html#File">File</a></li>
+<li><a href="phonegap_file_file.md.html#FileError">FileError</a></li>
+<li><a href="phonegap_file_file.md.html#FileReader">FileReader</a></li>
+<li><a href="phonegap_file_file.md.html#FileWriter">FileWriter</a></li>
 </ul>
 <h2>G</h2>
 
@@ -126,11 +147,31 @@
 <li><a href="phonegap_geolocation_geolocation.md.html#geolocationError">geolocationError</a></li>
 <li><a href="phonegap_geolocation_geolocation.md.html#geolocationOptions">geolocationOptions</a></li>
 <li><a href="phonegap_geolocation_geolocation.md.html#geolocationSuccess">geolocationSuccess</a></li>
-<li><a href="index.md.html#Guides">Guides</a></li>
+<li><a href="index.html#Guides">Guides</a></li>
+</ul>
+<h2>L</h2>
+
+<ul>
+<li><a href="phonegap_storage_storage.md.html#localStorage">localStorage</a></li>
+</ul>
+<h2>M</h2>
+
+<ul>
+<li><a href="phonegap_media_media.md.html#Media">Media</a></li>
+<li><a href="phonegap_media_media.md.html#media.getCurrentPosition">media.getCurrentPosition</a></li>
+<li><a href="phonegap_media_media.md.html#media.getDuration">media.getDuration</a></li>
+<li><a href="phonegap_media_media.md.html#media.pause">media.pause</a></li>
+<li><a href="phonegap_media_media.md.html#media.play">media.play</a></li>
+<li><a href="phonegap_media_media.md.html#media.startRecord">media.startRecord</a></li>
+<li><a href="phonegap_media_media.md.html#media.stop">media.stop</a></li>
+<li><a href="phonegap_media_media.md.html#media.stopRecord">media.stopRecord</a></li>
+<li><a href="phonegap_media_media.md.html#mediaError">mediaError</a></li>
+<li><a href="phonegap_media_media.md.html#MediaError">MediaError</a></li>
 </ul>
 <h2>N</h2>
 
 <ul>
+<li><a href="phonegap_storage_storage.md.html#name">name</a></li>
 <li><a href="phonegap_network_network.md.html#Network">Network</a></li>
 <li><a href="phonegap_network_network.md.html#network.isReachable">network.isReachable</a></li>
 <li><a href="phonegap_network_network.md.html#NetworkStatus">NetworkStatus</a></li>
@@ -139,6 +180,11 @@
 <li><a href="phonegap_notification_notification.md.html#notification.beep">notification.beep</a></li>
 <li><a href="phonegap_notification_notification.md.html#notification.confirm">notification.confirm</a></li>
 <li><a href="phonegap_notification_notification.md.html#notification.vibrate">notification.vibrate</a></li>
+</ul>
+<h2>O</h2>
+
+<ul>
+<li><a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a></li>
 </ul>
 <h2>P</h2>
 
@@ -153,11 +199,26 @@
 <li><a href="phonegap_network_network.md.html#reachableHostname">reachableHostname</a></li>
 <li><a href="phonegap_network_network.md.html#reachableOptions">reachableOptions</a></li>
 </ul>
+<h2>S</h2>
+
+<ul>
+<li><a href="phonegap_storage_storage.md.html#size">size</a></li>
+<li><a href="phonegap_storage_storage.md.html#SQLError">SQLError</a></li>
+<li><a href="phonegap_storage_storage.md.html#SQLResultSet">SQLResultSet</a></li>
+<li><a href="phonegap_storage_storage.md.html#SQLResultSetList">SQLResultSetList</a></li>
+<li><a href="phonegap_storage_storage.md.html#SQLTransaction">SQLTransaction</a></li>
+<li><a href="phonegap_storage_storage.md.html#Storage">Storage</a></li>
+</ul>
+<h2>V</h2>
+
+<ul>
+<li><a href="phonegap_storage_storage.md.html#version">version</a></li>
+</ul>
 </div>
 
 
     		</div>
 		</div>
-		
+
 	</body>
 </html>

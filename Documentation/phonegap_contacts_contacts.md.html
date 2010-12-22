@@ -20,14 +20,14 @@
 				var s = document.getElementsByTagName('script')[0];
 				s.parentNode.insertBefore(ga, s);
 			})();
-			
+
 			function moveToSection(dropdown) {
 				document.location="#" + dropdown.options[dropdown.selectedIndex].value;
 			}
 		</script>
 </head>
 <body onload="prettyPrint();">
-		
+
 		<div id="header">
 			<h1><a href="index.html">Phone<strong>Gap</strong> Documentation</a></h1>
 		</div>
@@ -115,26 +115,30 @@
 <option value="contactFindOptions">contactFindOptions</option>
 <option value="contactFindOptions_options">      - Options</option></select></small>
 		</div>
-		
+
 		<div id="sidebar">
 			<div class="vertical_divider"></div>
 			<h1>API Reference</h1>
 			<ul>
 <li><a href="phonegap_accelerometer_accelerometer.md.html">Accelerometer</a></li>
 				<li><a href="phonegap_camera_camera.md.html">Camera</a></li>
+				<li><a href="phonegap_compass_compass.md.html">Compass</a></li>
 				<li><a href="phonegap_contacts_contacts.md.html">Contacts</a></li>
 				<li><a href="phonegap_device_device.md.html">Device</a></li>
 				<li><a href="phonegap_events_events.md.html">Events</a></li>
+				<li><a href="phonegap_file_file.md.html">File</a></li>
 				<li><a href="phonegap_geolocation_geolocation.md.html">Geolocation</a></li>
+				<li><a href="phonegap_media_media.md.html">Media</a></li>
 				<li><a href="phonegap_network_network.md.html">Network</a></li>
 				<li><a href="phonegap_notification_notification.md.html">Notification</a></li>
+				<li><a href="phonegap_storage_storage.md.html">Storage</a></li>
 			</ul>
 <h1></h1>
 			<ul>
 <li><a href="_index.html">Keyword Index</a></li>
 			</ul>
 </div>
-		
+
 		<div id="scrollable">
     		<div id="content">
     			<h1><a name="Contacts">Contacts</a></h1>
@@ -273,7 +277,7 @@ function onError() {
     alert('onError!');
 };
 
-// find all contacts with 'Bob' in any name field
+// find all contacts with 'Bob' in any <a href="phonegap_storage_storage.md.html#name">name</a> field
 var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
 options.filter="Bob"; 
 var fields = ["displayName", "names"];
@@ -300,7 +304,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
     // PhoneGap is ready
     //
     function onDeviceReady() {
-        // find all contacts with 'Bob' in any name field
+        // find all contacts with 'Bob' in any <a href="phonegap_storage_storage.md.html#name">name</a> field
         var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
         options.filter="Bob"; 
         var fields = ["displayName", "names"];
@@ -342,13 +346,13 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 <strong>id:</strong> A globally unique identifier. <em>(DOMString)</em>
 </li>
 <li>
-<strong>displayname:</strong> The name of this <a href="phonegap_contacts_contacts.md.html#Contact">Contact</a>, suitable for display to end-users. <em>(DOMString)</em>
+<strong>displayname:</strong> The <a href="phonegap_storage_storage.md.html#name">name</a> of this <a href="phonegap_contacts_contacts.md.html#Contact">Contact</a>, suitable for display to end-users. <em>(DOMString)</em>
 </li>
 <li>
-<strong>name:</strong> An object containing all components of a persons name. <em>(<a href="phonegap_contacts_contacts.md.html#ContactName">ContactName</a>)</em>
+<strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> An object containing all components of a persons <a href="phonegap_storage_storage.md.html#name">name</a>. <em>(<a href="phonegap_contacts_contacts.md.html#ContactName">ContactName</a>)</em>
 </li>
 <li>
-<strong>nickname:</strong> A casual name to address the contact by. <em>(DOMString)</em>
+<strong>nickname:</strong> A casual <a href="phonegap_storage_storage.md.html#name">name</a> to address the contact by. <em>(DOMString)</em>
 </li>
 <li>
 <strong>phoneNumbers:</strong> An array of all the contact's phone numbers. <em>(<a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a>[])</em>
@@ -432,27 +436,35 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 </ul>
 <h2><a name="Contact_save_quick_example">Save Quick Example</a></h2>
 
-<pre class="prettyprint"><code>// create a new contact object
+<pre class="prettyprint"><code>function onSuccess(contacts) {
+    alert("Save Success");
+};
+
+function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
+    alert("Error = " + <a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>.code);
+};
+
+// create a new contact object
 var contact = navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>();
 contact.displayName = "Plumber";
 
 // populate some fields
-var name = new <a href="phonegap_contacts_contacts.md.html#ContactName">ContactName</a>();
-name.givenName = "Jane";
-name.familyName = "Doe";
-contact.name = name;
+var <a href="phonegap_storage_storage.md.html#name">name</a> = new <a href="phonegap_contacts_contacts.md.html#ContactName">ContactName</a>();
+<a href="phonegap_storage_storage.md.html#name">name</a>.givenName = "Jane";
+<a href="phonegap_storage_storage.md.html#name">name</a>.familyName = "Doe";
+contact.<a href="phonegap_storage_storage.md.html#name">name</a> = <a href="phonegap_storage_storage.md.html#name">name</a>;
 
 // save to device
-contact.save();
+contact.save(onSuccess,onError);
 </code></pre>
 
 <h2><a name="Contact_clone_quick_example">Clone Quick Example</a></h2>
 
 <pre class="prettyprint"><code>// clone the contact object
 var clone = contact.clone();
-clone.name.givenName = "John";
-console.log("Original contact name = " + contact.name.givenName);
-console.log("Cloned contact name = " + clone.name.givenName);
+clone.<a href="phonegap_storage_storage.md.html#name">name</a>.givenName = "John";
+console.log("Original contact <a href="phonegap_storage_storage.md.html#name">name</a> = " + contact.<a href="phonegap_storage_storage.md.html#name">name</a>.givenName);
+console.log("Cloned contact <a href="phonegap_storage_storage.md.html#name">name</a> = " + clone.<a href="phonegap_storage_storage.md.html#name">name</a>.givenName);
 </code></pre>
 
 <h2><a name="Contact_remove_quick_example">Remove Quick Example</a></h2>
@@ -492,22 +504,34 @@ contact.remove(onSuccess,onError);
         // create
         var contact = navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>();
         contact.displayName = "Plumber";
-        var name = new <a href="phonegap_contacts_contacts.md.html#ContactName">ContactName</a>();
-        name.givenName = "Jane";
-        name.familyName = "Doe";
-        contact.name = name;
+        var <a href="phonegap_storage_storage.md.html#name">name</a> = new <a href="phonegap_contacts_contacts.md.html#ContactName">ContactName</a>();
+        <a href="phonegap_storage_storage.md.html#name">name</a>.givenName = "Jane";
+        <a href="phonegap_storage_storage.md.html#name">name</a>.familyName = "Doe";
+        contact.<a href="phonegap_storage_storage.md.html#name">name</a> = <a href="phonegap_storage_storage.md.html#name">name</a>;
 
         // save
-        contact.save();
+        contact.save(onSaveSuccess,onSaveError);
 
         // clone
         var clone = contact.clone();
-        clone.name.givenName = "John";
-        console.log("Original contact name = " + contact.name.givenName);
-        console.log("Cloned contact name = " + clone.name.givenName); 
+        clone.<a href="phonegap_storage_storage.md.html#name">name</a>.givenName = "John";
+        console.log("Original contact <a href="phonegap_storage_storage.md.html#name">name</a> = " + contact.<a href="phonegap_storage_storage.md.html#name">name</a>.givenName);
+        console.log("Cloned contact <a href="phonegap_storage_storage.md.html#name">name</a> = " + clone.<a href="phonegap_storage_storage.md.html#name">name</a>.givenName); 
 
         // remove
         contact.remove(onRemoveSuccess,onRemoveError);
+    }
+
+    // onSaveSuccess: Get a snapshot of the current contacts
+    //
+    function onSaveSuccess(contacts) {
+        alert("Save Success");
+    }
+
+    // onSaveError: Failed to get the contacts
+    //
+    function onSaveError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
+        alert("Error = " + <a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>.code);
     }
 
     // onRemoveSuccess: Get a snapshot of the current contacts
@@ -535,8 +559,6 @@ contact.remove(onSuccess,onError);
 
 <ul>
 <li>
-<strong>save</strong> function not yet supported.</li>
-<li>
 <strong>published:</strong> This property is not support by Android 2.X devices, and will always be returned as <code>null</code>.</li>
 <li>
 <strong>updated:</strong> This property is not support by Android 2.X devices, and will always be returned as <code>null</code>.</li>
@@ -559,9 +581,7 @@ contact.remove(onSuccess,onError);
 
 <ul>
 <li>
-<strong>save</strong> function not yet supported.</li>
-<li>
-<strong>name:</strong> This property is not support by Android 1.X devices, and will always be returned as <code>null</code>.</li>
+<strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> This property is not support by Android 1.X devices, and will always be returned as <code>null</code>.</li>
 <li>
 <strong>nickname:</strong> This property is not support by Android 1.X devices, and will always be returned as <code>null</code>.</li>
 <li>
@@ -599,7 +619,7 @@ contact.remove(onSuccess,onError);
 <li>
 <strong>displayname:</strong> Supported.  Stored in BlackBerry <strong>title</strong> field.</li>
 <li>
-<strong>name:</strong> Supported.</li>
+<strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> Supported.</li>
 <li>
 <strong>nickname:</strong> This property is not supported, and will always be returned as <code>null</code>. </li>
 <li>
@@ -611,7 +631,7 @@ contact.remove(onSuccess,onError);
 <li>
 <strong>ims:</strong> This property is not supported, and will always be returned as <code>null</code>. </li>
 <li>
-<strong>organizations:</strong> Partially supported.  The <strong>name</strong> and <strong>title</strong> of the first organization are stored in the BlackBerry <strong>company</strong> and <strong>title</strong> fields, respectively.</li>
+<strong>organizations:</strong> Partially supported.  The <strong><a href="phonegap_storage_storage.md.html#name">name</a></strong> and <strong>title</strong> of the first organization are stored in the BlackBerry <strong>company</strong> and <strong>title</strong> fields, respectively.</li>
 <li>
 <strong>published:</strong> This property is not supported, and will always be returned as <code>null</code>. </li>
 <li>
@@ -653,7 +673,7 @@ contact.remove(onSuccess,onError);
 <strong>domain:</strong> The top-most authoritative domain for this account. <em>(DOMString)</em>
 </li>
 <li>
-<strong>username:</strong> An alphanumeric user name. <em>(DOMString)</em>
+<strong>username:</strong> An alphanumeric user <a href="phonegap_storage_storage.md.html#name">name</a>. <em>(DOMString)</em>
 </li>
 <li>
 <strong>userid:</strong> A user ID number, usually chosen automatically, and usually numeric but sometimes alphanumeric. <em>(DOMString)</em>
@@ -765,7 +785,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 <strong>postalCode:</strong> The zip code or postal code. <em>(DOMString)</em>
 </li>
 <li>
-<strong>country:</strong> The country name. <em>(DOMString)</em>
+<strong>country:</strong> The country <a href="phonegap_storage_storage.md.html#name">name</a>. <em>(DOMString)</em>
 </li>
 </ul>
 <h2><a name="ContactAddress_details">Details</a></h2>
@@ -970,7 +990,7 @@ contact.save();
         // save the contact
         contact.save();
 
-        // search contacts, returning display name and phone numbers
+        // search contacts, returning display <a href="phonegap_storage_storage.md.html#name">name</a> and phone numbers
         var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
         options.filter="";
         filter = ["displayName","phoneNumbers"];
@@ -1125,22 +1145,22 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 <hr>
 <h1><a name="ContactName">ContactName</a></h1>
 
-<p>Contains name properties of a <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code> object.</p>
+<p>Contains <a href="phonegap_storage_storage.md.html#name">name</a> properties of a <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code> object.</p>
 
 <h2><a name="ContactName_properties">Properties</a></h2>
 
 <ul>
 <li>
-<strong>formatted:</strong> The complete name of the contact. <em>(DOMString)</em>
+<strong>formatted:</strong> The complete <a href="phonegap_storage_storage.md.html#name">name</a> of the contact. <em>(DOMString)</em>
 </li>
 <li>
-<strong>familyName:</strong> The contacts family name. <em>(DOMString)</em>
+<strong>familyName:</strong> The contacts family <a href="phonegap_storage_storage.md.html#name">name</a>. <em>(DOMString)</em>
 </li>
 <li>
-<strong>givenName:</strong> The contacts given name. <em>(DOMString)</em>
+<strong>givenName:</strong> The contacts given <a href="phonegap_storage_storage.md.html#name">name</a>. <em>(DOMString)</em>
 </li>
 <li>
-<strong>middleName:</strong> The contacts middle name. <em>(DOMString)</em>
+<strong>middleName:</strong> The contacts middle <a href="phonegap_storage_storage.md.html#name">name</a>. <em>(DOMString)</em>
 </li>
 <li>
 <strong>honorificPrefix:</strong> The contacts prefix (example Mr. or Dr.) <em>(DOMString)</em>
@@ -1151,7 +1171,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 </ul>
 <h2><a name="ContactName_details">Details</a></h2>
 
-<p>The <code><a href="phonegap_contacts_contacts.md.html#ContactName">ContactName</a></code> object stores name properties of a contact.</p>
+<p>The <code><a href="phonegap_contacts_contacts.md.html#ContactName">ContactName</a></code> object stores <a href="phonegap_storage_storage.md.html#name">name</a> properties of a contact.</p>
 
 <h2><a name="ContactName_supported_platforms">Supported Platforms</a></h2>
 
@@ -1163,12 +1183,12 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
 <pre class="prettyprint"><code>function onSuccess(contacts) {
     for (var i=0; i&lt;contacts.length; i++) {
-        alert("Formatted: " + contacts[i].name.formatted + "\n" + 
-                "Family Name: "  + contacts[i].name.familyName + "\n" + 
-                "Given Name: "  + contacts[i].name.givenName + "\n" + 
-                "Middle Name: "  + contacts[i].name.middleName + "\n" + 
-                "Suffix: "  + contacts[i].name.honorificSuffix + "\n" + 
-                "Prefix: "  + contacts[i].name.honorificSuffix);
+        alert("Formatted: " + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.formatted + "\n" + 
+                "Family Name: "  + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.familyName + "\n" + 
+                "Given Name: "  + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.givenName + "\n" + 
+                "Middle Name: "  + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.middleName + "\n" + 
+                "Suffix: "  + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.honorificSuffix + "\n" + 
+                "Prefix: "  + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.honorificSuffix);
     }
 };
 
@@ -1178,7 +1198,7 @@ function onError() {
 
 var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
 options.filter="";
-filter = ["displayName","name"];
+filter = ["displayName","<a href="phonegap_storage_storage.md.html#name">name</a>"];
 navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
 </code></pre>
 
@@ -1212,12 +1232,12 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
     //
     function onSuccess(contacts) {
         for (var i=0; i&lt;contacts.length; i++) {
-            alert("Formatted: " + contacts[i].name.formatted + "\n" + 
-                    "Family Name: "  + contacts[i].name.familyName + "\n" + 
-                    "Given Name: "  + contacts[i].name.givenName + "\n" + 
-                    "Middle Name: "  + contacts[i].name.middleName + "\n" + 
-                    "Suffix: "  + contacts[i].name.honorificSuffix + "\n" + 
-                    "Prefix: "  + contacts[i].name.honorificSuffix);
+            alert("Formatted: " + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.formatted + "\n" + 
+                    "Family Name: "  + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.familyName + "\n" + 
+                    "Given Name: "  + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.givenName + "\n" + 
+                    "Middle Name: "  + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.middleName + "\n" + 
+                    "Suffix: "  + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.honorificSuffix + "\n" + 
+                    "Prefix: "  + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.honorificSuffix);
         }
     };
 
@@ -1261,7 +1281,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
 <ul>
 <li>
-<strong>name:</strong> The name of the organization. <em>(DOMString)</em>
+<strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> The <a href="phonegap_storage_storage.md.html#name">name</a> of the organization. <em>(DOMString)</em>
 </li>
 <li>
 <strong>department:</strong> The department the contract works for. <em>(DOMString)</em>
@@ -1297,7 +1317,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 <pre class="prettyprint"><code>function onSuccess(contacts) {
     for (var i=0; i&lt;contacts.length; i++) {
         for (var j=0; j&lt;contacts[i].organizations.length; j++) {
-            alert("Name: " + contacts[i].organizations[j].name + "\n" + 
+            alert("Name: " + contacts[i].organizations[j].<a href="phonegap_storage_storage.md.html#name">name</a> + "\n" + 
                     "Department: "  + contacts[i].organizations[j].department + "\n" + 
                     "Title: "  + contacts[i].organizations[j].title + "\n" + 
                     "Start Date: "  + contacts[i].organizations[j].startDate + "\n" + 
@@ -1349,7 +1369,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
     function onSuccess(contacts) {
         for (var i=0; i&lt;contacts.length; i++) {
             for (var j=0; j&lt;contacts[i].organizations.length; j++) {
-                alert("Name: " + contacts[i].organizations[j].name + "\n" + 
+                alert("Name: " + contacts[i].organizations[j].<a href="phonegap_storage_storage.md.html#name">name</a> + "\n" + 
                         "Department: "  + contacts[i].organizations[j].department + "\n" + 
                         "Title: "  + contacts[i].organizations[j].title + "\n" + 
                         "Start Date: "  + contacts[i].organizations[j].startDate + "\n" + 
@@ -1401,7 +1421,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
 <ul>
 <li>
-<strong>name:</strong> Partially supported.  The first organization name will be stored in the BlackBerry <strong>company</strong> field.</li>
+<strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> Partially supported.  The first organization <a href="phonegap_storage_storage.md.html#name">name</a> will be stored in the BlackBerry <strong>company</strong> field.</li>
 <li>
 <strong>department:</strong> This property is not supported, and will always be returned as <code>null</code>.</li>
 <li>
@@ -1481,7 +1501,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
 <p>Required parameter of the <code><a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a></code> method.  Use this parameter to specify which fields should be included in the <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code> objects resulting from a find operation.</p>
 
-<pre class="prettyprint"><code>["name", "phoneNumbers", "emails"]
+<pre class="prettyprint"><code>["<a href="phonegap_storage_storage.md.html#name">name</a>", "phoneNumbers", "emails"]
 </code></pre>
 
 <hr>
@@ -1511,6 +1531,6 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 </ul>
 </div>
 		</div>
-		
+
 	</body>
 </html>

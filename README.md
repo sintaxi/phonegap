@@ -12,15 +12,24 @@ Get started
 Community
 ---------
 
-    Website ........ [phonegap.com](http://phonegap.com)
-    Mailing List ... [groups.google.com/group/phonegap](http://groups.google.com/group/phonegap)
-    Wiki ........... [phonegap.pbwiki.com/](http://phonegap.pbwiki.com/)
-    Twitter ........ [twitter.com/phonegap](http://twitter.com/phonegap)
-    Issues ......... [phonegap.lighthouseapp.com](http://phonegap.lighthouseapp.com)
+- [Website](http://phonegap.com)
+- [Twitter](http://twitter.com/phonegap)
+- [Wiki](http://wiki.phonegap.com/)
+- [Mailing List](http://groups.google.com/group/phonegap)
+- [Issue Tracker](http://phonegap.lighthouseapp.com)
+- [IRC](http://webchat.freenode.net/?channels=#phonegap)
 
 Directory Structure
 -------------------
 
+    Android .............. PhoneGap for Android
+    BlackBerry/4.x ....... PhoneGap for BlackBerry 4.6.x
+    BlackBerry/Widget .... PhoneGap for BlackBerry 5.0 and 6.0
+    Documentation ........ PhoneGap API Documentation
+    Symbian .............. PhoneGap for Symbian
+    iOS .................. PhoneGap for iOS
+    webOS ................ PhoneGap for Palm
+    
 License
 -------
 
