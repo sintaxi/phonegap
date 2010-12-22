@@ -22,6 +22,14 @@ Community
 Directory Structure
 -------------------
 
+    Android .............. PhoneGap for Android
+    BlackBerry/4.x ....... PhoneGap for BlackBerry 4.6.x
+    BlackBerry/Widget .... PhoneGap for BlackBerry 5.0 and 6.0
+    Documentation ........ PhoneGap API Documentation
+    Symbian .............. PhoneGap for Symbian
+    iOS .................. PhoneGap for iOS
+    webOS ................ PhoneGap for Palm
+    
 License
 -------
 
