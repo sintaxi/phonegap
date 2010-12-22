@@ -12,11 +12,12 @@ Get started
 Community
 ---------
 
-    Website ........ [phonegap.com](http://phonegap.com)
-    Mailing List ... [groups.google.com/group/phonegap](http://groups.google.com/group/phonegap)
-    Wiki ........... [phonegap.pbwiki.com/](http://phonegap.pbwiki.com/)
-    Twitter ........ [twitter.com/phonegap](http://twitter.com/phonegap)
-    Issues ......... [phonegap.lighthouseapp.com](http://phonegap.lighthouseapp.com)
+- [Website](http://phonegap.com)
+- [Twitter](http://twitter.com/phonegap)
+- [Wiki](http://wiki.phonegap.com/)
+- [Mailing List](http://groups.google.com/group/phonegap)
+- [Issue Tracker](http://phonegap.lighthouseapp.com)
+- [IRC](http://webchat.freenode.net/?channels=#phonegap)
 
 Directory Structure
 -------------------
