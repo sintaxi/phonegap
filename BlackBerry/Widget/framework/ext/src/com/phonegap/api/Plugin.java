@@ -7,9 +7,9 @@
  */
 package com.phonegap.api;
 
-import com.phonegap.PhoneGapExtension;
-
 import org.json.me.JSONArray;
+
+import com.phonegap.PhoneGapExtension;
 
 /**
  * Plugin interface must be implemented by any plugin classes.
@@ -51,19 +51,19 @@ public abstract class Plugin implements IPlugin {
 	}
 	
     /**
-     * Called when the system is about to start resuming a previous activity. 
+     * Called when Plugin is paused. 
      */
     public void onPause() {
     }
 
     /**
-     * Called when the activity will start interacting with the user. 
+     * Called when Plugin is resumed. 
      */
     public void onResume() {
     }
     
     /**
-     * The final call you receive before your activity is destroyed. 
+     * Called when Plugin is destroyed. 
      */
     public void onDestroy() {
     }

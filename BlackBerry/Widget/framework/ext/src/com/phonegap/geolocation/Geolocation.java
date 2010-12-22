@@ -151,9 +151,9 @@ public class Geolocation extends Plugin {
 	
 	/**
 	 * Checks if the provided location is fresh or not.
-	 * @param po
-	 * @param location
-	 * @return true if the location is newer than maximum age in position options
+	 * @param po           position options containing maximum location age allowed
+	 * @param location     location object
+	 * @return true if the location is newer than maximum age allowed
 	 */
 	protected boolean isLocationFresh(PositionOptions po, Location location) {
 		return new Date().getTime() - location.getTimestamp() < po.maxAge;
@@ -161,9 +161,9 @@ public class Geolocation extends Plugin {
 	
 	/**
 	 * Checks if the accuracy of the location is high enough.
-	 * @param po
-	 * @param location
-	 * @return
+	 * @param po           position options containing high accuracy flag
+	 * @param location     location object
+	 * @return true if the location accuracy is lower than MIN_GPS_ACCURACY
 	 */
 	protected boolean isLocationAccurate(PositionOptions po, Location location) {
 		return po.enableHighAccuracy && location.getQualifiedCoordinates().getHorizontalAccuracy() < MIN_GPS_ACCURACY;
@@ -172,7 +172,6 @@ public class Geolocation extends Plugin {
 	/**
 	 * Retrieves a location provider with some criteria.
 	 * @param po position options
-	 * @return
 	 */
 	protected static LocationProvider getLocationProvider(PositionOptions po) {
 		// configure criteria for location provider
@@ -187,8 +186,7 @@ public class Geolocation extends Plugin {
 			criteria.setMode(GPSInfo.GPS_MODE_AUTONOMOUS);		
 		
 		criteria.setAltitudeRequired(true);
-		criteria.setPreferredResponseTime(po.timeout);
-		
+
 		// enable full power usage to increase location accuracy
 		if (po.enableHighAccuracy) {
 			criteria.setPreferredPowerConsumption(Criteria.POWER_USAGE_HIGH);
@@ -205,122 +203,134 @@ public class Geolocation extends Plugin {
 		}
 		
 		return provider;
-	}
+	}	
 	
-	/**
-	 * Creates a location listener registers the specified callback with the listener.
-	 * @param callbackId callback to receive location updates
-	 * @param po position options
-	 * @return
-	 */
-	protected void watchPosition(String callbackId, PositionOptions po) {
-		GeolocationListener listener;
+    /**
+     * Gets the current location, then creates a location listener to receive
+     * updates. Registers the specified callback with the listener.
+     * @param callbackId   callback to receive location updates
+     * @param options      position options
+     */
+    protected void watchPosition(String callbackId, PositionOptions options) {
+        
+        // attempt to retrieve a location provider 
+        LocationProvider provider = getLocationProvider(options);
+        if (provider == null) {
+            PhoneGapExtension.invokeErrorCallback(callbackId, 
+                    new GeolocationResult(GeolocationStatus.GPS_NOT_AVAILABLE));
+            return;
+        }
 
-		// attempt to retrieve a location provider 
-		LocationProvider lp = getLocationProvider(po);
-		if (lp == null) {
-			PhoneGapExtension.invokeErrorCallback(callbackId, 
-					new GeolocationResult(GeolocationStatus.GPS_NOT_AVAILABLE));
-			return;
-		}
+        // create a listener for location updates
+        GeolocationListener listener;
+        try {
+            listener = new GeolocationListener(provider, callbackId, options);
+        } catch (IllegalArgumentException e) {
+            // if 	interval < -1, or 
+            // if 	(interval != -1) and 
+            //		(timeout > interval or maxAge > interval or 
+            //			(timeout < 1 and timeout != -1) or 
+            //			(maxAge < 1 and maxAge != -1)
+            //		) 
+            PhoneGapExtension.invokeErrorCallback(callbackId, 
+                    new GeolocationResult(GeolocationStatus.GPS_ILLEGAL_ARGUMENT_EXCEPTION, e.getMessage()));
+            return;
+        }
 
-		// create a listener for retrieving location updates
-		try {
-			listener = new GeolocationListener(lp, callbackId, po);
-		} catch (IllegalArgumentException e) {
-			// if 	interval < -1, or 
-			// if 	(interval != -1) and 
-			//		(timeout > interval or maxAge > interval or 
-			//			(timeout < 1 and timeout != -1) or 
-			//			(maxAge < 1 and maxAge != -1)
-			//		) 
-			PhoneGapExtension.invokeErrorCallback(callbackId, 
-					new GeolocationResult(GeolocationStatus.GPS_ILLEGAL_ARGUMENT_EXCEPTION, e.getMessage()));
-			return;
-		}
+        // store the listener
+        addListener(callbackId, listener);
+    }
 
-		// store the listener
-		this.geoListeners.put(callbackId, listener);			
-	}
-
-	/**
-	 * Shuts down all location listeners.
-	 * @return
-	 */
-	protected void shutdown() {
-		synchronized(this.geoListeners) {
-			for (Enumeration listeners = this.geoListeners.elements(); listeners.hasMoreElements(); ) {
-				GeolocationListener listener = (GeolocationListener) listeners.nextElement();
-				listener.shutdown();
-			}
-			this.geoListeners.clear();
-		}
-	}
+    /**
+     * Shuts down all location listeners.
+     */
+    protected synchronized void shutdown() {
+        for (Enumeration listeners = this.geoListeners.elements(); listeners.hasMoreElements(); ) {
+            GeolocationListener listener = (GeolocationListener) listeners.nextElement();
+            listener.shutdown();
+        }
+        this.geoListeners.clear();
+    }
 
 	/**
 	 * Clears the watch for the specified callback id.
 	 * If no more watches exist for the location provider, it is shut down.
-	 * @param callbackId
-	 * @return
+	 * @param callbackId   identifer of the listener to shutdown
 	 */
-	protected void clearWatch(String callbackId) {
-		GeolocationListener listener = (GeolocationListener) this.geoListeners.get(callbackId);			
-		listener.shutdown();
-		this.geoListeners.remove(callbackId);
-	}
-	
-	/**
-	 * Returns a PluginResult with status OK and a JSON object representing the coords
-	 * @param callbackId
-	 * @param po
-	 * @return
-	 */
-	protected void getCurrentPosition(String callbackId, PositionOptions options) {
-		// Check the device for its last known location (may have come from 
-		// another app on the device that has already requested a location)
-		Location location = LocationProvider.getLastKnownLocation();
-		if (location != null) 
-			Logger.log( this.getClass().getName() + ": last known location=" +
-				String.valueOf(location.getQualifiedCoordinates().getLatitude()) + ", " +
-				String.valueOf(location.getQualifiedCoordinates().getLongitude()) );
-		
-		if (!isLocationValid(location) || !isLocationFresh(options, location) || !isLocationAccurate(options, location)) {
+    protected void clearWatch(String callbackId) {
+        synchronized(this.geoListeners) {
+            GeolocationListener listener = (GeolocationListener) this.geoListeners.get(callbackId);			
+            listener.shutdown();
+            this.geoListeners.remove(callbackId);
+        }
+    }
+    
+    /**
+     * Returns a PluginResult with status OK and a JSON object representing the coords
+     * @param callbackId   callback to receive the the result
+     * @param po           position options
+     */
+    protected void getCurrentPosition(String callbackId, PositionOptions options) {
 
-			LocationProvider lp = getLocationProvider(options);
-			try {
-				Logger.log(this.getClass().getName() + ": Retrieving location");
-				location = lp.getLocation(options.timeout/1000);
-			} catch(LocationException e) {
-				Logger.log(this.getClass().getName() + ": " + e.getMessage());
-				lp.reset();
-				PhoneGapExtension.invokeErrorCallback(callbackId, 
-						new GeolocationResult(GeolocationStatus.GPS_TIMEOUT));
-				return;
-			} catch (InterruptedException e) {
-				Logger.log(this.getClass().getName() + ": " + e.getMessage());
-				lp.reset();
-				PhoneGapExtension.invokeErrorCallback(callbackId, 
-						new GeolocationResult(GeolocationStatus.GPS_INTERUPTED_EXCEPTION));
-				return;
-			}
-		}
-		
-		// now convert the location to a JSON object and return it in the PluginResult
-		JSONObject position = null;
-		try {
-			position = Position.fromLocation(location).toJSONObject();
-		} catch (JSONException e) {
-			PhoneGapExtension.invokeErrorCallback(callbackId, 
-				new GeolocationResult(PluginResult.Status.JSONEXCEPTION, "Converting the location to a JSON object failed"));
-			return;
-		}
-		
-		// invoke the geolocation callback
-		Logger.log(this.getClass().getName() + ": current position=" + position);
-		PhoneGapExtension.invokeSuccessCallback(callbackId, 
-				new GeolocationResult(GeolocationResult.Status.OK, position));
-	}
-	
+        // Check the device for its last known location (may have come from 
+        // another app on the device that has already requested a location).
+        // If it is invalid, old, or inaccurate, attempt to get a new one.
+        Location location = LocationProvider.getLastKnownLocation();
+        if (!isLocationValid(location) || !isLocationFresh(options, location) || !isLocationAccurate(options, location)) {
+            // attempt to retrieve a location provider 
+            LocationProvider provider = getLocationProvider(options);
+            if (provider == null) {
+                PhoneGapExtension.invokeErrorCallback(callbackId, 
+                        new GeolocationResult(GeolocationStatus.GPS_NOT_AVAILABLE));
+                return;
+            }
+            
+            try {
+                // convert timeout from millis
+                int timeout = (options.timeout > 0) ? options.timeout/1000 : -1;
+                Logger.log(this.getClass().getName() + ": retrieving location with timeout=" + timeout);
+                location = provider.getLocation(timeout);
+            } catch(LocationException e) {
+                Logger.log(this.getClass().getName() + ": " + e.getMessage());
+                provider.reset();
+                PhoneGapExtension.invokeErrorCallback(callbackId, 
+                        new GeolocationResult(GeolocationStatus.GPS_TIMEOUT));
+                return;
+            } catch (InterruptedException e) {
+                Logger.log(this.getClass().getName() + ": " + e.getMessage());
+                provider.reset();
+                PhoneGapExtension.invokeErrorCallback(callbackId, 
+                        new GeolocationResult(GeolocationStatus.GPS_INTERUPTED_EXCEPTION));
+                return;
+            }
+        }
+
+        // send the location back
+        sendLocation(callbackId, location);
+    }
+
+    /**
+     * Converts the location to a geo position and sends result to JavaScript.
+     * @param callbackId   callback to receive position
+     * @param location     location to send
+     */
+    protected void sendLocation(String callbackId, Location location) {
+        // convert the location to a JSON object and return it in the PluginResult
+        JSONObject position = null;
+        try {
+            position = Position.fromLocation(location).toJSONObject();
+        } catch (JSONException e) {
+            PhoneGapExtension.invokeErrorCallback(callbackId, 
+                    new GeolocationResult(PluginResult.Status.JSONEXCEPTION, 
+                    "Converting the location to a JSON object failed"));
+            return;
+        }
+
+        // invoke the geolocation callback
+        PhoneGapExtension.invokeSuccessCallback(callbackId, 
+                new GeolocationResult(GeolocationResult.Status.OK, position));
+    }
+
 	/**
 	 * Returns action to perform.
 	 * @param action 
@@ -333,4 +343,20 @@ public class Geolocation extends Plugin {
 		if ("shutdown".endsWith(action)) return ACTION_SHUTDOWN; 
 		return -1;
 	}	
+    
+    /**
+     * Adds a location listener.
+     * @param callbackId    callback to receive listener updates
+     * @param listener      location listener
+     */
+    protected synchronized void addListener(String callbackId, GeolocationListener listener) {
+        this.geoListeners.put(callbackId, listener);
+    }
+    
+    /**
+     * Called when Plugin is destroyed. 
+     */
+    public void onDestroy() {
+        this.shutdown();
+    }
 }

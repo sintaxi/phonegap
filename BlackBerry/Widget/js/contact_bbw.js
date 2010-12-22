@@ -94,9 +94,12 @@ BlackBerryContacts.saveToDevice = function(contact) {
     }
     
     var bbContact = null;
+    var update = false;
 
     // if the underlying BlackBerry contact already exists, retrieve it for update
     if (contact.id) {
+        // we must attempt to retrieve the BlackBerry contact from the device 
+        // because this may be an update operation
         bbContact = BlackBerryContacts.findByUniqueId(contact.id);
     }
     
@@ -104,17 +107,43 @@ BlackBerryContacts.saveToDevice = function(contact) {
     if (!bbContact) {
         bbContact = new blackberry.pim.Contact();
     }
-    
-    // NOTE: BlackBerry fields are initialized as empty strings and some don't 
-    // respond well to null values (exceptions thrown when saving)
-    if (contact.name) {   
-        bbContact.firstName = contact.name.givenName || "";
-        bbContact.lastName = contact.name.familyName || "";
+    // update the existing contact
+    else {
+        update = true;
     }
-    bbContact.title = contact.displayName || "";
-    bbContact.note = contact.note || "";
+    
+    // NOTE: The user may be working with a partial Contact object, because only
+    // user-specified Contact fields are returned from a find operation (blame 
+    // the W3C spec).  If this is an update to an existing Contact, we don't 
+    // want to clear an attribute from the contact database simply because the 
+    // Contact object that the user passed in contains a null value for that
+    // attribute.  So we only copy the non-null Contact attributes to the 
+    // BlackBerry contact object before saving.
+    //
+    // This means that a user must explicitly set a Contact attribute to a 
+    // non-null value in order to update it in the contact database.
+    //
+    // name
+    if (contact.name !== null) {   
+        if (contact.name.givenName !== null) {
+            bbContact.firstName = contact.name.givenName;
+        }
+        if (contact.name.familyName !== null) {
+            bbContact.lastName = contact.name.familyName;
+        }
+    }
+    
+    // display name
+    if (contact.displayName !== null) {
+        bbContact.title = contact.displayName;
+    }
+    
+    // note
+    if (contact.note !== null) {
+        bbContact.note = contact.note;
+    }
 
-    // get 'birthday' and 'anniversary' fields
+    // birthday and anniversary
     //
     // user may pass in Date object or a string representation of a date 
     // (the W3C Contacts API calls for birthday and anniversary to be DOMStrings)
@@ -123,18 +152,34 @@ BlackBerryContacts.saveToDevice = function(contact) {
     // 
     // NOTE: BlackBerry's Date.parse() does not work well, so use new Date()
     //
-    if (contact.birthday) {
-        bbContact.birthday = (contact.birthday instanceof Date) ?
-                contact.birthday : new Date(contact.birthday.toString());        
-    }    
-    if (contact.anniversary) {
-        bbContact.anniversary = (contact.anniversary instanceof Date) ?
-                contact.anniversary : new Date(contact.anniversary.toString());
+    if (contact.birthday !== null) {
+        if (contact.birthday instanceof Date) {
+            bbContact.birthday = contact.birthday;
+        } else {
+            var bday = contact.birthday.toString();
+            bbContact.birthday = (bday.length > 0) ? new Date(bday) : "";
+        }
+    }
+    if (contact.anniversary !== null) {
+        if (contact.anniversary instanceof Date) {
+            bbContact.anniversary = contact.anniversary;
+        } else {
+            var anniversary = contact.anniversary.toString();
+            bbContact.anniversary = (anniversary.length > 0) ? new Date(anniversary) : "";
+        }
     }
 
     // BlackBerry supports three email addresses
-    // copy the first three found
     if (contact.emails && contact.emails instanceof Array) {
+        
+        // if this is an update, re-initialize email addresses
+        if (update) {
+            bbContact.email1 = "";
+            bbContact.email2 = "";
+            bbContact.email3 = "";
+        }
+        
+        // copy the first three email addresses found
         var email = null;
         for (var i in contact.emails) {
             email = contact.emails[i];
@@ -156,6 +201,19 @@ BlackBerryContacts.saveToDevice = function(contact) {
     // BlackBerry supports a finite number of phone numbers
     // copy into appropriate fields based on type
     if (contact.phoneNumbers && contact.phoneNumbers instanceof Array) {
+
+        // if this is an update, re-initialize phone numbers
+        if (update) {
+            bbContact.homePhone = "";
+            bbContact.homePhone2 = "";
+            bbContact.workPhone = "";
+            bbContact.workPhone2 = "";
+            bbContact.mobilePhone = "";
+            bbContact.faxPhone = "";
+            bbContact.pagerPhone = "";
+            bbContact.otherPhone = "";
+        }        
+        
         var type = null;
         var number = null;
         for (i in contact.phoneNumbers) {
@@ -193,6 +251,13 @@ BlackBerryContacts.saveToDevice = function(contact) {
     // BlackBerry supports two addresses: home and work
     // copy the first two addresses found from Contact
     if (contact.addresses && contact.addresses instanceof Array) {
+        
+        // if this is an update, re-initialize addresses
+        if (update) {
+            bbContact.homeAddress = null;
+            bbContact.workAddress = null;
+        }
+        
         var address = null;
         var bbHomeAddress = null;
         var bbWorkAddress = null;
@@ -215,6 +280,12 @@ BlackBerryContacts.saveToDevice = function(contact) {
 
     // copy first url found to BlackBerry 'webpage' field
     if (contact.urls && contact.urls instanceof Array) {
+        
+        // if this is an update, re-initialize web page
+        if (update) {
+            bbContact.webpage = "";
+        }
+        
         var url = null;
         for (i in contact.urls) {
             url = contact.urls[i];
@@ -231,6 +302,12 @@ BlackBerryContacts.saveToDevice = function(contact) {
     // copy fields from first organization to the 
     // BlackBerry 'company' and 'jobTitle' fields
     if (contact.organizations && contact.organizations instanceof Array) {
+        
+        // if this is an update, re-initialize org attributes
+        if (update) {
+            bbContact.company = "";
+        }
+        
         var org = null;
         for (i in contact.organizations) {
             org = contact.organizations[i];

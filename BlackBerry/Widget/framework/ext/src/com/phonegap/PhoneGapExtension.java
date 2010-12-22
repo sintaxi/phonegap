@@ -7,19 +7,23 @@
  */
 package com.phonegap;
 
-import org.w3c.dom.Document;
-
-import com.phonegap.api.PluginManagerFeature;
-import com.phonegap.api.PluginResult;
-import com.phonegap.device.DeviceFeature;
-import com.phonegap.util.LogFeature;
-import com.phonegap.util.Logger;
-
 import net.rim.device.api.browser.field2.BrowserField;
 import net.rim.device.api.script.ScriptEngine;
 import net.rim.device.api.web.WidgetConfig;
 import net.rim.device.api.web.WidgetExtension;
 
+import org.w3c.dom.Document;
+
+import com.phonegap.api.PluginManager;
+import com.phonegap.api.PluginResult;
+import com.phonegap.device.Device;
+import com.phonegap.util.Log;
+import com.phonegap.util.Logger;
+
+/**
+ * PhoneGapExtension is a BlackBerry WebWorks JavaScript extension.  It 
+ * represents a single feature that can be used to access device capabilities. 
+ */
 public final class PhoneGapExtension implements WidgetExtension {
 
 	protected static ScriptEngine script;
@@ -42,9 +46,9 @@ public final class PhoneGapExtension implements WidgetExtension {
 		script = scriptEngine;
 		
 		if (feature.equals("phonegap")) {
-			scriptEngine.addExtension("phonegap.device",         new DeviceFeature());
-			scriptEngine.addExtension("phonegap.PluginManager",  new PluginManagerFeature(this));
-			scriptEngine.addExtension("phonegap.Logger",         new LogFeature());
+			scriptEngine.addExtension("phonegap.device",         new Device());
+			scriptEngine.addExtension("phonegap.PluginManager",  new PluginManager(this));
+			scriptEngine.addExtension("phonegap.Logger",         new Log());
 			
 			// let PhoneGap JavaScript know that extensions have been loaded
 			// if this is premature, we at least set the _nativeReady flag to true
@@ -64,17 +68,26 @@ public final class PhoneGapExtension implements WidgetExtension {
 	//
 	public void unloadFeatures(Document doc) {
 		// TODO Auto-generated method stub
-
 	}
 
 	public static void invokeScript(String js) {
 		script.executeScript(js, null);
 	}
 	
+	/**
+	 * Invokes the PhoneGap success callback specified by callbackId.
+	 * @param callbackId   unique callback ID
+	 * @param result       PhoneGap PluginResult containing result
+	 */
 	public static void invokeSuccessCallback(String callbackId, PluginResult result) {
 		invokeScript(result.toSuccessCallbackString(callbackId));
 	}
 
+	/**
+	 * Invokes the PhoneGap error callback specified by callbackId.
+	 * @param callbackId   unique callback ID
+	 * @param result       PhoneGap PluginResult containing result
+	 */
 	public static void invokeErrorCallback(String callbackId, PluginResult result) {
 		invokeScript(result.toErrorCallbackString(callbackId));
 	}

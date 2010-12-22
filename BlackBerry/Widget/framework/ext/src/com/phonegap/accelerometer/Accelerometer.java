@@ -181,6 +181,9 @@ public class Accelerometer extends Plugin implements AccelerometerListener {
 		}		
 	}
 
+	/**
+	 * Adds this listener to sensor channel.
+	 */
 	public void start() {
 		// open the sensor channel and register listener
 		getChannel().setAccelerometerListener(this);
@@ -190,12 +193,23 @@ public class Accelerometer extends Plugin implements AccelerometerListener {
 		this.setStatus(STARTED);
 	}
 	
-	public void stop() {
-		// close the sensor channel
-		getChannel().close();
+    /**
+     * Stops accelerometer listener and closes the sensor channel.
+     */
+    public void stop() {
+        // close the sensor channel
+        if (_rawDataChannel != null && _rawDataChannel.isOpen()) {
+            _rawDataChannel.close();
+            Logger.log(this.getClass().getName() +": sensor channel closed");
+        }
 
-		Logger.log(this.getClass().getName() +": sensor channel closed");
+        this.setStatus(STOPPED);
+    }	
 
-		this.setStatus(STOPPED);
-	}	
+    /**
+     * Called when Plugin is destroyed.
+     */
+    public void onDestroy() {
+        this.stop();
+    }
 }

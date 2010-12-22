@@ -19,6 +19,11 @@
   <feature id="blackberry.identity" required="true" version="1.0.0.0"/>
   <feature id="blackberry.pim.Address" required="true" version="1.0.0.0"/>
   <feature id="blackberry.pim.Contact" required="true" version="1.0.0.0"/>
+  <feature id="blackberry.io.file" required="true" version="1.0.0.0"/>
+  <feature id="blackberry.utils" required="true" version="1.0.0.0"/>
+  <feature id="blackberry.io.dir" required="true" version="1.0.0.0"/>
+  <feature id="blackberry.app" required="true" version="1.0.0.0"/>
+  <feature id="blackberry.app.event" required="true" version="1.0.0.0"/>
   <access subdomains="true" uri="file:///store/home"/>
   <access subdomains="true" uri="file:///SDCard"/>
   <icon rim:hover="false" src="resources/icon.png"/>

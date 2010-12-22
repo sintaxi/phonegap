@@ -89,29 +89,6 @@ Camera.prototype.getPicture = function(successCallback, errorCallback, options) 
     PhoneGap.exec(successCallback, errorCallback, "Camera", "takePicture", [quality, destinationType, sourceType]);
 };
 
-/**
- * Callback function from native code that is called when image has been captured.
- *
- * @param picture           The base64 encoded string of the image
- */
-Camera.prototype.success = function(picture) {
-    if (this.successCallback) {
-        this.successCallback(picture);
-    }
-};
-
-/**
- * Callback function from native code that is called when there is an error
- * capturing an image, or the capture is cancelled.
- *
- * @param err               The error message
- */
-Camera.prototype.error = function(err) {
-    if (this.errorCallback) {
-        this.errorCallback(err);
-    }
-};
-
 PhoneGap.addConstructor(function() {
 	if (typeof navigator.camera == "undefined") navigator.camera = new Camera();
 });

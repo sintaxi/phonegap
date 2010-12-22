@@ -13,6 +13,8 @@
     <property prefix="properties"        file="project.properties" />
     <property name="build.dir"           location="build" />
     <property name="widget.dir"          location="${build.dir}/widget" />
+    <property name="code.sign"           value="false" />
+    <property name="compress.js"         value="true" />
 
     <!-- BlackBerry Widget Packager directory is required. -->
     <fail unless="properties.bbwp.dir" message="Please specify BlackBerry Widget Packager directory using 'bbwp.dir' in your 'project.properties' file." />    
@@ -114,6 +116,14 @@
         <copy todir="${widget.dir}" overwrite="true">
             <fileset dir="www" />
         </copy>
+    
+        <!-- Compress/minify JavaScript -->
+        <if>
+            <equals arg1="${compress.js}" arg2="true" />
+            <then>
+                <compress-js />
+            </then>
+        </if>
         
         <!-- Package the widget app by zipping the widget dir. -->
         <mkdir dir="${build.dir}" />
@@ -123,7 +133,7 @@
     <!-- BUILD -->
 
     <target name="build" depends="package-app">
-        <bbwp />
+        <bbwp code-sign="${code.sign}" />
     </target>
 
     <!-- BBWP MACRO -->
@@ -156,6 +166,29 @@
                     </exec>
                 </else>
             </if>
+        </sequential>
+    </macrodef>
+
+    <!-- COMPRESS-JS MACRO -->
+
+    <macrodef name="compress-js">
+        <sequential>
+            <!-- Compress/minify PhoneGap JavaScript using YUI compressor. -->
+            <property name="js.dir" value="${widget.dir}/javascript" />
+            <java jar="./lib/yuicompressor/yuicompressor-2.4.2.jar"
+                fork="true"
+                failonerror="true">
+                <arg value="--nomunge" />
+                <arg value="-o"/>
+                <arg value="${js.dir}/compressed.js" />
+                <arg value="${js.dir}/phonegap.js" />
+            </java>
+            <concat destfile="${js.dir}/phonegap.js" append="false">
+                <fileset dir="${js.dir}" includes="header.txt" />
+                <fileset dir="${js.dir}" includes="compressed.js" />
+            </concat>
+            <delete file="${js.dir}/header.txt" />
+            <delete file="${js.dir}/compressed.js" />
         </sequential>
     </macrodef>
 

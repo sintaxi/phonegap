@@ -34,7 +34,6 @@
  * @class
  */
 PhoneGap = { };
-navigator = { };
 
 /**
  * Custom pub-sub channel that can have functions subscribed to it
@@ -193,6 +192,36 @@ PhoneGap.onResume = new PhoneGap.Channel('onResume');
  */
 PhoneGap.onPause = new PhoneGap.Channel('onPause');
 
+/**
+ * When BlackBerry WebWorks application is brought to foreground, 
+ * fire onResume event.
+ */
+blackberry.app.event.onForeground(function() {
+    PhoneGap.onResume.fire();
+});
+
+/**
+ * When BlackBerry WebWorks application is sent to background, 
+ * fire onPause event.
+ */
+blackberry.app.event.onBackground(function() {
+   PhoneGap.onPause.fire();
+});
+
+/**
+ * Trap BlackBerry WebWorks exit. Fire onPause event, and give PhoneGap
+ * extension chance to clean up before exiting.
+ */
+blackberry.app.event.onExit(function() {
+    PhoneGap.onPause.fire();
+
+    // allow PhoneGap JavaScript Extension opportunity to cleanup
+    phonegap.PluginManager.destroy();
+    
+    // exit the app
+    blackberry.app.exit();
+});
+
 // _nativeReady is global variable that the native side can set
 // to signify that the native code is ready. It is a global since 
 // it may be called before any PhoneGap JS is ready.
@@ -223,7 +252,7 @@ PhoneGap.Channel.join(function() {
  */
 PhoneGap.Channel.join(function() {
     PhoneGap.onDeviceReady.fire();
-
+    
     // Fire the onresume event, since first one happens before JavaScript is loaded
     PhoneGap.onResume.fire();
 }, [ PhoneGap.onPhoneGapReady, PhoneGap.onPhoneGapInfoReady]);
@@ -242,6 +271,10 @@ document.addEventListener = function(evt, handler, capture) {
         PhoneGap.onDeviceReady.subscribeOnce(handler);
     } else if (e == 'resume') {
         PhoneGap.onResume.subscribe(handler);
+        // if subscribing listener after event has already fired, invoke the handler
+        if (PhoneGap.onResume.fired && handler instanceof Function) {
+            handler();
+        }
     } else if (e == 'pause') {
         PhoneGap.onPause.subscribe(handler);
     } else {

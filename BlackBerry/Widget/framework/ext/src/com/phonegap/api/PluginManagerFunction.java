@@ -7,7 +7,10 @@
  */
 package com.phonegap.api;
 
+import java.util.Enumeration;
 import java.util.Hashtable;
+
+import net.rim.device.api.script.ScriptableFunction;
 
 import org.json.me.JSONArray;
 import org.json.me.JSONException;
@@ -15,15 +18,13 @@ import org.json.me.JSONException;
 import com.phonegap.PhoneGapExtension;
 import com.phonegap.util.Logger;
 
-import net.rim.device.api.script.ScriptableFunction;
-
 /**
  * PluginManagerFunction represents a function that can be invoked from the 
  * script environment of the widget framework.  It manages the plugins for 
- * the PhoneGap widget extension. 
+ * the PhoneGap JavaScript Extension. 
  *  
- * Calling phonegap.pluginManager.exec(...) from JavaScript will result in 
- * the invoke() method being called.
+ * Calling <code>phonegap.pluginManager.exec(...)</code> from JavaScript will 
+ * result in this class' <code>invoke()</code> method being called.
  */
 public class PluginManagerFunction extends ScriptableFunction {
 	
@@ -34,12 +35,18 @@ public class PluginManagerFunction extends ScriptableFunction {
 	private final static int ARG_ASYNC = 4;
 
 	private Hashtable plugins = new Hashtable();
-	private Hashtable services = new Hashtable();
 
-	private final PhoneGapExtension app; 
+	private final PhoneGapExtension ext; 
+	private final PluginManager pluginManager;
 	
-	public PluginManagerFunction(PhoneGapExtension app) {
-		this.app = app;
+	/**
+	 * Constructor.
+	 * @param ext              The PhoneGap JavaScript Extension
+	 * @param pluginManager    The PluginManager that exposes the scriptable object.
+	 */
+	public PluginManagerFunction(PhoneGapExtension ext, PluginManager pluginManager) {
+		this.ext = ext;
+		this.pluginManager = pluginManager;
 	}
 	
 	/**
@@ -76,7 +83,7 @@ public class PluginManagerFunction extends ScriptableFunction {
 			final JSONArray args = new JSONArray((String)oargs[ARG_ARGS]);
 			
 			// get the class for the specified service
-			String clazz = getClassForService(service);
+			String clazz = this.pluginManager.getClassForService(service);
 			Class c = null;
 			if (clazz != null) {
 				c = getClassByName(clazz); 
@@ -170,7 +177,7 @@ public class PluginManagerFunction extends ScriptableFunction {
     	Logger.log("PluginManager.addPlugin("+className+")");
         Plugin plugin = (Plugin)clazz.newInstance();
         this.plugins.put(className, plugin);
-        plugin.setContext(this.app);
+        plugin.setContext(this.ext);
         return plugin;
     }
     
@@ -183,24 +190,37 @@ public class PluginManagerFunction extends ScriptableFunction {
     public Plugin getPlugin(String className) {
     	return (Plugin)this.plugins.get(className);
     }
-    
+
     /**
-     * Add a class that implements a service.
-     * 
-     * @param serviceType
-     * @param className
+     * Called when Plugin is paused. 
      */
-    public void addService(String serviceType, String className) {
-    	this.services.put(serviceType, className);
+    public void onPause() {
+        Enumeration e = this.plugins.elements();
+        while (e.hasMoreElements()) {
+            Plugin plugin = (Plugin)e.nextElement();
+            plugin.onPause();
+        }
     }
     
     /**
-     * Get the class that implements a service.
-     * 
-     * @param serviceType
-     * @return
+     * Called when Plugin is resumed. 
      */
-    public String getClassForService(String serviceType) {
-    	return (String)this.services.get(serviceType);
+    public void onResume() {
+        Enumeration e = this.plugins.elements();
+        while (e.hasMoreElements()) {
+            Plugin plugin = (Plugin)e.nextElement();
+            plugin.onResume();
+        }
+    }
+    
+    /**
+     * Called when Plugin is destroyed. 
+     */
+    public void onDestroy() {
+        Enumeration e = this.plugins.elements();
+        while (e.hasMoreElements()) {
+            Plugin plugin = (Plugin)e.nextElement();
+            plugin.onDestroy();
+        }
     }
 }

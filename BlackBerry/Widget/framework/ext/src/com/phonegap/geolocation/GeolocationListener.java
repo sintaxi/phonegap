@@ -30,28 +30,43 @@ public final class GeolocationListener implements LocationListener {
 	/**
 	 * Creates a new listener that attaches itself to the specified LocationProvider.
 	 * @param locationProvider location provider that listener will attach to
-	 * @param po position options
+	 * @param callbackId       callback to receive location updates
+	 * @param options          position options
 	 */
-	public GeolocationListener(LocationProvider locationProvider, String callbackId, PositionOptions po) {
-		this.locationProvider = locationProvider;
-		this.callbackId = callbackId;
-		
-		// neither maximum age nor timeout can be larger than polling interval
-		int interval = Math.max(po.maxAge, po.timeout)/1000;
-		this.locationProvider.setLocationListener(this, interval, po.timeout/1000, po.maxAge/1000);
-	}	
+	public GeolocationListener(LocationProvider locationProvider, String callbackId, PositionOptions options) {
+	    this.locationProvider = locationProvider;
+	    this.callbackId = callbackId;
+
+	    // Add this as a location listener to the provider.  Updates are received
+	    // at the specified interval.  This is where it gets confusing:
+	    // the setLocationListener method takes three parameters: interval, timeout,
+	    // and maxAge.  The listener only seems to work if all three are the same 
+	    // value, which is probably best, since neither timeout nor maxAge can be 
+	    // larger than interval.  Also, the actual timeout to wait for a valid 
+	    // location is [interval + timeout]. (I told you it was confusing). 
+	    // So, we do the only thing we can do, which is to divide the user timeout
+	    // in half, and set it to the interval and timeout values.  This will give 
+	    // us the correct timeout value. BTW, this is exactly what RIM does in 
+	    // their HTML5 implementation in the 6.0 browser.  Try it :)
+        int seconds = (options.timeout > 0) ? options.timeout/2000 : 1; // half and convert to millis
+	    this.locationProvider.setLocationListener(this, 
+	            seconds,     // interval - seconds between location updates
+	            seconds,     // timeout - additional time to wait for update
+	            seconds);    // maxage - maximum age of location
+	}
 	
-	/**
-	 * Updated when location changes.
-	 */
-	public void locationUpdated(LocationProvider provider, Location location) {
-		if (location.isValid()) {
-        	Logger.log(this.getClass().getName() + ": updated with valid location");
+    /**
+     * Updated when location changes.
+     */
+    public void locationUpdated(LocationProvider provider, Location location) {
+        if (location.isValid()) {
+            Logger.log(this.getClass().getName() + ": updated with valid location");
             this.updateLocation(location);
         } else {
-        	Logger.log(this.getClass().getName() + ": updated with invalid location");
-        	// getting the location timed out
-        	this.updateLocationError(GeolocationStatus.GPS_TIMEOUT);
+            // This just means we couldn't get a valid location within the listener interval.
+            Logger.log(this.getClass().getName() + ": updated with invalid location");
+            PhoneGapExtension.invokeErrorCallback(callbackId, 
+                    new GeolocationResult(GeolocationStatus.GPS_TIMEOUT));
         }
     }
 
@@ -59,22 +74,25 @@ public final class GeolocationListener implements LocationListener {
 	 * Updated when provider state changes.
 	 */
     public void providerStateChanged(LocationProvider provider, int newState) {
-    	switch (newState) {
-	    	case LocationProvider.AVAILABLE:
-	            Logger.log(this.getClass().getName() + ": provider state changed to AVAILABLE");
-	    		break;
-	    	case LocationProvider.OUT_OF_SERVICE:
-	            Logger.log(this.getClass().getName() + ": provider state changed to OUT_OF_SERVICE");
-	    		this.updateLocationError(GeolocationStatus.GPS_OUT_OF_SERVICE);
-	    		break;
-	    	case LocationProvider.TEMPORARILY_UNAVAILABLE:
-	            Logger.log(this.getClass().getName() + ": provider state changed to TEMPORARILY_UNAVAILABLE");
-	    		// This is what happens when you are inside
-	    		// TODO: explore possible ways to recover
-	    		this.shutdown();
-	    		this.updateLocationError(GeolocationStatus.GPS_TEMPORARILY_UNAVAILABLE);
-	    		break;
-    	}
+        switch (newState) {
+        case LocationProvider.AVAILABLE:
+            Logger.log(this.getClass().getName() + ": provider state changed to AVAILABLE");
+            break;
+        case LocationProvider.OUT_OF_SERVICE:
+            Logger.log(this.getClass().getName() + ": provider state changed to OUT_OF_SERVICE");
+            PhoneGapExtension.invokeErrorCallback(callbackId, 
+                    new GeolocationResult(GeolocationStatus.GPS_OUT_OF_SERVICE));
+            this.shutdown();
+            break;
+        case LocationProvider.TEMPORARILY_UNAVAILABLE:
+            Logger.log(this.getClass().getName() + ": provider state changed to TEMPORARILY_UNAVAILABLE");
+            // This is what happens when you are inside
+            // TODO: explore possible ways to recover
+            PhoneGapExtension.invokeErrorCallback(callbackId, 
+                    new GeolocationResult(GeolocationStatus.GPS_TEMPORARILY_UNAVAILABLE));
+            this.shutdown();
+            break;
+        }
     }
 
     /**
@@ -101,14 +119,5 @@ public final class GeolocationListener implements LocationListener {
 
 		PhoneGapExtension.invokeSuccessCallback(callbackId, 
 			new GeolocationResult(GeolocationStatus.OK, position));
-	}
-
-	/**
-	 * Notifies callbacks of location errors.
-	 * @param status
-	 */
-	protected void updateLocationError(GeolocationStatus status) {
-		PhoneGapExtension.invokeErrorCallback(callbackId, new GeolocationResult(status));
-		this.shutdown();
 	}
 }

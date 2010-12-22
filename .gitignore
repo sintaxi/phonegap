@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .DS_Store
 .*.sw?
 *.cso
@@ -7,3 +8,12 @@ lib/iphone/phonegap-min.js
 lib/iphone/phonegap.js
 android/bin
 android/gen
+=======
+default.properties
+gen
+assets/www/phonegap.js
+local.properties
+framework/phonegap.jar
+framework/bin
+framework/assets/www/.DS_Store
+>>>>>>> fbe96f891bc56cfff38037bf6087d60ceb17e286
