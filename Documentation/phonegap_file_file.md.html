@@ -40,10 +40,13 @@
 <option value="FileReader_methods">      - Methods</option>
 <option value="FileReader_details">      - Details</option>
 <option value="FileReader_supported_platforms">      - Supported Platforms</option>
-<option value="FileReader_read_as_data_url_quick_example">      - Read As Data URL Quick Example</option>
-<option value="FileReader_read_as_text_quick_example">      - Read As Text Quick Example</option>
+<option value="FileReader_read_as_data_url">      - Read As Data URL </option>
+<option value="FileReader_quick_example">      - Quick Example</option>
+<option value="FileReader_read_as_text">      - Read As Text</option>
+<option value="FileReader_quick_example">      - Quick Example</option>
 <option value="FileReader_abort_quick_example">      - Abort Quick Example</option>
 <option value="FileReader_full_example">      - Full Example</option>
+<option value="FileReader_ios_quirks">      - iOS Quirks</option>
 <option value="FileWriter">FileWriter</option>
 <option value="FileWriter_properties">      - Properties</option>
 <option value="FileWriter_methods">      - Methods</option>
@@ -55,10 +58,27 @@
 <option value="FileWriter_append_quick_example">      - Append Quick Example</option>
 <option value="FileWriter_abort_quick_example">      - Abort Quick Example</option>
 <option value="FileWriter_full_example">      - Full Example</option>
+<option value="FileTransfer">FileTransfer</option>
+<option value="FileTransfer_properties">      - Properties</option>
+<option value="FileTransfer_methods">      - Methods</option>
+<option value="FileTransfer_details">      - Details</option>
+<option value="FileTransfer_supported_platforms">      - Supported Platforms</option>
+<option value="FileTransfer_quick_example">      - Quick Example</option>
+<option value="FileTransfer_full_example">      - Full Example</option>
+<option value="FileUploadOptions">FileUploadOptions</option>
+<option value="FileUploadOptions_properties">      - Properties</option>
+<option value="FileUploadOptions_description">      - Description</option>
+<option value="FileUploadResult">FileUploadResult</option>
+<option value="FileUploadResult_properties">      - Properties</option>
+<option value="FileUploadResult_description">      - Description</option>
 <option value="FileError">FileError</option>
 <option value="FileError_properties">      - Properties</option>
 <option value="FileError_constants">      - Constants</option>
-<option value="FileError_description">      - Description</option></select></small>
+<option value="FileError_description">      - Description</option>
+<option value="FileTransferError">FileTransferError</option>
+<option value="FileTransferError_properties">      - Properties</option>
+<option value="FileTransferError_constants">      - Constants</option>
+<option value="FileTransferError_description">      - Description</option></select></small>
 		</div>
 
 		<div id="sidebar">
@@ -98,6 +118,10 @@
 <li><a href="phonegap_file_file.md.html#FileReader">FileReader</a></li>
 <li><a href="phonegap_file_file.md.html#FileWriter">FileWriter</a></li>
 <li><a href="phonegap_file_file.md.html#FileError">FileError</a></li>
+<li><a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a></li>
+<li><a href="phonegap_file_file.md.html#FileUploadOptions">FileUploadOptions</a></li>
+<li><a href="phonegap_file_file.md.html#FileUploadResult">FileUploadResult</a></li>
+<li><a href="phonegap_file_file.md.html#FileTransferError">FileTransferError</a></li>
 </ul>
 <hr>
 <h1><a name="FileReader">FileReader</a></h1>
@@ -119,8 +143,7 @@
 <strong>onloadstart:</strong> Called when the read starts. . <em>(Function)</em>
 </li>
 <li>
-<strong>onprogress:</strong> Called while reading the file, reports progress (progess.loaded/progress.total). <em>(Function)</em>
-</li>
+<strong>onprogress:</strong> Called while reading the file, reports progress (progess.loaded/progress.total). <em>(Function)</em> -NOT SUPPORTED</li>
 <li>
 <strong>onload:</strong> Called when the read has successfully completed. <em>(Function)</em>
 </li>
@@ -152,15 +175,21 @@
 
 <ul>
 <li>Android</li>
-<li>BlackBerry Widgets (OS 5.0 and higher)</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+<li>iOS</li>
 </ul>
-<h2><a name="FileReader_read_as_data_url_quick_example">Read As Data URL Quick Example</a></h2>
+<h2><a name="FileReader_read_as_data_url">Read As Data URL </a></h2>
+
+<p><strong>Parameters:</strong>
+- fileName - the full path of the file to read</p>
+
+<h2><a name="FileReader_quick_example">Quick Example</a></h2>
 
 <pre class="prettyprint"><code>var win = function(evt) {
     console.log(evt.target.result);
 };
 var fail = function(evt) {
-    console.log(evt.target.error);
+    console.log(evt.target.error.code);
 };
 
 var paths = navigator.fileMgr.getRootPaths();
@@ -170,13 +199,21 @@ reader.onerror= fail;
 reader.readAsDataURL(paths[0] + "readme.txt");
 </code></pre>
 
-<h2><a name="FileReader_read_as_text_quick_example">Read As Text Quick Example</a></h2>
+<h2><a name="FileReader_read_as_text">Read As Text</a></h2>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>fileName - the full path of the file to read</li>
+<li>encoding - the encoding to use to encode the file's content. Default is UTF8.</li>
+</ul>
+<h2><a name="FileReader_quick_example">Quick Example</a></h2>
 
 <pre class="prettyprint"><code>var win = function(evt) {
     console.log(evt.target.result);
 };
 var fail = function(evt) {
-    console.log(evt.target.error);
+    console.log(evt.target.error.code);
 };
 
 var paths = navigator.fileMgr.getRootPaths();
@@ -189,7 +226,7 @@ reader.readAsText(paths[0] + "readme.txt");
 <h2><a name="FileReader_abort_quick_example">Abort Quick Example</a></h2>
 
 <pre class="prettyprint"><code>var aborted = function(evt) {
-    console.log(evt.target.error);
+    console.log(evt.target.error.code);
 };
 
 var paths = navigator.fileMgr.getRootPaths();
@@ -231,7 +268,7 @@ reader.abort();
     }
 
     function fail(evt) {
-        console.log(evt.target.error);
+        console.log(evt.target.error.code);
     }
 
     &lt;/script&gt;
@@ -243,6 +280,14 @@ reader.abort();
 &lt;/html&gt;
 </code></pre>
 
+<h2><a name="FileReader_ios_quirks">iOS Quirks</a></h2>
+
+<ul>
+<li>
+<strong>encoding</strong> parameter is not supported, UTF8 encoding is always used.</li>
+<li>
+<strong>readAsDataUrl()</strong> is not supported.</li>
+</ul>
 <hr>
 <h1><a name="FileWriter">FileWriter</a></h1>
 
@@ -269,11 +314,7 @@ reader.abort();
 <strong>onwritestart:</strong> Called when the write starts. . <em>(Function)</em>
 </li>
 <li>
-<strong>onprogress:</strong> Called while writing the file, reports progress (progess.loaded/progress.total). <em>(Function)</em>
-</li>
-<li>
-<strong>onload:</strong> Called when the write has successfully completed. <em>(Function)</em>
-</li>
+<strong>onprogress:</strong> Called while writing the file, reports progress (progess.loaded/progress.total). <em>(Function)</em> -NOT SUPPORTED</li>
 <li>
 <strong>onabort:</strong> Called when the write has been aborted. For instance, by invoking the abort() method. <em>(Function)</em>
 </li>
@@ -298,7 +339,7 @@ reader.abort();
 </ul>
 <h2><a name="FileWriter_details">Details</a></h2>
 
-<p>The <code><a href="phonegap_file_file.md.html#FileWriter">FileWriter</a></code> object is a way to write files from the devices file system.  Users register their own event listners to receive the writestart, progress, write, writeend, error and abort events.</p>
+<p>The <code><a href="phonegap_file_file.md.html#FileWriter">FileWriter</a></code> object is a way to write files from the devices file system.  Users register their own event listeners to receive the writestart, progress, write, writeend, error and abort events.</p>
 
 <p>A <a href="phonegap_file_file.md.html#FileWriter">FileWriter</a> is created for a single file. You can use it to write to a file multiple times. The <a href="phonegap_file_file.md.html#FileWriter">FileWriter</a> maintains the file's position and length attributes, so you can seek and write anywhere in the file. By default, the <a href="phonegap_file_file.md.html#FileWriter">FileWriter</a> writes to the beginning of the file (will overwrite existing data). Set the optional append boolean to true in the <a href="phonegap_file_file.md.html#FileWriter">FileWriter</a>'s constructor to begin writing to the end of the file.</p>
 
@@ -306,7 +347,8 @@ reader.abort();
 
 <ul>
 <li>Android</li>
-<li>BlackBerry Widgets (OS 5.0 and higher)</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+<li>iOS</li>
 </ul>
 <h2><a name="FileWriter_seek_quick_example">Seek Quick Example</a></h2>
 
@@ -397,7 +439,7 @@ writer.abort();
     }
 
     function fail(evt) {
-        console.log(evt.target.error);
+        console.log(evt.target.error.code);
     }
 
     &lt;/script&gt;
@@ -410,9 +452,157 @@ writer.abort();
 </code></pre>
 
 <hr>
+<h1><a name="FileTransfer">FileTransfer</a></h1>
+
+<p><a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a> is an object that allows you to upload files to a server.</p>
+
+<h2><a name="FileTransfer_properties">Properties</a></h2>
+
+<p>N/A</p>
+
+<h2><a name="FileTransfer_methods">Methods</a></h2>
+
+<ul>
+<li>
+<strong>upload</strong>: sends a file to a server. </li>
+</ul>
+<h2><a name="FileTransfer_details">Details</a></h2>
+
+<p>The <code><a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a></code> object provides a way to upload files to a remote server using an HTTP multi-part POST request.  Both HTTP and HTTPS protocols are supported.  Optional parameters can be specified by passing a <a href="phonegap_file_file.md.html#FileUploadOptions">FileUploadOptions</a> object to the upload method.  On successful upload, the success callback will be called with a <a href="phonegap_file_file.md.html#FileUploadResult">FileUploadResult</a> object.  If an error occurs, the error callback will be invoked with a <a href="phonegap_file_file.md.html#FileTransferError">FileTransferError</a> object.</p>
+
+<h2><a name="FileTransfer_supported_platforms">Supported Platforms</a></h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+</ul>
+<h2><a name="FileTransfer_quick_example">Quick Example</a></h2>
+
+<pre class="prettyprint"><code>var win = function(r) {
+    console.log("Code = " + r.responseCode);
+    console.log("Response = " + r.response);
+    console.log("Sent = " + r.bytesSent);
+}
+
+var fail = function(error) {
+    alert("An error has occurred: Code = " = error.code);
+}
+
+var options = new <a href="phonegap_file_file.md.html#FileUploadOptions">FileUploadOptions</a>();
+options.fileKey="file";
+options.fileName="newfile.txt";
+options.mimeType="text/plain";
+
+var params = new Object();
+params.value1 = "test";
+params.value2 = "param";
+
+options.params = params;
+
+var paths = navigator.fileMgr.getRootPaths();
+var ft = new <a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a>();
+ft.upload(paths[0] + "newfile.txt", "http://some.server.com/upload.php", win, fail, options);
+</code></pre>
+
+<h2><a name="FileTransfer_full_example">Full Example</a></h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;<a href="phonegap_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Wait for PhoneGap to load
+    //
+    function onLoad() {
+        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    }
+
+    // PhoneGap is ready
+    //
+    function onDeviceReady() {
+        var options = new <a href="phonegap_file_file.md.html#FileUploadOptions">FileUploadOptions</a>();
+        options.fileKey="file";
+        options.fileName="newfile.txt";
+        options.mimeType="text/plain";
+
+        var params = new Object();
+        params.value1 = "test";
+        params.value2 = "param";
+
+        options.params = params;
+
+        var paths = navigator.fileMgr.getRootPaths();
+        var ft = new <a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a>();
+        ft.upload(paths[0] + "newfile.txt", "http://some.server.com/upload.php", win, fail, options);
+    }
+
+    function win(evt) {
+        console.log("Code = " + r.responseCode);
+        console.log("Response = " + r.response);
+        console.log("Sent = " + r.bytesSent);
+    }
+
+    function fail(evt) {
+        alert("An error has occurred: Code = " = error.code);
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body onload="onLoad()"&gt;
+    &lt;h1&gt;Example&lt;/h1&gt;
+    &lt;p&gt;Read <a href="phonegap_file_file.md.html#File">File</a>&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="FileUploadOptions">FileUploadOptions</a></h1>
+
+<p>A <code><a href="phonegap_file_file.md.html#FileUploadOptions">FileUploadOptions</a></code> object can be passed to the <a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a> objects upload method in order to specify additional parameters to the upload script.</p>
+
+<h2><a name="FileUploadOptions_properties">Properties</a></h2>
+
+<ul>
+<li>
+<strong>fileKey:</strong> The <a href="phonegap_storage_storage.md.html#name">name</a> of the form element.  If not set defaults to "file". (DOMString)</li>
+<li>
+<strong>fileName:</strong> The file <a href="phonegap_storage_storage.md.html#name">name</a> you want the file to be saved as on the server.  If not set defaults to "image.jpg". (DOMString)</li>
+<li>
+<strong>mimeType:</strong> The mime type of the data you are uploading.  If not set defaults to "image/jpeg". (DOMString)</li>
+<li>
+<strong>params:</strong> A set of optional key/value pairs to be passed along in the HTTP request. (Object)</li>
+</ul>
+<h2><a name="FileUploadOptions_description">Description</a></h2>
+
+<p>A <code><a href="phonegap_file_file.md.html#FileUploadOptions">FileUploadOptions</a></code> object can be passed to the <a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a> objects upload method in order to specify additional parameters to the upload script.</p>
+
+<hr>
+<h1><a name="FileUploadResult">FileUploadResult</a></h1>
+
+<p>A <code><a href="phonegap_file_file.md.html#FileUploadResult">FileUploadResult</a></code> object is returned via the success callback of the <a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a> upload method.</p>
+
+<h2><a name="FileUploadResult_properties">Properties</a></h2>
+
+<ul>
+<li>
+<strong>bytesSent:</strong> The number of bytes sent to the server as part of the upload. (long)</li>
+<li>
+<strong>responseCode:</strong> The HTTP response code returned by the server. (long)</li>
+<li>
+<strong>response:</strong> The HTTP response returned by the server. (DOMString)</li>
+</ul>
+<h2><a name="FileUploadResult_description">Description</a></h2>
+
+<p>The <code><a href="phonegap_file_file.md.html#FileUploadResult">FileUploadResult</a></code> object is returned via the success callback of the <a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a> upload method.</p>
+
+<hr>
 <h1><a name="FileError">FileError</a></h1>
 
-<p>A <code><a href="phonegap_file_file.md.html#FileError">FileError</a></code> object is thrown when an error occurs.</p>
+<p>A '<a href="phonegap_file_file.md.html#FileError">FileError</a>' object is set on the <a href="phonegap_file_file.md.html#FileWriter">FileWriter</a>/<a href="phonegap_file_file.md.html#FileReader">FileReader</a> error property when an error occurs. </p>
 
 <h2><a name="FileError_properties">Properties</a></h2>
 
@@ -434,7 +624,29 @@ writer.abort();
 </ul>
 <h2><a name="FileError_description">Description</a></h2>
 
-<p>The <code><a href="phonegap_file_file.md.html#FileError">FileError</a></code> object is thrown when an error occurs when reading, writing, seeking or truncating a file.  When the user calls the abort method of the reader or writer a <a href="phonegap_file_file.md.html#FileError">FileError</a> with a code of ABORT_ERR is thrown.</p>
+<p>The <code><a href="phonegap_file_file.md.html#FileError">FileError</a></code> object may be thrown when an unrecoverable error occurs when reading, writing, seeking or truncating a file. When the user calls the abort method of the writer a <a href="phonegap_file_file.md.html#FileError">FileError</a> with a code of ABORT_ERR is thrown if the current state is <a href="phonegap_file_file.md.html#FileWriter">FileWriter</a>.DONE or <a href="phonegap_file_file.md.html#FileWriter">FileWriter</a>.INIT.</p>
+
+<hr>
+<h1><a name="FileTransferError">FileTransferError</a></h1>
+
+<p>A <code><a href="phonegap_file_file.md.html#FileTransferError">FileTransferError</a></code> object is thrown when an error occurs.</p>
+
+<h2><a name="FileTransferError_properties">Properties</a></h2>
+
+<ul>
+<li>
+<strong>code:</strong> One of the predefined error codes listed below. (int)</li>
+</ul>
+<h2><a name="FileTransferError_constants">Constants</a></h2>
+
+<ul>
+<li><code><a href="phonegap_file_file.md.html#FileTransferError">FileTransferError</a>.FILE_NOT_FOUND_ERR</code></li>
+<li><code><a href="phonegap_file_file.md.html#FileTransferError">FileTransferError</a>.INVALID_URL_ERR</code></li>
+<li><code><a href="phonegap_file_file.md.html#FileTransferError">FileTransferError</a>.CONNECTION_ERR</code></li>
+</ul>
+<h2><a name="FileTransferError_description">Description</a></h2>
+
+<p>The <code><a href="phonegap_file_file.md.html#FileTransferError">FileTransferError</a></code> object is thrown when an error occurs when uploading a file.</p>
 
     		</div>
 		</div>

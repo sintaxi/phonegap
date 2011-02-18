@@ -58,6 +58,11 @@
 <option value="media.play_supported_platforms">      - Supported Platforms</option>
 <option value="media.play_quick_example">      - Quick Example</option>
 <option value="media.play_full_example">      - Full Example</option>
+<option value="media.release">media.release</option>
+<option value="media.release_description">      - Description</option>
+<option value="media.release_supported_platforms">      - Supported Platforms</option>
+<option value="media.release_quick_example">      - Quick Example</option>
+<option value="media.release_full_example">      - Full Example</option>
 <option value="media.startRecord">media.startRecord</option>
 <option value="media.startRecord_description">      - Description</option>
 <option value="media.startRecord_supported_platforms">      - Supported Platforms</option>
@@ -144,6 +149,8 @@
 <li>
 <a href="phonegap_media_media.md.html#media.pause">media.pause</a>: Pause playing audio file.</li>
 <li>
+<a href="phonegap_media_media.md.html#media.release">media.release</a>: Releases the underlying OS'es audio resources.</li>
+<li>
 <a href="phonegap_media_media.md.html#media.startRecord">media.startRecord</a>: Start recording audio file.</li>
 <li>
 <a href="phonegap_media_media.md.html#media.stopRecord">media.stopRecord</a>: Stop recording audio file.</li>
@@ -185,12 +192,12 @@
 
 <pre class="prettyprint"><code>    // Audio player
     //
-    var media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+    var my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
 
     // Update media position every second
     var mediaTimer = setInterval(function() {
         // get media position
-        <a href="phonegap_media_media.md.html#media.getCurrentPosition">media.getCurrentPosition</a>(
+        my_media.getCurrentPosition(
             // success callback
             function(position) {
                 if (position &gt; -1) {
@@ -207,108 +214,108 @@
 
 <h2><a name="media.getCurrentPosition_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
+<pre class="prettyprint"><code>    &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                  "http://www.w3.org/TR/html4/strict.dtd"&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;<a href="phonegap_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
-    &lt;script type="text/javascript" charset="utf-8"&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
-    //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+        // Wait for PhoneGap to load
+        //
+        function onLoad() {
+            document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+        }
 
-    // PhoneGap is ready
-    //
-    function onDeviceReady() {
-        playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
-    }
+        // PhoneGap is ready
+        //
+        function onDeviceReady() {
+            playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
+        }
 
-    // Audio player
-    //
-    var media = null;
-    var mediaTimer = null;
-
-    // Play audio
-    //
-    function playAudio(src) {
-        // Create <a href="phonegap_media_media.md.html#Media">Media</a> object from src
-        var media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+        // Audio player
+        //
+        var my_media = null;
+        var mediaTimer = null;
 
         // Play audio
-        <a href="phonegap_media_media.md.html#media.play">media.play</a>();
+        //
+        function playAudio(src) {
+            // Create <a href="phonegap_media_media.md.html#Media">Media</a> object from src
+            my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
 
-        // Update media position every second
-        if (mediaTimer == null) {
-            mediaTimer = setInterval(function() {
-                // get media position
-                <a href="phonegap_media_media.md.html#media.getCurrentPosition">media.getCurrentPosition</a>(
-                    // success callback
-                    function(position) {
-                        if (position &gt; -1) {
-                            setAudioPosition((position/1000) + " sec");
+            // Play audio
+            my_media.play();
+
+            // Update my_media position every second
+            if (mediaTimer == null) {
+                mediaTimer = setInterval(function() {
+                    // get my_media position
+                    my_media.getCurrentPosition(
+                        // success callback
+                        function(position) {
+                            if (position &gt; -1) {
+                                setAudioPosition((position/1000) + " sec");
+                            }
+                        },
+                        // error callback
+                        function(e) {
+                            console.log("Error getting pos=" + e);
+                            setAudioPosition("Error: " + e);
                         }
-                    },
-                    // error callback
-                    function(e) {
-                        console.log("Error getting pos=" + e);
-                        setAudioPosition("Error: " + e);
-                    }
-                );
-            }, 1000);
+                    );
+                }, 1000);
+            }
         }
-    }
 
-    // Pause audio
-    // 
-    function pauseAudio() {
-        if (media) {
-            <a href="phonegap_media_media.md.html#media.pause">media.pause</a>();
+        // Pause audio
+        // 
+        function pauseAudio() {
+            if (my_media) {
+                my_media.pause();
+            }
         }
-    }
 
-    // Stop audio
-    // 
-    function stopAudio() {
-        if (media) {
-            <a href="phonegap_media_media.md.html#media.stop">media.stop</a>();
+        // Stop audio
+        // 
+        function stopAudio() {
+            if (my_media) {
+                my_media.stop();
+            }
+            clearInterval(mediaTimer);
+            mediaTimer = null;
         }
-        clearInterval(mediaTimer);
-        mediaTimer = null;
-    }
 
-    // onSuccess Callback
-    //
-    function onSuccess() {
-        console.log("playAudio():Audio Success");
-    }
+        // onSuccess Callback
+        //
+        function onSuccess() {
+            console.log("playAudio():Audio Success");
+        }
 
-    // onError Callback 
-    //
-    function onError(error) {
-        alert('code: '    + error.code    + '\n' + 
-              'message: ' + error.message + '\n');
-    }
+        // onError Callback 
+        //
+        function onError(error) {
+            alert('code: '    + error.code    + '\n' + 
+                  'message: ' + error.message + '\n');
+        }
 
-    // Set audio position
-    // 
-    function setAudioPosition(position) {
-        document.getElementById('audio_position').innerHTML = position;
-    }
+        // Set audio position
+        // 
+        function setAudioPosition(position) {
+            document.getElementById('audio_position').innerHTML = position;
+        }
 
-    &lt;/script&gt;
-  &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
-    &lt;a href="#" class="btn large" onclick="playAudio();"&gt;Play Audio&lt;/a&gt;
-    &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pause Playing Audio&lt;/a&gt;
-    &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Stop Playing Audio&lt;/a&gt;
-    &lt;p id="audio_position"&gt;&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+        &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body onload="onLoad()"&gt;
+        &lt;a href="#" class="btn large" onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');"&gt;Play Audio&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pause Playing Audio&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Stop Playing Audio&lt;/a&gt;
+        &lt;p id="audio_position"&gt;&lt;/p&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
 </code></pre>
 
 <hr>
@@ -332,7 +339,7 @@
 
 <pre class="prettyprint"><code>    // Audio player
     //
-    var media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+    var my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
 
     // Get duration
     var counter = 0;
@@ -341,7 +348,7 @@
         if (counter &gt; 2000) {
             clearInterval(timerDur);
         }
-        var dur = <a href="phonegap_media_media.md.html#media.getDuration">media.getDuration</a>();
+        var dur = my_media.getDuration();
         if (dur &gt; 0) {
             clearInterval(timerDur);
             document.getElementById('audio_duration').innerHTML = (dur/1000) + " sec";
@@ -351,123 +358,108 @@
 
 <h2><a name="media.getDuration_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
+<pre class="prettyprint"><code>    &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                          "http://www.w3.org/TR/html4/strict.dtd"&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;<a href="phonegap_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
-    &lt;script type="text/javascript" charset="utf-8"&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
-    //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+        // Wait for PhoneGap to load
+        //
+        function onLoad() {
+            document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+        }
 
-    // PhoneGap is ready
-    //
-    function onDeviceReady() {
-        playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
-    }
+        // PhoneGap is ready
+        //
+        function onDeviceReady() {
+            playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
+        }
 
-    // Audio player
-    //
-    var media = null;
-    var mediaTimer = null;
-
-    // Play audio
-    //
-    function playAudio(src) {
-        // Create <a href="phonegap_media_media.md.html#Media">Media</a> object from src
-        var media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+        // Audio player
+        //
+        var my_media = null;
+        var mediaTimer = null;
 
         // Play audio
-        <a href="phonegap_media_media.md.html#media.play">media.play</a>();
+        //
+        function playAudio(src) {
+            // Create <a href="phonegap_media_media.md.html#Media">Media</a> object from src
+            my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
 
-        // Update media position every second
-        if (mediaTimer == null) {
-            mediaTimer = setInterval(function() {
-                // get media position
-                <a href="phonegap_media_media.md.html#media.getCurrentPosition">media.getCurrentPosition</a>(
-                    // success callback
-                    function(position) {
-                        if (position &gt; -1) {
-                            setAudioPosition((position/1000) + " sec");
+            // Play audio
+            my_media.play();
+
+            // Update my_media position every second
+            if (mediaTimer == null) {
+                mediaTimer = setInterval(function() {
+                    // get my_media position
+                    my_media.getCurrentPosition(
+                        // success callback
+                        function(position) {
+                            if (position &gt; -1) {
+                                setAudioPosition((position/1000) + " sec");
+                            }
+                        },
+                        // error callback
+                        function(e) {
+                            console.log("Error getting pos=" + e);
+                            setAudioPosition("Error: " + e);
                         }
-                    },
-                    // error callback
-                    function(e) {
-                        console.log("Error getting pos=" + e);
-                        setAudioPosition("Error: " + e);
-                    }
-                );
-            }, 1000);
-        }
-
-        // Get duration
-        var counter = 0;
-        var timerDur = setInterval(function() {
-            counter = counter + 100;
-            if (counter &gt; 2000) {
-                clearInterval(timerDur);
+                    );
+                }, 1000);
             }
-            var dur = <a href="phonegap_media_media.md.html#media.getDuration">media.getDuration</a>();
-            if (dur &gt; 0) {
-                clearInterval(timerDur);
-                document.getElementById('audio_duration').innerHTML = (dur/1000) + " sec";
+        }
+
+        // Pause audio
+        // 
+        function pauseAudio() {
+            if (my_media) {
+                my_media.pause();
             }
-       }, 100);
-    }
-
-    // Pause audio
-    // 
-    function pauseAudio() {
-        if (media) {
-            <a href="phonegap_media_media.md.html#media.pause">media.pause</a>();
         }
-    }
 
-    // Stop audio
-    // 
-    function stopAudio() {
-        if (media) {
-            <a href="phonegap_media_media.md.html#media.stop">media.stop</a>();
+        // Stop audio
+        // 
+        function stopAudio() {
+            if (my_media) {
+                my_media.stop();
+            }
+            clearInterval(mediaTimer);
+            mediaTimer = null;
         }
-        clearInterval(mediaTimer);
-        mediaTimer = null;
-    }
 
-    // onSuccess Callback
-    //
-    function onSuccess() {
-        console.log("playAudio():Audio Success");
-    }
+        // onSuccess Callback
+        //
+        function onSuccess() {
+            console.log("playAudio():Audio Success");
+        }
 
-    // onError Callback 
-    //
-    function onError(error) {
-        alert('code: '    + error.code    + '\n' + 
-              'message: ' + error.message + '\n');
-    }
+        // onError Callback 
+        //
+        function onError(error) {
+            alert('code: '    + error.code    + '\n' + 
+                  'message: ' + error.message + '\n');
+        }
 
-    // Set audio position
-    // 
-    function setAudioPosition(position) {
-        document.getElementById('audio_position').innerHTML = position;
-    }
+        // Set audio position
+        // 
+        function setAudioPosition(position) {
+            document.getElementById('audio_position').innerHTML = position;
+        }
 
-    &lt;/script&gt;
-  &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
-    &lt;a href="#" class="btn large" onclick="playAudio();"&gt;Play Audio&lt;/a&gt;
-    &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pause Playing Audio&lt;/a&gt;
-    &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Stop Playing Audio&lt;/a&gt;
-    &lt;p id="audio_position"&gt;&lt;/p&gt;
-    &lt;p id="audio_duration"&gt;&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+        &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body onload="onLoad()"&gt;
+        &lt;a href="#" class="btn large" onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');"&gt;Play Audio&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pause Playing Audio&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Stop Playing Audio&lt;/a&gt;
+        &lt;p id="audio_position"&gt;&lt;/p&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
 </code></pre>
 
 <hr>
@@ -494,7 +486,7 @@
 //
 function playAudio(url) {
     // Play the audio file at url
-    var media = new <a href="phonegap_media_media.md.html#Media">Media</a>(url,
+    var my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(url,
         // success callback
         function() {
             console.log("playAudio():Audio Success");
@@ -505,7 +497,7 @@ function playAudio(url) {
     });
 
     // Play audio
-    <a href="phonegap_media_media.md.html#media.play">media.play</a>();
+    my_media.play();
 
     // Pause after 10 seconds
     setTimeout(function() {
@@ -516,108 +508,108 @@ function playAudio(url) {
 
 <h2><a name="media.pause_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
+<pre class="prettyprint"><code>    &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                          "http://www.w3.org/TR/html4/strict.dtd"&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;<a href="phonegap_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
-    &lt;script type="text/javascript" charset="utf-8"&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
-    //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+        // Wait for PhoneGap to load
+        //
+        function onLoad() {
+            document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+        }
 
-    // PhoneGap is ready
-    //
-    function onDeviceReady() {
-        playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
-    }
+        // PhoneGap is ready
+        //
+        function onDeviceReady() {
+            playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
+        }
 
-    // Audio player
-    //
-    var media = null;
-    var mediaTimer = null;
-
-    // Play audio
-    //
-    function playAudio(src) {
-        // Create <a href="phonegap_media_media.md.html#Media">Media</a> object from src
-        var media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+        // Audio player
+        //
+        var my_media = null;
+        var mediaTimer = null;
 
         // Play audio
-        <a href="phonegap_media_media.md.html#media.play">media.play</a>();
+        //
+        function playAudio(src) {
+            // Create <a href="phonegap_media_media.md.html#Media">Media</a> object from src
+            my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
 
-        // Update media position every second
-        if (mediaTimer == null) {
-            mediaTimer = setInterval(function() {
-                // get media position
-                <a href="phonegap_media_media.md.html#media.getCurrentPosition">media.getCurrentPosition</a>(
-                    // success callback
-                    function(position) {
-                        if (position &gt; -1) {
-                            setAudioPosition((position/1000) + " sec");
+            // Play audio
+            my_media.play();
+
+            // Update my_media position every second
+            if (mediaTimer == null) {
+                mediaTimer = setInterval(function() {
+                    // get my_media position
+                    my_media.getCurrentPosition(
+                        // success callback
+                        function(position) {
+                            if (position &gt; -1) {
+                                setAudioPosition((position/1000) + " sec");
+                            }
+                        },
+                        // error callback
+                        function(e) {
+                            console.log("Error getting pos=" + e);
+                            setAudioPosition("Error: " + e);
                         }
-                    },
-                    // error callback
-                    function(e) {
-                        console.log("Error getting pos=" + e);
-                        setAudioPosition("Error: " + e);
-                    }
-                );
-            }, 1000);
+                    );
+                }, 1000);
+            }
         }
-    }
 
-    // Pause audio
-    // 
-    function pauseAudio() {
-        if (media) {
-            <a href="phonegap_media_media.md.html#media.pause">media.pause</a>();
+        // Pause audio
+        // 
+        function pauseAudio() {
+            if (my_media) {
+                my_media.pause();
+            }
         }
-    }
 
-    // Stop audio
-    // 
-    function stopAudio() {
-        if (media) {
-            <a href="phonegap_media_media.md.html#media.stop">media.stop</a>();
+        // Stop audio
+        // 
+        function stopAudio() {
+            if (my_media) {
+                my_media.stop();
+            }
+            clearInterval(mediaTimer);
+            mediaTimer = null;
         }
-        clearInterval(mediaTimer);
-        mediaTimer = null;
-    }
 
-    // onSuccess Callback
-    //
-    function onSuccess() {
-        console.log("playAudio():Audio Success");
-    }
+        // onSuccess Callback
+        //
+        function onSuccess() {
+            console.log("playAudio():Audio Success");
+        }
 
-    // onError Callback 
-    //
-    function onError(error) {
-        alert('code: '    + error.code    + '\n' + 
-              'message: ' + error.message + '\n');
-    }
+        // onError Callback 
+        //
+        function onError(error) {
+            alert('code: '    + error.code    + '\n' + 
+                  'message: ' + error.message + '\n');
+        }
 
-    // Set audio position
-    // 
-    function setAudioPosition(position) {
-        document.getElementById('audio_position').innerHTML = position;
-    }
+        // Set audio position
+        // 
+        function setAudioPosition(position) {
+            document.getElementById('audio_position').innerHTML = position;
+        }
 
-    &lt;/script&gt;
-  &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
-    &lt;a href="#" class="btn large" onclick="playAudio();"&gt;Play Audio&lt;/a&gt;
-    &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pause Playing Audio&lt;/a&gt;
-    &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Stop Playing Audio&lt;/a&gt;
-    &lt;p id="audio_position"&gt;&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+        &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body onload="onLoad()"&gt;
+        &lt;a href="#" class="btn large" onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');"&gt;Play Audio&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pause Playing Audio&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Stop Playing Audio&lt;/a&gt;
+        &lt;p id="audio_position"&gt;&lt;/p&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
 </code></pre>
 
 <hr>
@@ -644,7 +636,7 @@ function playAudio(url) {
 //
 function playAudio(url) {
     // Play the audio file at url
-    var media = new <a href="phonegap_media_media.md.html#Media">Media</a>(url,
+    var my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(url,
         // success callback
         function() {
             console.log("playAudio():Audio Success");
@@ -655,114 +647,248 @@ function playAudio(url) {
     });
 
     // Play audio
-    <a href="phonegap_media_media.md.html#media.play">media.play</a>();
+    my_media.play();
 }
 </code></pre>
 
 <h2><a name="media.play_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
+<pre class="prettyprint"><code>    &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                          "http://www.w3.org/TR/html4/strict.dtd"&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;<a href="phonegap_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
-    &lt;script type="text/javascript" charset="utf-8"&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
-    //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+        // Wait for PhoneGap to load
+        //
+        function onLoad() {
+            document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+        }
 
-    // PhoneGap is ready
-    //
-    function onDeviceReady() {
-        playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
-    }
+        // PhoneGap is ready
+        //
+        function onDeviceReady() {
+            playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
+        }
 
-    // Audio player
-    //
-    var media = null;
-    var mediaTimer = null;
-
-    // Play audio
-    //
-    function playAudio(src) {
-        // Create <a href="phonegap_media_media.md.html#Media">Media</a> object from src
-        var media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+        // Audio player
+        //
+        var my_media = null;
+        var mediaTimer = null;
 
         // Play audio
-        <a href="phonegap_media_media.md.html#media.play">media.play</a>();
+        //
+        function playAudio(src) {
+            // Create <a href="phonegap_media_media.md.html#Media">Media</a> object from src
+            my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
 
-        // Update media position every second
-        if (mediaTimer == null) {
-            mediaTimer = setInterval(function() {
-                // get media position
-                <a href="phonegap_media_media.md.html#media.getCurrentPosition">media.getCurrentPosition</a>(
-                    // success callback
-                    function(position) {
-                        if (position &gt; -1) {
-                            setAudioPosition((position/1000) + " sec");
+            // Play audio
+            my_media.play();
+
+            // Update my_media position every second
+            if (mediaTimer == null) {
+                mediaTimer = setInterval(function() {
+                    // get my_media position
+                    my_media.getCurrentPosition(
+                        // success callback
+                        function(position) {
+                            if (position &gt; -1) {
+                                setAudioPosition((position/1000) + " sec");
+                            }
+                        },
+                        // error callback
+                        function(e) {
+                            console.log("Error getting pos=" + e);
+                            setAudioPosition("Error: " + e);
                         }
-                    },
-                    // error callback
-                    function(e) {
-                        console.log("Error getting pos=" + e);
-                        setAudioPosition("Error: " + e);
-                    }
-                );
-            }, 1000);
+                    );
+                }, 1000);
+            }
         }
-    }
 
-    // Pause audio
-    // 
-    function pauseAudio() {
-        if (media) {
-            <a href="phonegap_media_media.md.html#media.pause">media.pause</a>();
+        // Pause audio
+        // 
+        function pauseAudio() {
+            if (my_media) {
+                my_media.pause();
+            }
         }
-    }
 
-    // Stop audio
-    // 
-    function stopAudio() {
-        if (media) {
-            <a href="phonegap_media_media.md.html#media.stop">media.stop</a>();
+        // Stop audio
+        // 
+        function stopAudio() {
+            if (my_media) {
+                my_media.stop();
+            }
+            clearInterval(mediaTimer);
+            mediaTimer = null;
         }
-        clearInterval(mediaTimer);
-        mediaTimer = null;
-    }
 
-    // onSuccess Callback
+        // onSuccess Callback
+        //
+        function onSuccess() {
+            console.log("playAudio():Audio Success");
+        }
+
+        // onError Callback 
+        //
+        function onError(error) {
+            alert('code: '    + error.code    + '\n' + 
+                  'message: ' + error.message + '\n');
+        }
+
+        // Set audio position
+        // 
+        function setAudioPosition(position) {
+            document.getElementById('audio_position').innerHTML = position;
+        }
+
+        &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body onload="onLoad()"&gt;
+        &lt;a href="#" class="btn large" onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');"&gt;Play Audio&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pause Playing Audio&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Stop Playing Audio&lt;/a&gt;
+        &lt;p id="audio_position"&gt;&lt;/p&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="media.release">media.release</a></h1>
+
+<p>Releases the underlying operating systems audio resources.</p>
+
+<pre class="prettyprint"><code><a href="phonegap_media_media.md.html#media.release">media.release</a>();
+</code></pre>
+
+<h2><a name="media.release_description">Description</a></h2>
+
+<p>Function <code><a href="phonegap_media_media.md.html#media.release">media.release</a></code> is a synchronous function that releases the underlying operating systems audio resources.  This function is particularily important for Android as there are a finite amount of OpenCore instances for media playback.  Developers should call the 'release' function when they no longer need the <a href="phonegap_media_media.md.html#Media">Media</a> resource.</p>
+
+<h2><a name="media.release_supported_platforms">Supported Platforms</a></h2>
+
+<ul>
+<li>Android</li>
+</ul>
+<h2><a name="media.release_quick_example">Quick Example</a></h2>
+
+<pre class="prettyprint"><code>    // Audio player
     //
-    function onSuccess() {
-        console.log("playAudio():Audio Success");
-    }
+    var my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
 
-    // onError Callback 
-    //
-    function onError(error) {
-        alert('code: '    + error.code    + '\n' + 
-              'message: ' + error.message + '\n');
-    }
+    my_media.play();
+    my_media.stop();
+    my_media.release();
+</code></pre>
 
-    // Set audio position
-    // 
-    function setAudioPosition(position) {
-        document.getElementById('audio_position').innerHTML = position;
-    }
+<h2><a name="media.release_full_example">Full Example</a></h2>
 
-    &lt;/script&gt;
-  &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
-    &lt;a href="#" class="btn large" onclick="playAudio();"&gt;Play Audio&lt;/a&gt;
-    &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pause Playing Audio&lt;/a&gt;
-    &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Stop Playing Audio&lt;/a&gt;
-    &lt;p id="audio_position"&gt;&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+<pre class="prettyprint"><code>    &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                          "http://www.w3.org/TR/html4/strict.dtd"&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;<a href="phonegap_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
+
+        &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8"&gt;
+
+        // Wait for PhoneGap to load
+        //
+        function onLoad() {
+            document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+        }
+
+        // PhoneGap is ready
+        //
+        function onDeviceReady() {
+            playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
+        }
+
+        // Audio player
+        //
+        var my_media = null;
+        var mediaTimer = null;
+
+        // Play audio
+        //
+        function playAudio(src) {
+            // Create <a href="phonegap_media_media.md.html#Media">Media</a> object from src
+            my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+
+            // Play audio
+            my_media.play();
+
+            // Update my_media position every second
+            if (mediaTimer == null) {
+                mediaTimer = setInterval(function() {
+                    // get my_media position
+                    my_media.getCurrentPosition(
+                        // success callback
+                        function(position) {
+                            if (position &gt; -1) {
+                                setAudioPosition((position/1000) + " sec");
+                            }
+                        },
+                        // error callback
+                        function(e) {
+                            console.log("Error getting pos=" + e);
+                            setAudioPosition("Error: " + e);
+                        }
+                    );
+                }, 1000);
+            }
+        }
+
+        // Pause audio
+        // 
+        function pauseAudio() {
+            if (my_media) {
+                my_media.pause();
+            }
+        }
+
+        // Stop audio
+        // 
+        function stopAudio() {
+            if (my_media) {
+                my_media.stop();
+            }
+            clearInterval(mediaTimer);
+            mediaTimer = null;
+        }
+
+        // onSuccess Callback
+        //
+        function onSuccess() {
+            console.log("playAudio():Audio Success");
+        }
+
+        // onError Callback 
+        //
+        function onError(error) {
+            alert('code: '    + error.code    + '\n' + 
+                  'message: ' + error.message + '\n');
+        }
+
+        // Set audio position
+        // 
+        function setAudioPosition(position) {
+            document.getElementById('audio_position').innerHTML = position;
+        }
+
+        &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body onload="onLoad()"&gt;
+        &lt;a href="#" class="btn large" onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');"&gt;Play Audio&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pause Playing Audio&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Stop Playing Audio&lt;/a&gt;
+        &lt;p id="audio_position"&gt;&lt;/p&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
 </code></pre>
 
 <hr>
@@ -906,7 +1032,7 @@ function recordAudio() {
 //
 function playAudio(url) {
     // Play the audio file at url
-    var media = new <a href="phonegap_media_media.md.html#Media">Media</a>(url,
+    var my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(url,
         // success callback
         function() {
             console.log("playAudio():Audio Success");
@@ -917,119 +1043,119 @@ function playAudio(url) {
     });
 
     // Play audio
-    <a href="phonegap_media_media.md.html#media.play">media.play</a>();
+    my_media.play();
 
     // Pause after 10 seconds
     setTimeout(function() {
-        <a href="phonegap_media_media.md.html#media.stop">media.stop</a>();
+        my_media.stop();
     }, 10000);        
 }
 </code></pre>
 
 <h2><a name="media.stop_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
+<pre class="prettyprint"><code>    &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                          "http://www.w3.org/TR/html4/strict.dtd"&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;<a href="phonegap_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
-    &lt;script type="text/javascript" charset="utf-8"&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
-    //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+        // Wait for PhoneGap to load
+        //
+        function onLoad() {
+            document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+        }
 
-    // PhoneGap is ready
-    //
-    function onDeviceReady() {
-        playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
-    }
+        // PhoneGap is ready
+        //
+        function onDeviceReady() {
+            playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
+        }
 
-    // Audio player
-    //
-    var media = null;
-    var mediaTimer = null;
-
-    // Play audio
-    //
-    function playAudio(src) {
-        // Create <a href="phonegap_media_media.md.html#Media">Media</a> object from src
-        var media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+        // Audio player
+        //
+        var my_media = null;
+        var mediaTimer = null;
 
         // Play audio
-        <a href="phonegap_media_media.md.html#media.play">media.play</a>();
+        //
+        function playAudio(src) {
+            // Create <a href="phonegap_media_media.md.html#Media">Media</a> object from src
+            my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
 
-        // Update media position every second
-        if (mediaTimer == null) {
-            mediaTimer = setInterval(function() {
-                // get media position
-                <a href="phonegap_media_media.md.html#media.getCurrentPosition">media.getCurrentPosition</a>(
-                    // success callback
-                    function(position) {
-                        if (position &gt; -1) {
-                            setAudioPosition((position/1000) + " sec");
+            // Play audio
+            my_media.play();
+
+            // Update my_media position every second
+            if (mediaTimer == null) {
+                mediaTimer = setInterval(function() {
+                    // get my_media position
+                    my_media.getCurrentPosition(
+                        // success callback
+                        function(position) {
+                            if (position &gt; -1) {
+                                setAudioPosition((position/1000) + " sec");
+                            }
+                        },
+                        // error callback
+                        function(e) {
+                            console.log("Error getting pos=" + e);
+                            setAudioPosition("Error: " + e);
                         }
-                    },
-                    // error callback
-                    function(e) {
-                        console.log("Error getting pos=" + e);
-                        setAudioPosition("Error: " + e);
-                    }
-                );
-            }, 1000);
+                    );
+                }, 1000);
+            }
         }
-    }
 
-    // Pause audio
-    // 
-    function pauseAudio() {
-        if (media) {
-            <a href="phonegap_media_media.md.html#media.pause">media.pause</a>();
+        // Pause audio
+        // 
+        function pauseAudio() {
+            if (my_media) {
+                my_media.pause();
+            }
         }
-    }
 
-    // Stop audio
-    // 
-    function stopAudio() {
-        if (media) {
-            <a href="phonegap_media_media.md.html#media.stop">media.stop</a>();
+        // Stop audio
+        // 
+        function stopAudio() {
+            if (my_media) {
+                my_media.stop();
+            }
+            clearInterval(mediaTimer);
+            mediaTimer = null;
         }
-        clearInterval(mediaTimer);
-        mediaTimer = null;
-    }
 
-    // onSuccess Callback
-    //
-    function onSuccess() {
-        console.log("playAudio():Audio Success");
-    }
+        // onSuccess Callback
+        //
+        function onSuccess() {
+            console.log("playAudio():Audio Success");
+        }
 
-    // onError Callback 
-    //
-    function onError(error) {
-        alert('code: '    + error.code    + '\n' + 
-              'message: ' + error.message + '\n');
-    }
+        // onError Callback 
+        //
+        function onError(error) {
+            alert('code: '    + error.code    + '\n' + 
+                  'message: ' + error.message + '\n');
+        }
 
-    // Set audio position
-    // 
-    function setAudioPosition(position) {
-        document.getElementById('audio_position').innerHTML = position;
-    }
+        // Set audio position
+        // 
+        function setAudioPosition(position) {
+            document.getElementById('audio_position').innerHTML = position;
+        }
 
-    &lt;/script&gt;
-  &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
-    &lt;a href="#" class="btn large" onclick="playAudio();"&gt;Play Audio&lt;/a&gt;
-    &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pause Playing Audio&lt;/a&gt;
-    &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Stop Playing Audio&lt;/a&gt;
-    &lt;p id="audio_position"&gt;&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+        &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body onload="onLoad()"&gt;
+        &lt;a href="#" class="btn large" onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');"&gt;Play Audio&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pause Playing Audio&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Stop Playing Audio&lt;/a&gt;
+        &lt;p id="audio_position"&gt;&lt;/p&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
 </code></pre>
 
 <hr>
