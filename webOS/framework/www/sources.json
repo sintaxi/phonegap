@@ -1,8 +1,9 @@
 [
-    {"source": "app/assistants/stage-assistant.js"},
-	{"source": "/usr/palm/frameworks/media/media.js"},
-    {
-        "scenes": "First",
-        "source": "app/assistants/First-assistant.js"
-    }
+  {"source": "jqtouch/jquery-1.4.2.min.js"},
+  {"source": "jqtouch/jqtouch.js"},
+  {"source": "js/app.js"},
+  {
+    "scenes": "main",
+    "source": "app/assistants/Main-assistant.js"
+  }
 ]

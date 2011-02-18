@@ -1,3 +1,5 @@
+GREP = /usr/bin/grep
+CUT = /usr/bin/cut
 SHELL = /bin/sh
 CHMOD = chmod
 CP = cp
@@ -17,6 +19,9 @@ ECHO = echo
 ECHO_N = echo -n
 JAVA = java
 
+NAME = `$(CAT) framework/www/appinfo.json | $(GREP) '"id"' | $(CUT) -d \" -f 4`
+VERSION = `$(CAT) framework/www/appinfo.json | $(GREP) '"version"' | $(CUT) -d \" -f 4`
+
 all :: js copy_js package deploy run
 
 custom :: js copy_js package deploy
@@ -27,17 +32,18 @@ clean_libs:
 	-$(RM_RF) lib
 	
 package:
-	cp framework/www/index.html framework/www/app/views/First/First-scene.html
+	mkdir -p framework/www/app/views/main
+	cp framework/www/index.html framework/www/app/views/main/main-scene.html
 	palm-package framework/www/
 
 deploy:
-	palm-install com.palm.phonegap_1.0.0_all.ipk
+	palm-install $(NAME)_$(VERSION)_all.ipk
 	
 run:
-	palm-launch com.palm.phonegap
+	palm-launch $(NAME)
 	
 copy_js:
-	cp lib/phonegap.js framework/www/phonegap.js
+	cp lib/phonegap.js framework/www/js/phonegap.js
 	
 js: lib/phonegap.js
 

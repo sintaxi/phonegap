@@ -1,0 +1,10 @@
+#jqt > * {
+  padding-top: 45px;
+}
+
+#jqt .toolbar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+}

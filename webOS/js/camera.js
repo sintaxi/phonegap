@@ -13,7 +13,15 @@ function Camera() {
  * @param {Object} options
  */
 Camera.prototype.getPicture = function(successCallback, errorCallback, options) {
-	
+  params = { sublaunch: true };
+  
+  if (typeof options != 'undefined' && typeof options.filename != 'undefined') {
+    params.filename = options.filename;
+  }
+  
+  navigator.camera.errorCallback = errorCallback;
+  navigator.camera.successCallback = successCallback;
+  
 	//TODO: This callback is not being called
 	//currently calling handlePicture from First-assistant.js activate method
 	var that = this;
@@ -32,11 +40,8 @@ Camera.prototype.getPicture = function(successCallback, errorCallback, options) 
 	PhoneGap.sceneController.stageController.pushScene(
 		{ 
 			appId :'com.palm.app.camera', 
-			name: 'capture' 
-		}, { 
-			sublaunch : true
-			//filename: "/media/internal/pg_" + (new Date()).getTime() + ".jpg"
-		}
+			name: 'capture'
+		}, params
 	);
 };
 
