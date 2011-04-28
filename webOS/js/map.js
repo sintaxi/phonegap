@@ -30,7 +30,7 @@ Map.prototype.show = function(positions) {
 		pos = { coords: { latitude: 49.28305, longitude: -123.10689 } };
 	}
 
-	this.service = new Mojo.Service.Request('palm://com.palm.applicationManager', {
+	this.service = navigator.service.Request('palm://com.palm.applicationManager', {
 		method: 'open',
 		parameters: {
 		id: 'com.palm.app.maps',

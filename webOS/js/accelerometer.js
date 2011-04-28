@@ -10,6 +10,18 @@ function Accelerometer() {
 };
 
 /*
+ * Tells WebOS to put higher priority on accelerometer resolution. Also relaxes the internal garbage collection events.
+ * @param {Boolean} state
+ * Dependencies: Mojo.windowProperties
+ * Example:
+ * 		navigator.accelerometer.setFastAccelerometer(true)
+ */
+Accelerometer.prototype.setFastAccelerometer = function(state) {
+	navigator.windowProperties.fastAccelerometer = state;
+	navigator.window.setWindowProperties();
+};
+
+/*
  * Asynchronously aquires the current acceleration.
  * @param {Function} successCallback The function to call when the acceleration
  * data is available
@@ -89,7 +101,8 @@ Accelerometer.prototype.clearWatch = function(watchId) {
 
 Accelerometer.prototype.start = function() {
 	var that = this;
-	Mojo.Event.listen(document, "acceleration", function(event) {
+	//Mojo.Event.listen(document, "acceleration", function(event) {
+	document.addEventListener("acceleration", function(event) {
 		var accel = new Acceleration(event.accelX, event.accelY, event.accelZ);
 		that.lastAcceleration = accel;
 	});

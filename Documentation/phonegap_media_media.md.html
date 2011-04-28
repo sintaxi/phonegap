@@ -37,6 +37,7 @@
 <option value="Media_parameters">      - Parameters</option>
 <option value="Media_methods">      - Methods</option>
 <option value="Media_supported_platforms">      - Supported Platforms</option>
+<option value="Media_ios_quirks">      - iOS Quirks</option>
 <option value="media.getCurrentPosition">media.getCurrentPosition</option>
 <option value="media.getCurrentPosition_parameters">      - Parameters</option>
 <option value="media.getCurrentPosition_description">      - Description</option>
@@ -131,7 +132,7 @@
 <strong>src</strong>: A URI containing the audio content. <em>(DOMString)</em>
 </li>
 <li>
-<strong>mediaSuccess</strong>: (Optional) The callback that is invoked after a <a href="phonegap_media_media.md.html#Media">Media</a> object is created. <em>(Function)</em>
+<strong>mediaSuccess</strong>: (Optional) The callback that is invoked after a <a href="phonegap_media_media.md.html#Media">Media</a> object has completed the current play/record or stop action. <em>(Function)</em>
 </li>
 <li>
 <strong><a href="phonegap_media_media.md.html#mediaError">mediaError</a></strong>: (Optional) The callback that is invoked if there was an error. <em>(Function)</em>
@@ -162,6 +163,12 @@
 <ul>
 <li>Android</li>
 <li>iOS</li>
+</ul>
+<h2><a name="Media_ios_quirks">iOS Quirks</a></h2>
+
+<ul>
+<li>The callback functions must be global in scope (<a href="phonegap_storage_storage.md.html#version">version</a> 0.9.4 and earlier).</li>
+<li>In the media constructor iOS calls a prepare method to load the file into the player in preparation for playing.  An optional downloadCompleteCallback can be passed as the final parameter to the <a href="phonegap_media_media.md.html#Media">Media</a> constructor.  It will be called when the the call to prepare completes.  </li>
 </ul>
 <hr>
 <h1><a name="media.getCurrentPosition">media.getCurrentPosition</a></h1>
@@ -1007,6 +1014,7 @@ function recordAudio() {
 
 <ul>
 <li>The method <a href="phonegap_storage_storage.md.html#name">name</a> is <code>startAudioRecord</code> on iOS.</li>
+<li>The file to record to must already exist.</li>
 </ul>
 <hr>
 <h1><a name="media.stop">media.stop</a></h1>
@@ -1324,5 +1332,7 @@ function recordAudio() {
 </div>
 		</div>
 
-	</body>
+		<!-- KISSinsights -->
+		<script type="text/javascript">var _kiq = _kiq || [];</script><script type="text/javascript" src="//s3.amazonaws.com/ki.js/12652/2gs.js" async="true"></script>
+</body>
 </html>

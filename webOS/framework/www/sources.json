@@ -1,9 +1,0 @@
-[
-  {"source": "jqtouch/jquery-1.4.2.min.js"},
-  {"source": "jqtouch/jqtouch.js"},
-  {"source": "js/app.js"},
-  {
-    "scenes": "main",
-    "source": "app/assistants/Main-assistant.js"
-  }
-]

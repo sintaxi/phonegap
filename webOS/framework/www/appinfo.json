@@ -1,9 +1,0 @@
-{
-	"id": "com.phonegap.example",
-	"version": "1.0.0",
-	"vendor": "Nitobi",
-	"type": "web",
-	"main": "root.html",
-	"title": "PhoneGap Example",
-	"icon": "img/icon.png"
-}

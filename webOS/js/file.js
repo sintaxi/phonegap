@@ -22,7 +22,8 @@ function File() {
 File.prototype.read = function(fileName, successCallback, errorCallback) {
 	//Mojo has no file i/o yet, so we use an xhr. very limited
 	var path = fileName;	//incomplete
-	Mojo.Log.error(path);
+	//Mojo.Log.error(path);
+	navigator.debug.error(path);
 	
 	if (typeof successCallback != 'function')
 		successCallback = function () {};

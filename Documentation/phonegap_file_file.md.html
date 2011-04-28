@@ -316,6 +316,9 @@ reader.abort();
 <li>
 <strong>onprogress:</strong> Called while writing the file, reports progress (progess.loaded/progress.total). <em>(Function)</em> -NOT SUPPORTED</li>
 <li>
+<strong>onwrite:</strong> Called when the request has completed successfully.  <em>(Function)</em>
+</li>
+<li>
 <strong>onabort:</strong> Called when the write has been aborted. For instance, by invoking the abort() method. <em>(Function)</em>
 </li>
 <li>
@@ -651,5 +654,7 @@ ft.upload(paths[0] + "newfile.txt", "http://some.server.com/upload.php", win, fa
     		</div>
 		</div>
 
-	</body>
+		<!-- KISSinsights -->
+		<script type="text/javascript">var _kiq = _kiq || [];</script><script type="text/javascript" src="//s3.amazonaws.com/ki.js/12652/2gs.js" async="true"></script>
+</body>
 </html>

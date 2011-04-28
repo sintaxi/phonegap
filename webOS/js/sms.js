@@ -4,7 +4,7 @@
  */
 function Sms() {
 
-};
+    };
 
 /*
  * Sends an SMS message.
@@ -15,21 +15,24 @@ function Sms() {
  * @param {PositionOptions} options The options for accessing the GPS location such as timeout and accuracy.
  */
 Sms.prototype.send = function(number, message, successCallback, errorCallback, options) {
-	try {
-		this.service = new Mojo.Service.Request('palm://com.palm.applicationManager', {
-		     method:'launch',
-		     parameters:{
-		         id:"com.palm.app.messaging",
-		         params: {
-					composeAddress: number,
-					messageText: message
-		         }
-		     }
-		});
-		successCallback();
-	} catch (ex) {
-		errorCallback({ name: "SMSerror", message: ex.name + ": " + ex.message });
-	}
+    try {
+        this.service = navigator.service.Request('palm://com.palm.applicationManager', {
+            method: 'launch',
+            parameters: {
+                id: "com.palm.app.messaging",
+                params: {
+                    composeAddress: number,
+                    messageText: message
+                }
+            }
+        });
+        successCallback();
+    } catch(ex) {
+        errorCallback({
+            name: "SMSerror",
+            message: ex.name + ": " + ex.message
+        });
+    }
 };
 
 if (typeof navigator.sms == "undefined") navigator.sms = new Sms();

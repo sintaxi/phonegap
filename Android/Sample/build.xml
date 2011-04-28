@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Sample" default="help">
+<project name="exampleapp" default="help">
 
 <!-- The local.properties file is created and updated by the 'android'
      tool.
@@ -76,7 +76,7 @@
              - copy/paste the content of the rules files (minus the top node)
                into this file, *after* the <setup> task
              - disable the import of the rules by changing the setup task
-               below to <setup import="false" />. 
+               below to <setup import="false" />.
              - customize to your needs.
     -->
     <setup />

@@ -1,4 +1,3 @@
-
 /*
  * This class provides access to device GPS data.
  * @constructor
@@ -11,7 +10,7 @@ function Geolocation() {
     this.lastError = null;
     this.callbacks = {
         onLocationChanged: [],
-        onError:           []
+        onError: []
     };
 };
 
@@ -32,17 +31,17 @@ Geolocation.prototype.getCurrentPosition = function(successCallback, errorCallba
     else
         this.start(options);
 	*/
-	
+
     var timeout = 20000;
-	if (typeof(options) == 'object' && options.timeout)
-		timeout = options.timeout;
+    if (typeof(options) == 'object' && options.timeout)
+    timeout = options.timeout;
 
     if (typeof(successCallback) != 'function')
-        successCallback = function() {};
+    successCallback = function() {};
     if (typeof(errorCallback) != 'function')
-        errorCallback = function() {};
+    errorCallback = function() {};
 
-	/*
+    /*
     var dis = this;
     var delay = 0;
     var timer = setInterval(function() {
@@ -59,55 +58,59 @@ Geolocation.prototype.getCurrentPosition = function(successCallback, errorCallba
 		//else the interval gets called again
     }, interval);
 	*/
-	
-	var responseTime;
-	if (timeout <=5000)
-		responseTime = 1;
-	else if (5000 < timeout <= 20000)
-		responseTime = 2;
-	else
-		responseTime = 3;
-	
-	var timer = setTimeout(function(){
-		errorCallback({ message: "timeout" });
-	}, timeout);
-	
-	var startTime = (new Date()).getTime();
 
-	var alias = this;
-	
-	// It may be that getCurrentPosition is less reliable than startTracking ... but
-	// not sure if we want to be starting and stopping the tracker if we're not watching.
-	new Mojo.Service.Request('palm://com.palm.location', {
-	    method:"getCurrentPosition",
-	    parameters:{
-			responseTime: responseTime
-		},
-        onSuccess: function(event) { 
-			alias.lastPosition = { 
-				coords: { 
-					latitude: event.latitude, 
-					longitude: event.longitude, 
-					altitude: (event.altitude >= 0 ? event.altitude : null), 
-					speed: (event.velocity >= 0 ? event.velocity : null), 
-					heading: (event.heading >= 0 ? event.heading : null), 
-					accuracy: (event.horizAccuracy >= 0 ? event.horizAccuracy : null),
-					altitudeAccuracy: (event.vertAccuracy >= 0 ? event.vertAccuracy : null)
-				},
-				timestamp: new Date().getTime()
-			};
-			
-			var responseTime = alias.lastPosition.timestamp - startTime;
-			if (responseTime <= timeout)
-			{
-				clearTimeout(timer);
-				successCallback(alias.lastPosition);
-			}
-		},
+    var responseTime;
+    if (timeout <= 5000)
+    responseTime = 1;
+    else if (5000 < timeout <= 20000)
+    responseTime = 2;
+    else
+    responseTime = 3;
+
+    var timer = setTimeout(function() {
+        errorCallback({
+            message: "timeout"
+        });
+    },
+    timeout);
+
+    var startTime = (new Date()).getTime();
+
+    var alias = this;
+
+    // It may be that getCurrentPosition is less reliable than startTracking ... but
+    // not sure if we want to be starting and stopping the tracker if we're not watching.
+    //new Mojo.Service.Request('palm://com.palm.location', {
+    navigator.service.Request('palm://com.palm.location', {
+        method: "getCurrentPosition",
+        parameters: {
+            responseTime: responseTime
+        },
+        onSuccess: function(event) {
+            alias.lastPosition = {
+                coords: {
+                    latitude: event.latitude,
+                    longitude: event.longitude,
+                    altitude: (event.altitude >= 0 ? event.altitude: null),
+                    speed: (event.velocity >= 0 ? event.velocity: null),
+                    heading: (event.heading >= 0 ? event.heading: null),
+                    accuracy: (event.horizAccuracy >= 0 ? event.horizAccuracy: null),
+                    altitudeAccuracy: (event.vertAccuracy >= 0 ? event.vertAccuracy: null)
+                },
+                timestamp: new Date().getTime()
+            };
+
+            var responseTime = alias.lastPosition.timestamp - startTime;
+            if (responseTime <= timeout)
+            {
+                clearTimeout(timer);
+                successCallback(alias.lastPosition);
+            }
+        },
         onFailure: function() {
-			errorCallback();
-		}
-	});
+            errorCallback();
+        }
+    });
 
 };
 
@@ -121,28 +124,28 @@ Geolocation.prototype.getCurrentPosition = function(successCallback, errorCallba
  * such as timeout and the frequency of the watch.
  */
 Geolocation.prototype.watchPosition = function(successCallback, errorCallback, options) {
-	// Invoke the appropriate callback with a new Position object every time the implementation 
-	// determines that the position of the hosting device has changed. 
-	
-	var frequency = 10000;
+    // Invoke the appropriate callback with a new Position object every time the implementation
+    // determines that the position of the hosting device has changed.
+    var frequency = 10000;
     if (typeof(options) == 'object' && options.frequency)
-        frequency = options.frequency;
+    frequency = options.frequency;
 
-	this.start(options, errorCallback);
-	
-	var referenceTime = 0;
-	if (this.lastPosition)
-		referenceTime = this.lastPosition.timestamp;
-		
-	var alias = this;
-	return setInterval(function() {
-		// check if we have a new position, if so call our successcallback
-		if (!alias.lastPosition)
-			return;
-	
-		if (alias.lastPosition.timestamp > referenceTime)
-			successCallback(alias.lastPosition);
-	}, frequency);
+    this.start(options, errorCallback);
+
+    var referenceTime = 0;
+    if (this.lastPosition)
+    referenceTime = this.lastPosition.timestamp;
+
+    var alias = this;
+    return setInterval(function() {
+        // check if we have a new position, if so call our successcallback
+        if (!alias.lastPosition)
+        return;
+
+        if (alias.lastPosition.timestamp > referenceTime)
+        successCallback(alias.lastPosition);
+    },
+    frequency);
 };
 
 
@@ -151,58 +154,57 @@ Geolocation.prototype.watchPosition = function(successCallback, errorCallback, o
  * @param {String} watchId The ID of the watch returned from #watchPosition.
  */
 Geolocation.prototype.clearWatch = function(watchId) {
-	clearInterval(watchId);
-	this.stop();
+    clearInterval(watchId);
+    this.stop();
 };
 
 Geolocation.prototype.start = function(options, errorCallback) {
-	//options.timeout;
-	//options.interval;
-	
-	if (typeof(errorCallback) != 'function')
-		errorCallback = function(){};
-	
-	var that = this;
-	var frequency = 10000;
-    if (typeof(options) == 'object' && options.frequency)
-        frequency = options.frequency;
+    //options.timeout;
+    //options.interval;
+    if (typeof(errorCallback) != 'function')
+    errorCallback = function() {};
 
-	var responseTime;
-	if (frequency <=5000)
-		responseTime = 1;
-	else if (5000 < frequency <= 20000)
-		responseTime = 2;
-	else
-		responseTime = 3;
-	
-	//location tracking does not support setting a custom interval :P
-	this.trackingHandle = new Mojo.Service.Request('palm://com.palm.location', {
-		method : 'startTracking',
+    var that = this;
+    var frequency = 10000;
+    if (typeof(options) == 'object' && options.frequency)
+    frequency = options.frequency;
+
+    var responseTime;
+    if (frequency <= 5000)
+    responseTime = 1;
+    else if (5000 < frequency <= 20000)
+    responseTime = 2;
+    else
+    responseTime = 3;
+
+    //location tracking does not support setting a custom interval :P
+    this.trackingHandle = navigator.service.Request('palm://com.palm.location', {
+        method: 'startTracking',
         parameters: {
-			subscribe: true
+            subscribe: true
         },
-        onSuccess: function(event) { 
-			that.lastPosition = { 
-				coords: { 
-					latitude: event.latitude, 
-					longitude: event.longitude, 
-					altitude: (event.altitude >= 0 ? event.altitude : null), 
-					speed: (event.velocity >= 0 ? event.velocity : null), 
-					heading: (event.heading >= 0 ? event.heading : null), 
-					accuracy: (event.horizAccuracy >= 0 ? event.horizAccuracy : null),
-					altitudeAccuracy: (event.vertAccuracy >= 0 ? event.vertAccuracy : null)
-				}, 
-				timestamp: new Date().getTime() 
-			};
-		},
+        onSuccess: function(event) {
+            that.lastPosition = {
+                coords: {
+                    latitude: event.latitude,
+                    longitude: event.longitude,
+                    altitude: (event.altitude >= 0 ? event.altitude: null),
+                    speed: (event.velocity >= 0 ? event.velocity: null),
+                    heading: (event.heading >= 0 ? event.heading: null),
+                    accuracy: (event.horizAccuracy >= 0 ? event.horizAccuracy: null),
+                    altitudeAccuracy: (event.vertAccuracy >= 0 ? event.vertAccuracy: null)
+                },
+                timestamp: new Date().getTime()
+            };
+        },
         onFailure: function() {
-			errorCallback();
-		}
+            errorCallback();
+        }
     });
 };
 
 Geolocation.prototype.stop = function() {
-	this.trackingHandle.cancel();
+    this.trackingHandle.cancel();
 };
 
 if (typeof navigator.geolocation == "undefined") navigator.geolocation = new Geolocation();

@@ -11,13 +11,9 @@ function DebugConsole() {
  */
 DebugConsole.prototype.log = function(message) {
 	if (typeof message == 'object')
-		message = Object.toJSON(message);
+		message = Object.toJSON(message);   
+		
 	this.error(message);
-	//this isn't working on the device
-	/*
-    if (typeof Mojo != 'undefined')
-		Mojo.Log.info(message);
-	*/
 };
 
 /*
@@ -26,13 +22,9 @@ DebugConsole.prototype.log = function(message) {
  */
 DebugConsole.prototype.warn = function(message) {
 	if (typeof message == 'object')
-		message = Object.toJSON(message);
+		message = Object.toJSON(message);    
+		
 	this.error(message);
-	//this isn't working on the device
-	/*
-    if (typeof Mojo != 'undefined')
-		Mojo.Log.warn(message);
-	*/
 };
 
 /**
@@ -42,8 +34,8 @@ DebugConsole.prototype.warn = function(message) {
 DebugConsole.prototype.error = function(message) {
 	if (typeof message == 'object')
 		message = Object.toJSON(message);
-    if (typeof Mojo != 'undefined')
-		Mojo.Log.error(message);
+ 
+	console.log(JSON.stringify(message));
 };
 
 if (typeof window.debug == "undefined") window.debug = new DebugConsole();

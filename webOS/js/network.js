@@ -6,7 +6,7 @@ function Network() {
 };
 
 Network.prototype.isReachable = function(hostName, successCallback, options) {
-	this.request = new Mojo.Service.Request('palm://com.palm.connectionmanager', {
+	this.request = navigator.service.Request('palm://com.palm.connectionmanager', {
 	    method: 'getstatus',
 	    parameters: {},
 	    onSuccess: function(result) { 

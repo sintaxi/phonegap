@@ -86,8 +86,7 @@
 <option value="localStorage_get_item_quick_example">      - Get Item Quick Example</option>
 <option value="localStorage_remove_item_quick_example">      - Remove Item Quick Example</option>
 <option value="localStorage_clear_quick_example">      - Clear Quick Example</option>
-<option value="localStorage_full_example">      - Full Example</option>
-<option value="localStorage_android_1_x_quirks">      - Android 1.X Quirks</option></select></small>
+<option value="localStorage_full_example">      - Full Example</option></select></small>
 		</div>
 
 		<div id="sidebar">
@@ -251,7 +250,7 @@
 <h2><a name="Database_transaction_quick_example">Transaction Quick Example</a></h2>
 
 <pre class="prettyprint"><code>function populateDB(tx) {
-     tx.executeSql('DROP TABLE DEMO');
+     tx.executeSql('DROP TABLE IF EXISTS DEMO');
      tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
      tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
      tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
@@ -302,7 +301,7 @@ db.changeVersion("1.0", "1.1");
     // Populate the database 
     //
     function populateDB(tx) {
-         tx.executeSql('DROP TABLE DEMO');
+         tx.executeSql('DROP TABLE IF EXISTS DEMO');
          tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
          tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
          tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
@@ -360,7 +359,7 @@ db.changeVersion("1.0", "1.1");
 <h2><a name="SQLTransaction_execute_sql_quick_example">Execute SQL Quick Example</a></h2>
 
 <pre class="prettyprint"><code>function populateDB(tx) {
-     tx.executeSql('DROP TABLE DEMO');
+     tx.executeSql('DROP TABLE IF EXISTS DEMO');
      tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
      tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
      tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
@@ -405,7 +404,7 @@ db.transaction(populateDB, errorCB, successCB);
     // Populate the database 
     //
     function populateDB(tx) {
-         tx.executeSql('DROP TABLE DEMO');
+         tx.executeSql('DROP TABLE IF EXISTS DEMO');
          tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
          tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
          tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
@@ -501,7 +500,7 @@ db.transaction(queryDB, errorCB);
     // Populate the database 
     //
     function populateDB(tx) {
-        tx.executeSql('DROP TABLE DEMO');
+        tx.executeSql('DROP TABLE IF EXISTS DEMO');
         tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
@@ -623,7 +622,7 @@ db.transaction(queryDB, errorCB);
     // Populate the database 
     //
     function populateDB(tx) {
-        tx.executeSql('DROP TABLE DEMO');
+        tx.executeSql('DROP TABLE IF EXISTS DEMO');
         tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
@@ -803,16 +802,10 @@ db.transaction(queryDB, errorCB);
 &lt;/html&gt;
 </code></pre>
 
-<h2><a name="localStorage_android_1_x_quirks">Android 1.X Quirks</a></h2>
-
-<ul>
-<li>
-<strong>key:</strong> This method is not support by Android 1.X devices.</li>
-<li>
-<strong>clear:</strong> This method is not support by Android 1.X devices.</li>
-</ul>
-</div>
+    		</div>
 		</div>
 
-	</body>
+		<!-- KISSinsights -->
+		<script type="text/javascript">var _kiq = _kiq || [];</script><script type="text/javascript" src="//s3.amazonaws.com/ki.js/12652/2gs.js" async="true"></script>
+</body>
 </html>
