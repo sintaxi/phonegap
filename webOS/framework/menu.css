@@ -1,0 +1,36 @@
+#menu {
+	display: none;
+	width: 80%;
+	padding: 0;
+	background: #c4c5c6;
+	border: 2px solid #000;
+	position: absolute;
+	z-index: 5;
+	top: -2px;
+	left: -2px;
+	-webkit-border-radius: 23px;
+}
+#menu a {
+	display: block;
+	margin: 0;
+	padding: 8px 23px;
+	font-size: 18px;
+	font-weight: bold;
+	border-top: 1px solid rgba(255, 255, 255, .4);
+	border-bottom: 1px solid rgba(0, 0, 0, .4);
+}
+#menu a:last-child {
+	margin-bottom: 0;
+	border-bottom: none;
+}
+#menu a:first-child {
+	border-top: none;
+	margin-top: 0;
+}
+hr {
+	margin: 0;
+	padding: 0;
+	border: none;
+	border-top: 2px solid rgba(0, 0, 0, .8);
+}
+#info, #net { display: none; }

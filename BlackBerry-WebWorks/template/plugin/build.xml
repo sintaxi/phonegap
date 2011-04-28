@@ -1,0 +1,92 @@
+<project name="Package PhoneGap BlackBerry WebWorks Plugin" default="help">
+
+    <!-- LOAD PROPERTIES -->
+
+    <property prefix="properties"    file="plugin.properties" />
+    <property name="input.jar.src"   value="src" />
+    <property name="input.www.dir"   value="www" />
+    <property name="output.dir"      value="build" />
+    <property name="output.jar.dir"  value="${output.dir}/www/ext" />
+    <property name="output.jar.file" value="${properties.plugin.name}.jar" />
+    <property name="output.www.dir"  value="${output.dir}/www" />
+
+    <!-- BUILD -->
+
+    <target name="build" depends="clean">
+        <!-- create build directories -->
+        <mkdir dir="${output.dir}" />
+        <mkdir dir="${output.jar.dir}" />
+        <mkdir dir="${output.www.dir}" />
+
+        <!-- build jar -->
+        <zip compress="false"
+             destfile="${output.jar.dir}/${output.jar.file}"
+             basedir="${input.jar.src}"
+             excludes="**/build/**,**/.settings/**,**/.project" />
+
+        <!-- copy www assets -->
+        <copy todir="${output.www.dir}">
+            <fileset dir="${input.www.dir}" />
+        </copy>
+
+        <echo>
+Plugin Package Complete!
+========================
+
+Where:
+------
+
+  ./${output.www.dir}
+  ./${output.jar.dir}
+
+Installation:
+-------------
+
+  1. If you have a project at /my_project/
+
+  2. Install the native extension:
+
+    - copy ./${output.jar.dir}/${output.jar.file} to /my_project/www/ext/
+
+  3. Install the Web assets:
+
+    - copy ./${output.www.dir} to /my_project/www
+        </echo>
+    </target>
+
+    <!-- CLEAN -->
+
+    <target name="clean">
+        <delete dir="${output.dir}" />
+    </target>
+
+    <!-- HELP -->
+
+    <target name="help">
+        <echo>
+NAME
+  ${ant.project.name}
+
+SYNOPSIS
+  ant COMMAND [-D&lt;argument&gt;=&lt;value&gt;]...
+
+DESCRIPTION
+  You can package your plugin for use in PhoneGap BlackBerry WebWorks projects.
+
+COMMANDS
+  help .............. Show this help menu.
+                        ant, ant help
+
+  build ............. Packages plugin source into Java archive file.
+                        ant build
+
+  clean ............. Remove existing archive file.
+                        ant clean
+
+GETTING STARTED
+  1. Edit plugin.properties to give your plugin a name
+
+  2. &lt;ant build&gt; to package your plugin for distribution
+        </echo>
+    </target>
+</project>
