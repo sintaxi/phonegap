@@ -1,0 +1,37 @@
+Justin Tyberg (26):
+      Replace org.json.me JSON Java implementation.
+      Add PhoneGap.extend() function for implementing classical inheritance pattern.
+      Add PluginResult constructor.
+      Add support for W3C File API: Directories and System specification:
+      Remove override of 'touchstart' event with 'click' event.
+      Update README.md.
+      Propagate resume and pause events from PhoneGap JavaScript to PhoneGap     native extension.
+      Move file path normalizing method to FileUtils class.
+      Add support for null Java values to JSONObject.
+      Add JS closure to device.js to avoid creating global Device object.
+      Add ApplicationUtils class.
+      Add media capture support.
+      Add util method to LocalFileSystem to check if path is root file system     path.  Makes for cleaner JavaScript when removing directories.
+      Media capture: eliminate duplicate image capture modes in     navigator.device.capture.supportedImageModes.
+      Add capability for plugins to delay onDeviceReady until after they     have initialized themselves.
+      Cleanup PhoneGap base JS.  Keep from loading more than once.
+      Cleanup accelerometer.js.
+      Cleanup camera.js.
+      Cleanup contact.js.
+      Keep navigator.device object from being defined more than once.
+      Cleanup file.js.
+      Cleanup filetransfer.js.
+      Keep navigator.device.capture from being defined more than once.
+      Cleanup network.js.
+      Cleanup notification.js.
+      Cleanup geolocation.js.
+
+Michael Brooks (4):
+      Update project script to allow closing the simulator.
+      Update project script to close simulator before load-simulator.
+      18 - Bypass access feature defined by the config.xml
+      Update formatting of config.xml
+
+unknown (1):
+      Update FileReader read method signatures to match W3C File API spec.
+

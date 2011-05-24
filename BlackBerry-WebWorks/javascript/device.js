@@ -15,13 +15,6 @@
  */
 (function() {
     /**
-     * Check that navigator.device has not been initialized.
-     */
-    if (typeof navigator.device !== "undefined") {
-        return;
-    }
-    
-    /**
      * @constructor
      */
     function Device() {
@@ -36,7 +29,18 @@
      * Define navigator.device.
      */
     PhoneGap.addConstructor(function() {
-        navigator.device = window.device = new Device();
+        window.device = new Device();
+
+        /* Newer BlackBerry 6 devices now define `navigator.device` */
+        if (typeof navigator.device === 'undefined') {
+            navigator.device = {};
+        }
+
+        /* Add PhoneGap device properties */
+        for (var key in window.device) {
+            navigator.device[key] = window.device[key];
+        }
+
         PhoneGap.onPhoneGapInfoReady.fire();
     });
 }());

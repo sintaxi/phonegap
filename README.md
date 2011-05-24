@@ -17,18 +17,19 @@ Community
 - [Facebook](http://facebook.com/phonegap)
 - [Wiki](http://wiki.phonegap.com/)
 - [Mailing List](http://groups.google.com/group/phonegap)
-- [Issue Tracker](http://wiki.phonegap.com/) -> Issue tracker section
+- [Issue Tracker](http://wiki.phonegap.com/#issue) -> Issue tracker section
 - [IRC](http://webchat.freenode.net/?channels=#phonegap)
 
 Directory Structure
 -------------------
 
     Android .............. PhoneGap for Android
-    BlackBerry-WebWorks .... PhoneGap for BlackBerry 5.0 and 6.0
+    BlackBerry-WebWorks .. PhoneGap for BlackBerry 5.0 and 6.0
     Documentation ........ PhoneGap API Documentation
     Symbian .............. PhoneGap for Symbian
     iOS .................. PhoneGap for iOS
     webOS ................ PhoneGap for Palm
+	Bada ................. PhoneGap for Bada
     
 License
 -------

@@ -51,8 +51,7 @@
 <option value="reachableCallback_blackberry_quirks">      - BlackBerry Quirks</option>
 <option value="reachableCallback_iphone_quirks">      - iPhone Quirks</option>
 <option value="reachableHostname">reachableHostname</option>
-<option value="reachableOptions">reachableOptions</option>
-<option value="reachableOptions_options">      - Options</option></select></small>
+<option value="reachableOptions">reachableOptions</option></select></small>
 		</div>
 
 		<div id="sidebar">
@@ -61,6 +60,7 @@
 			<ul>
 <li><a href="phonegap_accelerometer_accelerometer.md.html">Accelerometer</a></li>
 				<li><a href="phonegap_camera_camera.md.html">Camera</a></li>
+				<li><a href="phonegap_media_capture_capture.md.html">Capture</a></li>
 				<li><a href="phonegap_compass_compass.md.html">Compass</a></li>
 				<li><a href="phonegap_contacts_contacts.md.html">Contacts</a></li>
 				<li><a href="phonegap_device_device.md.html">Device</a></li>
@@ -249,7 +249,13 @@ navigator.<a href="phonegap_network_network.md.html#network.isReachable">network
 
 <h2><a name="reachableCallback_iphone_quirks">iPhone Quirks</a></h2>
 
-<p>The iPhone implementation only provides information about the type of connection available. It does not verify that the host is actually available.</p>
+<p>The iPhone implementation only provides information about the type of connection available. It does not verify that the host is actually available. </p>
+
+<pre class="prettyprint"><code>function <a href="phonegap_network_network.md.html#reachableCallback">reachableCallback</a>(reachability) {
+    var networkState = reachability.code;
+    alert('Connection type: ' + networkState + ' - ' + reachability.message);
+}
+</code></pre>
 
 <hr>
 <h1><a name="reachableHostname">reachableHostname</a></h1>
@@ -268,18 +274,9 @@ var hostname = 'localhost';
 <hr>
 <h1><a name="reachableOptions">reachableOptions</a></h1>
 
-<p>An optional parameter to customize the type of reachability call.</p>
+<p>None.</p>
 
-<pre class="prettyprint"><code>{ isIpAddress: false };
-</code></pre>
-
-<h2><a name="reachableOptions_options">Options</a></h2>
-
-<ul>
-<li>
-<strong>isIpAddress:</strong> Specifies whether the <a href="phonegap_network_network.md.html#reachableHostname">reachableHostname</a> is an IP Address. (<code>Boolean</code>) (Default: <code>false</code>)</li>
-</ul>
-</div>
+    		</div>
 		</div>
 
 		<!-- KISSinsights -->
