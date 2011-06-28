@@ -75,6 +75,7 @@
 				<li><a href="phonegap_camera_camera.md.html">Camera</a></li>
 				<li><a href="phonegap_media_capture_capture.md.html">Capture</a></li>
 				<li><a href="phonegap_compass_compass.md.html">Compass</a></li>
+				<li><a href="phonegap_connection_connection.md.html">Connection</a></li>
 				<li><a href="phonegap_contacts_contacts.md.html">Contacts</a></li>
 				<li><a href="phonegap_device_device.md.html">Device</a></li>
 				<li><a href="phonegap_events_events.md.html">Events</a></li>
@@ -157,8 +158,7 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.ge
 
 <h2><a name="accelerometer.getCurrentAcceleration_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Example&lt;/title&gt;
@@ -168,9 +168,7 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.ge
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -195,7 +193,7 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.ge
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;h1&gt;Example&lt;/h1&gt;
     &lt;p&gt;getCurrentAcceleration&lt;/p&gt;
   &lt;/body&gt;
@@ -254,8 +252,7 @@ var watchID = navigator.<a href="phonegap_accelerometer_accelerometer.md.html#ac
 
 <h2><a name="accelerometer.watchAcceleration_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Example&lt;/title&gt;
@@ -268,9 +265,7 @@ var watchID = navigator.<a href="phonegap_accelerometer_accelerometer.md.html#ac
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -315,7 +310,7 @@ var watchID = navigator.<a href="phonegap_accelerometer_accelerometer.md.html#ac
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;div id="accelerometer"&gt;Waiting for accelerometer...&lt;/div&gt;
   &lt;/body&gt;
 &lt;/html&gt;
@@ -361,8 +356,7 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.cl
 
 <h2><a name="accelerometer.clearWatch_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Example&lt;/title&gt;
@@ -375,9 +369,7 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.cl
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -422,7 +414,7 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.cl
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;div id="accelerometer"&gt;Waiting for accelerometer...&lt;/div&gt;
     &lt;button onclick="stopWatch();"&gt;Stop Watching&lt;/button&gt;
   &lt;/body&gt;
@@ -475,8 +467,7 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.ge
 
 <h2><a name="Acceleration_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Example&lt;/title&gt;
@@ -486,9 +477,7 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.ge
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -513,7 +502,7 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.ge
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;h1&gt;Example&lt;/h1&gt;
     &lt;p&gt;getCurrentAcceleration&lt;/p&gt;
   &lt;/body&gt;

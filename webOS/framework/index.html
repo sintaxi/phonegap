@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 
 <!--
 
@@ -17,7 +16,18 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>PhoneGap WebOS</title>
 	
-	<script type="text/javascript" src="phonegap.js"></script>
+	<link rel="stylesheet" href="jqtouch/jqtouch.css" />
+	<link rel="stylesheet" href="jqtouch/themes/default/theme.css" />
+	<link rel="stylesheet" href="css/main.css" />
+	
+	
+	<script type="text/javascript" src="phonegap.js"></script>   
+	<script type="text/javascript">
+		// create global var for sqlite database instance
+		var db;
+	</script>
+	
+	
 	<link rel="stylesheet" type="text/css" href="menu.css">
 	
 </head>
@@ -34,6 +44,7 @@
 	<a onclick="launchmap()">Launch Map App</a>
 	<a onclick="navigator.window.newCard('about:blank', '<html><body>Hello again!</body></html>');menu(false);">Launch New Card</a>
 	<a onclick="getPicture();">Launch Camera</a>
+	<a onclick="storage();">Storage Tests</a>
 	<a onclick="menu(false);">Done</a>
 </div>
 
@@ -53,8 +64,7 @@
 	<input type="button" onclick="displayCurrentOrientation();" value="Get Current Orientation">  
 	
 	<p>navigator.notification.alert();</p>
-	<input type="button" onclick="navigator.notification.alert('alert');" value="Show Alert">      
-	
+	<input type="button" onclick="navigator.notification.alert('alert');" value="Show Alert">    
 	
 </div>
 
@@ -62,14 +72,55 @@
 
 <div id="net"></div>
 
-<div id="camera"></div>
+<div id="camera"></div> 
 
-<script>
+<div id="storage" style="display: none">
+	<p>storage tests</p>
+	<input type="button" onclick="createDB();" value="Test SQLite DB"> 
+	<div id="storageResults"></div>
+</div>
 
+<script>                         
+document.addEventListener('deviceready', function () {
+    // PhoneGap is ready, do all your stuf here
+}, false);
 
-var phonegap = new PhoneGap();
-//must call this to let the device know that the app is ready
-navigator.device.deviceReady();
+function createDB() {  
+	document.getElementById('storageResults').innerHTML = '';
+	db = window.openDatabase("test", "1.0", "Test DB", false);
+	db.transaction(populateDB, errorCB, successCB);
+}
+
+function populateDB(tx) {
+	tx.executeSql('DROP TABLE IF EXISTS DEMO');
+	tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
+	tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
+	tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
+}
+
+function errorCB(tx, err) {
+	navigator.notification.alert("error: " + err);
+}
+
+function successCB() {
+	navigator.notification.alert('successfully created & populated');  
+	db.transaction(queryDB, errorCB);
+}
+
+function queryDB(tx) {
+	tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorCB);
+}
+
+function querySuccess(tx, results) {     
+	var len = results.rows.length;
+	navigator.notification.alert('rows inserted: ' + len);
+	
+	if (len > 0) {
+		for (var i=0;i<len;i++) {
+			navigator.notification.alert('id: ' + results.rows.item(i).id + ' data: ' + results.rows.item(i).data);
+		}
+	}
+}
 
 function dashboard() {
     navigator.notification.newDashboard("dashboard.html");
@@ -79,6 +130,10 @@ function info() {
 	var deviceinfo = JSON.stringify(navigator.device.getDeviceInfo()).replace(/,/g, ', ');
 	page('info');
 	lastpage.innerHTML = deviceinfo;
+}
+              
+function storage() {
+	page('storage');
 }
 
 function net() {
@@ -154,6 +209,7 @@ function launchmap() {
 }
 
 var lastpage = document.getElementById('screen');
+
 function page(id) {
 	lastpage.style.display = 'none';
 	lastpage = document.getElementById(id);

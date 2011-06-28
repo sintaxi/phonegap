@@ -128,6 +128,7 @@
 				<li><a href="phonegap_camera_camera.md.html">Camera</a></li>
 				<li><a href="phonegap_media_capture_capture.md.html">Capture</a></li>
 				<li><a href="phonegap_compass_compass.md.html">Compass</a></li>
+				<li><a href="phonegap_connection_connection.md.html">Connection</a></li>
 				<li><a href="phonegap_contacts_contacts.md.html">Contacts</a></li>
 				<li><a href="phonegap_device_device.md.html">Device</a></li>
 				<li><a href="phonegap_events_events.md.html">Events</a></li>
@@ -205,8 +206,7 @@
 
 <h2><a name="contacts.create_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
@@ -216,9 +216,7 @@
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -231,7 +229,7 @@
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;h1&gt;Example&lt;/h1&gt;
     &lt;p&gt;Create <a href="phonegap_contacts_contacts.md.html#Contact">Contact</a>&lt;/p&gt;
   &lt;/body&gt;
@@ -292,8 +290,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
 <h2><a name="contacts.find_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
@@ -303,9 +300,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -333,7 +328,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;h1&gt;Example&lt;/h1&gt;
     &lt;p&gt;Find <a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a>&lt;/p&gt;
   &lt;/body&gt;
@@ -478,8 +473,7 @@ contact.remove(onSuccess,onError);
 
 <h2><a name="Contact_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
@@ -489,9 +483,7 @@ contact.remove(onSuccess,onError);
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -544,7 +536,7 @@ contact.remove(onSuccess,onError);
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;h1&gt;Example&lt;/h1&gt;
     &lt;p&gt;Find <a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a>&lt;/p&gt;
   &lt;/body&gt;
@@ -700,8 +692,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
 <h2><a name="ContactAddress_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
@@ -711,9 +702,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -749,7 +738,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;h1&gt;Example&lt;/h1&gt;
     &lt;p&gt;Find <a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a>&lt;/p&gt;
   &lt;/body&gt;
@@ -841,8 +830,7 @@ contact.save();
 
 <h2><a name="ContactField_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
@@ -852,9 +840,7 @@ contact.save();
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -900,7 +886,7 @@ contact.save();
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;h1&gt;Example&lt;/h1&gt;
     &lt;p&gt;Find <a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a>&lt;/p&gt;
   &lt;/body&gt;
@@ -977,8 +963,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
 <h2><a name="ContactFindOptions_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
@@ -988,9 +973,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -1021,7 +1004,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;h1&gt;Example&lt;/h1&gt;
     &lt;p&gt;Find <a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a>&lt;/p&gt;
   &lt;/body&gt;
@@ -1103,8 +1086,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
 <h2><a name="ContactName_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
@@ -1114,9 +1096,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -1148,7 +1128,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;h1&gt;Example&lt;/h1&gt;
     &lt;p&gt;Find <a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a>&lt;/p&gt;
   &lt;/body&gt;
@@ -1236,8 +1216,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
 <h2><a name="ContactOrganization_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
@@ -1247,9 +1226,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -1280,7 +1257,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;h1&gt;Example&lt;/h1&gt;
     &lt;p&gt;Find <a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a>&lt;/p&gt;
   &lt;/body&gt;

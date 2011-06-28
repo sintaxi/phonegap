@@ -148,6 +148,7 @@ File System Quick Example</option>
 				<li><a href="phonegap_camera_camera.md.html">Camera</a></li>
 				<li><a href="phonegap_media_capture_capture.md.html">Capture</a></li>
 				<li><a href="phonegap_compass_compass.md.html">Compass</a></li>
+				<li><a href="phonegap_connection_connection.md.html">Connection</a></li>
 				<li><a href="phonegap_contacts_contacts.md.html">Contacts</a></li>
 				<li><a href="phonegap_device_device.md.html">Device</a></li>
 				<li><a href="phonegap_events_events.md.html">Events</a></li>
@@ -351,8 +352,7 @@ entry.file(win, fail);
 
 <h2><a name="FileReader_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_file_file.md.html#FileReader">FileReader</a> Example&lt;/title&gt;
@@ -409,7 +409,7 @@ entry.file(win, fail);
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;h1&gt;Example&lt;/h1&gt;
     &lt;p&gt;Read <a href="phonegap_file_file.md.html#File">File</a>&lt;/p&gt;
   &lt;/body&gt;
@@ -566,8 +566,7 @@ entry.createWriter(win, fail);
 
 <h2><a name="FileWriter_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_file_file.md.html#FileWriter">FileWriter</a> Example&lt;/title&gt;
@@ -577,9 +576,7 @@ entry.createWriter(win, fail);
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -615,7 +612,7 @@ entry.createWriter(win, fail);
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;h1&gt;Example&lt;/h1&gt;
     &lt;p&gt;Write <a href="phonegap_file_file.md.html#File">File</a>&lt;/p&gt;
   &lt;/body&gt;
@@ -662,8 +659,7 @@ window.requestFileSystem(<a href="phonegap_file_file.md.html#LocalFileSystem">Lo
 
 <h2><a name="FileSystem_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_file_file.md.html#File">File</a> System Example&lt;/title&gt;
@@ -673,9 +669,7 @@ window.requestFileSystem(<a href="phonegap_file_file.md.html#LocalFileSystem">Lo
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -694,7 +688,7 @@ window.requestFileSystem(<a href="phonegap_file_file.md.html#LocalFileSystem">Lo
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;h1&gt;Example&lt;/h1&gt;
     &lt;p&gt;<a href="phonegap_file_file.md.html#File">File</a> System&lt;/p&gt;
   &lt;/body&gt;
@@ -1483,9 +1477,7 @@ ft.upload(fileURI, "http://some.server.com/upload.php", win, fail, options);
 
         // Wait for PhoneGap to load
         //
-        function onLoad() {
-            document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-        }
+        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
         // PhoneGap is ready
         //
@@ -1529,7 +1521,7 @@ ft.upload(fileURI, "http://some.server.com/upload.php", win, fail, options);
 
         &lt;/script&gt;
 &lt;/head&gt;
-&lt;body onload="onLoad()"&gt;
+&lt;body&gt;
     &lt;h1&gt;Example&lt;/h1&gt;
     &lt;p&gt;Upload <a href="phonegap_file_file.md.html#File">File</a>&lt;/p&gt;
 &lt;/body&gt;
@@ -1667,8 +1659,7 @@ window.resolveLocalFileSystemURI("file:///example.txt", onSuccess, onError);
 
 <h2><a name="LocalFileSystem_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;Local <a href="phonegap_file_file.md.html#File">File</a> System Example&lt;/title&gt;
@@ -1678,9 +1669,7 @@ window.resolveLocalFileSystemURI("file:///example.txt", onSuccess, onError);
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -1703,7 +1692,7 @@ window.resolveLocalFileSystemURI("file:///example.txt", onSuccess, onError);
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;h1&gt;Example&lt;/h1&gt;
     &lt;p&gt;Local <a href="phonegap_file_file.md.html#File">File</a> System&lt;/p&gt;
   &lt;/body&gt;

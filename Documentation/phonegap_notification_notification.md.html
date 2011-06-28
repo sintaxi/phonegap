@@ -66,6 +66,7 @@
 				<li><a href="phonegap_camera_camera.md.html">Camera</a></li>
 				<li><a href="phonegap_media_capture_capture.md.html">Capture</a></li>
 				<li><a href="phonegap_compass_compass.md.html">Compass</a></li>
+				<li><a href="phonegap_connection_connection.md.html">Connection</a></li>
 				<li><a href="phonegap_contacts_contacts.md.html">Contacts</a></li>
 				<li><a href="phonegap_device_device.md.html">Device</a></li>
 				<li><a href="phonegap_events_events.md.html">Events</a></li>
@@ -150,8 +151,7 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.alert
 
 <h2><a name="notification.alert_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
@@ -161,9 +161,7 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.alert
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -189,7 +187,7 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.alert
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;p&gt;&lt;a href="#" onclick="showAlert(); return false;"&gt;Show Alert&lt;/a&gt;&lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
@@ -245,8 +243,7 @@ function showConfirm() {
 
 <h2><a name="notification.confirm_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
@@ -256,9 +253,7 @@ function showConfirm() {
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -284,7 +279,7 @@ function showConfirm() {
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;p&gt;&lt;a href="#" onclick="showConfirm(); return false;"&gt;Show Confirm&lt;/a&gt;&lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
@@ -318,8 +313,7 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.beep"
 
 <h2><a name="notification.beep_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
@@ -329,9 +323,7 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.beep"
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -363,7 +355,7 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.beep"
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;p&gt;&lt;a href="#" onclick="showAlert(); return false;"&gt;Show Alert&lt;/a&gt;&lt;/p&gt;
     &lt;p&gt;&lt;a href="#" onclick="playBeep(); return false;"&gt;Play Beep&lt;/a&gt;&lt;/p&gt;
     &lt;p&gt;&lt;a href="#" onclick="vibrate(); return false;"&gt;Vibrate&lt;/a&gt;&lt;/p&gt;
@@ -417,8 +409,7 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.vibra
 
 <h2><a name="notification.vibrate_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
@@ -428,9 +419,7 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.vibra
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -462,7 +451,7 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.vibra
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;p&gt;&lt;a href="#" onclick="showAlert(); return false;"&gt;Show Alert&lt;/a&gt;&lt;/p&gt;
     &lt;p&gt;&lt;a href="#" onclick="playBeep(); return false;"&gt;Play Beep&lt;/a&gt;&lt;/p&gt;
     &lt;p&gt;&lt;a href="#" onclick="vibrate(); return false;"&gt;Vibrate&lt;/a&gt;&lt;/p&gt;

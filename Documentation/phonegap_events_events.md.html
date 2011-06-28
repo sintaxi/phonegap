@@ -46,6 +46,11 @@
 <option value="deviceready_quick_example">      - Quick Example</option>
 <option value="deviceready_full_example">      - Full Example</option>
 <option value="deviceready_blackberry_os_4_6_quirks">      - BlackBerry (OS 4.6) Quirks</option>
+<option value="menubutton">menubutton</option>
+<option value="menubutton_details">      - Details</option>
+<option value="menubutton_supported_platforms">      - Supported Platforms</option>
+<option value="menubutton_quick_example">      - Quick Example</option>
+<option value="menubutton_full_example">      - Full Example</option>
 <option value="pause">pause</option>
 <option value="pause_details">      - Details</option>
 <option value="pause_supported_platforms">      - Supported Platforms</option>
@@ -56,7 +61,24 @@
 <option value="resume_details">      - Details</option>
 <option value="resume_supported_platforms">      - Supported Platforms</option>
 <option value="resume_quick_example">      - Quick Example</option>
-<option value="resume_full_example">      - Full Example</option></select></small>
+<option value="resume_full_example">      - Full Example</option>
+<option value="online">online</option>
+<option value="online_details">      - Details</option>
+<option value="online_supported_platforms">      - Supported Platforms</option>
+<option value="online_quick_example">      - Quick Example</option>
+<option value="online_full_example">      - Full Example</option>
+<option value="online_ios_quirks">      - iOS Quirks</option>
+<option value="offline">offline</option>
+<option value="offline_details">      - Details</option>
+<option value="offline_supported_platforms">      - Supported Platforms</option>
+<option value="offline_quick_example">      - Quick Example</option>
+<option value="offline_full_example">      - Full Example</option>
+<option value="offline_ios_quirks">      - iOS Quirks</option>
+<option value="searchbutton">searchbutton</option>
+<option value="searchbutton_details">      - Details</option>
+<option value="searchbutton_supported_platforms">      - Supported Platforms</option>
+<option value="searchbutton_quick_example">      - Quick Example</option>
+<option value="searchbutton_full_example">      - Full Example</option></select></small>
 		</div>
 
 		<div id="sidebar">
@@ -67,6 +89,7 @@
 				<li><a href="phonegap_camera_camera.md.html">Camera</a></li>
 				<li><a href="phonegap_media_capture_capture.md.html">Capture</a></li>
 				<li><a href="phonegap_compass_compass.md.html">Compass</a></li>
+				<li><a href="phonegap_connection_connection.md.html">Connection</a></li>
 				<li><a href="phonegap_contacts_contacts.md.html">Contacts</a></li>
 				<li><a href="phonegap_device_device.md.html">Device</a></li>
 				<li><a href="phonegap_events_events.md.html">Events</a></li>
@@ -96,8 +119,12 @@
 <ul>
 <li><a href="phonegap_events_events.md.html#backbutton">backbutton</a></li>
 <li><a href="phonegap_events_events.md.html#deviceready">deviceready</a></li>
+<li><a href="phonegap_events_events.md.html#menubutton">menubutton</a></li>
 <li><a href="phonegap_events_events.md.html#pause">pause</a></li>
 <li><a href="phonegap_events_events.md.html#resume">resume</a></li>
+<li><a href="phonegap_events_events.md.html#searchbutton">searchbutton</a></li>
+<li><a href="phonegap_events_events.md.html#online">online</a></li>
+<li><a href="phonegap_events_events.md.html#offline">offline</a></li>
 </ul>
 <hr>
 <h1><a name="backbutton">backbutton</a></h1>
@@ -129,8 +156,7 @@ function onBackKeyDown() {
 
 <h2><a name="backbutton_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;PhoneGap <a href="phonegap_device_device.md.html#Device">Device</a> Ready Example&lt;/title&gt;
@@ -144,9 +170,7 @@ function onBackKeyDown() {
     // When PhoneGap is loaded and talking with the native device,
     // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
     // 
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
     //
@@ -162,7 +186,7 @@ function onBackKeyDown() {
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
@@ -203,8 +227,7 @@ function onDeviceReady() {
 
 <h2><a name="deviceready_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;PhoneGap <a href="phonegap_device_device.md.html#Device">Device</a> Ready Example&lt;/title&gt;
@@ -218,9 +241,7 @@ function onDeviceReady() {
     // When PhoneGap is loaded and talking with the native device,
     // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
     // 
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
     //
@@ -230,7 +251,7 @@ function onDeviceReady() {
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
@@ -259,6 +280,74 @@ function onDeviceReady() {
 function onDeviceReady() {
     // Now safe to use the PhoneGap API
 }
+</code></pre>
+
+<hr>
+<h1><a name="menubutton">menubutton</a></h1>
+
+<p>This is an event that fires when the user presses the menu button on Android.</p>
+
+<pre class="prettyprint"><code>document.addEventListener("<a href="phonegap_events_events.md.html#menubutton">menubutton</a>", yourCallbackFunction, false);
+</code></pre>
+
+<h2><a name="menubutton_details">Details</a></h2>
+
+<p>If you need to over ride the default menu button behaviour on Android you can register and event listenter for the '<a href="phonegap_events_events.md.html#menubutton">menubutton</a>' event.</p>
+
+<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the PhoneGap '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
+
+<h2><a name="menubutton_supported_platforms">Supported Platforms</a></h2>
+
+<ul>
+<li>Android</li>
+</ul>
+<h2><a name="menubutton_quick_example">Quick Example</a></h2>
+
+<pre class="prettyprint"><code>document.addEventListener("<a href="phonegap_events_events.md.html#menubutton">menubutton</a>", onMenuKeyDown, false);
+
+function onMenuKeyDown() {
+    // Handle the back buton
+}
+</code></pre>
+
+<h2><a name="menubutton_full_example">Full Example</a></h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;PhoneGap <a href="phonegap_device_device.md.html#Device">Device</a> Ready Example&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Call onDeviceReady when PhoneGap is loaded.
+    //
+    // At this point, the document has loaded but phonegap.js has not.
+    // When PhoneGap is loaded and talking with the native device,
+    // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
+    // 
+    function onLoad() {
+        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    }
+
+    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    //
+    function onDeviceReady() {
+        // Register the event listener
+        document.addEventListener("<a href="phonegap_events_events.md.html#menubutton">menubutton</a>", onMenuKeyDown, false);
+    }
+
+    // Handle the menu button
+    //
+    function onMenuKeyDown() {
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body onload="onLoad()"&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
 
 <hr>
@@ -293,8 +382,7 @@ function onPause() {
 
 <h2><a name="pause_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;PhoneGap <a href="phonegap_device_device.md.html#Device">Device</a> Ready Example&lt;/title&gt;
@@ -308,9 +396,7 @@ function onPause() {
     // When PhoneGap is loaded and talking with the native device,
     // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
     // 
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
     //
@@ -325,7 +411,7 @@ function onPause() {
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
@@ -366,6 +452,210 @@ function onResume() {
 
 <h2><a name="resume_full_example">Full Example</a></h2>
 
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;PhoneGap <a href="phonegap_device_device.md.html#Device">Device</a> Ready Example&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Call onDeviceReady when PhoneGap is loaded.
+    //
+    // At this point, the document has loaded but phonegap.js has not.
+    // When PhoneGap is loaded and talking with the native device,
+    // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
+    // 
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    //
+    function onDeviceReady() {
+        document.addEventListener("<a href="phonegap_events_events.md.html#resume">resume</a>", onResume, false);
+    }
+
+    // Handle the <a href="phonegap_events_events.md.html#resume">resume</a> event
+    //
+    function onResume() {
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="online">online</a></h1>
+
+<p>This is an event that fires when a PhoneGap application is <a href="phonegap_events_events.md.html#online">online</a> (connected to the Internet).</p>
+
+<pre class="prettyprint"><code>document.addEventListener("<a href="phonegap_events_events.md.html#online">online</a>", yourCallbackFunction, false);
+</code></pre>
+
+<h2><a name="online_details">Details</a></h2>
+
+<p>When the application's network connection changes to being <a href="phonegap_events_events.md.html#online">online</a>, the <a href="phonegap_events_events.md.html#online">online</a> event is fired.  </p>
+
+<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the PhoneGap '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
+
+<h2><a name="online_supported_platforms">Supported Platforms</a></h2>
+
+<ul>
+<li>iOS</li>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+</ul>
+<h2><a name="online_quick_example">Quick Example</a></h2>
+
+<pre class="prettyprint"><code>document.addEventListener("<a href="phonegap_events_events.md.html#online">online</a>", onOnline, false);
+
+function onOnline() {
+    // Handle the <a href="phonegap_events_events.md.html#online">online</a> event
+}
+</code></pre>
+
+<h2><a name="online_full_example">Full Example</a></h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;PhoneGap <a href="phonegap_device_device.md.html#Device">Device</a> Ready Example&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Call onDeviceReady when PhoneGap is loaded.
+    //
+    // At this point, the document has loaded but phonegap.js has not.
+    // When PhoneGap is loaded and talking with the native device,
+    // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
+    // 
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    //
+    function onDeviceReady() {
+        document.addEventListener("<a href="phonegap_events_events.md.html#online">online</a>", onOnline, false);
+    }
+
+    // Handle the <a href="phonegap_events_events.md.html#online">online</a> event
+    //
+    function onOnline() {
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2><a name="online_ios_quirks">iOS Quirks</a></h2>
+
+<p>During initial startup, the first <a href="phonegap_events_events.md.html#online">online</a> event (if applicable) will take at least a second to fire.</p>
+
+<hr>
+<h1><a name="offline">offline</a></h1>
+
+<p>This is an event that fires when a PhoneGap application is <a href="phonegap_events_events.md.html#offline">offline</a> (not connected to the Internet).</p>
+
+<pre class="prettyprint"><code>document.addEventListener("<a href="phonegap_events_events.md.html#offline">offline</a>", yourCallbackFunction, false);
+</code></pre>
+
+<h2><a name="offline_details">Details</a></h2>
+
+<p>When the application's network connection changes to being <a href="phonegap_events_events.md.html#offline">offline</a>, the <a href="phonegap_events_events.md.html#offline">offline</a> event is fired.  </p>
+
+<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the PhoneGap '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
+
+<h2><a name="offline_supported_platforms">Supported Platforms</a></h2>
+
+<ul>
+<li>iOS</li>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+</ul>
+<h2><a name="offline_quick_example">Quick Example</a></h2>
+
+<pre class="prettyprint"><code>document.addEventListener("<a href="phonegap_events_events.md.html#offline">offline</a>", onOffline, false);
+
+function onOffline() {
+    // Handle the <a href="phonegap_events_events.md.html#offline">offline</a> event
+}
+</code></pre>
+
+<h2><a name="offline_full_example">Full Example</a></h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;PhoneGap <a href="phonegap_device_device.md.html#Device">Device</a> Ready Example&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Call onDeviceReady when PhoneGap is loaded.
+    //
+    // At this point, the document has loaded but phonegap.js has not.
+    // When PhoneGap is loaded and talking with the native device,
+    // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
+    // 
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    //
+    function onDeviceReady() {
+        document.addEventListener("<a href="phonegap_events_events.md.html#offline">offline</a>", onOffline, false);
+    }
+
+    // Handle the <a href="phonegap_events_events.md.html#offline">offline</a> event
+    //
+    function onOffline() {
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2><a name="offline_ios_quirks">iOS Quirks</a></h2>
+
+<p>During initial startup, the first <a href="phonegap_events_events.md.html#offline">offline</a> event (if applicable) will take at least a second to fire.</p>
+
+<hr>
+<h1><a name="searchbutton">searchbutton</a></h1>
+
+<p>This is an event that fires when the user presses the search button on Android.</p>
+
+<pre class="prettyprint"><code>document.addEventListener("<a href="phonegap_events_events.md.html#searchbutton">searchbutton</a>", yourCallbackFunction, false);
+</code></pre>
+
+<h2><a name="searchbutton_details">Details</a></h2>
+
+<p>If you need to over ride the default search button behaviour on Android you can register and event listenter for the '<a href="phonegap_events_events.md.html#searchbutton">searchbutton</a>' event.</p>
+
+<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the PhoneGap '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
+
+<h2><a name="searchbutton_supported_platforms">Supported Platforms</a></h2>
+
+<ul>
+<li>Android</li>
+</ul>
+<h2><a name="searchbutton_quick_example">Quick Example</a></h2>
+
+<pre class="prettyprint"><code>document.addEventListener("<a href="phonegap_events_events.md.html#searchbutton">searchbutton</a>", onSearchKeyDown, false);
+
+function onSearchKeyDown() {
+    // Handle the back buton
+}
+</code></pre>
+
+<h2><a name="searchbutton_full_example">Full Example</a></h2>
+
 <pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
                       "http://www.w3.org/TR/html4/strict.dtd"&gt;
 &lt;html&gt;
@@ -388,12 +678,13 @@ function onResume() {
     // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
     //
     function onDeviceReady() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#resume">resume</a>", onResume, false);
+        // Register the event listener
+        document.addEventListener("<a href="phonegap_events_events.md.html#searchbutton">searchbutton</a>", onSearchKeyDown, false);
     }
 
-    // Handle the <a href="phonegap_events_events.md.html#resume">resume</a> event
+    // Handle the search button
     //
-    function onResume() {
+    function onSearchKeyDown() {
     }
 
     &lt;/script&gt;

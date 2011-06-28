@@ -97,6 +97,7 @@
 				<li><a href="phonegap_camera_camera.md.html">Camera</a></li>
 				<li><a href="phonegap_media_capture_capture.md.html">Capture</a></li>
 				<li><a href="phonegap_compass_compass.md.html">Compass</a></li>
+				<li><a href="phonegap_connection_connection.md.html">Connection</a></li>
 				<li><a href="phonegap_contacts_contacts.md.html">Contacts</a></li>
 				<li><a href="phonegap_device_device.md.html">Device</a></li>
 				<li><a href="phonegap_events_events.md.html">Events</a></li>
@@ -233,9 +234,7 @@
 
         // Wait for PhoneGap to load
         //
-        function onLoad() {
-            document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-        }
+        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
         // PhoneGap is ready
         //
@@ -317,7 +316,7 @@
 
         &lt;/script&gt;
       &lt;/head&gt;
-      &lt;body onload="onLoad()"&gt;
+      &lt;body&gt;
         &lt;a href="#" class="btn large" onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');"&gt;Play Audio&lt;/a&gt;
         &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pause Playing Audio&lt;/a&gt;
         &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Stop Playing Audio&lt;/a&gt;
@@ -377,9 +376,7 @@
 
         // Wait for PhoneGap to load
         //
-        function onLoad() {
-            document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-        }
+        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
         // PhoneGap is ready
         //
@@ -461,7 +458,7 @@
 
         &lt;/script&gt;
       &lt;/head&gt;
-      &lt;body onload="onLoad()"&gt;
+      &lt;body&gt;
         &lt;a href="#" class="btn large" onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');"&gt;Play Audio&lt;/a&gt;
         &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pause Playing Audio&lt;/a&gt;
         &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Stop Playing Audio&lt;/a&gt;
@@ -527,9 +524,7 @@ function playAudio(url) {
 
         // Wait for PhoneGap to load
         //
-        function onLoad() {
-            document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-        }
+        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
         // PhoneGap is ready
         //
@@ -611,7 +606,7 @@ function playAudio(url) {
 
         &lt;/script&gt;
       &lt;/head&gt;
-      &lt;body onload="onLoad()"&gt;
+      &lt;body&gt;
         &lt;a href="#" class="btn large" onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');"&gt;Play Audio&lt;/a&gt;
         &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pause Playing Audio&lt;/a&gt;
         &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Stop Playing Audio&lt;/a&gt;
@@ -672,9 +667,7 @@ function playAudio(url) {
 
         // Wait for PhoneGap to load
         //
-        function onLoad() {
-            document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-        }
+        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
         // PhoneGap is ready
         //
@@ -756,7 +749,7 @@ function playAudio(url) {
 
         &lt;/script&gt;
       &lt;/head&gt;
-      &lt;body onload="onLoad()"&gt;
+      &lt;body&gt;
         &lt;a href="#" class="btn large" onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');"&gt;Play Audio&lt;/a&gt;
         &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pause Playing Audio&lt;/a&gt;
         &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Stop Playing Audio&lt;/a&gt;
@@ -806,9 +799,7 @@ function playAudio(url) {
 
         // Wait for PhoneGap to load
         //
-        function onLoad() {
-            document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-        }
+        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
         // PhoneGap is ready
         //
@@ -890,7 +881,7 @@ function playAudio(url) {
 
         &lt;/script&gt;
       &lt;/head&gt;
-      &lt;body onload="onLoad()"&gt;
+      &lt;body&gt;
         &lt;a href="#" class="btn large" onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');"&gt;Play Audio&lt;/a&gt;
         &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pause Playing Audio&lt;/a&gt;
         &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Stop Playing Audio&lt;/a&gt;
@@ -941,8 +932,7 @@ function recordAudio() {
 
 <h2><a name="media.startRecord_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
@@ -952,9 +942,7 @@ function recordAudio() {
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Record audio
     // 
@@ -1004,7 +992,7 @@ function recordAudio() {
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;p id="media"&gt;Recording audio...&lt;/p&gt;
     &lt;p id="audio_position"&gt;&lt;/p&gt;
   &lt;/body&gt;
@@ -1074,9 +1062,7 @@ function playAudio(url) {
 
         // Wait for PhoneGap to load
         //
-        function onLoad() {
-            document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-        }
+        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
         // PhoneGap is ready
         //
@@ -1158,7 +1144,7 @@ function playAudio(url) {
 
         &lt;/script&gt;
       &lt;/head&gt;
-      &lt;body onload="onLoad()"&gt;
+      &lt;body&gt;
         &lt;a href="#" class="btn large" onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');"&gt;Play Audio&lt;/a&gt;
         &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pause Playing Audio&lt;/a&gt;
         &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Stop Playing Audio&lt;/a&gt;
@@ -1214,8 +1200,7 @@ function recordAudio() {
 
 <h2><a name="media.stopRecord_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
@@ -1225,9 +1210,7 @@ function recordAudio() {
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Record audio
     // 
@@ -1277,7 +1260,7 @@ function recordAudio() {
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;p id="media"&gt;Recording audio...&lt;/p&gt;
     &lt;p id="audio_position"&gt;&lt;/p&gt;
   &lt;/body&gt;

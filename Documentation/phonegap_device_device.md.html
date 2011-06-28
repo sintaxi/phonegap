@@ -73,6 +73,7 @@
 				<li><a href="phonegap_camera_camera.md.html">Camera</a></li>
 				<li><a href="phonegap_media_capture_capture.md.html">Capture</a></li>
 				<li><a href="phonegap_compass_compass.md.html">Compass</a></li>
+				<li><a href="phonegap_connection_connection.md.html">Connection</a></li>
 				<li><a href="phonegap_contacts_contacts.md.html">Contacts</a></li>
 				<li><a href="phonegap_device_device.md.html">Device</a></li>
 				<li><a href="phonegap_events_events.md.html">Events</a></li>
@@ -148,8 +149,7 @@ var <a href="phonegap_storage_storage.md.html#name">name</a> = <a href="phonegap
 
 <h2><a name="device.name_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
@@ -159,9 +159,7 @@ var <a href="phonegap_storage_storage.md.html#name">name</a> = <a href="phonegap
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -177,7 +175,7 @@ var <a href="phonegap_storage_storage.md.html#name">name</a> = <a href="phonegap
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;p id="deviceProperties"&gt;Loading device properties...&lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
@@ -230,8 +228,7 @@ var <a href="phonegap_storage_storage.md.html#name">name</a> = <a href="phonegap
 
 <h2><a name="device.phonegap_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
@@ -241,9 +238,7 @@ var <a href="phonegap_storage_storage.md.html#name">name</a> = <a href="phonegap
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -259,7 +254,7 @@ var <a href="phonegap_storage_storage.md.html#name">name</a> = <a href="phonegap
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;p id="deviceProperties"&gt;Loading device properties...&lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
@@ -294,8 +289,7 @@ var devicePlatform = <a href="phonegap_device_device.md.html#device.platform">de
 
 <h2><a name="device.platform_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
@@ -305,9 +299,7 @@ var devicePlatform = <a href="phonegap_device_device.md.html#device.platform">de
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -323,7 +315,7 @@ var devicePlatform = <a href="phonegap_device_device.md.html#device.platform">de
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;p id="deviceProperties"&gt;Loading device properties...&lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
@@ -375,8 +367,7 @@ var deviceID = <a href="phonegap_device_device.md.html#device.uuid">device.uuid<
 
 <h2><a name="device.uuid_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
@@ -386,9 +377,7 @@ var deviceID = <a href="phonegap_device_device.md.html#device.uuid">device.uuid<
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -404,7 +393,7 @@ var deviceID = <a href="phonegap_device_device.md.html#device.uuid">device.uuid<
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;p id="deviceProperties"&gt;Loading device properties...&lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
@@ -441,8 +430,7 @@ var deviceVersion = <a href="phonegap_device_device.md.html#device.version">devi
 
 <h2><a name="device.version_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
@@ -452,9 +440,7 @@ var deviceVersion = <a href="phonegap_device_device.md.html#device.version">devi
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -470,7 +456,7 @@ var deviceVersion = <a href="phonegap_device_device.md.html#device.version">devi
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;p id="deviceProperties"&gt;Loading device properties...&lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;

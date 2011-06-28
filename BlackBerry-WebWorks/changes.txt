@@ -1,0 +1,9 @@
+Drew Walters (2):
+      Add Network Connection API to match spec released on June 7th
+      Delay onDeviceReady until connection info is available.
+
+Michael Brooks (3):
+      #23 - Move phonegap.js to www/ to match other platforms.
+      Update Nitobi copyright.
+      Version 0.9.6
+

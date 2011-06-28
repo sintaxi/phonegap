@@ -92,6 +92,7 @@
 				<li><a href="phonegap_camera_camera.md.html">Camera</a></li>
 				<li><a href="phonegap_media_capture_capture.md.html">Capture</a></li>
 				<li><a href="phonegap_compass_compass.md.html">Compass</a></li>
+				<li><a href="phonegap_connection_connection.md.html">Connection</a></li>
 				<li><a href="phonegap_contacts_contacts.md.html">Contacts</a></li>
 				<li><a href="phonegap_device_device.md.html">Device</a></li>
 				<li><a href="phonegap_events_events.md.html">Events</a></li>
@@ -202,8 +203,7 @@ navigator.<a href="phonegap_geolocation_geolocation.md.html#geolocation.getCurre
 
 <h2><a name="geolocation.getCurrentPosition_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
@@ -213,9 +213,7 @@ navigator.<a href="phonegap_geolocation_geolocation.md.html#geolocation.getCurre
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -246,7 +244,7 @@ navigator.<a href="phonegap_geolocation_geolocation.md.html#geolocation.getCurre
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;p id="geolocation"&gt;Finding geolocation...&lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
@@ -317,8 +315,7 @@ var watchID = navigator.<a href="phonegap_geolocation_geolocation.md.html#geoloc
 
 <h2><a name="geolocation.watchPosition_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
@@ -328,9 +325,7 @@ var watchID = navigator.<a href="phonegap_geolocation_geolocation.md.html#geoloc
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     var watchID = null;
 
@@ -360,7 +355,7 @@ var watchID = navigator.<a href="phonegap_geolocation_geolocation.md.html#geoloc
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;p id="geolocation"&gt;Watching geolocation...&lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
@@ -405,8 +400,7 @@ navigator.<a href="phonegap_geolocation_geolocation.md.html#geolocation.clearWat
 
 <h2><a name="geolocation.clearWatch_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
@@ -416,9 +410,7 @@ navigator.<a href="phonegap_geolocation_geolocation.md.html#geolocation.clearWat
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     var watchID = null;
 
@@ -457,7 +449,7 @@ navigator.<a href="phonegap_geolocation_geolocation.md.html#geolocation.clearWat
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;p id="geolocation"&gt;Watching geolocation...&lt;/p&gt;
     &lt;button onclick="clearWatch();"&gt;Clear Watch&lt;/button&gt;     
   &lt;/body&gt;
@@ -532,8 +524,7 @@ navigator.<a href="phonegap_geolocation_geolocation.md.html#geolocation.getCurre
 
 <h2><a name="Coordinates_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_geolocation_geolocation.md.html#Geolocation">Geolocation</a> <a href="phonegap_geolocation_geolocation.md.html#Position">Position</a> Example&lt;/title&gt;
@@ -542,9 +533,7 @@ navigator.<a href="phonegap_geolocation_geolocation.md.html#geolocation.getCurre
 
     // Set an event to wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is loaded and Ready
     //
@@ -574,7 +563,7 @@ navigator.<a href="phonegap_geolocation_geolocation.md.html#geolocation.getCurre
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;div id="myDiv"&gt;&lt;/div&gt;
   &lt;/body&gt;
 &lt;/html&gt;
@@ -638,8 +627,7 @@ navigator.<a href="phonegap_geolocation_geolocation.md.html#geolocation.getCurre
 
 <h2><a name="Position_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
@@ -649,9 +637,7 @@ navigator.<a href="phonegap_geolocation_geolocation.md.html#geolocation.getCurre
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -682,7 +668,7 @@ navigator.<a href="phonegap_geolocation_geolocation.md.html#geolocation.getCurre
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;p id="geolocation"&gt;Finding geolocation...&lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;

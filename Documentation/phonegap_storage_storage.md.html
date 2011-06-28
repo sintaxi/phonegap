@@ -97,6 +97,7 @@
 				<li><a href="phonegap_camera_camera.md.html">Camera</a></li>
 				<li><a href="phonegap_media_capture_capture.md.html">Capture</a></li>
 				<li><a href="phonegap_compass_compass.md.html">Compass</a></li>
+				<li><a href="phonegap_connection_connection.md.html">Connection</a></li>
 				<li><a href="phonegap_contacts_contacts.md.html">Contacts</a></li>
 				<li><a href="phonegap_device_device.md.html">Device</a></li>
 				<li><a href="phonegap_events_events.md.html">Events</a></li>
@@ -174,8 +175,7 @@
 
 <h2><a name="openDatabase_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
@@ -185,9 +185,7 @@
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -197,7 +195,7 @@
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;h1&gt;Example&lt;/h1&gt;
     &lt;p&gt;Open <a href="phonegap_storage_storage.md.html#Database">Database</a>&lt;/p&gt;
   &lt;/body&gt;
@@ -277,8 +275,7 @@ db.changeVersion("1.0", "1.1");
 
 <h2><a name="Database_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
@@ -288,9 +285,7 @@ db.changeVersion("1.0", "1.1");
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -322,7 +317,7 @@ db.changeVersion("1.0", "1.1");
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;h1&gt;Example&lt;/h1&gt;
     &lt;p&gt;<a href="phonegap_storage_storage.md.html#Database">Database</a>&lt;/p&gt;
   &lt;/body&gt;
@@ -380,8 +375,7 @@ db.transaction(populateDB, errorCB, successCB);
 
 <h2><a name="SQLTransaction_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
@@ -391,9 +385,7 @@ db.transaction(populateDB, errorCB, successCB);
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -425,7 +417,7 @@ db.transaction(populateDB, errorCB, successCB);
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;h1&gt;Example&lt;/h1&gt;
     &lt;p&gt;<a href="phonegap_storage_storage.md.html#SQLTransaction">SQLTransaction</a>&lt;/p&gt;
   &lt;/body&gt;
@@ -483,8 +475,7 @@ db.transaction(queryDB, errorCB);
 
 <h2><a name="SQLResultSet_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
@@ -494,9 +485,7 @@ db.transaction(queryDB, errorCB);
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Populate the database 
     //
@@ -546,7 +535,7 @@ db.transaction(queryDB, errorCB);
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;h1&gt;Example&lt;/h1&gt;
     &lt;p&gt;<a href="phonegap_storage_storage.md.html#Database">Database</a>&lt;/p&gt;
   &lt;/body&gt;
@@ -605,8 +594,7 @@ db.transaction(queryDB, errorCB);
 
 <h2><a name="SQLResultSetList_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
@@ -616,9 +604,7 @@ db.transaction(queryDB, errorCB);
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Populate the database 
     //
@@ -667,7 +653,7 @@ db.transaction(queryDB, errorCB);
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;h1&gt;Example&lt;/h1&gt;
     &lt;p&gt;<a href="phonegap_storage_storage.md.html#Database">Database</a>&lt;/p&gt;
   &lt;/body&gt;
@@ -764,8 +750,7 @@ db.transaction(queryDB, errorCB);
 
 <h2><a name="localStorage_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
@@ -775,9 +760,7 @@ db.transaction(queryDB, errorCB);
 
     // Wait for PhoneGap to load
     //
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is ready
     //
@@ -796,7 +779,7 @@ db.transaction(queryDB, errorCB);
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;h1&gt;Example&lt;/h1&gt;
     &lt;p&gt;<a href="phonegap_storage_storage.md.html#localStorage">localStorage</a>&lt;/p&gt;
   &lt;/body&gt;

@@ -6,3 +6,8 @@ function PhoneGap() {
 	available = true;
 	sceneController = null;
 };
+
+document.addEventListener('DOMContentLoaded', function () {
+    window.phonegap = new PhoneGap();
+    navigator.device.deviceReady();
+});

@@ -76,7 +76,7 @@
         </replaceregexp>
         
         <!-- copy phonegap.js -->
-        <copy todir="${project.path}/www/javascript">
+        <copy todir="${project.path}/www">
             <fileset dir="${build.dir}/${js.path}" />
         </copy>
         
@@ -145,14 +145,14 @@ Install:
 
   2. Install the JavaScript library:
 
-    - delete /www/${js.path}/phonegap.js
+    - delete /www/phonegap.js
     
     - copy /${update.dir}/${js.file}
-        to /www/${js.path}/phonegap.js
+        to /www/${js.basename}
 
   3. Update JavaScript references:
 
-    - &#60;script type=&#34;text/javascript&#34; src=&#34;${js.file}&#34;&#62;&#60;/script&#62;
+    - &#60;script type=&#34;text/javascript&#34; src=&#34;${js.basename}&#34;&#62;&#60;/script&#62;
         </echo>
     </target>
     

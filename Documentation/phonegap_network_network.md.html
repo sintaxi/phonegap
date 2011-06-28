@@ -62,6 +62,7 @@
 				<li><a href="phonegap_camera_camera.md.html">Camera</a></li>
 				<li><a href="phonegap_media_capture_capture.md.html">Capture</a></li>
 				<li><a href="phonegap_compass_compass.md.html">Compass</a></li>
+				<li><a href="phonegap_connection_connection.md.html">Connection</a></li>
 				<li><a href="phonegap_contacts_contacts.md.html">Contacts</a></li>
 				<li><a href="phonegap_device_device.md.html">Device</a></li>
 				<li><a href="phonegap_events_events.md.html">Events</a></li>
@@ -113,7 +114,7 @@
 
 <h2><a name="network.isReachable_description">Description</a></h2>
 
-<p>This is a fast way to determine the device's network connection state, type of connection, and whether a specific domain is online.</p>
+<p>This is a fast way to determine the device's network connection state, type of connection, and whether a specific domain is <a href="phonegap_events_events.md.html#online">online</a>.</p>
 
 <p>Since <code><a href="phonegap_network_network.md.html#network.isReachable">network.isReachable</a></code> is an asynchronous function, the network state is returned using a callback function.</p>
 
@@ -136,7 +137,7 @@
     states[<a href="phonegap_network_network.md.html#NetworkStatus">NetworkStatus</a>.REACHABLE_VIA_CARRIER_DATA_NETWORK] = 'Carrier data connection';
     states[<a href="phonegap_network_network.md.html#NetworkStatus">NetworkStatus</a>.REACHABLE_VIA_WIFI_NETWORK]         = 'WiFi connection';
 
-    alert('Connection type: ' + states[networkState]);
+    alert('<a href="phonegap_connection_connection.md.html#Connection">Connection</a> type: ' + states[networkState]);
 }
 
 navigator.<a href="phonegap_network_network.md.html#network.isReachable">network.isReachable</a>('phonegap.com', <a href="phonegap_network_network.md.html#reachableCallback">reachableCallback</a>);
@@ -144,8 +145,7 @@ navigator.<a href="phonegap_network_network.md.html#network.isReachable">network
 
 <h2><a name="network.isReachable_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;isReachable Example&lt;/title&gt;
@@ -155,9 +155,7 @@ navigator.<a href="phonegap_network_network.md.html#network.isReachable">network
 
     // Wait for PhoneGap to load
     // 
-    function onLoad() {
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
-    }
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
     //
@@ -176,12 +174,12 @@ navigator.<a href="phonegap_network_network.md.html#network.isReachable">network
         states[<a href="phonegap_network_network.md.html#NetworkStatus">NetworkStatus</a>.REACHABLE_VIA_CARRIER_DATA_NETWORK] = 'Carrier data connection';
         states[<a href="phonegap_network_network.md.html#NetworkStatus">NetworkStatus</a>.REACHABLE_VIA_WIFI_NETWORK]         = 'WiFi connection';
 
-        alert('Connection type: ' + states[networkState]);
+        alert('<a href="phonegap_connection_connection.md.html#Connection">Connection</a> type: ' + states[networkState]);
     }
 
     &lt;/script&gt;
   &lt;/head&gt;
-  &lt;body onload="onLoad()"&gt;
+  &lt;body&gt;
     &lt;p&gt;A dialog box will report the network state.&lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
@@ -234,7 +232,7 @@ navigator.<a href="phonegap_network_network.md.html#network.isReachable">network
     states[<a href="phonegap_network_network.md.html#NetworkStatus">NetworkStatus</a>.REACHABLE_VIA_CARRIER_DATA_NETWORK] = 'Carrier data connection';
     states[<a href="phonegap_network_network.md.html#NetworkStatus">NetworkStatus</a>.REACHABLE_VIA_WIFI_NETWORK]         = 'WiFi connection';
 
-    alert('Connection type: ' + states[networkState]);
+    alert('<a href="phonegap_connection_connection.md.html#Connection">Connection</a> type: ' + states[networkState]);
 }
 </code></pre>
 
@@ -253,7 +251,7 @@ navigator.<a href="phonegap_network_network.md.html#network.isReachable">network
 
 <pre class="prettyprint"><code>function <a href="phonegap_network_network.md.html#reachableCallback">reachableCallback</a>(reachability) {
     var networkState = reachability.code;
-    alert('Connection type: ' + networkState + ' - ' + reachability.message);
+    alert('<a href="phonegap_connection_connection.md.html#Connection">Connection</a> type: ' + networkState + ' - ' + reachability.message);
 }
 </code></pre>
 

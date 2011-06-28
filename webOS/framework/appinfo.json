@@ -4,5 +4,6 @@
 	"vendor": "Palm",
 	"type": "web",
 	"main": "index.html",
-	"title": "PhoneGap WebOS"
+	"title": "PhoneGap WebOS",
+	"uiRevision": 2
 }

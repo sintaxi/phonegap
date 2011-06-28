@@ -17,12 +17,16 @@ import com.phonegap.json4j.JSONArray;
  * The Network class can invoke the following actions:
  *
  *   - isReachable(domain, callback)
+ *   - getConnectionInfo(callback)
  *
  */
 public class Network extends Plugin {
-
+	// Supported actions
 	public static final String ACTION_IS_REACHABLE = "isReachable";
-	
+	public static final String ACTION_CONNECTION_INFO = "getConnectionInfo";
+
+	private ConnectionInfoAction connectionInfo = new ConnectionInfoAction();
+
 	/**
 	 * Executes the request and returns CommandResult.
 	 * 
@@ -37,10 +41,20 @@ public class Network extends Plugin {
 		if (action.equals(ACTION_IS_REACHABLE)) {
 			result = IsReachableAction.execute(args);
 		}
+		else if (action.equals(ACTION_CONNECTION_INFO)) {
+			result = connectionInfo.getConnectionInfo(callbackId);
+		}
 		else {
 			result = new PluginResult(PluginResult.Status.INVALIDACTION, "Network: Invalid action: " + action);
 		}
 		
 		return result;
+	}
+
+	/**
+	 * Called when Plugin is destroyed.
+	 */
+	public void onDestroy() {
+		connectionInfo.shutdown();
 	}
 }

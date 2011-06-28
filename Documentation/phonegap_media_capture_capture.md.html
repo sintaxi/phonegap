@@ -46,11 +46,13 @@
 <option value="capture.captureAudio_quick_example">      - Quick Example</option>
 <option value="capture.captureAudio_full_example">      - Full Example</option>
 <option value="capture.captureAudio_blackberry_webworks_quirks">      - BlackBerry WebWorks Quirks</option>
+<option value="capture.captureAudio_ios_quirks">      - iOS Quirks</option>
 <option value="CaptureAudioOptions">CaptureAudioOptions</option>
 <option value="CaptureAudioOptions_properties">      - Properties</option>
 <option value="CaptureAudioOptions_quick_example">      - Quick Example</option>
 <option value="CaptureAudioOptions_android_quirks">      - Android Quirks</option>
 <option value="CaptureAudioOptions_blackberry_webworks_quirks">      - BlackBerry WebWorks Quirks</option>
+<option value="CaptureAudioOptions_ios_quirks">      - iOS Quirks</option>
 <option value="capture.captureImage">capture.captureImage</option>
 <option value="capture.captureImage_description">      - Description</option>
 <option value="capture.captureImage_supported_platforms">      - Supported Platforms</option>
@@ -61,6 +63,7 @@
 <option value="CaptureImageOptions_quick_example">      - Quick Example</option>
 <option value="CaptureImageOptions_android_quirks">      - Android Quirks</option>
 <option value="CaptureImageOptions_blackberry_webworks_quirks">      - BlackBerry WebWorks Quirks</option>
+<option value="CaptureImageOptions_ios_quirks">      - iOS Quirks</option>
 <option value="capture.captureVideo">capture.captureVideo</option>
 <option value="capture.captureVideo_description">      - Description</option>
 <option value="capture.captureVideo_supported_platforms">      - Supported Platforms</option>
@@ -72,6 +75,7 @@
 <option value="CaptureVideoOptions_quick_example">      - Quick Example</option>
 <option value="CaptureVideoOptions_android_quirks">      - Android Quirks</option>
 <option value="CaptureVideoOptions_blackberry_webworks_quirks">      - BlackBerry WebWorks Quirks</option>
+<option value="CaptureVideoOptions_ios_quirks">      - iOS Quirks</option>
 <option value="CaptureCB">CaptureCB</option>
 <option value="CaptureCB_description">      - Description</option>
 <option value="CaptureCB_quick_example">      - Quick Example</option>
@@ -90,10 +94,12 @@
 <option value="MediaFile.getFormatData_supported_platforms">      - Supported Platforms</option>
 <option value="MediaFile.getFormatData_blackberry_webworks_quirks">      - BlackBerry WebWorks Quirks</option>
 <option value="MediaFile.getFormatData_android_quirks">      - Android Quirks</option>
+<option value="MediaFile.getFormatData_ios_quirks">      - iOS Quirks</option>
 <option value="MediaFileData">MediaFileData</option>
 <option value="MediaFileData_properties">      - Properties</option>
 <option value="MediaFileData_blackberry_webworks_quirks">      - BlackBerry WebWorks Quirks</option>
-<option value="MediaFileData_android_quirks">      - Android Quirks</option></select></small>
+<option value="MediaFileData_android_quirks">      - Android Quirks</option>
+<option value="MediaFileData_ios_quirks">      - iOS Quirks</option></select></small>
 		</div>
 
 		<div id="sidebar">
@@ -104,6 +110,7 @@
 				<li><a href="phonegap_camera_camera.md.html">Camera</a></li>
 				<li><a href="phonegap_media_capture_capture.md.html">Capture</a></li>
 				<li><a href="phonegap_compass_compass.md.html">Compass</a></li>
+				<li><a href="phonegap_connection_connection.md.html">Connection</a></li>
 				<li><a href="phonegap_contacts_contacts.md.html">Contacts</a></li>
 				<li><a href="phonegap_device_device.md.html">Device</a></li>
 				<li><a href="phonegap_events_events.md.html">Events</a></li>
@@ -182,6 +189,7 @@ var capture = navigator.device.capture;
 <ul>
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+<li>iOS</li>
 </ul>
 <hr>
 <h1><a name="capture.captureAudio">capture.captureAudio</a></h1>
@@ -208,6 +216,7 @@ var capture = navigator.device.capture;
 <ul>
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+<li>iOS</li>
 </ul>
 <h2><a name="capture.captureAudio_quick_example">Quick Example</a></h2>
 
@@ -231,8 +240,7 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
 
 <h2><a name="capture.captureAudio_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_media_capture_capture.md.html#Capture">Capture</a> Audio&lt;/title&gt;
@@ -296,6 +304,11 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
 <ul>
 <li>PhoneGap for BlackBerry WebWorks attempts to launch the <strong>Voice Notes Recorder</strong> application, provided by RIM, to capture the audio recordings.  The developer will receive a <a href="phonegap_media_capture_CaptureError.md.html#CaptureError">CaptureError</a>.<code>CAPTURE_NOT_SUPPORTED</code> error code if the application is not installed on the device.</li>
 </ul>
+<h2><a name="capture.captureAudio_ios_quirks">iOS Quirks</a></h2>
+
+<ul>
+<li>iOS does not have a default audio recording application so a simple user interface is provided.</li>
+</ul>
 <hr>
 <h1><a name="CaptureAudioOptions">CaptureAudioOptions</a></h1>
 
@@ -333,6 +346,12 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
 <li>The <strong>duration</strong> parameter is not supported.  Recording lengths cannot be limited programmatically.</li>
 <li>The <strong>mode</strong> parameter is not supported.  The audio recording format cannot be altered programmatically.  Recordings are encoded using Adaptive Multi-Rate (AMR) format (audio/amr).</li>
 </ul>
+<h2><a name="CaptureAudioOptions_ios_quirks">iOS Quirks</a></h2>
+
+<ul>
+<li>The <strong>limit</strong> parameter is not supported. One recording can be created for each invocation.</li>
+<li>The <strong>mode</strong> parameter is not supported.  The audio recording format cannot be altered programmatically.  Recordings are encoded using Waveform Audio (WAV) format (audio/wav).</li>
+</ul>
 <hr>
 <h1><a name="capture.captureImage">capture.captureImage</a></h1>
 
@@ -358,6 +377,7 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
 <ul>
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+<li>iOS</li>
 </ul>
 <h2><a name="capture.captureImage_quick_example">Quick Example</a></h2>
 
@@ -381,8 +401,7 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
 
 <h2><a name="capture.captureImage_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_media_capture_capture.md.html#Capture">Capture</a> Image&lt;/title&gt;
@@ -474,6 +493,12 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
 <ul>
 <li>The <strong>mode</strong> parameter is not supported.  The image <a href="phonegap_storage_storage.md.html#size">size</a> and format cannot be altered programmatically; however, the image <a href="phonegap_storage_storage.md.html#size">size</a> can be altered by the device user.  Images are saved in JPEG format (image/jpeg).</li>
 </ul>
+<h2><a name="CaptureImageOptions_ios_quirks">iOS Quirks</a></h2>
+
+<ul>
+<li>The <strong>limit</strong> parameter is not supported. One image is taken per invocation.</li>
+<li>The <strong>mode</strong> parameter is not supported.  The image <a href="phonegap_storage_storage.md.html#size">size</a> and format cannot be altered programmatically.  Images are saved in JPEG format (image/jpeg).</li>
+</ul>
 <hr>
 <h1><a name="capture.captureVideo">capture.captureVideo</a></h1>
 
@@ -499,6 +524,7 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
 <ul>
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+<li>iOS</li>
 </ul>
 <h2><a name="capture.captureVideo_quick_example">Quick Example</a></h2>
 
@@ -522,8 +548,7 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
 
 <h2><a name="capture.captureVideo_full_example">Full Example</a></h2>
 
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                      "http://www.w3.org/TR/html4/strict.dtd"&gt;
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_media_capture_capture.md.html#Capture">Capture</a> Video&lt;/title&gt;
@@ -624,6 +649,13 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
 <li>The <strong>duration</strong> parameter is not supported.  Recording lengths cannot be limited programmatically.</li>
 <li>The <strong>mode</strong> parameter is not supported.  The video <a href="phonegap_storage_storage.md.html#size">size</a> and format cannot be altered programmatically; however, these parameters can be changed by the device user. By default, videos are recorded in 3GPP (video/3gpp) format.</li>
 </ul>
+<h2><a name="CaptureVideoOptions_ios_quirks">iOS Quirks</a></h2>
+
+<ul>
+<li>The <strong>limit</strong> parameter is not supported.  One video is recorded per invocation.</li>
+<li>The <strong>duration</strong> parameter is not supported.  Recording lengths cannot be limited programmatically.</li>
+<li>The <strong>mode</strong> parameter is not supported.  The video <a href="phonegap_storage_storage.md.html#size">size</a> and format cannot be altered programmatically. By default, videos are recorded in MOV (video/quicktime) format.</li>
+</ul>
 <hr>
 <h1><a name="CaptureCB">CaptureCB</a></h1>
 
@@ -691,8 +723,10 @@ var captureError = function(error) {
 
 <ul>
 <li>video/3gpp</li>
+<li>video/quicktime</li>
 <li>image/jpeg</li>
-<li>audio/amr </li>
+<li>audio/amr</li>
+<li>audio/wav </li>
 </ul>
 <h2><a name="ConfigurationData_properties">Properties</a></h2>
 
@@ -719,6 +753,8 @@ for each (var mode in imageModes) {
     }
 }
 </code></pre>
+
+<p>Not supported by any platform.  All configuration data arrays are empty.</p>
 
 <hr>
 <h1><a name="MediaFile">MediaFile</a></h1>
@@ -769,12 +805,17 @@ for each (var mode in imageModes) {
 <ul>
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+<li>iOS</li>
 </ul>
 <h2><a name="MediaFile.getFormatData_blackberry_webworks_quirks">BlackBerry WebWorks Quirks</a></h2>
 
 <p>There is no API that provides format information of media files.  Therefore, all <a href="phonegap_media_capture_capture.md.html#MediaFileData">MediaFileData</a> objects will be returned with default values.  See <a href="phonegap_media_capture_capture.md.html#MediaFileData">MediaFileData</a> documentation.</p>
 
 <h2><a name="MediaFile.getFormatData_android_quirks">Android Quirks</a></h2>
+
+<p>The API for retrieving media file format information is limited.  Therefore, not all <a href="phonegap_media_capture_capture.md.html#MediaFileData">MediaFileData</a> properties are supported.  See <a href="phonegap_media_capture_capture.md.html#MediaFileData">MediaFileData</a> documentation.</p>
+
+<h2><a name="MediaFile.getFormatData_ios_quirks">iOS Quirks</a></h2>
 
 <p>The API for retrieving media file format information is limited.  Therefore, not all <a href="phonegap_media_capture_capture.md.html#MediaFileData">MediaFileData</a> properties are supported.  See <a href="phonegap_media_capture_capture.md.html#MediaFileData">MediaFileData</a> documentation.</p>
 
@@ -824,6 +865,22 @@ for each (var mode in imageModes) {
 <strong>codecs:</strong> Not supported.  The attribute will always be null.</li>
 <li>
 <strong>bitrate:</strong> Not supported.  The attribute will always be 0.</li>
+<li>
+<strong>height:</strong> Supported.  (Image and video files only).  </li>
+<li>
+<strong>width:</strong> Supported.  (Image and video files only). </li>
+<li>
+<strong>duration:</strong> Supported.  (Audio and video files only).</li>
+</ul>
+<h2><a name="MediaFileData_ios_quirks">iOS Quirks</a></h2>
+
+<p>Support for the <a href="phonegap_media_capture_capture.md.html#MediaFileData">MediaFileData</a> properties is as follows:</p>
+
+<ul>
+<li>
+<strong>codecs:</strong> Not supported.  The attribute will always be null.</li>
+<li>
+<strong>bitrate:</strong> Supported on iOS4 devices for audio only. The attribute will always be 0 for image and video.</li>
 <li>
 <strong>height:</strong> Supported.  (Image and video files only).  </li>
 <li>

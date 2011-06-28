@@ -1,0 +1,188 @@
+-------------------
+ANDROID
+-------------------
+Benjamin Weingarten (2):
+      Fix bug where isreachable doesn't return correct results for https     (http secure) url protocol.
+      Fix bug where isreachable doesn't return correct results for https     (http secure) url protocol.
+
+Bryce Curtis (16):
+      Clean up CallbackServer when about:blank page has loaded.  This fixes errors when shutting down.
+      Need to unregister for network intent receiver on shutdown to prevent leaks.
+      Set PhoneGap.UsePolling flag based upon result from CallbackServer.
+      Fix security vulnerability - make sure any requests to run native code only come from url currently loaded into webview.
+      Issue 112: PhoneGap.Channel: replace instanceof Function with typeof === 'Function'
+      Urls with same path and file but different # or ? should compare to same url.
+      Return true when handling key events, indicating that no further processing is necessary.
+      Always call plugin's onPause/onResume with multitasking flag when these lifecycle events occur in activity.  It is up to the plugin to handle as necessary.
+      Set PhoneGap.UsePolling flag based upon result from CallbackServer.
+      Fix security vulnerability - make sure any requests to run native code only come from url currently loaded into webview.
+      Issue 112: PhoneGap.Channel: replace instanceof Function with typeof === 'Function'
+      Urls with same path and file but different # or ? should compare to same url.
+      Return true when handling key events, indicating that no further processing is necessary.
+      Always call plugin's onPause/onResume with multitasking flag when these lifecycle events occur in activity.  It is up to the plugin to handle as necessary.
+      Revert to polling if there are any errors with callback server.  This addresses various problems with proxies set by carriers.
+      Handle errors when adding a service.
+
+Fil Maj (1):
+      Fix for ticket #58: Certain 1.5/1.6 devices would throw a FileNotFoundException when taking pictures. Patch submitted by Agustin of AVANTIC (thanks!).
+
+Joe Bowser (6):
+      Changing the layout class so it has the screen dimensions to take into account Device Orientation
+      Adding SSL dev code
+      Fixing conflict
+      Adding SSL dev code
+      Changing default target to the highest for maximum compatibility
+      VERSION:
+
+Kevin Griffin (7):
+      made the mistake of opening anything in finder
+      Sending pause/resume notifcations to plugins regardless of 'keepRunning' state.     Not sure why you wouldn't want to send them
+      formattage
+      formatting - sigh
+      made the mistake of opening anything in finder
+      formattage
+      formatting - sigh
+
+Nitobi (2):
+      Fixed droidgap update command
+      Fixed droidgap update command
+
+macdonst (17):
+      Changing Media class to return seconds
+      Issue #94: feature request: Event for Keyboard show/hide
+      Issue #80: Unable to open large json files on android 2.2 + phonegap 0.9.5
+      Improve performance of our encoding
+      Updating Connection object to conform with recently released spec
+      Issue #104: Bug in FileUtils.copyDirectory & moveDirectory
+      Issue #106: Typo in LocalFileSystem.prototype._castDate
+      Updating Network Connection API to match spec released on June 7th
+      Issue #121: Problem with resolveLocalFileSystemURI if file name has spaces
+      Issue #80: Unable to open large json files on android 2.2 + phonegap 0.9.5
+      Improve performance of our encoding
+      Updating Connection object to conform with recently released spec
+      Issue #104: Bug in FileUtils.copyDirectory & moveDirectory
+      Issue #106: Typo in LocalFileSystem.prototype._castDate
+      Updating Network Connection API to match spec released on June 7th
+      Issue #121: Problem with resolveLocalFileSystemURI if file name has spaces
+      Issue 123: Fixing problem where name object is not specifieddd
+
+
+-------------------
+iOS
+-------------------
+Becky Gibson (10):
+      Fixes issue 98 - updated to support mimetype for m4a files
+      implementation of MediaCapture
+      Issue 128:  bug in DirectoryEntry.copyTo and moveTo
+      Properly Initialize Capture<Type>Options
+      fixes #131
+      Updated getMimeTypeFromPath: to recognize .wav as audio/wav
+      fixes #129
+      fixes #138
+      refs #118
+      refs #138 - remove ref to tmpFolderName
+
+Shazron Abdullah (9):
+      Xcode 4 Template - Removed stray ampersand in build script
+      Re-adding PhoneGapCommand back in, adding deprecated attributes, and NSLog deprecation warning. PhoneGapCommand base class will be removed in 1.0
+      Turned off Reachability flag NSLog
+      Added PGDebug.h - when you use the DLog macro, it will only print out the log when under the Debug configuration, for projects that use the PhoneGapLib subproject. This does not affect PhoneGap.framework based projects.
+      Updated Installer docs for CoreMedia framework (for Media Capture API)
+      Copy Capture.bundle into PhoneGap.framework
+      Connection.h was missing from PhoneGap.framework (was not set as a Public header)
+      Cleaning up Location.* core plugin
+      Clarified a FAQ item
+
+shazron (59):
+      Closes issue #68 - implementation of the W3C Network API.
+      Updated Xcode 3 Template to include a weak reference to CoreTelephony framework (for W3C Network API)
+      Updated Xcode 4 Template to include a reference to CoreTelephony framework (for W3C Network API).     Note this reference is not weak, you must change it to optional to target iOS 3.x if not devices using that OS will crash.
+      Updated installer notes for latest changes.
+      Moved navigator.connection (W3C Network Information API) interface under navigator.network.connection.     - This is for consistency reasons with Android because of a WebView bug in 2.2 and 2.3     - Fixed bug in connection.currentNW at startup - it was showing currentNW carrier name if it is a non-cellular connection.
+      Fixes #107 - gapBridge iFrame vertically offsets visual content
+      Fixes #106 - orientationchange was dispatched from document object, not window object
+      Fixes #105 - default web pathname sets double forward slash
+      Added PGMotion, with stubs. Related to issues #63 and #64
+      Fixes #110 - third-party code (ie plugins) that use Objective-C++ cause compiler errors in PluginResult.h
+      Fixes #109 - FileUploadOptions causes an error in iOS when .params contains a key/value pair in which the value is an int
+      Fixes #112 - anchor tag attribute target with value '_blank' was not opening up the URL in Mobile Safari
+      Fixes #111 - locking device should not trigger pause life cycle event
+      Added serviceName to className mapping in Commands.plist. RIght now serviceName==className, but this will change to match the other platforms.
+      Moved plugin mapping from Commands.plist to a key 'Plugins' under PhoneGap.plist
+      Removed Commands.plist
+      Migrate PhoneGapCommand to PGPlugin.
+      Capture: Changed occurrences of PhoneGapCommand to PGPlugin
+      Added Capture plugin to PhoneGap.plist
+      Added Capture plugin resources back into the PhoneGap template - was clobbered during a merge.
+      Set CoreMedia.framework linking to Weak in Xcode 3 Template
+      Moved Capture plugin resources into a bundle, updated Capture plugin to use the new bundle.
+      Updated Xcode 4 Template for Media Capture API - added CoreMedia framework, and Capture.bundle
+      Xcode 4 Template - removed README, [PROJECTNAME]-Info.plist, and AppDelegate.h from "Copy Bundle Resources" Build Phase.
+      Fixes #126
+      Fixed Network Information API up to June 7 2011 Draft status. As a result, CoreTelephony framework has been removed.
+      Updated installer docs with rich text formatting.
+      Fixes #64 - Added W3C DeviceMotionEvent support (Accelerometer only, not Gyroscope) for devices with firmware < iOS 4.2, through duck punching
+      Fixed bug in DeviceMotionEvent interval property, the first initial event interval should be zero
+      Fixes #116 - 'iframe' in lowercase for gapBridge, for index.xhtml start pages.
+      Changed doctype of sample index.html to HTML5
+      Fixes #102 - Xcode 4 Template - companyname in bundle id not honoured
+      Fixed DeviceMotionEvent support for iOS 3.x devices.
+      PhoneGapLibTest - added CoreMedia.framework as a weak reference
+      In iOS 3.x, window.dispatchEvent does not exist, so we fallback to document.dispatchEvent
+      Workaround to handled 'orientationchange' events in iOS 3.x
+      Added PhoneGap.plist to PhoneGapLibTest project
+      Deprecated the Camera.getPicture API. This will be removed in 1.0 (into the Plugins repo). Use the Media Capture API instead.
+      Fixes #133 - UIAccessibilityTraitStartsMediaSession: symbol not found in iOS 3
+      Media Capture API visual changes for iPad iOS 3.2 and 3.2.2 - converted mic images from jpg to png (more memory efficient), and explicitly pathed the images if the proper iPad iOS version (as stated previously) was detected at runtime
+      Removed debug NSLog
+      Media Capture API - bug in previous fix for iOS 3.x iPhone. Fixed resolveImageResource function.
+      Fixed splash screen images for iOS 3.x devices.
+      Deleting the iPad splash image (had to do this way to rename a case-sensitive part). Re-adding after
+      Re-add Default~ipad.png (case sensitive rename)
+      Lowered iOS Deployment target for PhoneGap.framework to 3.0
+      Updated docs for Installer. UIKit and AVFoundation need to be set to weak/optional if users want to target iOS 3.x devices.
+      Moved some older FAQ items to the Wiki, added new FAQ items.
+      Renamed iPhone to iOS in README
+      Fixes #132 - app Temp folder was deleted on app termination, when the contents should be deleted, not the folder itself. This affected YouTube/video playback on non-multitasking apps (on subsequent launches)
+      Fixes #137 (using writeJavascript abstraction as well)
+      Deprecated Network.isReachable
+      Fixes #135 Problems specifying viewport dimensions via meta-data. Set EnableViewportScale to true if you want to scale via the meta tag.
+      Updated Installer docs in preparation for 0.9.6 release.
+      Added notes in Installer about Deprecated functions.
+      Updated the FAQ with more items.
+      Deprecated Notification: activityStart, activityStop, loadingStart, loadingStop.
+      Updated installer docs for Notification core plugin deprecations.
+      Updated VERSION to 0.9.6
+
+
+-------------------
+BlackBerry
+-------------------
+Drew Walters (2):
+      Add Network Connection API to match spec released on June 7th
+      Delay onDeviceReady until connection info is available.
+
+Michael Brooks (3):
+      #23 - Move phonegap.js to www/ to match other platforms.
+      Update Nitobi copyright.
+      Version 0.9.6
+
+-------------------
+webOS
+-------------------
+Herm Wong (6):
+      added SQLite example in demo app
+      update readme to use phonegap-webos instead of phonegap-palm
+      modified so that instantiating phonegap is no longer required
+      removed unnecessary navigator.device.deviceReady call
+      remove unneccessary Mojo object check
+      updated device apis to set name and platform on device ready
+
+alunny (2):
+      fire deviceready after DOMContentLoaded
+      README updates
+
+davebalmer (3):
+      Changed DOCTYPE to HTML5
+      Added webOS 3.0 compatibility property.
+      Changed Palm to HP :)

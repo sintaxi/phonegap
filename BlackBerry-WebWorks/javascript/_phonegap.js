@@ -51,7 +51,7 @@ var PhoneGap = PhoneGap || (function() {
      */
     PhoneGap.Channel = function(type) {
         this.type = type;
-        this.handlers = {};
+        this.handlers = [];
         this.guid = 0;
         this.fired = false;
         this.enabled = true;
@@ -88,7 +88,7 @@ var PhoneGap = PhoneGap || (function() {
         var m = function() {
             f.apply(c || null, arguments);
             _this.unsubscribe(g);
-        }
+        };
         if (this.fired) {
             if (typeof c == "object" && f instanceof Function) { f = PhoneGap.close(c, f); }
             f.apply(this, this.fireArgs);
@@ -136,7 +136,7 @@ var PhoneGap = PhoneGap || (function() {
         var len = i;
         var f = function() {
             if (!(--i)) h();
-        }
+        };
         for (var j=0; j<len; j++) {
             (!c[j].fired?c[j].subscribeOnce(f):i--);
         }
@@ -173,6 +173,12 @@ var PhoneGap = PhoneGap || (function() {
     PhoneGap.onPhoneGapInfoReady = new PhoneGap.Channel('onPhoneGapInfoReady');
 
     /**
+     * onPhoneGapConnectionReady channel is fired when the PhoneGap connection properties
+     * has been set.
+     */
+    PhoneGap.onPhoneGapConnectionReady = new PhoneGap.Channel('onPhoneGapConnectionReady');
+
+    /**
      * onResume channel is fired when the PhoneGap native code
      * resumes.
      */
@@ -193,7 +199,7 @@ var PhoneGap = PhoneGap || (function() {
     /**
      * PhoneGap Channels that must fire before "deviceready" is fired.
      */ 
-    PhoneGap.deviceReadyChannelsArray = [ PhoneGap.onPhoneGapReady, PhoneGap.onPhoneGapInfoReady ];
+    PhoneGap.deviceReadyChannelsArray = [ PhoneGap.onPhoneGapReady, PhoneGap.onPhoneGapInfoReady, PhoneGap.onPhoneGapConnectionReady ];
 
     /**
      * User-defined channels that must also fire before "deviceready" is fired.
@@ -283,6 +289,15 @@ var PhoneGap = PhoneGap || (function() {
         } else {
             PhoneGap.m_document_addEventListener.call(document, evt, handler, capture);
         }
+    };
+
+    /**
+     * Method to fire event from native code
+     */
+    PhoneGap.fireEvent = function(type) {
+        var e = document.createEvent('Events');
+        e.initEvent(type, false, false);
+        document.dispatchEvent(e);
     };
 
     /**
@@ -564,11 +579,11 @@ var PhoneGap = PhoneGap || (function() {
         if (typeof params === 'undefined') {
             return function() {
                 return func.apply(context, arguments);
-            }
+            };
         } else {
             return function() {
                 return func.apply(context, params);
-            }
+            };
         }
     };
 
@@ -608,7 +623,7 @@ var PhoneGap = PhoneGap || (function() {
             Child.prototype = new F();
             Child.__super__ = Parent.prototype;
             Child.prototype.constructor = Child;
-        }
+        };
     }());
     
     return PhoneGap;

@@ -2,10 +2,6 @@
 //		Mojo Dependencies - we still need to rely on these minimal parts of the Mojo framework - should try to find if we can get access to lower level APIs
 //							so that we can remove dependence of Mojo
 //===========================
-
-if (typeof(Mojo) != 'object') {
-	console.log("Mojo already exists. Make sure to remove it from your index.html");
-}
 	
 Mojo = {
 	contentIndicator: false,

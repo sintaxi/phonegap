@@ -2,7 +2,7 @@
 PhoneGap is available under *either* the terms of the modified BSD license *or* the MIT License (2008). 
 See  http://opensource.org/licenses/alphabetical for full text.
 
-Copyright (c) 2005-2010, Nitobi Software Inc.
+Copyright (c) 2005-2011, Nitobi Software Inc.
 Copyright (c) 2010-2011, IBM Corporation
 
 website: http://phonegap.com
@@ -13,8 +13,8 @@ website: http://phonegap.com
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" id="viewport" content="initial-scale=1.0,user-scalable=no">
-    <script src="javascript/json2.js" type="text/javascript"></script>
-    <script src="javascript/phonegap.js" type="text/javascript"></script>
+    <script src="json2.js" type="text/javascript"></script>
+    <script src="phonegap.js" type="text/javascript"></script>
     <script type="text/javascript">
 
         //---------------------------------------------------------------------
@@ -48,12 +48,24 @@ website: http://phonegap.com
             console.log('doPause()');
         }
 
+        // invoked when application is online
+        function doOnline() {
+            console.log('Event: online\n' + 'Network Type: ' + navigator.network.connection.type + '\n');
+        }
+
+        // invoked when application is offline
+        function doOffline() {
+            console.log('Event: offline\n' + 'Network Type: ' + navigator.network.connection.type + '\n');
+        }
+
         // register PhoneGap event listeners when DOM content loaded
         function init() {
             console.log('init()');
             document.addEventListener("deviceready", deviceInfo, true); 
             document.addEventListener("resume", doResume, false);
             document.addEventListener("pause", doPause, false);
+            document.addEventListener("online", doOnline, false);
+            document.addEventListener("offline", doOffline, false);
         }
 
         function unload() {
@@ -98,6 +110,13 @@ website: http://phonegap.com
             confirmResult,
             "Are you sure?", 
             "Yes,No,Maybe");
+        }
+
+        //---------------------------------------------------------------------
+        // Network
+        //---------------------------------------------------------------------
+        function getNetworkType() {
+            alert('Network Type: ' + navigator.network.connection.type + '\n');
         }
 
         //---------------------------------------------------------------------
@@ -862,6 +881,7 @@ website: http://phonegap.com
     
     <h3>navigator.network</h3>
     <p id="networkStatus">[navigator.network.isReachable]</p>
+    <input type="button" value="Get Network Type" onclick="getNetworkType();return false;" />
 
     <h3>navigator.geolocation</h3>
     <dl id="location-data">
