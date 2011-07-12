@@ -16,7 +16,7 @@ var PhoneGap = PhoneGap || (function() {
     /**
      * PhoneGap object.
      */
-    PhoneGap = { };
+    var PhoneGap = { };
 
     //----------------------------------------------
     // Publish/subscribe channels for initialization

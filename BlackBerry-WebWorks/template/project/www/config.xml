@@ -20,7 +20,7 @@
 
   <!-- PhoneGap API -->
   <feature id="blackberry.system" required="true" version="1.0.0.0" />
-  <feature id="phonegap" required="true" version="0.9.6" />
+  <feature id="phonegap" required="true" version="1.0.0rc1" />
   <feature id="blackberry.find" required="true" version="1.0.0.0" />
   <feature id="blackberry.identity" required="true" version="1.0.0.0" />
   <feature id="blackberry.pim.Address" required="true" version="1.0.0.0" />

@@ -215,7 +215,7 @@ SYNOPSIS
   ant COMMAND [-D&lt;argument&gt;=&lt;value&gt;]...
 
 DESCRIPTION
-  This tool allows you to create and update PhoneGap-BlackBerry-Widget projects.
+  This tool allows you to create and update PhoneGap-BlackBerry-WebWorks projects.
   You will want to run update after you have updated the framework source.
   In other words, when you &lt;git pull origin master&gt;.
 

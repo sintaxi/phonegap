@@ -16,35 +16,29 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>PhoneGap WebOS</title>
 	
-	<link rel="stylesheet" href="jqtouch/jqtouch.css" />
-	<link rel="stylesheet" href="jqtouch/themes/default/theme.css" />
-	<link rel="stylesheet" href="css/main.css" />
-	
-	
-	<script type="text/javascript" src="phonegap.js"></script>   
+	<script type="text/javascript" src="phonegap-1.0.0.js"></script>   
 	<script type="text/javascript">
 		// create global var for sqlite database instance
 		var db;
 	</script>
-	
-	
+		
 	<link rel="stylesheet" type="text/css" href="menu.css">
 	
 </head>
 <body>
 
-<a onclick="dashboard();">Dashboard</a>
-
 <div id="menu">
 	<a onclick="page('screen');">Adjust Screen Settings</a>
+	<a onclick="page('notifications');">Notification Examples</a>
 	<a onclick="info();">Show Device Info</a>
-	<a onclick="net();">Show Network Info</a>	
-	<a onclick="navigator.notification.showBanner('Banner test','banner');menu(false);">Show Banner Message</a>
+	<a onclick="net();">Show Network Info</a>		
 	<a onclick="window.debug.log('trace this');">Console Logging</a>
 	<a onclick="launchmap()">Launch Map App</a>
-	<a onclick="navigator.window.newCard('about:blank', '<html><body>Hello again!</body></html>');menu(false);">Launch New Card</a>
+	<a onclick="navigator.window.newCard('dashboard.html'); menu(false);">Launch New Card</a>
 	<a onclick="getPicture();">Launch Camera</a>
-	<a onclick="storage();">Storage Tests</a>
+	<a onclick="storage();">Storage Tests</a> 
+	<a onclick="callPhoneGapExec();menu(false);">PhoneGap Exec</a>
+	<a onclick="page('touchDemo');">Touch Events Examples</a>
 	<a onclick="menu(false);">Done</a>
 </div>
 
@@ -52,31 +46,53 @@
 	<p><input type="checkbox" onchange="navigator.window.setFullScreen(this.checked);">navigator.window.setFullScreen();</p>
 	<p><input type="checkbox" onchange="navigator.window.blockScreenTimeout(this.checked);">navigator.window.blockScreenTimeout();</p>
 	<p><input type="checkbox" onchange="navigator.accelerometer.setFastAccelerometer(this.checked);">navigator.accelerometer.fastAccelerometer();</p>
+	
 	<p>navigator.orientation.setWindowOrientation();</p>
 	<input type="radio" onchange="navigator.orientation.setOrientation(this.value);" value="up" name="orientation" checked>up
 	<input type="radio" onchange="navigator.orientation.setOrientation(this.value);" value="down" name="orientation">down
 	<input type="radio" onchange="navigator.orientation.setOrientation(this.value);" value="left" name="orientation">left
 	<input type="radio" onchange="navigator.orientation.setOrientation(this.value);" value="right" name="orientation">right
 	<input type="radio" onchange="navigator.orientation.setOrientation(this.value);" value="free" name="orientation">free
-
-	
+		
 	<p>navigator.orientation.getCurrentOrientation()</p>
-	<input type="button" onclick="displayCurrentOrientation();" value="Get Current Orientation">  
-	
-	<p>navigator.notification.alert();</p>
-	<input type="button" onclick="navigator.notification.alert('alert');" value="Show Alert">    
-	
+	<button onclick="displayCurrentOrientation();">Get Current Orientation</button>  	
 </div>
 
-<div id="info"></div>
+<div id="notifications" style="display: none;">
+	<p>navigator.notification.newDashboard();</p>
+	<button onclick="navigator.notification.newDashboard('dashboard.html');">Dashboard</button>
+	
+	<p>navigator.notification.alert();</p>
+	<button onclick="navigator.notification.alert('alert');">Show Alert</button>
+	
+	<p>navigator.notification.showBanner();</p>
+	<button onclick="navigator.notification.showBanner('Banner test','banner');">Show Banner Message</button>	
+</div>
 
-<div id="net"></div>
+<div id="blank" width="100%" height="100%" style="background: #FFFFFF;"></div>
 
-<div id="camera"></div> 
+<div id="info" style="display: none;"></div>
+
+<div id="net" style="display: none;"></div>
+
+<div id="camera" style="display: none;"></div>
+
+<div id="touchDemo" style="display: none;">
+	<p>Touch Events Demo</p>
+	<button id="btnTouchStart">Touch Start</button>
+	<button id="btnTouchEnd">Touch End</button>
+	<p>Run your finger/mouse along button to trigger touchmove</p>
+	<button id="btnTouchMove" width="250">Touch Move</button>	
+	<p>Mouse Events Demo</p>
+	<button id="btnMouseDown">Mouse Down</button>
+	<button id="btnMouseUp">Mouse Up</button>
+	<p>Run your finger/mouse along button to trigger mousemove</p>
+	<button id="btnMouseMove" width="250">Mouse Move</button>
+</div> 
 
 <div id="storage" style="display: none">
 	<p>storage tests</p>
-	<input type="button" onclick="createDB();" value="Test SQLite DB"> 
+	<button onclick="createDB();">Test SQLite DB</button> 
 	<div id="storageResults"></div>
 </div>
 
@@ -84,6 +100,33 @@
 document.addEventListener('deviceready', function () {
     // PhoneGap is ready, do all your stuf here
 }, false);
+
+// setup event listeners for touch events 
+document.querySelector('#btnTouchStart').addEventListener('touchstart', onTouchEvent, false);
+document.querySelector('#btnTouchEnd').addEventListener('touchend', onTouchEvent, false);
+document.querySelector('#btnTouchMove').addEventListener('touchmove', onTouchEvent, false);
+// setup event listeners for mouse events
+document.querySelector('#btnMouseDown').addEventListener('mousedown', onTouchEvent, false);
+document.querySelector('#btnMouseUp').addEventListener('mouseup', onTouchEvent, false);
+document.querySelector('#btnMouseMove').addEventListener('mousemove', onTouchEvent, false);
+
+function onTouchEvent(event) {
+	navigator.notification.alert(event.type);
+}
+
+function callPhoneGapExec() {
+	//win, fail, clazz, action, args
+	PhoneGap.exec(success, fail, 'navigator.notification', 'alert', 'testing exec'); 
+	
+	function success(msg) {
+		console.log(msg + ' exec succeeded');
+	}
+	
+	function fail(msg) {
+		//navigator.notification.alert('exec failed');
+		console.log(msg + ' exec failed');
+	}
+}
 
 function createDB() {  
 	document.getElementById('storageResults').innerHTML = '';
@@ -120,10 +163,6 @@ function querySuccess(tx, results) {
 			navigator.notification.alert('id: ' + results.rows.item(i).id + ' data: ' + results.rows.item(i).data);
 		}
 	}
-}
-
-function dashboard() {
-    navigator.notification.newDashboard("dashboard.html");
 }
 
 function info() {

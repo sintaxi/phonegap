@@ -300,7 +300,7 @@ website: http://phonegap.com
         }
 
         function createContact() {
-            var myContact = navigator.service.contacts.create({"displayName": "fitness instructor"});        
+            var myContact = navigator.contacts.create({"displayName": "fitness instructor"});
             myContact.gender = "female";
             myContact.note = "Workout queen.";
             myContact.birthday = new Date("May 11, 1979 05:32:00");
@@ -335,8 +335,8 @@ website: http://phonegap.com
         
             // add address
             var addresses = [];
-            addresses[0] = new ContactAddress(null, "123 Astor Place", "Phoenix", "AZ", "58392", "United States");
-            addresses[1] = new ContactAddress(null, "290 Farmers Mills Rd", "Riverdale", "AZ", "58399", "United States");
+            addresses[0] = new ContactAddress(null, "home", null, "123 Astor Place", "Phoenix", "AZ", "58392", "United States");
+            addresses[1] = new ContactAddress(null, "work", null, "290 Farmers Mills Rd", "Riverdale", "AZ", "58399", "United States");
             myContact.addresses = addresses;
 
             // add urls
@@ -346,7 +346,7 @@ website: http://phonegap.com
                 
             // add company info
             var orgs = [];
-            orgs[0] = new ContactOrganization("Beach Fitness", null, "Instructor", null);
+            orgs[0] = new ContactOrganization(null, null, "Beach Fitness", null, "Instructor", null);
             myContact.organizations = orgs;
         
             // add categories
@@ -369,7 +369,7 @@ website: http://phonegap.com
 
         function updateContact() {
             // find a contact to update
-            navigator.service.contacts.find(
+            navigator.contacts.find(
                 ['name','emails'],
                 function(contacts) {
                     var now = new Date();         
@@ -401,7 +401,7 @@ website: http://phonegap.com
       
         function findContacts() {
             var filterText = document.getElementById('filterText').value;
-            navigator.service.contacts.find(
+            navigator.contacts.find(
                 ['name', 'emails', 'addresses', 'organizations'], 
                 function(contacts) {
                     var msg = 'Found ' + contacts.length + ' contacts.';
@@ -416,8 +416,8 @@ website: http://phonegap.com
 
         function removeContact() {
             // find a contact to remove
-            navigator.service.contacts.find(
-                null,
+            navigator.contacts.find(
+                ["*"],
                 // remove first contact
                 function(contacts) {
                     if (contacts[0]) {
@@ -912,7 +912,7 @@ website: http://phonegap.com
     <p id="uploadProgress"></p>
     <input style="display:none;" id="uploadButton" type="button" value="Upload" onclick="uploadImage();return false;" />     
 
-    <h3>navigator.services.contact</h3>
+    <h3>navigator.contacts</h3>
     <input type="button" value="Create Contact" onclick="createContact();return false;" /> 
     <input type="button" value="Update Contact" onclick="updateContact();return false;" /> 
     <input type="button" value="Remove Contact" onclick="removeContact();return false;" />

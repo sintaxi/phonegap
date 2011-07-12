@@ -1,16 +1,17 @@
 PhoneGap implementation for Samsung Bada
 ========================================
 
-Support for: Acceleration, Geolocation (native and browser), Network, Device, Compass
+Support for: Acceleration, Geolocation (native and browser), Network, Device, Compass, Camera
 
-Missing support: Camera, File
+Missing support: File
 
 Steps to build a PhoneGap app
 -----------------------------
 1. Download Source Code (clone the repository)
 2. Import in bada C++ IDE
 3. Put your HTML/CSS files in the Res/ folder
-4. Build&Run!
+4. Run phonegap.bat under Res/phonegap directory
+5. Build&Run!
 
 Runnning in the simulator
 -------------------------
