@@ -1,0 +1,17 @@
+Herm Wong (6):
+      added SQLite example in demo app
+      update readme to use phonegap-webos instead of phonegap-palm
+      modified so that instantiating phonegap is no longer required
+      removed unnecessary navigator.device.deviceReady call
+      remove unneccessary Mojo object check
+      updated device apis to set name and platform on device ready
+
+alunny (2):
+      fire deviceready after DOMContentLoaded
+      README updates
+
+davebalmer (3):
+      Changed DOCTYPE to HTML5
+      Added webOS 3.0 compatibility property.
+      Changed Palm to HP :)
+
