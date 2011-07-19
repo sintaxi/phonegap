@@ -1,112 +1,82 @@
 -------------------
 ANDROID
 -------------------
-Bryce Curtis (13):
-      Update version to 0.9.6.
-      Load new urls in new DroidGap activity - not same webview as initial url.
-      Add more control over how url is loaded.
-      Add comment
-      Don't clear activity stack by default.
-      Bump up version to 0.9.6 for example.
-      Update version to 0.9.6.1
-      Loading plugins from res/xml/plugins.xml
-      Copy plugins.xml when creating a new project.
-      Remove unused code and variable.
-      Accept IPlugin for result callback when starting activities for result.
-      Change to PhoneGap naming convention affects droidgap creation & update.  Also, create script uses phonegap-x.js, not phonegap-x.min.js.
-      Remove dependency on notification.activityStart/Stop so they can be deprecated to an optional plugin.  Also remove hideLoadingDialogOnPage option, since it no longer is relevant.
+Bryce Curtis (7):
+      Make sure we load the correct resource id for plugins.xml.
+      Shouldn't return error on first call.  This prevents successful invocation, which prevents deviceready from firing.
+      Use the same database based upon application context for each html page loaded as part of this app.
+      Replace deprecated call to activityStop.
+      Remove deprecated addService() method.  The new way to register a plugin is to include it in res/xml/plugins.xml.
+      Issue #154: Propagate existing parameters when starting new DroidGap activity.
+      Issue #153:  Display default value in prompt().
 
-Dave Johnson (3):
-      Add DS_Store to gitignore
-      Add better support for Activity result callbacks from plugins. Add some sugar for calling success / error callbacks from plugins
-      Update PluginManager to accept plugins that implement IPlugin rather than extend Plugin
+Dave Johnson (1):
+      Fix example to not include the min.js that is non-existent
 
-Fil Maj (2):
-      fix to build script: gotta strip out new lines from read in version string
-      Fix for #120: zooming in on input elements when filling out forms. Note, you also have to set initial-scale and maximum-scale properties in your meta name=viewport tag.
+Don Coleman (2):
+      write error to log when plugins.xml is missing
+      remove comment from xml declaration
 
-macdonst (7):
-      Updating Network Connection API to match spec released on June 7th
-      Fixed Issue 140: Contact.displayName is not being set correctly
-      Fix for #129: PhoneGap JS Naming Convention
-      Update .gitignore and .jar file name
-      Updating Contacts for June 16th W3C Spec
-      Setting version as 1.0.0rc1
-      Setting version as 1.0.0rc1
+Joe Bowser (1):
+      Minor change to Android Manifest for Android 3.2 to force it out of Compatibltiy Mode
+
+macdonst (8):
+      Issue #146: File API - File::writeAsText not in the API, remove
+      Remove deprecated Network.isReachable (use the Network Information API instead)
+      Issue #149: Deprecate support for Android 1.X devices
+      Issue #151: Remove minification of phonegap.*.js file
+      Issue #156: Camera.DestinationType.FILE_URI on Android not conforming to API Spec
+      Upping version to 1.0.0rc2
+      Handle content:// uri's in resolveLocalFileSystemURI
+      Upping version to 1.0.0rc2
 
 
 -------------------
 iOS
 -------------------
-Becky Gibson (8):
-      Created localized files for a11y prompt in Audio capture.
-      Update to Contacts spec of June, 2001
-      Update gitignore for phonegap-*.js name change
-      fixes #6 - allow scaling in Camera.getPicture
-      refs #127
-      fixes #62 - implement display and edit contact
-      refs #154  update ref to file class to com.phonegap.file
-      refs #141 VoiceOver not speaking audio view
+Becky Gibson (3):
+      refs #138 - do not create tmp directory
+      fixes #162 - better accessibility for timed audio
+      refs #6, #154, #152 - pic.type, reverse domain name, deprecation
 
-Randy McMillan (3):
-      Issue #53 fix
-      Slight modification to accomodate 0.9.6
-      Centers the activityView
+Shazron Abdullah (9):
+      Created PDFs of the Readme and ReleaseNotes for the DMG package
+      Formatted LICENSE to be < 80 columns (for PDF generation)
+      Added LICENSE to the end of the Readme.PDF
+      Removed redundant "Installer" from "PhoneGapInstaller.pkg" because... it's self evident
+      Added top border, fixed PhoneGap typo
+      Improved the docs for the PDF, as well as inserted the VERSION in the PDFs and Installer.
+      Added upgrading note.
+      New PhoneGap.plist options:  AutoHideSplashScreen (bool=true), ShowSplashScreenSpinner (bool=true).     If AutoHideSplashScreen is false, you can control hiding the splash screen in JavaScript by calling navigator.splashscreen.hide().     Fixed splash screen not showing on iPhone.
+      Used a sdk helper macro to determine Portrait orientation
 
-Shazron Abdullah (2):
-      Updated README FAQ for iframes loading in Mobile Safari problem
-      Fixed a typo (one of our grammar easter eggs)
-
-shazron (28):
-      Fixed typo - reversed the plugin key and PhoneGap.plist name
-      Fixes #140 Core plugin names conflict with existing iOS framework names. Added PG prefixes, changed mapping in PhoneGap.plist to correspond
-      Fixes #143 phonegap js naming convention
-      Fixes #150 PhoneGap.exec - does not support command mapping with dot namespaces
-      Fixes #152 Un-deprecate Camera core plugin for 1.0
-      Fixes #156 Remove deprecated Plugin base class 'PhoneGapCommand' (use the base class 'PGPlugin' instead)
-      Fixes #157 Remove deprecated Network.isReachable (use the Network Information API instead)
-      Fixes #155 Remove deprecated Notification loadingStart/loadingStop in PhoneGap core
-      Removed JavaScript interface for #155
-      Removed JavaScript interface for #157
-      PGPlugin base class: Added handleOpenURL notification and observer, onMemoryWarning, as well as stubs for other notifications. Changed return value for writeJavascript (was void, now NSString)
-      Un-commented out handleOpenURL in PhoneGapDelegate, it now posts a PGPluginHandleOpenUrlNotification (for Plugins). Sub-classes must call [super handleOpenURL] (pre-1.0, the App Delegates did not do this)
-      Fixes #154 PhoneGap.plist - use reverse domain name notation for core plugin service names
-      Typo in handleOpenUrl (NSNotification --> NSNotificationCenter)
-      PGPlugin handleOpenUrl event and notification handler: Url is uppercased to URL for consistency
-      Removed deprecation notice in file header
-      Fixes #153 Remove deprecated Notification activityStart, activityStop in PhoneGap core
-      Removed dual definition of handleOpenURL in template
-      Fixed problem where connection type was not passed into device properties (was not using RDN servicename)
-      Removed reference to debug object in phonegap.js.base
-      Fixed PGDebugConsole log method was printing the callbackId, instead of the message
-      Fixed null navigator.network (for navigator.network.connection constructor)
-      Draft Release Notes for 1.0 RC 1
-      Fixes #163 Remove deprecated File::writeAsText
-      Removed unused and undocumented Image, Movie core plugins
-      Updated installer release notes for 1.0.0rc1
-      Incremented VERSION to 1.0.0rc1
-      Removed duplicate release note line.
+shazron (12):
+      Fixes issue #167 Generated (by script) Xcode 3 template file fails in Xcode 4
+      Fixes #165 Remove minification of phonegap.*.js file
+      Fixes #164 Add phonegap version inside the JavaScript file itself
+      Fixes #166 Create uninstaller for PhoneGapInstaller
+      Moved output of installer .pkg and uninstaller .app into a dist folder
+      Renamed Installer docs introduction.html to releasenotes.html
+      Copy ReleaseNotes.html to dist package, and create DMG file
+      Fixes #171 remove UIColor-Expanded.*
+      Annotated the splash images so its obvious which one is loaded (for testing).
+      FIxes #168 Warning in Xcode 3 project that you haven't added phonegap.*.js, warning never goes away
+      Updated installer docs for 1.0.0rc2
+      Incremented VERSION to 1.0.0rc2
 
 
 -------------------
 BlackBerry
 -------------------
-Drew Walters (3):
-      Updating Contacts API to match the June 16th W3C Spec.
-      Remove reference to FledgeHook in project build file.
-      Invoke FledgeHook.exe if it exists otherwise ignore.
+Fil Maj (1):
+      fix (?) for #30, might be some namespacing shizz goin on
 
 Michael Brooks (1):
-      Version 1.0.0rc1
+      Version 1.0.0rc2
 
 -------------------
 webOS
 -------------------
-Herm Wong (3):
-      added touch events
-      updated README.md
-      phonegap-webos issue # 7
-
-stevengill (2):
-      added changes.txt
-      added version file
+Herm Wong (2):
+      add the thumbs.js lib to the repo
+      added version file & change log

@@ -48,7 +48,6 @@
 <option value="contacts.find_supported_platforms">      - Supported Platforms</option>
 <option value="contacts.find_quick_example">      - Quick Example</option>
 <option value="contacts.find_full_example">      - Full Example</option>
-<option value="contacts.find_ios_quirks">      - iOS Quirks</option>
 <option value="Contact">Contact</option>
 <option value="Contact_properties">      - Properties</option>
 <option value="Contact_methods">      - Methods</option>
@@ -68,6 +67,7 @@
 <option value="ContactAddress_supported_platforms">      - Supported Platforms</option>
 <option value="ContactAddress_quick_example">      - Quick Example</option>
 <option value="ContactAddress_full_example">      - Full Example</option>
+<option value="ContactAddress_android_2_x_quirks">      - Android 2.X Quirks</option>
 <option value="ContactAddress_android_1_x_quirks">      - Android 1.X Quirks</option>
 <option value="ContactAddress_blackberry_webworks_os_5_0_and_higher_quirks">      - BlackBerry WebWorks (OS 5.0 and higher) Quirks</option>
 <option value="ContactAddress_ios_quirks">      - iOS Quirks</option>
@@ -85,8 +85,6 @@
 <option value="ContactFindOptions_supported_platforms">      - Supported Platforms</option>
 <option value="ContactFindOptions_quick_example">      - Quick Example</option>
 <option value="ContactFindOptions_full_example">      - Full Example</option>
-<option value="ContactFindOptions_android_quirks">      - Android Quirks</option>
-<option value="ContactFindOptions_blackberry_webworks_os_5_0_and_higher_quirks">      - BlackBerry WebWorks (OS 5.0 and higher) Quirks</option>
 <option value="ContactName">ContactName</option>
 <option value="ContactName_properties">      - Properties</option>
 <option value="ContactName_details">      - Details</option>
@@ -102,6 +100,7 @@
 <option value="ContactOrganization_supported_platforms">      - Supported Platforms</option>
 <option value="ContactOrganization_quick_example">      - Quick Example</option>
 <option value="ContactOrganization_full_example">      - Full Example</option>
+<option value="ContactOrganization_android_2_x_quirks">      - Android 2.X Quirks</option>
 <option value="ContactOrganization_android_1_x_quirks">      - Android 1.X Quirks</option>
 <option value="ContactOrganization_blackberry_webworks_os_5_0_and_higher_quirks">      - BlackBerry WebWorks (OS 5.0 and higher) Quirks</option>
 <option value="ContactOrganization_ios_quirks">      - iOS Quirks</option>
@@ -115,9 +114,7 @@
 <option value="contactError">contactError</option>
 <option value="contactFields">contactFields</option>
 <option value="contactFindOptions">contactFindOptions</option>
-<option value="contactFindOptions_options">      - Options</option>
-<option value="contactFindOptions_android_quirks">      - Android Quirks</option>
-<option value="contactFindOptions_blackberry_webworks_os_5_0_and_higher_quirks">      - BlackBerry WebWorks (OS 5.0 and higher) Quirks</option></select></small>
+<option value="contactFindOptions_options">      - Options</option></select></small>
 		</div>
 
 		<div id="sidebar">
@@ -135,7 +132,6 @@
 				<li><a href="phonegap_file_file.md.html">File</a></li>
 				<li><a href="phonegap_geolocation_geolocation.md.html">Geolocation</a></li>
 				<li><a href="phonegap_media_media.md.html">Media</a></li>
-				<li><a href="phonegap_network_network.md.html">Network</a></li>
 				<li><a href="phonegap_notification_notification.md.html">Notification</a></li>
 				<li><a href="phonegap_storage_storage.md.html">Storage</a></li>
 			</ul>
@@ -183,7 +179,7 @@
 
 <p>Returns a new <a href="phonegap_contacts_contacts.md.html#Contact">Contact</a> object.</p>
 
-<pre class="prettyprint"><code>var contact = navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>(properties);
+<pre class="prettyprint"><code>var contact = navigator.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>(properties);
 </code></pre>
 
 <h2><a name="contacts.create_description">Description</a></h2>
@@ -201,7 +197,7 @@
 </ul>
 <h2><a name="contacts.create_quick_example">Quick Example</a></h2>
 
-<pre class="prettyprint"><code>var myContact = navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>({"displayName": "Test User"});
+<pre class="prettyprint"><code>var myContact = navigator.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>({"displayName": "Test User"});
 </code></pre>
 
 <h2><a name="contacts.create_full_example">Full Example</a></h2>
@@ -221,7 +217,7 @@
     // PhoneGap is ready
     //
     function onDeviceReady() {
-        var myContact = navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>({"displayName": "Test User"});
+        var myContact = navigator.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>({"displayName": "Test User"});
         myContact.gender = "male";
         console.log("The contact, " + myContact.displayName + ", is of the " + myContact.gender + " gender");
     }
@@ -241,14 +237,14 @@
 
 <p>Queries the device contacts database and returns one or more <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code> objects, each containing the fields specified.</p>
 
-<pre class="prettyprint"><code>navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(<a href="phonegap_contacts_contacts.md.html#contactFields">contactFields</a>, <a href="phonegap_contacts_contacts.md.html#contactSuccess">contactSuccess</a>, <a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>, <a href="phonegap_contacts_contacts.md.html#contactFindOptions">contactFindOptions</a>);
+<pre class="prettyprint"><code>navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(<a href="phonegap_contacts_contacts.md.html#contactFields">contactFields</a>, <a href="phonegap_contacts_contacts.md.html#contactSuccess">contactSuccess</a>, <a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>, <a href="phonegap_contacts_contacts.md.html#contactFindOptions">contactFindOptions</a>);
 </code></pre>
 
 <h2><a name="contacts.find_description">Description</a></h2>
 
 <p><a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a> is an asynchronous function that queries the device contacts database and returns an array of <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code> objects.  The resulting objects are passed to the <code><a href="phonegap_contacts_contacts.md.html#contactSuccess">contactSuccess</a></code> callback function specified by the <strong><a href="phonegap_contacts_contacts.md.html#contactSuccess">contactSuccess</a></strong> parameter.  </p>
 
-<p>Users must specify the contact fields to be used as a search qualifier in the <strong><a href="phonegap_contacts_contacts.md.html#contactFields">contactFields</a></strong> parameter.  Only the fields specified in the <strong><a href="phonegap_contacts_contacts.md.html#contactFields">contactFields</a></strong> parameter will be returned as properties of the <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code> objects that are passed to the <strong><a href="phonegap_contacts_contacts.md.html#contactSuccess">contactSuccess</a></strong> callback function.  A zero-length <strong><a href="phonegap_contacts_contacts.md.html#contactFields">contactFields</a></strong> parameter will result in an array of <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code> objects with only the <code>id</code> property populated.</p>
+<p>Users must specify the contact fields to be used as a search qualifier in the <strong><a href="phonegap_contacts_contacts.md.html#contactFields">contactFields</a></strong> parameter.  Only the fields specified in the <strong><a href="phonegap_contacts_contacts.md.html#contactFields">contactFields</a></strong> parameter will be returned as properties of the <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code> objects that are passed to the <strong><a href="phonegap_contacts_contacts.md.html#contactSuccess">contactSuccess</a></strong> callback function.  A zero-length <strong><a href="phonegap_contacts_contacts.md.html#contactFields">contactFields</a></strong> parameter will result in an array of <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code> objects with only the <code>id</code> property populated. A <strong><a href="phonegap_contacts_contacts.md.html#contactFields">contactFields</a></strong> value of ["*"] will return all contact fields. </p>
 
 <p>The <strong><a href="phonegap_contacts_contacts.md.html#contactFindOptions">contactFindOptions</a>.filter</strong> string can be used as a search filter when querying the contacts database.  If provided, a case-insensitive, partial value match is applied to each field specified in the <strong><a href="phonegap_contacts_contacts.md.html#contactFields">contactFields</a></strong> parameter.  If a match is found in a comparison with <em>any</em> of the specified fields, the contact is returned.</p>
 
@@ -277,7 +273,7 @@
     alert('Found ' + contacts.length + ' contacts.');
 };
 
-function onError() {
+function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
     alert('onError!');
 };
 
@@ -285,7 +281,7 @@ function onError() {
 var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
 options.filter="Bob"; 
 var fields = ["displayName", "<a href="phonegap_storage_storage.md.html#name">name</a>"];
-navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(fields, onSuccess, onError, options);
+navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(fields, onSuccess, onError, options);
 </code></pre>
 
 <h2><a name="contacts.find_full_example">Full Example</a></h2>
@@ -309,7 +305,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
         var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
         options.filter="Bob"; 
         var fields = ["displayName", "<a href="phonegap_storage_storage.md.html#name">name</a>"];
-        navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(fields, onSuccess, onError, options);
+        navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(fields, onSuccess, onError, options);
     }
 
     // onSuccess: Get a snapshot of the current contacts
@@ -322,7 +318,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
     // onError: Failed to get the contacts
     //
-    function onError() {
+    function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
         alert('onError!');
     }
 
@@ -335,11 +331,6 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 &lt;/html&gt;
 </code></pre>
 
-<h2><a name="contacts.find_ios_quirks">iOS Quirks</a></h2>
-
-<ul>
-<li>iOS returns null for array properties that have no results, other platforms return an empty array.</li>
-</ul>
 <hr>
 <h1><a name="Contact">Contact</a></h1>
 
@@ -352,7 +343,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 <strong>id:</strong> A globally unique identifier. <em>(DOMString)</em>
 </li>
 <li>
-<strong>displayname:</strong> The <a href="phonegap_storage_storage.md.html#name">name</a> of this <a href="phonegap_contacts_contacts.md.html#Contact">Contact</a>, suitable for display to end-users. <em>(DOMString)</em>
+<strong>displayName:</strong> The <a href="phonegap_storage_storage.md.html#name">name</a> of this <a href="phonegap_contacts_contacts.md.html#Contact">Contact</a>, suitable for display to end-users. <em>(DOMString)</em>
 </li>
 <li>
 <strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> An object containing all components of a persons <a href="phonegap_storage_storage.md.html#name">name</a>. <em>(<a href="phonegap_contacts_contacts.md.html#ContactName">ContactName</a>)</em>
@@ -376,13 +367,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 <strong>organizations:</strong> An array of all the contact's organizations. <em>(<a href="phonegap_contacts_contacts.md.html#ContactOrganization">ContactOrganization</a>[])</em>
 </li>
 <li>
-<strong>revision:</strong> The last date the contact was revised. <em>(DOMString)</em>
-</li>
-<li>
 <strong>birthday:</strong> The birthday of the contact. <em>(Date)</em>
-</li>
-<li>
-<strong>gender:</strong> The gender of the contact. <em>(DOMString)</em>
 </li>
 <li>
 <strong>note:</strong> A note about the contact. <em>(DOMString)</em>
@@ -395,9 +380,6 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 </li>
 <li>
 <strong>urls:</strong>  An array of web pages associated to the contact. <em>(<a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a>[])</em>
-</li>
-<li>
-<strong>timezone:</strong> The timezone of the conact. <em>(DOMString)</em>
 </li>
 </ul>
 <h2><a name="Contact_methods">Methods</a></h2>
@@ -425,7 +407,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 </ul>
 <h2><a name="Contact_save_quick_example">Save Quick Example</a></h2>
 
-<pre class="prettyprint"><code>function onSuccess(contacts) {
+<pre class="prettyprint"><code>function onSuccess(contact) {
     alert("Save Success");
 };
 
@@ -434,7 +416,7 @@ function onError(<a href="phonegap_contacts_contacts.md.html#contactError">conta
 };
 
 // create a new contact object
-var contact = navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>();
+var contact = navigator.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>();
 contact.displayName = "Plumber";
 contact.nickname = "Plumber";       //specify both to support all devices
 
@@ -489,7 +471,7 @@ contact.remove(onSuccess,onError);
     //
     function onDeviceReady() {
         // create
-        var contact = navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>();
+        var contact = navigator.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>();
         contact.displayName = "Plumber";
         contact.nickname = "Plumber";       //specify both to support all devices
         var <a href="phonegap_storage_storage.md.html#name">name</a> = new <a href="phonegap_contacts_contacts.md.html#ContactName">ContactName</a>();
@@ -512,7 +494,7 @@ contact.remove(onSuccess,onError);
 
     // onSaveSuccess: Get a snapshot of the current contacts
     //
-    function onSaveSuccess(contacts) {
+    function onSaveSuccess(contact) {
         alert("Save Success");
     }
 
@@ -547,13 +529,7 @@ contact.remove(onSuccess,onError);
 
 <ul>
 <li>
-<strong>revision:</strong> This property is not support by Android 2.X devices, and will always be returned as <code>null</code>.</li>
-<li>
-<strong>gender:</strong> This property is not support by Android 2.X devices, and will always be returned as <code>null</code>.</li>
-<li>
 <strong>categories:</strong>  This property is not support by Android 2.X devices, and will always be returned as <code>null</code>.</li>
-<li>
-<strong>timezone:</strong> This property is not support by Android 2.X devices, and will always be returned as <code>null</code>.</li>
 </ul>
 <h2><a name="Contact_android_1_x_quirks">Android 1.X Quirks</a></h2>
 
@@ -563,19 +539,13 @@ contact.remove(onSuccess,onError);
 <li>
 <strong>nickname:</strong> This property is not support by Android 1.X devices, and will always be returned as <code>null</code>.</li>
 <li>
-<strong>revision:</strong> This property is not support by Android 1.X devices, and will always be returned as <code>null</code>.</li>
-<li>
 <strong>birthday:</strong> This property is not support by Android 1.X devices, and will always be returned as <code>null</code>.</li>
-<li>
-<strong>gender:</strong> This property is not support by Android 1.X devices, and will always be returned as <code>null</code>.</li>
 <li>
 <strong>photos:</strong> This property is not support by Android 1.X devices, and will always be returned as <code>null</code>.</li>
 <li>
 <strong>categories:</strong>  This property is not support by Android 1.X devices, and will always be returned as <code>null</code>.</li>
 <li>
 <strong>urls:</strong>  This property is not support by Android 1.X devices, and will always be returned as <code>null</code>.</li>
-<li>
-<strong>timezone:</strong> This property is not support by Android 1.X devices, and will always be returned as <code>null</code>.</li>
 </ul>
 <h2><a name="Contact_blackberry_webworks_os_5_0_and_higher_quirks">BlackBerry WebWorks (OS 5.0 and higher) Quirks</a></h2>
 
@@ -583,7 +553,7 @@ contact.remove(onSuccess,onError);
 <li>
 <strong>id:</strong> Supported.  Assigned by device when contact is saved.</li>
 <li>
-<strong>displayname:</strong> Supported.  Stored in BlackBerry <strong>user1</strong> field.</li>
+<strong>displayName:</strong> Supported.  Stored in BlackBerry <strong>user1</strong> field.</li>
 <li>
 <strong>nickname:</strong> This property is not supported, and will always be returned as <code>null</code>. </li>
 <li>
@@ -597,17 +567,11 @@ contact.remove(onSuccess,onError);
 <li>
 <strong>organizations:</strong> Partially supported.  The <strong><a href="phonegap_storage_storage.md.html#name">name</a></strong> and <strong>title</strong> of the first organization are stored in the BlackBerry <strong>company</strong> and <strong>title</strong> fields, respectively.</li>
 <li>
-<strong>revision:</strong> This property is not supported, and will always be returned as <code>null</code>. </li>
-<li>
-<strong>gender:</strong> This property is not supported, and will always be returned as <code>null</code>. </li>
-<li>
 <strong>photos:</strong> - Partially supported.  A single thumbnail-sized photo is supported.  To set a contact's photo, pass in a either a Base64 encoded image, or a URL pointing to the image.  The image will be scaled down before saving to the BlackBerry contacts database.   The contact photo is returned as a Base64 encoded image.</li>
 <li>
 <strong>categories:</strong>  Partially supported.  Only 'Business' and 'Personal' categories are supported. </li>
 <li>
 <strong>urls:</strong>  Partially supported. The first url is stored in BlackBerry <strong>webpage</strong> field.</li>
-<li>
-<strong>timezone:</strong> This property is not supported, and will always be returned as <code>null</code>. </li>
 </ul>
 <h2><a name="Contact_ios_quirks">iOS Quirks</a></h2>
 
@@ -615,13 +579,9 @@ contact.remove(onSuccess,onError);
 <li>
 <strong>displayName:</strong> This property is not supported by iOS and will be returned as <code>null</code> unless there is no <a href="phonegap_contacts_contacts.md.html#ContactName">ContactName</a> specified.  If there is no <a href="phonegap_contacts_contacts.md.html#ContactName">ContactName</a>, then composite <a href="phonegap_storage_storage.md.html#name">name</a>, <strong>nickame</strong> or "" is returned for <strong>displayName</strong>, respectively. </li>
 <li>
-<strong>revision:</strong> This property is output only and can not be modified.  It is returned as a JavaScript Date object.</li>
-<li>
 <strong>birthday:</strong> For input, this property must be provided as a JavaScript Date object. It is returned as a JavaScript Date object.</li>
 <li>
-<strong>gender:</strong> This property is not supported by iOS devices, and will always be returned as <code>null</code>.</li>
-<li>
-<strong>photos:</strong> Returned Photo is stored in the application's temporary directory and a <a href="phonegap_file_file.md.html#File">File</a> URL to photo is returned.  Temporary folder is deleted when application exits. </li>
+<strong>photos:</strong> Returned Photo is stored in the application's temporary directory and a <a href="phonegap_file_file.md.html#File">File</a> URL to photo is returned.  Contents of temporary folder is deleted when application exits. </li>
 <li>
 <strong>categories:</strong>  This property is not currently supported and will always be returned as <code>null</code>.</li>
 </ul>
@@ -633,6 +593,11 @@ contact.remove(onSuccess,onError);
 <h2><a name="ContactAddress_properties">Properties</a></h2>
 
 <ul>
+<li>
+<strong>pref:</strong> Set to <code>true</code> if this <code><a href="phonegap_contacts_contacts.md.html#ContactAddress">ContactAddress</a></code> contains the user's preferred value. <em>(boolean)</em>
+</li>
+<li>
+<strong>type:</strong> A string that tells you what type of field this is (example: 'home'). _(DOMString)</li>
 <li>
 <strong>formatted:</strong> The full address formatted for display. <em>(DOMString)</em>
 </li>
@@ -669,7 +634,9 @@ contact.remove(onSuccess,onError);
 function onSuccess(contacts) {
     for (var i=0; i&lt;contacts.length; i++) {
         for (var j=0; j&lt;contacts[i].addresses.length; j++) {
-            alert("Formatted: " + contacts[i].addresses[j].formatted + "\n" + 
+            alert("Pref: " + contacts[i].addresses[j].pref + "\n" +
+                    "Type: " + contacts[i].addresses[j].type + "\n" +
+                    "Formatted: " + contacts[i].addresses[j].formatted + "\n" + 
                     "Street Address: "  + contacts[i].addresses[j].streetAddress + "\n" + 
                     "Locality: "  + contacts[i].addresses[j].locality + "\n" + 
                     "Region: "  + contacts[i].addresses[j].region + "\n" + 
@@ -679,7 +646,7 @@ function onSuccess(contacts) {
     }
 };
 
-function onError() {
+function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
     alert('onError!');
 };
 
@@ -687,7 +654,7 @@ function onError() {
 var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
 options.filter=""; 
 var filter = ["displayName","addresses"];
-navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
+navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
 </code></pre>
 
 <h2><a name="ContactAddress_full_example">Full Example</a></h2>
@@ -711,7 +678,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
         var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
         options.filter=""; 
         var filter = ["displayName","addresses"];
-        navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
+        navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
     }
 
     // onSuccess: Get a snapshot of the current contacts
@@ -720,7 +687,9 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
         // display the address information for all contacts
         for (var i=0; i&lt;contacts.length; i++) {
             for (var j=0; j&lt;contacts[i].addresses.length; j++) {
-                alert("Formatted: " + contacts[i].addresses[j].formatted + "\n" + 
+                alert("Pref: " + contacts[i].addresses[j].pref + "\n" +
+                        "Type: " + contacts[i].addresses[j].type + "\n" +
+                        "Formatted: " + contacts[i].addresses[j].formatted + "\n" + 
                         "Street Address: "  + contacts[i].addresses[j].streetAddress + "\n" + 
                         "Locality: "  + contacts[i].addresses[j].locality + "\n" + 
                         "Region: "  + contacts[i].addresses[j].region + "\n" + 
@@ -732,7 +701,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
     // onError: Failed to get the contacts
     //
-    function onError() {
+    function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
         alert('onError!');
     }
 
@@ -745,9 +714,19 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 &lt;/html&gt;
 </code></pre>
 
+<h2><a name="ContactAddress_android_2_x_quirks">Android 2.X Quirks</a></h2>
+
+<ul>
+<li>
+<strong>pref:</strong> This property is not supported by Android 2.X devices and will always return <code>false</code>.</li>
+</ul>
 <h2><a name="ContactAddress_android_1_x_quirks">Android 1.X Quirks</a></h2>
 
 <ul>
+<li>
+<strong>pref:</strong> This property is not supported by Android 1.X devices and will always return <code>false</code>.</li>
+<li>
+<strong>type:</strong> This property is not supported by Android 1.X devices and will always return <code>null</code>.</li>
 <li>
 <strong>streetAddress:</strong> This property is not support by Android 1.X devices, and will always return <code>null</code>.</li>
 <li>
@@ -762,6 +741,10 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 <h2><a name="ContactAddress_blackberry_webworks_os_5_0_and_higher_quirks">BlackBerry WebWorks (OS 5.0 and higher) Quirks</a></h2>
 
 <ul>
+<li>
+<strong>pref:</strong> This property is not supported on Blackberry devices and will always return <code>false</code>.</li>
+<li>
+<strong>type:</strong> Partially supported.  Only one each of "Work" and "Home" type addresses can be stored per contact. </li>
 <li>
 <strong>formatted:</strong> Partially supported.  Will return concatenation of all BlackBerry address fields.</li>
 <li>
@@ -778,6 +761,8 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 <h2><a name="ContactAddress_ios_quirks">iOS Quirks</a></h2>
 
 <ul>
+<li>
+<strong>pref:</strong> This property is not supported on iOS devices and will always return <code>false</code>.</li>
 <li>
 <strong>formatted:</strong> Not currently supported.</li>
 </ul>
@@ -815,7 +800,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 <h2><a name="ContactField_quick_example">Quick Example</a></h2>
 
 <pre class="prettyprint"><code>// create a new contact
-var contact = navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>();
+var contact = navigator.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>();
 
 // store contact phone numbers in <a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a>[]
 var phoneNumbers = [3];
@@ -846,7 +831,7 @@ contact.save();
     //
     function onDeviceReady() {
         // create a new contact
-        var contact = navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>();
+        var contact = navigator.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>();
 
         // store contact phone numbers in <a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a>[]
         var phoneNumbers = [3];
@@ -862,7 +847,7 @@ contact.save();
         var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
         options.filter="";
         filter = ["displayName","phoneNumbers"];
-        navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
+        navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
     }
 
     // onSuccess: Get a snapshot of the current contacts
@@ -880,7 +865,7 @@ contact.save();
 
     // onError: Failed to get the contacts
     //
-    function onError() {
+    function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
         alert('onError!');
     }
 
@@ -926,9 +911,7 @@ contact.save();
 <li>
 <strong>filter:</strong> The search string used to find contacts. <em>(DOMString)</em> (Default: "")</li>
 <li>
-<strong>multiple:</strong> Determines if the find operation should return multiple contacts. <em>(Boolean)</em> (Default: true)</li>
-<li>
-<strong>updatedSince:</strong> Only return contacts updated since the date specified. <em>(Date)</em> (Default: "")</li>
+<strong>multiple:</strong> Determines if the find operation should return multiple contacts. <em>(Boolean)</em> (Default: false)</li>
 </ul>
 <h2><a name="ContactFindOptions_supported_platforms">Supported Platforms</a></h2>
 
@@ -947,7 +930,7 @@ function onSuccess(contacts) {
 };
 
 // error callback
-function onError() {
+function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
     alert('onError!');
 };
 
@@ -958,7 +941,7 @@ options.multiple=true;      // return multiple results
 filter = ["displayName"];   // return contact.displayName field
 
 // find contacts
-navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
+navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
 </code></pre>
 
 <h2><a name="ContactFindOptions_full_example">Full Example</a></h2>
@@ -985,7 +968,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
         filter = ["displayName"];   // return contact.displayName field
 
         // find contacts
-        navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
+        navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
     }
 
     // onSuccess: Get a snapshot of the current contacts
@@ -998,7 +981,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
     // onError: Failed to get the contacts
     //
-    function onError() {
+    function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
         alert('onError!');
     }
 
@@ -1011,18 +994,6 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 &lt;/html&gt;
 </code></pre>
 
-<h2><a name="ContactFindOptions_android_quirks">Android Quirks</a></h2>
-
-<ul>
-<li>
-<strong>updatedSince:</strong> Not currently supported.</li>
-</ul>
-<h2><a name="ContactFindOptions_blackberry_webworks_os_5_0_and_higher_quirks">BlackBerry WebWorks (OS 5.0 and higher) Quirks</a></h2>
-
-<ul>
-<li>
-<strong>updatedSince:</strong> Not currently supported.</li>
-</ul>
 <hr>
 <h1><a name="ContactName">ContactName</a></h1>
 
@@ -1074,14 +1045,14 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
     }
 };
 
-function onError() {
+function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
     alert('onError!');
 };
 
 var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
 options.filter="";
 filter = ["displayName","<a href="phonegap_storage_storage.md.html#name">name</a>"];
-navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
+navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
 </code></pre>
 
 <h2><a name="ContactName_full_example">Full Example</a></h2>
@@ -1104,7 +1075,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
         var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
         options.filter="";
         filter = ["displayName"];
-        navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
+        navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
     }
 
     // onSuccess: Get a snapshot of the current contacts
@@ -1122,7 +1093,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
     // onError: Failed to get the contacts
     //
-    function onError() {
+    function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
         alert('onError!');
     }
 
@@ -1172,6 +1143,11 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
 <ul>
 <li>
+<strong>pref:</strong> Set to <code>true</code> if this <code><a href="phonegap_contacts_contacts.md.html#ContactOrganization">ContactOrganization</a></code> contains the user's preferred value. <em>(boolean)</em>
+</li>
+<li>
+<strong>type:</strong> A string that tells you what type of field this is (example: 'home'). _(DOMString)</li>
+<li>
 <strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> The <a href="phonegap_storage_storage.md.html#name">name</a> of the organization. <em>(DOMString)</em>
 </li>
 <li>
@@ -1197,21 +1173,23 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 <pre class="prettyprint"><code>function onSuccess(contacts) {
     for (var i=0; i&lt;contacts.length; i++) {
         for (var j=0; j&lt;contacts[i].organizations.length; j++) {
-            alert("Name: " + contacts[i].organizations[j].<a href="phonegap_storage_storage.md.html#name">name</a> + "\n" + 
+            alert("Pref: " + contacts[i].organizations[j].pref + "\n" +
+                    "Type: " + contacts[i].organizations[j].type + "\n" +
+                    "Name: " + contacts[i].organizations[j].<a href="phonegap_storage_storage.md.html#name">name</a> + "\n" + 
                     "Department: "  + contacts[i].organizations[j].department + "\n" + 
                     "Title: "  + contacts[i].organizations[j].title);
         }
     }
 };
 
-function onError() {
+function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
     alert('onError!');
 };
 
 var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
 options.filter="";
 filter = ["displayName","organizations"];
-navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
+navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
 </code></pre>
 
 <h2><a name="ContactOrganization_full_example">Full Example</a></h2>
@@ -1234,7 +1212,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
         var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
         options.filter="";
         filter = ["displayName","organizations"];
-        navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
+        navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
     }
 
     // onSuccess: Get a snapshot of the current contacts
@@ -1242,7 +1220,9 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
     function onSuccess(contacts) {
         for (var i=0; i&lt;contacts.length; i++) {
             for (var j=0; j&lt;contacts[i].organizations.length; j++) {
-                alert("Name: " + contacts[i].organizations[j].<a href="phonegap_storage_storage.md.html#name">name</a> + "\n" + 
+                alert("Pref: " + contacts[i].organizations[j].pref + "\n" +
+                        "Type: " + contacts[i].organizations[j].type + "\n" +
+                        "Name: " + contacts[i].organizations[j].<a href="phonegap_storage_storage.md.html#name">name</a> + "\n" + 
                         "Department: "  + contacts[i].organizations[j].department + "\n" + 
                         "Title: "  + contacts[i].organizations[j].title);
             }
@@ -1251,7 +1231,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 
     // onError: Failed to get the contacts
     //
-    function onError() {
+    function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
         alert('onError!');
     }
 
@@ -1264,15 +1244,29 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 &lt;/html&gt;
 </code></pre>
 
+<h2><a name="ContactOrganization_android_2_x_quirks">Android 2.X Quirks</a></h2>
+
+<ul>
+<li>
+<strong>pref:</strong> This property is not supported by Android 2.X devices and will always return <code>false</code>.</li>
+</ul>
 <h2><a name="ContactOrganization_android_1_x_quirks">Android 1.X Quirks</a></h2>
 
 <ul>
 <li>
-<strong>title:</strong> This property is not support by Android 1.X devices, and will always be returned as <code>null</code>. </li>
+<strong>pref:</strong> This property is not supported by Android 1.X devices and will always return <code>false</code>.</li>
+<li>
+<strong>type:</strong> This property is not supported by Android 1.X devices and will always return <code>null</code>.</li>
+<li>
+<strong>title:</strong> This property is not supported by Android 1.X devices, and will always be returned as <code>null</code>. </li>
 </ul>
 <h2><a name="ContactOrganization_blackberry_webworks_os_5_0_and_higher_quirks">BlackBerry WebWorks (OS 5.0 and higher) Quirks</a></h2>
 
 <ul>
+<li>
+<strong>pref:</strong> This property is not supported by Blackberry devices and will always return <code>false</code>.</li>
+<li>
+<strong>type:</strong> This property is not supported by Blackberry devices and will always return <code>null</code>.</li>
 <li>
 <strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> Partially supported.  The first organization <a href="phonegap_storage_storage.md.html#name">name</a> will be stored in the BlackBerry <strong>company</strong> field.</li>
 <li>
@@ -1283,6 +1277,10 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 <h2><a name="ContactOrganization_ios_quirks">iOS Quirks</a></h2>
 
 <ul>
+<li>
+<strong>pref:</strong> This property is not supported on iOS devices and will always return <code>false</code>.</li>
+<li>
+<strong>type:</strong> This property is not supported on iOS devices and will always return <code>null</code>.</li>
 <li>
 <strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> Partially supported.  The first organization <a href="phonegap_storage_storage.md.html#name">name</a> will be stored in the iOS <strong>kABPersonOrganizationProperty</strong> field.</li>
 <li>
@@ -1306,7 +1304,6 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 <ul>
 <li><code><a href="phonegap_contacts_contacts.md.html#ContactError">ContactError</a>.UNKNOWN_ERROR</code></li>
 <li><code><a href="phonegap_contacts_contacts.md.html#ContactError">ContactError</a>.INVALID_ARGUMENT_ERROR</code></li>
-<li><code><a href="phonegap_contacts_contacts.md.html#ContactError">ContactError</a>.NOT_FOUND_ERROR</code></li>
 <li><code><a href="phonegap_contacts_contacts.md.html#ContactError">ContactError</a>.TIMEOUT_ERROR</code></li>
 <li><code><a href="phonegap_contacts_contacts.md.html#ContactError">ContactError</a>.PENDING_OPERATION_ERROR</code></li>
 <li><code><a href="phonegap_contacts_contacts.md.html#ContactError">ContactError</a>.IO_ERROR</code></li>
@@ -1367,7 +1364,6 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 <pre class="prettyprint"><code>{ 
     filter: "",
     multiple: true,
-    updatedSince: ""
 };
 </code></pre>
 
@@ -1377,21 +1373,7 @@ navigator.service.<a href="phonegap_contacts_contacts.md.html#contacts.find">con
 <li>
 <strong>filter:</strong> The search string used to filter contacts. <em>(DOMString)</em> (Default: "")</li>
 <li>
-<strong>multiple:</strong> Determines if the find operation should return multiple contacts. <em>(Boolean)</em> (Default: true)</li>
-<li>
-<strong>updatedSince:</strong> Only return contacts updated since the date specified. <em>(Date)</em> (Default: "")</li>
-</ul>
-<h2><a name="contactFindOptions_android_quirks">Android Quirks</a></h2>
-
-<ul>
-<li>
-<strong>updatedSince:</strong> Not currently supported.</li>
-</ul>
-<h2><a name="contactFindOptions_blackberry_webworks_os_5_0_and_higher_quirks">BlackBerry WebWorks (OS 5.0 and higher) Quirks</a></h2>
-
-<ul>
-<li>
-<strong>updatedSince:</strong> Not currently supported.</li>
+<strong>multiple:</strong> Determines if the find operation should return multiple contacts. <em>(Boolean)</em> (Default: false)</li>
 </ul>
 </div>
 		</div>

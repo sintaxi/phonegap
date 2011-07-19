@@ -4,6 +4,6 @@
 		<entryClass>com.phonegap.PhoneGapExtension</entryClass>
 	</extension>
 	<features>
-		<feature id="phonegap" version="1.0.0rc1">PhoneGap JavaScript Extension</feature>
+		<feature id="phonegap" version="1.0.0rc2">PhoneGap JavaScript Extension</feature>
 	</features>
 </library>
