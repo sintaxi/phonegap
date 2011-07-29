@@ -1,0 +1,4 @@
+Herm Wong (2):
+      add the thumbs.js lib to the repo
+      added version file & change log
+

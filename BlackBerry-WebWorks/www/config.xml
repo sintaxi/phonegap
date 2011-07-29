@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Widget Configuration Reference:
+    http://docs.blackberry.com/en/developers/deliverables/15274/
+-->
+
+<widget xmlns="http://www.w3.org/ns/widgets"
+        xmlns:rim="http://www.blackberry.com/ns/widgets"
+	version="1.0.0.0">
+
+  <name>PhoneGap Sample</name>
+
+  <description>
+      A sample application written with PhoneGap.
+  </description>
+
+  <license href="http://opensource.org/licenses/alphabetical">
+  </license>
+
+  <!-- PhoneGap API -->
+  <feature id="blackberry.system" required="true" version="1.0.0.0" />
+  <feature id="phonegap" required="true" version="1.0.0" />
+  <feature id="blackberry.find" required="true" version="1.0.0.0" />
+  <feature id="blackberry.identity" required="true" version="1.0.0.0" />
+  <feature id="blackberry.pim.Address" required="true" version="1.0.0.0" />
+  <feature id="blackberry.pim.Contact" required="true" version="1.0.0.0" />
+  <feature id="blackberry.io.file" required="true" version="1.0.0.0" />
+  <feature id="blackberry.utils" required="true" version="1.0.0.0" />
+  <feature id="blackberry.io.dir" required="true" version="1.0.0.0" />
+  <feature id="blackberry.app" required="true" version="1.0.0.0" />
+  <feature id="blackberry.app.event" required="true" version="1.0.0.0" />
+
+  <!-- PhoneGap API -->
+  <access subdomains="true" uri="file:///store/home" />
+  <access subdomains="true" uri="file:///SDCard" />
+
+  <!-- Expose access to all URIs, including the file and http protocols -->
+  <access subdomains="true" uri="*" />
+
+  <icon rim:hover="false" src="resources/icon.png" />
+  <icon rim:hover="true" src="resources/icon_hover.png" />
+
+  <rim:loadingScreen backgroundColor="#000000"
+                     foregroundImage="resources/loading_foreground.png"
+		     onFirstLaunch="true">
+    <rim:transitionEffect type="fadeOut" />
+  </rim:loadingScreen>
+
+  <content src="index.html" />
+
+</widget>
