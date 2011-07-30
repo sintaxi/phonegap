@@ -23,6 +23,7 @@ Setup New Project
 	- Change the class's extend from Activity to DroidGap
 	- Replace the setContentView() line with super.loadUrl("file:///android_asset/www/index.html");
 	- Add import com.phonegap.*;
+	- Remove import android.app.Activity;
 You might experience an error here, where Eclipse can't find phonegap-1.0.0.jar. In this case, right click on the /libs folder and go to Build Paths/ > Configure Build Paths. Then, in the Libraries tab, add phonegap-1.0.0.jar to the Project. If Eclipse is being temperamental, you might need to refresh (F5) the project once again.
 		
 7. Right click on AndroidManifest.xml and select Open With > Text Editor
@@ -50,8 +51,7 @@ You might experience an error here, where Eclipse can't find phonegap-1.0.0.jar.
 			        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 9. Add android:configChanges="orientation|keyboardHidden" to the activity tag in AndroidManifest.
 
-
-9. Now create and open a new file named index.html in the /assets/www directory. Paste the following code:
+10. Now create and open a new file named index.html in the /assets/www directory. Paste the following code:
 	
 		<!DOCTYPE HTML>
 		<html>
@@ -64,12 +64,12 @@ You might experience an error here, where Eclipse can't find phonegap-1.0.0.jar.
 			</body>
 		</html>
 
-10.  A. Deploy to Simulator
+11.  A. Deploy to Simulator
 	- Right click the project and go to <strong>Run As</strong> and click <strong>Android Application</strong></li>
 	- Eclipse will ask you to select an appropriate AVD. If there isn't one, then you'll need to create it.</li>
 
 
-10.  B. Deploy to Device
+11.  B. Deploy to Device
 	- Make sure USB debugging is enabled on your device and plug it into your system. (Settings > Applications > Development)
 	- Right click the project and go to Run As and click Android Application		
 
