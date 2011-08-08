@@ -28,27 +28,29 @@ You might experience an error here, where Eclipse can't find phonegap-1.0.0.jar.
 		
 7. Right click on AndroidManifest.xml and select Open With > Text Editor
 8. Paste the following permissions under versionName:
-			<supports-screens
-			        android:largeScreens="true"
-			        android:normalScreens="true"
-			        android:smallScreens="true"
-			        android:resizeable="true"
-			        android:anyDensity="true"
-			        />
-			        <uses-permission android:name="android.permission.CAMERA" />
-			        <uses-permission android:name="android.permission.VIBRATE" />
-			        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-			        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-			        <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-			        <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-			        <uses-permission android:name="android.permission.INTERNET" />
-			        <uses-permission android:name="android.permission.RECEIVE_SMS" />
-			        <uses-permission android:name="android.permission.RECORD_AUDIO" />
-			        <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-			        <uses-permission android:name="android.permission.READ_CONTACTS" />
-			        <uses-permission android:name="android.permission.WRITE_CONTACTS" />   
-			        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />  
-			        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+        <supports-screens
+                android:largeScreens="true"
+                android:normalScreens="true"
+                android:smallScreens="true"
+                android:resizeable="true"
+                android:anyDensity="true"
+                />
+        <uses-permission android:name="android.permission.CAMERA" />
+        <uses-permission android:name="android.permission.VIBRATE" />
+        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+        <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+        <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+        <uses-permission android:name="android.permission.INTERNET" />
+        <uses-permission android:name="android.permission.RECEIVE_SMS" />
+        <uses-permission android:name="android.permission.RECORD_AUDIO" />
+        <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+        <uses-permission android:name="android.permission.READ_CONTACTS" />
+        <uses-permission android:name="android.permission.WRITE_CONTACTS" />   
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />  
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
 9. Add android:configChanges="orientation|keyboardHidden" to the activity tag in AndroidManifest.
 
 10. Now create and open a new file named index.html in the /assets/www directory. Paste the following code:
