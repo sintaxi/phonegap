@@ -16,15 +16,15 @@ Setup New Project
 2. In the root directory of the project, create two new directories:
 	- /libs
 	- /assets/www
-3. Copy phonegap-1.0.0.js from your PhoneGap download earlier to /assets/www
-4. Copy phonegap-1.0.0.jar from your PhoneGap download earlier to /libs
+3. Copy phonegap-1.1.0.js from your PhoneGap download earlier to /assets/www
+4. Copy phonegap-1.1.0.jar from your PhoneGap download earlier to /libs
 5. Copy xml folder from your PhoneGap download earlier to /res 
 6. Make a few adjustments too the project's main Java file found in the src folder in Eclipse:
 	- Change the class's extend from Activity to DroidGap
 	- Replace the setContentView() line with super.loadUrl("file:///android_asset/www/index.html");
 	- Add import com.phonegap.*;
 	- Remove import android.app.Activity;
-You might experience an error here, where Eclipse can't find phonegap-1.0.0.jar. In this case, right click on the /libs folder and go to Build Paths/ > Configure Build Paths. Then, in the Libraries tab, add phonegap-1.0.0.jar to the Project. If Eclipse is being temperamental, you might need to refresh (F5) the project once again.
+You might experience an error here, where Eclipse can't find phonegap-1.1.0.jar. In this case, right click on the /libs folder and go to Build Paths/ > Configure Build Paths. Then, in the Libraries tab, add phonegap-1.1.0.jar to the Project. If Eclipse is being temperamental, you might need to refresh (F5) the project once again.
 		
 7. Right click on AndroidManifest.xml and select Open With > Text Editor
 8. Paste the following permissions under versionName:

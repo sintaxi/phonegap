@@ -3,9 +3,11 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    >    
-            <WebView android:id="@+id/appView"
-            android:layout_height="fill_parent"
-            android:layout_width="fill_parent"
-            />	
+    >
+<TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Hello World, PhoneGapExample"
+    />
 </LinearLayout>
+

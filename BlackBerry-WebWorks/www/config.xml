@@ -30,6 +30,7 @@
   <feature id="blackberry.io.dir" required="true" version="1.0.0.0" />
   <feature id="blackberry.app" required="true" version="1.0.0.0" />
   <feature id="blackberry.app.event" required="true" version="1.0.0.0" />
+  <feature id="blackberry.system.event" required="true" version="1.0.0.0"/>
 
   <!-- PhoneGap API -->
   <access subdomains="true" uri="file:///store/home" />

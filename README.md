@@ -30,6 +30,7 @@ Directory Structure
     iOS .................. PhoneGap for iOS
     webOS ................ PhoneGap for Palm
 	Bada ................. PhoneGap for Bada
+	WP7 .................. Phonegap for Windows Phone 7
     
 License
 -------
