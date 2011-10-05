@@ -1,112 +1,53 @@
-PhoneGap BlackBerry WebWorks
-============================
-
-[PhoneGap framework](http://www.phonegap.com/) for __BlackBerry OS 5.0 and 6.0__. The framework is implemented using the [BlackBerry WebWorks SDK](http://us.blackberry.com/developers/browserdev/widgetsdk.jsp).
-
-Directory Structure
--------------------
-
-    framework/ ... BlackBerry WebWorks JavaScript Extension (PhoneGap native code)
-    javascript/ .. PhoneGap JavaScript (Non-concatenated, non-minified)
-    lib/ ......... Third party tools (YUICompressor for JS minification)
-    template/ .... Project template for creating a new projects
-
-Introduction
-------------
-
-BlackBerry WebWorks is a framework for developing hybrid applications for BlackBerry devices that support __Blackberry OS 5.0 and higher__.  BlackBerry WebWorks is not supported on BlackBerry OS 4.x.  
-
-The WebWorks framework allows developers to create applications using web content and resources (HTML/CSS/JavaScript) that are able to access device features through the [Blackberry WebWorks API](http://www.blackberry.com/developers/docs/widgetapi/).  In addition, the framework allows developers to create their own WebWorks JavaScript Extensions to expose additional device capabilities through JavaScript APIs.  These extensions are written using the native BlackBerry Java API.
-
-The phonegap-blackberry-webworks platform allows web developers to develop applications targeting BlackBerry 5.0 and higher devices using the common [PhoneGap API](http://docs.phonegap.com).  When possible, PhoneGap makes use of the WebWorks JavaScript API; however, most PhoneGap features are implemented in the native Java environment as a WebWorks JavaScript Extension.
-
-
-Getting Started
-===============
-
-Several guides are available on the [PhoneGap Wiki](http://wiki.phonegap.com) to help you get started developing for the phonegap-blackberry-webworks platform.  This guide will help you install and configure the BlackBerry WebWorks development environment, and the phonegap-blackberry-webworks platform.  It will also step you through the process of creating a PhoneGap project.  
-
-[Getting Started with PhoneGap BlackBerry WebWorks](http://wiki.phonegap.com/w/page/31930982/Getting-Started-with-PhoneGap-BlackBerry-WebWorks)
-
-This guide is for advanced developers who wish to develop their own phonegap-blackberry-webworks plugin.
-
-[How To Create a PhoneGap Plugin for PhoneGap BlackBerry WebWorks](http://wiki.phonegap.com/w/page/35799737/How-To-Create-a-PhoneGap-Plugin-for-BlackBerry-WebWorks)
-
-
-Installing the phonegap-blackberry-webworks Framework
+PhoneGap webOS
 =====================================================
+PhoneGap webOS is a skeleton HP webOS application, along with JavaScript wrapper libraries, which allow a developer to build an application for an HP webOS device using web technologies. This same code can be built for iPhone, BlackBerry, Symbian, and more to come ...
 
-Cloning the phonegap-blackberry-webworks repository always provides you with the latest (EDGE) version of the PhoneGap code.  To clone the repository, do the following:
+Pre-requisites
+-----------------------------------------------------
+You should have VirtualBox (virtual machine software which runs the Palm emulator) and the webOS SDK installed. Both of these can be found at [Palm's Developer Site](http://developer.palm.com/index.php?option=com_content&view=article&id=1545).
 
-    $ cd C:\some\path\
-    $ git clone git://github.com/phonegap/phonegap-blackberry-webworks.git
+Set up your environment and install the skeleton app
+-----------------------------------------------------
+Open a terminal, and navigate to the root PhoneGap webOS folder (where this readme.md file is located). A Makefile resides here; running make here will package your application, and install it to either the emulator, or the device. Or you can run make on individual target tasks:
 
-As an alternative, you can download packaged releases of PhoneGap from the [PhoneGap web site](http://phonegap.com).  If choosing this method, simply unzip the PhoneGap packaged code and navigate to the BlackBerry/WebWorks directory.  The steps below remain the same.
+   - `make js` - builds phonegap.js from source javascript files to libs/phonegap.js
+   - `make copy_js` - copies libs/phonegap.js to framework/phonegap.js - modify this path if you want phonegap.js in another location
+   - `make package` - builds the webOS app (located in framework/) into an webOS .ipk installer package in the phonegap_root/palm/ folder
+   - `make deploy` - installs the .ipk package to a device if detected, otherwise the emulator if its running 
 
-
-Creating a New PhoneGap Project
--------------------------------
-
-The PhoneGap build script enables you to create multiple, independent PhoneGap projects.  
-
-(Note: The PhoneGap build script requries Apache ANT 1.8 or higher.  See the [Getting Started guide](http://wiki.phonegap.com/w/page/31930982/Getting-Started-with-PhoneGap-BlackBerry-WebWorks) for instructions on how to install and configure Apache ANT).  
-
-The build script packages the PhoneGap source code and resources into each project you create.  This allows you to easily distribute the project to other BlackBerry WebWorks developers.  To create a PhoneGap project:
-
-    $ cd phonegap-blackberry-webworks
-    $ ant help
-    
-    $ ant create -Dproject.path="C:\development\my_new_project"
-    
-    $ cd C:\development\my_new_project
-    $ ant help
-
-For each project, you need to tell ANT where you installed the BlackBerry WebWorks SDK, which packages and compiles your code into a deployable application.  You can specify the location of the BlackBerry WebWorks Packager (BBWP) by editing __project.properties__ in the project directory.
-
-    [edit project.properties]
-
-Building and Deploying a Project
---------------------------------
-
-The PhoneGap build scripts automate common tasks, such as compiling your project, and deploying it to simulators or devices.  To see what options are available, use:
-
-    $ cd C:\development\my_new_project
-    $ ant help
-    
-To build your project into a deployable application (.cod/.jad) file:
-
-	$ ant build
-	
-To build your project and load it in a BlackBerry simulator:
-
-    $ ant load-simulator
-    
-To build your project and load it onto a USB-attached device:
-
-    $ ant load-device
-
-Updating the PhoneGap Framework
--------------------------------
-
-As you develop your application, there may be updates made to the PhoneGap source code.  To incorporate PhoneGap changes into your project, use the build script as follows:
-
-    $ cd phonegap-blackberry-webworks
-    $ git pull origin master
-
-    $ ant update -Dproject.path="C:\development\my_new_project"
+If a connected webOS device is detected, the application will be installed to the device. If not, and the emulator is running, the application will be installed to the emulator. To run the emulator, search for Palm Emulator.app in the finder, and run it. 
 
 
-Troubleshooting
-===============
+Build your PhoneGap app
+-----------------------------------------------------
+Navigate to `phonegap_root/webOS_new/framework/`; this is where your application will reside. If you have already built a phonegap application on another platform, drop your html,js, css and assets into this folder (starting with the required index.html). Don't forget phonegap.js!
 
-__Q: I uploaded my application to the BlackBerry device, but it will not open or run.__
+Just open framework/ in your favourite editor, build your web app, and run the appropriate make command indicated above. Edit appinfo.json to set your app id (see Notes below), version, etc.
 
-__A:__ Try hard resetting the device by pressing and hold ALT + CAPS LOCK + DEL. You must press and hold each key in sequence and not all at once.  Some devices require _either_ the right or left CAPS LOCK key to be pressed.  Some devices also require this combination to be pressed twice.
+PhoneGap-webOS doesn't need to do any native initialization, but it does fire a `deviceready` that guarantees all the PhoneGap APIs are in place. You can run your code at `deviceready` like so:
 
-__Q: My simulator screen is not refreshing and I see blocks on a clicked position.__
+    document.addEventListener('deviceready', function() {
+        // do cool PhoneGap things
+    }, false);
 
-__A:__ Windows 7 and the simulator's graphics acceleration do not mix. On the simulator, set View -> Graphics Acceleration to Off.
+To enable a javascript debug console, open a new terminal window and type:
+    phonegap-log app_id
+Where the app id is your app id as set in `appinfo.json`
+This will tail your log file; it will default to the device if detected, otherwise it will read logs from the emulator.
+To log from your JS code, use `console.log`
 
-__Q: When I use the PhoneGap [Camera.getPicture API](http://docs.phonegap.com/phonegap_camera_camera.md.html#camera.getPicture) on my device, the camera never returns to my application.  Why does this happen?__
+Notes & Caveats
+-----------------------------------------------------
+ - In order to use the vibration API on palm, your application needs to have a "com.palm.*" namespace, as vibration on webOS is a private API. The caveat of doing this is that you are essentially indicating that your app should pretend to be a "Palm app" (rather than a Nitobi app, for example) ... and as a result your app will be denied from the Palm app catalog.
+ - Currently the map.show function can only accept one position, as Palm uses google maps as its native maps application, and it only can take one marker as a parameter.
+ - Touch event not supported, natively. PhoneGap now includes event handlers for mouse & touch events - please see the example app bundled with PhoneGap-webOS
+ - If using Lawnchair, the only supported adaptor is webkitsqlite.
+ - html select boxes are implemented by phonegap, not supported natively (believe it or not). only the most basic functionality is implemented, so be aware using this control could cause problems.
+ - To enable verbose logging, add the file framework_config.json to your framework/www/ folder, containing the following json content: { "logLevel": 99 }
 
-__A:__ PhoneGap uses a JavaScript Extension to invoke the native camera application so the user can take a picture.  When the picture is taken, PhoneGap will close the native camera application by emulating a key injection (pressing the back/escape button).  On a physical device, users will have to set permissions to allow the application to simulate key injections.  Setting application permissions is device-specific.  On a Storm2 (9550), for example, select the BlackBerry button from the Home screen to get to All Applications screen, then Options > Applications > Your Application.  Then select Edit Default Permissions > Interactions > Input Simulation and set it to 'Allow'.  Save your changes.
+
+Helpful Links
+-----------------------------------------------------
+  - PhoneGap API Docs: 			[docs.phonegap.com](http://docs.phonegap.com)
+  - PhoneGap Wiki: 				[phonegap.pbworks.com](http://phonegap.pbworks.com)
+  - Palm webOS developer site: 	[developer.palm.com](http://developer.palm.com)
