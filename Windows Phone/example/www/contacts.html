@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=9" />
+  <meta name="Viewport" content="width=480" />
+
+  <link rel="stylesheet" type="text/css" href="master.css"/>
+
+  <script type="text/javascript" charset="utf-8" src="phonegap-base.js"></script>
+
+  <script type="text/javascript">
+
+    // provide our own console if it does not exist, huge dev aid!
+    if(typeof window.console == "undefined")
+    {
+      window.console = {log:function(str){window.external.Notify(str);}};
+    }
+
+    // output any errors to console log, created above.
+    window.onerror=function(e){console.log("Error ::" + e);};
+
+    console.log("Installed console ! ");
+
+
+    document.addEventListener("DOMContentLoaded",
+      function() {
+      console.log("DOMContentLoaded");
+      }, false);
+
+
+    function doLoad()
+    {
+      console.log("document.addEventListener = " + document.addEventListener);
+    }
+
+    function addContact(){
+      console.log("addContact()");
+      try{
+      
+        console.log("before create");
+      
+        // create seems to be failing...
+        var contact = navigator.contacts.create({"displayName": "Dooney Evans"});
+        
+        console.log("contact created");
+        
+        var contactName = {
+          formatted: "Dooney Evans",
+          familyName: "Evans",
+          givenName: "Dooney",
+          middleName: ""
+        };
+
+        console.log("create contactName");
+        
+        contact.name = contactName;
+
+        var phoneNumbers = [1];
+        phoneNumbers[0] = new ContactField('work', '512-555-1234', true);
+        contact.phoneNumbers = phoneNumbers;
+
+        console.log("create contact phone number");
+
+        contact.save(
+          function() { alert("Contact saved.");},
+          function(e) { alert("Contact save failed: " + e.code); }
+        );
+    
+        console.log("you have saved the contact");
+      }
+      catch (e)
+      {
+        //alert(e);
+        console.log("failed to save contact");
+      }
+
+    };
+  </script>
+  
+  <title>Contacts Demo</title>
+    
+</head>
+<body onLoad="doLoad()">
+  <!--
+  <button onClick="PhoneGap.exec(successCallback, failureCallback, 'Contacts', 'create', null);">save a blank contact</button>
+  <button onClick="PhoneGap.exec(successCallback, failureCallback, 'Contacts', 'create', {FirstName:'herm',LastName:'wong'});">save a contact</button>
+  <button onClick="PhoneGap.exec(successCallback, failureCallback, 'Contacts', 'find', {FirstName:'herm',LastName:'wong'});">find a contact</button>
+  -->
+  <button onClick="addContact();">save a contact</button>
+  <div id="contact_results"></div>
+</body>
+</html>

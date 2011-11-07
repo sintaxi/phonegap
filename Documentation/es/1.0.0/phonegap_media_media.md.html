@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+<meta name="generator" content="joDoc">
+<title>Documentacion API PhoneGap</title>
+<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
+<link rel="stylesheet" type="text/css" href="prettify/prettify.css">
+</head>
+<body>
+        <div id="header">
+            <h1><a href="index.html">Documentación Phone<strong>Gap</strong></a></h1>
+            <small>
+                <select><optgroup label="English" value="en">
+<option value="edge">edge</option>
+<option value="1.2.0">1.2.0</option>
+<option value="1.1.0">1.1.0</option>
+<option value="1.0.0rc3">1.0.0rc3</option>
+<option value="1.0.0rc2">1.0.0rc2</option>
+<option value="1.0.0rc1">1.0.0rc1</option>
+<option value="1.0.0">1.0.0</option>
+<option value="0.9.6">0.9.6</option>
+<option value="0.9.5.1">0.9.5.1</option>
+<option value="0.9.5">0.9.5</option>
+<option value="0.9.4">0.9.4</option>
+<option value="0.9.3">0.9.3</option>
+<option value="0.9.2">0.9.2</option>
+</optgroup>
+<optgroup label="Español" value="es"><option selected value="1.0.0">1.0.0</option></optgroup>
+<optgroup label="Japanese" value="jp"><option value="0.9.5">0.9.5</option></optgroup></select></small>
+        </div>
+        <div id="subheader">
+            <h1>Media</h1>
+            <small><select><option value="Media">Media</option>
+<option value="Media_argumentos">      - Argumentos</option>
+<option value="Media_m_todos">      - Métodos</option>
+<option value="Media_argumentos_solo_lectura">      - Argumentos (Solo lectura)</option>
+<option value="Media_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="media.getCurrentPosition">media.getCurrentPosition</option>
+<option value="media.getCurrentPosition_argumentos">      - Argumentos</option>
+<option value="media.getCurrentPosition_descripci_n">      - Descripción</option>
+<option value="media.getCurrentPosition_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="media.getCurrentPosition_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="media.getCurrentPosition_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="media.getDuration">media.getDuration</option>
+<option value="media.getDuration_descripci_n">      - Descripción</option>
+<option value="media.getDuration_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="media.getDuration_ejemplo_sencillo">      - Ejemplo Sencillo</option>
+<option value="media.getDuration_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="media.pause">media.pause</option>
+<option value="media.pause_descripci_n">      - Descripción</option>
+<option value="media.pause_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="media.pause_ejemplo_sencillo">      - Ejemplo Sencillo</option>
+<option value="media.pause_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="media.play">media.play</option>
+<option value="media.play_descripci_n">      - Descripción</option>
+<option value="media.play_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="media.play_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="media.play_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="media.release">media.release</option>
+<option value="media.release_descripci_n">      - Descripción</option>
+<option value="media.release_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="media.release_ejemplo_sencillo">      - Ejemplo Sencillo</option>
+<option value="media.release_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="media.seekTo">media.seekTo</option>
+<option value="media.seekTo_argumentos">      - Argumentos</option>
+<option value="media.seekTo_descripci_n">      - Descripción</option>
+<option value="media.seekTo_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="media.seekTo_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="media.seekTo_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="media.startRecord">media.startRecord</option>
+<option value="media.startRecord_descripci_n">      - Descripción</option>
+<option value="media.startRecord_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="media.startRecord_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="media.startRecord_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="media.startRecord_peculiaridades_ios">      - Peculiaridades iOS</option>
+<option value="media.stop">media.stop</option>
+<option value="media.stop_descripci_n">      - Descripción</option>
+<option value="media.stop_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="media.stop_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="media.stop_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="media.stopRecord">media.stopRecord</option>
+<option value="media.stopRecord_descripci_n">      - Descripción</option>
+<option value="media.stopRecord_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="media.stopRecord_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="media.stopRecord_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="MediaError">MediaError</option>
+<option value="MediaError_atributos">      - Atributos</option>
+<option value="MediaError_constantes">      - Constantes</option>
+<option value="MediaError_descripci_n">      - Descripción</option>
+<option value="mediaError">mediaError</option>
+<option value="mediaError_argumentos">      - Argumentos</option></select></small>
+        </div>
+
+        <div id="sidebar">
+            <div class="vertical_divider"></div>
+            <h1>Referencia API</h1>
+            <ul>
+<li><a href="phonegap_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
+<li><a href="phonegap_camera_camera.md.html#Camera">Camera</a></li>
+<li><a href="phonegap_media_capture_capture.md.html#Capture">Capture</a></li>
+<li><a href="phonegap_compass_compass.md.html#Compass">Compass</a></li>
+<li><a href="phonegap_connection_connection.md.html#Connection">Connection</a></li>
+<li><a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a></li>
+<li><a href="phonegap_device_device.md.html#Device">Device</a></li>
+<li><a href="phonegap_events_events.md.html#Events">Events</a></li>
+<li><a href="phonegap_file_file.md.html#File">File</a></li>
+<li><a href="phonegap_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
+<li><a href="phonegap_media_media.md.html#Media">Media</a></li>
+<li><a href="phonegap_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="phonegap_storage_storage.md.html#Storage">Storage</a></li>
+</ul>
+<h1></h1>
+            <ul>
+<li><a href="_index.html">Índice por palabras</a></li>
+            </ul>
+</div>
+
+        <div id="scrollable">
+            <div id="content">
+                <h1><a name="Media">Media</a></h1>
+
+<blockquote>
+  <p>El objeto <code><a href="phonegap_media_media.md.html#Media">Media</a></code> te permite grabar y reproducir ficheros de audio en un dispositivo. </p>
+</blockquote>
+
+<pre class="prettyprint"><code>var media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, mediaSuccess, [<a href="phonegap_media_media.md.html#mediaError">mediaError</a>], [mediaStatus]);
+</code></pre>
+
+<p>Nota: La implementación actual no se adhiere a las especificaciones de la W3C, en una futura implementación se seguirán las ultimas especificaciones de la W3C, y esta API se volverá obsoleta.</p>
+
+<h2>
+<a name="Media_argumentos">Argumentos</a>
+</h2>
+
+<ul>
+<li>
+<strong>src</strong>: una URI hacia el contenido de audio. <em>(DOMString)</em>
+</li>
+<li>
+<strong>mediaSuccess</strong>: (Opcional) La función 'callback' que sera llamada después de que se halla completado la tarea  de detener/reproducción/grabación. <em>(Function)</em>
+</li>
+<li>
+<strong><a href="phonegap_media_media.md.html#mediaError">mediaError</a></strong>: (Opcional) Una función 'callback' que sera llamada si hay algún error. <em>(Function)</em>
+</li>
+<li>
+<strong>mediaStatus</strong>: (Opcional) Una función 'callback' que sera llamada para indicar cambios en el estado. <em>(Function)</em>
+</li>
+</ul>
+<h2>
+<a name="Media_m_todos">Métodos</a>
+</h2>
+
+<ul>
+<li>
+<a href="phonegap_media_media.md.html#media.getCurrentPosition">media.getCurrentPosition</a>: Retorna la actual posición en el fichero de audio.</li>
+<li>
+<a href="phonegap_media_media.md.html#media.getDuration">media.getDuration</a>: Retorna la duración del fichero de audio.</li>
+<li>
+<a href="phonegap_media_media.md.html#media.play">media.play</a>: Reproduce o pausa la reproducción del fichero de audio.</li>
+<li>
+<a href="phonegap_media_media.md.html#media.pause">media.pause</a>: Pausa la reproducción del fichero de audio.</li>
+<li>
+<a href="phonegap_media_media.md.html#media.release">media.release</a>: Libera el audio y los recursos ocupados en el sistema.</li>
+<li>
+<a href="phonegap_media_media.md.html#media.seekTo">media.seekTo</a>: Mueve la posición en el fichero de audio.</li>
+<li>
+<a href="phonegap_media_media.md.html#media.startRecord">media.startRecord</a>: Empieza a grabar el fichero de audio.</li>
+<li>
+<a href="phonegap_media_media.md.html#media.stopRecord">media.stopRecord</a>: Para de grabar el fichero de audio.</li>
+<li>
+<a href="phonegap_media_media.md.html#media.stop">media.stop</a>: Para de reproducir el fichero de audio.</li>
+</ul>
+<h2>
+<a name="Media_argumentos_solo_lectura">Argumentos (Solo lectura)</a>
+</h2>
+
+<ul>
+<li>
+<strong>_position</strong>: La posición actual en la reproducción (en segundos).  No se actualiza durante la reproducción, necesitas llamar a <code>getCurrentPosition</code> para actualizar este atributo.</li>
+<li>
+<strong>_duration</strong>: La duración del audio (en segundos).</li>
+</ul>
+<h2>
+<a name="Media_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>iOS</li>
+</ul>
+<hr>
+<h1><a name="media.getCurrentPosition">media.getCurrentPosition</a></h1>
+
+<p>Retorna la posición actual en el fichero de audio.</p>
+
+<pre class="prettyprint"><code><a href="phonegap_media_media.md.html#media.getCurrentPosition">media.getCurrentPosition</a>(mediaSuccess, [<a href="phonegap_media_media.md.html#mediaError">mediaError</a>]);
+</code></pre>
+
+<h2>
+<a name="media.getCurrentPosition_argumentos">Argumentos</a>
+</h2>
+
+<ul>
+<li>
+<strong>mediaSuccess</strong>: La función 'callback' que sera llamada con la actual posición en segundos.</li>
+<li>
+<strong><a href="phonegap_media_media.md.html#mediaError">mediaError</a></strong>: (Opcional) La función 'callback' que sera llamada con cualquier error que ocurra.</li>
+</ul>
+<h2>
+<a name="media.getCurrentPosition_descripci_n">Descripción</a>
+</h2>
+
+<p>La función <code><a href="phonegap_media_media.md.html#media.getCurrentPosition">media.getCurrentPosition</a></code> es una función asíncrona que retorna la posición actual en la reproducción del fichero. Esta función también actualiza el atributo <strong>position</strong> del objeto <code><a href="phonegap_media_media.md.html#Media">Media</a></code>.</p>
+
+<h2>
+<a name="media.getCurrentPosition_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="media.getCurrentPosition_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>    // Un reproductor de audio
+    //
+    var my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+
+    // Actualiza la posición cada segundo
+    var mediaTimer = setInterval(function() {
+        // Obtiene la posición
+        my_media.getCurrentPosition(
+            // Función 'callback' satisfactoria
+            function(position) {
+                if (position &gt; -1) {
+                    console.log((position) + " seg");
+                }
+            },
+            // Función 'callback' de error
+            function(e) {
+                console.log("Error obteniendo posición=" + e);
+            }
+        );
+    }, 1000);
+</code></pre>
+
+<h2>
+<a name="media.getCurrentPosition_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>    &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                  "http://www.w3.org/TR/html4/strict.dtd"&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;Ejemplo de <a href="phonegap_media_media.md.html#Media">Media</a>&lt;/title&gt;
+
+        &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8"&gt;
+
+        // Espere a que PhoneGap se inicie
+        //
+        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+        // PhoneGap esta listo
+        //
+        function onDeviceReady() {
+            playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
+        }
+
+        // Reproductor de audio
+        //
+        var my_media = null;
+        var mediaTimer = null;
+
+        // Reproduce el audio
+        //
+        function playAudio(src) {
+            // Crea un objeto `<a href="phonegap_media_media.md.html#Media">Media</a>` desde el argumento
+            my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+
+            // Reproduce el audio
+            my_media.play();
+
+            // Actualiza la posición cada segundo
+            if (mediaTimer == null) {
+                mediaTimer = setInterval(function() {
+                    // Obtiene la posición actual
+                    my_media.getCurrentPosition(
+                        // Función 'callback' satisfactoria
+                        function(position) {
+                            if (position &gt; -1) {
+                                setAudioPosition((position) + " seg");
+                            }
+                        },
+                        // Función 'callback' de error
+                        function(e) {
+                            console.log("Error obteniendo posición=" + e);
+                            setAudioPosition("Error: " + e);
+                        }
+                    );
+                }, 1000);
+            }
+        }
+
+        // Pausa la reproducción
+        // 
+        function pauseAudio() {
+            if (my_media) {
+                my_media.<a href="phonegap_events_events.md.html#pause">pause</a>();
+            }
+        }
+
+        // Detiene la reproducción
+        // 
+        function stopAudio() {
+            if (my_media) {
+                my_media.stop();
+            }
+            clearInterval(mediaTimer);
+            mediaTimer = null;
+        }
+
+        // Función 'callback' onSuccess
+        //
+        function onSuccess() {
+            console.log("playAudio():Audio correcto");
+        }
+
+        // Función 'callback' onError
+        //
+        function onError(error) {
+            alert('código: '  + error.code    + '\n' + 
+                  'mensaje: ' + error.message + '\n');
+        }
+
+        // Muestra la posición
+        // 
+        function setAudioPosition(position) {
+            document.getElementById('audio_position').innerHTML = position;
+        }
+
+        &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;a href="#" class="btn large" onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');"&gt;Reproducir&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pausa&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Detener&lt;/a&gt;
+        &lt;p id="audio_position"&gt;&lt;/p&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="media.getDuration">media.getDuration</a></h1>
+
+<p>Retorna la duración de un fichero de audio.</p>
+
+<pre class="prettyprint"><code><a href="phonegap_media_media.md.html#media.getDuration">media.getDuration</a>();
+</code></pre>
+
+<h2>
+<a name="media.getDuration_descripci_n">Descripción</a>
+</h2>
+
+<p>La función <code><a href="phonegap_media_media.md.html#media.getDuration">media.getDuration</a></code> es una función síncrona que retorna la duración del fichero de audio (si se conociera, y en segundos).
+Si la duración fuera desconocida, retornara -1.</p>
+
+<h2>
+<a name="media.getDuration_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="media.getDuration_ejemplo_sencillo">Ejemplo Sencillo</a>
+</h2>
+
+<pre class="prettyprint"><code>    // Un reproductor de audio
+    //
+    var my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+
+    // Obtiene la duración
+    var counter = 0;
+    var timerDur = setInterval(function() {
+        counter = counter + 100;
+        if (counter &gt; 2000) {
+            clearInterval(timerDur);
+        }
+        var dur = my_media.getDuration();
+        if (dur &gt; 0) {
+            clearInterval(timerDur);
+            document.getElementById('audio_duration').innerHTML = (dur) + " seg";
+        }
+   }, 100);
+</code></pre>
+
+<h2>
+<a name="media.getDuration_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>    &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                          "http://www.w3.org/TR/html4/strict.dtd"&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;Ejemplo de <a href="phonegap_media_media.md.html#Media">Media</a>&lt;/title&gt;
+
+        &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8"&gt;
+
+        // Espere a que PhoneGap se inicie
+        //
+        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+        // PhoneGap esta listo
+        //
+        function onDeviceReady() {
+            playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
+        }
+
+        // Un reproductor de audio
+        //
+        var my_media = null;
+        var mediaTimer = null;
+
+        // Reproduce el audio
+        //
+        function playAudio(src) {
+            // Crea un objeto `<a href="phonegap_media_media.md.html#Media">Media</a>` desde el argumento
+            my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+
+            // Reproduce el audio
+            my_media.play();
+
+            // Actualiza la posición cada segundo
+            if (mediaTimer == null) {
+                mediaTimer = setInterval(function() {
+                    // Obtiene la posición actual
+                    my_media.getCurrentPosition(
+                        // Función 'callback' satisfactoria
+                        function(position) {
+                            if (position &gt; -1) {
+                                setAudioPosition((position) + " seg.");
+                            }
+                        },
+                        // Función 'callback' de error
+                        function(e) {
+                            console.log("Error obteniendo posición" + e);
+                            setAudioPosition("Error: " + e);
+                        }
+                    );
+                }, 1000);
+            }
+        }
+
+        // Pausa la reproducción
+        // 
+        function pauseAudio() {
+            if (my_media) {
+                my_media.<a href="phonegap_events_events.md.html#pause">pause</a>();
+            }
+        }
+
+        // Detiene la reproducción
+        // 
+        function stopAudio() {
+            if (my_media) {
+                my_media.stop();
+            }
+            clearInterval(mediaTimer);
+            mediaTimer = null;
+        }
+
+        // Función 'callback' onSuccess
+        //
+        function onSuccess() {
+            console.log("playAudio():Audio correcto");
+        }
+
+        // Función 'callback' onError
+        //
+        function onError(error) {
+            alert('código: '  + error.code    + '\n' + 
+                  'mensaje: ' + error.message + '\n');
+        }
+
+        // Muestra la posición
+        // 
+        function setAudioPosition(position) {
+            document.getElementById('audio_position').innerHTML = position;
+        }
+
+        &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;a href="#" class="btn large" onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');"&gt;Reproducir&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pausa&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Detener&lt;/a&gt;
+        &lt;p id="audio_position"&gt;&lt;/p&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="media.pause">media.pause</a></h1>
+
+<p>Pausa la reproducción de un fichero de audio.</p>
+
+<pre class="prettyprint"><code><a href="phonegap_media_media.md.html#media.pause">media.pause</a>();
+</code></pre>
+
+<h2>
+<a name="media.pause_descripci_n">Descripción</a>
+</h2>
+
+<p>La función <code><a href="phonegap_media_media.md.html#media.pause">media.pause</a></code> es una función síncrona que pausa la reproducción de un fichero de audio.</p>
+
+<h2>
+<a name="media.pause_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="media.pause_ejemplo_sencillo">Ejemplo Sencillo</a>
+</h2>
+
+<pre class="prettyprint"><code>// Reproduce el audio
+//
+function playAudio(url) {
+    // Reproduce el fichero de audio de la URL
+    var my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(url,
+        // Función 'callback' satisfactoria
+        function() {
+            console.log("playAudio():Audio correcto");
+        },
+        // Función 'callback' de error 
+        function(err) {
+            console.log("playAudio():Audio Error: "+err);
+    });
+
+    // Reproduce el audio
+    my_media.play();
+
+    // Pausar después de 10 segundos
+    setTimeout(function() {
+        <a href="phonegap_media_media.md.html#media.pause">media.pause</a>();
+    }, 10000);        
+}
+</code></pre>
+
+<h2>
+<a name="media.pause_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>    &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                          "http://www.w3.org/TR/html4/strict.dtd"&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;Ejemplo de <a href="phonegap_media_media.md.html#Media">Media</a>&lt;/title&gt;
+
+        &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8"&gt;
+
+        // Espere a que PhoneGap se inicie
+        //
+        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+        // PhoneGap esta listo
+        //
+        function onDeviceReady() {
+            playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
+        }
+
+        // Un reproductor de audio
+        //
+        var my_media = null;
+        var mediaTimer = null;
+
+        // Reproduce el audio
+        //
+        function playAudio(src) {
+            // Crea un objeto `<a href="phonegap_media_media.md.html#Media">Media</a>` desde el argumento
+            my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+
+            // Play audio
+            my_media.play();
+
+            // Actualiza la posición cada segundo
+            if (mediaTimer == null) {
+                mediaTimer = setInterval(function() {
+                    // Obtiene la posición actual
+                    my_media.getCurrentPosition(
+                        // Función 'callback' satisfactoria
+                        function(position) {
+                            if (position &gt; -1) {
+                                setAudioPosition((position) + " seg.");
+                            }
+                        },
+                        // Función 'callback' de error
+                        function(e) {
+                            console.log("Error obteniendo posición=" + e);
+                            setAudioPosition("Error: " + e);
+                        }
+                    );
+                }, 1000);
+            }
+        }
+
+        // Pausa la reproducción
+        // 
+        function pauseAudio() {
+            if (my_media) {
+                my_media.<a href="phonegap_events_events.md.html#pause">pause</a>();
+            }
+        }
+
+        // Detiene la reproducción
+        // 
+        function stopAudio() {
+            if (my_media) {
+                my_media.stop();
+            }
+            clearInterval(mediaTimer);
+            mediaTimer = null;
+        }
+
+        // Función 'callback' onSuccess
+        //
+        function onSuccess() {
+            console.log("playAudio():Audio Correcto");
+        }
+
+        // Función 'callback' onError
+        //
+        function onError(error) {
+            alert('código: '  + error.code    + '\n' + 
+                  'mensaje: ' + error.message + '\n');
+        }
+
+        // Muestra la posición
+        // 
+        function setAudioPosition(position) {
+            document.getElementById('audio_position').innerHTML = position;
+        }
+
+        &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;a href="#" class="btn large" onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');"&gt;Reproducir&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pausa&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Detener&lt;/a&gt;
+        &lt;p id="audio_position"&gt;&lt;/p&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="media.play">media.play</a></h1>
+
+<p>Reproduce o pausa la reproducción de un fichero de audio.</p>
+
+<pre class="prettyprint"><code><a href="phonegap_media_media.md.html#media.play">media.play</a>();
+</code></pre>
+
+<h2>
+<a name="media.play_descripci_n">Descripción</a>
+</h2>
+
+<p>La función <code><a href="phonegap_media_media.md.html#media.play">media.play</a></code> es una función síncrona que reproduce o pausa un archivo de audio.</p>
+
+<h2>
+<a name="media.play_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="media.play_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>// Reproduce el audio
+//
+function playAudio(url) {
+    // Reproduce el fichero de audio de la URL
+    var my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(url,
+        // Función 'callback' satisfactoria
+        function() {
+            console.log("playAudio():Audio correcto");
+        },
+        // Función 'callback' de error 
+        function(err) {
+            console.log("playAudio():Audio Error: "+err);
+    });
+
+    // Reproduce el audio
+    my_media.play();
+}
+</code></pre>
+
+<h2>
+<a name="media.play_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>    &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                          "http://www.w3.org/TR/html4/strict.dtd"&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;Ejemplo de <a href="phonegap_media_media.md.html#Media">Media</a>&lt;/title&gt;
+
+        &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8"&gt;
+
+        // Espere a que PhoneGap se inicie
+        //
+        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+        // PhoneGap esta listo
+        //
+        function onDeviceReady() {
+            playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
+        }
+
+        // Un Reproductor de audio
+        //
+        var my_media = null;
+        var mediaTimer = null;
+
+        // Reproduce el audio
+        //
+        function playAudio(src) {
+            if (my_media == null) {
+                // Crea un objeto `<a href="phonegap_media_media.md.html#Media">Media</a>` desde el argumento
+                my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+            } // Si no, reproduce el actual
+            // Play audio
+            my_media.play();
+
+            // Actualiza la posición cada segundo
+            if (mediaTimer == null) {
+                mediaTimer = setInterval(function() {
+                    // Obtiene la posición actual
+                    my_media.getCurrentPosition(
+                        // Función 'callback' satisfactoria
+                        function(position) {
+                            if (position &gt; -1) {
+                                setAudioPosition((position) + " seg");
+                            }
+                        },
+                        // Función 'callback' de error
+                        function(e) {
+                            console.log("Error obteniendo posición=" + e);
+                            setAudioPosition("Error: " + e);
+                        }
+                    );
+                }, 1000);
+            }
+        }
+
+        // Pausa la reproducción
+        // 
+        function pauseAudio() {
+            if (my_media) {
+                my_media.<a href="phonegap_events_events.md.html#pause">pause</a>();
+            }
+        }
+
+        // Detiene la reproducción
+        // 
+        function stopAudio() {
+            if (my_media) {
+                my_media.stop();
+            }
+            clearInterval(mediaTimer);
+            mediaTimer = null;
+        }
+
+        // Función 'callback' onSuccess
+        //
+        function onSuccess() {
+            console.log("playAudio():Audio Correcto");
+        }
+
+        // Función 'callback' onError
+        //
+        function onError(error) {
+            alert('código: '  + error.code    + '\n' + 
+                  'mensaje: ' + error.message + '\n');
+        }
+
+        // Muestra la posición
+        // 
+        function setAudioPosition(position) {
+            document.getElementById('audio_position').innerHTML = position;
+        }
+
+        &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;a href="#" class="btn large" onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');"&gt;Reproducir&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pausa&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Detener&lt;/a&gt;
+        &lt;p id="audio_position"&gt;&lt;/p&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="media.release">media.release</a></h1>
+
+<p>Libera el audio y los recursos ocupados en el sistema.</p>
+
+<pre class="prettyprint"><code><a href="phonegap_media_media.md.html#media.release">media.release</a>();
+</code></pre>
+
+<h2>
+<a name="media.release_descripci_n">Descripción</a>
+</h2>
+
+<p>La función <code><a href="phonegap_media_media.md.html#media.release">media.release</a></code> es una función síncrona que libera los recursos del sistema ocupados por el fichero de audio. Esta función es particularmente importante en Android donde solo se dispone de una cantidad limitada de instancias 'OpenCore' para la reproducción.
+Se debe usar el método <code><a href="phonegap_media_media.md.html#media.release">media.release</a></code> cuando no se necesite el recurso multimedia.</p>
+
+<h2>
+<a name="media.release_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="media.release_ejemplo_sencillo">Ejemplo Sencillo</a>
+</h2>
+
+<pre class="prettyprint"><code>    // Un reproductor de audio
+    //
+    var my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+
+    my_media.play();
+    my_media.stop();
+    my_media.release();
+</code></pre>
+
+<h2>
+<a name="media.release_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>    &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                          "http://www.w3.org/TR/html4/strict.dtd"&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;Ejemplo de <a href="phonegap_media_media.md.html#Media">Media</a>&lt;/title&gt;
+
+        &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8"&gt;
+
+        // Espera a que PhoneGap se inicie
+        //
+        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+        // PhoneGap esta listo
+        //
+        function onDeviceReady() {
+            playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
+        }
+
+        // Un reproductor de audio
+        //
+        var my_media = null;
+        var mediaTimer = null;
+
+        // Reproduce el audio
+        //
+        function playAudio(src) {
+            // Crea un objeto `<a href="phonegap_media_media.md.html#Media">Media</a>` desde el argumento
+            my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+
+            // Reproduce el audio
+            my_media.play();
+
+            // Actualiza la posición cada segundo
+            if (mediaTimer == null) {
+                mediaTimer = setInterval(function() {
+                    // obtiene la posición actual
+                    my_media.getCurrentPosition(
+                        // Función 'callback' satisfactoria
+                        function(position) {
+                            if (position &gt; -1) {
+                                setAudioPosition((position) + " seg");
+                            }
+                        },
+                        // Función 'callback' de error
+                        function(e) {
+                            console.log("Error obteniendo posición=" + e);
+                            setAudioPosition("Error: " + e);
+                        }
+                    );
+                }, 1000);
+            }
+        }
+
+        // Pausa la reproducción
+        // 
+        function pauseAudio() {
+            if (my_media) {
+                my_media.<a href="phonegap_events_events.md.html#pause">pause</a>();
+            }
+        }
+
+        // Detiene la reproducción
+        // 
+        function stopAudio() {
+            if (my_media) {
+                my_media.stop();
+            }
+            clearInterval(mediaTimer);
+            mediaTimer = null;
+        }
+
+        // Función 'callback' onSuccess
+        //
+        function onSuccess() {
+            console.log("playAudio():Audio Correcto");
+        }
+
+        // Función 'callback' onError 
+        //
+        function onError(error) {
+            alert('código: '  + error.code    + '\n' + 
+                  'mensaje: ' + error.message + '\n');
+        }
+
+        // Muestra la posición
+        // 
+        function setAudioPosition(position) {
+            document.getElementById('audio_position').innerHTML = position;
+        }
+
+        &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;a href="#" class="btn large" onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');"&gt;Reproducir&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pausa&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Detener&lt;/a&gt;
+        &lt;p id="audio_position"&gt;&lt;/p&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="media.seekTo">media.seekTo</a></h1>
+
+<p>Fija la posición actual en el fichero de audio.</p>
+
+<pre class="prettyprint"><code><a href="phonegap_media_media.md.html#media.seekTo">media.seekTo</a>(milisegundos);
+</code></pre>
+
+<h2>
+<a name="media.seekTo_argumentos">Argumentos</a>
+</h2>
+
+<ul>
+<li>
+<strong>milliseconds</strong>: La nueva posición en el fichero de audio (en milisegundos).</li>
+</ul>
+<h2>
+<a name="media.seekTo_descripci_n">Descripción</a>
+</h2>
+
+<p>La función <code><a href="phonegap_media_media.md.html#media.seekTo">media.seekTo</a></code> es una función síncrona que actualiza la posición actual de reproducción del objeto `<a href="phonegap_media_media.md.html#Media">Media</a>, este método también actualiza su atributo <strong>position</strong>.</p>
+
+<h2>
+<a name="media.seekTo_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="media.seekTo_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>    // Reproductor de audio
+    //
+    var my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+    my_media.play();
+    // Pasados 5 segundos, cambia la posición hacia el segundo numero 10
+    setTimeout(function() {
+        my_media.seekTo(10000);
+    }, 5000);
+</code></pre>
+
+<h2>
+<a name="media.seekTo_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>    &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                  "http://www.w3.org/TR/html4/strict.dtd"&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;Ejemplo de <a href="phonegap_media_media.md.html#Media">Media</a>&lt;/title&gt;
+
+        &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8"&gt;
+
+        // Espere a que PhoneGap se inicie
+        //
+        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+        // PhoneGap esta listo
+        //
+        function onDeviceReady() {
+            playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
+        }
+
+        // Un reproductor de audio
+        //
+        var my_media = null;
+        var mediaTimer = null;
+
+        // Reproduce el audio
+        //
+        function playAudio(src) {
+            // Crea un objeto `<a href="phonegap_media_media.md.html#Media">Media</a>` desde el argumento
+            my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+
+            // Reproduce el audio
+            my_media.play();
+            // Actualiza la posición cada segundo
+            mediaTimer = setInterval(function() {
+                // Obtiene la posición actual
+                my_media.getCurrentPosition(
+                    // Función 'callback' satisfactoria
+                    function(position) {
+                        if (position &gt; -1) {
+                            setAudioPosition(position + " seg");
+                        }
+                    },
+                    // error callback
+                    function(e) {
+                        console.log("Error obteniendo posición=" + e);
+                    }
+                );
+            }, 1000);
+            // Pasados 5 segundos, cambia la posición hacia el segundo numero 10
+            setTimeout(function() {
+                my_media.seekTo(10000);
+            }, 5000);
+        }
+
+        // Detiene la reproducción
+        // 
+        function stopAudio() {
+            if (my_media) {
+                my_media.stop();
+            }
+            clearInterval(mediaTimer);
+            mediaTimer = null;
+        }
+
+        // Función 'callback' satisfactoria
+        //
+        function onSuccess() {
+            console.log("playAudio():Audio correcto");
+        }
+
+        // Función 'callback' de error
+        //
+        function onError(error) {
+            alert('código: '  + error.code    + '\n' + 
+                  'mensaje: ' + error.message + '\n');
+        }
+
+        // Muestra la posición
+        // 
+        function setAudioPosition(position) {
+            document.getElementById('audio_position').innerHTML = position;
+        }
+
+        &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;a href="#" class="btn large" onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');"&gt;Reproducir&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Detener&lt;/a&gt;
+        &lt;p id="audio_position"&gt;&lt;/p&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="media.startRecord">media.startRecord</a></h1>
+
+<p>Inicia la grabación de un fichero de audio.</p>
+
+<pre class="prettyprint"><code><a href="phonegap_media_media.md.html#media.startRecord">media.startRecord</a>();
+</code></pre>
+
+<h2>
+<a name="media.startRecord_descripci_n">Descripción</a>
+</h2>
+
+<p>La función <code><a href="phonegap_media_media.md.html#media.startRecord">media.startRecord</a></code> es una función síncrona que inicia la grabación de un fichero de audio.</p>
+
+<h2>
+<a name="media.startRecord_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="media.startRecord_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>// Graba audio
+// 
+function recordAudio() {
+    var src = "myrecording.mp3";
+    var mediaRec = new <a href="phonegap_media_media.md.html#Media">Media</a>(src,
+        // Función 'callback' satisfactoria
+        function() {
+            console.log("recordAudio():Audio correcto");
+        },
+
+        // Función 'callback' de error
+        function(err) {
+            console.log("recordAudio():Audio Error: "+ err.code);
+        });
+
+    // Graba audio
+    mediaRec.startRecord();
+}
+</code></pre>
+
+<h2>
+<a name="media.startRecord_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_media_media.md.html#Media">Media</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espere a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // Graba audio
+    // 
+    function recordAudio() {
+        var src = "myrecording.mp3";
+        var mediaRec = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+
+        // Graba audio
+        mediaRec.startRecord();
+
+        // Parar de grabar tras 10 segundos
+        var recTime = 0;
+        var recInterval = setInterval(function() {
+            recTime = recTime + 1;
+            setAudioPosition(recTime + " seg");
+            if (recTime &gt;= 10) {
+                clearInterval(recInterval);
+                mediaRec.stopRecord();
+            }
+        }, 1000);
+    }
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        recordAudio();
+    }
+
+    // Función 'callback' onSuccess
+    //
+    function onSuccess() {
+        console.log("recordAudio():Audio correcto");
+    }
+
+    // Función 'callback' onError
+    //
+    function onError(error) {
+        alert('código: '  + error.code    + '\n' + 
+              'mensaje: ' + error.message + '\n');
+    }
+
+    // Muestra la posición
+    // 
+    function setAudioPosition(position) {
+        document.getElementById('audio_position').innerHTML = position;
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p id="media"&gt;Grabando audio...&lt;/p&gt;
+    &lt;p id="audio_position"&gt;&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2>
+<a name="media.startRecord_peculiaridades_ios">Peculiaridades iOS</a>
+</h2>
+
+<ul>
+<li>El fichero a grabar debe existir previamente y debería ser WAV. Puedes usar la API <a href="phonegap_file_file.md.html#File">File</a> para crear el fichero.</li>
+</ul>
+<hr>
+<h1><a name="media.stop">media.stop</a></h1>
+
+<p>Detiene la reproducción de un fichero de audio.</p>
+
+<pre class="prettyprint"><code><a href="phonegap_media_media.md.html#media.stop">media.stop</a>();
+</code></pre>
+
+<h2>
+<a name="media.stop_descripci_n">Descripción</a>
+</h2>
+
+<p>La función <code><a href="phonegap_media_media.md.html#media.stop">media.stop</a></code> es una función síncrona que detiene la reproducción de un fichero de audio.</p>
+
+<h2>
+<a name="media.stop_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="media.stop_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>// Reproduce el audio
+//
+function playAudio(url) {
+    // Reproduce el fichero de audio de la URL
+    var my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(url,
+        // función 'callback' satisfactorio
+        function() {
+            console.log("playAudio():Audio correcto");
+        },
+        // función 'callback' de error
+        function(err) {
+            console.log("playAudio():Error de audio: "+err);
+    });
+
+    // Reproduce el audio
+    my_media.play();
+
+    // Pausar tras 10 segundos
+    setTimeout(function() {
+        my_media.stop();
+    }, 10000);        
+}
+</code></pre>
+
+<h2>
+<a name="media.stop_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>    &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                          "http://www.w3.org/TR/html4/strict.dtd"&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;Ejemplo de <a href="phonegap_media_media.md.html#Media">Media</a>&lt;/title&gt;
+
+        &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8"&gt;
+
+        // Espere a que PhoneGap se inicie
+        //
+        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+        // PhoneGap esta lista
+        //
+        function onDeviceReady() {
+            playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
+        }
+
+        // Reproductor de audio
+        //
+        var my_media = null;
+        var mediaTimer = null;
+
+        // Reproduce el audio
+        //
+        function playAudio(src) {
+            // Crea un objeto `<a href="phonegap_media_media.md.html#Media">Media</a>` desde el argumento
+            my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+
+            // Reproduce el audio
+            my_media.play();
+
+            // Actualiza la posición cada segundo
+            if (mediaTimer == null) {
+                mediaTimer = setInterval(function() {
+                    // obtiene la posición actual
+                    my_media.getCurrentPosition(
+                        // función 'callback' satisfactoria
+                        function(position) {
+                            if (position &gt; -1) {
+                                setAudioPosition((position) + " seg");
+                            }
+                        },
+                        // función 'callback' de error
+                        function(e) {
+                            console.log("Error obteniendo posición=" + e);
+                            setAudioPosition("Error: " + e);
+                        }
+                    );
+                }, 1000);
+            }
+        }
+
+        // Pausa la reproducción
+        // 
+        function pauseAudio() {
+            if (my_media) {
+                my_media.<a href="phonegap_events_events.md.html#pause">pause</a>();
+            }
+        }
+
+        // Detiene la reproducción
+        // 
+        function stopAudio() {
+            if (my_media) {
+                my_media.stop();
+            }
+            clearInterval(mediaTimer);
+            mediaTimer = null;
+        }
+
+        // función 'callback' onSuccess
+        //
+        function onSuccess() {
+            console.log("playAudio():Audio correcto");
+        }
+
+        // función 'callback' onError
+        //
+        function onError(error) {
+            alert('código: '  + error.code    + '\n' + 
+                  'mensaje: ' + error.message + '\n');
+        }
+
+        // Muestra la posición
+        // 
+        function setAudioPosition(position) {
+            document.getElementById('audio_position').innerHTML = position;
+        }
+
+        &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;a href="#" class="btn large" onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');"&gt;Reproducir&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="pauseAudio();"&gt;Pausa&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Detener&lt;/a&gt;
+        &lt;p id="audio_position"&gt;&lt;/p&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="media.stopRecord">media.stopRecord</a></h1>
+
+<p>Detiene la grabación de un fichero de audio.</p>
+
+<pre class="prettyprint"><code><a href="phonegap_media_media.md.html#media.stopRecord">media.stopRecord</a>();
+</code></pre>
+
+<h2>
+<a name="media.stopRecord_descripci_n">Descripción</a>
+</h2>
+
+<p>La función <code><a href="phonegap_media_media.md.html#media.stopRecord">media.stopRecord</a></code> es una función síncrona que detiene la grabación de un fichero de audio.</p>
+
+<h2>
+<a name="media.stopRecord_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="media.stopRecord_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>// Graba audio
+// 
+function recordAudio() {
+    var src = "myrecording.mp3";
+    var mediaRec = new <a href="phonegap_media_media.md.html#Media">Media</a>(src,
+        // función 'callback' satisfactoria
+        function() {
+            console.log("recordAudio():Audio correcto");
+        },
+
+        // función 'callback' de error
+        function(err) {
+            console.log("recordAudio():Error de audio: "+ err.code);
+        });
+
+    // Graba audio
+    mediaRec.startRecord();
+
+    // Detiene la grabación tras 10 segundos
+    setTimeout(function() {
+        mediaRec.stopRecord();
+    }, 10000);
+}
+</code></pre>
+
+<h2>
+<a name="media.stopRecord_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_media_media.md.html#Media">Media</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espera a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // Graba audio
+    // 
+    function recordAudio() {
+        var src = "myrecording.mp3";
+        var mediaRec = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+
+        // Graba audio
+        mediaRec.startRecord();
+
+        // Detiene la grabación tras 10 segundos
+        var recTime = 0;
+        var recInterval = setInterval(function() {
+            recTime = recTime + 1;
+            setAudioPosition(recTime + " seg");
+            if (recTime &gt;= 10) {
+                clearInterval(recInterval);
+                mediaRec.stopRecord();
+            }
+        }, 1000);
+    }
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        recordAudio();
+    }
+
+    // función 'callback' onSuccess
+    //
+    function onSuccess() {
+        console.log("recordAudio():Audio correcto");
+    }
+
+    // función 'callback' onError
+    //
+    function onError(error) {
+        alert('código: '  + error.code    + '\n' + 
+              'mensaje: ' + error.message + '\n');
+    }
+
+    // Muestra la posición
+    // 
+    function setAudioPosition(position) {
+        document.getElementById('audio_position').innerHTML = position;
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p id="media"&gt;Grabando audio...&lt;/p&gt;
+    &lt;p id="audio_position"&gt;&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="MediaError">MediaError</a></h1>
+
+<p>Cuando ocurra un error, un objeto <code><a href="phonegap_media_media.md.html#MediaError">MediaError</a></code> se le pasara a la función 'callback' <code><a href="phonegap_media_media.md.html#mediaError">mediaError</a></code>.</p>
+
+<h2>
+<a name="MediaError_atributos">Atributos</a>
+</h2>
+
+<ul>
+<li>
+<strong>code:</strong> Uno de los códigos de error predefinidos en la lista inferior.</li>
+<li>
+<strong>message:</strong> Mensaje de error describiendo el problema.</li>
+</ul>
+<h2>
+<a name="MediaError_constantes">Constantes</a>
+</h2>
+
+<ul>
+<li><code><a href="phonegap_media_media.md.html#MediaError">MediaError</a>.MEDIA_ERR_ABORTED</code></li>
+<li><code><a href="phonegap_media_media.md.html#MediaError">MediaError</a>.MEDIA_ERR_NETWORK</code></li>
+<li><code><a href="phonegap_media_media.md.html#MediaError">MediaError</a>.MEDIA_ERR_DECODE</code></li>
+<li><code><a href="phonegap_media_media.md.html#MediaError">MediaError</a>.MEDIA_ERR_NONE_SUPPORTED</code></li>
+</ul>
+<h2>
+<a name="MediaError_descripci_n">Descripción</a>
+</h2>
+
+<p>Cuando ocurra un error, un objeto <code><a href="phonegap_media_media.md.html#MediaError">MediaError</a></code> se le pasara a la función 'callback' <code><a href="phonegap_media_media.md.html#mediaError">mediaError</a></code>.</p>
+
+<hr>
+<h1><a name="mediaError">mediaError</a></h1>
+
+<p>Una función 'callback' que el usuario especificara y se llamara cuando ocurra un error en las funciones de media.</p>
+
+<pre class="prettyprint"><code>function(error) {
+    // Maneja el error
+}
+</code></pre>
+
+<h2>
+<a name="mediaError_argumentos">Argumentos</a>
+</h2>
+
+<ul>
+<li>
+<strong>error:</strong> El error retornado por el dispositivo. (<code><a href="phonegap_media_media.md.html#MediaError">MediaError</a></code>)</li>
+</ul>
+</div>
+        </div>
+
+        <!-- Functionality and Syntax Highlighting -->
+        <script type="text/javascript" src="index.js"></script><script type="text/javascript" src="prettify/prettify.js"></script>
+</body>
+</html>

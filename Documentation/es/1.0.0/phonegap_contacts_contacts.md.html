@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+<meta name="generator" content="joDoc">
+<title>Documentacion API PhoneGap</title>
+<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
+<link rel="stylesheet" type="text/css" href="prettify/prettify.css">
+</head>
+<body>
+        <div id="header">
+            <h1><a href="index.html">Documentación Phone<strong>Gap</strong></a></h1>
+            <small>
+                <select><optgroup label="English" value="en">
+<option value="edge">edge</option>
+<option value="1.2.0">1.2.0</option>
+<option value="1.1.0">1.1.0</option>
+<option value="1.0.0rc3">1.0.0rc3</option>
+<option value="1.0.0rc2">1.0.0rc2</option>
+<option value="1.0.0rc1">1.0.0rc1</option>
+<option value="1.0.0">1.0.0</option>
+<option value="0.9.6">0.9.6</option>
+<option value="0.9.5.1">0.9.5.1</option>
+<option value="0.9.5">0.9.5</option>
+<option value="0.9.4">0.9.4</option>
+<option value="0.9.3">0.9.3</option>
+<option value="0.9.2">0.9.2</option>
+</optgroup>
+<optgroup label="Español" value="es"><option selected value="1.0.0">1.0.0</option></optgroup>
+<optgroup label="Japanese" value="jp"><option value="0.9.5">0.9.5</option></optgroup></select></small>
+        </div>
+        <div id="subheader">
+            <h1>Contacts</h1>
+            <small><select><option value="Contacts">Contacts</option>
+<option value="Contacts_m_todos">      - Métodos</option>
+<option value="Contacts_argumentos">      - Argumentos</option>
+<option value="Contacts_objetos">      - Objetos</option>
+<option value="contacts.create">contacts.create</option>
+<option value="contacts.create_descripci_n">      - Descripción</option>
+<option value="contacts.create_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="contacts.create_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="contacts.create_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="contacts.find">contacts.find</option>
+<option value="contacts.find_descripci_n">      - Descripción</option>
+<option value="contacts.find_argumentos">      - Argumentos</option>
+<option value="contacts.find_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="contacts.find_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="contacts.find_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="Contact">Contact</option>
+<option value="Contact_atributos">      - Atributos</option>
+<option value="Contact_metodos">      - Metodos</option>
+<option value="Contact_detalles">      - Detalles</option>
+<option value="Contact_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="Contact_ejemplo_r_pido_de_guardado">      - Ejemplo Rápido de Guardado</option>
+<option value="Contact_ejemplo_r_pido_de_clonaci_n">      - Ejemplo Rápido de Clonación</option>
+<option value="Contact_ejemplo_r_pido_de_eliminaci_n">      - Ejemplo Rápido de eliminación</option>
+<option value="Contact_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="Contact_peculiaridades_android_2_x">      - Peculiaridades Android 2.X</option>
+<option value="Contact_peculiaridades_android_1_x">      - Peculiaridades Android 1.X</option>
+<option value="Contact_peculiaridades_blackberry_webworks_os_5_0_y_superior">      - Peculiaridades BlackBerry WebWorks (OS 5.0 y superior)</option>
+<option value="Contact_peculiaridades_ios">      - Peculiaridades iOS</option>
+<option value="ContactAddress">ContactAddress</option>
+<option value="ContactAddress_propiedades">      - Propiedades</option>
+<option value="ContactAddress_detalles">      - Detalles</option>
+<option value="ContactAddress_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="ContactAddress_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="ContactAddress_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="ContactAddress_peculiaridades_android_2_x">      - Peculiaridades Android 2.X</option>
+<option value="ContactAddress_peculiaridades_android_1_x">      - Peculiaridades Android 1.X</option>
+<option value="ContactAddress_peculiaridades_blackberry_webworks_os_5_0_y_superior">      - Peculiaridades BlackBerry WebWorks (OS 5.0 y superior)</option>
+<option value="ContactAddress_peculiaridades_ios">      - Peculiaridades iOS</option>
+<option value="ContactField">ContactField</option>
+<option value="ContactField_propiedades">      - Propiedades</option>
+<option value="ContactField_detalles">      - Detalles</option>
+<option value="ContactField_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="ContactField_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="ContactField_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="ContactField_peculiaridades_android">      - Peculiaridades Android</option>
+<option value="ContactField_peculiaridades_blackberry_webworks_os_5_0_y_superior">      - Peculiaridades BlackBerry WebWorks (OS 5.0 y superior)</option>
+<option value="ContactField_peculiaridades_ios">      - Peculiaridades iOS</option>
+<option value="ContactFindOptions">ContactFindOptions</option>
+<option value="ContactFindOptions_atributos">      - Atributos</option>
+<option value="ContactFindOptions_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="ContactFindOptions_ejemplo_sencillo">      - Ejemplo Sencillo</option>
+<option value="ContactFindOptions_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="ContactName">ContactName</option>
+<option value="ContactName_atributos">      - Atributos</option>
+<option value="ContactName_detalles">      - Detalles</option>
+<option value="ContactName_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="ContactName_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="ContactName_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="ContactName_peculiaridades_android">      - Peculiaridades Android</option>
+<option value="ContactName_peculiaridades_blackberry_webworks_os_5_0_y_superior">      - Peculiaridades BlackBerry WebWorks (OS 5.0 y superior)</option>
+<option value="ContactName_peculiaridades_ios">      - Peculiaridades iOS</option>
+<option value="ContactOrganization">ContactOrganization</option>
+<option value="ContactOrganization_atributos">      - Atributos</option>
+<option value="ContactOrganization_detalles">      - Detalles</option>
+<option value="ContactOrganization_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="ContactOrganization_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="ContactOrganization_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="ContactOrganization_peculiaridades_android_2_x">      - Peculiaridades Android 2.X</option>
+<option value="ContactOrganization_peculiaridades_android_1_x">      - Peculiaridades Android 1.X</option>
+<option value="ContactOrganization_peculiaridades_blackberry_webworks_os_5_0_y_superior">      - Peculiaridades BlackBerry WebWorks (OS 5.0 y superior)</option>
+<option value="ContactOrganization_peculiaridades_ios">      - Peculiaridades iOS</option>
+<option value="ContactError">ContactError</option>
+<option value="ContactError_propiedades">      - Propiedades</option>
+<option value="ContactError_constantes">      - Constantes</option>
+<option value="ContactError_descripci_n">      - Descripción</option>
+<option value="contactSuccess">contactSuccess</option>
+<option value="contactSuccess_argumentos">      - Argumentos</option>
+<option value="contactSuccess_ejemplo">      - Ejemplo</option>
+<option value="contactError">contactError</option>
+<option value="contactFields">contactFields</option>
+<option value="contactFindOptions">contactFindOptions</option>
+<option value="contactFindOptions_opciones">      - Opciones</option></select></small>
+        </div>
+
+        <div id="sidebar">
+            <div class="vertical_divider"></div>
+            <h1>Referencia API</h1>
+            <ul>
+<li><a href="phonegap_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
+<li><a href="phonegap_camera_camera.md.html#Camera">Camera</a></li>
+<li><a href="phonegap_media_capture_capture.md.html#Capture">Capture</a></li>
+<li><a href="phonegap_compass_compass.md.html#Compass">Compass</a></li>
+<li><a href="phonegap_connection_connection.md.html#Connection">Connection</a></li>
+<li><a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a></li>
+<li><a href="phonegap_device_device.md.html#Device">Device</a></li>
+<li><a href="phonegap_events_events.md.html#Events">Events</a></li>
+<li><a href="phonegap_file_file.md.html#File">File</a></li>
+<li><a href="phonegap_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
+<li><a href="phonegap_media_media.md.html#Media">Media</a></li>
+<li><a href="phonegap_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="phonegap_storage_storage.md.html#Storage">Storage</a></li>
+</ul>
+<h1></h1>
+            <ul>
+<li><a href="_index.html">Índice por palabras</a></li>
+            </ul>
+</div>
+
+        <div id="scrollable">
+            <div id="content">
+                <h1><a name="Contacts">Contacts</a></h1>
+
+<blockquote>
+  <p>El objeto <code>contacts</code> proporciona acceso a la agenda del dispositivo.  </p>
+</blockquote>
+
+<h2>
+<a name="Contacts_m_todos">Métodos</a>
+</h2>
+
+<ul>
+<li><a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a></li>
+<li><a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a></li>
+</ul>
+<h2>
+<a name="Contacts_argumentos">Argumentos</a>
+</h2>
+
+<ul>
+<li><a href="phonegap_contacts_contacts.md.html#contactFields">contactFields</a></li>
+<li><a href="phonegap_contacts_contacts.md.html#contactSuccess">contactSuccess</a></li>
+<li><a href="phonegap_contacts_contacts.md.html#contactError">contactError</a></li>
+<li><a href="phonegap_contacts_contacts.md.html#contactFindOptions">contactFindOptions</a></li>
+</ul>
+<h2>
+<a name="Contacts_objetos">Objetos</a>
+</h2>
+
+<ul>
+<li><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></li>
+<li><a href="phonegap_contacts_contacts.md.html#ContactName">ContactName</a></li>
+<li><a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a></li>
+<li><a href="phonegap_contacts_contacts.md.html#ContactAddress">ContactAddress</a></li>
+<li><a href="phonegap_contacts_contacts.md.html#ContactOrganization">ContactOrganization</a></li>
+<li><a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a></li>
+<li><a href="phonegap_contacts_contacts.md.html#ContactError">ContactError</a></li>
+</ul>
+<hr>
+<h1><a name="contacts.create">contacts.create</a></h1>
+
+<p>Retorna un objeto <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code> nuevo.</p>
+
+<pre class="prettyprint"><code>var contact = navigator.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>(properties);
+</code></pre>
+
+<h2>
+<a name="contacts.create_descripci_n">Descripción</a>
+</h2>
+
+<p><a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a> es una función síncrona que retornara un objeto <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code> nuevo.</p>
+
+<p>Este método no hace el contacto persistente en la base de datos de contactos. Para hacerlo persistente, llama al método <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a>.save</code>.</p>
+
+<h2>
+<a name="contacts.create_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="contacts.create_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>var myContact = navigator.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>({"displayName": "Usuario Prueba"});
+</code></pre>
+
+<h2>
+<a name="contacts.create_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espere a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        var myContact = navigator.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>({"displayName": "Usuario Prueba"});
+        myContact.gender = "male";
+        console.log("El contacto, " + myContact.displayName + ", es de genero " + myContact.gender);
+    }
+
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Ejemplo&lt;/h1&gt;
+    &lt;p&gt;Creación de Contactos&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="contacts.find">contacts.find</a></h1>
+
+<p>Consulta la base de datos de contactos y retorna uno o mas objetos <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code>, cada uno con los campos especificados.</p>
+
+<pre class="prettyprint"><code>navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(<a href="phonegap_contacts_contacts.md.html#contactFields">contactFields</a>, <a href="phonegap_contacts_contacts.md.html#contactSuccess">contactSuccess</a>, <a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>, <a href="phonegap_contacts_contacts.md.html#contactFindOptions">contactFindOptions</a>);
+</code></pre>
+
+<h2>
+<a name="contacts.find_descripci_n">Descripción</a>
+</h2>
+
+<p><a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a> es una función asíncrona que consulta la base de datos de la agenda del dispositivo y retorna un array de objetos <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code>. Los objetos retornados son pasados a la función 'callback' <code><a href="phonegap_contacts_contacts.md.html#contactSuccess">contactSuccess</a></code> especificada en el argumento <strong><a href="phonegap_contacts_contacts.md.html#contactSuccess">contactSuccess</a></strong>.</p>
+
+<p>Los usuarios pueden especificar los campos que solicitan en la consulta con el argumento <strong><a href="phonegap_contacts_contacts.md.html#contactFields">contactFields</a></strong>. Solo los campos que solicites en <strong><a href="phonegap_contacts_contacts.md.html#contactFields">contactFields</a></strong> serán retornados como propiedades del objeto <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code>, que a su vez es pasado a la función 'callback'  <strong><a href="phonegap_contacts_contacts.md.html#contactSuccess">contactSuccess</a></strong>. Si se entrega un array <strong><a href="phonegap_contacts_contacts.md.html#contactFields">contactFields</a></strong> vacio, el objeto <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code> retornada solo las propiedades <code>id</code>. El valor ["*"] en <strong><a href="phonegap_contacts_contacts.md.html#contactFields">contactFields</a></strong> retornara todos los campos.</p>
+
+<p>La string <strong><a href="phonegap_contacts_contacts.md.html#contactFindOptions">contactFindOptions</a>.filter</strong> puede usarse como filtro cuando se consulte a la base de datos. Si se entrega, este valor es sensible a capitalización y a coincidencias parciales sobre cada campo que especificastes en el argumento  <strong><a href="phonegap_contacts_contacts.md.html#contactFields">contactFields</a></strong>. Si se encuentra una coincidencia con cualquier campo especificado, se retornara el contacto.</p>
+
+<h2>
+<a name="contacts.find_argumentos">Argumentos</a>
+</h2>
+
+<ul>
+<li>
+<strong><a href="phonegap_contacts_contacts.md.html#contactFields">contactFields</a>:</strong> Campos del contacto para usarse en las búsquedas. Solo estos campos tendrán valores asignados en el objeto <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code> retornado. <em>(DOMString[])</em> [Requerido]</li>
+<li>
+<strong><a href="phonegap_contacts_contacts.md.html#contactSuccess">contactSuccess</a>:</strong> Función 'callback' Success que se dispara cuando se retorna un contacto de la base de datos. [Requerido]</li>
+<li>
+<strong><a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>:</strong> Función 'callback' Error. Se dispara cuando ocurre algún tipo de error. [Opcional]</li>
+<li>
+<strong><a href="phonegap_contacts_contacts.md.html#contactFindOptions">contactFindOptions</a>:</strong> Opciones de búsqueda para filtrar contactos. [Opcional]</li>
+</ul>
+<h2>
+<a name="contacts.find_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="contacts.find_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>function onSuccess(contacts) {
+    alert('Se encontró ' + contacts.length + ' contactos.');
+};
+
+function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
+    alert('onError!');
+};
+
+// Busca todos los contactos con 'Bob' en cualquier campo "<a href="phonegap_storage_storage.md.html#name">name</a>"
+var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
+options.filter="Bob"; 
+var fields = ["displayName", "<a href="phonegap_storage_storage.md.html#name">name</a>"];
+navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(fields, onSuccess, onError, options);
+</code></pre>
+
+<h2>
+<a name="contacts.find_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espera a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        // Busca todos los contactos con 'Bob' en cualquier campo "<a href="phonegap_storage_storage.md.html#name">name</a>"
+        var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
+        options.filter="Bob"; 
+        var fields = ["displayName", "<a href="phonegap_storage_storage.md.html#name">name</a>"];
+        navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(fields, onSuccess, onError, options);
+    }
+
+    // onSuccess: Obtiene el resultado de los contactos actuales
+    //
+    function onSuccess(contacts) {
+        for (var i=0; i&lt;contacts.length; i++) {
+            console.log("Nombre a mostrar (DisplayName) = " + contacts[i].displayName);
+        }
+    }
+
+    // onError: Fallo al obtener contactos
+    //
+    function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
+        alert('onError!');
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Ejemplo&lt;/h1&gt;
+    &lt;p&gt;Búsqueda de Contactos&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="Contact">Contact</a></h1>
+
+<p>Contiene propiedades que describen un contacto, como su información personal o de trabajo.</p>
+
+<h2>
+<a name="Contact_atributos">Atributos</a>
+</h2>
+
+<ul>
+<li>
+<strong>id:</strong> Un identificador unico y global. <em>(DOMString)</em>
+</li>
+<li>
+<strong>displayName:</strong> El nombre de este contacto. Ideal para mostrar al usuario final. <em>(DOMString)</em>
+</li>
+<li>
+<strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> Un objeto conteniendo todos las partes del nombre de una persona. <em>(<a href="phonegap_contacts_contacts.md.html#ContactName">ContactName</a>)</em>
+</li>
+<li>
+<strong>nickname:</strong> Un apodo por el que conoces a la persona. <em>(DOMString)</em>
+</li>
+<li>
+<strong>phoneNumbers:</strong> Un array de todos sus números de teléfono. <em>(<a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a>[])</em>
+</li>
+<li>
+<strong>emails:</strong> Un array de todas sus direcciones de email. <em>(<a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a>[])</em>
+</li>
+<li>
+<strong>addresses:</strong> Un array de todas sus direcciones de contacto. <em>(ContactAddresses[])</em>
+</li>
+<li>
+<strong>ims:</strong> Un array de todas las direcciones de mensajeria instantanea. <em>(<a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a>[])</em>
+</li>
+<li>
+<strong>organizations:</strong> Un array con todos sus nombres de organizaciones. <em>(<a href="phonegap_contacts_contacts.md.html#ContactOrganization">ContactOrganization</a>[])</em>
+</li>
+<li>
+<strong>birthday:</strong> La fecha de nacimiento del contacto. <em>(Date)</em>
+</li>
+<li>
+<strong>note:</strong> Una nota sobre este contacto. <em>(DOMString)</em>
+</li>
+<li>
+<strong>photos:</strong> Un array de fotos del contacto. <em>(<a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a>[])</em>
+</li>
+<li>
+<strong>categories:</strong>  Un array de todas las categorías del contacto. <em>(<a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a>[])</em>
+</li>
+<li>
+<strong>urls:</strong>  Un array de sitios webs asociados a este contacto. <em>(<a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a>[])</em>
+</li>
+</ul>
+<h2>
+<a name="Contact_metodos">Metodos</a>
+</h2>
+
+<ul>
+<li>
+<strong>clone</strong>: Retorna un nuevo objeto del contacto, es una copia de este contacto con la propiedad ID <code>null</code>. </li>
+<li>
+<strong>remove</strong>: Elimina el contacto de la base de datos del dispositivo. Se disparara una función 'callback' de error si no se pudo eliminar.</li>
+<li>
+<strong>save</strong>: Guarda el contacto en la base de datos, o actualiza el contacto si ya existe un contacto con la misma <strong>id</strong>.</li>
+</ul>
+<h2>
+<a name="Contact_detalles">Detalles</a>
+</h2>
+
+<p>El objeto <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code> representa un contacto. Los contactos pueden ser creados, guardados o eliminados de la base de datos del dispositivo. También pueden ser retornados (Individualmente o en masa) llamando al método <code><a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a></code>.</p>
+
+<p><em>Nota: No todos los campos de contactos están soportados en todas las plataformas. Comprueba las peculiaridades de cada plataforma para saber que campos están soportados.</em></p>
+
+<h2>
+<a name="Contact_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="Contact_ejemplo_r_pido_de_guardado">Ejemplo Rápido de Guardado</a>
+</h2>
+
+<pre class="prettyprint"><code>function onSuccess(contact) {
+    alert("Se guardo satisfactoriamente");
+};
+
+function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
+    alert("Error = " + <a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>.code);
+};
+
+// crea un nuevo objeto contacto
+var contact = navigator.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>();
+contact.displayName = "Plumber";
+contact.nickname = "Plumber";       // especifica ambos para soportar todos los dispositivos
+
+// Rellena varios campos
+var <a href="phonegap_storage_storage.md.html#name">name</a> = new <a href="phonegap_contacts_contacts.md.html#ContactName">ContactName</a>();
+<a href="phonegap_storage_storage.md.html#name">name</a>.givenName = "Jane";
+<a href="phonegap_storage_storage.md.html#name">name</a>.familyName = "Doe";
+contact.<a href="phonegap_storage_storage.md.html#name">name</a> = <a href="phonegap_storage_storage.md.html#name">name</a>;
+
+// guarda en el dispositivo
+contact.save(onSuccess,onError);
+</code></pre>
+
+<h2>
+<a name="Contact_ejemplo_r_pido_de_clonaci_n">Ejemplo Rápido de Clonación</a>
+</h2>
+
+<pre class="prettyprint"><code>// Clona el objeto contacto
+var clone = contact.clone();
+clone.<a href="phonegap_storage_storage.md.html#name">name</a>.givenName = "John";
+console.log("Nombre del contacto original = " + contact.<a href="phonegap_storage_storage.md.html#name">name</a>.givenName);
+console.log("Nombre del contacto clonado = " + clone.<a href="phonegap_storage_storage.md.html#name">name</a>.givenName);
+</code></pre>
+
+<h2>
+<a name="Contact_ejemplo_r_pido_de_eliminaci_n">Ejemplo Rápido de eliminación</a>
+</h2>
+
+<pre class="prettyprint"><code>function onSuccess() {
+    alert("Se elimino satisfactoriamente");
+};
+
+function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
+    alert("Error = " + <a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>.code);
+};
+
+// elimina el contacto del dispositivo
+contact.remove(onSuccess,onError);
+</code></pre>
+
+<h2>
+<a name="Contact_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espere a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        // crea
+        var contact = navigator.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>();
+        contact.displayName = "Plumber";
+        contact.nickname = "Plumber";       //especifica ambos para soportar todos los dispositivos
+        var <a href="phonegap_storage_storage.md.html#name">name</a> = new <a href="phonegap_contacts_contacts.md.html#ContactName">ContactName</a>();
+        <a href="phonegap_storage_storage.md.html#name">name</a>.givenName = "Jane";
+        <a href="phonegap_storage_storage.md.html#name">name</a>.familyName = "Doe";
+        contact.<a href="phonegap_storage_storage.md.html#name">name</a> = <a href="phonegap_storage_storage.md.html#name">name</a>;
+
+        // guarda
+        contact.save(onSaveSuccess,onSaveError);
+
+        // clona
+        var clone = contact.clone();
+        clone.<a href="phonegap_storage_storage.md.html#name">name</a>.givenName = "John";
+        console.log("Nombre del contacto original = " + contact.<a href="phonegap_storage_storage.md.html#name">name</a>.givenName);
+        console.log("Nombre del contacto clonado = " + clone.<a href="phonegap_storage_storage.md.html#name">name</a>.givenName); 
+
+        // elimina
+        contact.remove(onRemoveSuccess,onRemoveError);
+    }
+
+    // onSaveSuccess: Obtiene el contacto guardado satisfactoriamente
+    //
+    function onSaveSuccess(contact) {
+        alert("Se guardo satisfactoriamente");
+    }
+
+    // onSaveError: Fallo al guardar el contacto
+    //
+    function onSaveError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
+        alert("Error = " + <a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>.code);
+    }
+
+    // onRemoveSuccess: Obtiene el contacto eliminado satisfactoriamente
+    //
+    function onRemoveSuccess(contacts) {
+        alert("Eliminado satisfactoriamente");
+    }
+
+    // onRemoveError: Fallo al eliminar el contacto
+    //
+    function onRemoveError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
+        alert("Error = " + <a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>.code);
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Ejemplo&lt;/h1&gt;
+    &lt;p&gt;Búsqueda de Contactos&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2>
+<a name="Contact_peculiaridades_android_2_x">Peculiaridades Android 2.X</a>
+</h2>
+
+<ul>
+<li>
+<strong>categories:</strong>  Esta propiedad no esta soportada por dispositivos Android 2.X, y siempre retornara <code>null</code>.</li>
+</ul>
+<h2>
+<a name="Contact_peculiaridades_android_1_x">Peculiaridades Android 1.X</a>
+</h2>
+
+<ul>
+<li>
+<strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> Esta propiedad no esta soportada por dispositivos Android 1.X, y siempre retornara <code>null</code>.</li>
+<li>
+<strong>nickname:</strong> Esta propiedad no esta soportada por dispositivos Android 1.X, y siempre retornara <code>null</code>.</li>
+<li>
+<strong>birthday:</strong> Esta propiedad no esta soportada por dispositivos Android 1.X, y siempre retornara <code>null</code>.</li>
+<li>
+<strong>photos:</strong> Esta propiedad no esta soportada por dispositivos Android 1.X, y siempre retornara <code>null</code>.</li>
+<li>
+<strong>categories:</strong>  Esta propiedad no esta soportada por dispositivos Android 1.X, y siempre retornara <code>null</code>.</li>
+<li>
+<strong>urls:</strong>  Esta propiedad no esta soportada por dispositivos Android 1.X, y siempre retornara <code>null</code>.</li>
+</ul>
+<h2>
+<a name="Contact_peculiaridades_blackberry_webworks_os_5_0_y_superior">Peculiaridades BlackBerry WebWorks (OS 5.0 y superior)</a>
+</h2>
+
+<ul>
+<li>
+<strong>id:</strong> Soportada.  Asignada por el dispositivo cuando un contacto es guardado.</li>
+<li>
+<strong>displayName:</strong> Soportada.  Almacenada en el campo <strong>user1</strong>.</li>
+<li>
+<strong>nickname:</strong> Esta propiedad no esta soportada, y siempre retornara <code>null</code>.</li>
+<li>
+<strong>phoneNumbers:</strong> Soportada parcialmente.  Los números de teléfonos seran almacenados en los campos <strong>homePhone1</strong> y <strong>homePhone2</strong> si el <em>type</em> es 'home', <strong>workPhone1</strong> y <strong>workPhone2</strong> si el <em>type</em> es 'work', <strong>mobilePhone</strong> si el <em>type</em> es 'mobile', <strong>faxPhone</strong> si el <em>type</em> es 'fax', <strong>pagerPhone</strong> si el <em>type</em> es 'pager', y <strong>otherPhone</strong> si el <em>type</em> no es ninguno de los anteriores.</li>
+<li>
+<strong>emails:</strong> Soportada parcialmente. Los primeros tres direcciones de emails serán almacenadas en los campos <strong>email1</strong>, <strong>email2</strong>, y <strong>email3</strong> respectivamente.</li>
+<li>
+<strong>addresses:</strong> Soportada parcialmente. La primera y la segunda dirección serán almacenadas en los campos <strong>homeAddress</strong> y <strong>workAddress</strong> respectivamente.</li>
+<li>
+<strong>ims:</strong> Esta propiedad no esta soportada, y siempre retornara <code>null</code>. </li>
+<li>
+<strong>organizations:</strong> Soportada parcialmente.  el campo <strong><a href="phonegap_storage_storage.md.html#name">name</a></strong> y <strong>title</strong> de la primera organización serán almacenadas en los campos <strong>company</strong> y <strong>title</strong> respectivamente.</li>
+<li>
+<strong>photos:</strong> Soportada Parcialmente. Solo se permite una miniatura de foto.  Para poner una imagen del contacto pásala codificada en Base64, o la ruta URL que apunta  a la imagen. La imagen sera dimensionada antes de guardarla en la base de datos de BlackBerry. La foto de contacto sera retornada como Base64.</li>
+<li>
+<strong>categories:</strong> Soportada parcialmente.  Solo están soportadas las categorías 'Business' y 'Personal'. </li>
+<li>
+<strong>urls:</strong>  Soportada parcialmente. Solo la primera URL se almacenara en el campo <strong>webpage</strong>.</li>
+</ul>
+<h2>
+<a name="Contact_peculiaridades_ios">Peculiaridades iOS</a>
+</h2>
+
+<ul>
+<li>
+<strong>displayName:</strong> Esta propiedad no esta soportada por iOS y siempre retornara <code>null</code> a menos que no halla un <a href="phonegap_contacts_contacts.md.html#ContactName">ContactName</a> especificado. Si no hay ningún <a href="phonegap_contacts_contacts.md.html#ContactName">ContactName</a>, entonces respectivamente el nombre compuesto, el <strong>nickame</strong> o "" como valor de <strong>displayName</strong>. </li>
+<li>
+<strong>birthday:</strong> Cuando introduzcas esta propiedad, esta debe ser dada como un objeto Date de JavaScript. También se retorna como un objeto Date de JavaScript.</li>
+<li>
+<strong>photos:</strong> La foto se guarda en el directorio temporal de aplicaciones, y retorna una URL hacia esta. El contenido de este directorio temporal se eliminara cuando la aplicacion termine. </li>
+<li>
+<strong>categories:</strong>  Esta propiedad no esta soportada, y siempre retornara <code>null</code>.</li>
+</ul>
+<hr>
+<h1><a name="ContactAddress">ContactAddress</a></h1>
+
+<p>Contiene propiedades de una de las direcciones de este contacto (<code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code>).</p>
+
+<h2>
+<a name="ContactAddress_propiedades">Propiedades</a>
+</h2>
+
+<ul>
+<li>
+<strong>pref:</strong> <code>true</code> si este <code><a href="phonegap_contacts_contacts.md.html#ContactAddress">ContactAddress</a></code> es preferido. <em>(boolean)</em>
+</li>
+<li>
+<strong>type:</strong> Una string que te dice que tipo de dirección es esta (Ejemplo: 'Home'). _(DOMString)</li>
+<li>
+<strong>formatted:</strong> Toda la dirección formateada para mostrarla. <em>(DOMString)</em>
+</li>
+<li>
+<strong>streetAddress:</strong> La dirección de calle completa. <em>(DOMString)</em>
+</li>
+<li>
+<strong>locality:</strong> La ciudad o localidad. <em>(DOMString)</em>
+</li>
+<li>
+<strong>region:</strong> El estado o region. <em>(DOMString)</em>
+</li>
+<li>
+<strong>postalCode:</strong> Código postal o zip. <em>(DOMString)</em>
+</li>
+<li>
+<strong>country:</strong> Nombre del país. <em>(DOMString)</em>
+</li>
+</ul>
+<h2>
+<a name="ContactAddress_detalles">Detalles</a>
+</h2>
+
+<p>El objeto <code><a href="phonegap_contacts_contacts.md.html#ContactAddress">ContactAddress</a></code> almacena propiedades de un sola dirección del contacto. Un objeto <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code> puede tener una o mas direcciones en el array <code><a href="phonegap_contacts_contacts.md.html#ContactAddress">ContactAddress</a>[]</code></p>
+
+<h2>
+<a name="ContactAddress_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="ContactAddress_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>// Muestra información sobre la dirección de todos los contactos
+function onSuccess(contacts) {
+    for (var i=0; i&lt;contacts.length; i++) {
+        for (var j=0; j&lt;contacts[i].addresses.length; j++) {
+            alert("Preferente: " + contacts[i].addresses[j].pref + "\n" +
+                    "Tipo: " + contacts[i].addresses[j].type + "\n" +
+                    "Formateada: " + contacts[i].addresses[j].formatted + "\n" + 
+                    "Dirección: "  + contacts[i].addresses[j].streetAddress + "\n" + 
+                    "Localidad: "  + contacts[i].addresses[j].locality + "\n" + 
+                    "Provincia: "  + contacts[i].addresses[j].region + "\n" + 
+                    "Código Postal: "  + contacts[i].addresses[j].postalCode + "\n" + 
+                    "País: "  + contacts[i].addresses[j].country);
+        }
+    }
+};
+
+function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
+    alert('onError!');
+};
+
+// Busca todos los contactos
+var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
+options.filter=""; 
+var filter = ["displayName","addresses"];
+navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
+</code></pre>
+
+<h2>
+<a name="ContactAddress_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espera a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        // Busca todos los contactos
+        var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
+        options.filter=""; 
+        var filter = ["displayName","addresses"];
+        navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
+    }
+
+    // onSuccess: Obtiene el resultado
+    //
+    function onSuccess(contacts) {
+        // muestra la información de dirección de todos los contactos
+        for (var i=0; i&lt;contacts.length; i++) {
+            for (var j=0; j&lt;contacts[i].addresses.length; j++) {
+                alert("Preferente: " + contacts[i].addresses[j].pref + "\n" +
+                        "Tipo: " + contacts[i].addresses[j].type + "\n" +
+                        "Formateada: " + contacts[i].addresses[j].formatted + "\n" + 
+                        "Dirección: "  + contacts[i].addresses[j].streetAddress + "\n" + 
+                        "Localidad: "  + contacts[i].addresses[j].locality + "\n" + 
+                        "Provincia: "  + contacts[i].addresses[j].region + "\n" + 
+                        "Código Postal: "  + contacts[i].addresses[j].postalCode + "\n" + 
+                        "País: "  + contacts[i].addresses[j].country);
+            }
+        }
+    };
+
+    // onError: Ocurrió un error
+    //
+    function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
+        alert('onError!');
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Ejemplo&lt;/h1&gt;
+    &lt;p&gt;Búsqueda de Contactos&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2>
+<a name="ContactAddress_peculiaridades_android_2_x">Peculiaridades Android 2.X</a>
+</h2>
+
+<ul>
+<li>
+<strong>pref:</strong> Esta propiedad no esta soportada por dispositivos Android 2.X, y siempre retornaran <code>false</code>.</li>
+</ul>
+<h2>
+<a name="ContactAddress_peculiaridades_android_1_x">Peculiaridades Android 1.X</a>
+</h2>
+
+<ul>
+<li>
+<strong>pref:</strong> Esta propiedad no esta soportada por dispositivos Android 1.X, y siempre retornara <code>false</code>.</li>
+<li>
+<strong>type:</strong> Esta propiedad no esta soportada por dispositivos Android 1.X, y siempre retornara <code>null</code>.</li>
+<li>
+<strong>streetAddress:</strong> Esta propiedad no esta soportada por dispositivos Android 1.X, y siempre retornara <code>null</code>.</li>
+<li>
+<strong>locality:</strong> Esta propiedad no esta soportada por dispositivos Android 1.X, y siempre retornara <code>null</code>.</li>
+<li>
+<strong>region:</strong> Esta propiedad no esta soportada por dispositivos Android 1.X, y siempre retornara <code>null</code>.</li>
+<li>
+<strong>postalCode:</strong> Esta propiedad no esta soportada por dispositivos Android 1.X, y siempre retornara <code>null</code>.</li>
+<li>
+<strong>country:</strong> Esta propiedad no esta soportada por dispositivos Android 1.X, y siempre retornara <code>null</code>.</li>
+</ul>
+<h2>
+<a name="ContactAddress_peculiaridades_blackberry_webworks_os_5_0_y_superior">Peculiaridades BlackBerry WebWorks (OS 5.0 y superior)</a>
+</h2>
+
+<ul>
+<li>
+<strong>pref:</strong> Esta propiedad no esta soportada por dispositivos BlackBerry, y siempre retornara <code>false</code>.</li>
+<li>
+<strong>type:</strong> Soportada parcialmente. Solo permite un "Work" y un "Home" por cada contacto. </li>
+<li>
+<strong>formatted:</strong> Soportada parcialmente. Retornara una concatenación de todos los campos de la dirección.</li>
+<li>
+<strong>streetAddress:</strong> Soportada.  Retornara los campos concatenados <strong>address1</strong> y <strong>address2</strong>. </li>
+<li>
+<strong>locality:</strong> Soportada. Almacenada en el campo <strong>city</strong>.</li>
+<li>
+<strong>region:</strong> Soportada.  Almacenada en el campo <strong>stateProvince</strong>.</li>
+<li>
+<strong>postalCode:</strong> Soportada. Almacenada en el campo <strong>zipPostal</strong>.</li>
+<li>
+<strong>country:</strong> Soportada.</li>
+</ul>
+<h2>
+<a name="ContactAddress_peculiaridades_ios">Peculiaridades iOS</a>
+</h2>
+
+<ul>
+<li>
+<strong>pref:</strong> Esta propiedad no esta soportada por dispositivos iOS, y siempre retornara <code>false</code>.</li>
+<li>
+<strong>formatted:</strong> Actualmente no esta soportado.</li>
+</ul>
+<hr>
+<h1><a name="ContactField">ContactField</a></h1>
+
+<p>Son campos genéricos de un objeto <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code>. Algunas de las propiedades que se almacenan como objetos <code><a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a></code> son: direcciones de email, números de teléfono, y urls.</p>
+
+<h2>
+<a name="ContactField_propiedades">Propiedades</a>
+</h2>
+
+<ul>
+<li>
+<strong>type:</strong> Una string que indica que tipo de campo es (ejemplo: 'home'). <em>(DOMString)</em>
+</li>
+<li>
+<strong>value:</strong> El valor del campo (Como un numero de teléfono o una dirección de email). <em>(DOMString)</em>
+</li>
+<li>
+<strong>pref:</strong>  <code>true</code> si este objeto <code><a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a></code> es preferente. <em>(boolean)</em>
+</li>
+</ul>
+<h2>
+<a name="ContactField_detalles">Detalles</a>
+</h2>
+
+<p>El objeto <code><a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a></code> es un componente pensado para ser reusable. Cada objeto <code><a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a></code> contiene una propiedad value, una type y una pref. Los objetos <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code> almacenan varios objetos de este tipo en un array <code><a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a>[]</code>, tales como números de teléfono o direcciones de emails.</p>
+
+<p>En la mayoría de los casos no existen valores predeterminados para el atributo <strong>type</strong>. Por ejemplo, un numero de teléfono puede tener un valor <strong>type</strong> como 'home', 'work', 'mobile', 'iPhone' o cualquier otro, esto depende de la base de datos de la plataforma del dispositivo en cuestión. En cambio, en el caso del campo <strong>photos</strong>, PhoneGap hace uso del atributo <strong>type</strong> para indicar el formato de la imagen. PhoneGap retornara <strong>type: 'url'</strong> cuando cuando la propiedad <strong>value</strong> indique la URL al fichero de imagen, o <strong>type:'base64'</strong> cuando la imagen se retorne codificada como una string Base64.</p>
+
+<h2>
+<a name="ContactField_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="ContactField_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>// crea un nuevo contacto
+var contact = navigator.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>();
+
+// almacena números de teléfonos en <a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a>[]
+var phoneNumbers = [3];
+phoneNumbers[0] = new <a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a>('work', '212-555-1234', false);
+phoneNumbers[1] = new <a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a>('mobile', '917-555-5432', true); // numero preferente
+phoneNumbers[2] = new <a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a>('home', '203-555-7890', false);
+contact.phoneNumbers = phoneNumbers;
+
+// guarda el contacto
+contact.save();
+</code></pre>
+
+<h2>
+<a name="ContactField_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espera a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        // crea un nuevo contacto
+        var contact = navigator.<a href="phonegap_contacts_contacts.md.html#contacts.create">contacts.create</a>();
+
+        // almacena números de teléfonos en <a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a>[]
+        var phoneNumbers = [3];
+        phoneNumbers[0] = new <a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a>('work', '212-555-1234', false);
+        phoneNumbers[1] = new <a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a>('mobile', '917-555-5432', true); // numero preferente
+        phoneNumbers[2] = new <a href="phonegap_contacts_contacts.md.html#ContactField">ContactField</a>('home', '203-555-7890', false);
+        contact.phoneNumbers = phoneNumbers;
+
+        // guarda el contacto
+        contact.save();
+
+        // busca contactos, obtiene el nombre a mostrar y los números de teléfono.
+        var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
+        options.filter="";
+        filter = ["displayName","phoneNumbers"];
+        navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
+    }
+
+    // onSuccess: Obtiene el resultado
+    //
+    function onSuccess(contacts) {
+        for (var i=0; i&lt;contacts.length; i++) {
+            // display phone numbers
+            for (var j=0; j&lt;contacts[i].phoneNumbers.length; j++) {
+                alert("Type: " + contacts[i].phoneNumbers[j].type + "\n" + 
+                        "Value: "  + contacts[i].phoneNumbers[j].value + "\n" + 
+                        "Preferred: "  + contacts[i].phoneNumbers[j].pref);
+            }
+        }
+    };
+
+    // onError: Ocurrió un error
+    //
+    function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
+        alert('onError!');
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Ejemplo&lt;/h1&gt;
+    &lt;p&gt;Búsqueda de Contactos&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2>
+<a name="ContactField_peculiaridades_android">Peculiaridades Android</a>
+</h2>
+
+<ul>
+<li>
+<strong>pref:</strong> Esta propiedad no esta soportada por dispositivos Android, y siempre retorna <code>false</code>.</li>
+</ul>
+<h2>
+<a name="ContactField_peculiaridades_blackberry_webworks_os_5_0_y_superior">Peculiaridades BlackBerry WebWorks (OS 5.0 y superior)</a>
+</h2>
+
+<ul>
+<li>
+<strong>type:</strong> Soportada parcialmente. Usada para números de teléfonos.</li>
+<li>
+<strong>value:</strong> Soportada.</li>
+<li>
+<strong>pref:</strong> Esta propiedad no esta soportada, y siempre retornara <code>false</code>.</li>
+</ul>
+<h2>
+<a name="ContactField_peculiaridades_ios">Peculiaridades iOS</a>
+</h2>
+
+<ul>
+<li>
+<strong>pref:</strong> Esta propiedad no esta soportada en iOS y siempre retornara <code>false</code>.</li>
+</ul>
+<hr>
+<h1><a name="ContactFindOptions">ContactFindOptions</a></h1>
+
+<p>Contiene propiedades que se usan para filtrar el resultado de <code><a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a></code>.</p>
+
+<h2>
+<a name="ContactFindOptions_atributos">Atributos</a>
+</h2>
+
+<ul>
+<li>
+<strong>filter:</strong> La cadena de texto que se usara para filtrar contactos. <em>(DOMString)</em> (Default: "")</li>
+<li>
+<strong>multiple:</strong> Indica si la operación de búsqueda debe retornar múltiples contactos. <em>(Boolean)</em> (Default: false)</li>
+</ul>
+<h2>
+<a name="ContactFindOptions_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="ContactFindOptions_ejemplo_sencillo">Ejemplo Sencillo</a>
+</h2>
+
+<pre class="prettyprint"><code>// Función 'callback' de una búsqueda satisfactoria
+function onSuccess(contacts) {
+    for (var i=0; i&lt;contacts.length; i++) {
+        alert(contacts[i].displayName);
+    }
+};
+
+// retrollamada (callback) de una búsqueda errónea
+function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
+    alert('onError!');
+};
+
+// Indica criterios de búsqueda
+var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
+options.filter="";          // una string vacía retorna todos los contactos
+options.multiple=true;              // retornar mas de un contacto
+filter = ["displayName"];           // retornar el campo contact.displayName
+
+// Busca contactos
+navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
+</code></pre>
+
+<h2>
+<a name="ContactFindOptions_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espera a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+    // Indica un criterio de búsqueda
+        var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
+        options.filter="";          // una string vacía retorna todos los contactos
+        options.multiple=true;      // retornar mas de un contacto
+        filter = ["displayName"];           // retornar el campo contact.displayName
+
+    // Busca contactos
+        navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
+    }
+
+    // onSuccess: Obtiene el resultado
+    //
+    function onSuccess(contacts) {
+        for (var i=0; i&lt;contacts.length; i++) {
+            alert(contacts[i].displayName);
+        }
+    };
+
+    // onError: Ocurrió un error
+    //
+    function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
+        alert('onError!');
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Ejemplo&lt;/h1&gt;
+    &lt;p&gt;Búsqueda de Contactos&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="ContactName">ContactName</a></h1>
+
+<p>Contiene atributos sobre nombres de un objeto <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code>.</p>
+
+<h2>
+<a name="ContactName_atributos">Atributos</a>
+</h2>
+
+<ul>
+<li>
+<strong>formatted:</strong> El nombre completo del contacto formateado. <em>(DOMString)</em>
+</li>
+<li>
+<strong>familyName:</strong> Apellidos de familia. <em>(DOMString)</em>
+</li>
+<li>
+<strong>givenName:</strong> El primer nombre del contacto. <em>(DOMString)</em>
+</li>
+<li>
+<strong>middleName:</strong> El Segundo nombre del contacto, por ejemplo: de "Juan José" es "José". <em>(DOMString)</em>
+</li>
+<li>
+<strong>honorificPrefix:</strong> Prefijo del nombre, comúnmente por anglosajones (ejemplo: Mr, Dr...) <em>(DOMString)</em>
+</li>
+<li>
+<strong>honorificSuffix:</strong> Sufijo del nombre, comúnmente usado por anglosajones (ejemplo: Jr...). <em>(DOMString)</em>
+</li>
+</ul>
+<h2>
+<a name="ContactName_detalles">Detalles</a>
+</h2>
+
+<p>El objeto <code><a href="phonegap_contacts_contacts.md.html#ContactName">ContactName</a></code> guarda atributos sobre el nombre de un contacto.</p>
+
+<h2>
+<a name="ContactName_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android 2.X</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="ContactName_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>function onSuccess(contacts) {
+    for (var i=0; i&lt;contacts.length; i++) {
+        alert("Nombre formateado: " + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.formatted + "\n" + 
+                "Apellidos: "  + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.familyName + "\n" + 
+                "Primer Nombre: "  + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.givenName + "\n" + 
+                "Segundo Name: "  + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.middleName + "\n" + 
+                "Sufijo del nombre: "  + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.honorificSuffix + "\n" + 
+                "Prefijo del nombre: "  + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.honorificSuffix);
+    }
+};
+
+function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
+    alert('onError!');
+};
+
+var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
+options.filter="";
+filter = ["displayName","<a href="phonegap_storage_storage.md.html#name">name</a>"];
+navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
+</code></pre>
+
+<h2>
+<a name="ContactName_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espera a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+    var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
+    options.filter="";
+    filter = ["displayName","<a href="phonegap_storage_storage.md.html#name">name</a>"];
+    navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
+    }
+
+    // onSuccess: Obtiene el resultado
+    //
+function onSuccess(contacts) {
+        for (var i=0; i&lt;contacts.length; i++) {
+        alert("Nombre formateado: " + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.formatted + "\n" + 
+            "Apellidos: "  + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.familyName + "\n" + 
+            "Primer Nombre: "  + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.givenName + "\n" + 
+            "Segundo nombre: "  + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.middleName + "\n" + 
+            "Sufijo del nombre: "  + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.honorificSuffix + "\n" + 
+            "Prefijo del nombre: "  + contacts[i].<a href="phonegap_storage_storage.md.html#name">name</a>.honorificPrefix);
+        }
+    };
+
+    // onError: Ocurrió un error
+    //
+    function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
+        alert('onError!');
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Ejemplo&lt;/h1&gt;
+    &lt;p&gt;Búsqueda de Contactos&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2>
+<a name="ContactName_peculiaridades_android">Peculiaridades Android</a>
+</h2>
+
+<ul>
+<li>
+<strong>formatted:</strong> Soportada parcialmente.  Retornara la concatenación de honorificPrefix, givenName, middleName, familyName and honorificSuffix pero no sera almacenado.</li>
+</ul>
+<h2>
+<a name="ContactName_peculiaridades_blackberry_webworks_os_5_0_y_superior">Peculiaridades BlackBerry WebWorks (OS 5.0 y superior)</a>
+</h2>
+
+<ul>
+<li>
+<strong>formatted:</strong> Soportada parcialmente.  Retornara la concatenación de los campos de BlackBerry<strong>firstName</strong> y <strong>lastName</strong>.</li>
+<li>
+<strong>familyName:</strong> Soportada. Almacenado en el campo de BlackBerry <strong>lastName</strong>.</li>
+<li>
+<strong>givenName:</strong> Soportada.  Almacenada en el campo de BlackBerry <strong>firstName</strong>.</li>
+<li>
+<strong>middleName:</strong> Esta propiedad no esta soportada, y siempre retornara <code>null</code>.</li>
+<li>
+<strong>honorificPrefix:</strong> Esta propiedad no esta soportada, y siempre retornara <code>null</code>.</li>
+<li>
+<strong>honorificSuffix:</strong> Esta propiedad no esta soportada, y siempre retornara <code>null</code>.</li>
+</ul>
+<h2>
+<a name="ContactName_peculiaridades_ios">Peculiaridades iOS</a>
+</h2>
+
+<ul>
+<li>
+<strong>formatted:</strong> Soportada parcialmente.  Retornara el nombre compuesto en iOS pero no lo almacenara.</li>
+</ul>
+<hr>
+<h1><a name="ContactOrganization">ContactOrganization</a></h1>
+
+<p>Contiene atributos sobre la organización de un objeto <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code>.</p>
+
+<h2>
+<a name="ContactOrganization_atributos">Atributos</a>
+</h2>
+
+<ul>
+<li>
+<strong>pref:</strong> <code>true</code> si este <code><a href="phonegap_contacts_contacts.md.html#ContactOrganization">ContactOrganization</a></code> es la preferente del usuario. <em>(boolean)</em>
+</li>
+<li>
+<strong>type:</strong> Una string que indica que tipo de campo es (ejemplo: 'home'). _(DOMString)</li>
+<li>
+<strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> El nombre de la organización. <em>(DOMString)</em>
+</li>
+<li>
+<strong>department:</strong> El departamento de la organización a donde el usuario pertenece. <em>(DOMString)</em>
+</li>
+<li>
+<strong>title:</strong> El titulo del usuario en su organización. <em>(DOMString)</em>
+</li>
+</ul>
+<h2>
+<a name="ContactOrganization_detalles">Detalles</a>
+</h2>
+
+<p>El objeto <code><a href="phonegap_contacts_contacts.md.html#ContactOrganization">ContactOrganization</a></code> almacena atributos sobre la organización. Un objeto <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code> guarda uno o mas objetos <code><a href="phonegap_contacts_contacts.md.html#ContactOrganization">ContactOrganization</a></code> en un array. </p>
+
+<h2>
+<a name="ContactOrganization_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="ContactOrganization_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>function onSuccess(contacts) {
+    for (var i=0; i&lt;contacts.length; i++) {
+        for (var j=0; j&lt;contacts[i].organizations.length; j++) {
+            alert("Preferente: " + contacts[i].organizations[j].pref + "\n" +
+                    "Tipo: " + contacts[i].organizations[j].type + "\n" +
+                    "Nombre: " + contacts[i].organizations[j].<a href="phonegap_storage_storage.md.html#name">name</a> + "\n" + 
+                    "Departmento: "  + contacts[i].organizations[j].department + "\n" + 
+                    "Titulo: "  + contacts[i].organizations[j].title);
+        }
+    }
+};
+
+function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
+    alert('onError!');
+};
+
+var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
+options.filter="";
+filter = ["displayName","organizations"];
+navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
+</code></pre>
+
+<h2>
+<a name="ContactOrganization_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espera a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        var options = new <a href="phonegap_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
+        options.filter="";
+        filter = ["displayName","organizations"];
+        navigator.<a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a>(filter, onSuccess, onError, options);
+    }
+
+    // onSuccess: Obtiene el resultado
+    //
+    function onSuccess(contacts) {
+        for (var i=0; i&lt;contacts.length; i++) {
+            for (var j=0; j&lt;contacts[i].organizations.length; j++) {
+                alert("Pref: " + contacts[i].organizations[j].pref + "\n" +
+                        "Type: " + contacts[i].organizations[j].type + "\n" +
+                        "Name: " + contacts[i].organizations[j].<a href="phonegap_storage_storage.md.html#name">name</a> + "\n" + 
+                        "Department: "  + contacts[i].organizations[j].department + "\n" + 
+                        "Title: "  + contacts[i].organizations[j].title);
+            }
+        }
+    };
+
+    // onError: Ocurrió un error
+    //
+    function onError(<a href="phonegap_contacts_contacts.md.html#contactError">contactError</a>) {
+        alert('onError!');
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Ejemplo&lt;/h1&gt;
+    &lt;p&gt;Búsqueda de Contactos&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2>
+<a name="ContactOrganization_peculiaridades_android_2_x">Peculiaridades Android 2.X</a>
+</h2>
+
+<ul>
+<li>
+<strong>pref:</strong> Este atributo no esta soportado en Android 2.X y siempre retornara <code>false</code>.</li>
+</ul>
+<h2>
+<a name="ContactOrganization_peculiaridades_android_1_x">Peculiaridades Android 1.X</a>
+</h2>
+
+<ul>
+<li>
+<strong>pref:</strong> Este atributo no esta soportado en Android 1.X y siempre retornara <code>false</code>.</li>
+<li>
+<strong>type:</strong> Este atributo no esta soportado en Android 1.X y siempre retornara <code>null</code>.</li>
+<li>
+<strong>title:</strong> Este atributo no esta soportado en Android 1.X y siempre retornara <code>null</code>. </li>
+</ul>
+<h2>
+<a name="ContactOrganization_peculiaridades_blackberry_webworks_os_5_0_y_superior">Peculiaridades BlackBerry WebWorks (OS 5.0 y superior)</a>
+</h2>
+
+<ul>
+<li>
+<strong>pref:</strong> Este atributo no esta soportado en Blackberry y siempre retornara <code>false</code>.</li>
+<li>
+<strong>type:</strong> Este atributo no esta soportado en Blackberry y siempre retornara  <code>null</code>.</li>
+<li>
+<strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> Soportado parcialmente. El primer nombre de la organización se almacenara en el campo BlackBerry <strong>company</strong>.</li>
+<li>
+<strong>department:</strong> Este atributo no esta soportado y siempre retornara <code>null</code>.</li>
+<li>
+<strong>title:</strong> Soportado parcialmente. El primer titulo se almacenara en el campo BlackBerry <strong>jobTitle</strong>.</li>
+</ul>
+<h2>
+<a name="ContactOrganization_peculiaridades_ios">Peculiaridades iOS</a>
+</h2>
+
+<ul>
+<li>
+<strong>pref:</strong> Este atributo no esta soportado en iOS y siempre retornara <code>false</code>.</li>
+<li>
+<strong>type:</strong> Este atributo no esta soportado en iOS y siempre retornara <code>null</code>.</li>
+<li>
+<strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> Soportado parcialmente.  El primer nombre de la organización sera almacenado en el campo iOS <strong>kABPersonOrganizationProperty</strong>.</li>
+<li>
+<strong>department</strong>: Soportado parcialmente. El primer nombre del departamento sera almacenado en el campo iOS <strong>kABPersonDepartmentProperty</strong>.</li>
+<li>
+<strong>title</strong>: Soportado parcialmente. El primer titulo sera almacenado en el campo iOS <strong>kABPersonJobTitleProperty</strong>.</li>
+</ul>
+<hr>
+<h1><a name="ContactError">ContactError</a></h1>
+
+<p>Cuando un error ocurra, se pasara un objeto <code><a href="phonegap_contacts_contacts.md.html#ContactError">ContactError</a></code> a la funcion 'callback' <code><a href="phonegap_contacts_contacts.md.html#contactError">contactError</a></code>.</p>
+
+<h2>
+<a name="ContactError_propiedades">Propiedades</a>
+</h2>
+
+<ul>
+<li>
+<strong>code:</strong> Uno de los errores definidos en la lista inferior.</li>
+</ul>
+<h2>
+<a name="ContactError_constantes">Constantes</a>
+</h2>
+
+<ul>
+<li><code><a href="phonegap_contacts_contacts.md.html#ContactError">ContactError</a>.UNKNOWN_ERROR</code></li>
+<li><code><a href="phonegap_contacts_contacts.md.html#ContactError">ContactError</a>.INVALID_ARGUMENT_ERROR</code></li>
+<li><code><a href="phonegap_contacts_contacts.md.html#ContactError">ContactError</a>.TIMEOUT_ERROR</code></li>
+<li><code><a href="phonegap_contacts_contacts.md.html#ContactError">ContactError</a>.PENDING_OPERATION_ERROR</code></li>
+<li><code><a href="phonegap_contacts_contacts.md.html#ContactError">ContactError</a>.IO_ERROR</code></li>
+<li><code><a href="phonegap_contacts_contacts.md.html#ContactError">ContactError</a>.NOT_SUPPORTED_ERROR</code></li>
+<li><code><a href="phonegap_contacts_contacts.md.html#ContactError">ContactError</a>.PERMISSION_DENIED_ERROR</code></li>
+</ul>
+<h2>
+<a name="ContactError_descripci_n">Descripción</a>
+</h2>
+
+<p>Cuando ocurra un error, se disparara la funcion 'callback' <code><a href="phonegap_contacts_contacts.md.html#ContactError">ContactError</a></code> pasándole como argumento un objeto <code><a href="phonegap_contacts_contacts.md.html#contactError">contactError</a></code>.</p>
+
+<hr>
+<h1><a name="contactSuccess">contactSuccess</a></h1>
+
+<p>Función 'callback' que proporciona un array de objetos <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code> como resultado del método <code><a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a></code>.</p>
+
+<pre class="prettyprint"><code>function(contacts) {
+    // hacer algo
+}
+</code></pre>
+
+<h2>
+<a name="contactSuccess_argumentos">Argumentos</a>
+</h2>
+
+<ul>
+<li>
+<strong>contacts:</strong> El array de contactos que retorna el método <code>contact.find</code>. (<code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code>)</li>
+</ul>
+<h2>
+<a name="contactSuccess_ejemplo">Ejemplo</a>
+</h2>
+
+<pre class="prettyprint"><code>function <a href="phonegap_contacts_contacts.md.html#contactSuccess">contactSuccess</a>(contacts) {
+    for (var i=0; i&lt;contacts.length; i++) {
+        console.log("Nombre = " + contacts[i].displayName;
+}
+</code></pre>
+
+<hr>
+<h1><a name="contactError">contactError</a></h1>
+
+<p>Función 'callback' de error para las funciones de contactos.</p>
+
+<pre class="prettyprint"><code>function(error) {
+    // Maneja el error
+}
+</code></pre>
+
+<hr>
+<h1><a name="contactFields">contactFields</a></h1>
+
+<p>Argumento requerido para el método <code><a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a></code>. Úsalo para indicar que campos deberían incluirse en el objeto <code><a href="phonegap_contacts_contacts.md.html#Contact">Contact</a></code> que este método retorna.</p>
+
+<pre class="prettyprint"><code>["<a href="phonegap_storage_storage.md.html#name">name</a>", "phoneNumbers", "emails"]
+</code></pre>
+
+<hr>
+<h1><a name="contactFindOptions">contactFindOptions</a></h1>
+
+<p>Argumento opcional del método <code><a href="phonegap_contacts_contacts.md.html#contacts.find">contacts.find</a></code>. Usa este argumento para filtrar los contactos retornados de la base de datos de contactos.</p>
+
+<pre class="prettyprint"><code>{ 
+filter: "",
+multiple: true,
+    };
+</code></pre>
+
+<h2>
+<a name="contactFindOptions_opciones">Opciones</a>
+</h2>
+
+<ul>
+<li>
+<strong>filter:</strong> Esta string de búsqueda se usara para filtrar contactos. <em>(DOMString)</em> (Por defecto: "")</li>
+<li>
+<strong>multiple:</strong> Indica si se debe retornar múltiples contactos. <em>(Boolean)</em> (Por defecto: false)</li>
+</ul>
+</div>
+        </div>
+
+        <!-- Functionality and Syntax Highlighting -->
+        <script type="text/javascript" src="index.js"></script><script type="text/javascript" src="prettify/prettify.js"></script>
+</body>
+</html>

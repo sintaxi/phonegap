@@ -1,0 +1,1982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+<meta name="generator" content="joDoc">
+<title>PhoneGap API Documentation</title>
+<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
+<link rel="stylesheet" type="text/css" href="prettify/prettify.css">
+</head>
+<body>
+        <div id="header">
+            <h1><a href="index.html">Phone<strong>Gap</strong> Documentation</a></h1>
+            <small>
+                <select><optgroup label="English" value="en">
+<option value="edge">edge</option>
+<option selected value="1.2.0">1.2.0</option>
+<option value="1.1.0">1.1.0</option>
+<option value="1.0.0rc3">1.0.0rc3</option>
+<option value="1.0.0rc2">1.0.0rc2</option>
+<option value="1.0.0rc1">1.0.0rc1</option>
+<option value="1.0.0">1.0.0</option>
+<option value="0.9.6">0.9.6</option>
+<option value="0.9.5.1">0.9.5.1</option>
+<option value="0.9.5">0.9.5</option>
+<option value="0.9.4">0.9.4</option>
+<option value="0.9.3">0.9.3</option>
+<option value="0.9.2">0.9.2</option>
+</optgroup>
+<optgroup label="Español" value="es"><option value="1.0.0">1.0.0</option></optgroup>
+<optgroup label="Japanese" value="jp"><option value="0.9.5">0.9.5</option></optgroup></select></small>
+        </div>
+        <div id="subheader">
+            <h1>File</h1>
+            <small><select><option value="File">File</option>
+<option value="File_objects">      - Objects</option>
+<option value="File">File</option>
+<option value="File_properties">      - Properties</option>
+<option value="File_details">      - Details</option>
+<option value="File_supported_platforms">      - Supported Platforms</option>
+<option value="FileReader">FileReader</option>
+<option value="FileReader_properties">      - Properties</option>
+<option value="FileReader_methods">      - Methods</option>
+<option value="FileReader_details">      - Details</option>
+<option value="FileReader_supported_platforms">      - Supported Platforms</option>
+<option value="FileReader_read_as_data_url">      - Read As Data URL </option>
+<option value="FileReader_quick_example">      - Quick Example</option>
+<option value="FileReader_read_as_text">      - Read As Text</option>
+<option value="FileReader_quick_example">      - Quick Example</option>
+<option value="FileReader_abort_quick_example">      - Abort Quick Example</option>
+<option value="FileReader_full_example">      - Full Example</option>
+<option value="FileReader_ios_quirks">      - iOS Quirks</option>
+<option value="FileWriter">FileWriter</option>
+<option value="FileWriter_properties">      - Properties</option>
+<option value="FileWriter_methods">      - Methods</option>
+<option value="FileWriter_details">      - Details</option>
+<option value="FileWriter_supported_platforms">      - Supported Platforms</option>
+<option value="FileWriter_seek_quick_example">      - Seek Quick Example</option>
+<option value="FileWriter_truncate_quick_example">      - Truncate Quick Example</option>
+<option value="FileWriter_write_quick_example">      - Write Quick Example</option>
+<option value="FileWriter_append_quick_example">      - Append Quick Example</option>
+<option value="FileWriter_abort_quick_example">      - Abort Quick Example</option>
+<option value="FileWriter_full_example">      - Full Example</option>
+<option value="FileSystem">FileSystem</option>
+<option value="FileSystem_properties">      - Properties</option>
+<option value="FileSystem_details">      - Details</option>
+<option value="FileSystem_supported_platforms">      - Supported Platforms</option>
+<option value="FileSystem_file_system_quick_example">      - 
+File System Quick Example</option>
+<option value="FileSystem_full_example">      - Full Example</option>
+<option value="FileEntry">FileEntry</option>
+<option value="FileEntry_properties">      - Properties</option>
+<option value="FileEntry_methods">      - Methods</option>
+<option value="FileEntry_supported_platforms">      - Supported Platforms</option>
+<option value="FileEntry_getmetadata">      - getMetadata</option>
+<option value="FileEntry_moveto">      - moveTo</option>
+<option value="FileEntry_copyto">      - copyTo</option>
+<option value="FileEntry_touri">      - toURI</option>
+<option value="FileEntry_remove">      - remove</option>
+<option value="FileEntry_getparent">      - getParent</option>
+<option value="FileEntry_createwriter">      - createWriter</option>
+<option value="FileEntry_file">      - file</option>
+<option value="DirectoryEntry">DirectoryEntry</option>
+<option value="DirectoryEntry_properties">      - Properties</option>
+<option value="DirectoryEntry_methods">      - Methods</option>
+<option value="DirectoryEntry_supported_platforms">      - Supported Platforms</option>
+<option value="DirectoryEntry_getmetadata">      - getMetadata</option>
+<option value="DirectoryEntry_moveto">      - moveTo</option>
+<option value="DirectoryEntry_copyto">      - copyTo</option>
+<option value="DirectoryEntry_touri">      - toURI</option>
+<option value="DirectoryEntry_remove">      - remove</option>
+<option value="DirectoryEntry_getparent">      - getParent</option>
+<option value="DirectoryEntry_createreader">      - createReader</option>
+<option value="DirectoryEntry_getdirectory">      - getDirectory</option>
+<option value="DirectoryEntry_getfile">      - getFile</option>
+<option value="DirectoryEntry_removerecursively">      - removeRecursively</option>
+<option value="DirectoryReader">DirectoryReader</option>
+<option value="DirectoryReader_methods">      - Methods</option>
+<option value="DirectoryReader_supported_platforms">      - Supported Platforms</option>
+<option value="DirectoryReader_readentries">      - readEntries</option>
+<option value="FileTransfer">FileTransfer</option>
+<option value="FileTransfer_properties">      - Properties</option>
+<option value="FileTransfer_methods">      - Methods</option>
+<option value="FileTransfer_details">      - Details</option>
+<option value="FileTransfer_supported_platforms">      - Supported Platforms</option>
+<option value="FileTransfer_quick_example">      - Quick Example</option>
+<option value="FileTransfer_full_example">      - Full Example</option>
+<option value="FileUploadOptions">FileUploadOptions</option>
+<option value="FileUploadOptions_properties">      - Properties</option>
+<option value="FileUploadOptions_description">      - Description</option>
+<option value="FileUploadResult">FileUploadResult</option>
+<option value="FileUploadResult_properties">      - Properties</option>
+<option value="FileUploadResult_description">      - Description</option>
+<option value="FileUploadResult_ios_quirks">      - iOS Quirks</option>
+<option value="Flags">Flags</option>
+<option value="Flags_properties">      - Properties</option>
+<option value="Flags_supported_platforms">      - Supported Platforms</option>
+<option value="Flags_quick_example">      - Quick Example</option>
+<option value="LocalFileSystem">LocalFileSystem</option>
+<option value="LocalFileSystem_methods">      - Methods</option>
+<option value="LocalFileSystem_constants">      - Constants</option>
+<option value="LocalFileSystem_details">      - Details</option>
+<option value="LocalFileSystem_supported_platforms">      - Supported Platforms</option>
+<option value="LocalFileSystem_request_file_system_quick_example">      - Request File System Quick Example</option>
+<option value="LocalFileSystem_resolve_local_file_system_uri_quick_example">      - Resolve Local File System URI Quick Example</option>
+<option value="LocalFileSystem_full_example">      - Full Example</option>
+<option value="Metadata">Metadata</option>
+<option value="Metadata_properties">      - Properties</option>
+<option value="Metadata_details">      - Details</option>
+<option value="Metadata_supported_platforms">      - Supported Platforms</option>
+<option value="Metadata_quick_example">      - Quick Example</option>
+<option value="FileError">FileError</option>
+<option value="FileError_properties">      - Properties</option>
+<option value="FileError_constants">      - Constants</option>
+<option value="FileError_description">      - Description</option>
+<option value="FileTransferError">FileTransferError</option>
+<option value="FileTransferError_properties">      - Properties</option>
+<option value="FileTransferError_constants">      - Constants</option>
+<option value="FileTransferError_description">      - Description</option></select></small>
+        </div>
+
+        <div id="sidebar">
+            <div class="vertical_divider"></div>
+            <h1>API Reference</h1>
+            <ul>
+<li><a href="phonegap_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
+<li><a href="phonegap_camera_camera.md.html#Camera">Camera</a></li>
+<li><a href="phonegap_media_capture_capture.md.html#Capture">Capture</a></li>
+<li><a href="phonegap_compass_compass.md.html#Compass">Compass</a></li>
+<li><a href="phonegap_connection_connection.md.html#Connection">Connection</a></li>
+<li><a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a></li>
+<li><a href="phonegap_device_device.md.html#Device">Device</a></li>
+<li><a href="phonegap_events_events.md.html#Events">Events</a></li>
+<li><a href="phonegap_file_file.md.html#File">File</a></li>
+<li><a href="phonegap_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
+<li><a href="phonegap_media_media.md.html#Media">Media</a></li>
+<li><a href="phonegap_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="phonegap_storage_storage.md.html#Storage">Storage</a></li>
+</ul>
+<h1></h1>
+            <ul>
+<li><a href="_index.html">Keyword Index</a></li>
+            </ul>
+</div>
+
+        <div id="scrollable">
+            <div id="content">
+                <h1><a name="File">File</a></h1>
+
+<blockquote>
+  <p>An API to read, write and navigate file system hierarchies. </p>
+</blockquote>
+
+<h2>
+<a name="File_objects">Objects</a>
+</h2>
+
+<ul>
+<li><a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a></li>
+<li><a href="phonegap_file_file.md.html#DirectoryReader">DirectoryReader</a></li>
+<li><a href="phonegap_file_file.md.html#File">File</a></li>
+<li><a href="phonegap_file_file.md.html#FileEntry">FileEntry</a></li>
+<li><a href="phonegap_file_file.md.html#FileError">FileError</a></li>
+<li><a href="phonegap_file_file.md.html#FileReader">FileReader</a></li>
+<li><a href="phonegap_file_file.md.html#FileSystem">FileSystem</a></li>
+<li><a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a></li>
+<li><a href="phonegap_file_file.md.html#FileTransferError">FileTransferError</a></li>
+<li><a href="phonegap_file_file.md.html#FileUploadOptions">FileUploadOptions</a></li>
+<li><a href="phonegap_file_file.md.html#FileUploadResult">FileUploadResult</a></li>
+<li><a href="phonegap_file_file.md.html#FileWriter">FileWriter</a></li>
+<li><a href="phonegap_file_file.md.html#Flags">Flags</a></li>
+<li><a href="phonegap_file_file.md.html#LocalFileSystem">LocalFileSystem</a></li>
+<li><a href="phonegap_file_file.md.html#Metadata">Metadata</a></li>
+</ul>
+<hr>
+<h1><a name="File">File</a></h1>
+
+<p>This object contains attributes of a single file.</p>
+
+<h2>
+<a name="File_properties">Properties</a>
+</h2>
+
+<ul>
+<li>
+<strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> The <a href="phonegap_storage_storage.md.html#name">name</a> of the file. <em>(DOMString)</em>
+</li>
+<li>
+<strong>fullPath:</strong> The full path of the file including the file <a href="phonegap_storage_storage.md.html#name">name</a>. <em>(DOMString)</em>
+</li>
+<li>
+<strong>type:</strong> The mime type of the file. <em>(DOMString)</em>
+</li>
+<li>
+<strong>lastModifiedDate:</strong> The last time the file was modified. <em>(Date)</em>
+</li>
+<li>
+<strong><a href="phonegap_storage_storage.md.html#size">size</a>:</strong> The <a href="phonegap_storage_storage.md.html#size">size</a> of the file in bytes. <em>(long)</em>
+</li>
+</ul>
+<h2>
+<a name="File_details">Details</a>
+</h2>
+
+<p>The <code><a href="phonegap_file_file.md.html#File">File</a></code> object contains attributes of a single file.  You can get an instance of a <a href="phonegap_file_file.md.html#File">File</a> object by calling the <strong>file</strong> method of a <code><a href="phonegap_file_file.md.html#FileEntry">FileEntry</a></code> object.</p>
+
+<h2>
+<a name="File_supported_platforms">Supported Platforms</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+<li>iOS</li>
+<li>Windows Phone 7 ( Mango )</li>
+</ul>
+<hr>
+<h1><a name="FileReader">FileReader</a></h1>
+
+<p><a href="phonegap_file_file.md.html#FileReader">FileReader</a> is an object that allows one to read a file.</p>
+
+<h2>
+<a name="FileReader_properties">Properties</a>
+</h2>
+
+<ul>
+<li>
+<strong>readyState:</strong> One of the three states the reader can be in EMPTY, LOADING or DONE.</li>
+<li>
+<strong>result:</strong> The contents of the file that has been read. <em>(DOMString)</em>
+</li>
+<li>
+<strong>error:</strong> An object containing errors. <em>(<a href="phonegap_file_file.md.html#FileError">FileError</a>)</em>
+</li>
+<li>
+<strong>onloadstart:</strong> Called when the read starts. . <em>(Function)</em>
+</li>
+<li>
+<strong>onprogress:</strong> Called while reading the file, reports progress (progess.loaded/progress.total). <em>(Function)</em> -NOT SUPPORTED</li>
+<li>
+<strong>onload:</strong> Called when the read has successfully completed. <em>(Function)</em>
+</li>
+<li>
+<strong>onabort:</strong> Called when the read has been aborted. For instance, by invoking the abort() method. <em>(Function)</em>
+</li>
+<li>
+<strong>onerror:</strong> Called when the read has failed. <em>(Function)</em>
+</li>
+<li>
+<strong>onloadend:</strong> Called when the request has completed (either in success or failure).  <em>(Function)</em>
+</li>
+</ul>
+<h2>
+<a name="FileReader_methods">Methods</a>
+</h2>
+
+<ul>
+<li>
+<strong>abort</strong>: Aborts reading file. </li>
+<li>
+<strong>readAsDataURL</strong>: Read file and return data as a base64 encoded data url.</li>
+<li>
+<strong>readAsText</strong>: Reads text file.</li>
+</ul>
+<h2>
+<a name="FileReader_details">Details</a>
+</h2>
+
+<p>The <code><a href="phonegap_file_file.md.html#FileReader">FileReader</a></code> object is a way to read files from the devices file system.  Files can be read as text or as a base64 data encoded string.  Users register their own event listners to receive the loadstart, progress, load, loadend, error and abort events.</p>
+
+<h2>
+<a name="FileReader_supported_platforms">Supported Platforms</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+<li>iOS</li>
+<li>Windows Phone 7 ( Mango )</li>
+</ul>
+<h2>
+<a name="FileReader_read_as_data_url">Read As Data URL </a>
+</h2>
+
+<p><strong>Parameters:</strong>
+- file - the file object to read</p>
+
+<h2>
+<a name="FileReader_quick_example">Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>function win(file) {
+    var reader = new <a href="phonegap_file_file.md.html#FileReader">FileReader</a>();
+    reader.onloadend = function(evt) {
+        console.log("read success");
+        console.log(evt.target.result);
+    };
+    reader.readAsDataURL(file);
+};
+
+var fail = function(evt) {
+    console.log(error.code);
+};
+
+entry.file(win, fail);
+</code></pre>
+
+<h2>
+<a name="FileReader_read_as_text">Read As Text</a>
+</h2>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>file - the file object to read</li>
+<li>encoding - the encoding to use to encode the file's content. Default is UTF8.</li>
+</ul>
+<h2>
+<a name="FileReader_quick_example">Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>function win(file) {
+    var reader = new <a href="phonegap_file_file.md.html#FileReader">FileReader</a>();
+    reader.onloadend = function(evt) {
+        console.log("read success");
+        console.log(evt.target.result);
+    };
+    reader.readAsText(file);
+};
+
+var fail = function(evt) {
+    console.log(error.code);
+};
+
+entry.file(win, fail);
+</code></pre>
+
+<h2>
+<a name="FileReader_abort_quick_example">Abort Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>function win(file) {
+    var reader = new <a href="phonegap_file_file.md.html#FileReader">FileReader</a>();
+    reader.onloadend = function(evt) {
+        console.log("read success");
+        console.log(evt.target.result);
+    };
+    reader.readAsText(file);
+    reader.abort();
+};
+
+function fail(error) {
+    console.log(error.code);
+}
+
+entry.file(win, fail);
+</code></pre>
+
+<h2>
+<a name="FileReader_full_example">Full Example</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;<a href="phonegap_file_file.md.html#FileReader">FileReader</a> Example&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Wait for PhoneGap to load
+    //
+    function onLoad() {
+        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    }
+
+    // PhoneGap is ready
+    //
+    function onDeviceReady() {
+        window.requestFileSystem(<a href="phonegap_file_file.md.html#LocalFileSystem">LocalFileSystem</a>.PERSISTENT, 0, gotFS, fail);
+    }
+
+    function gotFS(fileSystem) {
+        fileSystem.root.getFile("readme.txt", null, gotFileEntry, fail);
+    }
+
+    function gotFileEntry(fileEntry) {
+        fileEntry.file(gotFile, fail);
+    }
+
+    function gotFile(file){
+        readDataUrl(file);
+        readAsText(file);
+    }
+
+    function readDataUrl(file) {
+        var reader = new <a href="phonegap_file_file.md.html#FileReader">FileReader</a>();
+        reader.onloadend = function(evt) {
+            console.log("Read as data URL");
+            console.log(evt.target.result);
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function readAsText(file) {
+        var reader = new <a href="phonegap_file_file.md.html#FileReader">FileReader</a>();
+        reader.onloadend = function(evt) {
+            console.log("Read as text");
+            console.log(evt.target.result);
+        };
+        reader.readAsText(file);
+    }
+
+    function fail(evt) {
+        console.log(evt.target.error.code);
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Example&lt;/h1&gt;
+    &lt;p&gt;Read <a href="phonegap_file_file.md.html#File">File</a>&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2>
+<a name="FileReader_ios_quirks">iOS Quirks</a>
+</h2>
+
+<ul>
+<li>
+<strong>encoding</strong> parameter is not supported, UTF8 encoding is always used.</li>
+</ul>
+<hr>
+<h1><a name="FileWriter">FileWriter</a></h1>
+
+<p><a href="phonegap_file_file.md.html#FileWriter">FileWriter</a> is an object that allows one to write a file.</p>
+
+<h2>
+<a name="FileWriter_properties">Properties</a>
+</h2>
+
+<ul>
+<li>
+<strong>readyState:</strong> One of the three states the reader can be in INIT, WRITING or DONE.</li>
+<li>
+<strong>fileName:</strong> The <a href="phonegap_storage_storage.md.html#name">name</a> of the file to be written. <em>(DOMString)</em>
+</li>
+<li>
+<strong>length:</strong> The length of the file to be written. <em>(long)</em>
+</li>
+<li>
+<strong>position:</strong> The current position of the file pointer. <em>(long)</em>
+</li>
+<li>
+<strong>error:</strong> An object containing errors. <em>(<a href="phonegap_file_file.md.html#FileError">FileError</a>)</em>
+</li>
+<li>
+<strong>onwritestart:</strong> Called when the write starts. . <em>(Function)</em>
+</li>
+<li>
+<strong>onprogress:</strong> Called while writing the file, reports progress (progess.loaded/progress.total). <em>(Function)</em> -NOT SUPPORTED</li>
+<li>
+<strong>onwrite:</strong> Called when the request has completed successfully.  <em>(Function)</em>
+</li>
+<li>
+<strong>onabort:</strong> Called when the write has been aborted. For instance, by invoking the abort() method. <em>(Function)</em>
+</li>
+<li>
+<strong>onerror:</strong> Called when the write has failed. <em>(Function)</em>
+</li>
+<li>
+<strong>onwriteend:</strong> Called when the request has completed (either in success or failure).  <em>(Function)</em>
+</li>
+</ul>
+<h2>
+<a name="FileWriter_methods">Methods</a>
+</h2>
+
+<ul>
+<li>
+<strong>abort</strong>: Aborts writing file. </li>
+<li>
+<strong>seek</strong>: Moves the file pointer to the byte specified.</li>
+<li>
+<strong>truncate</strong>: Shortens the file to the length specified.</li>
+<li>
+<strong>write</strong>: Writes data to the file.</li>
+</ul>
+<h2>
+<a name="FileWriter_details">Details</a>
+</h2>
+
+<p>The <code><a href="phonegap_file_file.md.html#FileWriter">FileWriter</a></code> object is a way to write files from the devices file system.  Users register their own event listeners to receive the writestart, progress, write, writeend, error and abort events.</p>
+
+<p>A <a href="phonegap_file_file.md.html#FileWriter">FileWriter</a> is created for a single file. You can use it to write to a file multiple times. The <a href="phonegap_file_file.md.html#FileWriter">FileWriter</a> maintains the file's position and length attributes, so you can seek and write anywhere in the file. By default, the <a href="phonegap_file_file.md.html#FileWriter">FileWriter</a> writes to the beginning of the file (will overwrite existing data). Set the optional append boolean to true in the <a href="phonegap_file_file.md.html#FileWriter">FileWriter</a>'s constructor to begin writing to the end of the file.</p>
+
+<h2>
+<a name="FileWriter_supported_platforms">Supported Platforms</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+<li>iOS</li>
+<li>Windows Phone 7 ( Mango )</li>
+</ul>
+<h2>
+<a name="FileWriter_seek_quick_example">Seek Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>function win(writer) {
+    // fast forwards file pointer to end of file
+    writer.seek(writer.length); 
+};
+
+var fail = function(evt) {
+    console.log(error.code);
+};
+
+entry.createWriter(win, fail);
+</code></pre>
+
+<h2>
+<a name="FileWriter_truncate_quick_example">Truncate Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>function win(writer) {
+    writer.truncate(10);    
+};
+
+var fail = function(evt) {
+    console.log(error.code);
+};
+
+entry.createWriter(win, fail);
+</code></pre>
+
+<h2>
+<a name="FileWriter_write_quick_example">Write Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>function win(writer) {
+    writer.onwrite = function(evt) {
+        console.log("write success");
+    };
+    writer.write("some sample text");
+};
+
+var fail = function(evt) {
+    console.log(error.code);
+};
+
+entry.createWriter(win, fail);
+</code></pre>
+
+<h2>
+<a name="FileWriter_append_quick_example">Append Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>function win(writer) {
+    writer.onwrite = function(evt) {
+        console.log("write success");
+    };
+    writer.seek(writer.length);
+    writer.write("appended text");
+};
+
+var fail = function(evt) {
+    console.log(error.code);
+};
+
+entry.createWriter(win, fail);
+</code></pre>
+
+<h2>
+<a name="FileWriter_abort_quick_example">Abort Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>function win(writer) {
+    writer.onwrite = function(evt) {
+        console.log("write success");
+    };
+    writer.write("some sample text");
+    writer.abort();
+};
+
+var fail = function(evt) {
+    console.log(error.code);
+};
+
+entry.createWriter(win, fail);
+</code></pre>
+
+<h2>
+<a name="FileWriter_full_example">Full Example</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;<a href="phonegap_file_file.md.html#FileWriter">FileWriter</a> Example&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.0.9.4.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Wait for PhoneGap to load
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap is ready
+    //
+    function onDeviceReady() {
+        window.requestFileSystem(<a href="phonegap_file_file.md.html#LocalFileSystem">LocalFileSystem</a>.PERSISTENT, 0, gotFS, fail);
+    }
+
+    function gotFS(fileSystem) {
+        fileSystem.root.getFile("readme.txt", null, gotFileEntry, fail);
+    }
+
+    function gotFileEntry(fileEntry) {
+        fileEntry.createWriter(gotFileWriter, fail);
+    }
+
+    function gotFileWriter(writer) {
+        writer.onwrite = function(evt) {
+            console.log("write success");
+        };
+        writer.write("some sample text");
+        // contents of file now 'some sample text'
+        writer.truncate(11);
+        // contents of file now 'some sample'
+        writer.seek(4);
+        // contents of file still 'some sample' but file pointer is after the 'e' in 'some'
+        writer.write(" different text");
+        // contents of file now 'some different text'
+    }
+
+    function fail(error) {
+        console.log(error.code);
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Example&lt;/h1&gt;
+    &lt;p&gt;Write <a href="phonegap_file_file.md.html#File">File</a>&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="FileSystem">FileSystem</a></h1>
+
+<p>This object represents a file system.</p>
+
+<h2>
+<a name="FileSystem_properties">Properties</a>
+</h2>
+
+<ul>
+<li>
+<strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> The <a href="phonegap_storage_storage.md.html#name">name</a> of the file system. <em>(DOMString)</em>
+</li>
+<li>
+<strong>root:</strong> The root directory of the file system. <em>(<a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>)</em>
+</li>
+</ul>
+<h2>
+<a name="FileSystem_details">Details</a>
+</h2>
+
+<p>The <code><a href="phonegap_file_file.md.html#FileSystem">FileSystem</a></code> object represents information about the file system. The <a href="phonegap_storage_storage.md.html#name">name</a> of the file system will be unique across the list of exposed file systems.  The root property contains a <code><a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a></code> object which represents the root directory of the file system.</p>
+
+<h2>
+<a name="FileSystem_supported_platforms">Supported Platforms</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+<li>iOS</li>
+<li>Windows Phone 7 ( Mango )</li>
+</ul>
+<h2>
+<a name="FileSystem_file_system_quick_example">
+File System Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>function onSuccess(fileSystem) {
+    console.log(fileSystem.<a href="phonegap_storage_storage.md.html#name">name</a>);
+    console.log(fileSystem.root.<a href="phonegap_storage_storage.md.html#name">name</a>);
+}
+
+// request the persistent file system
+window.requestFileSystem(<a href="phonegap_file_file.md.html#LocalFileSystem">LocalFileSystem</a>.PERSISTENT, 0, onSuccess, null);
+</code></pre>
+
+<h2>
+<a name="FileSystem_full_example">Full Example</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;<a href="phonegap_file_file.md.html#File">File</a> System Example&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Wait for PhoneGap to load
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap is ready
+    //
+    function onDeviceReady() {
+        window.requestFileSystem(<a href="phonegap_file_file.md.html#LocalFileSystem">LocalFileSystem</a>.PERSISTENT, 0, onFileSystemSuccess, fail);
+    }
+
+    function onFileSystemSuccess(fileSystem) {
+        console.log(fileSystem.<a href="phonegap_storage_storage.md.html#name">name</a>);
+        console.log(fileSystem.root.<a href="phonegap_storage_storage.md.html#name">name</a>);
+    }
+
+    function fail(evt) {
+        console.log(evt.target.error.code);
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Example&lt;/h1&gt;
+    &lt;p&gt;<a href="phonegap_file_file.md.html#File">File</a> System&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="FileEntry">FileEntry</a></h1>
+
+<p>This object represents a file on a file system.  It is defined in the <a class="external" href="http://www.w3.org/TR/file-system-api/">W3C Directories and Systems</a> specification.</p>
+
+<h2>
+<a name="FileEntry_properties">Properties</a>
+</h2>
+
+<ul>
+<li>
+<strong>isFile:</strong> Always true. <em>(boolean)</em>
+</li>
+<li>
+<strong>isDirectory:</strong> Always false. <em>(boolean)</em>
+</li>
+<li>
+<strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> The <a href="phonegap_storage_storage.md.html#name">name</a> of the <a href="phonegap_file_file.md.html#FileEntry">FileEntry</a>, excluding the path leading to it. <em>(DOMString)</em>
+</li>
+<li>
+<strong>fullPath:</strong> The full absolute path from the root to the <a href="phonegap_file_file.md.html#FileEntry">FileEntry</a>. <em>(DOMString)</em>
+</li>
+</ul>
+<p>NOTE: The following attributes are defined by the W3C specification, but are <strong>not supported</strong> by PhoneGap:</p>
+
+<ul>
+<li>
+<strong>filesystem:</strong> The file system on which the <a href="phonegap_file_file.md.html#FileEntry">FileEntry</a> resides. <em>(<a href="phonegap_file_file.md.html#FileSystem">FileSystem</a>)</em>
+</li>
+</ul>
+<h2>
+<a name="FileEntry_methods">Methods</a>
+</h2>
+
+<ul>
+<li>
+<strong>getMetadata</strong>: Look up metadata about a file. </li>
+<li>
+<strong>moveTo</strong>: Move a file to a different location on the file system.</li>
+<li>
+<strong>copyTo</strong>: Copy a file to a different location on the file system.</li>
+<li>
+<strong>toURI</strong>: Return a URI that can be used to locate a file.</li>
+<li>
+<strong>remove</strong>: Delete a file.  </li>
+<li>
+<strong>getParent</strong>: Look up the parent directory.</li>
+<li>
+<strong>createWriter</strong>: Creates a <a href="phonegap_file_file.md.html#FileWriter">FileWriter</a> object that can be used to write to a file.</li>
+<li>
+<strong>file</strong>: Creates a <a href="phonegap_file_file.md.html#File">File</a> object containing file properties.</li>
+</ul>
+<h2>
+<a name="FileEntry_supported_platforms">Supported Platforms</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+<li>iOS</li>
+<li>Windows Phone 7 ( Mango )</li>
+</ul>
+<h2>
+<a name="FileEntry_getmetadata">getMetadata</a>
+</h2>
+
+<p>Look up metadata about a file.</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>
+<strong>successCallback</strong> - A callback that is called with a <a href="phonegap_file_file.md.html#Metadata">Metadata</a> object. <em>(Function)</em>
+</li>
+<li>
+<strong>errorCallback</strong> - A callback that is called if an error occurs retrieving the <a href="phonegap_file_file.md.html#Metadata">Metadata</a>. Invoked with a <a href="phonegap_file_file.md.html#FileError">FileError</a> object. <em>(Function)</em>
+</li>
+</ul>
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>function success(metadata) {
+    console.log("Last Modified: " + metadata.modificationTime);
+}
+
+function fail(error) {
+    alert(error.code);
+}
+
+// Request the metadata object for this entry
+entry.getMetadata(success, fail);
+</code></pre>
+
+<h2>
+<a name="FileEntry_moveto">moveTo</a>
+</h2>
+
+<p>Move a file to a different location on the file system. It is an error to attempt to:</p>
+
+<ul>
+<li>move a file into its parent if a <a href="phonegap_storage_storage.md.html#name">name</a> different from its current one isn't provided;</li>
+<li>move a file to a path occupied by a directory;</li>
+</ul>
+<p>In addition, an attempt to move a file on top of an existing file must attempt to delete and replace that file. </p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>
+<strong>parent</strong> - The parent directory to which to move the file. <em>(<a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>)</em>
+</li>
+<li>
+<strong>newName</strong> - The new <a href="phonegap_storage_storage.md.html#name">name</a> of the file. Defaults to the current <a href="phonegap_storage_storage.md.html#name">name</a> if unspecified. <em>(DOMString)</em>
+</li>
+<li>
+<strong>successCallback</strong> - A callback that is called with the <a href="phonegap_file_file.md.html#FileEntry">FileEntry</a> object of the new file. <em>(Function)</em>
+</li>
+<li>
+<strong>errorCallback</strong> - A callback that is called if an error occurs when attempting to move the file.  Invoked with a <a href="phonegap_file_file.md.html#FileError">FileError</a> object. <em>(Function)</em>
+</li>
+</ul>
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>function success(entry) {
+    console.log("New Path: " + entry.fullPath);
+}
+
+function fail(error) {
+    alert(error.code);
+}
+
+function moveFile(entry) {
+    var parent = document.getElementById('parent').value,
+        parentEntry = new <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>({fullPath: parent});
+
+    // move the file to a new directory and rename it
+    entry.moveTo(parentEntry, "newFile.txt", success, fail);
+}
+</code></pre>
+
+<h2>
+<a name="FileEntry_copyto">copyTo</a>
+</h2>
+
+<p>Copy a file to a new location on the file system.  It is an error to attempt to:</p>
+
+<ul>
+<li>copy a file into its parent if a <a href="phonegap_storage_storage.md.html#name">name</a> different from its current one is not provided. </li>
+</ul>
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>
+<strong>parent</strong> - The parent directory to which to copy the file. <em>(<a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>)</em>
+</li>
+<li>
+<strong>newName</strong> - The new <a href="phonegap_storage_storage.md.html#name">name</a> of the file. Defaults to the current <a href="phonegap_storage_storage.md.html#name">name</a> if unspecified. <em>(DOMString)</em>
+</li>
+<li>
+<strong>successCallback</strong> - A callback that is called with the <a href="phonegap_file_file.md.html#FileEntry">FileEntry</a> object of the new file. <em>(Function)</em>
+</li>
+<li>
+<strong>errorCallback</strong> - A callback that is called if an error occurs when attempting to copy the file.  Invoked with a <a href="phonegap_file_file.md.html#FileError">FileError</a> object. <em>(Function)</em>
+</li>
+</ul>
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>function win(entry) {
+    console.log("New Path: " + entry.fullPath);
+}
+
+function fail(error) {
+    alert(error.code);
+}
+
+function copyFile(entry) {
+    var parent = document.getElementById('parent').value,
+        parentEntry = new <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>({fullPath: parent});
+
+    // copy the file to a new directory and rename it
+    entry.copyTo(parentEntry, "file.copy", success, fail);
+}
+</code></pre>
+
+<h2>
+<a name="FileEntry_touri">toURI</a>
+</h2>
+
+<p>Returns a URI that can be used to locate the file. </p>
+
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>// Request the URI for this entry
+var uri = entry.toURI();
+console.log(uri);
+</code></pre>
+
+<h2>
+<a name="FileEntry_remove">remove</a>
+</h2>
+
+<p>Deletes a file. </p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>
+<strong>successCallback</strong> - A callback that is called after the file has been deleted.  Invoked with no parameters. <em>(Function)</em>
+</li>
+<li>
+<strong>errorCallback</strong> - A callback that is called if an error occurs when attempting to delete the file.  Invoked with a <a href="phonegap_file_file.md.html#FileError">FileError</a> object. <em>(Function)</em>
+</li>
+</ul>
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>function success(entry) {
+    console.log("Removal succeeded");
+}
+
+function fail(error) {
+    alert('Error removing file: ' + error.code);
+}
+
+// remove the file
+entry.remove(success, fail);
+</code></pre>
+
+<h2>
+<a name="FileEntry_getparent">getParent</a>
+</h2>
+
+<p>Look up the parent <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a> containing the file. </p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>
+<strong>successCallback</strong> - A callback that is called with the file's parent <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>. <em>(Function)</em>
+</li>
+<li>
+<strong>errorCallback</strong> - A callback that is called if an error occurs when attempting to retrieve the parent <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>.  Invoked with a <a href="phonegap_file_file.md.html#FileError">FileError</a> object. <em>(Function)</em>
+</li>
+</ul>
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>function success(parent) {
+    console.log("Parent Name: " + parent.<a href="phonegap_storage_storage.md.html#name">name</a>);
+}
+
+function fail(error) {
+    alert(error.code);
+}
+
+// Get the parent <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>
+entry.getParent(success, fail);
+</code></pre>
+
+<h2>
+<a name="FileEntry_createwriter">createWriter</a>
+</h2>
+
+<p>Create a <a href="phonegap_file_file.md.html#FileWriter">FileWriter</a> object associated with the file that the <a href="phonegap_file_file.md.html#FileEntry">FileEntry</a> represents.</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>
+<strong>successCallback</strong> - A callback that is called with a <a href="phonegap_file_file.md.html#FileWriter">FileWriter</a> object. <em>(Function)</em>
+</li>
+<li>
+<strong>errorCallback</strong> - A callback that is called if an error occurs while attempting to create the <a href="phonegap_file_file.md.html#FileWriter">FileWriter</a>.  Invoked with a <a href="phonegap_file_file.md.html#FileError">FileError</a> object. <em>(Function)</em>
+</li>
+</ul>
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>function success(writer) {
+    writer.write("Some text to the file");
+}
+
+function fail(error) {
+    alert(error.code);
+}
+
+// create a <a href="phonegap_file_file.md.html#FileWriter">FileWriter</a> to write to the file
+entry.createWriter(success, fail);
+</code></pre>
+
+<h2>
+<a name="FileEntry_file">file</a>
+</h2>
+
+<p>Return a <a href="phonegap_file_file.md.html#File">File</a> object that represents the current state of the file that this <a href="phonegap_file_file.md.html#FileEntry">FileEntry</a> represents.</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>
+<strong>successCallback</strong> - A callback that is called with a <a href="phonegap_file_file.md.html#File">File</a> object. <em>(Function)</em>
+</li>
+<li>
+<strong>errorCallback</strong> - A callback that is called if an error occurs when creating the <a href="phonegap_file_file.md.html#File">File</a> object (e.g. the underlying file no longer exists).  Invoked with a <a href="phonegap_file_file.md.html#FileError">FileError</a> object. <em>(Function)</em>
+</li>
+</ul>
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>function success(file) {
+    console.log("<a href="phonegap_file_file.md.html#File">File</a> <a href="phonegap_storage_storage.md.html#size">size</a>: " + file.<a href="phonegap_storage_storage.md.html#size">size</a>);
+}
+
+function fail(error) {
+    alert("Unable to retrieve file properties: " + error.code);
+}
+
+// obtain properties of a file
+entry.file(success, fail);
+</code></pre>
+
+<hr>
+<h1><a name="DirectoryEntry">DirectoryEntry</a></h1>
+
+<p>This object represents a directory on a file system.  It is defined in the <a class="external" href="http://www.w3.org/TR/file-system-api/">W3C Directories and Systems</a> specification.</p>
+
+<h2>
+<a name="DirectoryEntry_properties">Properties</a>
+</h2>
+
+<ul>
+<li>
+<strong>isFile:</strong> Always false. <em>(boolean)</em>
+</li>
+<li>
+<strong>isDirectory:</strong> Always true. <em>(boolean)</em>
+</li>
+<li>
+<strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> The <a href="phonegap_storage_storage.md.html#name">name</a> of the <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>, excluding the path leading to it. <em>(DOMString)</em>
+</li>
+<li>
+<strong>fullPath:</strong> The full absolute path from the root to the <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>. <em>(DOMString)</em>
+</li>
+</ul>
+<p>NOTE: The following attributes are defined by the W3C specification, but are <strong>not supported</strong> by PhoneGap:</p>
+
+<ul>
+<li>
+<strong>filesystem:</strong> The file system on which the <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a> resides. <em>(<a href="phonegap_file_file.md.html#FileSystem">FileSystem</a>)</em> </li>
+</ul>
+<h2>
+<a name="DirectoryEntry_methods">Methods</a>
+</h2>
+
+<p>The following methods can be invoked on a <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a> object:</p>
+
+<ul>
+<li>
+<strong>getMetadata</strong>: Look up metadata about a directory. </li>
+<li>
+<strong>moveTo</strong>: Move a directory to a different location on the file system.</li>
+<li>
+<strong>copyTo</strong>: Copy a directory to a different location on the file system.</li>
+<li>
+<strong>toURI</strong>: Return a URI that can be used to locate a directory.</li>
+<li>
+<strong>remove</strong>: Delete a directory.  The directory must be empty.</li>
+<li>
+<strong>getParent</strong>: Look up the parent directory.</li>
+<li>
+<strong>createReader</strong>: Create a new <a href="phonegap_file_file.md.html#DirectoryReader">DirectoryReader</a> that can read entries from a directory.</li>
+<li>
+<strong>getDirectory</strong>: Create or look up a directory.</li>
+<li>
+<strong>getFile</strong>: Create or look up a file.</li>
+<li>
+<strong>removeRecursively</strong>: Delete a directory and all of its contents.</li>
+</ul>
+<h2>
+<a name="DirectoryEntry_supported_platforms">Supported Platforms</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+<li>iOS</li>
+<li>Windows Phone 7 ( Mango )</li>
+</ul>
+<h2>
+<a name="DirectoryEntry_getmetadata">getMetadata</a>
+</h2>
+
+<p>Look up metadata about a directory.</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>
+<strong>successCallback</strong> - A callback that is called with a <a href="phonegap_file_file.md.html#Metadata">Metadata</a> object. <em>(Function)</em>
+</li>
+<li>
+<strong>errorCallback</strong> - A callback that is called if an error occurs retrieving the <a href="phonegap_file_file.md.html#Metadata">Metadata</a>. Invoked with a <a href="phonegap_file_file.md.html#FileError">FileError</a> object. <em>(Function)</em>
+</li>
+</ul>
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>function success(metadata) {
+    console.log("Last Modified: " + metadata.modificationTime);
+}
+
+function fail(error) {
+    alert(error.code);
+}
+
+// Request the metadata object for this entry
+entry.getMetadata(success, fail);
+</code></pre>
+
+<h2>
+<a name="DirectoryEntry_moveto">moveTo</a>
+</h2>
+
+<p>Move a directory to a different location on the file system. It is an error to attempt to:</p>
+
+<ul>
+<li>move a directory inside itself or to any child at any depth;</li>
+<li>move a directory into its parent if a <a href="phonegap_storage_storage.md.html#name">name</a> different from its current one is not provided;</li>
+<li>move a directory to a path occupied by a file;</li>
+<li>move a directory to a path occupied by a directory which is not empty.</li>
+</ul>
+<p>In addition, an attempt to move a directory on top of an existing empty directory must attempt to delete and replace that directory.</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>
+<strong>parent</strong> - The parent directory to which to move the directory. <em>(<a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>)</em>
+</li>
+<li>
+<strong>newName</strong> - The new <a href="phonegap_storage_storage.md.html#name">name</a> of the directory. Defaults to the current <a href="phonegap_storage_storage.md.html#name">name</a> if unspecified. <em>(DOMString)</em>
+</li>
+<li>
+<strong>successCallback</strong> - A callback that is called with the <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a> object of the new directory. <em>(Function)</em>
+</li>
+<li>
+<strong>errorCallback</strong> - A callback that is called if an error occurs when attempting to move the directory.  Invoked with a <a href="phonegap_file_file.md.html#FileError">FileError</a> object. <em>(Function)</em>
+</li>
+</ul>
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>function success(entry) {
+    console.log("New Path: " + entry.fullPath);
+}
+
+function fail(error) {
+    alert(error.code);
+}
+
+function moveDir(entry) {
+    var parent = document.getElementById('parent').value,
+        newName = document.getElementById('newName').value,
+        parentEntry = new <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>({fullPath: parent});
+
+    // move the directory to a new directory and rename it
+    entry.moveTo(parentEntry, newName, success, fail);
+}
+</code></pre>
+
+<h2>
+<a name="DirectoryEntry_copyto">copyTo</a>
+</h2>
+
+<p>Copy a directory to a different location on the file system. It is an error to attempt to:</p>
+
+<ul>
+<li>copy a directory inside itself at any depth;</li>
+<li>copy a directory into its parent if a <a href="phonegap_storage_storage.md.html#name">name</a> different from its current one is not provided. </li>
+</ul>
+<p>Directory copies are always recursive - that is, they copy all contents of the directory.</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>
+<strong>parent</strong> - The parent directory to which to copy the directory. <em>(<a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>)</em>
+</li>
+<li>
+<strong>newName</strong> - The new <a href="phonegap_storage_storage.md.html#name">name</a> of the directory. Defaults to the current <a href="phonegap_storage_storage.md.html#name">name</a> if unspecified. <em>(DOMString)</em>
+</li>
+<li>
+<strong>successCallback</strong> - A callback that is called with the <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a> object of the new directory. <em>(Function)</em>
+</li>
+<li>
+<strong>errorCallback</strong> - A callback that is called if an error occurs when attempting to copy the underlying directory.  Invoked with a <a href="phonegap_file_file.md.html#FileError">FileError</a> object. <em>(Function)</em>
+</li>
+</ul>
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>function win(entry) {
+    console.log("New Path: " + entry.fullPath);
+}
+
+function fail(error) {
+    alert(error.code);
+}
+
+function copyDir(entry) {
+    var parent = document.getElementById('parent').value,
+        newName = document.getElementById('newName').value,
+        parentEntry = new <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>({fullPath: parent});
+
+    // copy the directory to a new directory and rename it
+    entry.copyTo(parentEntry, newName, success, fail);
+}
+</code></pre>
+
+<h2>
+<a name="DirectoryEntry_touri">toURI</a>
+</h2>
+
+<p>Returns a URI that can be used to locate the directory. </p>
+
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>// Get the URI for this directory
+var uri = entry.toURI();
+console.log(uri);
+</code></pre>
+
+<h2>
+<a name="DirectoryEntry_remove">remove</a>
+</h2>
+
+<p>Deletes a directory. It is an error to attempt to:</p>
+
+<ul>
+<li>delete a directory that is not empty;</li>
+<li>delete the root directory of a filesystem.</li>
+</ul>
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>
+<strong>successCallback</strong> - A callback that is called after the directory has been deleted.  Invoked with no parameters. <em>(Function)</em>
+</li>
+<li>
+<strong>errorCallback</strong> - A callback that is called if an error occurs when attempting to delete the directory.  Invoked with a <a href="phonegap_file_file.md.html#FileError">FileError</a> object. <em>(Function)</em>
+</li>
+</ul>
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>function success(entry) {
+    console.log("Removal succeeded");
+}
+
+function fail(error) {
+    alert('Error removing directory: ' + error.code);
+}
+
+// remove this directory
+entry.remove(success, fail);
+</code></pre>
+
+<h2>
+<a name="DirectoryEntry_getparent">getParent</a>
+</h2>
+
+<p>Look up the parent <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a> containing the directory. </p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>
+<strong>successCallback</strong> - A callback that is called with the directory's parent <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>. <em>(Function)</em>
+</li>
+<li>
+<strong>errorCallback</strong> - A callback that is called if an error occurs when attempting to retrieve the parent <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>.  Invoked with a <a href="phonegap_file_file.md.html#FileError">FileError</a> object. <em>(Function)</em>
+</li>
+</ul>
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>function success(parent) {
+    console.log("Parent Name: " + parent.<a href="phonegap_storage_storage.md.html#name">name</a>);
+}
+
+function fail(error) {
+    alert('Failed to get parent directory: ' + error.code);
+}
+
+// Get the parent <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>
+entry.getParent(success, fail);
+</code></pre>
+
+<h2>
+<a name="DirectoryEntry_createreader">createReader</a>
+</h2>
+
+<p>Creates a new <a href="phonegap_file_file.md.html#DirectoryReader">DirectoryReader</a> to read entries in a directory.</p>
+
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>// create a directory reader
+var directoryReader = entry.createReader();
+</code></pre>
+
+<h2>
+<a name="DirectoryEntry_getdirectory">getDirectory</a>
+</h2>
+
+<p>Creates or looks up an existing directory.  It is an error to attempt to:</p>
+
+<ul>
+<li>create a directory whose immediate parent does not yet exist.</li>
+</ul>
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>
+<strong>path</strong> - The path to the directory to be looked up or created.  Either an absolute path, or a relative path from this <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>. <em>(DOMString)</em>
+</li>
+<li>
+<strong>options</strong> - Options to specify whether the directory is created if it doesn't exist.  <em>(<a href="phonegap_file_file.md.html#Flags">Flags</a>)</em>
+</li>
+<li>
+<strong>successCallback</strong> - A callback that is invoked with a <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a> object. <em>(Function)</em>
+</li>
+<li>
+<strong>errorCallback</strong> - A callback that is called if an error occurs creating or looking up the directory.  Invoked with a <a href="phonegap_file_file.md.html#FileError">FileError</a> object. <em>(Function)</em>
+</li>
+</ul>
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>function success(parent) {
+    console.log("Parent Name: " + parent.<a href="phonegap_storage_storage.md.html#name">name</a>);
+}
+
+function fail(error) {
+    alert("Unable to create new directory: " + error.code);
+}
+
+// Retrieve an existing directory, or create it if it does not already exist
+entry.getDirectory("newDir", {create: true, exclusive: false}, success, fail);
+</code></pre>
+
+<h2>
+<a name="DirectoryEntry_getfile">getFile</a>
+</h2>
+
+<p>Creates or looks up a file.  It is an error to attempt to:</p>
+
+<ul>
+<li>create a file whose immediate parent does not yet exist.</li>
+</ul>
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>
+<strong>path</strong> - The path to the file to be looked up or created.  Either an absolute path, or a relative path from this <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>. <em>(DOMString)</em>
+</li>
+<li>
+<strong>options</strong> - Options to specify whether the file is created if it doesn't exist.  <em>(<a href="phonegap_file_file.md.html#Flags">Flags</a>)</em>
+</li>
+<li>
+<strong>successCallback</strong> - A callback that is invoked with a <a href="phonegap_file_file.md.html#FileEntry">FileEntry</a> object. <em>(Function)</em>
+</li>
+<li>
+<strong>errorCallback</strong> - A callback that is called if an error occurs creating or looking up the file.  Invoked with a <a href="phonegap_file_file.md.html#FileError">FileError</a> object. <em>(Function)</em>
+</li>
+</ul>
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>function success(parent) {
+    console.log("Parent Name: " + parent.<a href="phonegap_storage_storage.md.html#name">name</a>);
+}
+
+function fail(error) {
+    alert("Failed to retrieve file: " + error.code);
+}
+
+// Retrieve an existing file, or create it if it does not exist
+entry.getFile("newFile.txt", {create: true, exclusive: false}, success, fail);
+</code></pre>
+
+<h2>
+<a name="DirectoryEntry_removerecursively">removeRecursively</a>
+</h2>
+
+<p>Deletes a directory and all of its contents.  In the event of an error (e.g. trying to delete 
+a directory that contains a file that cannot be removed), some of the contents of the directory may 
+be deleted.   It is an error to attempt to:</p>
+
+<ul>
+<li>delete the root directory of a filesystem.</li>
+</ul>
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>
+<strong>successCallback</strong> - A callback that is called after the <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a> has been deleted.  Invoked with no parameters. <em>(Function)</em>
+</li>
+<li>
+<strong>errorCallback</strong> - A callback that is called if an error occurs when attempting to delete the <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>.  Invoked with a <a href="phonegap_file_file.md.html#FileError">FileError</a> object. <em>(Function)</em>
+</li>
+</ul>
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>function success(parent) {
+    console.log("Remove Recursively Succeeded");
+}
+
+function fail(error) {
+    alert("Failed to remove directory or it's contents: " + error.code);
+}
+
+// remove the directory and all it's contents
+entry.removeRecursively(success, fail);
+</code></pre>
+
+<hr>
+<h1><a name="DirectoryReader">DirectoryReader</a></h1>
+
+<p>An object that lists files and directories in a directory.  Defined in the <a class="external" href="http://www.w3.org/TR/file-system-api/">Directories and Systems</a> specification.</p>
+
+<h2>
+<a name="DirectoryReader_methods">Methods</a>
+</h2>
+
+<ul>
+<li>
+<strong>readEntries</strong>: Read the entries in a directory. </li>
+</ul>
+<h2>
+<a name="DirectoryReader_supported_platforms">Supported Platforms</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+<li>iOS</li>
+<li>Windows Phone 7 ( Mango )</li>
+</ul>
+<h2>
+<a name="DirectoryReader_readentries">readEntries</a>
+</h2>
+
+<p>Read the entries in this directory.</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>
+<strong>successCallback</strong> - A callback that is passed an array of <a href="phonegap_file_file.md.html#FileEntry">FileEntry</a> and <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a> objects. <em>(Function)</em>
+</li>
+<li>
+<strong>errorCallback</strong> - A callback that is called if an error occurs retrieving the directory listing. Invoked with a <a href="phonegap_file_file.md.html#FileError">FileError</a> object. <em>(Function)</em>
+</li>
+</ul>
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>function success(entries) {
+    var i;
+    for (i=0; i&lt;entries.length; i++) {
+        console.log(entries[i].<a href="phonegap_storage_storage.md.html#name">name</a>);
+    }
+}
+
+function fail(error) {
+    alert("Failed to list directory contents: " + error.code);
+}
+
+// Get a directory reader
+var directoryReader = dirEntry.createReader();
+
+// Get a list of all the entries in the directory
+directoryReader.readEntries(success,fail);
+</code></pre>
+
+<hr>
+<h1><a name="FileTransfer">FileTransfer</a></h1>
+
+<p><a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a> is an object that allows you to upload files to a server.</p>
+
+<h2>
+<a name="FileTransfer_properties">Properties</a>
+</h2>
+
+<p>N/A</p>
+
+<h2>
+<a name="FileTransfer_methods">Methods</a>
+</h2>
+
+<ul>
+<li>
+<strong>upload</strong>: sends a file to a server. </li>
+</ul>
+<h2>
+<a name="FileTransfer_details">Details</a>
+</h2>
+
+<p>The <code><a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a></code> object provides a way to upload files to a remote server using an HTTP multi-part POST request.  Both HTTP and HTTPS protocols are supported.  Optional parameters can be specified by passing a <a href="phonegap_file_file.md.html#FileUploadOptions">FileUploadOptions</a> object to the upload method.  On successful upload, the success callback will be called with a <a href="phonegap_file_file.md.html#FileUploadResult">FileUploadResult</a> object.  If an error occurs, the error callback will be invoked with a <a href="phonegap_file_file.md.html#FileTransferError">FileTransferError</a> object.</p>
+
+<h2>
+<a name="FileTransfer_supported_platforms">Supported Platforms</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+<li>iOS</li>
+<li>Windows Phone 7 ( Mango )</li>
+</ul>
+<h2>
+<a name="FileTransfer_quick_example">Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>// !! Assumes variable fileURI contains a valid URI to a  text file on the device
+
+var win = function(r) {
+    console.log("Code = " + r.responseCode);
+    console.log("Response = " + r.response);
+    console.log("Sent = " + r.bytesSent);
+}
+
+var fail = function(error) {
+    alert("An error has occurred: Code = " = error.code);
+}
+
+var options = new <a href="phonegap_file_file.md.html#FileUploadOptions">FileUploadOptions</a>();
+options.fileKey="file";
+options.fileName=fileURI.substr(fileURI.lastIndexOf('/')+1);
+options.mimeType="text/plain";
+
+var params = new Object();
+params.value1 = "test";
+params.value2 = "param";
+
+options.params = params;
+
+var ft = new <a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a>();
+ft.upload(fileURI, "http://some.server.com/upload.php", win, fail, options);
+</code></pre>
+
+<h2>
+<a name="FileTransfer_full_example">Full Example</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;<a href="phonegap_file_file.md.html#File">File</a> Transfer Example&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.0.9.4.min.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+        // Wait for PhoneGap to load
+        //
+        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+        // PhoneGap is ready
+        //
+        function onDeviceReady() {
+
+            // Retrieve image file location from specified source
+            navigator.<a href="phonegap_camera_camera.md.html#camera.getPicture">camera.getPicture</a>(uploadPhoto,
+                                        function(message) { alert('get picture failed'); },
+                                        { quality: 50, 
+                                        destinationType: navigator.camera.DestinationType.FILE_URI,
+                                        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY }
+                                        );
+
+        }
+
+        function uploadPhoto(imageURI) {
+            var options = new <a href="phonegap_file_file.md.html#FileUploadOptions">FileUploadOptions</a>();
+            options.fileKey="file";
+            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+            options.mimeType="image/jpeg";
+
+            var params = new Object();
+            params.value1 = "test";
+            params.value2 = "param";
+
+            options.params = params;
+
+            var ft = new <a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a>();
+            ft.upload(imageURI, "http://some.server.com/upload.php", win, fail, options);
+        }
+
+        function win(r) {
+            console.log("Code = " + r.responseCode);
+            console.log("Response = " + r.response);
+            console.log("Sent = " + r.bytesSent);
+        }
+
+        function fail(error) {
+            alert("An error has occurred: Code = " = error.code);
+        }
+
+        &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Example&lt;/h1&gt;
+    &lt;p&gt;Upload <a href="phonegap_file_file.md.html#File">File</a>&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="FileUploadOptions">FileUploadOptions</a></h1>
+
+<p>A <code><a href="phonegap_file_file.md.html#FileUploadOptions">FileUploadOptions</a></code> object can be passed to the <a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a> objects upload method in order to specify additional parameters to the upload script.</p>
+
+<h2>
+<a name="FileUploadOptions_properties">Properties</a>
+</h2>
+
+<ul>
+<li>
+<strong>fileKey:</strong> The <a href="phonegap_storage_storage.md.html#name">name</a> of the form element.  If not set defaults to "file". (DOMString)</li>
+<li>
+<strong>fileName:</strong> The file <a href="phonegap_storage_storage.md.html#name">name</a> you want the file to be saved as on the server.  If not set defaults to "image.jpg". (DOMString)</li>
+<li>
+<strong>mimeType:</strong> The mime type of the data you are uploading.  If not set defaults to "image/jpeg". (DOMString)</li>
+<li>
+<strong>params:</strong> A set of optional key/value pairs to be passed along in the HTTP request. (Object)</li>
+<li>
+<strong>chunkedMode:</strong> Should the data be uploaded in chunked streaming mode. If not set defaults to "true". (Boolean)</li>
+</ul>
+<h2>
+<a name="FileUploadOptions_description">Description</a>
+</h2>
+
+<p>A <code><a href="phonegap_file_file.md.html#FileUploadOptions">FileUploadOptions</a></code> object can be passed to the <a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a> objects upload method in order to specify additional parameters to the upload script.</p>
+
+<hr>
+<h1><a name="FileUploadResult">FileUploadResult</a></h1>
+
+<p>A <code><a href="phonegap_file_file.md.html#FileUploadResult">FileUploadResult</a></code> object is returned via the success callback of the <a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a> upload method.</p>
+
+<h2>
+<a name="FileUploadResult_properties">Properties</a>
+</h2>
+
+<ul>
+<li>
+<strong>bytesSent:</strong> The number of bytes sent to the server as part of the upload. (long)</li>
+<li>
+<strong>responseCode:</strong> The HTTP response code returned by the server. (long)</li>
+<li>
+<strong>response:</strong> The HTTP response returned by the server. (DOMString)</li>
+</ul>
+<h2>
+<a name="FileUploadResult_description">Description</a>
+</h2>
+
+<p>The <code><a href="phonegap_file_file.md.html#FileUploadResult">FileUploadResult</a></code> object is returned via the success callback of the <a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a> upload method.</p>
+
+<h2>
+<a name="FileUploadResult_ios_quirks">iOS Quirks</a>
+</h2>
+
+<ul>
+<li>iOS does not include values for responseCode nor bytesSent in the success callback <a href="phonegap_file_file.md.html#FileUploadResult">FileUploadResult</a> object.</li>
+</ul>
+<hr>
+<h1><a name="Flags">Flags</a></h1>
+
+<p>This object is used to supply arguments to the <code><a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a></code> <strong>getFile</strong> and <strong>getDirectory</strong> methods, which look up or create files and directories, respectively.</p>
+
+<h2>
+<a name="Flags_properties">Properties</a>
+</h2>
+
+<ul>
+<li>
+<strong>create:</strong> Used to indicate that the file or directory should be created, if it does not exist. <em>(boolean)</em>
+</li>
+<li>
+<strong>exclusive:</strong> By itself, exclusive has no effect. Used with create, it causes the file or directory creation to fail if the target path already exists. <em>(boolean)</em>
+</li>
+</ul>
+<h2>
+<a name="Flags_supported_platforms">Supported Platforms</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+<li>iOS</li>
+<li>Windows Phone 7 ( Mango )</li>
+</ul>
+<h2>
+<a name="Flags_quick_example">Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>// Get the data directory, creating it if it doesn't exist.
+dataDir = fileSystem.root.getDirectory("data", {create: true});
+
+// Create the lock file, if and only if it doesn't exist.
+lockFile = dataDir.getFile("lockfile.txt", {create: true, exclusive: true});
+</code></pre>
+
+<hr>
+<h1><a name="LocalFileSystem">LocalFileSystem</a></h1>
+
+<p>This object provides a way to obtain root file systems.</p>
+
+<h2>
+<a name="LocalFileSystem_methods">Methods</a>
+</h2>
+
+<ul>
+<li>
+<strong>requestFileSystem:</strong> Requests a filesystem. <em>(Function)</em>
+</li>
+<li>
+<strong>resolveLocalFileSystemURI:</strong> Retrieve a <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a> or <a href="phonegap_file_file.md.html#FileEntry">FileEntry</a> using local URI. <em>(Function)</em>
+</li>
+</ul>
+<h2>
+<a name="LocalFileSystem_constants">Constants</a>
+</h2>
+
+<ul>
+<li>
+<code><a href="phonegap_file_file.md.html#LocalFileSystem">LocalFileSystem</a>.PERSISTENT</code>: Used for storage that should not be removed by the user agent without application or user permission.</li>
+<li>
+<code><a href="phonegap_file_file.md.html#LocalFileSystem">LocalFileSystem</a>.TEMPORARY</code>: Used for storage with no guarantee of persistence.</li>
+</ul>
+<h2>
+<a name="LocalFileSystem_details">Details</a>
+</h2>
+
+<p>The <code><a href="phonegap_file_file.md.html#LocalFileSystem">LocalFileSystem</a></code> object methods are defined on the <strong>window</strong> object.</p>
+
+<h2>
+<a name="LocalFileSystem_supported_platforms">Supported Platforms</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+<li>iOS</li>
+<li>Windows Phone 7 ( Mango )</li>
+</ul>
+<h2>
+<a name="LocalFileSystem_request_file_system_quick_example">Request File System Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>function onSuccess(fileSystem) {
+    console.log(fileSystem.<a href="phonegap_storage_storage.md.html#name">name</a>);
+}
+
+// request the persistent file system
+window.requestFileSystem(<a href="phonegap_file_file.md.html#LocalFileSystem">LocalFileSystem</a>.PERSISTENT, 0, onSuccess, onError);
+</code></pre>
+
+<h2>
+<a name="LocalFileSystem_resolve_local_file_system_uri_quick_example">Resolve Local File System URI Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>function onSuccess(fileEntry) {
+    console.log(fileEntry.<a href="phonegap_storage_storage.md.html#name">name</a>);
+}
+
+window.resolveLocalFileSystemURI("file:///example.txt", onSuccess, onError);
+</code></pre>
+
+<h2>
+<a name="LocalFileSystem_full_example">Full Example</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Local <a href="phonegap_file_file.md.html#File">File</a> System Example&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Wait for PhoneGap to load
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap is ready
+    //
+    function onDeviceReady() {
+        window.requestFileSystem(<a href="phonegap_file_file.md.html#LocalFileSystem">LocalFileSystem</a>.PERSISTENT, 0, onFileSystemSuccess, fail);
+        window.resolveLocalFileSystemURI("file:///example.txt", onResolveSuccess, fail);
+    }
+
+    function onFileSystemSuccess(fileSystem) {
+        console.log(fileSystem.<a href="phonegap_storage_storage.md.html#name">name</a>);
+    }
+
+    function onResolveSuccess(fileEntry) {
+        console.log(fileEntry.<a href="phonegap_storage_storage.md.html#name">name</a>);
+    }
+
+    function fail(evt) {
+        console.log(evt.target.error.code);
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Example&lt;/h1&gt;
+    &lt;p&gt;Local <a href="phonegap_file_file.md.html#File">File</a> System&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="Metadata">Metadata</a></h1>
+
+<p>This interface supplies information about the state of a file or directory.</p>
+
+<h2>
+<a name="Metadata_properties">Properties</a>
+</h2>
+
+<ul>
+<li>
+<strong>modificationTime:</strong> This is the time at which the file or directory was last modified. <em>(Date)</em>
+</li>
+</ul>
+<h2>
+<a name="Metadata_details">Details</a>
+</h2>
+
+<p>The <code><a href="phonegap_file_file.md.html#Metadata">Metadata</a></code> object represents information about the state of a file or directory.  You can get an instance of a <a href="phonegap_file_file.md.html#Metadata">Metadata</a> object by calling the <strong>getMetadata</strong> method of a <code><a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a></code> or <code><a href="phonegap_file_file.md.html#FileEntry">FileEntry</a></code> object.</p>
+
+<h2>
+<a name="Metadata_supported_platforms">Supported Platforms</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+<li>iOS</li>
+<li>Windows Phone 7 ( Mango )</li>
+</ul>
+<h2>
+<a name="Metadata_quick_example">Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>function win(metadata) {
+    console.log("Last Modified: " + metadata.modificationTime);
+}
+
+// Request the metadata object for this entry
+entry.getMetadata(win, null);
+</code></pre>
+
+<hr>
+<h1><a name="FileError">FileError</a></h1>
+
+<p>A '<a href="phonegap_file_file.md.html#FileError">FileError</a>' object is set when an error occurs in any of the <a href="phonegap_file_file.md.html#File">File</a> API methods. </p>
+
+<h2>
+<a name="FileError_properties">Properties</a>
+</h2>
+
+<ul>
+<li>
+<strong>code:</strong> One of the predefined error codes listed below.</li>
+</ul>
+<h2>
+<a name="FileError_constants">Constants</a>
+</h2>
+
+<ul>
+<li><code><a href="phonegap_file_file.md.html#FileError">FileError</a>.NOT_FOUND_ERR</code></li>
+<li><code><a href="phonegap_file_file.md.html#FileError">FileError</a>.SECURITY_ERR</code></li>
+<li><code><a href="phonegap_file_file.md.html#FileError">FileError</a>.ABORT_ERR</code></li>
+<li><code><a href="phonegap_file_file.md.html#FileError">FileError</a>.NOT_READABLE_ERR</code></li>
+<li><code><a href="phonegap_file_file.md.html#FileError">FileError</a>.ENCODING_ERR</code></li>
+<li><code><a href="phonegap_file_file.md.html#FileError">FileError</a>.NO_MODIFICATION_ALLOWED_ERR</code></li>
+<li><code><a href="phonegap_file_file.md.html#FileError">FileError</a>.INVALID_STATE_ERR</code></li>
+<li><code><a href="phonegap_file_file.md.html#FileError">FileError</a>.SYNTAX_ERR</code></li>
+<li><code><a href="phonegap_file_file.md.html#FileError">FileError</a>.INVALID_MODIFICATION_ERR</code></li>
+<li><code><a href="phonegap_file_file.md.html#FileError">FileError</a>.QUOTA_EXCEEDED_ERR</code></li>
+<li><code><a href="phonegap_file_file.md.html#FileError">FileError</a>.TYPE_MISMATCH_ERR</code></li>
+<li><code><a href="phonegap_file_file.md.html#FileError">FileError</a>.PATH_EXISTS_ERR</code></li>
+</ul>
+<h2>
+<a name="FileError_description">Description</a>
+</h2>
+
+<p>The <code><a href="phonegap_file_file.md.html#FileError">FileError</a></code> object is the only parameter of any of the <a href="phonegap_file_file.md.html#File">File</a> API's error callbacks.  Developers must read the code property to determine the type of error.</p>
+
+<hr>
+<h1><a name="FileTransferError">FileTransferError</a></h1>
+
+<p>A <code><a href="phonegap_file_file.md.html#FileTransferError">FileTransferError</a></code> object is returned via the error callback when an error occurs.</p>
+
+<h2>
+<a name="FileTransferError_properties">Properties</a>
+</h2>
+
+<ul>
+<li>
+<strong>code:</strong> One of the predefined error codes listed below. (int)</li>
+</ul>
+<h2>
+<a name="FileTransferError_constants">Constants</a>
+</h2>
+
+<ul>
+<li><code><a href="phonegap_file_file.md.html#FileTransferError">FileTransferError</a>.FILE_NOT_FOUND_ERR</code></li>
+<li><code><a href="phonegap_file_file.md.html#FileTransferError">FileTransferError</a>.INVALID_URL_ERR</code></li>
+<li><code><a href="phonegap_file_file.md.html#FileTransferError">FileTransferError</a>.CONNECTION_ERR</code></li>
+</ul>
+<h2>
+<a name="FileTransferError_description">Description</a>
+</h2>
+
+<p>The <code><a href="phonegap_file_file.md.html#FileTransferError">FileTransferError</a></code> object is returned via the error callback  when an error occurs when uploading a file.</p>
+
+            </div>
+        </div>
+
+        <!-- Functionality and Syntax Highlighting -->
+        <script type="text/javascript" src="index.js"></script><script type="text/javascript" src="prettify/prettify.js"></script>
+</body>
+</html>

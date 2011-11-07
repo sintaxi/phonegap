@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{86DC5E2F-4AEE-42E3-9471-A082B9BEBEAC}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MobileSpecUnitTests</RootNamespace>
+    <AssemblyName>MobileSpecUnitTests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>MobileSpecUnitTests.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>MobileSpecUnitTests.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calculator.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApplicationIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="ManifestProcessor.js" />
+    <Content Include="GapSourceDictionary.xml" />
+    <Content Include="SplashScreenImage.jpg" />
+    <Content Include="www\accelerometer.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="www\accelerometer2.html" />
+    <Content Include="www\audio.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="www\autotest\index.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="www\autotest\qunit.css" />
+    <Content Include="www\autotest\qunit.js" />
+    <Content Include="www\autotest\test-runner.js" />
+    <Content Include="www\autotest\tests\accelerometer.tests.js" />
+    <Content Include="www\autotest\tests\camera.tests.js" />
+    <Content Include="www\autotest\tests\capture.tests.js" />
+    <Content Include="www\autotest\tests\compass.tests.js" />
+    <Content Include="www\autotest\tests\contacts.tests.js" />
+    <Content Include="www\autotest\tests\device.tests.js" />
+    <Content Include="www\autotest\tests\file.tests.js" />
+    <Content Include="www\autotest\tests\filetransfer.tests.js" />
+    <Content Include="www\autotest\tests\geolocation.tests.js" />
+    <Content Include="www\autotest\tests\media.tests.js" />
+    <Content Include="www\autotest\tests\network.tests.js" />
+    <Content Include="www\autotest\tests\notification.tests.js" />
+    <Content Include="www\autotest\tests\orientation.tests.js" />
+    <Content Include="www\autotest\tests\storage.tests.js" />
+    <Content Include="www\autotest\tests\system.tests.js" />
+    <Content Include="www\calculator.html" />
+    <Content Include="www\camera.html" />
+    <Content Include="www\capture.html" />
+    <Content Include="www\compass.html" />
+    <Content Include="www\contacts.html" />
+    <Content Include="www\events.html" />
+    <Content Include="www\file.html" />
+    <Content Include="www\index.html" />
+    <Content Include="www\location.html" />
+    <Content Include="www\master.css" />
+    <Content Include="www\misc\index.html" />
+    <Content Include="www\network.html" />
+    <Content Include="www\notification.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="www\phonegap-1.2.0.js" />
+    <Content Include="www\storage.html">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\framework\WP7GapClassLib.csproj">
+      <Project>{FC6A1A70-892D-46AD-9E4A-9793F72AF780}</Project>
+      <Name>WP7GapClassLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+  <PropertyGroup>
+    <PreBuildEvent>CScript "$(ProjectDir)/ManifestProcessor.js"</PreBuildEvent>
+  </PropertyGroup>
+</Project>

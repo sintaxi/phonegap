@@ -15,6 +15,7 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option selected value="edge">edge</option>
+<option value="1.2.0">1.2.0</option>
 <option value="1.1.0">1.1.0</option>
 <option value="1.0.0rc3">1.0.0rc3</option>
 <option value="1.0.0rc2">1.0.0rc2</option>
@@ -27,6 +28,7 @@
 <option value="0.9.3">0.9.3</option>
 <option value="0.9.2">0.9.2</option>
 </optgroup>
+<optgroup label="Español" value="es"><option value="1.0.0">1.0.0</option></optgroup>
 <optgroup label="Japanese" value="jp"><option value="0.9.5">0.9.5</option></optgroup></select></small>
         </div>
         <div id="subheader">
@@ -38,17 +40,20 @@
 <option value="notification.alert_supported_platforms">      - Supported Platforms</option>
 <option value="notification.alert_quick_example">      - Quick Example</option>
 <option value="notification.alert_full_example">      - Full Example</option>
+<option value="notification.alert_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
 <option value="notification.confirm">notification.confirm</option>
 <option value="notification.confirm_description">      - Description</option>
 <option value="notification.confirm_supported_platforms">      - Supported Platforms</option>
 <option value="notification.confirm_quick_example">      - Quick Example</option>
 <option value="notification.confirm_full_example">      - Full Example</option>
+<option value="notification.confirm_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
 <option value="notification.beep">notification.beep</option>
 <option value="notification.beep_supported_platforms">      - Supported Platforms</option>
 <option value="notification.beep_quick_example">      - Quick Example</option>
 <option value="notification.beep_full_example">      - Full Example</option>
 <option value="notification.beep_android_quirks">      - Android Quirks</option>
 <option value="notification.beep_iphone_quirks">      - iPhone Quirks</option>
+<option value="notification.beep_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
 <option value="notification.vibrate">notification.vibrate</option>
 <option value="notification.vibrate_supported_platforms">      - Supported Platforms</option>
 <option value="notification.vibrate_quick_example">      - Quick Example</option>
@@ -131,6 +136,7 @@
 <li>BlackBerry (OS 4.6)</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
+<li>Windows Phone 7 ( Mango )</li>
 </ul>
 <h2>
 <a name="notification.alert_quick_example">Quick Example</a>
@@ -200,6 +206,13 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.alert
 &lt;/html&gt;
 </code></pre>
 
+<h2>
+<a name="notification.alert_windows_phone_7_quirks">Windows Phone 7 Quirks</a>
+</h2>
+
+<ul>
+<li>Ignores button names, always uses 'OK'</li>
+</ul>
 <hr>
 <h1><a name="notification.confirm">notification.confirm</a></h1>
 
@@ -232,6 +245,7 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.alert
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
+<li>Windows Phone 7 ( Mango )</li>
 </ul>
 <h2>
 <a name="notification.confirm_quick_example">Quick Example</a>
@@ -300,6 +314,13 @@ function showConfirm() {
 &lt;/html&gt;
 </code></pre>
 
+<h2>
+<a name="notification.confirm_windows_phone_7_quirks">Windows Phone 7 Quirks</a>
+</h2>
+
+<ul>
+<li>Ignores button names, always 'OK|Cancel'</li>
+</ul>
 <hr>
 <h1><a name="notification.beep">notification.beep</a></h1>
 
@@ -321,6 +342,7 @@ function showConfirm() {
 <li>BlackBerry (OS 4.6)</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
+<li>Windows Phone 7 ( Mango )</li>
 </ul>
 <h2>
 <a name="notification.beep_quick_example">Quick Example</a>
@@ -405,6 +427,13 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.beep"
 </ul>
 </li>
 </ul>
+<h2>
+<a name="notification.beep_windows_phone_7_quirks">Windows Phone 7 Quirks</a>
+</h2>
+
+<ul>
+<li>WP7 PhoneGap lib includes a generic beep file that is used.</li>
+</ul>
 <hr>
 <h1><a name="notification.vibrate">notification.vibrate</a></h1>
 
@@ -426,6 +455,7 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.beep"
 <li>BlackBerry (OS 4.6)</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
+<li>Windows Phone 7</li>
 </ul>
 <h2>
 <a name="notification.vibrate_quick_example">Quick Example</a>

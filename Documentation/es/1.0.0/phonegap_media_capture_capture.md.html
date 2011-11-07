@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+<meta name="generator" content="joDoc">
+<title>Documentacion API PhoneGap</title>
+<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
+<link rel="stylesheet" type="text/css" href="prettify/prettify.css">
+</head>
+<body>
+        <div id="header">
+            <h1><a href="index.html">Documentación Phone<strong>Gap</strong></a></h1>
+            <small>
+                <select><optgroup label="English" value="en">
+<option value="edge">edge</option>
+<option value="1.2.0">1.2.0</option>
+<option value="1.1.0">1.1.0</option>
+<option value="1.0.0rc3">1.0.0rc3</option>
+<option value="1.0.0rc2">1.0.0rc2</option>
+<option value="1.0.0rc1">1.0.0rc1</option>
+<option value="1.0.0">1.0.0</option>
+<option value="0.9.6">0.9.6</option>
+<option value="0.9.5.1">0.9.5.1</option>
+<option value="0.9.5">0.9.5</option>
+<option value="0.9.4">0.9.4</option>
+<option value="0.9.3">0.9.3</option>
+<option value="0.9.2">0.9.2</option>
+</optgroup>
+<optgroup label="Español" value="es"><option selected value="1.0.0">1.0.0</option></optgroup>
+<optgroup label="Japanese" value="jp"><option value="0.9.5">0.9.5</option></optgroup></select></small>
+        </div>
+        <div id="subheader">
+            <h1>Capture</h1>
+            <small><select><option value="Capture">Capture</option>
+<option value="Capture_objetos">      - Objetos</option>
+<option value="Capture_m_todos">      - Métodos</option>
+<option value="Capture_mbito_de_la_variable">      - Ámbito de la variable</option>
+<option value="Capture_atributos">      - Atributos</option>
+<option value="Capture_m_todos">      - Métodos</option>
+<option value="Capture_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="capture.captureAudio">capture.captureAudio</option>
+<option value="capture.captureAudio_descripci_n">      - Descripción</option>
+<option value="capture.captureAudio_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="capture.captureAudio_ejemplo_sencillo">      - Ejemplo Sencillo</option>
+<option value="capture.captureAudio_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="capture.captureAudio_peculiaridades_blackberry_webworks">      - Peculiaridades BlackBerry WebWorks</option>
+<option value="capture.captureAudio_peculiaridades_ios">      - Peculiaridades iOS</option>
+<option value="CaptureAudioOptions">CaptureAudioOptions</option>
+<option value="CaptureAudioOptions_atributos">      - Atributos</option>
+<option value="CaptureAudioOptions_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="CaptureAudioOptions_peculiaridades_android">      - Peculiaridades Android</option>
+<option value="CaptureAudioOptions_peculiaridades_blackberry_webworks">      - Peculiaridades BlackBerry WebWorks</option>
+<option value="CaptureAudioOptions_peculiaridades_ios">      - Peculiaridades iOS</option>
+<option value="capture.captureImage">capture.captureImage</option>
+<option value="capture.captureImage_descripci_n">      - Descripción</option>
+<option value="capture.captureImage_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="capture.captureImage_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="capture.captureImage_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="CaptureImageOptions">CaptureImageOptions</option>
+<option value="CaptureImageOptions_atributos">      - Atributos</option>
+<option value="CaptureImageOptions_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="CaptureImageOptions_peculiaridades_android">      - Peculiaridades Android</option>
+<option value="CaptureImageOptions_peculiaridades_blackberry_webworks">      - Peculiaridades BlackBerry WebWorks</option>
+<option value="CaptureImageOptions_peculiaridades_ios">      - Peculiaridades iOS</option>
+<option value="capture.captureVideo">capture.captureVideo</option>
+<option value="capture.captureVideo_descripci_n">      - Descripción</option>
+<option value="capture.captureVideo_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="capture.captureVideo_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="capture.captureVideo_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="capture.captureVideo_peculiaridades_blackberry_webworks">      - Peculiaridades BlackBerry WebWorks</option>
+<option value="CaptureVideoOptions">CaptureVideoOptions</option>
+<option value="CaptureVideoOptions_atributos">      - Atributos</option>
+<option value="CaptureVideoOptions_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="CaptureVideoOptions_peculiaridades_android">      - Peculiaridades Android</option>
+<option value="CaptureVideoOptions_peculiaridades_blackberry_webworks">      - Peculiaridades BlackBerry WebWorks</option>
+<option value="CaptureVideoOptions_peculiaridades_ios">      - Peculiaridades iOS</option>
+<option value="CaptureError">CaptureError</option>
+<option value="CaptureError_atributos">      - Atributos</option>
+<option value="CaptureError_constantes">      - Constantes</option>
+<option value="CaptureCB">CaptureCB</option>
+<option value="CaptureCB_descripci_n">      - Descripción</option>
+<option value="CaptureCB_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="CaptureErrorCB">CaptureErrorCB</option>
+<option value="CaptureErrorCB_descripci_n">      - Descripción</option>
+<option value="CaptureErrorCB_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="ConfigurationData">ConfigurationData</option>
+<option value="ConfigurationData_descripci_n">      - Descripción</option>
+<option value="ConfigurationData_atributos">      - Atributos</option>
+<option value="ConfigurationData_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="MediaFile">MediaFile</option>
+<option value="MediaFile_atributos">      - Atributos</option>
+<option value="MediaFile_m_todos">      - Métodos</option>
+<option value="MediaFile.getFormatData">MediaFile.getFormatData</option>
+<option value="MediaFile.getFormatData_descripci_n">      - Descripción</option>
+<option value="MediaFile.getFormatData_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="MediaFile.getFormatData_peculiaridades_blackberry_webworks">      - Peculiaridades BlackBerry WebWorks</option>
+<option value="MediaFile.getFormatData_peculiaridades_android">      - Peculiaridades Android</option>
+<option value="MediaFile.getFormatData_peculiaridades_ios">      - Peculiaridades iOS</option>
+<option value="MediaFileData">MediaFileData</option>
+<option value="MediaFileData_atributos">      - Atributos</option>
+<option value="MediaFileData_peculiaridades_blackberry_webworks">      - Peculiaridades BlackBerry WebWorks</option>
+<option value="MediaFileData_peculiaridades_android">      - Peculiaridades Android</option>
+<option value="MediaFileData_peculiaridades_ios">      - Peculiaridades iOS</option></select></small>
+        </div>
+
+        <div id="sidebar">
+            <div class="vertical_divider"></div>
+            <h1>Referencia API</h1>
+            <ul>
+<li><a href="phonegap_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
+<li><a href="phonegap_camera_camera.md.html#Camera">Camera</a></li>
+<li><a href="phonegap_media_capture_capture.md.html#Capture">Capture</a></li>
+<li><a href="phonegap_compass_compass.md.html#Compass">Compass</a></li>
+<li><a href="phonegap_connection_connection.md.html#Connection">Connection</a></li>
+<li><a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a></li>
+<li><a href="phonegap_device_device.md.html#Device">Device</a></li>
+<li><a href="phonegap_events_events.md.html#Events">Events</a></li>
+<li><a href="phonegap_file_file.md.html#File">File</a></li>
+<li><a href="phonegap_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
+<li><a href="phonegap_media_media.md.html#Media">Media</a></li>
+<li><a href="phonegap_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="phonegap_storage_storage.md.html#Storage">Storage</a></li>
+</ul>
+<h1></h1>
+            <ul>
+<li><a href="_index.html">Índice por palabras</a></li>
+            </ul>
+</div>
+
+        <div id="scrollable">
+            <div id="content">
+                <h1><a name="Capture">Capture</a></h1>
+
+<blockquote>
+  <p>Proporciona acceso a las capacidades de captura de audio, imagen, y vídeo del dispositivo.</p>
+</blockquote>
+
+<h2>
+<a name="Capture_objetos">Objetos</a>
+</h2>
+
+<ul>
+<li><a href="phonegap_media_capture_capture.md.html#Capture">Capture</a></li>
+<li><a href="phonegap_media_capture_capture.md.html#CaptureAudioOptions">CaptureAudioOptions</a></li>
+<li><a href="phonegap_media_capture_capture.md.html#CaptureImageOptions">CaptureImageOptions</a></li>
+<li><a href="phonegap_media_capture_capture.md.html#CaptureVideoOptions">CaptureVideoOptions</a></li>
+<li><a href="phonegap_media_capture_capture.md.html#CaptureCB">CaptureCB</a></li>
+<li><a href="phonegap_media_capture_capture.md.html#CaptureErrorCB">CaptureErrorCB</a></li>
+<li><a href="phonegap_media_capture_capture.md.html#ConfigurationData">ConfigurationData</a></li>
+<li><a href="phonegap_media_capture_capture.md.html#MediaFile">MediaFile</a></li>
+<li><a href="phonegap_media_capture_capture.md.html#MediaFileData">MediaFileData</a></li>
+</ul>
+<h2>
+<a name="Capture_m_todos">Métodos</a>
+</h2>
+
+<ul>
+<li><a href="phonegap_media_capture_capture.md.html#capture.captureAudio">capture.captureAudio</a></li>
+<li><a href="phonegap_media_capture_capture.md.html#capture.captureImage">capture.captureImage</a></li>
+<li><a href="phonegap_media_capture_capture.md.html#capture.captureVideo">capture.captureVideo</a></li>
+<li><a href="phonegap_media_capture_capture.md.html#MediaFile.getFormatData">MediaFile.getFormatData</a></li>
+</ul>
+<h2>
+<a name="Capture_mbito_de_la_variable">Ámbito de la variable</a>
+</h2>
+
+<p>El objeto <strong>capture</strong> es asignado al objeto <strong>navigator.device</strong>, y por lo tanto, tiene una visibilidad global.</p>
+
+<pre class="prettyprint"><code>// El objeto global `capture`
+var capture = navigator.device.capture;
+</code></pre>
+
+<h2>
+<a name="Capture_atributos">Atributos</a>
+</h2>
+
+<ul>
+<li>
+<strong>supportedAudioModes:</strong> Lo formatos de grabación de audio soportados en el dispositivo. (<a href="phonegap_media_capture_capture.md.html#ConfigurationData">ConfigurationData</a>[])</li>
+<li>
+<strong>supportedImageModes:</strong> Las resoluciones de imágenes y formatos soportados en el dispositivo. (<a href="phonegap_media_capture_capture.md.html#ConfigurationData">ConfigurationData</a>[])</li>
+<li>
+<strong>supportedVideoModes:</strong> Las resoluciones de vídeo y formatos soportados por el dispositivo. (<a href="phonegap_media_capture_capture.md.html#ConfigurationData">ConfigurationData</a>[])</li>
+</ul>
+<h2>
+<a name="Capture_m_todos">Métodos</a>
+</h2>
+
+<ul>
+<li>
+<a href="phonegap_media_capture_capture.md.html#capture.captureAudio">capture.captureAudio</a>: Inicia la aplicación del dispositivo para grabar clips de audio.</li>
+<li>
+<a href="phonegap_media_capture_capture.md.html#capture.captureImage">capture.captureImage</a>: Inicia la aplicación del dispositivo para tomar imágenes.</li>
+<li>
+<a href="phonegap_media_capture_capture.md.html#capture.captureVideo">capture.captureVideo</a>: Inicia la aplicación del dispositivo para grabar vídeos.</li>
+</ul>
+<h2>
+<a name="Capture_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+<li>iOS</li>
+</ul>
+<hr>
+<h1><a name="capture.captureAudio">capture.captureAudio</a></h1>
+
+<blockquote>
+  <p>Inicia la aplicación del dispositivo de grabación de audio y retorna información sobre el fichero capturado.</p>
+</blockquote>
+
+<pre class="prettyprint"><code>navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.captureAudio">capture.captureAudio</a>( 
+    <a href="phonegap_media_capture_capture.md.html#CaptureCB">CaptureCB</a> captureSuccess, <a href="phonegap_media_capture_capture.md.html#CaptureErrorCB">CaptureErrorCB</a> captureError,  [<a href="phonegap_media_capture_capture.md.html#CaptureAudioOptions">CaptureAudioOptions</a> options]
+);
+</code></pre>
+
+<h2>
+<a name="capture.captureAudio_descripci_n">Descripción</a>
+</h2>
+
+<p>Este método inicia una operación asíncrona de captura de audio usando la aplicación por defecto para la grabación de audio. Esta operación permite al usuario realizar varias grabaciones de una misma vez.</p>
+
+<p>La operación termina cuando el usuario sale de la aplicación de grabación, o cuando se alcanza el numero máximo de grabaciones especificadas por la opción <strong>limit</strong> del argumento <code><a href="phonegap_media_capture_capture.md.html#CaptureAudioOptions">CaptureAudioOptions</a></code>. Si no se especifica un valor para <strong>limit</strong>, por defecto sera 1, y la aplicación se cerrara tras grabar un solo clip.</p>
+
+<p>Cuando termina la captura, se llamara a la función 'callback' <a href="phonegap_media_capture_capture.md.html#CaptureCB">CaptureCB</a> con el array de objetos <a href="phonegap_media_capture_capture.md.html#MediaFile">MediaFile</a>. Si la aplicación de grabación es cerrada por el usuario sin grabar nada, se llamara a la función <code><a href="phonegap_media_capture_capture.md.html#CaptureErrorCB">CaptureErrorCB</a></code> pasándole un objeto <code><a href="phonegap_media_capture_capture.md.html#CaptureError">CaptureError</a></code> con el código <code>CAPTURE_NO_MEDIA_FILES</code>.</p>
+
+<h2>
+<a name="capture.captureAudio_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="capture.captureAudio_ejemplo_sencillo">Ejemplo Sencillo</a>
+</h2>
+
+<pre class="prettyprint"><code>// función 'callback' satisfactoria
+var captureSuccess = function(mediaFiles) {
+    var i, path, len;
+    for (i = 0, len = mediaFiles.length; i &lt; len; i += 1) {
+        path = mediaFiles[i].fullPath;
+        // hacer algo interesante con el fichero...
+    }
+};
+
+// función 'callback' de error
+var captureError = function(error) {
+    navigator.<a href="phonegap_notification_notification.md.html#notification.alert">notification.alert</a>('Código de error: ' + error.code, null, 'Error de captura');
+};
+
+// inicia la captura de audio
+navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.captureAudio">capture.captureAudio</a>(captureSuccess, captureError, {limit:2});
+</code></pre>
+
+<h2>
+<a name="capture.captureAudio_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_media_capture_capture.md.html#Capture">Capture</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="json2.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Llamado cuando termine la operación de captura
+    //
+    function captureSuccess(mediaFiles) {
+        var i, len;
+        for (i = 0, len = mediaFiles.length; i &lt; len; i += 1) {
+            uploadFile(mediaFiles[i]);
+        }       
+    }
+
+    // Llamado cuando ocurra algo mal.
+    // 
+    function captureError(error) {
+        var msg = 'Ocurrió un error durante la captura: ' + error.code;
+        navigator.<a href="phonegap_notification_notification.md.html#notification.alert">notification.alert</a>(msg, null, 'Uh oh!');
+    }
+
+    // Un botón llamara a esta función
+    //
+    function captureAudio() {
+        // Inicia la aplicación del dispositivo de captura de audio
+        // permitiendo al usuario capturar hasta 2 clips de audio.
+        navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.captureAudio">capture.captureAudio</a>(captureSuccess, captureError, {limit: 2});
+    }
+
+    // Subir ficheros al servidor
+    function uploadFile(mediaFile) {
+        var ft = new <a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a>(),
+            path = mediaFile.fullPath,
+            <a href="phonegap_storage_storage.md.html#name">name</a> = mediaFile.<a href="phonegap_storage_storage.md.html#name">name</a>;
+
+        ft.upload(path,
+            "http://my.domain.com/upload.php",
+            function(result) {
+                console.log('Subida correcta: ' + result.responseCode);
+                console.log(result.bytesSent + ' bytes enviados');
+            },
+            function(error) {
+                console.log('Error subiendo el fichero ' + path + ': ' + error.code);
+            },
+            { fileName: <a href="phonegap_storage_storage.md.html#name">name</a> });   
+    }
+
+    &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;button onclick="captureAudio();"&gt;Capturar audio&lt;/button&gt; &lt;br&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2>
+<a name="capture.captureAudio_peculiaridades_blackberry_webworks">Peculiaridades BlackBerry WebWorks</a>
+</h2>
+
+<ul>
+<li>PhoneGap para BlackBerry WebWorks intenta lanzar la aplicación <strong>Grabadora de notas de voz</strong> proporcionada por RIM para grabar audio. Si la aplicación no esta instalada se pasara un <a href="phonegap_media_capture_capture.md.html#CaptureError">CaptureError</a>. con el código <code>CAPTURE_NOT_SUPPORTED</code>.</li>
+</ul>
+<h2>
+<a name="capture.captureAudio_peculiaridades_ios">Peculiaridades iOS</a>
+</h2>
+
+<ul>
+<li>iOS no tiene una aplicación por defecto para grabar audio, entonces se proporcionara una interfaz simple de grabación.</li>
+</ul>
+<hr>
+<h1><a name="CaptureAudioOptions">CaptureAudioOptions</a></h1>
+
+<blockquote>
+  <p>Encapsula opciones personalizables para la captura de audio.</p>
+</blockquote>
+
+<h2>
+<a name="CaptureAudioOptions_atributos">Atributos</a>
+</h2>
+
+<ul>
+<li>
+<strong>limit:</strong> El numero máximo de clips de audio que el dispositivo puede grabar en la misma operación. Debe ser mayor o igual a 1 (Por defecto: 1).</li>
+<li>
+<strong>duration:</strong> La duración máxima de un clip de audio, en segundos.</li>
+<li>
+<strong>mode:</strong> El modo de audio seleccionado. Este valor debe coincidir con uno de los elementos en <code>capture.supportedAudioModes</code>.</li>
+</ul>
+<h2>
+<a name="CaptureAudioOptions_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>// Limita la operación de captura a 3 ficheros de audio, de no mas de 10 segundos cada uno
+var options = { limit: 3, duration: 10 };
+
+navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.captureAudio">capture.captureAudio</a>(captureSuccess, captureError, options);
+</code></pre>
+
+<h2>
+<a name="CaptureAudioOptions_peculiaridades_android">Peculiaridades Android</a>
+</h2>
+
+<ul>
+<li>El argumento <strong>duration</strong> no esta soportado. La duración de la grabación no puede limitarse programaticamente.</li>
+<li>El argumento <strong>mode</strong> no esta soportado. El formato de grabación de audio no puede ser controlado programaticamente.  Las grabaciones son codificadas usando el formato 'Adaptive Multi-Rate' (AMR) (audio/amr).</li>
+</ul>
+<h2>
+<a name="CaptureAudioOptions_peculiaridades_blackberry_webworks">Peculiaridades BlackBerry WebWorks</a>
+</h2>
+
+<ul>
+<li>El argumento <strong>duration</strong> no esta soportado. La duración de la grabación no puede limitarse programaticamente.</li>
+<li>El argumento <strong>mode</strong> no esta soportado. El formato de grabación de audio no puede ser controlado programaticamente.  Las grabaciones son codificadas usando el formato 'Adaptive Multi-Rate' (AMR) (audio/amr).</li>
+</ul>
+<h2>
+<a name="CaptureAudioOptions_peculiaridades_ios">Peculiaridades iOS</a>
+</h2>
+
+<ul>
+<li>El argumento <strong>limit</strong> no esta soportado. Solo se puede grabar un clip de audio por cada operación.</li>
+<li>El argumento <strong>mode</strong> no esta soportado. El formato de grabación de audio no puede ser controlado programaticamente. El formato de grabación de audio no puede ser alterado programaticamente.  Las grabaciones son codificadas usando el formato 'Waveform Audio' (WAV) (audio/wav).</li>
+</ul>
+<hr>
+<h1><a name="capture.captureImage">capture.captureImage</a></h1>
+
+<blockquote>
+  <p>Inicia la aplicación de cámara y retorna información sobre los ficheros de imágenes capturados.</p>
+</blockquote>
+
+<pre class="prettyprint"><code>navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.captureImage">capture.captureImage</a>( 
+    <a href="phonegap_media_capture_capture.md.html#CaptureCB">CaptureCB</a> captureSuccess, <a href="phonegap_media_capture_capture.md.html#CaptureErrorCB">CaptureErrorCB</a> captureError, [<a href="phonegap_media_capture_capture.md.html#CaptureImageOptions">CaptureImageOptions</a> options]
+);
+</code></pre>
+
+<h2>
+<a name="capture.captureImage_descripci_n">Descripción</a>
+</h2>
+
+<p>Este método inicia una operación asíncrona para capturar imágenes usando la aplicación de cámara del dispositivo. Se pueden tomar varias imágenes en una sola sesión.
+La operación de captura termina cuando el usuario sale de la aplicación de cámara, o cuando se alcanza el numero máximo de imágenes especificado en la opción <strong>limit</strong> de <code><a href="phonegap_media_capture_capture.md.html#CaptureImageOptions">CaptureImageOptions</a></code>. Si no se especifica ningún valor,  se usara 1 por defecto.
+Cuando la operación de captura termine, llamara a la función 'callback' <code><a href="phonegap_media_capture_capture.md.html#CaptureCB">CaptureCB</a></code> con un array de objetos <code><a href="phonegap_media_capture_capture.md.html#MediaFile">MediaFile</a></code> con información sobre las imágenes capturadas. Si el usuario cierra la aplicación antes de capturar ninguna imagen, se lanzara la función 'callback' <code><a href="phonegap_media_capture_capture.md.html#CaptureErrorCB">CaptureErrorCB</a></code> pasándole de argumento un <code><a href="phonegap_media_capture_capture.md.html#CaptureError">CaptureError</a></code> con código <code>CAPTURE_NO_MEDIA_FILES</code>.</p>
+
+<h2>
+<a name="capture.captureImage_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="capture.captureImage_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>// Función 'callback' de captura
+var captureSuccess = function(mediaFiles) {
+    var i, path, len;
+    for (i = 0, len = mediaFiles.length; i &lt; len; i += 1) {
+        path = mediaFiles[i].fullPath;
+        // hacer algo interesante con el fichero
+    }
+};
+
+// función 'callback' de error
+var captureError = function(error) {
+    navigator.<a href="phonegap_notification_notification.md.html#notification.alert">notification.alert</a>('Código de error: ' + error.code, null, '<a href="phonegap_media_capture_capture.md.html#Capture">Capture</a> Error');
+};
+
+// Inicia la captura de imágenes
+navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.captureImage">capture.captureImage</a>(captureSuccess, captureError, {limit:2});
+</code></pre>
+
+<h2>
+<a name="capture.captureImage_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_media_capture_capture.md.html#Capture">Capture</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="json2.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Función 'callback' satisfactoria
+    //
+    function captureSuccess(mediaFiles) {
+        var i, len;
+        for (i = 0, len = mediaFiles.length; i &lt; len; i += 1) {
+            uploadFile(mediaFiles[i]);
+        }       
+    }
+
+    // Llamada si algún error ocurre.
+    // 
+    function captureError(error) {
+        var msg = 'Ocurrió un error mientras se capturaba: ' + error.code;
+        navigator.<a href="phonegap_notification_notification.md.html#notification.alert">notification.alert</a>(msg, null, 'Uh oh!');
+    }
+
+    // Un botón llamara esta función
+    //
+    function captureImage() {
+        // Lanza la aplicación de cámara, 
+        // y permite capturar hasta 2 imágenes
+        navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.captureImage">capture.captureImage</a>(captureSuccess, captureError, {limit: 2});
+    }
+
+    // Sube los ficheros al servidor
+    function uploadFile(mediaFile) {
+        var ft = new <a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a>(),
+            path = mediaFile.fullPath,
+            <a href="phonegap_storage_storage.md.html#name">name</a> = mediaFile.<a href="phonegap_storage_storage.md.html#name">name</a>;
+
+        ft.upload(path,
+            "http://my.domain.com/upload.php",
+            function(result) {
+                console.log('Subida correcta: ' + result.responseCode);
+                console.log(result.bytesSent + ' bytes enviados');
+            },
+            function(error) {
+                console.log('Error en la subida del fichero ' + path + ': ' + error.code);
+            },
+            { fileName: <a href="phonegap_storage_storage.md.html#name">name</a> });   
+    }
+
+    &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;button onclick="captureImage();"&gt;Capturar imagen&lt;/button&gt; &lt;br&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="CaptureImageOptions">CaptureImageOptions</a></h1>
+
+<blockquote>
+  <p>Encapsula opciones personalizables para la captura de imágenes.</p>
+</blockquote>
+
+<h2>
+<a name="CaptureImageOptions_atributos">Atributos</a>
+</h2>
+
+<ul>
+<li>
+<strong>limit:</strong> El numero máximo de imágenes que el usuario podrá tomar en la misma operación. Debe ser mayor o igual a 1 (Por defecto: 1).</li>
+<li>
+<strong>mode:</strong> El modo de imagen seleccionado. Este valor debe coincidir con uno de los definidos en <code>capture.supportedImageModes</code>.</li>
+</ul>
+<h2>
+<a name="CaptureImageOptions_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>// limita la captura a 3 imágenes
+var options = { limit: 3 };
+
+navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.captureImage">capture.captureImage</a>(captureSuccess, captureError, options);
+</code></pre>
+
+<h2>
+<a name="CaptureImageOptions_peculiaridades_android">Peculiaridades Android</a>
+</h2>
+
+<ul>
+<li>El argumento <strong>mode</strong> no esta soportado. La resolución de imagen y el formato no puede ser controlado programaticamente; en cambio, la resolución si puede ser cambiada por el usuario. Las imágenes son guardadas en formato JPEG (image/jpeg).</li>
+</ul>
+<h2>
+<a name="CaptureImageOptions_peculiaridades_blackberry_webworks">Peculiaridades BlackBerry WebWorks</a>
+</h2>
+
+<ul>
+<li>El argumento <strong>mode</strong> no esta soportado. La resolución de imagen y el formato no puede ser controlado programaticamente; en cambio, la resolución puede ser cambiada por el usuario. Las imágenes son guardadas en formato JPEG (image/jpeg).</li>
+</ul>
+<h2>
+<a name="CaptureImageOptions_peculiaridades_ios">Peculiaridades iOS</a>
+</h2>
+
+<ul>
+<li>El argumento <strong>limit</strong> no esta soportado. Solo se tomara una imagen por llamada.</li>
+<li>El argumento <strong>mode</strong> no esta soportado. La resolución de imagen y el formato no puede ser alterado programaticamente. Las imágenes son guardadas en formato JPEG (image/jpeg).</li>
+</ul>
+<hr>
+<h1><a name="capture.captureVideo">capture.captureVideo</a></h1>
+
+<blockquote>
+  <p>Inicia la aplicación de cámara de vídeo y retorna información sobre los clips de vídeo capturados.</p>
+</blockquote>
+
+<pre class="prettyprint"><code>navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.captureVideo">capture.captureVideo</a>( 
+    <a href="phonegap_media_capture_capture.md.html#CaptureCB">CaptureCB</a> captureSuccess, <a href="phonegap_media_capture_capture.md.html#CaptureErrorCB">CaptureErrorCB</a> captureError, [<a href="phonegap_media_capture_capture.md.html#CaptureVideoOptions">CaptureVideoOptions</a> options]
+);
+</code></pre>
+
+<h2>
+<a name="capture.captureVideo_descripci_n">Descripción</a>
+</h2>
+
+<p>Este método inicia una operación asíncrona para capturar clips de vídeo usando la aplicación de cámara del dispositivo. Se pueden grabar varios clips en una sola sesión.
+El proceso de captura finaliza cuando el usuario sale de la aplicación de grabación, o cuando se alcanza el numero máximo de grabaciones especificado en la opción <strong>limit</strong> de <code><a href="phonegap_media_capture_capture.md.html#CaptureVideoOptions">CaptureVideoOptions</a></code>. Si no se especifica un valor se tomara 1 por defecto, y la aplicación se cerrara tras grabar un clip de vídeo.</p>
+
+<p>Cuando la aplicación termine, se llamara a la función 'callback' pasándole un array de objetos <code><a href="phonegap_media_capture_capture.md.html#MediaFile">MediaFile</a></code> describiendo cada fichero de vídeo. Si el proceso es cancelado por el usuario sin capturar ningún vídeo, se lanzara la función 'callback' <code><a href="phonegap_media_capture_capture.md.html#CaptureErrorCB">CaptureErrorCB</a></code> pasándole un objeto <code><a href="phonegap_media_capture_capture.md.html#CaptureError">CaptureError</a></code> con el código de error <code>CAPTURE_NO_MEDIA_FILES</code>.</p>
+
+<h2>
+<a name="capture.captureVideo_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="capture.captureVideo_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>// Función 'callback' de captura
+var captureSuccess = function(mediaFiles) {
+    var i, path, len;
+    for (i = 0, len = mediaFiles.length; i &lt; len; i += 1) {
+        path = mediaFiles[i].fullPath;
+        // hacer algo interesante con los ficheros
+    }
+};
+
+// Función 'callback' de error
+var captureError = function(error) {
+    navigator.<a href="phonegap_notification_notification.md.html#notification.alert">notification.alert</a>('Error code: ' + error.code, null, '<a href="phonegap_media_capture_capture.md.html#Capture">Capture</a> Error');
+};
+
+// Inicia la captura de vídeo
+navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.captureVideo">capture.captureVideo</a>(captureSuccess, captureError, {limit:2});
+</code></pre>
+
+<h2>
+<a name="capture.captureVideo_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_media_capture_capture.md.html#Capture">Capture</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="json2.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Llamado cuando el proceso de captura finalice
+    //
+    function captureSuccess(mediaFiles) {
+        var i, len;
+        for (i = 0, len = mediaFiles.length; i &lt; len; i += 1) {
+            uploadFile(mediaFiles[i]);
+        }       
+    }
+
+    // Llamado si ocurre algún error
+    // 
+    function captureError(error) {
+        var msg = 'Ocurrió un error mientras se capturaba: ' + error.code;
+        navigator.<a href="phonegap_notification_notification.md.html#notification.alert">notification.alert</a>(msg, null, 'Uh oh!');
+    }
+
+    // Un botón llamara esta función
+    //
+    function captureVideo() {
+        // Inicia la aplicación de grabación
+        // y permite capturar hasta 2 clips de vídeo
+        navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.captureVideo">capture.captureVideo</a>(captureSuccess, captureError, {limit: 2});
+    }
+
+    // Sube los ficheros al servidor
+    function uploadFile(mediaFile) {
+        var ft = new <a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a>(),
+            path = mediaFile.fullPath,
+            <a href="phonegap_storage_storage.md.html#name">name</a> = mediaFile.<a href="phonegap_storage_storage.md.html#name">name</a>;
+
+        ft.upload(path,
+            "http://my.domain.com/upload.php",
+            function(result) {
+                console.log('Subida correcta: ' + result.responseCode);
+                console.log(result.bytesSent + ' bytes enviados');
+            },
+            function(error) {
+                console.log('Error en la subida del fichero ' + path + ': ' + error.code);
+            },
+            { fileName: <a href="phonegap_storage_storage.md.html#name">name</a> });   
+    }
+
+    &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;button onclick="captureVideo();"&gt;Capturar vídeo&lt;/button&gt; &lt;br&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2>
+<a name="capture.captureVideo_peculiaridades_blackberry_webworks">Peculiaridades BlackBerry WebWorks</a>
+</h2>
+
+<ul>
+<li>Phonegap para BlackBerry WebWorks intentara iniciar la aplicación <strong>Grabadora de videos</strong>, que se distribuye en RIM. Si la aplicación no esta instalada se recibirá un objeto <code><a href="phonegap_media_capture_capture.md.html#CaptureError">CaptureError</a></code> con el código <code>CAPTURE_NOT_SUPPORTED</code>.</li>
+</ul>
+<hr>
+<h1><a name="CaptureVideoOptions">CaptureVideoOptions</a></h1>
+
+<blockquote>
+  <p>Encapsula opciones personalizables para la captura de vídeo.</p>
+</blockquote>
+
+<h2>
+<a name="CaptureVideoOptions_atributos">Atributos</a>
+</h2>
+
+<ul>
+<li>
+<strong>limit:</strong> El numero máximo de clips de vídeos que el usuario podrá grabar en la misma operación. El valor debe ser mayor o igual a 1 (1 por defecto).</li>
+<li>
+<strong>duration:</strong> La duración máxima permitida de cada clip (en segundos).</li>
+<li>
+<strong>mode:</strong> El modo de vídeo seleccionado. Este valor debe coincidir con uno de los definidos en <code>capture.supportedVideoModes</code>.</li>
+</ul>
+<h2>
+<a name="CaptureVideoOptions_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>// limita la captura a 3 clips de vídeo
+var options = { limit: 3 };
+
+navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.captureVideo">capture.captureVideo</a>(captureSuccess, captureError, options);
+</code></pre>
+
+<h2>
+<a name="CaptureVideoOptions_peculiaridades_android">Peculiaridades Android</a>
+</h2>
+
+<ul>
+<li>El atributo <strong>duration</strong> no esta soportado. La duración de la grabación no puede limitarse programaticamente.</li>
+<li>El atributo <strong>mode</strong> no esta soportado. La resolución del vídeo y el formato no pueden ser controlados programaticamente; en cambio, esta opción puede ser cambiada por el usuario. Por defecto, los vídeos son grabados en formato 3GPP (vídeo/3gpp).</li>
+</ul>
+<h2>
+<a name="CaptureVideoOptions_peculiaridades_blackberry_webworks">Peculiaridades BlackBerry WebWorks</a>
+</h2>
+
+<ul>
+<li>El atributo <strong>duration</strong> no esta soportado. La duración de la grabación no puede limitarse programaticamente.</li>
+<li>El atributo <strong>mode</strong> no esta soportado.  La resolución del vídeo y el formato no pueden ser controlados programaticamente; en cambio, esta opción puede ser cambiada por el usuario. Por defecto, los vídeos son grabados en formato 3GPP (vídeo/3gpp).</li>
+</ul>
+<h2>
+<a name="CaptureVideoOptions_peculiaridades_ios">Peculiaridades iOS</a>
+</h2>
+
+<ul>
+<li>El argumento <strong>limit</strong> no esta soportado. Solo se permite un vídeo por sesión.</li>
+<li>El argumento <strong>duration</strong> no esta soportado. La duración de la grabación no puede limitarse programaticamente.</li>
+<li>El argumento <strong>mode</strong> no esta soportado. La resolución del vídeo y el formato no pueden ser controlados programaticamente. Por defecto, los vídeos son grabados en formato MOV (vídeo/quicktime).</li>
+</ul>
+<hr>
+<h1><a name="CaptureError">CaptureError</a></h1>
+
+<blockquote>
+  <p>Encapsula el código de error resultante de una operación fallida.</p>
+</blockquote>
+
+<h2>
+<a name="CaptureError_atributos">Atributos</a>
+</h2>
+
+<ul>
+<li>
+<strong>code:</strong> Uno de los errores predefinidos en la lista inferior.</li>
+</ul>
+<h2>
+<a name="CaptureError_constantes">Constantes</a>
+</h2>
+
+<ul>
+<li>
+<a href="phonegap_media_capture_capture.md.html#CaptureError">CaptureError</a>.<code>CAPTURE_INTERNAL_ERR</code>: La cámara o el micrófono fallo al capturar la imagen o el sonido. </li>
+<li>
+<a href="phonegap_media_capture_capture.md.html#CaptureError">CaptureError</a>.<code>CAPTURE_APPLICATION_BUSY</code>: La aplicación de cámara o de captura de audio esta siendo usada.</li>
+<li>
+<a href="phonegap_media_capture_capture.md.html#CaptureError">CaptureError</a>.<code>CAPTURE_INVALID_ARGUMENT</code>: Uso invalido de la API (ejem. el parámetro <strong>limit</strong> es menor que 1).</li>
+<li>
+<a href="phonegap_media_capture_capture.md.html#CaptureError">CaptureError</a>.<code>CAPTURE_NO_MEDIA_FILES</code>: El usuario cerro la aplicación de cámara o la de captura de audio antes de haber capturado nada.</li>
+<li>
+<a href="phonegap_media_capture_capture.md.html#CaptureError">CaptureError</a>.<code>CAPTURE_NOT_SUPPORTED</code>: La operación de captura solicitada no esta soportada.</li>
+</ul>
+<hr>
+<h1><a name="CaptureCB">CaptureCB</a></h1>
+
+<blockquote>
+  <p>Llamado tras una captura correcta.</p>
+</blockquote>
+
+<pre class="prettyprint"><code>function captureSuccess( <a href="phonegap_media_capture_capture.md.html#MediaFile">MediaFile</a>[] mediaFiles ) { ... };
+</code></pre>
+
+<h2>
+<a name="CaptureCB_descripci_n">Descripción</a>
+</h2>
+
+<p>Esta función se llama después de que se complete una operación de captura. Esto quiere decir cuando se capture un fichero y el usuario salga de la aplicación, o cuando se alcance el limite máximo.</p>
+
+<p>Cada objeto <code><a href="phonegap_media_capture_capture.md.html#MediaFile">MediaFile</a></code> describe un fichero multimedia capturado.  </p>
+
+<h2>
+<a name="CaptureCB_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>// función 'callback' satisfactoria
+function captureSuccess(mediaFiles) {
+    var i, path, len;
+    for (i = 0, len = mediaFiles.length; i &lt; len; i += 1) {
+        path = mediaFiles[i].fullPath;
+        // hacer algo interesante con el fichero
+    }
+};
+</code></pre>
+
+<hr>
+<h1><a name="CaptureErrorCB">CaptureErrorCB</a></h1>
+
+<blockquote>
+  <p>Llamada si ocurre un error durante la captura.</p>
+</blockquote>
+
+<pre class="prettyprint"><code>function captureError( <a href="phonegap_media_capture_capture.md.html#CaptureError">CaptureError</a> error ) { ... };
+</code></pre>
+
+<h2>
+<a name="CaptureErrorCB_descripci_n">Descripción</a>
+</h2>
+
+<p>Esta función sera llamada si ocurre un error mientras se intenta lanzar la aplicación de captura y esta estuviera ocupada, si no pudiera capturar por algún problema, o si la operación fuera cancelada por el usuario sin capturar nada.</p>
+
+<p>Se le pasara un objeto <code><a href="phonegap_media_capture_capture.md.html#CaptureError">CaptureError</a></code> que contiene el código de error especifico.</p>
+
+<h2>
+<a name="CaptureErrorCB_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>// Función 'callback' de error
+var captureError = function(error) {
+    navigator.<a href="phonegap_notification_notification.md.html#notification.alert">notification.alert</a>('Código de error: ' + error.code, null, 'Error de captura');
+};
+</code></pre>
+
+<hr>
+<h1><a name="ConfigurationData">ConfigurationData</a></h1>
+
+<blockquote>
+  <p>Encapsula un conjunto de parámetros de captura que el dispositivo soporta.</p>
+</blockquote>
+
+<h2>
+<a name="ConfigurationData_descripci_n">Descripción</a>
+</h2>
+
+<p>Este objeto se usa para enumerar los modos de captura soportados en el dispositivo. Los datos incluyen el tipo MIME, y la resolución de la captura (en el caso de vídeo y imágenes).  </p>
+
+<p>Los tipos MIME de archivos deberían adherirse al <a class="external" href="http://www.ietf.org/rfc/rfc2046.txt">RFC2046</a>.</p>
+
+<p>Ejemplos:</p>
+
+<ul>
+<li>vídeo/3gpp</li>
+<li>vídeo/quicktime</li>
+<li>image/jpeg</li>
+<li>audio/amr</li>
+<li>audio/wav </li>
+</ul>
+<h2>
+<a name="ConfigurationData_atributos">Atributos</a>
+</h2>
+
+<ul>
+<li>
+<strong>type:</strong> El tipo de archivo multimedia, codificado en ASCII y minúsculas. (DOMString)</li>
+<li>
+<strong>height:</strong> La altura de la imagen o vídeo en píxeles. En el caso de los clips de sonido, este atributo tiene un valor 0. (Number)</li>
+<li>
+<strong>width:</strong> La altura de la imagen o vídeo en píxeles. En el caso de los clips de sonidos, este atributo tiene un valor 0. (Number)</li>
+</ul>
+<h2>
+<a name="ConfigurationData_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>// retornar los modos de imágenes soportados
+var imageModes = navigator.device.capture.supportedImageModes;
+
+// selecciona el modo que tenga la mayor resolución horizontal
+var width = 0;
+var selectedmode;
+for each (var mode in imageModes) {
+    if (mode.width &gt; width) {
+        width = mode.width;
+        selectedmode = mode;
+    }
+}
+</code></pre>
+
+<p>No soportado por ninguna plataforma. Todos los array de configuración están vacíos.</p>
+
+<hr>
+<h1><a name="MediaFile">MediaFile</a></h1>
+
+<blockquote>
+  <p>Encapsula atributos de un fichero multimedia capturado.</p>
+</blockquote>
+
+<h2>
+<a name="MediaFile_atributos">Atributos</a>
+</h2>
+
+<ul>
+<li>
+<strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> El nombre del fichero, sin la ruta. (DOMString)</li>
+<li>
+<strong>fullPath:</strong> La ruta completa al fichero, incluido el nombre. (DOMString)</li>
+<li>
+<strong>type:</strong> El tipo MIME del fichero (DOMString)</li>
+<li>
+<strong>lastModifiedDate:</strong> La fecha y hora de la ultima modificación. (Date)</li>
+<li>
+<strong><a href="phonegap_storage_storage.md.html#size">size</a>:</strong> El tamaño del fichero, en bytes. (Number)</li>
+</ul>
+<h2>
+<a name="MediaFile_m_todos">Métodos</a>
+</h2>
+
+<ul>
+<li>
+<strong><a href="phonegap_media_capture_capture.md.html#MediaFile.getFormatData">MediaFile.getFormatData</a>:</strong> Retorna información sobre el formato del archivo multimedia.</li>
+</ul>
+<hr>
+<h1><a name="MediaFile.getFormatData">MediaFile.getFormatData</a></h1>
+
+<blockquote>
+  <p>Retorna información sobre el formato de los archivos multimedia capturados.</p>
+</blockquote>
+
+<pre class="prettyprint"><code>mediaFile.getFormatData( 
+    MediaFileDataSuccessCB successCallback, 
+    [MediaFileDataErrorCB errorCallback]
+);
+</code></pre>
+
+<h2>
+<a name="MediaFile.getFormatData_descripci_n">Descripción</a>
+</h2>
+
+<p>Esta función funciona de forma asíncrona e intentara retornar información sobre el formato de los archivos multimedia.
+Si la función termina correctamente, se llamara a la función 'callback' <code>MediaFileDataSucessCB</code> con el objeto <code><a href="phonegap_media_capture_capture.md.html#MediaFileData">MediaFileData</a></code>. Si en cambio ocurre algún error, se llamara a <code>MediaFileDataErrorCB</code>.  </p>
+
+<h2>
+<a name="MediaFile.getFormatData_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="MediaFile.getFormatData_peculiaridades_blackberry_webworks">Peculiaridades BlackBerry WebWorks</a>
+</h2>
+
+<p>No se dispone de ninguna API que proporcione información sobre el formato de los archivos multimedia. Por tanto, todos los objetos <code><a href="phonegap_media_capture_capture.md.html#MediaFileData">MediaFileData</a></code> serán devueltos con los valores por defecto. Consulta la documentación de <code><a href="phonegap_media_capture_capture.md.html#MediaFileData">MediaFileData</a></code>.</p>
+
+<h2>
+<a name="MediaFile.getFormatData_peculiaridades_android">Peculiaridades Android</a>
+</h2>
+
+<p>La API para obtener los formatos de archivos multimedia esta limitada. Por tanto, no están soportados todos los atributos de <code><a href="phonegap_media_capture_capture.md.html#MediaFileData">MediaFileData</a></code>. Consulta la documentación de <code><a href="phonegap_media_capture_capture.md.html#MediaFileData">MediaFileData</a></code>.</p>
+
+<h2>
+<a name="MediaFile.getFormatData_peculiaridades_ios">Peculiaridades iOS</a>
+</h2>
+
+<p>La API para obtener los formatos de archivos multimedia esta limitada. Por tanto, no están soportados todos los atributos de <code><a href="phonegap_media_capture_capture.md.html#MediaFileData">MediaFileData</a></code>.  Consulta la documentación <code><a href="phonegap_media_capture_capture.md.html#MediaFileData">MediaFileData</a></code>.</p>
+
+<hr>
+<h1><a name="MediaFileData">MediaFileData</a></h1>
+
+<blockquote>
+  <p>Encapsula información sobre el formato del archivo multimedia.</p>
+</blockquote>
+
+<h2>
+<a name="MediaFileData_atributos">Atributos</a>
+</h2>
+
+<ul>
+<li>
+<strong>codecs:</strong> El formato del fichero de audio o vídeo. (DOMString)</li>
+<li>
+<strong>bitrate:</strong> El bitrate medio del contenido.  En el caso de una imagen, este atributo valdrá 0. (Number)</li>
+<li>
+<strong>height:</strong> La altura de una imagen o vídeo en píxeles. En el caso de un clip se sonido, este atributo valdrá 0. (Number)</li>
+<li>
+<strong>width:</strong> El ancho de una imagen o vídeo en píxeles. En el caso de un clip de sonido, este atributo valdrá 0. (Number)</li>
+<li>
+<strong>duration:</strong> La duración del clip de vídeo o sonido en segundos. En el caso de una imagen, este atributo valdrá 0. (Number)</li>
+</ul>
+<h2>
+<a name="MediaFileData_peculiaridades_blackberry_webworks">Peculiaridades BlackBerry WebWorks</a>
+</h2>
+
+<p>No se dispone de ninguna API que proporcione información sobre el formato de los archivos multimedia. Entonces el objeto <code><a href="phonegap_media_capture_capture.md.html#MediaFileData">MediaFileData</a></code> retornado por <code><a href="phonegap_media_capture_capture.md.html#MediaFile.getFormatData">MediaFile.getFormatData</a></code> tendrán los siguientes valores por defecto.</p>
+
+<ul>
+<li>
+<strong>codecs:</strong> No soportado. siempre retornara null.</li>
+<li>
+<strong>bitrate:</strong> No soportado. siempre retornara 0.</li>
+<li>
+<strong>height:</strong> No soportado. siempre retornara 0.</li>
+<li>
+<strong>width:</strong> No soportado. siempre retornara 0.</li>
+<li>
+<strong>duration:</strong> No soportado. siempre retornara 0.</li>
+</ul>
+<h2>
+<a name="MediaFileData_peculiaridades_android">Peculiaridades Android</a>
+</h2>
+
+<p>El soporte de atributos de <code><a href="phonegap_media_capture_capture.md.html#MediaFileData">MediaFileData</a></code> es el siguiente:</p>
+
+<ul>
+<li>
+<strong>codecs:</strong> No soportado. siempre retornara null.</li>
+<li>
+<strong>bitrate:</strong> No soportado. siempre retornara 0.</li>
+<li>
+<strong>height:</strong> Soportado. (Solo ficheros de imagen y vídeo).  </li>
+<li>
+<strong>width:</strong> Soportado. (Solo ficheros de imagen y vídeo).</li>
+<li>
+<strong>duration:</strong> Soportado. (Solo ficheros de imagen y vídeo).</li>
+</ul>
+<h2>
+<a name="MediaFileData_peculiaridades_ios">Peculiaridades iOS</a>
+</h2>
+
+<p>El soporte de atributos de <code><a href="phonegap_media_capture_capture.md.html#MediaFileData">MediaFileData</a></code> es el siguiente:</p>
+
+<ul>
+<li>
+<strong>codecs:</strong> No soportado. siempre retornara null.</li>
+<li>
+<strong>bitrate:</strong> Soportado en iOS4 y solo para audio. siempre retornara 0 en imágenes y vídeos.</li>
+<li>
+<strong>height:</strong> Soportado.  (Solo en imágenes y vídeos).  </li>
+<li>
+<strong>width:</strong> Soportado.  (Solo en imágenes y vídeos).  </li>
+<li>
+<strong>duration:</strong> Soportado.  (Solo en audio y vídeos).</li>
+</ul>
+</div>
+        </div>
+
+        <!-- Functionality and Syntax Highlighting -->
+        <script type="text/javascript" src="index.js"></script><script type="text/javascript" src="prettify/prettify.js"></script>
+</body>
+</html>

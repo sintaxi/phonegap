@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+<meta name="generator" content="joDoc">
+<title>Documentacion API PhoneGap</title>
+<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
+<link rel="stylesheet" type="text/css" href="prettify/prettify.css">
+</head>
+<body>
+        <div id="header">
+            <h1><a href="index.html">Documentación Phone<strong>Gap</strong></a></h1>
+            <small>
+                <select><optgroup label="English" value="en">
+<option value="edge">edge</option>
+<option value="1.2.0">1.2.0</option>
+<option value="1.1.0">1.1.0</option>
+<option value="1.0.0rc3">1.0.0rc3</option>
+<option value="1.0.0rc2">1.0.0rc2</option>
+<option value="1.0.0rc1">1.0.0rc1</option>
+<option value="1.0.0">1.0.0</option>
+<option value="0.9.6">0.9.6</option>
+<option value="0.9.5.1">0.9.5.1</option>
+<option value="0.9.5">0.9.5</option>
+<option value="0.9.4">0.9.4</option>
+<option value="0.9.3">0.9.3</option>
+<option value="0.9.2">0.9.2</option>
+</optgroup>
+<optgroup label="Español" value="es"><option selected value="1.0.0">1.0.0</option></optgroup>
+<optgroup label="Japanese" value="jp"><option value="0.9.5">0.9.5</option></optgroup></select></small>
+        </div>
+        <div id="subheader">
+            <h1>Device</h1>
+            <small><select><option value="Device">Device</option>
+<option value="Device_atributos">      - Atributos</option>
+<option value="Device_mbito_de_la_variable">      - Ámbito de la variable</option>
+<option value="device.name">device.name</option>
+<option value="device.name_descripci_n">      - Descripción</option>
+<option value="device.name_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="device.name_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="device.name_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="device.name_peculiaridades_android">      - Peculiaridades Android</option>
+<option value="device.name_peculiaridades_iphone">      - Peculiaridades iPhone</option>
+<option value="device.phonegap">device.phonegap</option>
+<option value="device.phonegap_descripci_n">      - Descripción</option>
+<option value="device.phonegap_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="device.phonegap_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="device.phonegap_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="device.platform">device.platform</option>
+<option value="device.platform_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="device.platform_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="device.platform_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="device.platform_peculiaridades_iphone">      - Peculiaridades iPhone</option>
+<option value="device.platform_peculiaridades_blackberry">      - Peculiaridades BlackBerry</option>
+<option value="device.uuid">device.uuid</option>
+<option value="device.uuid_descripci_n">      - Descripción</option>
+<option value="device.uuid_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="device.uuid_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="device.uuid_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="device.version">device.version</option>
+<option value="device.version_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="device.version_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="device.version_ejemplo_completo">      - Ejemplo Completo</option></select></small>
+        </div>
+
+        <div id="sidebar">
+            <div class="vertical_divider"></div>
+            <h1>Referencia API</h1>
+            <ul>
+<li><a href="phonegap_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
+<li><a href="phonegap_camera_camera.md.html#Camera">Camera</a></li>
+<li><a href="phonegap_media_capture_capture.md.html#Capture">Capture</a></li>
+<li><a href="phonegap_compass_compass.md.html#Compass">Compass</a></li>
+<li><a href="phonegap_connection_connection.md.html#Connection">Connection</a></li>
+<li><a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a></li>
+<li><a href="phonegap_device_device.md.html#Device">Device</a></li>
+<li><a href="phonegap_events_events.md.html#Events">Events</a></li>
+<li><a href="phonegap_file_file.md.html#File">File</a></li>
+<li><a href="phonegap_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
+<li><a href="phonegap_media_media.md.html#Media">Media</a></li>
+<li><a href="phonegap_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="phonegap_storage_storage.md.html#Storage">Storage</a></li>
+</ul>
+<h1></h1>
+            <ul>
+<li><a href="_index.html">Índice por palabras</a></li>
+            </ul>
+</div>
+
+        <div id="scrollable">
+            <div id="content">
+                <h1><a name="Device">Device</a></h1>
+
+<blockquote>
+  <p>El objeto <code>device</code> proporciona información sobre el hardware y software del dispositivo.</p>
+</blockquote>
+
+<h2>
+<a name="Device_atributos">Atributos</a>
+</h2>
+
+<ul>
+<li><a href="phonegap_device_device.md.html#device.name">device.name</a></li>
+<li><a href="phonegap_device_device.md.html#device.phonegap">device.phonegap</a></li>
+<li><a href="phonegap_device_device.md.html#device.platform">device.platform</a></li>
+<li><a href="phonegap_device_device.md.html#device.uuid">device.uuid</a></li>
+<li><a href="phonegap_device_device.md.html#device.version">device.version</a></li>
+</ul>
+<h2>
+<a name="Device_mbito_de_la_variable">Ámbito de la variable</a>
+</h2>
+
+<p>Desde que <code>device</code> fue asignada al objeto <code>window</code>, se encuentra en el espacio global.</p>
+
+<pre class="prettyprint"><code>// Estas variables apuntan al mismo `device`
+//
+var phoneName = window.<a href="phonegap_device_device.md.html#device.name">device.name</a>;
+var phoneName = <a href="phonegap_device_device.md.html#device.name">device.name</a>;
+</code></pre>
+
+<hr>
+<h1><a name="device.name">device.name</a></h1>
+
+<p>Obtiene el modelo del dispositivo.</p>
+
+<pre class="prettyprint"><code>var string = <a href="phonegap_device_device.md.html#device.name">device.name</a>;
+</code></pre>
+
+<h2>
+<a name="device.name_descripci_n">Descripción</a>
+</h2>
+
+<p><code><a href="phonegap_device_device.md.html#device.name">device.name</a></code> retorna el nombre del modelo o producto. Este valor lo asigna el fabricante y puede diferir en las diferentes versiones del mismo producto.</p>
+
+<h2>
+<a name="device.name_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+<li>iPhone</li>
+</ul>
+<h2>
+<a name="device.name_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>// Android:    Nexus One            retorna "Passion" (nombre en clave del Nexus One)
+//             Motorola Droid       retorna "voles"
+// BlackBerry: Bold 8900            retorna "8900"
+// iPhone:     Todos los dispositivos   retorna el nombre de iTunes. "iPhone de Juan"
+//
+var <a href="phonegap_storage_storage.md.html#name">name</a> = <a href="phonegap_device_device.md.html#device.name">device.name</a>;
+</code></pre>
+
+<h2>
+<a name="device.name_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_device_device.md.html#Device">Device</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espera a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        var element = document.getElementById('deviceProperties');
+
+        element.innerHTML = 'Nombre del dispositivo: '  + <a href="phonegap_device_device.md.html#device.name">device.name</a>     + '&lt;br /&gt;' + 
+                            'Versión Phonegap: '       + <a href="phonegap_device_device.md.html#device.phonegap">device.phonegap</a> + '&lt;br /&gt;' + 
+                            'Plataforma: '              + <a href="phonegap_device_device.md.html#device.platform">device.platform</a> + '&lt;br /&gt;' + 
+                            'UUID: '                + <a href="phonegap_device_device.md.html#device.uuid">device.uuid</a>     + '&lt;br /&gt;' + 
+                            'Versión: '            + <a href="phonegap_device_device.md.html#device.version">device.version</a>  + '&lt;br /&gt;';
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p id="deviceProperties"&gt;Cargando...&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2>
+<a name="device.name_peculiaridades_android">Peculiaridades Android</a>
+</h2>
+
+<ul>
+<li>Obtiene el <a class="external" href="http://developer.android.com/reference/android/os/Build.html#PRODUCT">nombre del producto</a> en vez del <a class="external" href="http://developer.android.com/reference/android/os/Build.html#MODEL">nombre del modelo</a>.
+<ul>
+<li>El nombre del producto es con frecuencia el nombre en clave dado durante la producción.</li>
+<li>Ejemplo: El Nexus One retorna "Passion", Motorola Droid retorna "voles"</li>
+</ul>
+</li>
+</ul>
+<h2>
+<a name="device.name_peculiaridades_iphone">Peculiaridades iPhone</a>
+</h2>
+
+<ul>
+<li>Obtiene el <a class="external" href="http://developer.apple.com/iphone/library/documentation/uikit/reference/UIDevice_Class/Reference/UIDevice.html#//apple_ref/doc/uid/TP40006902-CH3-SW13">nombre personalizado</a> en vez del <a class="external" href="http://developer.apple.com/iphone/library/documentation/uikit/reference/UIDevice_Class/Reference/UIDevice.html#//apple_ref/doc/uid/TP40006902-CH3-SW1">nombre del modelo</a>.
+<ul>
+<li>El nombre personalizado es puesto por el usuario en iTunes.</li>
+<li>Ejemplo: "iPhone de Juan"</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1><a name="device.phonegap">device.phonegap</a></h1>
+
+<p>Obtiene la versión PhoneGap del dispositivo.</p>
+
+<pre class="prettyprint"><code>var string = <a href="phonegap_device_device.md.html#device.phonegap">device.phonegap</a>;
+</code></pre>
+
+<h2>
+<a name="device.phonegap_descripci_n">Descripción</a>
+</h2>
+
+<p><code><a href="phonegap_device_device.md.html#device.phonegap">device.phonegap</a></code> retorna la versión phonegap que esta corriendo en el dispositivo.</p>
+
+<h2>
+<a name="device.phonegap_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+<li>iPhone</li>
+</ul>
+<h2>
+<a name="device.phonegap_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>var <a href="phonegap_storage_storage.md.html#name">name</a> = <a href="phonegap_device_device.md.html#device.phonegap">device.phonegap</a>;
+</code></pre>
+
+<h2>
+<a name="device.phonegap_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_device_device.md.html#Device">Device</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espera a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        var element = document.getElementById('deviceProperties');
+
+        element.innerHTML = 'Nombre del dispositivo: '  + <a href="phonegap_device_device.md.html#device.name">device.name</a>     + '&lt;br /&gt;' + 
+                            'Versión Phonegap: '       + <a href="phonegap_device_device.md.html#device.phonegap">device.phonegap</a> + '&lt;br /&gt;' + 
+                            'Plataforma: '          + <a href="phonegap_device_device.md.html#device.platform">device.platform</a> + '&lt;br /&gt;' + 
+                            'UUID: '            + <a href="phonegap_device_device.md.html#device.uuid">device.uuid</a>     + '&lt;br /&gt;' + 
+                            'Versión: '            + <a href="phonegap_device_device.md.html#device.version">device.version</a>  + '&lt;br /&gt;';
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p id="deviceProperties"&gt;Cargando...&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="device.platform">device.platform</a></h1>
+
+<p>Obtiene el nombre del sistema operativo.</p>
+
+<pre class="prettyprint"><code>var string = <a href="phonegap_device_device.md.html#device.platform">device.platform</a>;
+</code></pre>
+
+<h2>
+<a name="device.platform_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+<li>iPhone</li>
+</ul>
+<h2>
+<a name="device.platform_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>// Dependiendo del dispositivo, estos son algunos ejemplos:
+//   - "Android"
+//   - "BlackBerry"
+//   - "iPhone"
+//   - "webOS"
+//
+var devicePlatform = <a href="phonegap_device_device.md.html#device.platform">device.platform</a>;
+</code></pre>
+
+<h2>
+<a name="device.platform_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_device_device.md.html#Device">Device</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espera a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        var element = document.getElementById('deviceProperties');
+
+        element.innerHTML = 'Nombre del dispositivo: '  + <a href="phonegap_device_device.md.html#device.name">device.name</a>     + '&lt;br /&gt;' + 
+                            'Versión Phonegap: '       + <a href="phonegap_device_device.md.html#device.phonegap">device.phonegap</a> + '&lt;br /&gt;' + 
+                            'Plataforma: '          + <a href="phonegap_device_device.md.html#device.platform">device.platform</a> + '&lt;br /&gt;' + 
+                            'UUID: '            + <a href="phonegap_device_device.md.html#device.uuid">device.uuid</a>     + '&lt;br /&gt;' + 
+                            'Versión: '            + <a href="phonegap_device_device.md.html#device.version">device.version</a>  + '&lt;br /&gt;';
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p id="deviceProperties"&gt;Cargando atributos <a href="phonegap_device_device.md.html#Device">Device</a>...&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2>
+<a name="device.platform_peculiaridades_iphone">Peculiaridades iPhone</a>
+</h2>
+
+<p>Todos los dispositivos retornan <code>iPhone</code> como plataforma. Es impreciso  debido que Apple rebautizo el sistema operativo como <code>iOS</code>.</p>
+
+<h2>
+<a name="device.platform_peculiaridades_blackberry">Peculiaridades BlackBerry</a>
+</h2>
+
+<p>Pueden devolver la versión de plataforma en lugar de la plataforma. Por ejemplo, el Storm2 9550 retornaría '2.13.0.95' o similar.</p>
+
+<hr>
+<h1><a name="device.uuid">device.uuid</a></h1>
+
+<p>Obtiene el Identificador Universal Único (<a class="external" href="http://es.wikipedia.org/wiki/Universally_Unique_Identifier">UUID</a>).</p>
+
+<pre class="prettyprint"><code>var string = <a href="phonegap_device_device.md.html#device.uuid">device.uuid</a>;
+</code></pre>
+
+<h2>
+<a name="device.uuid_descripci_n">Descripción</a>
+</h2>
+
+<p>Los detalles de como se genera un UUID es determinado por el fabricante y especificaciones de la plataforma o modelo.</p>
+
+<h2>
+<a name="device.uuid_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+<li>iPhone</li>
+</ul>
+<h2>
+<a name="device.uuid_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>// Android: Retorna un entero aleatorio de 64-bit (como string, también!)
+//          El entero es generado en el dispositivo en el primer encendido.
+//
+// BlackBerry: Retorna el numero PIN del dispositivo
+//             Es un entero único de 9 dígitos (como string, para variar!)
+//
+// iPhone: (Resumen de la documentación, UIDevice )
+//         Retorna una string hash creada usando los múltiples id's del hardware.
+//         Se garantiza que sea único para cada dispositivo y no puede estar
+//         vinculada a la cuenta de usuario
+//
+var deviceID = <a href="phonegap_device_device.md.html#device.uuid">device.uuid</a>;
+</code></pre>
+
+<h2>
+<a name="device.uuid_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_device_device.md.html#Device">Device</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espera a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        var element = document.getElementById('deviceProperties');
+
+        element.innerHTML = 'Nombre del dispositivo: '  + <a href="phonegap_device_device.md.html#device.name">device.name</a>     + '&lt;br /&gt;' + 
+                            'Versión Phonegap: '       + <a href="phonegap_device_device.md.html#device.phonegap">device.phonegap</a> + '&lt;br /&gt;' + 
+                            'Plataforma: '          + <a href="phonegap_device_device.md.html#device.platform">device.platform</a> + '&lt;br /&gt;' + 
+                            'UUID: '            + <a href="phonegap_device_device.md.html#device.uuid">device.uuid</a>     + '&lt;br /&gt;' + 
+                            'Versión: '            + <a href="phonegap_device_device.md.html#device.version">device.version</a>  + '&lt;br /&gt;';
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p id="deviceProperties"&gt;Cargando...&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="device.version">device.version</a></h1>
+
+<p>Obtiene la versión del sistema operativo.</p>
+
+<pre class="prettyprint"><code>var string = <a href="phonegap_device_device.md.html#device.version">device.version</a>;
+</code></pre>
+
+<h2>
+<a name="device.version_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android 2.1+</li>
+<li>BlackBerry</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+<li>iPhone</li>
+</ul>
+<h2>
+<a name="device.version_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>// Android:    Froyo OS retornara "2.2"
+//             Eclair OS retornara "2.1", "2.0.1", o "2.0"
+//             La versión también puede retornar la actualización "2.1-update1" 
+//
+// BlackBerry: Bold 9000 usando OS 4.6 retornara "4.6.0.282"
+//
+// iPhone:     iOS 3.2 retorna "3.2"
+//
+var deviceVersion = <a href="phonegap_device_device.md.html#device.version">device.version</a>;
+</code></pre>
+
+<h2>
+<a name="device.version_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_device_device.md.html#Device">Device</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espera a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        var element = document.getElementById('deviceProperties');
+
+        element.innerHTML = 'Nombre del dispositivo: '  + <a href="phonegap_device_device.md.html#device.name">device.name</a>     + '&lt;br /&gt;' + 
+                            'Versión Phonegap: '       + <a href="phonegap_device_device.md.html#device.phonegap">device.phonegap</a> + '&lt;br /&gt;' + 
+                            'Plataforma: '          + <a href="phonegap_device_device.md.html#device.platform">device.platform</a> + '&lt;br /&gt;' + 
+                            'UUID: '            + <a href="phonegap_device_device.md.html#device.uuid">device.uuid</a>     + '&lt;br /&gt;' + 
+                            'Versión: '            + <a href="phonegap_device_device.md.html#device.version">device.version</a>  + '&lt;br /&gt;';
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p id="deviceProperties"&gt;Cargando...&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+            </div>
+        </div>
+
+        <!-- Functionality and Syntax Highlighting -->
+        <script type="text/javascript" src="index.js"></script><script type="text/javascript" src="prettify/prettify.js"></script>
+</body>
+</html>

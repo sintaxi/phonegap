@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    
+    <title>PhoneGap WP7</title>
+    
+	  <link rel="stylesheet" href="master.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+      
+	  <script type="text/javascript">
+		  // provide our own console if it does not exist, huge dev aid!
+		  if(typeof window.console == "undefined")
+		  {
+		  window.console = {log:function(str){window.external.Notify(str);}};
+		  }
+		
+		  // output any errors to console log, created above.
+		  window.onerror=function(e)
+		  {
+			  console.log("window.onerror ::" + JSON.stringify(e));
+		  };
+		
+		  console.log("Installed console ! ");
+      </script>
+      
+      <script type="text/javascript" charset="utf-8" src="phonegap-1.2.0.js"></script>
+       
+      <script type="text/javascript">
+
+        document.addEventListener("deviceready",onDeviceReady,false);
+
+        // once the device ready event fires, you can safely do your thing! -jm
+        function onDeviceReady()
+        {
+            document.getElementById("welcomeMsg").innerHTML += "PhoneGap is ready! version=" + window.device.phonegap;
+            
+            
+        }
+
+      </script>
+      
+	 
+	  
+
+  </head>
+  <body>
+    <h1>Hello PhoneGap</h1>
+    <div id="welcomeMsg"></div>
+  </body>
+</html>

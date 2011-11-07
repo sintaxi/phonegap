@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+<meta name="generator" content="joDoc">
+<title>Documentacion API PhoneGap</title>
+<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
+<link rel="stylesheet" type="text/css" href="prettify/prettify.css">
+</head>
+<body>
+        <div id="header">
+            <h1><a href="index.html">Documentación Phone<strong>Gap</strong></a></h1>
+            <small>
+                <select><optgroup label="English" value="en">
+<option value="edge">edge</option>
+<option value="1.2.0">1.2.0</option>
+<option value="1.1.0">1.1.0</option>
+<option value="1.0.0rc3">1.0.0rc3</option>
+<option value="1.0.0rc2">1.0.0rc2</option>
+<option value="1.0.0rc1">1.0.0rc1</option>
+<option value="1.0.0">1.0.0</option>
+<option value="0.9.6">0.9.6</option>
+<option value="0.9.5.1">0.9.5.1</option>
+<option value="0.9.5">0.9.5</option>
+<option value="0.9.4">0.9.4</option>
+<option value="0.9.3">0.9.3</option>
+<option value="0.9.2">0.9.2</option>
+</optgroup>
+<optgroup label="Español" value="es"><option selected value="1.0.0">1.0.0</option></optgroup>
+<optgroup label="Japanese" value="jp"><option value="0.9.5">0.9.5</option></optgroup></select></small>
+        </div>
+        <div id="subheader">
+            <h1>Connection</h1>
+            <small><select><option value="Connection">Connection</option>
+<option value="Connection_atributos">      - Atributos</option>
+<option value="Connection_constantes">      - Constantes</option>
+<option value="connection.type">connection.type</option>
+<option value="connection.type_descripci_n">      - Descripción</option>
+<option value="connection.type_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="connection.type_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="connection.type_ejemplo_completo">      - Ejemplo Completo</option></select></small>
+        </div>
+
+        <div id="sidebar">
+            <div class="vertical_divider"></div>
+            <h1>Referencia API</h1>
+            <ul>
+<li><a href="phonegap_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
+<li><a href="phonegap_camera_camera.md.html#Camera">Camera</a></li>
+<li><a href="phonegap_media_capture_capture.md.html#Capture">Capture</a></li>
+<li><a href="phonegap_compass_compass.md.html#Compass">Compass</a></li>
+<li><a href="phonegap_connection_connection.md.html#Connection">Connection</a></li>
+<li><a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a></li>
+<li><a href="phonegap_device_device.md.html#Device">Device</a></li>
+<li><a href="phonegap_events_events.md.html#Events">Events</a></li>
+<li><a href="phonegap_file_file.md.html#File">File</a></li>
+<li><a href="phonegap_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
+<li><a href="phonegap_media_media.md.html#Media">Media</a></li>
+<li><a href="phonegap_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="phonegap_storage_storage.md.html#Storage">Storage</a></li>
+</ul>
+<h1></h1>
+            <ul>
+<li><a href="_index.html">Índice por palabras</a></li>
+            </ul>
+</div>
+
+        <div id="scrollable">
+            <div id="content">
+                <h1><a name="Connection">Connection</a></h1>
+
+<blockquote>
+  <p>El objeto <code>connection</code> permite obtener información del dispositivo móvil y la conectividad wifi.</p>
+</blockquote>
+
+<p>A este objeto se accede bajo la interfaz navigator.network</p>
+
+<h2>
+<a name="Connection_atributos">Atributos</a>
+</h2>
+
+<ul>
+<li><a href="phonegap_connection_connection.md.html#connection.type">connection.type</a></li>
+</ul>
+<h2>
+<a name="Connection_constantes">Constantes</a>
+</h2>
+
+<ul>
+<li>
+<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.UNKNOWN</li>
+<li>
+<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.ETHERNET</li>
+<li>
+<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.WIFI</li>
+<li>
+<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.CELL_2G</li>
+<li>
+<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.CELL_3G</li>
+<li>
+<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.CELL_4G</li>
+<li>
+<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.NONE</li>
+</ul>
+<hr>
+<h1><a name="connection.type">connection.type</a></h1>
+
+<p>Comprueba la conexión activa que se esta usando.</p>
+
+<h2>
+<a name="connection.type_descripci_n">Descripción</a>
+</h2>
+
+<p>Estos atributos son una forma rápida de conocer la conectividad del dispositivo, y su estado.</p>
+
+<h2>
+<a name="connection.type_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>iOS</li>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+</ul>
+<h2>
+<a name="connection.type_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>function checkConnection() {
+    var networkState = navigator.network.<a href="phonegap_connection_connection.md.html#connection.type">connection.type</a>;
+
+    var states = {};
+    states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.UNKNOWN]  = 'Conexión desconocida';
+    states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.ETHERNET] = 'Conexión ethernet';
+    states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.WIFI]     = 'Conexión WiFi';
+    states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.CELL_2G]  = 'Conexión movil 2G';
+    states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.CELL_3G]  = 'Conexión movil 3G';
+    states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.CELL_4G]  = 'Conexión movil 4G';
+    states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.NONE]     = 'Sin conexión';
+
+    alert('Tipo de conexión: ' + states[networkState]);
+}
+
+checkConnection();
+</code></pre>
+
+<h2>
+<a name="connection.type_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_connection_connection.md.html#Connection">Connection</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espera a que PhoneGap se inicie
+    // 
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap esta listo, y ahora se pueden hacer llamadas a los métodos
+    //
+    function onDeviceReady() {
+        checkConnection();
+    }
+
+    function checkConnection() {
+        var networkState = navigator.network.<a href="phonegap_connection_connection.md.html#connection.type">connection.type</a>;
+
+        var states = {};
+    states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.UNKNOWN]  = 'Conexión desconocida';
+    states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.ETHERNET] = 'Conexión ethernet';
+    states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.WIFI]     = 'Conexión WiFi';
+    states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.CELL_2G]  = 'Conexión movil 2G';
+    states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.CELL_3G]  = 'Conexión movil 3G';
+    states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.CELL_4G]  = 'Conexión movil 4G';
+    states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.NONE]     = 'Sin conexión';
+
+        alert('Tipo de conexión: ' + states[networkState]);
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;Un mensaje te notificara el tipo de conexión.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+            </div>
+        </div>
+
+        <!-- Functionality and Syntax Highlighting -->
+        <script type="text/javascript" src="index.js"></script><script type="text/javascript" src="prettify/prettify.js"></script>
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+<meta name="generator" content="joDoc">
+<title>Documentacion API PhoneGap</title>
+<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
+<link rel="stylesheet" type="text/css" href="prettify/prettify.css">
+</head>
+<body>
+        <div id="header">
+            <h1><a href="index.html">Documentación Phone<strong>Gap</strong></a></h1>
+            <small>
+                <select><optgroup label="English" value="en">
+<option value="edge">edge</option>
+<option value="1.2.0">1.2.0</option>
+<option value="1.1.0">1.1.0</option>
+<option value="1.0.0rc3">1.0.0rc3</option>
+<option value="1.0.0rc2">1.0.0rc2</option>
+<option value="1.0.0rc1">1.0.0rc1</option>
+<option value="1.0.0">1.0.0</option>
+<option value="0.9.6">0.9.6</option>
+<option value="0.9.5.1">0.9.5.1</option>
+<option value="0.9.5">0.9.5</option>
+<option value="0.9.4">0.9.4</option>
+<option value="0.9.3">0.9.3</option>
+<option value="0.9.2">0.9.2</option>
+</optgroup>
+<optgroup label="Español" value="es"><option selected value="1.0.0">1.0.0</option></optgroup>
+<optgroup label="Japanese" value="jp"><option value="0.9.5">0.9.5</option></optgroup></select></small>
+        </div>
+        <div id="subheader">
+            <h1>Camera</h1>
+            <small><select><option value="Camera">Camera</option>
+<option value="Camera_m_todos">      - Métodos</option>
+<option value="camera.getPicture">camera.getPicture</option>
+<option value="camera.getPicture_descripci_n">      - Descripción</option>
+<option value="camera.getPicture_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="camera.getPicture_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="camera.getPicture_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="cameraSuccess">cameraSuccess</option>
+<option value="cameraSuccess_argumentos">      - Argumentos</option>
+<option value="cameraSuccess_ejemplo">      - Ejemplo</option>
+<option value="cameraError">cameraError</option>
+<option value="cameraError_argumentos">      - Argumentos</option>
+<option value="cameraOptions">cameraOptions</option>
+<option value="cameraOptions_opciones">      - Opciones</option>
+<option value="cameraOptions_peculiaridades_android">      - Peculiaridades Android</option>
+<option value="cameraOptions_peculiaridades_blackberry">      - Peculiaridades BlackBerry</option>
+<option value="cameraOptions_peculiaridades_palm">      - Peculiaridades Palm</option>
+<option value="cameraOptions_peculiaridades_iphone">      - Peculiaridades iPhone</option></select></small>
+        </div>
+
+        <div id="sidebar">
+            <div class="vertical_divider"></div>
+            <h1>Referencia API</h1>
+            <ul>
+<li><a href="phonegap_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
+<li><a href="phonegap_camera_camera.md.html#Camera">Camera</a></li>
+<li><a href="phonegap_media_capture_capture.md.html#Capture">Capture</a></li>
+<li><a href="phonegap_compass_compass.md.html#Compass">Compass</a></li>
+<li><a href="phonegap_connection_connection.md.html#Connection">Connection</a></li>
+<li><a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a></li>
+<li><a href="phonegap_device_device.md.html#Device">Device</a></li>
+<li><a href="phonegap_events_events.md.html#Events">Events</a></li>
+<li><a href="phonegap_file_file.md.html#File">File</a></li>
+<li><a href="phonegap_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
+<li><a href="phonegap_media_media.md.html#Media">Media</a></li>
+<li><a href="phonegap_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="phonegap_storage_storage.md.html#Storage">Storage</a></li>
+</ul>
+<h1></h1>
+            <ul>
+<li><a href="_index.html">Índice por palabras</a></li>
+            </ul>
+</div>
+
+        <div id="scrollable">
+            <div id="content">
+                <h1><a name="Camera">Camera</a></h1>
+
+<blockquote>
+  <p>El objeto <code>camera</code> proporciona acceso a la aplicación de la cámara del dispositivo.</p>
+</blockquote>
+
+<h2>
+<a name="Camera_m_todos">Métodos</a>
+</h2>
+
+<ul>
+<li><a href="phonegap_camera_camera.md.html#camera.getPicture">camera.getPicture</a></li>
+</ul>
+<hr>
+<h1><a name="camera.getPicture">camera.getPicture</a></h1>
+
+<p>Toma una foto usando la cámara, o obtiene una foto del álbum del dispositivo. La imagen es retornada codificada en base64 como un objeto <code>String</code> o la URI de un fichero de imagen del álbum.</p>
+
+<pre class="prettyprint"><code>navigator.<a href="phonegap_camera_camera.md.html#camera.getPicture">camera.getPicture</a>( <a href="phonegap_camera_camera.md.html#cameraSuccess">cameraSuccess</a>, <a href="phonegap_camera_camera.md.html#cameraError">cameraError</a>, [ <a href="phonegap_camera_camera.md.html#cameraOptions">cameraOptions</a> ] );
+</code></pre>
+
+<h2>
+<a name="camera.getPicture_descripci_n">Descripción</a>
+</h2>
+
+<p>La función <code><a href="phonegap_camera_camera.md.html#camera.getPicture">camera.getPicture</a></code> abre la aplicación por defecto de cámara para que el usuario tome una foto (en el caso de <code><a href="phonegap_camera_camera.md.html#Camera">Camera</a>.sourceType = <a href="phonegap_camera_camera.md.html#Camera">Camera</a>.PictureSourceType.CAMERA</code>, por defecto). Una vez la foto es tomada, la aplicación de la cámara se cierra y tu aplicación vuelve al primer plano.</p>
+
+<p>Si <code><a href="phonegap_camera_camera.md.html#Camera">Camera</a>.sourceType = <a href="phonegap_camera_camera.md.html#Camera">Camera</a>.PictureSourceType.PHOTOLIBRARY</code> o <code><a href="phonegap_camera_camera.md.html#Camera">Camera</a>.PictureSourceType.SAVEDPHOTOALBUM</code>, entonces se muestra un dialogo para seleccionar una foto del álbum.</p>
+
+<p>El valor que esta función retorna se le pasa a la función 'callback' <code><a href="phonegap_camera_camera.md.html#cameraSuccess">cameraSuccess</a></code>, en uno de los siguientes formatos, dependiendo de lo que especificastes en <code><a href="phonegap_camera_camera.md.html#cameraOptions">cameraOptions</a></code>:</p>
+
+<ul>
+<li>Una <code>String</code> conteniendo la imagen codificada en Base64 (por defecto). </li>
+<li>Una <code>String</code> representando la ruta de la imagen en el almacenamiento local.  </li>
+</ul>
+<p>Puedes hacer lo que desees con la imagen codificada o la URI, por ejemplo:</p>
+
+<ul>
+<li>Mostrar la imagen en una etiqueta <code>&lt;img&gt;</code> <em>(Ver ejemplo mas abajo)</em>
+</li>
+<li>Guardarla localmente (<code>LocalStorage</code>, <a class="external" href="http://brianleroux.github.com/lawnchair/">Lawnchair</a>, etc)</li>
+<li>Enviar la imagen a un servidor remoto</li>
+</ul>
+<p>Nota: La calidad de las imágenes cuando usamos los últimos dispositivos nuevos es demasiado buena. <em>Codificar estas imágenes en Base64 puede causar problemas de memoria en algunos de estos dispositivos (iPhone 4, BlackBerry Torch 9800).</em> Antes que eso, es recomendable usar FILE_URI como '<a href="phonegap_camera_camera.md.html#Camera">Camera</a>.destinationType'.</p>
+
+<h2>
+<a name="camera.getPicture_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>Blackberry WebWorks (OS 5.0 y superior)</li>
+<li>iPhone</li>
+</ul>
+<h2>
+<a name="camera.getPicture_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<p>Toma una foto y la retorna codificada en base64:</p>
+
+<pre class="prettyprint"><code>navigator.<a href="phonegap_camera_camera.md.html#camera.getPicture">camera.getPicture</a>(onSuccess, onFail, { quality: 50 }); 
+
+function onSuccess(imageData) {
+    var image = document.getElementById('miImagen');
+    image.src = "data:image/jpeg;base64," + imageData;
+}
+
+function onFail(message) {
+    alert('Ocurrió un error: ' + message);
+}
+</code></pre>
+
+<p>Toma una foto y la retorna usando la ruta del fichero: </p>
+
+<pre class="prettyprint"><code>navigator.<a href="phonegap_camera_camera.md.html#camera.getPicture">camera.getPicture</a>(onSuccess, onFail, { quality: 50, 
+    destinationType: <a href="phonegap_camera_camera.md.html#Camera">Camera</a>.DestinationType.FILE_URI }); 
+
+function onSuccess(imageURI) {
+    var image = document.getElementById('miImagen');
+    image.src = imageURI;
+}
+
+function onFail(message) {
+    alert('Ocurrió un error: ' + message);
+}
+</code></pre>
+
+<h2>
+<a name="camera.getPicture_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_camera_camera.md.html#Camera">Camera</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    var pictureSource;   // Origen de la imagen
+    var destinationType; // Formato del valor retornado
+
+    // Espera a que PhoneGap conecte con el dispositivo.
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>",onDeviceReady,false);
+
+    // PhoneGap esta listo para usarse!
+    //
+    function onDeviceReady() {
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+    }
+
+    // Llamada cuando la foto se retorna sin problemas
+    //
+    function onPhotoDataSuccess(imageData) {
+      // Descomenta esta linea para ver la imagen codificada en base64
+      // console.log(imageData);
+
+      // Obtiene el elemento HTML de la imagen
+      //
+      var smallImage = document.getElementById('smallImage');
+
+      // Revela el elemento de la imagen
+      //
+      smallImage.style.display = 'block';
+
+      // Muestra la foto capturada
+      // Se usan reglas CSS para dimensionar la imagen
+      //
+      smallImage.src = "data:image/jpeg;base64," + imageData;
+    }
+
+    // Llamada cuando la foto se retorna sin problemas
+    //
+    function onPhotoURISuccess(imageURI) {
+      // Descomenta esta linea para ver la ruta URI al fichero de imagen 
+      // console.log(imageURI);
+
+      // Obtiene el elemento HTML de la imagen
+      //
+      var largeImage = document.getElementById('largeImage');
+
+      // Revela el elemento de la imagen
+      //
+      largeImage.style.display = 'block';
+
+      // Muestra la foto capturada
+      // Se usan reglas CSS para dimensionar la imagen
+      //
+      largeImage.src = imageURI;
+    }
+
+    // Un botón llamara a esta función
+    //
+    function capturePhoto() {
+      // Toma la imagen y la retorna como una string codificada en base64
+      navigator.<a href="phonegap_camera_camera.md.html#camera.getPicture">camera.getPicture</a>(onPhotoDataSuccess, onFail, { quality: 50 });
+    }
+
+    // Un botón llamara a esta función
+    //
+    function capturePhotoEdit() {
+      // Toma la imagen, permite editarla y la retorna como una string codificada en base64
+      navigator.<a href="phonegap_camera_camera.md.html#camera.getPicture">camera.getPicture</a>(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true }); 
+    }
+
+    // Un botón llamara a esta función
+    //
+    function getPhoto(source) {
+      // Retorna la ruta del fichero de imagen desde el origen especificado
+      navigator.<a href="phonegap_camera_camera.md.html#camera.getPicture">camera.getPicture</a>(onPhotoURISuccess, onFail, { quality: 50, 
+        destinationType: destinationType.FILE_URI,
+        sourceType: source });
+    }
+
+    // Llamado cuando algo malo ocurre
+    // 
+    function onFail(message) {
+      alert('Ocurrió un error: ' + message);
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;button onclick="capturePhoto();"&gt;Capturar foto&lt;/button&gt; &lt;br&gt;
+    &lt;button onclick="capturePhotoEdit();"&gt;Capturar foto editable&lt;/button&gt; &lt;br&gt;
+    &lt;button onclick="getPhoto(pictureSource.PHOTOLIBRARY);"&gt;Desde la librería de imágenes&lt;/button&gt;&lt;br&gt;
+    &lt;button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);"&gt;Desde el álbum de fotos&lt;/button&gt;&lt;br&gt;
+    &lt;img style="display:none;width:60px;height:60px;" id="smallImage" src="" /&gt;
+    &lt;img style="display:none;" id="largeImage" src="" /&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="cameraSuccess">cameraSuccess</a></h1>
+
+<p>Función 'callback' onSuccess que proporciona información de la imagen.</p>
+
+<pre class="prettyprint"><code>function(imageData) {
+    // Hacer algo con la imagen
+}
+</code></pre>
+
+<h2>
+<a name="cameraSuccess_argumentos">Argumentos</a>
+</h2>
+
+<ul>
+<li>
+<strong>imageData:</strong> Imagen codificada en Base64, o la ruta URI del fichero de imagen, según la opción que uses en <code><a href="phonegap_camera_camera.md.html#cameraOptions">cameraOptions</a></code>. (<code>String</code>)</li>
+</ul>
+<h2>
+<a name="cameraSuccess_ejemplo">Ejemplo</a>
+</h2>
+
+<pre class="prettyprint"><code>// Mostrar imagen
+//
+function cameraCallback(imageData) {
+    var image = document.getElementById('miImagen');
+    image.src = "data:image/jpeg;base64," + imageData;
+}
+</code></pre>
+
+<hr>
+<h1><a name="cameraError">cameraError</a></h1>
+
+<p>Función 'callback' onError que proporciona un mensaje de error.</p>
+
+<pre class="prettyprint"><code>function(message) {
+    // Muestra un mensaje de ayuda
+}
+</code></pre>
+
+<h2>
+<a name="cameraError_argumentos">Argumentos</a>
+</h2>
+
+<ul>
+<li>
+<strong>message:</strong> El mensaje entregado por el código nativo del dispositivo. (<code>String</code>)</li>
+</ul>
+<hr>
+<h1><a name="cameraOptions">cameraOptions</a></h1>
+
+<p>Argumento opcional para personalizar la configuración de la cámara.</p>
+
+<pre class="prettyprint"><code>{ quality : 75, 
+  destinationType : <a href="phonegap_camera_camera.md.html#Camera">Camera</a>.DestinationType.DATA_URL, 
+  sourceType : <a href="phonegap_camera_camera.md.html#Camera">Camera</a>.PictureSourceType.CAMERA, 
+  allowEdit : true,
+  encodingType: <a href="phonegap_camera_camera.md.html#Camera">Camera</a>.EncodingType.JPEG,
+  targetWidth: 100,
+  targetHeight: 100 };
+</code></pre>
+
+<h2>
+<a name="cameraOptions_opciones">Opciones</a>
+</h2>
+
+<ul>
+<li><p><strong>quality:</strong> Calidad de la imagen. Rango [0, 100]. (<code>Number</code>)</p></li>
+<li>
+<p><strong>destinationType:</strong> Elige el formato del valor retornado.  Definido en navigator.camera.DestinationType (<code>Number</code>)</p>
+
+<pre class="prettyprint"><code>    <a href="phonegap_camera_camera.md.html#Camera">Camera</a>.DestinationType = {
+        DATA_URL : 0,                // Retorna la imagen como una string codificada en base64
+        FILE_URI : 1                 // Retorna la URI del fichero de imagen
+    };
+</code></pre>
+</li>
+<li>
+<p><strong>sourceType:</strong> Elige el origen de la imagen. Definido en nagivator.camera.PictureSourceType (<code>Number</code>)</p>
+
+<pre class="prettyprint"><code><a href="phonegap_camera_camera.md.html#Camera">Camera</a>.PictureSourceType = {
+    PHOTOLIBRARY : 0,
+    CAMERA : 1,
+    SAVEDPHOTOALBUM : 2
+};
+</code></pre>
+</li>
+<li><p><strong>allowEdit:</strong> Permitir un simple editado antes de la selección. (<code>Boolean</code>)</p></li>
+<li>
+<p><strong>EncodingType:</strong> Elige el formato de codificación del fichero de imagen retornado. Definido en navigator.camera.EncodingType (<code>Number</code>)</p>
+
+<pre class="prettyprint"><code>    <a href="phonegap_camera_camera.md.html#Camera">Camera</a>.EncodingType = {
+        JPEG : 0,               // Retornar una imagen codificada en JPEG
+        PNG : 1                 // Retornar una imagen codificada en PNG
+    };
+</code></pre>
+</li>
+<li><p><strong>targetWidth:</strong> Ancho en píxeles para dimensionar la imagen. Debe ser usada con targetHeight. Se respetara la proporción de la imagen. (<code>Number</code>)</p></li>
+<li>
+<strong>targetHeight:</strong> Altura en píxeles para dimensionar la imagen. Debe ser usada con targetWidth. Se respetara la proporción de la imagen. (<code>Number</code>)</li>
+</ul>
+<h2>
+<a name="cameraOptions_peculiaridades_android">Peculiaridades Android</a>
+</h2>
+
+<ul>
+<li>Ignora el argumento <code>allowEdit</code>.</li>
+<li>
+<a href="phonegap_camera_camera.md.html#Camera">Camera</a>.PictureSourceType.PHOTOLIBRARY y <a href="phonegap_camera_camera.md.html#Camera">Camera</a>.PictureSourceType.SAVEDPHOTOALBUM muestran siempre el mismo álbum de fotos.</li>
+<li>El argumento <a href="phonegap_camera_camera.md.html#Camera">Camera</a>.EncodingType no esta soportado.</li>
+</ul>
+<h2>
+<a name="cameraOptions_peculiaridades_blackberry">Peculiaridades BlackBerry</a>
+</h2>
+
+<ul>
+<li>Ignora el argumento <code>quality</code>.</li>
+<li>Ignora el argumento <code>sourceType</code>.</li>
+<li>Ignora el argumento <code>allowEdit</code>.</li>
+<li>La aplicación debe tener permisos de "inyección de teclas" para poder cerrar la aplicación nativa de la cámara después de que sea tomada.</li>
+<li>Si usas imágenes grandes puedes tener problemas codificando la imagen, esto ocurre en los últimos dispositivos con cámara de alta resolución (Ej: Torch 9800).</li>
+</ul>
+<h2>
+<a name="cameraOptions_peculiaridades_palm">Peculiaridades Palm</a>
+</h2>
+
+<ul>
+<li>Ignora el argumento <code>quality</code>.</li>
+<li>Ignora el argumento <code>sourceType</code>.</li>
+<li>Ignora el argumento <code>allowEdit</code>.</li>
+</ul>
+<h2>
+<a name="cameraOptions_peculiaridades_iphone">Peculiaridades iPhone</a>
+</h2>
+
+<ul>
+<li>La opción <code>quality</code> debería ser menor de 50 para evitar errores de memoria en algunos dispositivos.</li>
+<li>Cuando se usa la opción <code>destinationType.FILE_URI</code>, las fotos se guardan en el directorio temporal de aplicaciones.</li>
+<li>Todo el contenido del directorio temporal de aplicaciones se eliminara automáticamente cuando la aplicación termine. También puedes eliminar el contenido de este directorio usando la API <code>navigator.fileMgr</code> si te preocupa el espacio de almacenamiento.</li>
+</ul>
+</div>
+        </div>
+
+        <!-- Functionality and Syntax Highlighting -->
+        <script type="text/javascript" src="index.js"></script><script type="text/javascript" src="prettify/prettify.js"></script>
+</body>
+</html>

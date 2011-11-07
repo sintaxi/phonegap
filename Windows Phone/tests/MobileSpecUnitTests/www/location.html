@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- meta name="viewport" content="width=device-width, height=device-height, user-scalable=yes, initial-scale=2.0, maximum-scale=4.0, minimum-scale=1.0" / -->
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"> 
+    <title>PhoneGap</title>
+    <link rel="stylesheet" href="master.css" type="text/css" media="screen">
+    
+    <script type="text/javascript">
+      // provide our own console if it does not exist, huge dev aid!
+      if(typeof window.console == "undefined")
+      {
+      window.console = {log:function(str){window.external.Notify(str);}};
+      }
+
+      // output any errors to console log, created above.
+      window.onerror=function(e)
+      {
+      console.log("window.onerror ::" + JSON.stringify(e));
+      };
+
+      console.log("Installed console ! ");
+    </script>
+    
+    <script type="text/javascript" charset="utf-8" src="phonegap-1.2.0.js"></script>       
+    
+ 
+
+      
+<script type="text/javascript" charset="utf-8">
+
+    var deviceReady = false;
+
+    //-------------------------------------------------------------------------
+    // Location
+    //-------------------------------------------------------------------------
+    var watchLocationId = null;
+
+    /**
+     * Start watching location
+     */
+    var watchLocation = function() {
+        console.log("watchLocation()");
+
+        // Success callback
+        var success = function(p){
+            document.getElementById('latitude').innerHTML = p.coords.latitude;
+            document.getElementById('longitude').innerHTML = p.coords.longitude;
+			
+			document.getElementById('tdAlt').innerHTML = p.coords.altitude;
+			document.getElementById('tdAcc').innerHTML = p.coords.accuracy;
+			document.getElementById('tdAltAcc').innerHTML = p.coords.altitudeAccuracy;
+			document.getElementById('tdHeading').innerHTML = p.coords.heading;
+			document.getElementById('tdSpeed').innerHTML = p.coords.speed;
+        };
+
+        // Fail callback
+        var fail = function(e){
+            console.log("watchLocation fail callback with error code "+e);
+            stopLocation();
+        };
+
+        // Get location
+        watchLocationId = navigator.geolocation.watchPosition(success, fail, {enableHighAccuracy: true});
+        setLocationStatus("Running");
+    };
+
+    /**
+     * Stop watching the location
+     */
+    var stopLocation = function() {
+        setLocationStatus("Stopped");
+        if (watchLocationId) {
+            navigator.geolocation.clearWatch(watchLocationId);
+            watchLocationId = null;
+        }
+    };
+
+    /**
+     * Get current location
+     */
+    var getLocation = function() {
+        console.log("getLocation()");
+
+        // Stop location if running
+        stopLocation();
+
+        // Success callback
+        var success = function(p)
+		{
+            document.getElementById('latitude').innerHTML = p.coords.latitude;
+            document.getElementById('longitude').innerHTML = p.coords.longitude;
+			
+			document.getElementById('tdAlt').innerHTML = p.coords.altitude;
+			document.getElementById('tdAcc').innerHTML = p.coords.accuracy;
+			document.getElementById('tdAltAcc').innerHTML = p.coords.altitudeAccuracy;
+			document.getElementById('tdHeading').innerHTML = p.coords.heading;
+			document.getElementById('tdSpeed').innerHTML = p.coords.speed;
+
+            setLocationStatus("Done");
+        };
+
+        // Fail callback
+        var fail = function(e){
+            console.log("getLocation fail callback with error code "+e.code);
+            setLocationStatus("Error: "+e.code);
+        };
+
+        // Get location
+        navigator.geolocation.getCurrentPosition(success, fail, {enableHighAccuracy: true}); //, {timeout: 10000});
+        setLocationStatus("Retrieving location...");
+
+    };
+
+    /**
+     * Set location status
+     */
+    var setLocationStatus = function(status) {
+        document.getElementById('location_status').innerHTML = status;
+    };
+    
+    /**
+     * Function called when page has finished loading.
+     */
+    function init() {
+        document.addEventListener("deviceready", function() {
+                deviceReady = true;
+                console.log("Device="+device.platform+" "+device.version);
+            }, false);
+        window.setTimeout(function() {
+        	if (!deviceReady) {
+        		alert("Error: PhoneGap did not initialize.  Demo will not run correctly.");
+        	}
+        },1000);
+    }
+
+</script>
+
+  </head>
+  <body onLoad="init();" id="stage" class="theme">
+  
+    <h1>Location</h1>
+    <div id="info">
+        <b>Status:</b> <span id="location_status">Stopped</span>
+        <table width="100%">
+            <tr><td><b>Latitude:</b></td><td id="latitude">&nbsp;</td></tr>
+            <tr><td><b>Longitude:</b></td><td id="longitude">&nbsp;</td></tr>
+            <tr><td><b>Altitude:</b></td><td id="tdAlt">&nbsp;</td></tr>
+            <tr><td><b>Accuracy:</b></td><td id="tdAcc">&nbsp;</td></tr>
+            <tr><td><b>Altitude Accuracy:</b></td><td id="tdAltAcc">&nbsp;</td></tr>
+            <tr><td><b>Heading:</b></td><td id="tdHeading">&nbsp;</td></tr>
+            <tr><td><b>Speed:</b></td><td id="tdSpeed">&nbsp;</td></tr>
+        </table>
+    </div>
+    <h2>Action</h2>
+    <a href="#" class="btn large" onClick="getLocation();">Get Location</a>
+    <a href="#" class="btn large" onClick="watchLocation();">Start Watching Location</a>
+    <a href="#" class="btn large" onClick="stopLocation();">Stop Watching Location</a>
+    <h2>&nbsp;</h2><a href="index.html" class="backBtn">Back</a>   
+  </body>
+</html>      

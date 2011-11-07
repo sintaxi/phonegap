@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+<meta name="generator" content="joDoc">
+<title>Documentacion API PhoneGap</title>
+<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
+<link rel="stylesheet" type="text/css" href="prettify/prettify.css">
+</head>
+<body>
+        <div id="header">
+            <h1><a href="index.html">Documentación Phone<strong>Gap</strong></a></h1>
+            <small>
+                <select><optgroup label="English" value="en">
+<option value="edge">edge</option>
+<option value="1.2.0">1.2.0</option>
+<option value="1.1.0">1.1.0</option>
+<option value="1.0.0rc3">1.0.0rc3</option>
+<option value="1.0.0rc2">1.0.0rc2</option>
+<option value="1.0.0rc1">1.0.0rc1</option>
+<option value="1.0.0">1.0.0</option>
+<option value="0.9.6">0.9.6</option>
+<option value="0.9.5.1">0.9.5.1</option>
+<option value="0.9.5">0.9.5</option>
+<option value="0.9.4">0.9.4</option>
+<option value="0.9.3">0.9.3</option>
+<option value="0.9.2">0.9.2</option>
+</optgroup>
+<optgroup label="Español" value="es"><option selected value="1.0.0">1.0.0</option></optgroup>
+<optgroup label="Japanese" value="jp"><option value="0.9.5">0.9.5</option></optgroup></select></small>
+        </div>
+        <div id="subheader">
+            <h1>Accelerometer</h1>
+            <small><select><option value="Accelerometer">Accelerometer</option>
+<option value="Accelerometer_m_todos">      - Métodos</option>
+<option value="Accelerometer_argumentos">      - Argumentos</option>
+<option value="Accelerometer_objetos_solo_lectura">      - Objetos (Solo lectura)</option>
+<option value="accelerometer.getCurrentAcceleration">accelerometer.getCurrentAcceleration</option>
+<option value="accelerometer.getCurrentAcceleration_descripci_n">      - Descripción</option>
+<option value="accelerometer.getCurrentAcceleration_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="accelerometer.getCurrentAcceleration_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="accelerometer.getCurrentAcceleration_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="accelerometer.getCurrentAcceleration_peculiaridades_en_iphone">      - Peculiaridades en iPhone</option>
+<option value="accelerometer.watchAcceleration">accelerometer.watchAcceleration</option>
+<option value="accelerometer.watchAcceleration_descripci_n">      - Descripción</option>
+<option value="accelerometer.watchAcceleration_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="accelerometer.watchAcceleration_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="accelerometer.watchAcceleration_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="accelerometer.watchAcceleration_peculiaridades_iphone">      - Peculiaridades iPhone</option>
+<option value="accelerometer.clearWatch">accelerometer.clearWatch</option>
+<option value="accelerometer.clearWatch_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="accelerometer.clearWatch_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="accelerometer.clearWatch_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="Acceleration">Acceleration</option>
+<option value="Acceleration_atributos">      - Atributos</option>
+<option value="Acceleration_descripci_n">      - Descripción</option>
+<option value="Acceleration_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="Acceleration_ejemplo_rapido">      - Ejemplo Rapido</option>
+<option value="Acceleration_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="accelerometerSuccess">accelerometerSuccess</option>
+<option value="accelerometerSuccess_argumentos">      - Argumentos</option>
+<option value="accelerometerSuccess_ejemplo">      - Ejemplo</option>
+<option value="accelerometerError">accelerometerError</option>
+<option value="accelerometerOptions">accelerometerOptions</option>
+<option value="accelerometerOptions_opciones">      - Opciones</option></select></small>
+        </div>
+
+        <div id="sidebar">
+            <div class="vertical_divider"></div>
+            <h1>Referencia API</h1>
+            <ul>
+<li><a href="phonegap_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
+<li><a href="phonegap_camera_camera.md.html#Camera">Camera</a></li>
+<li><a href="phonegap_media_capture_capture.md.html#Capture">Capture</a></li>
+<li><a href="phonegap_compass_compass.md.html#Compass">Compass</a></li>
+<li><a href="phonegap_connection_connection.md.html#Connection">Connection</a></li>
+<li><a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a></li>
+<li><a href="phonegap_device_device.md.html#Device">Device</a></li>
+<li><a href="phonegap_events_events.md.html#Events">Events</a></li>
+<li><a href="phonegap_file_file.md.html#File">File</a></li>
+<li><a href="phonegap_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
+<li><a href="phonegap_media_media.md.html#Media">Media</a></li>
+<li><a href="phonegap_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="phonegap_storage_storage.md.html#Storage">Storage</a></li>
+</ul>
+<h1></h1>
+            <ul>
+<li><a href="_index.html">Índice por palabras</a></li>
+            </ul>
+</div>
+
+        <div id="scrollable">
+            <div id="content">
+                <h1><a name="Accelerometer">Accelerometer</a></h1>
+
+<blockquote>
+  <p>Captura el movimiento del dispositivo sobre los ejes x, y, z.</p>
+</blockquote>
+
+<h2>
+<a name="Accelerometer_m_todos">Métodos</a>
+</h2>
+
+<ul>
+<li><a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.getCurrentAcceleration">accelerometer.getCurrentAcceleration</a></li>
+<li><a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a></li>
+<li><a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.clearWatch">accelerometer.clearWatch</a></li>
+</ul>
+<h2>
+<a name="Accelerometer_argumentos">Argumentos</a>
+</h2>
+
+<ul>
+<li><a href="phonegap_accelerometer_accelerometer.md.html#accelerometerSuccess">accelerometerSuccess</a></li>
+<li><a href="phonegap_accelerometer_accelerometer.md.html#accelerometerError">accelerometerError</a></li>
+<li><a href="phonegap_accelerometer_accelerometer.md.html#accelerometerOptions">accelerometerOptions</a></li>
+</ul>
+<h2>
+<a name="Accelerometer_objetos_solo_lectura">Objetos (Solo lectura)</a>
+</h2>
+
+<ul>
+<li><a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a></li>
+</ul>
+<hr>
+<h1><a name="accelerometer.getCurrentAcceleration">accelerometer.getCurrentAcceleration</a></h1>
+
+<p>Obtiene la aceleración actual sobre los ejes x, y, z.</p>
+
+<pre class="prettyprint"><code>navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.getCurrentAcceleration">accelerometer.getCurrentAcceleration</a>(<a href="phonegap_accelerometer_accelerometer.md.html#accelerometerSuccess">accelerometerSuccess</a>, <a href="phonegap_accelerometer_accelerometer.md.html#accelerometerError">accelerometerError</a>);
+</code></pre>
+
+<h2>
+<a name="accelerometer.getCurrentAcceleration_descripci_n">Descripción</a>
+</h2>
+
+<p>El acelerómetro es un sensor de movimiento que detecta los movimientos relativos a la actual orientación del dispositivo (la diferencia). El acelerómetro puede detectar movimiento 3D sobre los ejes x, y, z.</p>
+
+<p>La aceleración se obtiene mediante la función 'callback' <code><a href="phonegap_accelerometer_accelerometer.md.html#accelerometerSuccess">accelerometerSuccess</a></code>.</p>
+
+<h2>
+<a name="accelerometer.getCurrentAcceleration_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+<li>iPhone</li>
+</ul>
+<h2>
+<a name="accelerometer.getCurrentAcceleration_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>function onSuccess(acceleration) {
+    alert('Aceleración X: ' + acceleration.x + '\n' +
+          'Aceleración Y: ' + acceleration.y + '\n' +
+          'Aceleración Z: ' + acceleration.z + '\n' +
+          'Timestamp: '     + acceleration.timestamp + '\n');
+};
+
+function onError() {
+    alert('onError!');
+};
+
+navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.getCurrentAcceleration">accelerometer.getCurrentAcceleration</a>(onSuccess, onError);
+</code></pre>
+
+<h2>
+<a name="accelerometer.getCurrentAcceleration_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espera a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.getCurrentAcceleration">accelerometer.getCurrentAcceleration</a>(onSuccess, onError);
+    }
+
+    // onSuccess: Obtiene el resultado
+    //
+    function onSuccess(acceleration) {
+        alert('Aceleración X: '  + acceleration.x + '\n' +
+              'Aceleración Y: '  + acceleration.y + '\n' +
+              'Aceleración Z: '  + acceleration.z + '\n' +
+              'Timestamp: '      + acceleration.timestamp + '\n');
+    }
+
+    // onError: Ocurrio un error
+    //
+    function onError() {
+        alert('onError!');
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Ejemplo&lt;/h1&gt;
+    &lt;p&gt;getCurrentAcceleration&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2>
+<a name="accelerometer.getCurrentAcceleration_peculiaridades_en_iphone">Peculiaridades en iPhone</a>
+</h2>
+
+<ul>
+<li>iPhone no soporta obtener la aceleración exacta en un preciso momento.</li>
+<li>Debes estar muy atento a la aceleración y la captura de los datos en cada intervalo.</li>
+<li>Porque <code>getCurrentAcceleration</code> simplemente proporciona el ultimo valor que se obtuvo en la llamada <code>watchAccelerometer</code>.</li>
+</ul>
+<hr>
+<h1><a name="accelerometer.watchAcceleration">accelerometer.watchAcceleration</a></h1>
+
+<p>Obtiene la aceleración de los ejes x, y, z, cada un cierto intervalo de tiempo.</p>
+
+<pre class="prettyprint"><code>var watchID = navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a>(<a href="phonegap_accelerometer_accelerometer.md.html#accelerometerSuccess">accelerometerSuccess</a>,
+                                                       <a href="phonegap_accelerometer_accelerometer.md.html#accelerometerError">accelerometerError</a>,
+                                                       [<a href="phonegap_accelerometer_accelerometer.md.html#accelerometerOptions">accelerometerOptions</a>]);
+</code></pre>
+
+<h2>
+<a name="accelerometer.watchAcceleration_descripci_n">Descripción</a>
+</h2>
+
+<p>El acelerómetro es un sensor de movimiento que detecta cambios en el movimiento relativa a la posición actual (la diferencia). El acelerómetro puede detectar movimiento 3D sobre los ejes x, y, z 
+La función <code><a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a></code> crea un visor que se encarga de observar la aceleración cada ciertos intervalos de tiempo. Cada vez que el visor de aceleración obtiene la aceleración, la función <code><a href="phonegap_accelerometer_accelerometer.md.html#accelerometerSuccess">accelerometerSuccess</a></code> se disparara.  Puedes especificar el intervalo (milisegundos) en la opción <code>frequency</code> del objeto <code>acceleratorOptions</code>.</p>
+
+<p>Esta función retorna un identificador que referencia a este visor de aceleración, puedes usarlo en la función <code>clearWatch</code> para detenerlo.</p>
+
+<h2>
+<a name="accelerometer.watchAcceleration_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+<li>iPhone</li>
+</ul>
+<h2>
+<a name="accelerometer.watchAcceleration_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>function onSuccess(acceleration) {
+    alert('Aceleración X: ' + acceleration.x + '\n' +
+          'Aceleración Y: '   + acceleration.y + '\n' +
+          'Aceleración Z: '   + acceleration.z + '\n' +
+          'Timestamp: '       + acceleration.timestamp + '\n');
+};
+
+function onError() {
+    alert('onError!');
+};
+
+var options = { frequency: 3000 };  // Actualizar cada 3 segundos
+
+var watchID = navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a>(onSuccess, onError, options);
+</code></pre>
+
+<h2>
+<a name="accelerometer.watchAcceleration_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // El identificador del visor de aceleracion `watchAcceleration`
+    var watchID = null;
+
+    // Espera a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        startWatch();
+    }
+
+    // Empieza a observar la aceleracion
+    //
+    function startWatch() {
+
+        // Actualizar cada 3 segundos
+        var options = { frequency: 3000 };
+
+        watchID = navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a>(onSuccess, onError, options);
+    }
+
+    // Dejar de observar la aceleracion
+    //
+    function stopWatch() {
+        if (watchID) {
+            navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.clearWatch">accelerometer.clearWatch</a>(watchID);
+            watchID = null;
+        }
+    }
+
+    // onSuccess: Obtiene el resultado
+    //
+    function onSuccess(acceleration) {
+        var element = document.getElementById('accelerometer');
+        element.innerHTML = 'Aceleracion X: '  + acceleration.x + '&lt;br /&gt;' +
+                            'Aceleración Y: '  + acceleration.y + '&lt;br /&gt;' +
+                            'Aceleración Z: '  + acceleration.z + '&lt;br /&gt;' +
+                            'Timestamp: '      + acceleration.timestamp + '&lt;br /&gt;';
+    }
+
+    // onError: Ocurrio un error
+    //
+    function onError() {
+        alert('onError!');
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="accelerometer"&gt;Esperando al acelerómetro...&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2>
+<a name="accelerometer.watchAcceleration_peculiaridades_iphone">Peculiaridades iPhone</a>
+</h2>
+
+<ul>
+<li>En cada intervalo de tiempo, PhoneGap llamara a la función onSuccess y le pasara los resultados del acelerómetro.</li>
+<li>Sin embargo, PhoneGap restringe el intervalo a un mínimo de 40ms y un máximo de 1000ms.
+<ul>
+<li>Por ejemplo, si solicitas un intervalo de 3 segundos (3000ms), PhoneGap automáticamente obtendrá la aceleración cada 1 segundo, pero llamara a la función onSuccess cada 3 segundos.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1><a name="accelerometer.clearWatch">accelerometer.clearWatch</a></h1>
+
+<p>Detiene el visor de aceleración con el <code>watchID</code> especificado.</p>
+
+<pre class="prettyprint"><code>navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.clearWatch">accelerometer.clearWatch</a>(watchID);
+</code></pre>
+
+<ul>
+<li>
+<strong>watchID</strong>: El identificador del visor de aceleración <code>watchAcceleration</code> que quieres detener.</li>
+</ul>
+<h2>
+<a name="accelerometer.clearWatch_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+<li>iPhone</li>
+</ul>
+<h2>
+<a name="accelerometer.clearWatch_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>var watchID = navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a>(onSuccess, onError, options);
+
+// ... mas tarde ...
+
+navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.clearWatch">accelerometer.clearWatch</a>(watchID);
+</code></pre>
+
+<h2>
+<a name="accelerometer.clearWatch_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // El identificador del visor de aceleración a detener
+    var watchID = null;
+
+    // Espera a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        startWatch();
+    }
+
+    // Empieza a observar la aceleración
+    //
+    function startWatch() {
+
+        // Actualiza cada 3 segundos
+        var options = { frequency: 3000 };
+
+        watchID = navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a>(onSuccess, onError, options);
+    }
+
+    // Deja de observar la aceleración
+    //
+    function stopWatch() {
+        if (watchID) {
+            navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.clearWatch">accelerometer.clearWatch</a>(watchID);
+            watchID = null;
+        }
+    }
+
+    // onSuccess: Obtiene el resultado de la aceleración actual
+    //
+    function onSuccess(acceleration) {
+        var element = document.getElementById('accelerometer');
+        element.innerHTML = 'Aceleración X: ' + acceleration.x + '&lt;br /&gt;' +
+                            'Aceleración Y: ' + acceleration.y + '&lt;br /&gt;' +
+                            'Aceleración Z: ' + acceleration.z + '&lt;br /&gt;' + 
+                            'Timestamp: '      + acceleration.timestamp + '&lt;br /&gt;';
+    }
+
+    // onError: Fallo al obtener la aceleración
+    //
+    function onError() {
+        alert('onError!');
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="accelerometer"&gt;Esperando al acelerómetro...&lt;/div&gt;
+    &lt;button onclick="stopWatch();"&gt;Detener el visor&lt;/button&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="Acceleration">Acceleration</a></h1>
+
+<p>Obtiene información actual sobre el sensor de movimiento.</p>
+
+<h2>
+<a name="Acceleration_atributos">Atributos</a>
+</h2>
+
+<ul>
+<li>
+<strong>x:</strong> Valor de movimiento en el eje X. Rango [0, 1] (<code>Number</code>)</li>
+<li>
+<strong>y:</strong> Valor de movimiento en el eje Y. Rango [0, 1] (<code>Number</code>)</li>
+<li>
+<strong>z:</strong> Valor de movimiento en el eje Z. Rango [0, 1] (<code>Number</code>)</li>
+<li>
+<strong>timestamp:</strong> Timestamp de cuando se obtuvo (milisegundos). (<code>DOMTimeStamp</code>)</li>
+</ul>
+<h2>
+<a name="Acceleration_descripci_n">Descripción</a>
+</h2>
+
+<p>Este objeto es creado y compuesto por PhoneGap, luego es retornado por el metodo <code><a href="phonegap_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></code>.</p>
+
+<h2>
+<a name="Acceleration_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 y superior)</li>
+<li>iPhone</li>
+</ul>
+<h2>
+<a name="Acceleration_ejemplo_rapido">Ejemplo Rapido</a>
+</h2>
+
+<pre class="prettyprint"><code>function onSuccess(acceleration) {
+    alert('Aceleración X: ' + acceleration.x + '\n' +
+          'Aceleración Y: ' + acceleration.y + '\n' +
+          'Aceleración Z: ' + acceleration.z + '\n' +
+          'Timestamp: '     + acceleration.timestamp + '\n');
+};
+
+function onError() {
+    alert('onError!');
+};
+
+navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.getCurrentAcceleration">accelerometer.getCurrentAcceleration</a>(onSuccess, onError);
+</code></pre>
+
+<h2>
+<a name="Acceleration_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espera a que Phonegap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.getCurrentAcceleration">accelerometer.getCurrentAcceleration</a>(onSuccess, onError);
+    }
+
+    // onSuccess: Obtiene el resultado
+    //
+    function onSuccess() {
+        alert('Aceleración X: ' + acceleration.x + '\n' +
+              'Aceleración Y: ' + acceleration.y + '\n' +
+              'Aceleración Z: ' + acceleration.z + '\n' +
+              'Timestamp: '     + acceleration.timestamp + '\n');
+    }
+
+    // onError: Ocurrió un error
+    //
+    function onError() {
+        alert('onError!');
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Ejemplo&lt;/h1&gt;
+    &lt;p&gt;getCurrentAcceleration&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="accelerometerSuccess">accelerometerSuccess</a></h1>
+
+<p>Función 'callback' onSuccess que proporciona información sobre la aceleración.</p>
+
+<pre class="prettyprint"><code>function(acceleration) {
+    // Hacer algo...
+}
+</code></pre>
+
+<h2>
+<a name="accelerometerSuccess_argumentos">Argumentos</a>
+</h2>
+
+<ul>
+<li>
+<strong>acceleration:</strong> La aceleración actual. (Aceleración)</li>
+</ul>
+<h2>
+<a name="accelerometerSuccess_ejemplo">Ejemplo</a>
+</h2>
+
+<pre class="prettyprint"><code>function onSuccess(acceleration) {
+    alert('Aceleración X: ' + acceleration.x + '\n' +
+          'Aceleración Y: ' + acceleration.y + '\n' +
+          'Aceleración Z: ' + acceleration.z + '\n' +
+          'Timestamp: '     + acceleration.timestamp + '\n');
+};
+</code></pre>
+
+<hr>
+<h1><a name="accelerometerError">accelerometerError</a></h1>
+
+<p>Funcion 'callback' onError para las funciones de aceleración.</p>
+
+<pre class="prettyprint"><code>function() {
+    // Maneja el error
+}
+</code></pre>
+
+<hr>
+<h1><a name="accelerometerOptions">accelerometerOptions</a></h1>
+
+<p>Este argumento es opcional y sirve para personalizar la obtención del acelerómetro.</p>
+
+<h2>
+<a name="accelerometerOptions_opciones">Opciones</a>
+</h2>
+
+<ul>
+<li>
+<strong>frequency:</strong> Cada cuantos milisegundos obtener la aceleración (<code><a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a></code>). <em>(Number)</em> (Por defecto: 10000)</li>
+</ul>
+</div>
+        </div>
+
+        <!-- Functionality and Syntax Highlighting -->
+        <script type="text/javascript" src="index.js"></script><script type="text/javascript" src="prettify/prettify.js"></script>
+</body>
+</html>

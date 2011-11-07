@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html> 
+<html>
+<head>
+
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=9" />
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+  
+    <title>PhoneGap - WP7 : Proof of concept</title>
+    <link rel="stylesheet" type="text/css" href="master.css"/>
+
+  <script type="text/javascript" charset="utf-8" src="phonegap-base.js"></script>
+  
+  <script type="text/javascript" charset="utf-8">
+
+    // provide our own console if it does not exist, huge dev aid!
+    if(typeof window.console == "undefined")
+    {
+    window.console = {log:function(str){window.external.Notify(str);}};
+    }
+
+    // output any errors to console log, created above.
+    window.onerror=function(e){console.log("Error ::" + e);};
+
+    console.log("Installed console ! ");
+
+    function JavaScriptFunctionWithoutParameters()
+    {
+    outputID.innerHTML += "JavaScript function called!";
+    return "hey";
+    }
+
+    function JavaScriptFunctionWithParameters(param)
+    {
+    outputID.innerHTML += "JavaScript function with parameters called! With param = " + param;
+    return "hey this is the param: " + param;
+    }
+    
+    function makeError()
+    {
+    forceError(); // forceError does not exist
+    }
+
+    console.log("JSON = " + JSON);
+	console.log("JSON.parse = " + JSON.parse);
+	
+	document.addEventListener("DOMContentLoaded", 
+	function() {
+    	console.log("DOMContentLoaded");
+	}, false);
+
+
+    function doLoad()
+    {
+        console.log("document.addEventListener = " + document.addEventListener);
+    }
+
+
+    var successCallback = function (result) {
+
+       var message = result;
+       console.log(message);
+
+       divProperties.innerHTML += message + "<br/>";
+
+       //exec(null, null, 'Notification', 'alert', '{"message":"' + result + '"}');
+		
+	   return message;
+       
+    }
+
+    var failureCallback = function (error) {
+
+        var message = error;
+        console.log(message);
+
+        divProperties.innerHTML += message + "<br/>";
+
+        //exec(null, null, 'Notification', 'alert', '{"message":"' + error + '"}');
+
+    }
+	
+	var onGetPictureSuccess = function(result)
+	{
+		gapImage.src = "../" + result;
+	}
+
+
+	
+	
+	
+
+
+  </script>
+    
+</head>
+<body onLoad="doLoad()">
+    <div id="dude">Hmmm</div>
+
+    <!-- This image has been included to prove it can be done -->
+    <img alt="PhoneGap" src="pg_logo.png" id="gapImage" style="width:200px;height:auto;" />
+
+    <div id="outputID" style="color:Orange; font-size:16">
+      Hello from HTML document pre script!
+    </div>
+
+
+    <ul>
+    	<li onClick="PhoneGap.exec(successCallback, failureCallback,'Notification','alert',{message:'Here be monsters!'});">Alert</li>
+        <li onClick="PhoneGap.exec(successCallback, failureCallback,'Notification','alert',{message:'Here be monsters!',title:'RAWR',buttonLabel:'MKay'});">Alert RAWR</li>
+        <li onClick="PhoneGap.exec(successCallback, failureCallback,'Device','name');">Device Platform</li>
+        <li onClick="PhoneGap.exec(successCallback, failureCallback,'Dummy','somemethod');">Unknown Service</li>
+        <li onClick="PhoneGap.exec(successCallback, failureCallback,'Device','somemethod');">Unknown Method</li>
+        <li onClick="PhoneGap.exec(successCallback, failureCallback,'Capture','captureImage',{limit: 2});">Capture.captureImage</li>
+        <li onClick="PhoneGap.exec(onGetPictureSuccess, failureCallback,'Camera','getPicture',{ PictureSourceType:1, DestinationType: 1});">Camera.getPicture</li>
+        <li onClick="PhoneGap.exec(onGetPictureSuccess, failureCallback,'Camera','getPicture',{ PictureSourceType:0, DestinationType: 1});">Camera.getPicture(PhotoRoll)</li>
+        <li onClick="PhoneGap.exec(successCallback, failureCallback,'Capture','getFormatData',{fullPath: 'CapturedImagesCache\\CameraCapture-f3b7730b-ff17-46b7-809a-59c179d08fd8.jpg'});">Capture.getMediaData</li>
+    </ul>
+
+    <div id="divProperties" style="color:Orange;">Placeholder for app messages</div>
+
+  <a href="contacts.html">Contacts Demo</a>
+  
+  <!--
+  <button onClick="PhoneGap.exec(successCallback, failureCallback, 'Contacts', 'create', null);">create a new contact</button>
+  <button onClick="PhoneGap.exec(successCallback, failureCallback, 'Contacts', 'create', {FirstName:'herm',LastName:'wong'});">create a new contact with predefined data</button>
+  <button onClick="PhoneGap.exec(successCallback, failureCallback, 'Contacts', 'find', {FirstName:'herm',LastName:'wong'});">find a contact</button>
+  -->
+  
+</body>
+</html>

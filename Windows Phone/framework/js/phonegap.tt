@@ -1,0 +1,65 @@
+﻿<#@ template language="C#" hostspecific="True" #>
+<#@ Output Extension=".log" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="System.Xml.Linq" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.CodeDom" #>
+<#@ import namespace="System.CodeDom.Compiler" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Xml.Linq" #>
+<#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
+
+<#
+// if you update the version, update the included phonegap-{VER}.js file in the js folder
+// and make sure it is set as "Content" and "Copy if newer"
+var VERSION = @"1.2.0"; 
+
+var currentDirectory = Path.GetDirectoryName(Host.TemplateFile);
+var jsFiles = Directory.GetFiles(currentDirectory, "*.js");
+
+var outputJs = String.Format(@"phonegap-{0}.js", VERSION);
+var outputFile = GetJsFilePath(outputJs);
+
+// we remove the outputFile from the list of files
+jsFiles = jsFiles.Where(val => val != outputFile).ToArray();
+
+#>
+
+Template File: <#=Host.TemplateFile #>
+Template Directory: <#= currentDirectory #>
+.Js Files Found: <#= jsFiles.Length #>
+Converting:
+<# foreach(var jsFile in jsFiles) { #>
+  * <#= jsFile #> 
+<# }
+
+// write the disclaimer
+File.WriteAllText(outputFile, ReadFile(GetJsFilePath(@"disclaimer.txt")));
+// write the phonegap base code
+File.AppendAllText(outputFile, ReadFile(GetJsFilePath(@"phonegap.js.base")));
+
+foreach(var jsFile in jsFiles) 
+{
+	File.AppendAllText(outputFile, ReadFile(jsFile));
+}
+
+#>
+
+<#+
+
+public string GetJsFilePath(string filename) {
+	return  Path.GetDirectoryName(Host.TemplateFile) +  @"\"  + filename;
+}
+
+public string ReadFile(string jsFileName) {
+			StreamReader myFile = new StreamReader(jsFileName);
+			string myString = myFile.ReadToEnd();
+			return myString;
+}
+#>

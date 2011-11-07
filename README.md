@@ -32,7 +32,7 @@ Directory Structure
 -------------------
 
     Android .............. PhoneGap for Android
-    BlackBerry-WebWorks .. PhoneGap for BlackBerry 5.0 and 6.0
+    BlackBerry ........... PhoneGap for BlackBerry 5.0+
     Documentation ........ PhoneGap API Documentation
     Symbian .............. PhoneGap for Symbian
     iOS .................. PhoneGap for iOS

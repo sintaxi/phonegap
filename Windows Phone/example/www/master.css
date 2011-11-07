@@ -1,0 +1,25 @@
+﻿body {
+    background-color:Green;
+    font-family:"Segoe WP";
+    color:#FFF;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+li {
+    background-image:url('images/ArrowImg.png');
+    background-repeat:no-repeat;
+    min-height: 50px;
+    padding-left:55px;
+    font-size:26px;
+    margin-left:-30px;
+    margin-bottom:4px;
+    list-style-type:none;
+}
+
+li a {
+    color:#FFF;
+    text-decoration:none;
+}

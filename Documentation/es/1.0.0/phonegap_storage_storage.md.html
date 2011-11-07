@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+<meta name="generator" content="joDoc">
+<title>Documentacion API PhoneGap</title>
+<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
+<link rel="stylesheet" type="text/css" href="prettify/prettify.css">
+</head>
+<body>
+        <div id="header">
+            <h1><a href="index.html">Documentación Phone<strong>Gap</strong></a></h1>
+            <small>
+                <select><optgroup label="English" value="en">
+<option value="edge">edge</option>
+<option value="1.2.0">1.2.0</option>
+<option value="1.1.0">1.1.0</option>
+<option value="1.0.0rc3">1.0.0rc3</option>
+<option value="1.0.0rc2">1.0.0rc2</option>
+<option value="1.0.0rc1">1.0.0rc1</option>
+<option value="1.0.0">1.0.0</option>
+<option value="0.9.6">0.9.6</option>
+<option value="0.9.5.1">0.9.5.1</option>
+<option value="0.9.5">0.9.5</option>
+<option value="0.9.4">0.9.4</option>
+<option value="0.9.3">0.9.3</option>
+<option value="0.9.2">0.9.2</option>
+</optgroup>
+<optgroup label="Español" value="es"><option selected value="1.0.0">1.0.0</option></optgroup>
+<optgroup label="Japanese" value="jp"><option value="0.9.5">0.9.5</option></optgroup></select></small>
+        </div>
+        <div id="subheader">
+            <h1>Storage</h1>
+            <small><select><option value="Storage">Storage</option>
+<option value="Storage_m_todos">      - Métodos</option>
+<option value="Storage_argumentos">      - Argumentos</option>
+<option value="Storage_objetos">      - Objetos</option>
+<option value="openDatabase">openDatabase</option>
+<option value="openDatabase_descripci_n">      - Descripción</option>
+<option value="openDatabase_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="openDatabase_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="openDatabase_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="name">name</option>
+<option value="version">version</option>
+<option value="display_name">display_name</option>
+<option value="size">size</option>
+<option value="Database">Database</option>
+<option value="Database_m_todos">      - Métodos</option>
+<option value="Database_detalles">      - Detalles</option>
+<option value="Database_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="Database_ejemplo_r_pido_de_transaction">      - Ejemplo Rápido de Transaction</option>
+<option value="Database_ejemplo_r_pido_de_cambio_de_versi_n">      - Ejemplo Rápido de Cambio de Versión</option>
+<option value="Database_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="Database_peculiaridades_android_1_x">      - Peculiaridades Android 1.X</option>
+<option value="SQLTransaction">SQLTransaction</option>
+<option value="SQLTransaction_m_todos">      - Métodos</option>
+<option value="SQLTransaction_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="SQLTransaction_ejemplo_r_pido_de_executesql">      - Ejemplo Rápido de executeSql</option>
+<option value="SQLTransaction_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="SQLResultSet">SQLResultSet</option>
+<option value="SQLResultSet_atributos">      - Atributos</option>
+<option value="SQLResultSet_detalles">      - Detalles</option>
+<option value="SQLResultSet_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="SQLResultSet_ejemplo_r_pido">      - Ejemplo Rápido</option>
+<option value="SQLResultSet_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="SQLResultSetList">SQLResultSetList</option>
+<option value="SQLResultSetList_atributos">      - Atributos</option>
+<option value="SQLResultSetList_m_todos">      - Métodos</option>
+<option value="SQLResultSetList_detalles">      - Detalles</option>
+<option value="SQLResultSetList_ejemplo_r_pido_de_executesql">      - Ejemplo Rápido de executeSql</option>
+<option value="SQLResultSetList_ejemplo_completo">      - Ejemplo Completo</option>
+<option value="SQLError">SQLError</option>
+<option value="SQLError_atributos">      - Atributos</option>
+<option value="SQLError_constantes">      - Constantes</option>
+<option value="SQLError_descripci_n">      - Descripción</option>
+<option value="localStorage">localStorage</option>
+<option value="localStorage_m_todos">      - Métodos</option>
+<option value="localStorage_detalles">      - Detalles</option>
+<option value="localStorage_plataformas_soportadas">      - Plataformas Soportadas</option>
+<option value="localStorage_ejemplo_r_pido_de_key">      - Ejemplo Rápido de key</option>
+<option value="localStorage_ejemplo_r_pido_de_setitem">      - Ejemplo Rápido de setItem</option>
+<option value="localStorage_ejemplo_r_pido_de_getitem">      - Ejemplo Rápido de getItem</option>
+<option value="localStorage_ejemplo_r_pido_de_removeitem">      - Ejemplo Rápido de removeItem</option>
+<option value="localStorage_ejemplo_r_pido_de_clear">      - Ejemplo Rápido de clear</option>
+<option value="localStorage_ejemplo_completo">      - Ejemplo Completo</option></select></small>
+        </div>
+
+        <div id="sidebar">
+            <div class="vertical_divider"></div>
+            <h1>Referencia API</h1>
+            <ul>
+<li><a href="phonegap_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
+<li><a href="phonegap_camera_camera.md.html#Camera">Camera</a></li>
+<li><a href="phonegap_media_capture_capture.md.html#Capture">Capture</a></li>
+<li><a href="phonegap_compass_compass.md.html#Compass">Compass</a></li>
+<li><a href="phonegap_connection_connection.md.html#Connection">Connection</a></li>
+<li><a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a></li>
+<li><a href="phonegap_device_device.md.html#Device">Device</a></li>
+<li><a href="phonegap_events_events.md.html#Events">Events</a></li>
+<li><a href="phonegap_file_file.md.html#File">File</a></li>
+<li><a href="phonegap_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
+<li><a href="phonegap_media_media.md.html#Media">Media</a></li>
+<li><a href="phonegap_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="phonegap_storage_storage.md.html#Storage">Storage</a></li>
+</ul>
+<h1></h1>
+            <ul>
+<li><a href="_index.html">Índice por palabras</a></li>
+            </ul>
+</div>
+
+        <div id="scrollable">
+            <div id="content">
+                <h1><a name="Storage">Storage</a></h1>
+
+<blockquote>
+  <p>Proporciona acceso a las opciones de almacenamiento del dispositivo.  </p>
+</blockquote>
+
+<p>Esta API esta basada en la <a class="external" href="http://dev.w3.org/html5/webdatabase/">W3C Web SQL </a><a href="phonegap_storage_storage.md.html#Database">Database</a> Specification y <a class="external" href="http://dev.w3.org/html5/webstorage/">W3C Web </a><a href="phonegap_storage_storage.md.html#Storage">Storage</a> API Specification. Algunos dispositivos ya incluyen una implementación de estas especificaciones, en estos dispositivos, se usara la implementación incluida en vez de la implementación PhoneGap. Para los dispositivos que no incluyan de serie soporte de la API de almacenamiento, la implementación PhoneGap debe ser compatible con las especificaciones de la W3C.</p>
+
+<h2>
+<a name="Storage_m_todos">Métodos</a>
+</h2>
+
+<ul>
+<li><a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a></li>
+</ul>
+<h2>
+<a name="Storage_argumentos">Argumentos</a>
+</h2>
+
+<ul>
+<li><a href="phonegap_storage_storage.md.html#name">name</a></li>
+<li><a href="phonegap_storage_storage.md.html#version">version</a></li>
+<li><a href="phonegap_storage_storage.md.html#display_name">display_name</a></li>
+<li><a href="phonegap_storage_storage.md.html#size">size</a></li>
+</ul>
+<h2>
+<a name="Storage_objetos">Objetos</a>
+</h2>
+
+<ul>
+<li><a href="phonegap_storage_storage.md.html#Database">Database</a></li>
+<li><a href="phonegap_storage_storage.md.html#SQLTransaction">SQLTransaction</a></li>
+<li><a href="phonegap_storage_storage.md.html#SQLResultSet">SQLResultSet</a></li>
+<li><a href="phonegap_storage_storage.md.html#SQLResultSetList">SQLResultSetList</a></li>
+<li><a href="phonegap_storage_storage.md.html#SQLError">SQLError</a></li>
+<li><a href="phonegap_storage_storage.md.html#localStorage">localStorage</a></li>
+</ul>
+<hr>
+<h1><a name="openDatabase">openDatabase</a></h1>
+
+<p>Retorna un nuevo objeto <code><a href="phonegap_storage_storage.md.html#Database">Database</a></code>.</p>
+
+<pre class="prettyprint"><code>var dbShell = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>(<a href="phonegap_storage_storage.md.html#name">name</a>, <a href="phonegap_storage_storage.md.html#version">version</a>, <a href="phonegap_storage_storage.md.html#display_name">display_name</a>, <a href="phonegap_storage_storage.md.html#size">size</a>);
+</code></pre>
+
+<h2>
+<a name="openDatabase_descripci_n">Descripción</a>
+</h2>
+
+<p><code>window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a></code> retorna un nuevo objeto <code><a href="phonegap_storage_storage.md.html#Database">Database</a></code>.</p>
+
+<p>Este método creara una nueva pequeña base de datos SQL y retorna un objeto <code><a href="phonegap_storage_storage.md.html#Database">Database</a></code>. Usa este objeto <code><a href="phonegap_storage_storage.md.html#Database">Database</a></code> para manipular los datos.</p>
+
+<h2>
+<a name="openDatabase_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 6.0 y superior)</li>
+<li>iPhone</li>
+</ul>
+<h2>
+<a name="openDatabase_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("prueba", "1.0", "Prueba DB", 1000000);
+</code></pre>
+
+<h2>
+<a name="openDatabase_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_storage_storage.md.html#Storage">Storage</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espere a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Demo PhoneGap", 1000000);
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Ejemplo&lt;/h1&gt;
+    &lt;p&gt;Abriendo Base de Datos&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="name">name</a></h1>
+
+<p>El nombre de la base de datos.</p>
+
+<hr>
+<h1><a name="version">version</a></h1>
+
+<p>La versión de la base de datos.</p>
+
+<hr>
+<h1><a name="display_name">display_name</a></h1>
+
+<p>El nombre a mostrar de la base de datos.</p>
+
+<hr>
+<h1><a name="size">size</a></h1>
+
+<p>El tamaño de la base de datos en bytes.</p>
+
+<hr>
+<h1><a name="Database">Database</a></h1>
+
+<p>Contiene métodos que permiten al usuario manipular la base de datos.</p>
+
+<h2>
+<a name="Database_m_todos">Métodos</a>
+</h2>
+
+<ul>
+<li>
+<strong>transaction</strong>: Ejecuta una transacción en la base de datos. </li>
+<li>
+<strong>changeVersion</strong>: Permite a los scripts comprobar atómicamente el numero de versión y cambiarlo a la vez que actualiza el esquema. </li>
+</ul>
+<h2>
+<a name="Database_detalles">Detalles</a>
+</h2>
+
+<p>Un objeto <code><a href="phonegap_storage_storage.md.html#Database">Database</a></code> es retornado de la llamada <code>window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>()</code>.</p>
+
+<h2>
+<a name="Database_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 6.0 y superior)</li>
+<li>iPhone</li>
+</ul>
+<h2>
+<a name="Database_ejemplo_r_pido_de_transaction">Ejemplo Rápido de Transaction</a>
+</h2>
+
+<pre class="prettyprint"><code>function populateDB(tx) {
+     tx.executeSql('DROP TABLE IF EXISTS DEMO');
+     tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
+     tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "Primera fila")');
+     tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Segunda fila")');
+}
+
+function errorCB(err) {
+    alert("Error procesando SQL: "+err.code);
+}
+
+function successCB() {
+    alert("Correcto!");
+}
+
+var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Demo PhoneGap", 200000);
+db.transaction(populateDB, errorCB, successCB);
+</code></pre>
+
+<h2>
+<a name="Database_ejemplo_r_pido_de_cambio_de_versi_n">Ejemplo Rápido de Cambio de Versión</a>
+</h2>
+
+<pre class="prettyprint"><code>var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Demo PhoneGap", 200000);
+db.changeVersion("1.0", "1.1");
+</code></pre>
+
+<h2>
+<a name="Database_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_storage_storage.md.html#Storage">Storage</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espera a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Demo PhoneGap", 200000);
+        db.transaction(populateDB, errorCB, successCB);
+    }
+
+    // Rellena la base de datos 
+    //
+    function populateDB(tx) {
+         tx.executeSql('DROP TABLE IF EXISTS DEMO');
+         tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
+         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "Primera fila")');
+         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Segunda fila")');
+    }
+
+    // Función 'callback' de error de transacción
+    //
+    function errorCB(tx, err) {
+        alert("Error procesando SQL: "+err);
+    }
+
+    // Función 'callback' de transacción satisfactoria
+    //
+    function successCB() {
+        alert("bien!");
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Ejemplo&lt;/h1&gt;
+    &lt;p&gt;Base de datos&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2>
+<a name="Database_peculiaridades_android_1_x">Peculiaridades Android 1.X</a>
+</h2>
+
+<ul>
+<li>
+<strong>changeVersion:</strong> Este método no esta soportado por los dispositivos Android 1.X.</li>
+</ul>
+<hr>
+<h1><a name="SQLTransaction">SQLTransaction</a></h1>
+
+<p>Este objeto tiene métodos que permiten al usuario ejecutar sentencias SQL en la base de datos.</p>
+
+<h2>
+<a name="SQLTransaction_m_todos">Métodos</a>
+</h2>
+
+<ul>
+<li>
+<strong>executeSql</strong>: Ejecuta una sentencia SQL</li>
+</ul>
+<p>Detalles
+----.---</p>
+
+<p>Cuando uses el método <code><a href="phonegap_storage_storage.md.html#Database">Database</a>.transaction</code>, se le pasara un objeto <code><a href="phonegap_storage_storage.md.html#SQLTransaction">SQLTransaction</a></code> a su función callback, cuando hagas una transacción puedes usar el método executeSql varias veces.</p>
+
+<h2>
+<a name="SQLTransaction_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 6.0 y superior)</li>
+<li>iPhone</li>
+</ul>
+<h2>
+<a name="SQLTransaction_ejemplo_r_pido_de_executesql">Ejemplo Rápido de executeSql</a>
+</h2>
+
+<pre class="prettyprint"><code>function populateDB(tx) {
+     tx.executeSql('DROP TABLE IF EXISTS DEMO');
+     tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
+     tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "Primera fila")');
+     tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Segunda fila")');
+}
+
+function errorCB(err) {
+    alert("Error procesando SQL: "+err);
+}
+
+function successCB() {
+    alert("Correcto!");
+}
+
+var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Demo PhoneGap", 200000);
+db.transaction(populateDB, errorCB, successCB);
+</code></pre>
+
+<h2>
+<a name="SQLTransaction_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_storage_storage.md.html#Storage">Storage</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espera a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Demo PhoneGap", 200000);
+        db.transaction(populateDB, errorCB, successCB);
+    }
+
+    // Rellena la base de datos
+    //
+    function populateDB(tx) {
+         tx.executeSql('DROP TABLE IF EXISTS DEMO');
+         tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
+         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "Primera fila")');
+         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Segunda fila")');
+    }
+
+    // Función 'callback' de error de transacción
+    //
+    function errorCB(err) {
+        alert("Error procesando SQL: "+err);
+    }
+
+    // Función 'callback' de transacción correcta
+    //
+    function successCB() {
+        alert("success!");
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Ejemplo&lt;/h1&gt;
+    &lt;p&gt;<a href="phonegap_storage_storage.md.html#SQLTransaction">SQLTransaction</a>&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="SQLResultSet">SQLResultSet</a></h1>
+
+<p>Cuando se ejecuta el método <code><a href="phonegap_storage_storage.md.html#SQLTransaction">SQLTransaction</a>.executeSql</code> se llamara a esta función 'callback' pasándole el resultado de la consulta.</p>
+
+<h2>
+<a name="SQLResultSet_atributos">Atributos</a>
+</h2>
+
+<ul>
+<li>
+<strong>insertId</strong>: El ID de la fila que el objeto <code><a href="phonegap_storage_storage.md.html#SQLResultSet">SQLResultSet</a></code> inserto en la base de datos.</li>
+<li>
+<strong>rowAffected</strong>: El numero de filas que cambiaron por la sentencia SQL.  Si la sentencia no afecto a ninguna fila se retornara 0. </li>
+<li>
+<strong>rows</strong>: Un objeto <code>SQLResultSetRowList</code> representando la fila retornada. Si no se retorno ninguna, este objeto estará vacio.</li>
+</ul>
+<h2>
+<a name="SQLResultSet_detalles">Detalles</a>
+</h2>
+
+<p>Cuando llamas al método <code><a href="phonegap_storage_storage.md.html#SQLTransaction">SQLTransaction</a>.executeSql</code>, esta función sera llamada pasándole un objeto <a href="phonegap_storage_storage.md.html#SQLResultSet">SQLResultSet</a>. Este objeto tendrá tres atributos, el primero  (<code>insertId</code>) retornara el numero de fila de una sentencia 'insert' satisfactoria. Si la sentencia SQL no fuera una sentencia 'insert', este atributo no sera establecido. El atributo <code>rowAffected</code> es siempre 0 para una sentencia SQL de tipo 'select'.  Para sentencias 'insert' o 'update' retornara el numero de filas que fueron afectadas.  El ultimo atributo es de tipo <code><a href="phonegap_storage_storage.md.html#SQLResultSetList">SQLResultSetList</a></code> y contiene los datos retornados por una sentencia SQL de tipo 'select'.</p>
+
+<h2>
+<a name="SQLResultSet_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 6.0 y superior)</li>
+<li>iPhone</li>
+</ul>
+<h2>
+<a name="SQLResultSet_ejemplo_r_pido">Ejemplo Rápido</a>
+</h2>
+
+<pre class="prettyprint"><code>function queryDB(tx) {
+    tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorCB);
+}
+
+function querySuccess(tx, results) {
+    // debería estar vacio ya que se inserto nada
+    console.log("ID insert = " + results.insertId);
+    // Sera 0 debido que es una sentencia SQL de tipo 'select'
+    console.log("Filas afectadas = " + results.rowAffected);
+    // El numero de filas retornadas
+    console.log("Filas retornadas = " + results.rows.length);
+}
+
+function errorCB(err) {
+    alert("Error procesando SQL: "+err.code);
+}
+
+var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Demo PhoneGap", 200000);
+db.transaction(queryDB, errorCB);
+</code></pre>
+
+<h2>
+<a name="SQLResultSet_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_storage_storage.md.html#Storage">Storage</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espere a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // Componemos la base de datos
+    //
+    function populateDB(tx) {
+        tx.executeSql('DROP TABLE IF EXISTS DEMO');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
+        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "Primera fila")');
+        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Segunda fila")');
+    }
+
+    // Consultamos la base de datos
+    //
+    function queryDB(tx) {
+        tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorCB);
+    }
+
+    // Función 'callback' con el resultado de la consulta
+    //
+    function querySuccess(tx, results) {
+        // debería estar vacio ya que se inserto nada
+        console.log("ID insert = " + results.insertId);
+        // Sera 0 debido que es una sentencia SQL de tipo 'select'
+        console.log("Filas afectadas = " + results.rowAffected);
+        // El numero de filas retornadas
+        console.log("Filas retornadas = " + results.rows.length);
+    }
+
+    // Función 'callback' de error
+    //
+    function errorCB(err) {
+        console.log("Error procesando SQL: "+err.code);
+    }
+
+    // Función 'callback' de transacción satisfactoria
+    //
+    function successCB() {
+        var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Demo PhoneGap", 200000);
+        db.transaction(queryDB, errorCB);
+    }
+
+    // PhoneGap esta lista
+    //
+    function onDeviceReady() {
+        var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Demo PhoneGap", 200000);
+        db.transaction(populateDB, errorCB, successCB);
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Ejemplo&lt;/h1&gt;
+    &lt;p&gt;<a href="phonegap_storage_storage.md.html#Database">Database</a>&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="SQLResultSetList">SQLResultSetList</a></h1>
+
+<p>Uno de los atributos de <code><a href="phonegap_storage_storage.md.html#SQLResultSet">SQLResultSet</a></code>, contiene las filas retornadas por la consulta SQL.</p>
+
+<h2>
+<a name="SQLResultSetList_atributos">Atributos</a>
+</h2>
+
+<ul>
+<li>
+<strong>length</strong>: El numero de filas retornadas por la consulta SQL</li>
+</ul>
+<h2>
+<a name="SQLResultSetList_m_todos">Métodos</a>
+</h2>
+
+<ul>
+<li>
+<strong>item</strong>: Retorna las filas con el índice especificado, representado por un objeto JavaScript.</li>
+</ul>
+<h2>
+<a name="SQLResultSetList_detalles">Detalles</a>
+</h2>
+
+<p><code><a href="phonegap_storage_storage.md.html#SQLResultSetList">SQLResultSetList</a></code> contiene los datos retornados por la sentencia SQL 'select'. Este objeto contiene un atributo <code>length</code> mostrándote cuantas filas fueron retornadas por la sentencia 'select'. Para obtener una de las filas, deberás llamar al método <code>item</code> especificando el índice de la fila. El método item retorna un objeto JavaScript donde los atributos son las columnas de la sentencia SQL ejecutada.</p>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 6.0 y superior)</li>
+<li>iPhone</li>
+</ul>
+<h2>
+<a name="SQLResultSetList_ejemplo_r_pido_de_executesql">Ejemplo Rápido de executeSql</a>
+</h2>
+
+<pre class="prettyprint"><code>function queryDB(tx) {
+    tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorCB);
+}
+
+function querySuccess(tx, results) {
+    var len = results.rows.length;
+    console.log("Tabla DEMO: " + len + " filas encontradas.");
+    for (var i=0; i&lt;len; i++){
+        console.log("Fila = " + i + " ID = " + results.rows.item(i).id + " Datos =  " + results.rows.item(i).data);
+    }
+}
+
+function errorCB(err) {
+    alert("Error procesando SQL: "+err.code);
+}
+
+var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Demo PhoneGap", 200000);
+db.transaction(queryDB, errorCB);
+</code></pre>
+
+<h2>
+<a name="SQLResultSetList_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_storage_storage.md.html#Storage">Storage</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espera a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // Rellena la base de datos
+    //
+    function populateDB(tx) {
+        tx.executeSql('DROP TABLE IF EXISTS DEMO');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
+        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "Primera fila")');
+        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Segunda fila")');
+    }
+
+    // Consulta a la base de datos
+    //
+    function queryDB(tx) {
+        tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorCB);
+    }
+
+    // Función 'callback' con el resultado de la consulta
+    //
+    function querySuccess(tx, results) {
+        var len = results.rows.length;
+        console.log("Tabla DEMO: " + len + " filas encontradas.");
+        for (var i=0; i&lt;len; i++){
+            console.log("Fila = " + i + " ID = " + results.rows.item(i).id + " Datos =  " + results.rows.item(i).data);
+        }
+    }
+
+    // Función 'callback' de error de transacción
+    //
+    function errorCB(err) {
+        console.log("Error procesando SQL: "+err.code);
+    }
+
+    // Función 'callback' de transacción correcta
+    //
+    function successCB() {
+        var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Demo PhoneGap", 200000);
+        db.transaction(queryDB, errorCB);
+    }
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Demo PhoneGap", 200000);
+        db.transaction(populateDB, errorCB, successCB);
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Ejemplo&lt;/h1&gt;
+    &lt;p&gt;<a href="phonegap_storage_storage.md.html#Database">Database</a>&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="SQLError">SQLError</a></h1>
+
+<p>Se lanza un objeto <code><a href="phonegap_storage_storage.md.html#SQLError">SQLError</a></code> cada vez que ocurre un error.</p>
+
+<h2>
+<a name="SQLError_atributos">Atributos</a>
+</h2>
+
+<ul>
+<li>
+<strong>code:</strong> Uno de los códigos de error predefinidos en la lista inferior.</li>
+<li>
+<strong>message:</strong> Una descripción del error.</li>
+</ul>
+<h2>
+<a name="SQLError_constantes">Constantes</a>
+</h2>
+
+<ul>
+<li><code><a href="phonegap_storage_storage.md.html#SQLError">SQLError</a>.UNKNOWN_ERR</code></li>
+<li><code><a href="phonegap_storage_storage.md.html#SQLError">SQLError</a>.DATABASE_ERR</code></li>
+<li><code><a href="phonegap_storage_storage.md.html#SQLError">SQLError</a>.VERSION_ERR</code></li>
+<li><code><a href="phonegap_storage_storage.md.html#SQLError">SQLError</a>.TOO_LARGE_ERR</code></li>
+<li><code><a href="phonegap_storage_storage.md.html#SQLError">SQLError</a>.QUOTA_ERR</code></li>
+<li><code><a href="phonegap_storage_storage.md.html#SQLError">SQLError</a>.SYNTAX_ERR</code></li>
+<li><code><a href="phonegap_storage_storage.md.html#SQLError">SQLError</a>.CONSTRAINT_ERR</code></li>
+<li><code><a href="phonegap_storage_storage.md.html#SQLError">SQLError</a>.TIMEOUT_ERR</code></li>
+</ul>
+<h2>
+<a name="SQLError_descripci_n">Descripción</a>
+</h2>
+
+<p>El objeto <code><a href="phonegap_storage_storage.md.html#SQLError">SQLError</a></code> es lanzado cuando ocurre un error mientras se manipula la base de datos.</p>
+
+<hr>
+<h1><a name="localStorage">localStorage</a></h1>
+
+<p>Proporciona acceso a la interfaz W3C <a href="phonegap_storage_storage.md.html#Storage">Storage</a> (http://dev.w3.org/html5/webstorage/#the-localstorage-attribute)</p>
+
+<pre class="prettyprint"><code>var storage = window.<a href="phonegap_storage_storage.md.html#localStorage">localStorage</a>;
+</code></pre>
+
+<h2>
+<a name="localStorage_m_todos">Métodos</a>
+</h2>
+
+<ul>
+<li>
+<strong>key</strong>: Retorna el nombre de la llave en la posición especificada. </li>
+<li>
+<strong>getItem</strong>: Retorna el valor de la llave especificada.</li>
+<li>
+<strong>setItem</strong>: Guarda un valor para esta llave.</li>
+<li>
+<strong>removeItem</strong>: Elimina el registro de la llave especificada.</li>
+<li>
+<strong>clear</strong>: Elimina todos los registros (valores y llaves).</li>
+</ul>
+<h2>
+<a name="localStorage_detalles">Detalles</a>
+</h2>
+
+<p><a href="phonegap_storage_storage.md.html#localStorage">localStorage</a> proporciona una interfaz a la API W3C <a href="phonegap_storage_storage.md.html#Storage">Storage</a>.  Esta API permite guardar datos tipo diccionario (llave-valor).</p>
+
+<h2>
+<a name="localStorage_plataformas_soportadas">Plataformas Soportadas</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 6.0 y superior)</li>
+<li>iPhone</li>
+</ul>
+<h2>
+<a name="localStorage_ejemplo_r_pido_de_key">Ejemplo Rápido de key</a>
+</h2>
+
+<pre class="prettyprint"><code>var keyName = window.<a href="phonegap_storage_storage.md.html#localStorage">localStorage</a>.key(0);
+</code></pre>
+
+<h2>
+<a name="localStorage_ejemplo_r_pido_de_setitem">Ejemplo Rápido de setItem</a>
+</h2>
+
+<pre class="prettyprint"><code>window.<a href="phonegap_storage_storage.md.html#localStorage">localStorage</a>.setItem("key", "value");
+</code></pre>
+
+<h2>
+<a name="localStorage_ejemplo_r_pido_de_getitem">Ejemplo Rápido de getItem</a>
+</h2>
+
+<pre class="prettyprint"><code>var value = window.<a href="phonegap_storage_storage.md.html#localStorage">localStorage</a>.getItem("key");
+// Ahora la variable value es "value"
+</code></pre>
+
+<h2>
+<a name="localStorage_ejemplo_r_pido_de_removeitem">Ejemplo Rápido de removeItem</a>
+</h2>
+
+<pre class="prettyprint"><code>window.<a href="phonegap_storage_storage.md.html#localStorage">localStorage</a>.removeItem("key");
+</code></pre>
+
+<h2>
+<a name="localStorage_ejemplo_r_pido_de_clear">Ejemplo Rápido de clear</a>
+</h2>
+
+<pre class="prettyprint"><code>window.<a href="phonegap_storage_storage.md.html#localStorage">localStorage</a>.clear();
+</code></pre>
+
+<h2>
+<a name="localStorage_ejemplo_completo">Ejemplo Completo</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Ejemplo de <a href="phonegap_storage_storage.md.html#Storage">Storage</a>&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Espere a que PhoneGap se inicie
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap esta listo
+    //
+    function onDeviceReady() {
+        window.<a href="phonegap_storage_storage.md.html#localStorage">localStorage</a>.setItem("llave", "valor");
+        var keyname = window.<a href="phonegap_storage_storage.md.html#localStorage">localStorage</a>.key(i);
+        // keyname ahora es "llave"
+        var value = window.<a href="phonegap_storage_storage.md.html#localStorage">localStorage</a>.getItem("llave");
+        // value ahora es "valor"
+        window.<a href="phonegap_storage_storage.md.html#localStorage">localStorage</a>.removeItem("llave");
+        window.<a href="phonegap_storage_storage.md.html#localStorage">localStorage</a>.setItem("llave2", "valor2");
+        window.<a href="phonegap_storage_storage.md.html#localStorage">localStorage</a>.clear();
+        // <a href="phonegap_storage_storage.md.html#localStorage">localStorage</a> esta ahora vacio
+    }
+
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Ejemplo&lt;/h1&gt;
+    &lt;p&gt;<a href="phonegap_storage_storage.md.html#localStorage">localStorage</a>&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+            </div>
+        </div>
+
+        <!-- Functionality and Syntax Highlighting -->
+        <script type="text/javascript" src="index.js"></script><script type="text/javascript" src="prettify/prettify.js"></script>
+</body>
+</html>

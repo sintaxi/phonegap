@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- meta name="viewport" content="width=device-width, height=device-height, user-scalable=yes, initial-scale=2.0, maximum-scale=4.0, minimum-scale=1.0" / -->
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/> <!-- ISO-8859-1 -->
+    <title>PhoneGap</title>
+    <link rel="stylesheet" href="master.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+    <script type="text/javascript">
+      // provide our own console if it does not exist, huge dev aid!
+      if(typeof window.console == "undefined")
+      {
+      window.console = {log:function(str){window.external.Notify(str);}};
+      }
+
+      // output any errors to console log, created above.
+      window.onerror=function(e)
+      {
+      console.log("window.onerror ::" + JSON.stringify(e));
+      };
+
+      console.log("Installed console ! ");
+    </script>
+    
+    <script type="text/javascript" charset="utf-8" src="phonegap-1.2.0.js"></script> 
+
+
+    <script type="text/javascript" charset="utf-8">
+
+      var deviceReady = false;
+
+      //-------------------------------------------------------------------------
+      // Notifications
+      //-------------------------------------------------------------------------
+
+      function doBeep(x)
+      {
+
+      navigator.notification.beep(x);
+      };
+
+      function doVibrate()
+      {
+      navigator.notification.vibrate(0);
+      };
+
+      function doAlert()
+      {
+      var message = "This is an Alert dialog";
+      var title = "Attention!";
+
+      navigator.notification.alert(message,
+      function()
+      {
+      console.log("Alert dismissed.");
+      },
+      title);
+
+      console.log("After alert");
+      };
+
+      function doConfirm()
+      {
+      var message = "This is a confirm dialog";
+      var title = "Please Confirm";
+      var buttons = "OK,Cancel";
+      navigator.notification.confirm(message,
+      function(r) {
+      console.log("You selected " + r);
+
+      },
+      title,
+      buttons);
+      }
+
+      function startActivity()
+      {
+      navigator.notification.activityStart();
+      }
+
+      function stopActivity()
+      {
+      navigator.notification.activityStop();
+      }
+
+      /**
+      * Function called when page has finished loading.
+      */
+      function init() {
+      document.addEventListener("deviceready", function() {
+      deviceReady = true;
+      console.log("Device="+device.platform+" "+device.version);
+      }, false);
+      window.setTimeout(function() {
+      if (!deviceReady) {
+      console.log("Error: PhoneGap did not initialize.  Demo will not run correctly.");
+      }
+      },1000);
+      }
+
+    </script>
+
+  </head>
+  <body onLoad="init();" id="stage" class="theme">
+  
+    <h1>Notifications and Dialogs</h1>
+    <div id="info">
+    </div>
+    
+    <h2>Action</h2>
+    <a href="#" class="btn large" onClick="doBeep();">Beep Once</a>
+    <a href="#" class="btn large" onClick="doBeep(3);">Beep 3X</a>
+    <a href="#" class="btn large" onClick="doVibrate();">Vibrate</a>
+    <a href="#" class="btn large" onClick="doAlert();">Show Alert Dialog</a>
+    <a href="#" class="btn large" onClick="doConfirm();">Show Confirm Dialog</a>
+    <a href="#" class="btn large" onClick="startActivity();">startActivity</a>
+    <a href="#" class="btn large" onClick="stopActivity();">stopActivity</a>
+    <h2>&nbsp;</h2><a href="index.html" class="backBtn">Back</a>
+  </body>
+</html>      

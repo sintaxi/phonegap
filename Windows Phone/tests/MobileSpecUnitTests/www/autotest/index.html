@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, height=device-height, user-scalable=yes, initial-scale=1.0;" />
+
+    <title>PhoneGap API Spec</title>
+
+    <!-- Load QUnit -->
+    <link rel="stylesheet" type="text/css" href="qunit.css" />
+          
+	<script type="text/javascript">
+			// provide our own console if it does not exist, huge dev aid!
+			if(typeof window.console == "undefined")
+			{
+			window.console = {log:function(str){window.external.Notify(str);}};
+			}
+			
+			// output any errors to console log, created above.
+			window.onerror=function(e)
+			{
+				console.log("window.onerror ::" + JSON.stringify(e));
+			};
+			
+			console.log("Installed console ! ");
+			
+			function onBodyLoad()
+			{
+				document.addEventListener("backbutton",onBackButton,false);	
+			}
+			
+			function onBackButton()
+			{
+				window.history.go(-1);
+			}
+			
+	</script>
+    
+    <script type="text/javascript" src="qunit.js"></script>
+
+    
+    <!-- Source -->
+    <script type="text/javascript" src="../phonegap-1.2.0.js"></script>
+    
+    <!-- Load Test Runner -->
+    <script type="text/javascript" src="test-runner.js"></script>
+
+   
+    
+    <!-- Individual Tests -->
+
+    <script type="text/javascript" src="tests/accelerometer.tests.js"></script>
+    <script type="text/javascript" src="tests/camera.tests.js"></script>
+    <script type="text/javascript" src="tests/capture.tests.js"></script>
+
+    <script type="text/javascript" src="tests/notification.tests.js"></script>
+    <script type="text/javascript" src="tests/network.tests.js"></script>
+    <script type="text/javascript" src="tests/geolocation.tests.js"></script>
+
+    <script type="text/javascript" src="tests/compass.tests.js"></script>
+
+
+
+    <script type="text/javascript" src="tests/contacts.tests.js"></script>
+    <script type="text/javascript" src="tests/file.tests.js"></script>
+    <script type="text/javascript" src="tests/filetransfer.tests.js"></script>
+    <script type="text/javascript" src="tests/media.tests.js"></script>
+
+
+    <script type="text/javascript" src="tests/storage.tests.js"></script>
+    
+    <!--
+    
+     
+    <script type="text/javascript" src="tests/device.tests.js"></script>
+    
+
+    <script type="text/javascript" src="tests/orientation.tests.js"></script>
+    -->
+    
+    
+    
+
+  </head>
+    <body onload="onBodyLoad()">
+        <h1 id="qunit-header">PhoneGap API Spec</h1>
+        <h2 id="qunit-banner"></h2>
+        <h2 id="qunit-userAgent"></h2>
+        <ol id="qunit-tests"></ol>
+        <div id="qunit-fixture">
+            <!-- Populated by tests -->
+        </div>
+    </body>
+</html>

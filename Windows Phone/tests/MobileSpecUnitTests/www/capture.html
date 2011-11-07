@@ -1,0 +1,209 @@
+﻿<!DOCTYPE HTML>
+<html>
+  <head>
+    <!-- meta name="viewport" content="width=device-width, height=device-height, user-scalable=yes, initial-scale=2.0, maximum-scale=4.0, minimum-scale=1.0" / -->
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"> <!-- ISO-8859-1 -->
+    <title>PhoneGap</title>
+    <link rel="stylesheet" href="master.css" type="text/css" media="screen"/>
+   
+    <script type="text/javascript">
+        // provide our own console if it does not exist, huge dev aid!
+        if (typeof window.console == "undefined") {
+            window.console = { log: function (str) { window.external.Notify(str); } };
+        }
+
+        // output any errors to console log, created above.
+        window.onerror = function (e) {
+            console.log("window.onerror ::" + JSON.stringify(e));
+        };
+
+        console.log("Installed console ! ");
+    </script>
+   
+    <script type="text/javascript" charset="utf-8" src="phonegap-1.2.0.js"></script>   
+
+      
+<script type="text/javascript" charset="utf-8">
+
+    var deviceReady = false;
+
+    // last captured media file
+    var mediaFile = null;
+
+    function clearMediaPlaceholder() {
+        document.getElementById('audio_player').setAttribute('style', 'visibility:hidden;display:none;');
+
+        var img = document.getElementById('camera_image');
+        img.style.visibility = "hidden";
+        img.style.display = "none";
+        img.src = "";
+    }
+
+    //-------------------------------------------------------------------------
+    // Capture
+    //-------------------------------------------------------------------------
+
+    /**
+    * Capture image
+    */
+    function captureImage() {
+
+        navigator.device.capture.captureImage(
+            function (mediaFiles) {
+
+                document.getElementById('capture_status').innerHTML = "Success. Captured " + mediaFiles.length + " media file(s).";
+
+                if (mediaFiles.length <= 0) return;
+
+                mediaFile = mediaFiles[0];
+
+                document.getElementById('name').innerHTML = mediaFile.name;
+                document.getElementById('fullPath').innerHTML = mediaFile.fullPath;
+                document.getElementById('size').innerHTML = mediaFile.size;
+                document.getElementById('lastModifiedDate').innerHTML = mediaFile.lastModifiedDate;
+                document.getElementById('type').innerHTML = mediaFile.type;
+
+                clearMediaPlaceholder();
+
+                var img = document.getElementById('camera_image');
+                img.style.visibility = "visible";
+                img.style.display = "block";
+                img.src = mediaFile.fullPath;
+            },
+            function (e) {
+                console.log("Error getting picture: " + e);
+                document.getElementById('capture_status').innerHTML = "Error getting picture.";
+            },
+            { limit: 1 });
+    };
+
+    /**
+    * Capture Audio
+    */
+    function captureAudio() {
+
+        navigator.device.capture.captureAudio(
+            function (mediaFiles) {
+
+                document.getElementById('capture_status').innerHTML = "Success. Captured " + mediaFiles.length + " media file(s).";
+
+                if (mediaFiles.length <= 0) return;
+
+                mediaFile = mediaFiles[0];
+
+                document.getElementById('name').innerHTML = mediaFile.name;
+                document.getElementById('fullPath').innerHTML = mediaFile.fullPath;
+                document.getElementById('size').innerHTML = mediaFile.size;
+                document.getElementById('lastModifiedDate').innerHTML = mediaFile.lastModifiedDate;
+                document.getElementById('type').innerHTML = mediaFile.type;
+
+                clearMediaPlaceholder();
+
+                var player = document.getElementById('audio_player');
+                player.setAttribute('style', 'visibility:visible;');
+                player.src = mediaFile.fullPath; 
+                //player.play();
+            },
+            function (e) {
+                console.log("Error getting audio: " + e);
+                document.getElementById('capture_status').innerHTML = "Error getting audio.";
+            },
+            { limit: 1 });
+    };
+
+    /**
+    * Capture Video
+    */
+    function captureVideo() {
+
+        navigator.device.capture.captureVideo(
+            function (mediaFiles) {
+
+                document.getElementById('capture_status').innerHTML = "Success. Captured " + mediaFiles.length + " media file(s).";
+
+                if (mediaFiles.length <= 0) return;
+
+                mediaFile = mediaFiles[0];
+
+                document.getElementById('name').innerHTML = mediaFile.name;
+                document.getElementById('fullPath').innerHTML = mediaFile.fullPath;
+                document.getElementById('size').innerHTML = mediaFile.size;
+                document.getElementById('lastModifiedDate').innerHTML = mediaFile.lastModifiedDate;
+                document.getElementById('type').innerHTML = mediaFile.type;
+
+                clearMediaPlaceholder();
+
+                var player = document.getElementById('video_player');
+                player.setAttribute('style', 'visibility:visible;');
+                player.src = mediaFile.fullPath;
+                console.log("src: " + mediaFile.fullPath);
+            },
+            function (e) {
+                console.log("Error getting video: " + e);
+                document.getElementById('capture_status').innerHTML = "Error getting video.";
+            },
+            { limit: 1 });
+    };
+
+    /**
+    * Function called when page has finished loading.
+    */
+    function init() {
+        document.addEventListener("deviceready", function () {
+            deviceReady = true;
+            console.log("Device=" + device.platform + " " + device.version);
+        }, false);
+        window.setTimeout(function () {
+            if (!deviceReady) {
+                alert("Error: PhoneGap did not initialize.  Demo will not run correctly.");
+            }
+        }, 1000);
+    }
+
+    /**
+    * Function to play last captured media.
+    */
+    function playMedia() {
+        if (typeof mediaFile !== 'undefined') {
+            mediaFile.play(
+                null,
+                function (e) {
+                    console.log("Error playing media: " + e);
+                    document.getElementById('capture_status').innerHTML = "Error playing media.";
+                });
+        }
+    }
+
+</script>
+
+  </head>
+  <body onLoad="init();" id="stage" class="theme">
+  
+    <h1>Capture</h1>
+    <div id="info">
+        <b>Status:</b> <span id="capture_status"></span><br/>
+        <img style="width:120px;height:120px;visibility:hidden;display:none;" id="camera_image" src="" />
+        <audio style="visibility:hidden;display:none;" id="audio_player" src="" controls />
+        <video style="visibility:hidden;display:none;"  width="150" height="150" id="video_player" src=""
+            onclick="playMedia();" >
+            Browser does not support the video tag.
+        </video>
+
+
+        <div><table width="100%">
+            <tr><td width="20%">Name:</td><td id="name">&nbsp;</td></tr>
+            <tr><td width="20%">FullPath:</td><td id="fullPath">&nbsp;</td></tr>
+            <tr><td width="20%">Type:</td><td id="type">&nbsp;</td></tr>
+            <tr><td width="20%">Size:</td><td id="size">&nbsp;</td></tr>
+            <tr><td width="20%">Modified:</td><td id="lastModifiedDate">&nbsp;</td></tr>            
+        </table></div>
+
+    </div>
+    <h2>Actions</h2>
+    <a href="#" class="btn large" onclick="captureImage();">Capture Image</a>
+    <a href="#" class="btn large" onclick="captureAudio();">Capture Audio</a>
+    <a href="#" class="btn large" onclick="captureVideo();">Capture Video</a>
+    <h2>&nbsp;</h2><a href="index.html" class="backBtn">Back</a>
+  </body>
+</html>      

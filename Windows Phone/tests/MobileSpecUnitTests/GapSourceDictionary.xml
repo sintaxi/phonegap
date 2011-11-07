@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is auto-generated, do not edit! -jm -->
+<GapSourceDictionary>
+    <FilePath Value="www\accelerometer.html"/>
+    <FilePath Value="www\accelerometer2.html"/>
+    <FilePath Value="www\audio.html"/>
+    <FilePath Value="www\calculator.html"/>
+    <FilePath Value="www\camera.html"/>
+    <FilePath Value="www\capture.html"/>
+    <FilePath Value="www\compass.html"/>
+    <FilePath Value="www\contacts.html"/>
+    <FilePath Value="www\events.html"/>
+    <FilePath Value="www\file.html"/>
+    <FilePath Value="www\index.html"/>
+    <FilePath Value="www\location.html"/>
+    <FilePath Value="www\master.css"/>
+    <FilePath Value="www\network.html"/>
+    <FilePath Value="www\notification.html"/>
+    <FilePath Value="www\phonegap-1.2.0.js"/>
+    <FilePath Value="www\storage.html"/>
+    <FilePath Value="www\autotest\index.html"/>
+    <FilePath Value="www\autotest\qunit.css"/>
+    <FilePath Value="www\autotest\qunit.js"/>
+    <FilePath Value="www\autotest\test-runner.js"/>
+    <FilePath Value="www\autotest\tests\accelerometer.tests.js"/>
+    <FilePath Value="www\autotest\tests\camera.tests.js"/>
+    <FilePath Value="www\autotest\tests\capture.tests.js"/>
+    <FilePath Value="www\autotest\tests\compass.tests.js"/>
+    <FilePath Value="www\autotest\tests\contacts.tests.js"/>
+    <FilePath Value="www\autotest\tests\device.tests.js"/>
+    <FilePath Value="www\autotest\tests\file.tests.js"/>
+    <FilePath Value="www\autotest\tests\filetransfer.tests.js"/>
+    <FilePath Value="www\autotest\tests\geolocation.tests.js"/>
+    <FilePath Value="www\autotest\tests\media.tests.js"/>
+    <FilePath Value="www\autotest\tests\network.tests.js"/>
+    <FilePath Value="www\autotest\tests\notification.tests.js"/>
+    <FilePath Value="www\autotest\tests\orientation.tests.js"/>
+    <FilePath Value="www\autotest\tests\storage.tests.js"/>
+    <FilePath Value="www\autotest\tests\system.tests.js"/>
+    <FilePath Value="www\misc\index.html"/>
+</GapSourceDictionary>

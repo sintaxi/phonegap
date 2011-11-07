@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <!-- meta name="viewport" content="width=device-width, height=device-height, user-scalable=yes, initial-scale=2.0, maximum-scale=4.0, minimum-scale=1.0" / -->
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"> <!-- ISO-8859-1 -->
+    <title>PhoneGap</title>
+    
+	<script type="text/javascript">
+		// provide our own console if it does not exist, huge dev aid!
+		if (typeof window.console == "undefined") {
+			window.console = { log: function (str) { window.external.Notify(str); } };
+		}
+		
+		// output any errors to console log, created above.
+		window.onerror = function (e) {
+			console.log("window.onerror ::" + JSON.stringify(e));
+		};
+		
+		console.log("Installed console ! ");
+    </script>
+      
+    <link rel="stylesheet" href="master.css" type="text/css" media="screen">
+    <script type="text/javascript" charset="utf-8" src="phonegap-1.2.0.js"></script>       
+
+      
+<script type="text/javascript" charset="utf-8">
+
+
+    function interceptBackbutton() {
+    	eventOutput("Back button intercepted");
+    }
+    function interceptMenubutton() {
+    	eventOutput("Menu button intercepted");
+    }
+    function interceptSearchbutton() {
+    	eventOutput("Search button intercepted");
+    }
+    
+    var eventOutput = function(s) {
+		console.log("eventOutput :: " + s);
+        var el = document.getElementById("results");
+        el.innerHTML = el.innerHTML + s + "<br>";
+    };
+
+    
+    /**
+     * Function called when page has finished loading.
+     */
+    function init() 
+    {
+        document.addEventListener("deviceready", function() {
+                console.log("Device="+device.platform+" "+device.version);
+                eventOutput("deviceready event: "+device.platform+" "+device.version);
+            }, false);
+            
+		
+        document.addEventListener("resume", function() {eventOutput("resume event");}, false);
+        document.addEventListener("pause", function() {eventOutput("pause event");}, false);
+        window.addEventListener("online", function() {eventOutput("online event");});  
+        window.addEventListener("offline", function() {eventOutput("offline event");}); 
+        
+        window.addEventListener("orientationchange", onOrientationChangedA);  
+        
+        window.onorientationchange  = onOrientationChangedB;
+        
+        console.log("window.orientation = " + window.orientation);
+    }
+    
+    function tryCallback(orientation)
+    {
+        var evt = document.createEvent('HTMLEvents')
+        evt.initEvent( 'orientationchange', true, false );
+        window.dispatchEvent(evt);
+    }
+    
+    function onOrientationChangedA(e)
+    {
+      console.log("A OrientationChange event received!!!!!! " + window.orientation);
+    }
+    
+    function onOrientationChangedB(e)
+    {
+      console.log("B OrientationChange event received!!!!!! " + window.orientation);
+    }
+	
+	function onInterceptClicked(bAdd)
+	{
+		console.log("onInterceptClicked " + bAdd);
+		if(bAdd)
+		{
+			document.addEventListener('backbutton', interceptBackbutton, false);	
+		}
+		else
+		{
+			document.removeEventListener('backbutton', interceptBackbutton, false);	
+		}
+	}
+	
+	function goBack()
+	{
+		document.location = "index.html";	
+	}
+
+	function doBlur()
+	{
+		console.log("doBlur");	
+	}
+	
+	function doUnload()
+	{
+		console.log("doUnload");	
+	}
+	
+	function doFocus()
+	{
+		console.log("doFocus");	
+	}
+
+</script>
+
+  </head>
+  <body onLoad="init();" onBlur="doBlur()" onUnload="doUnload()" onFocus="doFocus()" id="stage" class="theme">
+  
+    <h1>Events</h1>
+    <div id="info">
+        <b>Results:</b><br>
+        <span id="results"></span>
+    </div>
+
+    <h2>Action</h2>
+    <div class="btn large" onclick="onInterceptClicked(1);">Intercept backbutton</div>
+    <div class="btn large" onclick="onInterceptClicked(0);">Stop intercept of backbutton</div>
+    <div class="btn large" onclick="document.addEventListener('menubutton', interceptMenubutton, false);">Intercept menubutton</div>
+    <div class="btn large" onclick="document.removeEventListener('menubutton', interceptMenubutton, false);">Stop intercept of menubutton</div>
+    <div class="btn large" onclick="document.addEventListener('searchbutton', interceptSearchbutton, false);">Intercept searchbutton</div>
+    <div class="btn large" onclick="document.removeEventListener('searchbutton', interceptSearchbutton, false);">Stop intercept of searchbutton</div>
+    <div/>
+    <div onclick="goBack()" class="backBtn">Back</div>
+  </body>
+</html>      

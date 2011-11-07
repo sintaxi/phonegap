@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+<meta name="generator" content="joDoc">
+<title>PhoneGap API Documentation</title>
+<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
+<link rel="stylesheet" type="text/css" href="prettify/prettify.css">
+</head>
+<body>
+        <div id="header">
+            <h1><a href="index.html">Phone<strong>Gap</strong> Documentation</a></h1>
+            <small>
+                <select><optgroup label="English" value="en">
+<option value="edge">edge</option>
+<option selected value="1.2.0">1.2.0</option>
+<option value="1.1.0">1.1.0</option>
+<option value="1.0.0rc3">1.0.0rc3</option>
+<option value="1.0.0rc2">1.0.0rc2</option>
+<option value="1.0.0rc1">1.0.0rc1</option>
+<option value="1.0.0">1.0.0</option>
+<option value="0.9.6">0.9.6</option>
+<option value="0.9.5.1">0.9.5.1</option>
+<option value="0.9.5">0.9.5</option>
+<option value="0.9.4">0.9.4</option>
+<option value="0.9.3">0.9.3</option>
+<option value="0.9.2">0.9.2</option>
+</optgroup>
+<optgroup label="Español" value="es"><option value="1.0.0">1.0.0</option></optgroup>
+<optgroup label="Japanese" value="jp"><option value="0.9.5">0.9.5</option></optgroup></select></small>
+        </div>
+        <div id="subheader">
+            <h1>Compass</h1>
+            <small><select><option value="Compass">Compass</option>
+<option value="Compass_methods">      - Methods</option>
+<option value="Compass_arguments">      - Arguments</option>
+<option value="compass.getCurrentHeading">compass.getCurrentHeading</option>
+<option value="compass.getCurrentHeading_description">      - Description</option>
+<option value="compass.getCurrentHeading_supported_platforms">      - Supported Platforms</option>
+<option value="compass.getCurrentHeading_quick_example">      - Quick Example</option>
+<option value="compass.getCurrentHeading_full_example">      - Full Example</option>
+<option value="compass.watchHeading">compass.watchHeading</option>
+<option value="compass.watchHeading_description">      - Description</option>
+<option value="compass.watchHeading_supported_platforms">      - Supported Platforms</option>
+<option value="compass.watchHeading_quick_example">      - Quick Example</option>
+<option value="compass.watchHeading_full_example">      - Full Example</option>
+<option value="compass.clearWatch">compass.clearWatch</option>
+<option value="compass.clearWatch_supported_platforms">      - Supported Platforms</option>
+<option value="compass.clearWatch_quick_example">      - Quick Example</option>
+<option value="compass.clearWatch_full_example">      - Full Example</option>
+<option value="compass.watchHeadingFilter">compass.watchHeadingFilter</option>
+<option value="compass.watchHeadingFilter_description">      - Description</option>
+<option value="compass.watchHeadingFilter_supported_platforms">      - Supported Platforms</option>
+<option value="compass.watchHeadingFilter_quick_example">      - Quick Example</option>
+<option value="compass.watchHeadingFilter_full_example">      - Full Example</option>
+<option value="compass.clearWatchFilter">compass.clearWatchFilter</option>
+<option value="compass.clearWatchFilter_supported_platforms">      - Supported Platforms</option>
+<option value="compass.clearWatchFilter_quick_example">      - Quick Example</option>
+<option value="compass.clearWatchFilter_full_example">      - Full Example</option>
+<option value="compassSuccess">compassSuccess</option>
+<option value="compassSuccess_parameters">      - Parameters</option>
+<option value="compassSuccess_example">      - Example</option>
+<option value="compassError">compassError</option>
+<option value="compassError_example">      - Example</option>
+<option value="compassOptions">compassOptions</option>
+<option value="compassOptions_options">      - Options</option>
+<option value="compassOptions_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
+<option value="compassHeading">compassHeading</option>
+<option value="compassHeading_properties">      - Properties</option>
+<option value="compassHeading_description">      - Description</option>
+<option value="compassHeading_android_quirks">      - Android Quirks</option>
+<option value="compassHeading_ios_quirks">      - iOS Quirks</option>
+<option value="compassHeading_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
+<option value="CompassError">CompassError</option>
+<option value="CompassError_properties">      - Properties</option>
+<option value="CompassError_constants">      - Constants</option>
+<option value="CompassError_description">      - Description</option></select></small>
+        </div>
+
+        <div id="sidebar">
+            <div class="vertical_divider"></div>
+            <h1>API Reference</h1>
+            <ul>
+<li><a href="phonegap_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
+<li><a href="phonegap_camera_camera.md.html#Camera">Camera</a></li>
+<li><a href="phonegap_media_capture_capture.md.html#Capture">Capture</a></li>
+<li><a href="phonegap_compass_compass.md.html#Compass">Compass</a></li>
+<li><a href="phonegap_connection_connection.md.html#Connection">Connection</a></li>
+<li><a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a></li>
+<li><a href="phonegap_device_device.md.html#Device">Device</a></li>
+<li><a href="phonegap_events_events.md.html#Events">Events</a></li>
+<li><a href="phonegap_file_file.md.html#File">File</a></li>
+<li><a href="phonegap_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
+<li><a href="phonegap_media_media.md.html#Media">Media</a></li>
+<li><a href="phonegap_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="phonegap_storage_storage.md.html#Storage">Storage</a></li>
+</ul>
+<h1></h1>
+            <ul>
+<li><a href="_index.html">Keyword Index</a></li>
+            </ul>
+</div>
+
+        <div id="scrollable">
+            <div id="content">
+                <h1><a name="Compass">Compass</a></h1>
+
+<blockquote>
+  <p>Obtains the direction that the device is pointing.</p>
+</blockquote>
+
+<h2>
+<a name="Compass_methods">Methods</a>
+</h2>
+
+<ul>
+<li><a href="phonegap_compass_compass.md.html#compass.getCurrentHeading">compass.getCurrentHeading</a></li>
+<li><a href="phonegap_compass_compass.md.html#compass.watchHeading">compass.watchHeading</a></li>
+<li><a href="phonegap_compass_compass.md.html#compass.clearWatch">compass.clearWatch</a></li>
+<li><a href="phonegap_compass_compass.md.html#compass.watchHeadingFilter">compass.watchHeadingFilter</a></li>
+<li><a href="phonegap_compass_compass.md.html#compass.clearWatchFilter">compass.clearWatchFilter</a></li>
+</ul>
+<h2>
+<a name="Compass_arguments">Arguments</a>
+</h2>
+
+<ul>
+<li><a href="phonegap_compass_compass.md.html#compassSuccess">compassSuccess</a></li>
+<li><a href="phonegap_compass_compass.md.html#compassError">compassError</a></li>
+<li><a href="phonegap_compass_compass.md.html#compassOptions">compassOptions</a></li>
+<li><a href="phonegap_compass_compass.md.html#compassHeading">compassHeading</a></li>
+</ul>
+<hr>
+<h1><a name="compass.getCurrentHeading">compass.getCurrentHeading</a></h1>
+
+<p>Get the current compass heading.</p>
+
+<pre class="prettyprint"><code>navigator.<a href="phonegap_compass_compass.md.html#compass.getCurrentHeading">compass.getCurrentHeading</a>(<a href="phonegap_compass_compass.md.html#compassSuccess">compassSuccess</a>, <a href="phonegap_compass_compass.md.html#compassError">compassError</a>, <a href="phonegap_compass_compass.md.html#compassOptions">compassOptions</a>);
+</code></pre>
+
+<h2>
+<a name="compass.getCurrentHeading_description">Description</a>
+</h2>
+
+<p>The compass is a sensor that detects the direction or heading that the device is pointed.  It measures the heading in degrees from 0 to 359.99.</p>
+
+<p>The compass heading information is returned via a CompassHeading object using the <code><a href="phonegap_compass_compass.md.html#compassSuccess">compassSuccess</a></code> callback function.</p>
+
+<h2>
+<a name="compass.getCurrentHeading_supported_platforms">Supported Platforms</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>iPhone</li>
+<li>Windows Phone 7 ( Mango ) if available in hardware</li>
+</ul>
+<h2>
+<a name="compass.getCurrentHeading_quick_example">Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>function onSuccess(heading) {
+    alert('Heading: ' + heading.magneticHeading);
+};
+
+function onError(error) {
+    alert('<a href="phonegap_compass_compass.md.html#CompassError">CompassError</a>: ' error.code);
+};
+
+navigator.<a href="phonegap_compass_compass.md.html#compass.getCurrentHeading">compass.getCurrentHeading</a>(onSuccess, onError);
+</code></pre>
+
+<h2>
+<a name="compass.getCurrentHeading_full_example">Full Example</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;<a href="phonegap_compass_compass.md.html#Compass">Compass</a> Example&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Wait for PhoneGap to load
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap is ready
+    //
+    function onDeviceReady() {
+        navigator.<a href="phonegap_compass_compass.md.html#compass.getCurrentHeading">compass.getCurrentHeading</a>(onSuccess, onError);
+    }
+
+    // onSuccess: Get the current heading
+    //
+    function onSuccess(heading) {
+        alert('Heading: ' + heading.magneticHeading);
+    }
+
+    // onError: Failed to get the heading
+    //
+    function onError(<a href="phonegap_compass_compass.md.html#compassError">compassError</a>) {
+        alert('<a href="phonegap_compass_compass.md.html#Compass">Compass</a> Error: ' + <a href="phonegap_compass_compass.md.html#compassError">compassError</a>.code);
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Example&lt;/h1&gt;
+    &lt;p&gt;getCurrentHeading&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="compass.watchHeading">compass.watchHeading</a></h1>
+
+<p>At a regular interval, get the compass heading in degrees.</p>
+
+<pre class="prettyprint"><code>var watchID = navigator.<a href="phonegap_compass_compass.md.html#compass.watchHeading">compass.watchHeading</a>(<a href="phonegap_compass_compass.md.html#compassSuccess">compassSuccess</a>, <a href="phonegap_compass_compass.md.html#compassError">compassError</a>, [<a href="phonegap_compass_compass.md.html#compassOptions">compassOptions</a>]);
+</code></pre>
+
+<h2>
+<a name="compass.watchHeading_description">Description</a>
+</h2>
+
+<p>The compass is a sensor that detects the direction or heading that the device is pointed.  It measures the heading in degrees from 0 to 359.99.</p>
+
+<p>The <code><a href="phonegap_compass_compass.md.html#compass.watchHeading">compass.watchHeading</a></code> gets the device's current heading at a regular interval. Each time the heading is retrieved, the <code>headingSuccess</code> callback function is executed. Specify the interval in milliseconds via the <code>frequency</code> parameter in the <code><a href="phonegap_compass_compass.md.html#compassOptions">compassOptions</a></code> object.</p>
+
+<p>The returned watch ID references references the compass watch interval. The watch ID can be used with <code><a href="phonegap_compass_compass.md.html#compass.clearWatch">compass.clearWatch</a></code> to stop watching the compass.</p>
+
+<h2>
+<a name="compass.watchHeading_supported_platforms">Supported Platforms</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>iPhone</li>
+<li>Windows Phone 7 ( Mango ) if available in hardware</li>
+</ul>
+<h2>
+<a name="compass.watchHeading_quick_example">Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>function onSuccess(heading) {
+    var element = document.getElementById('heading');
+    element.innerHTML = 'Heading: ' + heading.magneticHeading;
+};
+
+function onError(<a href="phonegap_compass_compass.md.html#compassError">compassError</a>) {
+        alert('<a href="phonegap_compass_compass.md.html#Compass">Compass</a> error: ' + <a href="phonegap_compass_compass.md.html#compassError">compassError</a>.code);
+};
+
+var options = { frequency: 3000 };  // Update every 3 seconds
+
+var watchID = navigator.<a href="phonegap_compass_compass.md.html#compass.watchHeading">compass.watchHeading</a>(onSuccess, onError, options);
+</code></pre>
+
+<h2>
+<a name="compass.watchHeading_full_example">Full Example</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;<a href="phonegap_compass_compass.md.html#Compass">Compass</a> Example&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // The watch id references the current `watchHeading`
+    var watchID = null;
+
+    // Wait for PhoneGap to load
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap is ready
+    //
+    function onDeviceReady() {
+        startWatch();
+    }
+
+    // Start watching the compass
+    //
+    function startWatch() {
+
+        // Update compass every 3 seconds
+        var options = { frequency: 3000 };
+
+        watchID = navigator.<a href="phonegap_compass_compass.md.html#compass.watchHeading">compass.watchHeading</a>(onSuccess, onError, options);
+    }
+
+    // Stop watching the compass
+    //
+    function stopWatch() {
+        if (watchID) {
+            navigator.<a href="phonegap_compass_compass.md.html#compass.clearWatch">compass.clearWatch</a>(watchID);
+            watchID = null;
+        }
+    }
+
+    // onSuccess: Get the current heading
+    //
+    function onSuccess(heading) {
+        var element = document.getElementById('heading');
+        element.innerHTML = 'Heading: ' + heading.magneticHeading;
+    }
+
+    // onError: Failed to get the heading
+    //
+    function onError(<a href="phonegap_compass_compass.md.html#compassError">compassError</a>) {
+        alert('<a href="phonegap_compass_compass.md.html#Compass">Compass</a> error: ' + <a href="phonegap_compass_compass.md.html#compassError">compassError</a>.code);
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="heading"&gt;Waiting for heading...&lt;/div&gt;
+    &lt;button onclick="startWatch();"&gt;Start Watching&lt;/button&gt;
+    &lt;button onclick="stopWatch();"&gt;Stop Watching&lt;/button&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="compass.clearWatch">compass.clearWatch</a></h1>
+
+<p>Stop watching the compass referenced by the watch ID parameter.</p>
+
+<pre class="prettyprint"><code>navigator.<a href="phonegap_compass_compass.md.html#compass.clearWatch">compass.clearWatch</a>(watchID);
+</code></pre>
+
+<ul>
+<li>
+<strong>watchID</strong>: The ID returned by <code><a href="phonegap_compass_compass.md.html#compass.watchHeading">compass.watchHeading</a></code>.</li>
+</ul>
+<h2>
+<a name="compass.clearWatch_supported_platforms">Supported Platforms</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>iPhone</li>
+<li>Windows Phone 7 ( Mango ) if available in hardware</li>
+</ul>
+<h2>
+<a name="compass.clearWatch_quick_example">Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>var watchID = navigator.<a href="phonegap_compass_compass.md.html#compass.watchHeading">compass.watchHeading</a>(onSuccess, onError, options);
+
+// ... later on ...
+
+navigator.<a href="phonegap_compass_compass.md.html#compass.clearWatch">compass.clearWatch</a>(watchID);
+</code></pre>
+
+<h2>
+<a name="compass.clearWatch_full_example">Full Example</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;<a href="phonegap_compass_compass.md.html#Compass">Compass</a> Example&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // The watch id references the current `watchHeading`
+    var watchID = null;
+
+    // Wait for PhoneGap to load
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap is ready
+    //
+    function onDeviceReady() {
+        startWatch();
+    }
+
+    // Start watching the compass
+    //
+    function startWatch() {
+
+        // Update compass every 3 seconds
+        var options = { frequency: 3000 };
+
+        watchID = navigator.<a href="phonegap_compass_compass.md.html#compass.watchHeading">compass.watchHeading</a>(onSuccess, onError, options);
+    }
+
+    // Stop watching the compass
+    //
+    function stopWatch() {
+        if (watchID) {
+            navigator.<a href="phonegap_compass_compass.md.html#compass.clearWatch">compass.clearWatch</a>(watchID);
+            watchID = null;
+        }
+    }
+
+    // onSuccess: Get the current heading
+    //
+    function onSuccess(heading) {
+        var element = document.getElementById('heading');
+        element.innerHTML = 'Heading: ' + heading.magneticHeading;
+    }
+
+    // onError: Failed to get the heading
+    //
+    function onError(<a href="phonegap_compass_compass.md.html#compassError">compassError</a>) {
+        alert('<a href="phonegap_compass_compass.md.html#Compass">Compass</a> error: ' + <a href="phonegap_compass_compass.md.html#compassError">compassError</a>.code);
+    }
+
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="heading"&gt;Waiting for heading...&lt;/div&gt;
+    &lt;button onclick="startWatch();"&gt;Start Watching&lt;/button&gt;
+    &lt;button onclick="stopWatch();"&gt;Stop Watching&lt;/button&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="compass.watchHeadingFilter">compass.watchHeadingFilter</a></h1>
+
+<p>Get the compass heading in degrees when it changes by at least a certain number of degrees.</p>
+
+<pre class="prettyprint"><code>var watchID = navigator.<a href="phonegap_compass_compass.md.html#compass.watchHeadingFilter">compass.watchHeadingFilter</a>(<a href="phonegap_compass_compass.md.html#compassSuccess">compassSuccess</a>, <a href="phonegap_compass_compass.md.html#compassError">compassError</a>, <a href="phonegap_compass_compass.md.html#compassOptions">compassOptions</a>);
+</code></pre>
+
+<h2>
+<a name="compass.watchHeadingFilter_description">Description</a>
+</h2>
+
+<p>The compass is a sensor that detects the direction or heading that the device is pointed.  It measures the heading in degrees from 0 to 359.99.</p>
+
+<p>The <code><a href="phonegap_compass_compass.md.html#compass.watchHeadingFilter">compass.watchHeadingFilter</a></code> gets the device's current heading when it changes by a specified number of degrees. Each time the heading changes by the specified number of degrees or more, the <code>headingSuccess</code> callback function is called. Specify the degrees of change via the <code>filter</code> parameter in the <code><a href="phonegap_compass_compass.md.html#compassOptions">compassOptions</a></code> object.</p>
+
+<p>The returned watch ID references references the compass watch interval. The watch ID can be used with <code><a href="phonegap_compass_compass.md.html#compass.clearWatchFilter">compass.clearWatchFilter</a></code> to stop watching the compass via a degree filter.  Only one watchHeadingFilter can be in effect at one time.  If a watchHeadingFilter is in effect, calling getCurrentHeading or watchHeading will use the existing filter value for specifying heading changes. On iOS this method is more efficient than compass.watchFilter() based on the iOS mechanism for monitoring compass heading changes.</p>
+
+<h2>
+<a name="compass.watchHeadingFilter_supported_platforms">Supported Platforms</a>
+</h2>
+
+<ul>
+<li>iPhone</li>
+</ul>
+<h2>
+<a name="compass.watchHeadingFilter_quick_example">Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>function onSuccess(heading) {
+    var element = document.getElementById('heading');
+    element.innerHTML = 'Heading: ' + heading.magneticHeading;
+};
+
+function onError(<a href="phonegap_compass_compass.md.html#compassError">compassError</a>) {
+        alert('<a href="phonegap_compass_compass.md.html#Compass">Compass</a> error: ' + <a href="phonegap_compass_compass.md.html#compassError">compassError</a>.code);
+};
+
+var options = { filter: 10 };  // Get notified on compass heading changes or 10 degrees or more
+
+var watchID = navigator.<a href="phonegap_compass_compass.md.html#compass.watchHeadingFilter">compass.watchHeadingFilter</a>(onSuccess, onError, options);
+</code></pre>
+
+<h2>
+<a name="compass.watchHeadingFilter_full_example">Full Example</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;<a href="phonegap_compass_compass.md.html#Compass">Compass</a> Example&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // The watch id references the current `watchHeading`
+    var watchID = null;
+
+    // Wait for PhoneGap to load
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap is ready
+    //
+    function onDeviceReady() {
+        startWatch();
+    }
+
+    // Start watching the compass
+    //
+    function startWatch() {
+
+        // Get notified on compass heading changes or 10 degrees or more
+        var options = { filter: 10 };
+
+        watchID = navigator.<a href="phonegap_compass_compass.md.html#compass.watchHeadingFilter">compass.watchHeadingFilter</a>(onSuccess, onError, options);
+    }
+
+    // Stop watching the compass
+    //
+    function stopWatch() {
+        if (watchID) {
+            navigator.<a href="phonegap_compass_compass.md.html#compass.clearWatchFilter">compass.clearWatchFilter</a>(watchID);
+            watchID = null;
+        }
+    }
+
+    // onSuccess: Get the current heading
+    //
+    function onSuccess(heading) {
+        var element = document.getElementById('heading');
+        element.innerHTML = 'Heading: ' + heading.magneticHeading;
+    }
+
+    // onError: Failed to get the heading
+    //
+    function onError(<a href="phonegap_compass_compass.md.html#compassError">compassError</a>) {
+        alert('<a href="phonegap_compass_compass.md.html#Compass">Compass</a> error: ' + <a href="phonegap_compass_compass.md.html#compassError">compassError</a>.code);
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="heading"&gt;Waiting for heading...&lt;/div&gt;
+    &lt;button onclick="startWatch();"&gt;Start Watching via Filter&lt;/button&gt;
+    &lt;button onclick="stopWatch();"&gt;Stop Watching&lt;/button&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="compass.clearWatchFilter">compass.clearWatchFilter</a></h1>
+
+<p>Stop watching the compass referenced by the watch ID parameter.</p>
+
+<pre class="prettyprint"><code>navigator.<a href="phonegap_compass_compass.md.html#compass.clearWatchFilter">compass.clearWatchFilter</a>(watchID);
+</code></pre>
+
+<ul>
+<li>
+<strong>watchID</strong>: The ID returned by <code><a href="phonegap_compass_compass.md.html#compass.watchHeadingFilter">compass.watchHeadingFilter</a></code>.</li>
+</ul>
+<h2>
+<a name="compass.clearWatchFilter_supported_platforms">Supported Platforms</a>
+</h2>
+
+<ul>
+<li>iPhone</li>
+</ul>
+<h2>
+<a name="compass.clearWatchFilter_quick_example">Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>var watchID = navigator.<a href="phonegap_compass_compass.md.html#compass.watchHeadingFilter">compass.watchHeadingFilter</a>(onSuccess, onError, options);
+
+// ... later on ...
+
+navigator.<a href="phonegap_compass_compass.md.html#compass.clearWatchFilter">compass.clearWatchFilter</a>(watchID);
+</code></pre>
+
+<h2>
+<a name="compass.clearWatchFilter_full_example">Full Example</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;<a href="phonegap_compass_compass.md.html#Compass">Compass</a> Example&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // The watch id references the current `watchHeading`
+    var watchID = null;
+
+    // Wait for PhoneGap to load
+    //
+    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+    // PhoneGap is ready
+    //
+    function onDeviceReady() {
+        startWatch();
+    }
+
+    // Start watching the compass
+    //
+    function startWatch() {
+
+        // Get notified on compass heading changes or 10 degrees or more
+        var options = { filter: 10 };
+
+        watchID = navigator.<a href="phonegap_compass_compass.md.html#compass.watchHeadingFilter">compass.watchHeadingFilter</a>(onSuccess, onError, options);
+    }
+
+    // Stop watching the compass
+    //
+    function stopWatch() {
+        if (watchID) {
+            navigator.<a href="phonegap_compass_compass.md.html#compass.clearWatchFilter">compass.clearWatchFilter</a>(watchID);
+            watchID = null;
+        }
+    }
+
+    // onSuccess: Get the current heading
+    //
+    function onSuccess(heading) {
+        var element = document.getElementById('heading');
+        element.innerHTML = 'Heading: ' + heading.magneticHeading;
+    }
+
+    // onError: Failed to get the heading
+    //
+    function onError(<a href="phonegap_compass_compass.md.html#compassError">compassError</a>) {
+        alert('<a href="phonegap_compass_compass.md.html#Compass">Compass</a> error: ' + <a href="phonegap_compass_compass.md.html#compassError">compassError</a>.code);
+    }
+
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="heading"&gt;Waiting for heading...&lt;/div&gt;
+    &lt;button onclick="startWatch();"&gt;Start Watching via Filter&lt;/button&gt;
+    &lt;button onclick="stopWatch();"&gt;Stop Watching&lt;/button&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="compassSuccess">compassSuccess</a></h1>
+
+<p>onSuccess callback function that provides the compass heading information via a <a href="phonegap_compass_compass.md.html#compassHeading">compassHeading</a> object.</p>
+
+<pre class="prettyprint"><code>function(heading) {
+    // Do something
+}
+</code></pre>
+
+<h2>
+<a name="compassSuccess_parameters">Parameters</a>
+</h2>
+
+<ul>
+<li>
+<strong>heading:</strong> The heading information. <em>(<a href="phonegap_compass_compass.md.html#compassHeading">compassHeading</a>)</em>
+</li>
+</ul>
+<h2>
+<a name="compassSuccess_example">Example</a>
+</h2>
+
+<pre class="prettyprint"><code>function onSuccess(heading) {
+    alert('Heading: ' + heading.magneticHeading);
+};
+</code></pre>
+
+<hr>
+<h1><a name="compassError">compassError</a></h1>
+
+<p>onError callback function for compass functions. </p>
+
+<h2>
+<a name="compassError_example">Example</a>
+</h2>
+
+<p>function(<a href="phonegap_compass_compass.md.html#CompassError">CompassError</a>) {
+    // Handle the error
+}</p>
+
+<hr>
+<h1><a name="compassOptions">compassOptions</a></h1>
+
+<p>An optional parameter to customize the retrieval of the compass.</p>
+
+<h2>
+<a name="compassOptions_options">Options</a>
+</h2>
+
+<ul>
+<li>
+<strong>frequency:</strong> How often to retrieve the compass heading in milliseconds. <em>(Number)</em> (Default: 100)</li>
+<li>
+<strong>filter:</strong> The change in degrees required to initiate a watchHeadingFilter success callback. <em>(Number)</em>
+</li>
+</ul>
+<p>Android Quirks</p>
+
+<hr>
+<ul>
+<li>filter is not supported.</li>
+</ul>
+<h2>
+<a name="compassOptions_windows_phone_7_quirks">Windows Phone 7 Quirks</a>
+</h2>
+
+<ul>
+<li>filter is not supported.</li>
+</ul>
+<hr>
+<h1><a name="compassHeading">compassHeading</a></h1>
+
+<p>A <code>CompassHeading</code> object is returned to the <code><a href="phonegap_compass_compass.md.html#compassSuccess">compassSuccess</a></code> callback function when an error occurs.</p>
+
+<h2>
+<a name="compassHeading_properties">Properties</a>
+</h2>
+
+<ul>
+<li>
+<strong>magneticHeading:</strong> The heading in degrees from 0 - 359.99 at a single moment in time. <em>(Number)</em>
+</li>
+<li>
+<strong>trueHeading:</strong> The heading relative to the geographic North Pole in degrees 0 - 359.99 at a single moment in time. A negative value indicates that the true heading could not be determined.  <em>(Number)</em>
+</li>
+<li>
+<strong>headingAccuracy:</strong> The deviation in degrees between the reported heading and the true heading. <em>(Number)</em>
+</li>
+<li>
+<strong>timestamp:</strong> The time at which this heading was determined.  <em>(milliseconds)</em>
+</li>
+</ul>
+<h2>
+<a name="compassHeading_description">Description</a>
+</h2>
+
+<p>The <code>CompassHeading</code> object is returned to the user through the <code><a href="phonegap_compass_compass.md.html#compassSuccess">compassSuccess</a></code> callback function.</p>
+
+<h2>
+<a name="compassHeading_android_quirks">Android Quirks</a>
+</h2>
+
+<ul>
+<li>trueHeading is not supported. It will report the same value as magneticHeading</li>
+<li>headingAccuracy will always be 0 as there is no difference between the magneticHeading and trueHeading on Android.</li>
+</ul>
+<h2>
+<a name="compassHeading_ios_quirks">iOS Quirks</a>
+</h2>
+
+<ul>
+<li>trueHeading is only returned when location services are running via <code>navigator.geolocation.watchLocation()</code>
+</li>
+<li>For iOS &gt; 4 devices, if the device is rotated and the app supports that orientation, the heading values will be reported 
+back with respect to the current orientation. </li>
+</ul>
+<h2>
+<a name="compassHeading_windows_phone_7_quirks">Windows Phone 7 Quirks</a>
+</h2>
+
+<ul>
+<li>returns trueHeading only, note that this code is largely untested because of a lack of devices that support compass.</li>
+</ul>
+<hr>
+<h1><a name="CompassError">CompassError</a></h1>
+
+<p>A <code><a href="phonegap_compass_compass.md.html#CompassError">CompassError</a></code> object is returned to the <code><a href="phonegap_compass_compass.md.html#compassError">compassError</a></code> callback function when an error occurs.</p>
+
+<h2>
+<a name="CompassError_properties">Properties</a>
+</h2>
+
+<ul>
+<li>
+<strong>code:</strong> One of the predefined error codes listed below.</li>
+</ul>
+<h2>
+<a name="CompassError_constants">Constants</a>
+</h2>
+
+<ul>
+<li>
+<code><a href="phonegap_compass_compass.md.html#CompassError">CompassError</a>.COMPASS_INTERNAL_ERR</code> </li>
+<li><code><a href="phonegap_compass_compass.md.html#CompassError">CompassError</a>.COMPASS_NOT_SUPPORTED</code></li>
+</ul>
+<h2>
+<a name="CompassError_description">Description</a>
+</h2>
+
+<p>The <code><a href="phonegap_compass_compass.md.html#CompassError">CompassError</a></code> object is returned to the user through the <code><a href="phonegap_compass_compass.md.html#compassError">compassError</a></code> callback function when an error occurs.</p>
+
+            </div>
+        </div>
+
+        <!-- Functionality and Syntax Highlighting -->
+        <script type="text/javascript" src="index.js"></script><script type="text/javascript" src="prettify/prettify.js"></script>
+</body>
+</html>

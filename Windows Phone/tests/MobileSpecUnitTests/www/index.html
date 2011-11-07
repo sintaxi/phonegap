@@ -1,0 +1,106 @@
+﻿<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=320; user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <title>PhoneGap</title>
+	  <link rel="stylesheet" href="master.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+      
+	<script type="text/javascript">
+		// provide our own console if it does not exist, huge dev aid!
+		if(typeof window.console == "undefined")
+		{
+		window.console = {log:function(str){window.external.Notify(str);}};
+		}
+		
+		// output any errors to console log, created above.
+		window.onerror=function(e)
+		{
+			console.log("window.onerror ::" + JSON.stringify(e));
+		};
+		
+		console.log("Installed console ! ");
+    </script>
+      
+      <script type="text/javascript" charset="utf-8" src="phonegap-1.2.0.js"></script> 
+       
+      <script type="text/javascript">
+
+
+		
+			
+			
+			function init()
+			{
+				document.addEventListener("deviceready",onDeviceReady,false);
+				document.addEventListener("backbutton",onBackButton,false);
+
+			}
+		
+			
+			function onBackButton()
+			{
+				console.log("onBackButton");	
+			}
+			
+			function onDeviceReady(e)
+			{
+				updateDeviceInfo();
+				console.log("deviceready event fired!");
+			}
+			
+			function updateDeviceInfo() 
+			{
+				document.getElementById("platform").innerHTML = device.platform;
+				document.getElementById("version").innerHTML = device.version;
+				document.getElementById("uuid").innerHTML = device.uuid;
+				document.getElementById("name").innerHTML = device.name;
+				document.getElementById("width").innerHTML = screen.width;
+				document.getElementById("height").innerHTML = screen.height;
+				document.getElementById("colorDepth").innerHTML = screen.colorDepth;
+			};
+			
+			PhoneGap.addConstructor(function()
+			{
+				console.log("PhoneGap.addConstructor is working");
+			});
+			
+			
+			
+			
+	  </script>
+      
+	 
+	  
+
+  </head>
+  <body onLoad="init();" id="stage" class="theme">
+    <h1>PhoneGap Tests</h1>
+    <div id="info">
+        <h4>Platform: <span id="platform"> &nbsp;</span></h4>
+        <h4>Version: <span id="version">&nbsp;</span></h4>
+        <h4>UUID: <span id="uuid"> &nbsp;</span></h4>
+        <h4>Name: <span id="name">&nbsp;</span></h4>
+        <h4>Width: <span id="width"> &nbsp;</span>,   Height: <span id="height">&nbsp;
+                   </span>, Color Depth: <span id="colorDepth"></span></h4>
+     </div>
+     
+     
+    <a href="autotest/index.html" class="btn large">Automatic Test</a>
+    <a href="accelerometer.html" class="btn large">Accelerometer</a>
+    <a href="accelerometer2.html" class="btn large">Accel Game</a>
+    <a href="audio.html" class="btn large">Audio Play/Record</a>
+    <a href="camera.html" class="btn large">Camera</a>
+    <a href="capture.html" class="btn large">Capture</a>
+    <a href="compass.html" class="btn large">Compass</a>
+    <a href="network.html" class="btn large">Connection</a>
+    <a href="contacts.html" class="btn large">Contacts</a>
+    <a href="events.html" class="btn large">Events</a>
+    <a href="file.html" class="btn large">File</a>
+    <a href="location.html" class="btn large">Location</a>
+    <a href="misc/index.html" class="btn large">Misc Content</a>
+    <a href="notification.html" class="btn large">Notification</a>
+    <a href="storage.html" class="btn large">Local Storage</a>
+    <a href="calculator.html" class="btn large">Calculator (custom plugin)</a>
+  </body>
+</html>

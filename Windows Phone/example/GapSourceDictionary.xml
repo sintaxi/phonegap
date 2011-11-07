@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<GapSourceDictionary>
+
+    <FilePath Value="www\index.html"/>
+    <FilePath Value="www\contacts.html"/>
+    <FilePath Value="www\phonegap-base.js"/>
+
+    <FilePath Value="www\debugconsole.js"/>
+
+    <FilePath Value="www\master.css"/>
+
+    <FilePath Value="www\pg_logo.png"/>
+
+    <FilePath Value="www\images\ArrowImg.png"/>
+
+</GapSourceDictionary>
