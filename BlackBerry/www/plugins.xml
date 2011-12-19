@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugins>
+  <plugin name="App"            value="com.phonegap.app.App"/>
+  <plugin name="Device"         value="com.phonegap.device.Device"/>
   <plugin name="Camera"         value="com.phonegap.camera.Camera"/>
   <plugin name="Network Status" value="com.phonegap.network.Network"/>
   <plugin name="Notification"   value="com.phonegap.notification.Notification"/>

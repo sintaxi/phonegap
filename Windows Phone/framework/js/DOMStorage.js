@@ -1,4 +1,17 @@
-﻿
+﻿/*  
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+	
+	http://www.apache.org/licenses/LICENSE-2.0
+	
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+*/
+
 // this is a WP7 Only implementation of the Storage API for use in webpages loaded from the local file system
 // inside phonegap application.
 // there is a native implementation which is backing this and providing the persistance of values.
@@ -51,7 +64,6 @@ if(!window.localStorage)
                 key = this.keys[n];
                 if(!this.hasOwnProperty(key))
                 {
-                    console.log("didn't have a prop, now we do ...");
                     Object.defineProperty( this, key, 
                     {
 

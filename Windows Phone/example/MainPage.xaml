@@ -9,13 +9,16 @@
     mc:Ignorable="d" FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Portrait"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
     shell:SystemTray.IsVisible="True" d:DesignHeight="768" d:DesignWidth="480" xmlns:my="clr-namespace:WP7GapClassLib;assembly=WP7GapClassLib">
     <Grid x:Name="LayoutRoot" >
-
-        <my:PGView Name="pGView1" HorizontalAlignment="Stretch"  
-                          VerticalAlignment="Stretch"></my:PGView>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <my:PGView HorizontalAlignment="Stretch" 
+                   Margin="0,0,0,0"  
+                   Name="PGView" 
+                   VerticalAlignment="Stretch" />
     </Grid>
 
 </phone:PhoneApplicationPage>

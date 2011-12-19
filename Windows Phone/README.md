@@ -19,12 +19,14 @@ Getting Started (Hey, not too rough)
 -- If you do not see it, you may have to select the top level 'Visual C#' to see it
 - Build and Run it!
 
+-- Also, if you prefer, you may add the project instead to the "Silverlight for Windows Phone" subfolder of "Visual C#".  This is up to you, and only affects where the GapAppStarter template is shown when creating a new project.
+
 Note!!!
 ---
 
 When you add or remove files/folders in the www folder you will need to do the following
 
-- ensure the new item is included in the project ( Content )
+- ensure the new item is included in the project ( Content ) This includes ALL images/css/html/js/* and anything that you want available at runtime.
 -- Do not modify the GapSourceDictionary.xml file which is included in the project, it is auto-generated for you when you build.
 
 

@@ -1,11 +1,16 @@
-/*
- * PhoneGap is available under *either* the terms of the modified BSD license *or* the
- * MIT License (2008). See http://opensource.org/licenses/alphabetical for full text.
- *
- * Copyright (c) 2005-2011, Nitobi Software Inc.
- * Copyright (c) 2010-2011, IBM Corporation
- * Copyright (c) 2011, Microsoft Corporation
- */
+/*  
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+	
+	http://www.apache.org/licenses/LICENSE-2.0
+	
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+*/
 
 if (!PhoneGap.hasResource("accelerometer")) 
 {
@@ -64,7 +69,6 @@ Accelerometer.prototype.getCurrentAcceleration = function(successCallback, error
 	var onSuccess = function(result)
 	{
 		var accResult = JSON.parse(result);
-		console.log("Accel x = " + accResult.x);
 		self.lastAcceleration = new Acceleration(accResult.x,accResult.y,accResult.z);
 		successCallback(self.lastAcceleration);
 	}
@@ -104,7 +108,6 @@ Accelerometer.prototype.watchAcceleration = function(successCallback, errorCallb
 	
     var onSuccess = function (result) {
         var accResult = JSON.parse(result);
-        console.log("Accel x = " + accResult.x);
         self.lastAcceleration = new Acceleration(accResult.x, accResult.y, accResult.z);
         successCallback(self.lastAcceleration);
     }
@@ -135,12 +138,11 @@ Accelerometer.prototype.clearWatch = function(id) {
     PhoneGap.exec(null, null, "Accelerometer", "stopWatch", { id: id });
 };
 
-PhoneGap.addConstructor(
+PhoneGap.onPhoneGapInit.subscribeOnce(
 function()
 {
     if (!navigator.accelerometer) 
 	{
-		console.log("Installing accelerometer");
         navigator.accelerometer = new Accelerometer();
     }
 });

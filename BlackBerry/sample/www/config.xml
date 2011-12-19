@@ -20,7 +20,7 @@
 
   <!-- PhoneGap API -->
   <feature id="blackberry.system" required="true" version="1.0.0.0" />
-  <feature id="phonegap" required="true" version="1.0.0" />
+  <feature id="com.phonegap" required="true" version="1.0.0" />
   <feature id="blackberry.find" required="true" version="1.0.0.0" />
   <feature id="blackberry.identity" required="true" version="1.0.0.0" />
   <feature id="blackberry.pim.Address" required="true" version="1.0.0.0" />
@@ -31,6 +31,9 @@
   <feature id="blackberry.app" required="true" version="1.0.0.0" />
   <feature id="blackberry.app.event" required="true" version="1.0.0.0" />
   <feature id="blackberry.system.event" required="true" version="1.0.0.0"/>
+  <feature id="blackberry.widgetcache" required="true" version="1.0.0.0"/>
+  <feature id="blackberry.media.camera" />
+  <feature id="blackberry.ui.dialog" />
 
   <!-- PhoneGap API -->
   <access subdomains="true" uri="file:///store/home" />
@@ -49,5 +52,12 @@
   </rim:loadingScreen>
 
   <content src="index.html" />
+
+  <rim:permissions>
+    <rim:permit>use_camera</rim:permit>
+    <rim:permit>read_device_identifying_information</rim:permit>
+    <rim:permit>access_shared</rim:permit>
+    <rim:permit>read_geolocation</rim:permit>
+  </rim:permissions>
 
 </widget>

@@ -1,11 +1,16 @@
-﻿/*
- * PhoneGap is available under *either* the terms of the modified BSD license *or* the
- * MIT License (2008). See http://opensource.org/licenses/alphabetical for full text.
- *
- * Copyright (c) 2005-2011, Nitobi Software Inc.
- * Copyright (c) 2011, Microsoft Corporation
- * Copyright (c) 2011, Jesse MacFadyen.
- */
+﻿/*  
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+	
+	http://www.apache.org/licenses/LICENSE-2.0
+	
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+*/
 
 using System;
 using System.Net;
@@ -181,7 +186,6 @@ namespace WP7GapClassLib.PhoneGap.Commands
         // refer here for contact properties we can access: http://msdn.microsoft.com/en-us/library/microsoft.phone.tasks.savecontacttask_members%28v=VS.92%29.aspx
         public void save(string jsonContact)
         {
-            Debug.WriteLine("Saving Contact :: " + jsonContact);
 
             JSONContact contact = JSON.JsonHelper.Deserialize<JSONContact>(jsonContact);
 
@@ -430,11 +434,6 @@ namespace WP7GapClassLib.PhoneGap.Commands
 
             List<string> contactList = new List<string>();
 
-            foreach(Contact cont in foundContacts)
-            {
-                Debug.WriteLine(cont.ToString() + " : " + cont.DisplayName + " : " + cont.GetHashCode().ToString());
-            }
-
 
             IEnumerable<Contact> distinctContacts = foundContacts.Distinct();
             
@@ -512,8 +511,6 @@ namespace WP7GapClassLib.PhoneGap.Commands
                                                FormatJSONWebsites(con));
 
             jsonContact = "{" + jsonContact + "}";
-
-            //Debug.WriteLine("jsonContact = " + jsonContact);
 
             return jsonContact;
         }

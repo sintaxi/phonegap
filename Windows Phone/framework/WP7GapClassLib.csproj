@@ -34,11 +34,13 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>Bin\Release</OutputPath>
-    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Devices.Sensors" />
@@ -59,6 +61,7 @@
   <ItemGroup>
     <Compile Include="PhoneGap\Commands\AudioPlayer.cs" />
     <Compile Include="PhoneGap\Commands\Compass.cs" />
+    <Compile Include="PhoneGap\Commands\GeoLocation.cs" />
     <Compile Include="PhoneGap\Commands\Media.cs" />
     <Compile Include="PhoneGap\DOMStorageHelper.cs" />
     <Compile Include="PhoneGap\JSON\JsonHelper.cs" />
@@ -76,10 +79,7 @@
     <Compile Include="PhoneGap\Commands\Device.cs" />
     <Compile Include="PhoneGap\Commands\File.cs" />
     <Compile Include="PhoneGap\Commands\FileTransfer.cs" />
-    <Compile Include="PhoneGap\Commands\Motion.cs" />
     <Compile Include="PhoneGap\Commands\Notification.cs" />
-    <Compile Include="PhoneGap\Commands\Reachability.cs" />
-    <Compile Include="PhoneGap\Commands\Sound.cs" />
     <Compile Include="PhoneGap\NativeExecution.cs" />
     <Compile Include="PhoneGap\PluginResult.cs" />
     <Compile Include="PhoneGap\ScriptCallback.cs" />
@@ -129,18 +129,6 @@
     <Content Include="Images\appbar.save.rest.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="js\phonegap-1.2.0.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="js\phonegap.log">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>phonegap.tt</DependentUpon>
-    </None>
-    <None Include="js\phonegap.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>phonegap.log</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -148,6 +136,7 @@
   <ItemGroup>
     <Resource Include="resources\notification-beep.wav" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <ProjectExtensions />

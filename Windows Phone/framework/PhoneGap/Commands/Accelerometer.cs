@@ -1,12 +1,17 @@
-﻿/*
- * PhoneGap is available under *either* the terms of the modified BSD license *or* the
- * MIT License (2008). See http://opensource.org/licenses/alphabetical for full text.
- *
- * Copyright (c) 2005-2011, Nitobi Software Inc.
- * Copyright (c) 2011, Microsoft Corporation
- * Copyright (c) 2011, Sergey Grebnov.
- * Copyright (c) 2011, Jesse MacFadyen.
- */
+﻿/*  
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+	
+	http://www.apache.org/licenses/LICENSE-2.0
+	
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+*/
+
 
 using System;
 using System.Collections.Generic;
@@ -21,7 +26,7 @@ namespace WP7GapClassLib.PhoneGap.Commands
     /// </summary>
     public class Accelerometer : BaseCommand
     {
-        #region AccelerometerOptions class
+#region AccelerometerOptions class
         /// <summary>
         /// Represents Accelerometer options.
         /// </summary>
@@ -62,7 +67,7 @@ namespace WP7GapClassLib.PhoneGap.Commands
 
         #endregion
 
-        #region Status codes
+#region Status codes
 
         public const int Stopped = 0;
         public const int Starting = 1;
@@ -71,7 +76,7 @@ namespace WP7GapClassLib.PhoneGap.Commands
 
         #endregion
 
-        #region Static members
+#region Static members
 
         /// <summary>
         /// Status of listener
@@ -136,7 +141,7 @@ namespace WP7GapClassLib.PhoneGap.Commands
                     this.SetStatus(Starting);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 this.DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, ErrorFailedToStart));
                 return;
@@ -219,11 +224,11 @@ namespace WP7GapClassLib.PhoneGap.Commands
                     DispatchCommandResult(new PluginResult(PluginResult.Status.OK, GetCurrentAccelerationFormatted()));
                 }
             }
-            catch (UnauthorizedAccessException e)
+            catch (UnauthorizedAccessException)
             {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.ILLEGAL_ACCESS_EXCEPTION, ErrorFailedToStart));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, ErrorFailedToStart));
             }
@@ -274,7 +279,7 @@ namespace WP7GapClassLib.PhoneGap.Commands
                     this.SetStatus(Starting);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 this.SetStatus(ErrorFailedToStart);
             }
@@ -305,3 +310,4 @@ namespace WP7GapClassLib.PhoneGap.Commands
         }
     }
 }
+

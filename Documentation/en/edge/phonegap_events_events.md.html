@@ -15,6 +15,7 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option selected value="edge">edge</option>
+<option value="1.3.0">1.3.0</option>
 <option value="1.2.0">1.2.0</option>
 <option value="1.1.0">1.1.0</option>
 <option value="1.0.0rc3">1.0.0rc3</option>
@@ -69,6 +70,21 @@
 <option value="backbutton_supported_platforms">      - Supported Platforms</option>
 <option value="backbutton_quick_example">      - Quick Example</option>
 <option value="backbutton_full_example">      - Full Example</option>
+<option value="batterycritical">batterycritical</option>
+<option value="batterycritical_details">      - Details</option>
+<option value="batterycritical_supported_platforms">      - Supported Platforms</option>
+<option value="batterycritical_quick_example">      - Quick Example</option>
+<option value="batterycritical_full_example">      - Full Example</option>
+<option value="batterylow">batterylow</option>
+<option value="batterylow_details">      - Details</option>
+<option value="batterylow_supported_platforms">      - Supported Platforms</option>
+<option value="batterylow_quick_example">      - Quick Example</option>
+<option value="batterylow_full_example">      - Full Example</option>
+<option value="batterystatus">batterystatus</option>
+<option value="batterystatus_details">      - Details</option>
+<option value="batterystatus_supported_platforms">      - Supported Platforms</option>
+<option value="batterystatus_quick_example">      - Quick Example</option>
+<option value="batterystatus_full_example">      - Full Example</option>
 <option value="menubutton">menubutton</option>
 <option value="menubutton_details">      - Details</option>
 <option value="menubutton_supported_platforms">      - Supported Platforms</option>
@@ -144,6 +160,9 @@
 <li><a href="phonegap_events_events.md.html#online">online</a></li>
 <li><a href="phonegap_events_events.md.html#offline">offline</a></li>
 <li><a href="phonegap_events_events.md.html#backbutton">backbutton</a></li>
+<li><a href="phonegap_events_events.md.html#batterycritical">batterycritical</a></li>
+<li><a href="phonegap_events_events.md.html#batterylow">batterylow</a></li>
+<li><a href="phonegap_events_events.md.html#batterystatus">batterystatus</a></li>
 <li><a href="phonegap_events_events.md.html#menubutton">menubutton</a></li>
 <li><a href="phonegap_events_events.md.html#searchbutton">searchbutton</a></li>
 <li><a href="phonegap_events_events.md.html#startcallbutton">startcallbutton</a></li>
@@ -643,6 +662,270 @@ function onBackKeyDown() {
     // Handle the back button
     //
     function onBackKeyDown() {
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body onload="onLoad()"&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="batterycritical">batterycritical</a></h1>
+
+<p>This is an event that fires when a PhoneGap application detects the battery has reached the critical level threshold.</p>
+
+<pre class="prettyprint"><code>window.addEventListener("<a href="phonegap_events_events.md.html#batterycritical">batterycritical</a>", yourCallbackFunction, false);
+</code></pre>
+
+<h2>
+<a name="batterycritical_details">Details</a>
+</h2>
+
+<p>This event that fires when a PhoneGap application detects the percentage of battery has reached the critical battery threshold. This value is device specific.</p>
+
+<p>The <a href="phonegap_events_events.md.html#batterycritical">batterycritical</a> handler will be called with an object that contains two properties:</p>
+
+<ul>
+<li>
+<strong>level:</strong> The percentage of battery (0-100). <em>(Number)</em>
+</li>
+<li>
+<strong>isPlugged:</strong> A boolean that represents whether or not the device is plugged in or not. <em>(Boolean)</em>
+</li>
+</ul>
+<p>Typically, you will want to attach an event listener with <code>window.addEventListener</code> once you receive the PhoneGap '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
+
+<h2>
+<a name="batterycritical_supported_platforms">Supported Platforms</a>
+</h2>
+
+<ul>
+<li>iOS</li>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+</ul>
+<h2>
+<a name="batterycritical_quick_example">Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>window.addEventListener("<a href="phonegap_events_events.md.html#batterycritical">batterycritical</a>", onBatteryCritical, false);
+
+function onBatteryCritical(info) {
+    // Handle the battery critical event
+    alert("Battery Level Critical " + info.level + "%\nRecharge Soon!"); 
+}
+</code></pre>
+
+<h2>
+<a name="batterycritical_full_example">Full Example</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;PhoneGap <a href="phonegap_device_device.md.html#Device">Device</a> Ready Example&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Call onDeviceReady when PhoneGap is loaded.
+    //
+    // At this point, the document has loaded but phonegap.js has not.
+    // When PhoneGap is loaded and talking with the native device,
+    // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
+    // 
+    function onLoad() {
+        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    }
+
+    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    //
+    function onDeviceReady() {
+        window.addEventListener("<a href="phonegap_events_events.md.html#batterycritical">batterycritical</a>", onBatteryCritical, false);
+    }
+
+    // Handle the <a href="phonegap_events_events.md.html#batterycritical">batterycritical</a> event
+    //
+    function onBatteryCritical(info) {
+        alert("Battery Level Critical " + info.level + "%\nRecharge Soon!"); 
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body onload="onLoad()"&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="batterylow">batterylow</a></h1>
+
+<p>This is an event that fires when a PhoneGap application detects the battery has reached the low level threshold.</p>
+
+<pre class="prettyprint"><code>window.addEventListener("<a href="phonegap_events_events.md.html#batterylow">batterylow</a>", yourCallbackFunction, false);
+</code></pre>
+
+<h2>
+<a name="batterylow_details">Details</a>
+</h2>
+
+<p>This event that fires when a PhoneGap application detects the percentage of battery has reached the low battery threshold. This value is device specific.</p>
+
+<p>The <a href="phonegap_events_events.md.html#batterylow">batterylow</a> handler will be called with an object that contains two properties:</p>
+
+<ul>
+<li>
+<strong>level:</strong> The percentage of battery (0-100). <em>(Number)</em>
+</li>
+<li>
+<strong>isPlugged:</strong> A boolean that represents whether or not the device is plugged in or not. <em>(Boolean)</em>
+</li>
+</ul>
+<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the PhoneGap '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
+
+<h2>
+<a name="batterylow_supported_platforms">Supported Platforms</a>
+</h2>
+
+<ul>
+<li>iOS</li>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+</ul>
+<h2>
+<a name="batterylow_quick_example">Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>window.addEventListener("<a href="phonegap_events_events.md.html#batterylow">batterylow</a>", onBatteryLow, false);
+
+function onBatteryLow(info) {
+    // Handle the battery low event
+    alert("Battery Level Low " + info.level + "%"); 
+}
+</code></pre>
+
+<h2>
+<a name="batterylow_full_example">Full Example</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;PhoneGap <a href="phonegap_device_device.md.html#Device">Device</a> Ready Example&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Call onDeviceReady when PhoneGap is loaded.
+    //
+    // At this point, the document has loaded but phonegap.js has not.
+    // When PhoneGap is loaded and talking with the native device,
+    // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
+    // 
+    function onLoad() {
+        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    }
+
+    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    //
+    function onDeviceReady() {
+        window.addEventListener("<a href="phonegap_events_events.md.html#batterylow">batterylow</a>", onBatteryLow, false);
+    }
+
+    // Handle the <a href="phonegap_events_events.md.html#batterylow">batterylow</a> event
+    //
+    function onBatteryLow(info) {
+        alert("Battery Level Low " + info.level + "%"); 
+    }
+
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body onload="onLoad()"&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<hr>
+<h1><a name="batterystatus">batterystatus</a></h1>
+
+<p>This is an event that fires when a PhoneGap application detects a change in the battery status.</p>
+
+<pre class="prettyprint"><code>window.addEventListener("<a href="phonegap_events_events.md.html#batterystatus">batterystatus</a>", yourCallbackFunction, false);
+</code></pre>
+
+<h2>
+<a name="batterystatus_details">Details</a>
+</h2>
+
+<p>This event that fires when a PhoneGap application detects the percentage of battery has changed by at least 1 percent. It is also fired if the device has been plugged in or un-plugged.</p>
+
+<p>The battery status handler will be called with an object that contains two properties:</p>
+
+<ul>
+<li>
+<strong>level:</strong> The percentage of battery (0-100). <em>(Number)</em>
+</li>
+<li>
+<strong>isPlugged:</strong> A boolean that represents whether or not the device is plugged in or not. <em>(Boolean)</em>
+</li>
+</ul>
+<p>Typically, you will want to attach an event listener with <code>window.addEventListener</code> once you receive the PhoneGap '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
+
+<h2>
+<a name="batterystatus_supported_platforms">Supported Platforms</a>
+</h2>
+
+<ul>
+<li>iOS</li>
+<li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+</ul>
+<h2>
+<a name="batterystatus_quick_example">Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>window.addEventListener("<a href="phonegap_events_events.md.html#batterystatus">batterystatus</a>", onBatteryStatus, false);
+
+function onBatteryStatus(info) {
+    // Handle the <a href="phonegap_events_events.md.html#online">online</a> event
+    console.log("Level: " + info.level + " isPlugged: " + info.isPlugged); 
+}
+</code></pre>
+
+<h2>
+<a name="batterystatus_full_example">Full Example</a>
+</h2>
+
+<pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;PhoneGap <a href="phonegap_device_device.md.html#Device">Device</a> Ready Example&lt;/title&gt;
+
+    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8"&gt;
+
+    // Call onDeviceReady when PhoneGap is loaded.
+    //
+    // At this point, the document has loaded but phonegap.js has not.
+    // When PhoneGap is loaded and talking with the native device,
+    // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
+    // 
+    function onLoad() {
+        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    }
+
+    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    //
+    function onDeviceReady() {
+        window.addEventListener("<a href="phonegap_events_events.md.html#batterystatus">batterystatus</a>", onBatteryStatus, false);
+    }
+
+    // Handle the <a href="phonegap_events_events.md.html#batterystatus">batterystatus</a> event
+    //
+    function onBatteryStatus(info) {
+        console.log("Level: " + info.level + " isPlugged: " + info.isPlugged); 
     }
 
     &lt;/script&gt;

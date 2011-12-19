@@ -88,16 +88,12 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="www\phonegap-1.3.0.js" />
     <None Include="ManifestProcessor.js" />
-    <Content Include="GapSourceDictionary.xml" />
+    <Content Include="GapSourceDictionary.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="SplashScreenImage.jpg" />
-    <Content Include="www\accelerometer.html">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="www\accelerometer2.html" />
-    <Content Include="www\audio.html">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="www\autotest\index.html">
       <SubType>Designer</SubType>
     </Content>
@@ -119,25 +115,8 @@
     <Content Include="www\autotest\tests\orientation.tests.js" />
     <Content Include="www\autotest\tests\storage.tests.js" />
     <Content Include="www\autotest\tests\system.tests.js" />
-    <Content Include="www\calculator.html" />
-    <Content Include="www\camera.html" />
-    <Content Include="www\capture.html" />
-    <Content Include="www\compass.html" />
-    <Content Include="www\contacts.html" />
-    <Content Include="www\events.html" />
-    <Content Include="www\file.html" />
     <Content Include="www\index.html" />
-    <Content Include="www\location.html" />
     <Content Include="www\master.css" />
-    <Content Include="www\misc\index.html" />
-    <Content Include="www\network.html" />
-    <Content Include="www\notification.html">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="www\phonegap-1.2.0.js" />
-    <Content Include="www\storage.html">
-      <SubType>Designer</SubType>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\framework\WP7GapClassLib.csproj">
@@ -159,6 +138,6 @@
   -->
   <ProjectExtensions />
   <PropertyGroup>
-    <PreBuildEvent>CScript "$(ProjectDir)/ManifestProcessor.js"</PreBuildEvent>
+    <PreBuildEvent>CScript "$(ProjectDir)/ManifestProcessor.js" "$(ProjectPath)"</PreBuildEvent>
   </PropertyGroup>
 </Project>

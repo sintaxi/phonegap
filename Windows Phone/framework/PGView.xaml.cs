@@ -1,12 +1,16 @@
-/*
- * PhoneGap is available under *either* the terms of the modified BSD license *or* the
- * MIT License (2008). See http://opensource.org/licenses/alphabetical for full text.
- *
- * Copyright (c) 2005-2011, Nitobi Software Inc.
- * Copyright (c) 2011, Microsoft Corporation
- * Copyright (c) 2011, Sergey Grebnov.
- * Copyright (c) 2011, Jesse MacFadyen.
- */
+/*  
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+	
+	http://www.apache.org/licenses/LICENSE-2.0
+	
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+*/
 
 using System;
 using System.Collections.Generic;
@@ -30,7 +34,6 @@ using System.Xml.Linq;
 using WP7GapClassLib.PhoneGap.Commands;
 using System.Diagnostics;
 using System.Text;
-using Microsoft.Xna.Framework;
 using WP7GapClassLib.PhoneGap;
 using System.Threading;
 using Microsoft.Phone.Shell;
@@ -49,6 +52,8 @@ namespace WP7GapClassLib
         private bool IsBrowserInitialized = false;
         private bool OverrideBackButton = false;
 
+        private static string AppRoot = "app\\";
+
 
         /// <summary>
         /// Handles native api calls
@@ -66,9 +71,44 @@ namespace WP7GapClassLib
             }
         }
 
+        public WebBrowser Browser
+        {
+            get
+            {
+                return GapBrowser;
+            }
+        }
+
+        /*
+         * Setting StartPageUri only has an effect if called before the view is loaded.
+         **/
+        protected Uri _startPageUri = null;
+        public Uri StartPageUri
+        {
+            get
+            {
+                if (_startPageUri == null)
+                {
+                    // default
+                    return new Uri( AppRoot + "www/index.html", UriKind.Relative);                    
+                }
+                else
+                {
+                    return _startPageUri;
+                }
+            }
+            set
+            {
+                if (!this.IsBrowserInitialized)
+                {
+                    _startPageUri = value;
+                }
+            }
+        }
+
         public PGView()
         {
-
+            
             InitializeComponent();
 
             if (DesignerProperties.IsInDesignTool)
@@ -78,7 +118,6 @@ namespace WP7GapClassLib
 
 
             StartupMode mode = PhoneApplicationService.Current.StartupMode;
-            Debug.WriteLine("StartupMode mode =" + mode.ToString());
 
             if (mode == StartupMode.Launch)
             {
@@ -171,11 +210,6 @@ namespace WP7GapClassLib
                     }
 
                     Debug.WriteLine("Updating IsolatedStorage for APP:DeviceID :: " + deviceUUID);
-                    // always overwrite user-iso-store if we are in debug mode.
-#if DEBUG
-                    appStorage.Remove();
-#endif 
-
                     IsolatedStorageFileStream file = new IsolatedStorageFileStream("DeviceID.txt", FileMode.Create, FileAccess.Write, appStorage);
                     using (StreamWriter writeFile = new StreamWriter(file))
                     {
@@ -197,11 +231,9 @@ namespace WP7GapClassLib
                     var files = from results in document.Descendants("FilePath")
                                  select new
                                  {
-                                     path = (string)results.Attribute("Value")
+                                     path =  (string)results.Attribute("Value")
                                  };
                     StreamResourceInfo fileResourceStreamInfo;
-
-
 
                     using (IsolatedStorageFile appStorage = IsolatedStorageFile.GetUserStoreForApplication())
                     {
@@ -216,19 +248,23 @@ namespace WP7GapClassLib
                                 {
                                     byte[] data = br.ReadBytes((int)fileResourceStreamInfo.Stream.Length);
 
-                                    string strBaseDir = file.path.Substring(0, file.path.LastIndexOf(System.IO.Path.DirectorySeparatorChar));
-                                    appStorage.CreateDirectory(strBaseDir);
+                                    string strBaseDir = AppRoot + file.path.Substring(0, file.path.LastIndexOf(System.IO.Path.DirectorySeparatorChar));
+
+                                    if(!appStorage.DirectoryExists(strBaseDir))
+                                    {
+                                        //Debug.WriteLine("Creating Directory :: " + strBaseDir);
+                                        appStorage.CreateDirectory(strBaseDir);
+                                    }
 
                                     // This will truncate/overwrite an existing file, or 
-                                    using (IsolatedStorageFileStream outFile = appStorage.OpenFile(file.path, FileMode.Create))
+                                    using (IsolatedStorageFileStream outFile = appStorage.OpenFile(AppRoot + file.path, FileMode.Create))
                                     {
-                                        Debug.WriteLine("Writing data for " + file.path + " and length = " + data.Length);
+                                        Debug.WriteLine("Writing data for " + AppRoot + file.path + " and length = " + data.Length);
                                         using (var writer = new BinaryWriter(outFile))
                                         {
                                             writer.Write(data);
                                         }
                                     }
-
                                 }
                             }
                             else
@@ -239,16 +275,9 @@ namespace WP7GapClassLib
                     }
                 }
 
-                // todo: this should be a start page param passed in via a getter/setter
-                // aka StartPage
-
-                Uri indexUri = new Uri("www/index.html", UriKind.Relative);
-                this.GapBrowser.Navigate(indexUri);
-
-                this.IsBrowserInitialized = true;
-
+                GapBrowser.Navigate(StartPageUri);
+                IsBrowserInitialized = true;
                 AttachHardwareButtonHandlers();
-
             }
             catch (Exception ex)
             {
@@ -291,14 +320,17 @@ namespace WP7GapClassLib
 
         void GapBrowser_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
-            Debug.WriteLine("GapBrowser_LoadCompleted");
+            this.GapBrowser.Opacity = 1;
         }
 
 
         void GapBrowser_Navigating(object sender, NavigatingEventArgs e)
         {
             Debug.WriteLine("GapBrowser_Navigating to :: " + e.Uri.ToString());
-
+            if (e.Uri.ToString().IndexOf("#") > -1)
+            {
+                e.Cancel = true;
+            }
             // TODO: tell any running plugins to stop doing what they are doing.
             // TODO: check whitelist / blacklist
             // NOTE: Navigation can be cancelled by setting :        e.Cancel = true;
@@ -317,8 +349,6 @@ namespace WP7GapClassLib
         {
             string commandStr = e.Value;
 
-            Debug.WriteLine("Command::" + commandStr);
-
             // DOMStorage/Local OR DOMStorage/Session
             if (commandStr.IndexOf("DOMStorage") == 0)
             {
@@ -330,14 +360,13 @@ namespace WP7GapClassLib
                 this.orientationHelper.HandleCommand(commandStr);
                 return;
             }
-            
+
             PhoneGapCommandCall commandCallParams = PhoneGapCommandCall.Parse(commandStr);
 
             if (commandCallParams == null)
             {
                 // ERROR
                 Debug.WriteLine("ScriptNotify :: " + commandStr);
-                return;
             }
             else if (commandCallParams.Service == "CoreEvents")
             {
@@ -348,15 +377,16 @@ namespace WP7GapClassLib
                         this.OverrideBackButton = (args != null && args.Length > 0 && args[0] == "true");
                         break;
                 }
-                return;
             }
-
-            this.nativeExecution.ProcessCommand(commandCallParams);
+            else
+            {
+                this.nativeExecution.ProcessCommand(commandCallParams);
+            }
         }
 
         private void GapBrowser_Unloaded(object sender, RoutedEventArgs e)
         {
-            //throw new NotImplementedException();
+
         }
 
         private void GapBrowser_NavigationFailed(object sender, System.Windows.Navigation.NavigationFailedEventArgs e)
@@ -366,8 +396,7 @@ namespace WP7GapClassLib
 
         private void GapBrowser_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
-            Debug.WriteLine("GapBrowser_Navigated");
-            
+            Debug.WriteLine("GapBrowser_Navigated :: " + e.Uri.ToString());
         }
 
        

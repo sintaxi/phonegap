@@ -1,11 +1,16 @@
-/*
- * PhoneGap is available under *either* the terms of the modified BSD license *or* the
- * MIT License (2008). See http://opensource.org/licenses/alphabetical for full text.
- *
- * Copyright (c) 2005-2010, Nitobi Software Inc.
- * Copyright (c) 2010-2011, IBM Corporation
- * Copyright (c) 2011, Microsoft Corporation
- */
+/*  
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+	
+	http://www.apache.org/licenses/LICENSE-2.0
+	
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+*/
 
 if (!PhoneGap.hasResource("network")) {
 PhoneGap.addResource("network");
@@ -24,13 +29,13 @@ var Connection = function()
     var me = this;
     this.getInfo(
         function(type) {
-			console.log("getInfo result" + type);
+			//console.log("getInfo result" + type);
             // Need to send events if we are on or offline
             if (type == "none") {
                 // set a timer if still offline at the end of timer send the offline event
                 me._timer = setTimeout(function(){
                     me.type = type;
-					console.log("PhoneGap.fireEvent::offline");
+					//console.log("PhoneGap.fireEvent::offline");
                     PhoneGap.fireEvent(document,'offline');
                     me._timer = null;
                     }, me.timeout);
@@ -41,7 +46,7 @@ var Connection = function()
                     me._timer = null;
                 }
                 me.type = type;
-				console.log("PhoneGap.fireEvent::online " + me.type);
+				//console.log("PhoneGap.fireEvent::online " + me.type);
                 PhoneGap.fireEvent(document,'online');
             }
             
@@ -49,7 +54,7 @@ var Connection = function()
             if (me._firstRun) 
 			{
                 me._firstRun = false;
-				console.log("onPhoneGapConnectionReady");
+				//console.log("onPhoneGapConnectionReady");
                 PhoneGap.onPhoneGapConnectionReady.fire();
             }            
         },
@@ -78,10 +83,9 @@ Connection.prototype.getInfo = function(successCallback, errorCallback) {
 };
 
 
-PhoneGap.addConstructor(function() {
-    if (typeof navigator.network === "undefined") {
-        navigator.network = new Object();
-    }
+PhoneGap.onPhoneGapInit.subscribeOnce(function() {
+
+	navigator.network = navigator.network || {};
     if (typeof navigator.network.connection === "undefined") {
         navigator.network.connection = new Connection();
     }
