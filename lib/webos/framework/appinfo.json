@@ -1,0 +1,9 @@
+{
+	"id": "com.phonegap.webos",
+	"version": "0.0.1",
+	"vendor": "Palm",
+	"type": "web",
+	"main": "index.html",
+	"title": "PhoneGap WebOS",
+	"uiRevision": 2
+}

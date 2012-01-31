@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugins>
+  <plugin name="App"            value="com.phonegap.app.App"/>
+  <plugin name="Device"         value="com.phonegap.device.Device"/>
+  <plugin name="Camera"         value="com.phonegap.camera.Camera"/>
+  <plugin name="Network Status" value="com.phonegap.network.Network"/>
+  <plugin name="Notification"   value="com.phonegap.notification.Notification"/>
+  <plugin name="Accelerometer"  value="com.phonegap.accelerometer.Accelerometer"/>
+  <plugin name="Geolocation"    value="com.phonegap.geolocation.Geolocation"/>
+  <plugin name="File"           value="com.phonegap.file.FileManager"/>
+  <plugin name="FileTransfer"   value="com.phonegap.http.FileTransfer"/>
+  <plugin name="Contact"        value="com.phonegap.pim.Contact"/>
+  <plugin name="MediaCapture"   value="com.phonegap.media.MediaCapture"/>
+  <plugin name="Battery"        value="com.phonegap.battery.Battery"/>
+</plugins>

@@ -1,0 +1,34 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="WP7GapClassLib.PhoneGap.UI.VideoRecorder"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="480"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Landscape" Orientation="LandscapeLeft"
+    shell:SystemTray.IsVisible="False">
+   
+    <Canvas x:Name="LayoutRoot" Background="Transparent" Grid.ColumnSpan="1" Grid.Column="0">
+
+        <Rectangle 
+            x:Name="viewfinderRectangle"
+            Width="640" 
+            Height="480" 
+            HorizontalAlignment="Left" 
+            Canvas.Left="80"/>
+        
+    </Canvas>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" x:Name="PhoneAppBar" Opacity="0.0">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar.feature.video.rest.png" Text="Record"  x:Name="btnStartRecording" Click="StartRecording_Click" />
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar.save.rest.png" Text="Take" x:Name="btnTakeVideo" Click="TakeVideo_Click"/>            
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>

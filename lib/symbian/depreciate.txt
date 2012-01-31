@@ -1,0 +1,1 @@
+PhoneGap-Symbian is being depreciated. You can find the last available code at https://github.com/callback/callback-symbian.

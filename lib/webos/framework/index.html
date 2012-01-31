@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<!--
+
+	This sample index.html is a "bare bones" example of using web development
+	to produce a webOS app using mini Mojo. This is *not* designed to illustrate
+	best practices (as the advanced developer will notice right off), but
+	rather to show that even basic "web 1.0" skills can successfully create an
+	app.
+
+-->
+
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>PhoneGap WebOS</title>
+	
+	<script type="text/javascript" src="phonegap-1.0.0.js"></script>   
+	<script type="text/javascript">
+		// create global var for sqlite database instance
+		var db;
+	</script>
+		
+	<link rel="stylesheet" type="text/css" href="menu.css">
+	
+</head>
+<body>
+
+<div id="menu">
+	<a onclick="page('screen');">Adjust Screen Settings</a>
+	<a onclick="page('notifications');">Notification Examples</a>
+	<a onclick="info();">Show Device Info</a>
+	<a onclick="net();">Show Network Info</a>		
+	<a onclick="window.debug.log('trace this');">Console Logging</a>
+	<a onclick="launchmap()">Launch Map App</a>
+	<a onclick="navigator.window.newCard('dashboard.html'); menu(false);">Launch New Card</a>
+	<a onclick="getPicture();">Launch Camera</a>
+	<a onclick="storage();">Storage Tests</a> 
+	<a onclick="callPhoneGapExec();menu(false);">PhoneGap Exec</a>
+	<a onclick="page('touchDemo');">Touch Events Examples</a>
+	<a onclick="menu(false);">Done</a>
+</div>
+
+<div id="screen">
+	<p><input type="checkbox" onchange="navigator.window.setFullScreen(this.checked);">navigator.window.setFullScreen();</p>
+	<p><input type="checkbox" onchange="navigator.window.blockScreenTimeout(this.checked);">navigator.window.blockScreenTimeout();</p>
+	<p><input type="checkbox" onchange="navigator.accelerometer.setFastAccelerometer(this.checked);">navigator.accelerometer.fastAccelerometer();</p>
+	
+	<p>navigator.orientation.setWindowOrientation();</p>
+	<input type="radio" onchange="navigator.orientation.setOrientation(this.value);" value="up" name="orientation" checked>up
+	<input type="radio" onchange="navigator.orientation.setOrientation(this.value);" value="down" name="orientation">down
+	<input type="radio" onchange="navigator.orientation.setOrientation(this.value);" value="left" name="orientation">left
+	<input type="radio" onchange="navigator.orientation.setOrientation(this.value);" value="right" name="orientation">right
+	<input type="radio" onchange="navigator.orientation.setOrientation(this.value);" value="free" name="orientation">free
+		
+	<p>navigator.orientation.getCurrentOrientation()</p>
+	<button onclick="displayCurrentOrientation();">Get Current Orientation</button>  	
+</div>
+
+<div id="notifications" style="display: none;">
+	<p>navigator.notification.newDashboard();</p>
+	<button onclick="navigator.notification.newDashboard('dashboard.html');">Dashboard</button>
+	
+	<p>navigator.notification.alert();</p>
+	<button onclick="navigator.notification.alert('alert');">Show Alert</button>
+	
+	<p>navigator.notification.showBanner();</p>
+	<button onclick="navigator.notification.showBanner('Banner test','banner');">Show Banner Message</button>	
+</div>
+
+<div id="blank" width="100%" height="100%" style="background: #FFFFFF;"></div>
+
+<div id="info" style="display: none;"></div>
+
+<div id="net" style="display: none;"></div>
+
+<div id="camera" style="display: none;"></div>
+
+<div id="touchDemo" style="display: none;">
+	<p>Touch Events Demo</p>
+	<button id="btnTouchStart">Touch Start</button>
+	<button id="btnTouchEnd">Touch End</button>
+	<p>Run your finger/mouse along button to trigger touchmove</p>
+	<button id="btnTouchMove" width="250">Touch Move</button>	
+	<p>Mouse Events Demo</p>
+	<button id="btnMouseDown">Mouse Down</button>
+	<button id="btnMouseUp">Mouse Up</button>
+	<p>Run your finger/mouse along button to trigger mousemove</p>
+	<button id="btnMouseMove" width="250">Mouse Move</button>
+</div> 
+
+<div id="storage" style="display: none">
+	<p>storage tests</p>
+	<button onclick="createDB();">Test SQLite DB</button> 
+	<div id="storageResults"></div>
+</div>
+
+<script>                         
+document.addEventListener('deviceready', function () {
+    // PhoneGap is ready, do all your stuf here
+}, false);
+
+// setup event listeners for touch events 
+document.querySelector('#btnTouchStart').addEventListener('touchstart', onTouchEvent, false);
+document.querySelector('#btnTouchEnd').addEventListener('touchend', onTouchEvent, false);
+document.querySelector('#btnTouchMove').addEventListener('touchmove', onTouchEvent, false);
+// setup event listeners for mouse events
+document.querySelector('#btnMouseDown').addEventListener('mousedown', onTouchEvent, false);
+document.querySelector('#btnMouseUp').addEventListener('mouseup', onTouchEvent, false);
+document.querySelector('#btnMouseMove').addEventListener('mousemove', onTouchEvent, false);
+
+function onTouchEvent(event) {
+	navigator.notification.alert(event.type);
+}
+
+function callPhoneGapExec() {
+	//win, fail, clazz, action, args
+	PhoneGap.exec(success, fail, 'navigator.notification', 'alert', 'testing exec'); 
+	
+	function success(msg) {
+		console.log(msg + ' exec succeeded');
+	}
+	
+	function fail(msg) {
+		//navigator.notification.alert('exec failed');
+		console.log(msg + ' exec failed');
+	}
+}
+
+function createDB() {  
+	document.getElementById('storageResults').innerHTML = '';
+	db = window.openDatabase("test", "1.0", "Test DB", false);
+	db.transaction(populateDB, errorCB, successCB);
+}
+
+function populateDB(tx) {
+	tx.executeSql('DROP TABLE IF EXISTS DEMO');
+	tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
+	tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
+	tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
+}
+
+function errorCB(tx, err) {
+	navigator.notification.alert("error: " + err);
+}
+
+function successCB() {
+	navigator.notification.alert('successfully created & populated');  
+	db.transaction(queryDB, errorCB);
+}
+
+function queryDB(tx) {
+	tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorCB);
+}
+
+function querySuccess(tx, results) {     
+	var len = results.rows.length;
+	navigator.notification.alert('rows inserted: ' + len);
+	
+	if (len > 0) {
+		for (var i=0;i<len;i++) {
+			navigator.notification.alert('id: ' + results.rows.item(i).id + ' data: ' + results.rows.item(i).data);
+		}
+	}
+}
+
+function info() {
+	var deviceinfo = JSON.stringify(navigator.device.getDeviceInfo()).replace(/,/g, ', ');
+	page('info');
+	lastpage.innerHTML = deviceinfo;
+}
+              
+function storage() {
+	page('storage');
+}
+
+function net() {
+	page('net');
+	var netpage = lastpage;
+	netpage.innerHTML = "Requesting network info...";
+	
+	function successful(response) {
+		
+		var states = {};
+		        states[NetworkStatus.NOT_REACHABLE]                      = 'No network connection';
+		        states[NetworkStatus.REACHABLE_VIA_CARRIER_DATA_NETWORK] = 'Carrier data connection';
+		        states[NetworkStatus.REACHABLE_VIA_WIFI_NETWORK]         = 'WiFi connection';
+		
+		
+		var r = JSON.stringify(states[response]);
+		netpage.innerHTML = r.replace(/,/g, ', ');
+	}
+	
+	var request = navigator.network.isReachable('palm://com.palm.connectionmanager', successful, {});
+}
+
+function displayCurrentOrientation() {
+	navigator.notification.showBanner(navigator.orientation.getCurrentOrientation(), 'current orientaiton'); 
+}	
+
+function getPicture() {
+	page('camera');
+	var cameraPage = lastpage;
+	lastpage.innerHTML = "camera application should launch if this works";
+	
+	function onSuccessCallback(response) {
+		console.log("camera launched successfully");
+		navigator.notification.showBanner("camera launched successfully");
+	}
+	
+	function onErrorCallback(response) {
+		console.log("camera failed to launch");
+		navigator.notification.showBanner("camera failed to launch");
+	}
+	
+	navigator.camera.getPicture(onSuccessCallback, onErrorCallback);
+}
+
+window.addEventListener("palmsystem", function(e) {
+	console.log("system message: " + JSON.stringify(e.data));
+});
+
+window.addEventListener("appmenuopen", function() {
+	menu(true);
+});
+
+window.addEventListener("back", function() {
+	console.log("back gesture");
+});
+
+window.addEventListener("forward", function() {
+	console.log("forward gesture");
+});
+
+function menu() {
+	var menudiv = document.getElementById('menu');
+	if (typeof state == 'undefined')
+		var state = (menudiv.style.display != 'block');
+		
+	menudiv.style.display = state ? 'block' : 'none';
+}
+
+lastreq = null;
+function launchmap() {
+	navigator.map.show();
+	menu(false);
+}
+
+var lastpage = document.getElementById('screen');
+
+function page(id) {
+	lastpage.style.display = 'none';
+	lastpage = document.getElementById(id);
+	lastpage.style.display = 'block';
+	menu(false);
+}
+	
+</script>
+
+
+</body>
+</html>

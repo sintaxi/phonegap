@@ -1,0 +1,158 @@
+ChangeLog
+ios
+Becky Gibson (5):
+      fixes CB-143 removing address from iOS contact causes crash
+      fixes CB-153 - Camera default destination should be FILE_URI
+      Refs #cb-7 Update source headers to apache license
+      fixes CB-42 MediaPlaybackRequiresUserAction can now be set to NO
+      Update contacts so displayContact closes properly
+
+Jesse (3):
+      project files imported using local syntax, and not framework syntax
+      added stand-alone PGViewController
+      added whitelist support, and more complete interface with readonly props
+
+Shazron Abdullah (24):
+      Fixed iOS 5 quirks with presenting/dismissing modal viewcontrollers.
+      Fixed the (PGPlugin.viewController == null) problem for pre-1.4 projects using PhoneGap > 1.3
+      Fixed PGViewController PhoneGap.plist settings - settings were set before the webView was created.
+      Added missing steps to "How to use PhoneGap as a Component" doc.
+      Added 'How to Use PhoneGap as a Component' doc to the .dmg  (as a PDF)
+      Fixes for legacy support of deprecated PhoneGapDelegate - in core plugins.
+      Update to template file AppDelegate.m (new PGCommandDelegate interface function added)
+      Removed PhoneGapLibTest folder.
+      Added Apache v2 license to strings files.
+      Updated the app icons, splash-screens, and template icons for the Xcode template.
+      Added Battery core plugin to PhoneGap.plist
+      Updated files to contain Apache v2 license in the header
+      Added PhoneGap version number to top of license.js
+      Updated files to contain Apache v2 license in the header
+      Updated VERSION to 1.4.0rc1 and added release notes
+      Re-factored to use PGViewController more effectively (has iPad view scaling problems currently).
+      Fixed iPad sizing problem.
+      Fixed MainViewController pathing problem in .xcodeproj
+      Fixed comment problem (no /* */ comments allowed) - substituted with //
+      Fixed incomplete protocol problem.
+      Updated FAQ item #7, updated testing section
+      Added the "PhoneGap Upgrade Guide" doc.
+      Fixed incorrect alignment of splashscreen image at startup because of recent Cleaver changes.
+      Updated VERSION to 1.4.0
+
+shazron (18):
+      Got PGViewController working, with no splash screen support yet.
+      Fixed startPage crash on a .framework based project.
+      Added splash screen code to PGViewController (not working properly yet)
+      Fixed splashscreens in new PGViewController.
+      Removed UIWebView.scalesPagesToFit = YES to match legacy setting of NO.
+      Fixes unit-test failures (re: File tests)
+      Usage of PGCommandDelegate in new AppDelegate.h/.m
+      Renamed PhoneGapDelegate to PGAppDelegate. PhoneGapViewController removed. This is a breaking change. The old classes will be re-added later and deprecated for upgrades.
+      Re-added legacy (now deprecated) classes PhoneGapDelegate and PhoneGapViewController.
+      Added missing (deprecated) header files to PhoneGap target.
+      Fixed runtime error (missing selector) for PGURLProtocol - for pre-1.4 generated projects.
+      Fixed missing symbols (for deprecated classes) in a PhoneGap.framework based project that has been upgraded to use 1.4
+      First draft of Cleaver HOWTO
+      Factored out NSDictionary+LowercaseKeys category to prevent duplicate symbol warning.
+      PGViewController - made wwwFolderName and startPage as properties to allow easy customization.
+      How to use PhoneGap as a Component - documentation complete.
+      Modified instructions to always start with an action word.
+      Typo in selector that prevented a PGPlugin's viewController property from being set.
+
+blackberry
+Fil Maj (5):
+      #124: Adding Battery events to the PlayBook.
+      #153: Default for camera destination type changed from DATA_URL to FILE_URI.
+      #CB-122: native JSON writer class needs expandable char buffer
+      1.4.0rc1
+      1.4.0
+
+Jeffrey Heifetz (1):
+      Fixing playbook plugin manager
+
+android
+Anis Kadri (1):
+      fixing whitelist handling
+
+Bryce Curtis (5):
+      Change API to postMessage() to call a plugin's onMessage() method.
+      Optimize enumerations as suggested by @plowman.
+      Fix  CB-135 Multithreaded access on CallbackServer javascript object.
+      Added license header to new files.
+      Remove unused files/classes until they are needed.
+
+Joe Bowser (9):
+      Work-around Feature for Classic PhoneGap 320x480 resolution
+      Fixing scale, setting legacy scale
+      Removing GapView, since it doesn't actually do anything
+      Moving LinearLayoutSoftKeyboardDetect out into its own class and making it more plugin-like
+      Editing a comment about LinearLayoutSoftKeyboardDetect
+      Changing to use JS directly. There are issues with this approach, and it should use the KeyboardHandler
+      Moved Chrome Client out of DroidGap.java
+      Moving the WebViewClient out, allowing for PhoneGap to not break on empty console.log
+      Removing the classic render feature, since it's not working properly
+
+Jukka Zitting (2):
+      README.md: Replace "PhoneGap" with "Cordova" and add incubation disclaimer
+      Minor incubation disclaimer fix.
+
+Libby Baldwin (1):
+      add compass demo for Android
+
+Olivier Brand (2):
+      Added authentication framework
+      Renamed crdentials/principals to userName/password
+
+Peter Ehrlich (1):
+      documentation additions
+
+William Shen (1):
+      Changed createCaptureFile to explicitly check for PNG and to throw an IllegalArgumentException if it is not a JPEG nor a PNG
+
+alunny (4):
+      adding JUnit dependency
+      reading preferences from phonegap.xml
+      using preference=fullscreen for fullscreen view
+      making preference reading code more robust
+
+macdonst (12):
+      Fix for issue #281 of phonegap/phonegap-android: Detect for localStorage if Java has disabled it
+      Fix for Issue #33: onReceivedError incorrectly sets openExternal to true
+      Fix NullPointerException in DroidGap.onMeasure()
+      Fixing issue with FileTransfer.upload when the passed in url contains a ?
+      Proved generating sqlite database path to open database without permission error
+      Camera default destination should be FILE_URI
+      CB-145: Android contact.save() crashes for native contacts.
+      CB-199: FileTransfer.download fails on Android 4.0
+      Allow internal SD Card to be used as storage
+      Fixing a timing issue with the web view history not being cleared properly
+      Updating version to 1.4.0rc1
+      Updating version to 1.4.0
+
+windows
+Jesse MacFadyen (14):
+      Acceleromter fix #CB-141 - InvariantCulture
+      Changed default destination to FILE_URI
+      Contacts returned from find were not formatted. CB-157
+      Audio playback issue CB-142
+      Redirect issue trackers to apache
+      Wrong slash :: CB-184
+      Removed unnecessary navigation blocking for # CB-185
+      Added js Connection.CELL for generic cellular connection.
+      Fix for single document - multipage layouts
+      Added VERSION file to be like other platforms.
+      Fixes for loading local XHR using file API, and still using default for remote XHR. responseXML returns document for local files.
+      updated phonegap.js to include XHR updates
+      Compass API fixes
+      1.4.0 version changes
+
+webos
+Herm Wong (1):
+      update version file to 1.4.0
+
+bada
+Anis Kadri (4):
+      Updating phonegap version
+      ignoring unsed files
+      upating version 1.4.0rc
+      updating to 1.4.0
+
