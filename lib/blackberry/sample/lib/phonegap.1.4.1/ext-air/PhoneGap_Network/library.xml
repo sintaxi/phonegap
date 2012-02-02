@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<library isWhitelist="true">
+	<extension>
+		<entryClass>com.phonegap.network.Network</entryClass>
+	</extension>
+
+	<platforms>
+		<platform value="AIR">
+			<target version="default" config="AIR_XHR" />
+		</platform>
+	</platforms>
+
+	<configurations>
+		<configuration name="AIR_XHR" version="1.0" comment="For XHR architecture for Java implementation">
+			<src type="text/actionscript" path="src" comment="ActionScript implementation" />
+		</configuration>
+	</configurations>
+	
+	<features>
+		<feature id="com.phonegap" version="1.0.0" />
+	</features>
+</library>
