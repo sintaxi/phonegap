@@ -56,7 +56,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Xml" />
-    <Reference Include="WP7GapClassLib, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="WP7GapClassLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Users\Jesse\Documents\Visual Studio 2010\Projects\TwitterPluginTest\GapLib\WP7GapClassLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -80,7 +83,7 @@
   <ItemGroup>
     <Content Include="GapLib\WP7GapClassLib.dll" />
     <Content Include="GapSourceDictionary.xml" />
-    <Content Include="www\phonegap-1.4.0.js" />
+    <Content Include="www\phonegap-1.4.1.js" />
     <None Include="ManifestProcessor.js" />
     <Content Include="www\index.html">
       <SubType>Designer</SubType>

@@ -1,18 +1,19 @@
 ChangeLog
 ios
-Becky Gibson (5):
+Becky Gibson (6):
       fixes CB-143 removing address from iOS contact causes crash
       fixes CB-153 - Camera default destination should be FILE_URI
       Refs #cb-7 Update source headers to apache license
       fixes CB-42 MediaPlaybackRequiresUserAction can now be set to NO
       Update contacts so displayContact closes properly
+      Updated VERSION and release notes for 1.4.1
 
 Jesse (3):
       project files imported using local syntax, and not framework syntax
       added stand-alone PGViewController
       added whitelist support, and more complete interface with readonly props
 
-Shazron Abdullah (24):
+Shazron Abdullah (26):
       Fixed iOS 5 quirks with presenting/dismissing modal viewcontrollers.
       Fixed the (PGPlugin.viewController == null) problem for pre-1.4 projects using PhoneGap > 1.3
       Fixed PGViewController PhoneGap.plist settings - settings were set before the webView was created.
@@ -37,6 +38,8 @@ Shazron Abdullah (24):
       Added the "PhoneGap Upgrade Guide" doc.
       Fixed incorrect alignment of splashscreen image at startup because of recent Cleaver changes.
       Updated VERSION to 1.4.0
+      Removed ellipsis character and changed to three periods because of PDF converter problems
+      Fixed CB-212 - iOS orientation switch broken in 1.4.0
 
 shazron (18):
       Got PGViewController working, with no splash screen support yet.
@@ -59,12 +62,13 @@ shazron (18):
       Typo in selector that prevented a PGPlugin's viewController property from being set.
 
 blackberry
-Fil Maj (5):
+Fil Maj (6):
       #124: Adding Battery events to the PlayBook.
       #153: Default for camera destination type changed from DATA_URL to FILE_URI.
       #CB-122: native JSON writer class needs expandable char buffer
       1.4.0rc1
       1.4.0
+      1.4.1
 
 Jeffrey Heifetz (1):
       Fixing playbook plugin manager
@@ -114,7 +118,7 @@ alunny (4):
       using preference=fullscreen for fullscreen view
       making preference reading code more robust
 
-macdonst (12):
+macdonst (15):
       Fix for issue #281 of phonegap/phonegap-android: Detect for localStorage if Java has disabled it
       Fix for Issue #33: onReceivedError incorrectly sets openExternal to true
       Fix NullPointerException in DroidGap.onMeasure()
@@ -127,9 +131,12 @@ macdonst (12):
       Fixing a timing issue with the web view history not being cleared properly
       Updating version to 1.4.0rc1
       Updating version to 1.4.0
+      Deprecating navigator.app.overrideBackbutton
+      Removing deprecated methods from Device
+      Tagging 1.4.1
 
 windows
-Jesse MacFadyen (14):
+Jesse MacFadyen (19):
       Acceleromter fix #CB-141 - InvariantCulture
       Changed default destination to FILE_URI
       Contacts returned from find were not formatted. CB-157
@@ -144,15 +151,21 @@ Jesse MacFadyen (14):
       updated phonegap.js to include XHR updates
       Compass API fixes
       1.4.0 version changes
+      #CB-156
+      rename shite from 1.4.0 to 1.4.1
+      moar renig'n
+      mooor renaming
+      that should be it. FML
 
 webos
 Herm Wong (1):
       update version file to 1.4.0
 
 bada
-Anis Kadri (4):
+Anis Kadri (5):
       Updating phonegap version
       ignoring unsed files
       upating version 1.4.0rc
       updating to 1.4.0
+      updating Device and VERSION to 1.4.1
 

@@ -351,6 +351,13 @@ namespace WP7GapClassLib.PhoneGap.Commands
         {
             ContactSearchParams searchParams = JSON.JsonHelper.Deserialize<ContactSearchParams>(searchCriteria);
 
+            if(searchParams.options == null)
+            {
+                searchParams.options = new SearchOptions();
+                searchParams.options.filter = "";
+                searchParams.options.multiple = true;
+            }
+
             DeviceContacts deviceContacts = new DeviceContacts();
             deviceContacts.SearchCompleted += new EventHandler<ContactsSearchEventArgs>(contacts_SearchCompleted);
 
@@ -375,6 +382,7 @@ namespace WP7GapClassLib.PhoneGap.Commands
 
             try
             {
+  
                 deviceContacts.SearchAsync(searchParams.options.filter, filterKind, searchParams);
             }
             catch (Exception ex)

@@ -61,7 +61,7 @@ namespace WP7GapClassLib.PhoneGap.Commands
             get
             {
                 // TODO: should be able to dynamically read the PhoneGap version from somewhere...
-                return "1.4.0";
+                return "1.4.1";
             }
         }
 
