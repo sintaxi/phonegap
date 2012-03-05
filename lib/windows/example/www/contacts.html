@@ -3,9 +3,9 @@
   <head>
     <!-- meta name="viewport" content="width=device-width, height=device-height, user-scalable=yes, initial-scale=2.0, maximum-scale=4.0, minimum-scale=1.0" / -->
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <title>PhoneGap</title>
-    <link rel="stylesheet" href="master.css" type="text/css" media="screen">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <title>Cordova</title>
+    <link rel="stylesheet" href="master.css" type="text/css" media="screen"/>
 
       <script type="text/javascript">
         // provide our own console if it does not exist, huge dev aid!
@@ -22,11 +22,12 @@
       </script>
       
       
-    <script type="text/javascript" charset="utf-8" src="phonegap-1.3.0.js"></script>       
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 
-      
+    
 <script type="text/javascript" charset="utf-8">
 
+  
     var deviceReady = false;
 
     //-------------------------------------------------------------------------
@@ -49,9 +50,9 @@
                 }
                 else 
 				{
-                    s = "Number of contacts: "+contacts.length+"<br><table width='100%'><tr><th>Name</th><td>Phone</td><td>Email</td></tr>";
+                    s = "Number of contacts: "+contacts.length+"<br/><table width='100%'><tr><th>Name</th><td>Phone</td><td>Email</td></tr>";
                     
-					for (var i=0; i< contacts.length; i++) 
+					for (var i=0; i < contacts.length; i++) 
 					{
 						try
 						{
@@ -77,81 +78,82 @@
                         s = s + "</td></tr>";
                     }
                     s = s + "</table>";
-                 }
-                      
-				 document.getElementById('contacts_results').innerHTML = s;
-             },
-             function(e) 
-			 {
-                 document.getElementById('contacts_results').innerHTML = "Error: "+e.code;
-              },
-			obj);
-			};
+  }
 
-                      function addContact(){
-                      console.log("addContact()");
-                      try{
+  document.getElementById('contacts_results').innerHTML = s;
+  },
+  function(e)
+  {
+  document.getElementById('contacts_results').innerHTML = "Error: "+e.code;
+  },
+  obj);
+  };
 
-                      console.log("before create");
+  function addContact(){
+  console.log("addContact()");
+  try{
 
-                      // create seems to be failing...
-                      var contact = navigator.contacts.create({"displayName": "Dooney Evans"});
+  console.log("before create");
 
-                      console.log("contact created");
+  // create seems to be failing...
+  var contact = navigator.contacts.create({"displayName": "Dooney Evans"});
 
-                      var contactName = {
-                      formatted: "Dooney Evans",
-                      familyName: "Evans",
-                      givenName: "Dooney",
-                      middleName: ""
-                      };
+  console.log("contact created");
 
-                      console.log("create contactName");
+  var contactName = {
+  formatted: "Dooney Evans",
+  familyName: "Evans",
+  givenName: "Dooney",
+  middleName: ""
+  };
 
-                      contact.name = contactName;
+  console.log("create contactName");
 
-                      contact.phoneNumbers = [new ContactField('work', '512-555-1234', true)];
+  contact.name = contactName;
 
-                      console.log("create contact phone number");
+  contact.phoneNumbers = [new ContactField('work', '512-555-1234', true)];
 
-                      contact.save(
-                      function(id) { console.log("Contact saved." + id);},
-                      function(e) { console.log("Contact save failed: " + e.code); }
-                      );
+  console.log("create contact phone number");
 
-                      console.log("saving the contact");
-                      }
-                      catch (e)
-                      {
-                      //alert(e);
-                      console.log("failed to save contact");
-                      }
+  contact.save(
+  function(id) { console.log("Contact saved." + id);},
+  function(e) { console.log("Contact save failed: " + e.code); }
+  );
 
-                      };
+  console.log("saving the contact");
+  }
+  catch (e)
+  {
+  //alert(e);
+  console.log("failed to save contact");
+  }
 
-                      /**
-                      * Function called when page has finished loading.
-                      */
-                      function init() {
-                      document.addEventListener("deviceready", function() {
-                      deviceReady = true;
-                      console.log("Device="+device.platform+" "+device.version);
-                      }, false);
-                      window.setTimeout(function() {
-                      if (!deviceReady) {
-                      alert("Error: PhoneGap did not initialize.  Demo will not run correctly.");
-                      }
-                      },1000);
-                      }
+  };
+
+  /**
+  * Function called when page has finished loading.
+  */
+  function init() {
+  document.addEventListener("deviceready", function() {
+  deviceReady = true;
+  console.log("Device="+device.platform+" "+device.version);
+  }, false);
+  window.setTimeout(function() {
+  if (!deviceReady) {
+  alert("Error: Cordova did not initialize.  Demo will not run correctly.");
+  }
+  },1000);
+  }
 
                     </script>
+  
 
   </head>
   <body onLoad="init();" id="stage" class="theme">
   
     <h1>Contacts</h1>    
     <div id="info">
-        Results:<br>
+        Results:<br/>
         <span id="contacts_results">&nbsp;</span>
     </div>
     <h2>Action</h2>

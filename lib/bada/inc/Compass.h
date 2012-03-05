@@ -9,11 +9,11 @@
 #define COMPASS_H_
 
 #include <FUix.h>
-#include "PhoneGapCommand.h"
+#include "CordovaCommand.h"
 
 using namespace Osp::Uix;
 
-class Compass: public PhoneGapCommand, ISensorEventListener {
+class Compass: public CordovaCommand, ISensorEventListener {
 public:
 	Compass(Web* pWeb);
 	virtual ~Compass();

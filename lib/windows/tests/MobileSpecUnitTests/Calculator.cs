@@ -7,11 +7,11 @@
  */
 
 using System.Runtime.Serialization;
-using WP7GapClassLib.PhoneGap;
-using WP7GapClassLib.PhoneGap.Commands;
-using WP7GapClassLib.PhoneGap.JSON;
+using WP7CordovaClassLib.Cordova;
+using WP7CordovaClassLib.Cordova.Commands;
+using WP7CordovaClassLib.Cordova.JSON;
 
-namespace PhoneGap.Extension.Commands
+namespace Cordova.Extension.Commands
 {
     public class Calculator : BaseCommand
     {

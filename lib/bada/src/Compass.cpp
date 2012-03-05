@@ -7,7 +7,7 @@
 
 #include "../inc/Compass.h"
 
-Compass::Compass(Web* pWeb) : PhoneGapCommand(pWeb) {
+Compass::Compass(Web* pWeb) : CordovaCommand(pWeb) {
 	__sensorMgr.Construct();
 	started = false;
 	x = y = z = 0.0;

@@ -9,11 +9,11 @@
 #define CONTACTS_H_
 
 #include <FSocial.h>
-#include "PhoneGapCommand.h"
+#include "CordovaCommand.h"
 using namespace Osp::Social;
 using namespace Osp::Base::Collection;
 
-class Contacts: public PhoneGapCommand {
+class Contacts: public CordovaCommand {
 public:
 	Contacts(Web* pWeb);
 	virtual ~Contacts();

@@ -6,7 +6,7 @@
 #include <FUi.h>
 #include <FWeb.h>
 #include <FSystem.h>
-#include "PhoneGapCommand.h"
+#include "CordovaCommand.h"
 #include "GeoLocation.h"
 #include "Device.h"
 #include "Accelerometer.h"
@@ -52,7 +52,7 @@ private:
 	Contacts*					contacts;
 	Notification*				notification;
 	Kamera*						camera;
-	String*						__phonegapCommand;
+	String*						__cordovaCommand;
 
 public:
 	virtual result OnInitializing(void);

@@ -12,7 +12,7 @@ Device::Device() {
 
 }
 
-Device::Device(Web* pWeb): PhoneGapCommand(pWeb) {
+Device::Device(Web* pWeb): CordovaCommand(pWeb) {
 
 }
 

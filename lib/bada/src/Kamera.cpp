@@ -7,7 +7,7 @@
 
 #include "../inc/Kamera.h"
 
-Kamera::Kamera(Web* pWeb) : PhoneGapCommand(pWeb) {
+Kamera::Kamera(Web* pWeb) : CordovaCommand(pWeb) {
 }
 
 Kamera::~Kamera() {

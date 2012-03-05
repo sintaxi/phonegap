@@ -56,7 +56,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Xml" />
-    <Reference Include="WP7GapClassLib, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -78,9 +77,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GapSourceDictionary.xml" />
-    <Content Include="www\phonegap-1.4.1-core.js" />
-    <None Include="ManifestProcessor.js" />
+    <Content Include="BuildManifestProcessor.js" />
+    <Content Include="CordovaSourceDictionary.xml" />
+    <Content Include="www\cordova-1.5.0-core.js" />
+    <Content Include="www\cordova-1.5.0.js" />
     <Content Include="www\index.html">
       <SubType>Designer</SubType>
     </Content>
@@ -121,7 +121,7 @@
   -->
   <ProjectExtensions />
   <PropertyGroup>
-    <PreBuildEvent>CScript "$(ProjectDir)/ManifestProcessor.js" "$(ProjectPath)"</PreBuildEvent>
+    <PreBuildEvent>CScript "$(ProjectDir)/BuildManifestProcessor.js" "$(ProjectPath)"</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>

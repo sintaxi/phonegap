@@ -1,7 +1,7 @@
 #include "WebForm.h"
 
 WebForm::WebForm(void)
-	:__pWeb(null), __phonegapCommand(null)
+	:__pWeb(null), __cordovaCommand(null)
 {
 	geolocation = null;
 	device = null;
@@ -49,7 +49,7 @@ WebForm::OnTerminating(void)
 {
 	result r = E_SUCCESS;
 
-//	delete __phonegapCommand;
+//	delete __cordovaCommand;
 //	delete geolocation;
 //	delete device;
 //	delete accel;
@@ -97,9 +97,9 @@ bool
 WebForm::OnLoadingRequested (const Osp::Base::String& url, WebNavigationType type) {
 	AppLogDebug("URL REQUESTED %S", url.GetPointer());
 	if(url.StartsWith("gap://", 0)) {
-//		__phonegapCommand = null;
+//		__cordovaCommand = null;
 
-		__phonegapCommand = new String(url);
+		__cordovaCommand = new String(url);
 		//	FIXME: for some reason this does not work if we return true. Web freezes.
 //		__pWeb->StopLoading();
 //		String* test;
@@ -131,35 +131,35 @@ WebForm::OnLoadingCompleted() {
 	delete deviceInfo;
 
 	// Analyzing PhoneGap command
-	if(__phonegapCommand) {
-		if(__phonegapCommand->StartsWith(L"gap://com.phonegap.Geolocation", 0)) {
-			geolocation->Run(*__phonegapCommand);
+	if(__cordovaCommand) {
+		if(__cordovaCommand->StartsWith(L"gap://com.phonegap.Geolocation", 0)) {
+			geolocation->Run(*__cordovaCommand);
 		}
-		else if(__phonegapCommand->StartsWith(L"gap://com.phonegap.Accelerometer", 0)) {
-			accel->Run(*__phonegapCommand);
+		else if(__cordovaCommand->StartsWith(L"gap://com.phonegap.Accelerometer", 0)) {
+			accel->Run(*__cordovaCommand);
 		}
-		else if(__phonegapCommand->StartsWith(L"gap://com.phonegap.Network", 0)) {
-			network->Run(*__phonegapCommand);
+		else if(__cordovaCommand->StartsWith(L"gap://com.phonegap.Network", 0)) {
+			network->Run(*__cordovaCommand);
 		}
-		else if(__phonegapCommand->StartsWith(L"gap://com.phonegap.DebugConsole", 0)) {
-			console->Run(*__phonegapCommand);
+		else if(__cordovaCommand->StartsWith(L"gap://com.phonegap.DebugConsole", 0)) {
+			console->Run(*__cordovaCommand);
 		}
-		else if(__phonegapCommand->StartsWith(L"gap://com.phonegap.Compass", 0)) {
-			compass->Run(*__phonegapCommand);
+		else if(__cordovaCommand->StartsWith(L"gap://com.phonegap.Compass", 0)) {
+			compass->Run(*__cordovaCommand);
 		}
-		else if(__phonegapCommand->StartsWith(L"gap://com.phonegap.Contacts", 0)) {
-			contacts->Run(*__phonegapCommand);
+		else if(__cordovaCommand->StartsWith(L"gap://com.phonegap.Contacts", 0)) {
+			contacts->Run(*__cordovaCommand);
 		}
-		else if(__phonegapCommand->StartsWith(L"gap://com.phonegap.Notification", 0)) {
-			notification->Run(*__phonegapCommand);
+		else if(__cordovaCommand->StartsWith(L"gap://com.phonegap.Notification", 0)) {
+			notification->Run(*__cordovaCommand);
 		}
-		else if(__phonegapCommand->StartsWith(L"gap://com.phonegap.Camera", 0)) {
-			camera->Run(*__phonegapCommand);
+		else if(__cordovaCommand->StartsWith(L"gap://com.phonegap.Camera", 0)) {
+			camera->Run(*__cordovaCommand);
 		}
 		// Tell the JS code that we got this command, and we're ready for another
 		__pWeb->EvaluateJavascriptN(L"PhoneGap.queue.ready = true;");
-		delete __phonegapCommand;
-		__phonegapCommand = null;
+		delete __cordovaCommand;
+		__cordovaCommand = null;
 	}
 	else {
 		AppLogDebug("Non PhoneGap command completed");

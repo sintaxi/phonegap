@@ -20,11 +20,11 @@
         </and>
     </condition>
 
-    <condition property="bbwp" value="${properties.playbook.bbwp.dir}/bbwp/bbwp" else="${properties.playbook.bbwp.dir}/bbwp/bbwp.exe">
+    <condition property="bbwp" value="${properties.playbook.bbwp.dir}/bbwp" else="${properties.playbook.bbwp.dir}/bbwp.exe">
         <equals arg1="${isMacOSX}" arg2="true" />
     </condition>
 
-    <condition property="blackberry-deploy" value="${properties.playbook.bbwp.dir}/bbwp/blackberry-tablet-sdk/bin/blackberry-deploy" else="${properties.playbook.bbwp.dir}/bbwp/blackberry-tablet-sdk/bin/blackberry-deploy.bat">
+    <condition property="blackberry-deploy" value="${properties.playbook.bbwp.dir}/blackberry-tablet-sdk/bin/blackberry-deploy" else="${properties.playbook.bbwp.dir}/blackberry-tablet-sdk/bin/blackberry-deploy.bat">
         <equals arg1="${isMacOSX}" arg2="true" />
     </condition>
 
@@ -76,7 +76,7 @@
             </fileset>
         </copy>
         
-        <!-- Overwrite the phonegap js with the playbook specific phonegap js -->
+        <!-- Overwrite the cordova js with the playbook specific cordova js -->
         <copy todir="${widget.dir}" overwrite="true">
             <fileset dir="www/playbook">
                 <include name="*.js" />

@@ -8,12 +8,12 @@
 #ifndef GEOLOCATION_H_
 #define GEOLOCATION_H_
 
-#include "PhoneGapCommand.h"
+#include "CordovaCommand.h"
 #include <FLocations.h>
 
 using namespace Osp::Locations;
 
-class GeoLocation: public PhoneGapCommand, ILocationListener {
+class GeoLocation: public CordovaCommand, ILocationListener {
 private:
 	LocationProvider* locProvider;
 	bool			  watching;

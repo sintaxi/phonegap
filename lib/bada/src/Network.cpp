@@ -7,7 +7,7 @@
 
 #include "../inc/Network.h"
 
-Network::Network(Web* pWeb) : PhoneGapCommand(pWeb) {
+Network::Network(Web* pWeb) : CordovaCommand(pWeb) {
 }
 
 Network::~Network() {

@@ -1,5 +1,0 @@
-VERSION=1.4.1
-PROJECT_PATH=./example
-PACKAGE=com.phonegap.example
-ACTIVITY=PhoneGapExample
-TARGET=2

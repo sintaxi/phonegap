@@ -8,7 +8,7 @@
 #ifndef KAMERA_H_
 #define KAMERA_H_
 
-#include "PhoneGapCommand.h"
+#include "CordovaCommand.h"
 #include <FApp.h>
 #include <FIo.h>
 
@@ -16,7 +16,7 @@ using namespace Osp::App;
 using namespace Osp::Base::Collection;
 using namespace Osp::Io;
 
-class Kamera: public PhoneGapCommand, IAppControlEventListener {
+class Kamera: public CordovaCommand, IAppControlEventListener {
 public:
 	Kamera(Web* pWeb);
 	virtual ~Kamera();

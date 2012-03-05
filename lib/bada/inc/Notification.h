@@ -11,13 +11,13 @@
 #include <FUi.h>
 #include <FUix.h>
 #include <FSystem.h>
-#include "PhoneGapCommand.h"
+#include "CordovaCommand.h"
 using namespace Osp::System;
 using namespace Osp::Ui;
 using namespace Osp::Ui::Controls;
 using namespace Osp::Uix;
 
-class Notification: public PhoneGapCommand {
+class Notification: public CordovaCommand {
 public:
 	Notification(Web* pWeb);
 	virtual ~Notification();

@@ -252,9 +252,9 @@
                  Otherwise, use bbwp simulator directory. -->
             <condition
                 property="simulator.dir"
-                value="${properties.sim.dir}"
+                value="${properties.blackberry.sim.dir}"
                 else="${bbwp.sim.dir}">
-                    <available file="${properties.sim.dir}" type="dir" />
+                    <available file="${properties.blackberry.sim.dir}" type="dir" />
             </condition>
             <echo message="Simulator directory=${simulator.dir}" />
         </sequential>

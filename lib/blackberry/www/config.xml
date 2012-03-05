@@ -9,18 +9,18 @@
         xmlns:rim="http://www.blackberry.com/ns/widgets"
 	version="1.0.0.0">
 
-  <name>PhoneGap Sample</name>
+  <name>Cordova Sample</name>
 
   <description>
-      A sample application written with PhoneGap.
+      A sample application written with Cordova.
   </description>
 
   <license href="http://opensource.org/licenses/alphabetical">
   </license>
 
-  <!-- PhoneGap API -->
+  <!-- Cordova API -->
   <feature id="blackberry.system" required="true" version="1.0.0.0" />
-  <feature id="com.phonegap" required="true" version="1.0.0" />
+  <feature id="org.apache.cordova" required="true" version="1.0.0" />
   <feature id="blackberry.find" required="true" version="1.0.0.0" />
   <feature id="blackberry.identity" required="true" version="1.0.0.0" />
   <feature id="blackberry.pim.Address" required="true" version="1.0.0.0" />
@@ -35,7 +35,7 @@
   <feature id="blackberry.media.camera" />
   <feature id="blackberry.ui.dialog" />
 
-  <!-- PhoneGap API -->
+  <!-- Cordova API -->
   <access subdomains="true" uri="file:///store/home" />
   <access subdomains="true" uri="file:///SDCard" />
 

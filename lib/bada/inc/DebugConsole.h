@@ -8,9 +8,9 @@
 #ifndef DEBUGCONSOLE_H_
 #define DEBUGCONSOLE_H_
 
-#include "PhoneGapCommand.h"
+#include "CordovaCommand.h"
 
-class DebugConsole: public PhoneGapCommand {
+class DebugConsole: public CordovaCommand {
 public:
 	DebugConsole(Web* pWeb);
 	virtual ~DebugConsole();

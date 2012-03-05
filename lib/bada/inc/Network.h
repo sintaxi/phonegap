@@ -8,7 +8,7 @@
 #ifndef NETWORK_H_
 #define NETWORK_H_
 
-#include "PhoneGapCommand.h"
+#include "CordovaCommand.h"
 #include <FNet.h>
 #include <FSystem.h>
 
@@ -16,7 +16,7 @@ using namespace Osp::Net;
 using namespace Osp::Net::Http;
 using namespace Osp::System;
 
-class Network: public PhoneGapCommand, public IHttpTransactionEventListener  {
+class Network: public CordovaCommand, public IHttpTransactionEventListener  {
 public:
 	Network(Web* pWeb);
 	virtual ~Network();

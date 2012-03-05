@@ -12,7 +12,7 @@ Accelerometer::Accelerometer() {
 	started = false;
 }
 
-Accelerometer::Accelerometer(Web* pWeb): PhoneGapCommand(pWeb) {
+Accelerometer::Accelerometer(Web* pWeb): CordovaCommand(pWeb) {
 	__sensorMgr.Construct();
 	started = false;
 	x = y = z = 0.0;

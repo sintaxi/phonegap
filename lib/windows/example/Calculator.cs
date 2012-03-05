@@ -1,17 +1,11 @@
-﻿/*
- * PhoneGap is available under *either* the terms of the modified BSD license *or* the
- * MIT License (2008). See http://opensource.org/licenses/alphabetical for full text.
- *
- * Copyright (c) 2005-2011, Nitobi Software Inc.
- * Copyright (c) 2011, Microsoft Corporation
- */
+﻿
 
 using System.Runtime.Serialization;
-using WP7GapClassLib.PhoneGap;
-using WP7GapClassLib.PhoneGap.Commands;
-using WP7GapClassLib.PhoneGap.JSON;
+using WP7CordovaClassLib.Cordova;
+using WP7CordovaClassLib.Cordova.Commands;
+using WP7CordovaClassLib.Cordova.JSON;
 
-namespace PhoneGap.Extension.Commands
+namespace Cordova.Extension.Commands
 {
     public class Calculator : BaseCommand
     {

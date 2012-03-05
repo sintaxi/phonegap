@@ -7,7 +7,7 @@
 
 #include "../inc/Contacts.h"
 
-Contacts::Contacts(Web* pWeb) : PhoneGapCommand(pWeb) {
+Contacts::Contacts(Web* pWeb) : CordovaCommand(pWeb) {
 }
 
 Contacts::~Contacts() {

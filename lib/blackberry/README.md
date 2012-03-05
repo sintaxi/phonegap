@@ -1,4 +1,4 @@
-PhoneGap BlackBerry WebWorks Distribution
+Cordova BlackBerry WebWorks Distribution
 =========================================
 
 Directory Structure
@@ -25,12 +25,12 @@ Barebones Projects
 
 `www/config.xml` is a sample that you are free to alter.
 
-The necessary PhoneGap sections are `<feature>` and `<access>`:
+The necessary Cordova sections are `<feature>` and `<access>`:
 
-    <!-- PhoneGap API -->
+    <!-- Cordova API -->
     <feature ... />
     <feature ... />
     
-    <!-- PhoneGap API -->
+    <!-- Cordova API -->
     <access ... />
     <access ... />

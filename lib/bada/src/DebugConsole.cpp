@@ -7,7 +7,7 @@
 
 #include "../inc/DebugConsole.h"
 
-DebugConsole::DebugConsole(Web* pWeb): PhoneGapCommand(pWeb) {
+DebugConsole::DebugConsole(Web* pWeb): CordovaCommand(pWeb) {
 	// TODO Auto-generated constructor stub
 }
 

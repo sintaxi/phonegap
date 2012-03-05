@@ -8,12 +8,12 @@
 #ifndef DEVICE_H_
 #define DEVICE_H_
 
-#include "PhoneGapCommand.h"
+#include "CordovaCommand.h"
 #include <FSystem.h>
 
 using namespace Osp::System;
 
-class Device: public PhoneGapCommand {
+class Device: public CordovaCommand {
 public:
 	Device();
 	Device(Web* pWeb);

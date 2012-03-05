@@ -4,14 +4,18 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
     
-    <title>PhoneGap WP7</title>
+    <title>Cordova WP7</title>
     
 	  <link rel="stylesheet" href="master.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
             
-      <!-- note this is a minimal version of phonegap.js, 
-        you must add additional scripts to access sensors, ... -jm
+      <!-- 
+        Note: If you want to support more device APIs, you will need to include the full cordova-1.5.0.js -jm 
       -->
-      <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1-core.js"></script>
+      <!-- 
+      <script type="text/javascript" charset="utf-8" src="cordova-1.5.0.js"></script>
+      -->
+      
+      <script type="text/javascript" charset="utf-8" src="cordova-1.5.0-core.js"></script>
        
       <script type="text/javascript">
 
@@ -20,7 +24,7 @@
         // once the device ready event fires, you can safely do your thing! -jm
         function onDeviceReady()
         {
-            document.getElementById("welcomeMsg").innerHTML += "PhoneGap is ready! version=" + window.device.phonegap;
+            document.getElementById("welcomeMsg").innerHTML = "Cordova is ready! version=" + window.device.cordova;
             console.log("onDeviceReady. You should see this message in Visual Studio's output window.");
             
         }
@@ -32,7 +36,7 @@
 
   </head>
   <body>
-    <h1>Hello PhoneGap</h1>
-    <div id="welcomeMsg"></div>
+    <h1>Hello Cordova</h1>
+    <div id="welcomeMsg">Loading...</div>
   </body>
 </html>

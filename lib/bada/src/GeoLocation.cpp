@@ -12,7 +12,7 @@ GeoLocation::GeoLocation() {
 
 }
 
-GeoLocation::GeoLocation(Web* pWeb): PhoneGapCommand(pWeb) {
+GeoLocation::GeoLocation(Web* pWeb): CordovaCommand(pWeb) {
 	locProvider = new LocationProvider();
 	locProvider->Construct(LOC_METHOD_HYBRID);
 	watching = false;

@@ -7,7 +7,7 @@
 
 #include "../inc/Notification.h"
 
-Notification::Notification(Web* pWeb) : PhoneGapCommand(pWeb) {
+Notification::Notification(Web* pWeb) : CordovaCommand(pWeb) {
 }
 
 Notification::~Notification() {

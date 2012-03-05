@@ -1,4 +1,4 @@
-﻿<project name="Build and Deploy a PhoneGap BlackBerry WebWorks Project" default="help">
+﻿<project name="Build and Deploy a Cordova BlackBerry WebWorks Project" default="help">
     
     <!-- LOAD ANT-CONTRIB LIBRARY -->
     

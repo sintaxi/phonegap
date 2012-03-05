@@ -1,171 +1,140 @@
 ChangeLog
 ios
-Becky Gibson (6):
-      fixes CB-143 removing address from iOS contact causes crash
-      fixes CB-153 - Camera default destination should be FILE_URI
-      Refs #cb-7 Update source headers to apache license
-      fixes CB-42 MediaPlaybackRequiresUserAction can now be set to NO
-      Update contacts so displayContact closes properly
-      Updated VERSION and release notes for 1.4.1
+Becky Gibson (5):
+      Fixed memory allocation warnings from analyzer
+      Updates for 1.5.0rc1
+      Update FileEntry and DirectoryEntry to deprecate toURI() and add toURL
+      Fix NSLog crash in CDVWhitelist.m - parameter order reversed
+      Update to version 1.5
 
-Jesse (3):
-      project files imported using local syntax, and not framework syntax
-      added stand-alone PGViewController
-      added whitelist support, and more complete interface with readonly props
+Marcus Ross (1):
+      added german/swedish localization for fix #162
 
-Shazron Abdullah (26):
-      Fixed iOS 5 quirks with presenting/dismissing modal viewcontrollers.
-      Fixed the (PGPlugin.viewController == null) problem for pre-1.4 projects using PhoneGap > 1.3
-      Fixed PGViewController PhoneGap.plist settings - settings were set before the webView was created.
-      Added missing steps to "How to use PhoneGap as a Component" doc.
-      Added 'How to Use PhoneGap as a Component' doc to the .dmg  (as a PDF)
-      Fixes for legacy support of deprecated PhoneGapDelegate - in core plugins.
-      Update to template file AppDelegate.m (new PGCommandDelegate interface function added)
-      Removed PhoneGapLibTest folder.
-      Added Apache v2 license to strings files.
-      Updated the app icons, splash-screens, and template icons for the Xcode template.
-      Added Battery core plugin to PhoneGap.plist
-      Updated files to contain Apache v2 license in the header
-      Added PhoneGap version number to top of license.js
-      Updated files to contain Apache v2 license in the header
-      Updated VERSION to 1.4.0rc1 and added release notes
-      Re-factored to use PGViewController more effectively (has iPad view scaling problems currently).
-      Fixed iPad sizing problem.
-      Fixed MainViewController pathing problem in .xcodeproj
-      Fixed comment problem (no /* */ comments allowed) - substituted with //
-      Fixed incomplete protocol problem.
-      Updated FAQ item #7, updated testing section
-      Added the "PhoneGap Upgrade Guide" doc.
-      Fixed incorrect alignment of splashscreen image at startup because of recent Cleaver changes.
-      Updated VERSION to 1.4.0
-      Removed ellipsis character and changed to three periods because of PDF converter problems
-      Fixed CB-212 - iOS orientation switch broken in 1.4.0
+Matthew Lanham (1):
+      Change Reachability to PGReachability to avoid clashes with other libs
 
-shazron (18):
-      Got PGViewController working, with no splash screen support yet.
-      Fixed startPage crash on a .framework based project.
-      Added splash screen code to PGViewController (not working properly yet)
-      Fixed splashscreens in new PGViewController.
-      Removed UIWebView.scalesPagesToFit = YES to match legacy setting of NO.
-      Fixes unit-test failures (re: File tests)
-      Usage of PGCommandDelegate in new AppDelegate.h/.m
-      Renamed PhoneGapDelegate to PGAppDelegate. PhoneGapViewController removed. This is a breaking change. The old classes will be re-added later and deprecated for upgrades.
-      Re-added legacy (now deprecated) classes PhoneGapDelegate and PhoneGapViewController.
-      Added missing (deprecated) header files to PhoneGap target.
-      Fixed runtime error (missing selector) for PGURLProtocol - for pre-1.4 generated projects.
-      Fixed missing symbols (for deprecated classes) in a PhoneGap.framework based project that has been upgraded to use 1.4
-      First draft of Cleaver HOWTO
-      Factored out NSDictionary+LowercaseKeys category to prevent duplicate symbol warning.
-      PGViewController - made wwwFolderName and startPage as properties to allow easy customization.
-      How to use PhoneGap as a Component - documentation complete.
-      Modified instructions to always start with an action word.
-      Typo in selector that prevented a PGPlugin's viewController property from being set.
+Shazron Abdullah (13):
+      Updated the Upgrade Guide for 1.4.1
+      Added UIWebViewBounce key to PhoneGap.plist (default is YES) (originally from an @alunny pull request)
+      Updated README.md FAQ item #5 (upgrades)
+      Added the German and Swedish resources to the Xcode templates
+      Fixes CB-149 - Black Bar visible after landscape video
+      Fixes CB-221 - On an orientation change, the orientationchange event not fired on iOS 3 and 4 (it is however fired on iOS 5)
+      Rename PhoneGap to Cordova.
+      Fixed typo, added missing step.
+      Cordova rename fixes.
+      Completed Cordova Guides for 1.5.0
+      Fixed CB-253 - Xcode 4 Cordova-based Application - DEBUG macro not defined
+      Default GCC_VERSION is com.apple.compilers.llvm.clang.1_0 now
+      Removed Xcode and iOS SDK checks in the installer (for Xcode 4.3 installs which go under /Applications now)
 
 blackberry
-Fil Maj (6):
-      #124: Adding Battery events to the PlayBook.
-      #153: Default for camera destination type changed from DATA_URL to FILE_URI.
-      #CB-122: native JSON writer class needs expandable char buffer
-      1.4.0rc1
-      1.4.0
-      1.4.1
-
-Jeffrey Heifetz (1):
-      Fixing playbook plugin manager
+Drew Walters (6):
+      CB-5: Switching license to Apache license.
+      CB-226 Rename to Cordova.
+      Delete plugin template.
+      Properly recognize when alternate simulator path specified.
+      Add Entry.toURL, deprecate Entry.toURI.
+      1.5.0
 
 android
-Anis Kadri (1):
-      fixing whitelist handling
+Anis Kadri (2):
+      CB-75 contact.remove does not remove the contact fully
+      CB-75 contact.remove does not remove the contact fully
 
-Bryce Curtis (5):
-      Change API to postMessage() to call a plugin's onMessage() method.
-      Optimize enumerations as suggested by @plowman.
-      Fix  CB-135 Multithreaded access on CallbackServer javascript object.
-      Added license header to new files.
-      Remove unused files/classes until they are needed.
+Bryce Curtis (10):
+      Missing first line of license in header.
+      Add cordova.android.js from common-js build.
+      Update build to use new common cordova.android.js instead of building js from multiple Android js files.
+      Call js code using new common js way.
+      Arguments are passed as JSON array, not JSON object.
+      Add cordova.android.js from common-js build.
+      Update build to use new common cordova.android.js instead of building js from multiple Android js files.
+      File APIs should return error code instead of object.
+      Updating cordova.android.js with File API fixes.
+      Fix WebSQL for Android 4.0.2.
+
+Fil Maj (34):
+      Adding unsupported action plugin result return if invalid action string is specified to accel and compass listener plugins
+      woops java type checks! love it!
+      changing JS invoked from native to work with modular js
+      Changed JavaScript invoked from PluginResult native code to use new modular JS approach
+      Unifying File API error code/response style
+      removing unnecessary try/catch
+      Return string for root location in requestFileSystem
+      Prefix URIs for file API with file:/// and persistent storage should never point to SD card
+      Need to add/trim file:// where applicable
+      truncating file:// protocol where applicable in metadata func
+      remove file:// protocol from various fileutils remove methods
+      remove file:// protocol from various fileutils  methods
+      remove trailing slash
+      Use strings not objects
+      trim file:// URI from uri->path conversion method
+      more file:// URI truncation :D
+      Adding unsupported action plugin result return if invalid action string is specified to accel and compass listener plugins
+      woops java type checks! love it!
+      changing JS invoked from native to work with modular js
+      Changed JavaScript invoked from PluginResult native code to use new modular JS approach
+      Unifying File API error code/response style
+      removing unnecessary try/catch
+      Return string for root location in requestFileSystem
+      Prefix URIs for file API with file:/// and persistent storage should never point to SD card
+      Need to add/trim file:// where applicable
+      truncating file:// protocol where applicable in metadata func
+      remove file:// protocol from various fileutils remove methods
+      remove file:// protocol from various fileutils  methods
+      remove trailing slash
+      Use strings not objects
+      trim file:// URI from uri->path conversion method
+      more file:// URI truncation :D
+      updating cordova.android.js. This resolves CB-283: unregistration of backbutton event handlers do not fire appropriate native method
+      updating cordova.js to include camera constants fix. added clean dependency to build-javascript target in ant file
 
 Joe Bowser (9):
-      Work-around Feature for Classic PhoneGap 320x480 resolution
-      Fixing scale, setting legacy scale
-      Removing GapView, since it doesn't actually do anything
-      Moving LinearLayoutSoftKeyboardDetect out into its own class and making it more plugin-like
-      Editing a comment about LinearLayoutSoftKeyboardDetect
-      Changing to use JS directly. There are issues with this approach, and it should use the KeyboardHandler
-      Moved Chrome Client out of DroidGap.java
-      Moving the WebViewClient out, allowing for PhoneGap to not break on empty console.log
-      Removing the classic render feature, since it's not working properly
+      Switching headers.  Got OK months ago from Simon and Bryce on re-write. No Android Demo code in current project
+      Changing to CordovaInterface in preparation of CordovaWebView
+      Change related to FileTransfer, need to get a test going for this somehow
+      Adding custom headers to upload
+      Moved the CordovaInterface over to master, doing this before working on CordovaJS
+      Fix to CordovaInterface methods, DroidGap has the managedQuery since it inherits from Activity. (CB-282)
+      Reverting interface change, not enough time for testing, need to remove it manually
+      Putting back the CordovaInterface work after talking with Simon
+      Updating the JS, even though it shouldn't be here. CB-290
 
-Jukka Zitting (2):
-      README.md: Replace "PhoneGap" with "Cordova" and add incubation disclaimer
-      Minor incubation disclaimer fix.
-
-Libby Baldwin (1):
-      add compass demo for Android
-
-Olivier Brand (2):
-      Added authentication framework
-      Renamed crdentials/principals to userName/password
-
-Peter Ehrlich (1):
-      documentation additions
-
-William Shen (1):
-      Changed createCaptureFile to explicitly check for PNG and to throw an IllegalArgumentException if it is not a JPEG nor a PNG
-
-alunny (4):
-      adding JUnit dependency
-      reading preferences from phonegap.xml
-      using preference=fullscreen for fullscreen view
-      making preference reading code more robust
-
-macdonst (15):
-      Fix for issue #281 of phonegap/phonegap-android: Detect for localStorage if Java has disabled it
-      Fix for Issue #33: onReceivedError incorrectly sets openExternal to true
-      Fix NullPointerException in DroidGap.onMeasure()
-      Fixing issue with FileTransfer.upload when the passed in url contains a ?
-      Proved generating sqlite database path to open database without permission error
-      Camera default destination should be FILE_URI
-      CB-145: Android contact.save() crashes for native contacts.
-      CB-199: FileTransfer.download fails on Android 4.0
-      Allow internal SD Card to be used as storage
-      Fixing a timing issue with the web view history not being cleared properly
-      Updating version to 1.4.0rc1
-      Updating version to 1.4.0
-      Deprecating navigator.app.overrideBackbutton
-      Removing deprecated methods from Device
-      Tagging 1.4.1
+macdonst (19):
+      Rename to Cordova
+      Fixing MediaFileData problem for MP4 video types
+      Adding com.phonegap.api stubs for legacy user created plugins
+      Refactor out the Java casting code
+      Redirect Issue
+      Fix issue with document.location.href not calling loadUrlIntoView
+      Removing extraneous logging from DroidGap.java left over from rebase
+      Refactoring the checks for file:// into a convenience method
+      CB-3: Apache source headers in callback-android
+      Fixing app crash when clicking Menu or Back buttons while splashscreen is being shown.
+      Tagging 1.5.0rc1
+      Adding startActivity method to CordovaInterface as many plugins rely on this method
+      Fixing the call to Media.onStatus()
+      Switching to require syntax for AudioPlayer
+      Revert change in location of FileSystem
+      Updating cordova.android.js to latest version from Apache git repo
+      Updating cordova.android.js to override FileReader
+      Tagging 1.5.0
+      Adding support for legacy plugins
 
 windows
-Jesse MacFadyen (19):
-      Acceleromter fix #CB-141 - InvariantCulture
-      Changed default destination to FILE_URI
-      Contacts returned from find were not formatted. CB-157
-      Audio playback issue CB-142
-      Redirect issue trackers to apache
-      Wrong slash :: CB-184
-      Removed unnecessary navigation blocking for # CB-185
-      Added js Connection.CELL for generic cellular connection.
-      Fix for single document - multipage layouts
-      Added VERSION file to be like other platforms.
-      Fixes for loading local XHR using file API, and still using default for remote XHR. responseXML returns document for local files.
-      updated phonegap.js to include XHR updates
-      Compass API fixes
-      1.4.0 version changes
-      #CB-156
-      rename shite from 1.4.0 to 1.4.1
-      moar renig'n
-      mooor renaming
-      that should be it. FML
-
 webos
-Herm Wong (1):
-      update version file to 1.4.0
+Steven Gill (2):
+      removed uncessary files
+      updatd to 1.5.0
+
+hermwong (1):
+      update version file
 
 bada
-Anis Kadri (5):
-      Updating phonegap version
-      ignoring unsed files
-      upating version 1.4.0rc
-      updating to 1.4.0
-      updating Device and VERSION to 1.4.1
+Anis Kadri (1):
+      CB-219 Rename PhoneGap to Cordova
+
+Steven Gill (1):
+      updated t 1.5.0
 

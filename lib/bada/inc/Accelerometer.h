@@ -8,12 +8,12 @@
 #ifndef ACCELEROMETER_H_
 #define ACCELEROMETER_H_
 
-#include "PhoneGapCommand.h"
+#include "CordovaCommand.h"
 #include <FUix.h>
 
 using namespace Osp::Uix;
 
-class Accelerometer: public PhoneGapCommand, ISensorEventListener
+class Accelerometer: public CordovaCommand, ISensorEventListener
  {
 public:
 	Accelerometer();

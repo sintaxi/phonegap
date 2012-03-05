@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010 Express for Windows Phone
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GapExample", "GapExample.csproj", "{3677C1B7-D68B-4CF9-BF8A-E869D437A6DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WP7GapClassLib", "..\framework\WP7GapClassLib.csproj", "{FC6A1A70-892D-46AD-9E4A-9793F72AF780}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WP7CordovaClassLib", "..\framework\WP7CordovaClassLib.csproj", "{FC6A1A70-892D-46AD-9E4A-9793F72AF780}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
