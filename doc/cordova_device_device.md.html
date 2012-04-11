@@ -56,6 +56,7 @@
 <option value="device.name_full_example">      - Full Example</option>
 <option value="device.name_android_quirks">      - Android Quirks</option>
 <option value="device.name_iphone_quirks">      - iPhone Quirks</option>
+<option value="device.name_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
 <option value="device.cordova">device.cordova</option>
 <option value="device.cordova_description">      - Description</option>
 <option value="device.cordova_supported_platforms">      - Supported Platforms</option>
@@ -67,11 +68,14 @@
 <option value="device.platform_full_example">      - Full Example</option>
 <option value="device.platform_iphone_quirks">      - iPhone Quirks</option>
 <option value="device.platform_blackberry_quirks">      - BlackBerry Quirks</option>
+<option value="device.platform_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
 <option value="device.uuid">device.uuid</option>
 <option value="device.uuid_description">      - Description</option>
 <option value="device.uuid_supported_platforms">      - Supported Platforms</option>
 <option value="device.uuid_quick_example">      - Quick Example</option>
 <option value="device.uuid_full_example">      - Full Example</option>
+<option value="device.uuid_ios_quirk">      - iOS Quirk</option>
+<option value="device.uuid_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
 <option value="device.version">device.version</option>
 <option value="device.version_supported_platforms">      - Supported Platforms</option>
 <option value="device.version_quick_example">      - Quick Example</option>
@@ -82,19 +86,19 @@
             <div class="vertical_divider"></div>
         <h1>API Reference</h1>
 <ul>
-<li><a href="phonegap_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
-<li><a href="phonegap_camera_camera.md.html#Camera">Camera</a></li>
-<li><a href="phonegap_media_capture_capture.md.html#Capture">Capture</a></li>
-<li><a href="phonegap_compass_compass.md.html#Compass">Compass</a></li>
-<li><a href="phonegap_connection_connection.md.html#Connection">Connection</a></li>
-<li><a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a></li>
-<li><a href="phonegap_device_device.md.html#Device">Device</a></li>
-<li><a href="phonegap_events_events.md.html#Events">Events</a></li>
-<li><a href="phonegap_file_file.md.html#File">File</a></li>
-<li><a href="phonegap_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
-<li><a href="phonegap_media_media.md.html#Media">Media</a></li>
-<li><a href="phonegap_notification_notification.md.html#Notification">Notification</a></li>
-<li><a href="phonegap_storage_storage.md.html#Storage">Storage</a></li>
+<li><a href="cordova_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
+<li><a href="cordova_camera_camera.md.html#Camera">Camera</a></li>
+<li><a href="cordova_media_capture_capture.md.html#Capture">Capture</a></li>
+<li><a href="cordova_compass_compass.md.html#Compass">Compass</a></li>
+<li><a href="cordova_connection_connection.md.html#Connection">Connection</a></li>
+<li><a href="cordova_contacts_contacts.md.html#Contacts">Contacts</a></li>
+<li><a href="cordova_device_device.md.html#Device">Device</a></li>
+<li><a href="cordova_events_events.md.html#Events">Events</a></li>
+<li><a href="cordova_file_file.md.html#File">File</a></li>
+<li><a href="cordova_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
+<li><a href="cordova_media_media.md.html#Media">Media</a></li>
+<li><a href="cordova_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="cordova_storage_storage.md.html#Storage">Storage</a></li>
 </ul>
 <h1>Guides</h1>
 <ul>
@@ -116,11 +120,11 @@
 </h2>
 
 <ul>
-<li><a href="phonegap_device_device.md.html#device.name">device.name</a></li>
-<li><a href="phonegap_device_device.md.html#device.cordova">device.cordova</a></li>
-<li><a href="phonegap_device_device.md.html#device.platform">device.platform</a></li>
-<li><a href="phonegap_device_device.md.html#device.uuid">device.uuid</a></li>
-<li><a href="phonegap_device_device.md.html#device.version">device.version</a></li>
+<li><a href="cordova_device_device.md.html#device.name">device.name</a></li>
+<li><a href="cordova_device_device.md.html#device.cordova">device.cordova</a></li>
+<li><a href="cordova_device_device.md.html#device.platform">device.platform</a></li>
+<li><a href="cordova_device_device.md.html#device.uuid">device.uuid</a></li>
+<li><a href="cordova_device_device.md.html#device.version">device.version</a></li>
 </ul>
 <h2>
 <a name="Device_variable_scope">Variable Scope</a>
@@ -130,8 +134,8 @@
 
 <pre class="prettyprint"><code>// These reference the same `device`
 //
-var phoneName = window.<a href="phonegap_device_device.md.html#device.name">device.name</a>;
-var phoneName = <a href="phonegap_device_device.md.html#device.name">device.name</a>;
+var phoneName = window.<a href="cordova_device_device.md.html#device.name">device.name</a>;
+var phoneName = <a href="cordova_device_device.md.html#device.name">device.name</a>;
 </code></pre>
 
 <hr>
@@ -139,14 +143,14 @@ var phoneName = <a href="phonegap_device_device.md.html#device.name">device.name
 
 <p>Get the device's model name.</p>
 
-<pre class="prettyprint"><code>var string = <a href="phonegap_device_device.md.html#device.name">device.name</a>;
+<pre class="prettyprint"><code>var string = <a href="cordova_device_device.md.html#device.name">device.name</a>;
 </code></pre>
 
 <h2>
 <a name="device.name_description">Description</a>
 </h2>
 
-<p><code><a href="phonegap_device_device.md.html#device.name">device.name</a></code> returns the name of the device's model or product. This value is set by the device manufacturer and may be different across versions of the same product.</p>
+<p><code><a href="cordova_device_device.md.html#device.name">device.name</a></code> returns the name of the device's model or product. This value is set by the device manufacturer and may be different across versions of the same product.</p>
 
 <h2>
 <a name="device.name_supported_platforms">Supported Platforms</a>
@@ -154,7 +158,6 @@ var phoneName = <a href="phonegap_device_device.md.html#device.name">device.name
 
 <ul>
 <li>Android</li>
-<li>BlackBerry</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
@@ -165,10 +168,10 @@ var phoneName = <a href="phonegap_device_device.md.html#device.name">device.name
 
 <pre class="prettyprint"><code>// Android:    Nexus One       returns "Passion" (Nexus One code name)
 //             Motorola Droid  returns "voles"
-// BlackBerry: Bold 8900       returns "8900"
+// BlackBerry: Torch 9800      returns "9800"
 // iPhone:     All devices     returns a name set by iTunes e.g. "Joe's iPhone"
 //
-var name = <a href="phonegap_device_device.md.html#device.name">device.name</a>;
+var name = <a href="cordova_device_device.md.html#device.name">device.name</a>;
 </code></pre>
 
 <h2>
@@ -178,25 +181,25 @@ var name = <a href="phonegap_device_device.md.html#device.name">device.name</a>;
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
+    &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Cordova is ready
     //
     function onDeviceReady() {
         var element = document.getElementById('deviceProperties');
 
-        element.innerHTML = '<a href="phonegap_device_device.md.html#Device">Device</a> Name: '     + <a href="phonegap_device_device.md.html#device.name">device.name</a>     + '&lt;br /&gt;' + 
-                            '<a href="phonegap_device_device.md.html#Device">Device</a> Cordova: '  + <a href="phonegap_device_device.md.html#device.cordova">device.cordova</a> + '&lt;br /&gt;' + 
-                            '<a href="phonegap_device_device.md.html#Device">Device</a> Platform: ' + <a href="phonegap_device_device.md.html#device.platform">device.platform</a> + '&lt;br /&gt;' + 
-                            '<a href="phonegap_device_device.md.html#Device">Device</a> UUID: '     + <a href="phonegap_device_device.md.html#device.uuid">device.uuid</a>     + '&lt;br /&gt;' + 
-                            '<a href="phonegap_device_device.md.html#Device">Device</a> Version: '  + <a href="phonegap_device_device.md.html#device.version">device.version</a>  + '&lt;br /&gt;';
+        element.innerHTML = '<a href="cordova_device_device.md.html#Device">Device</a> Name: '     + <a href="cordova_device_device.md.html#device.name">device.name</a>     + '&lt;br /&gt;' + 
+                            '<a href="cordova_device_device.md.html#Device">Device</a> Cordova: '  + <a href="cordova_device_device.md.html#device.cordova">device.cordova</a> + '&lt;br /&gt;' + 
+                            '<a href="cordova_device_device.md.html#Device">Device</a> Platform: ' + <a href="cordova_device_device.md.html#device.platform">device.platform</a> + '&lt;br /&gt;' + 
+                            '<a href="cordova_device_device.md.html#Device">Device</a> UUID: '     + <a href="cordova_device_device.md.html#device.uuid">device.uuid</a>     + '&lt;br /&gt;' + 
+                            '<a href="cordova_device_device.md.html#Device">Device</a> Version: '  + <a href="cordova_device_device.md.html#device.version">device.version</a>  + '&lt;br /&gt;';
     }
 
     &lt;/script&gt;
@@ -231,19 +234,26 @@ var name = <a href="phonegap_device_device.md.html#device.name">device.name</a>;
 </ul>
 </li>
 </ul>
+<h2>
+<a name="device.name_windows_phone_7_quirks">Windows Phone 7 Quirks</a>
+</h2>
+
+<ul>
+<li>returns the manufacturer specified <a href="#device%20name">device name</a>, for example, the Samsung Focus returns 'SGH-i917'</li>
+</ul>
 <hr>
 <h1><a name="device.cordova">device.cordova</a></h1>
 
 <p>Get the version of Cordova running on the device.</p>
 
-<pre class="prettyprint"><code>var string = <a href="phonegap_device_device.md.html#device.cordova">device.cordova</a>;
+<pre class="prettyprint"><code>var string = <a href="cordova_device_device.md.html#device.cordova">device.cordova</a>;
 </code></pre>
 
 <h2>
 <a name="device.cordova_description">Description</a>
 </h2>
 
-<p><code><a href="phonegap_device_device.md.html#device.cordova">device.cordova</a></code> returns the version of Cordova running on the device.</p>
+<p><code><a href="cordova_device_device.md.html#device.cordova">device.cordova</a></code> returns the version of Cordova running on the device.</p>
 
 <h2>
 <a name="device.cordova_supported_platforms">Supported Platforms</a>
@@ -251,7 +261,6 @@ var name = <a href="phonegap_device_device.md.html#device.name">device.name</a>;
 
 <ul>
 <li>Android</li>
-<li>BlackBerry</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
@@ -260,7 +269,7 @@ var name = <a href="phonegap_device_device.md.html#device.name">device.name</a>;
 <a name="device.cordova_quick_example">Quick Example</a>
 </h2>
 
-<pre class="prettyprint"><code>var name = <a href="phonegap_device_device.md.html#device.cordova">device.cordova</a>;
+<pre class="prettyprint"><code>var name = <a href="cordova_device_device.md.html#device.cordova">device.cordova</a>;
 </code></pre>
 
 <h2>
@@ -270,25 +279,25 @@ var name = <a href="phonegap_device_device.md.html#device.name">device.name</a>;
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
+    &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Cordova is ready
     //
     function onDeviceReady() {
         var element = document.getElementById('deviceProperties');
 
-        element.innerHTML = '<a href="phonegap_device_device.md.html#Device">Device</a> Name: '     + <a href="phonegap_device_device.md.html#device.name">device.name</a>     + '&lt;br /&gt;' + 
-                            '<a href="phonegap_device_device.md.html#Device">Device</a> Cordova: '  + <a href="phonegap_device_device.md.html#device.cordova">device.cordova</a>  + '&lt;br /&gt;' + 
-                            '<a href="phonegap_device_device.md.html#Device">Device</a> Platform: ' + <a href="phonegap_device_device.md.html#device.platform">device.platform</a> + '&lt;br /&gt;' + 
-                            '<a href="phonegap_device_device.md.html#Device">Device</a> UUID: '     + <a href="phonegap_device_device.md.html#device.uuid">device.uuid</a>     + '&lt;br /&gt;' + 
-                            '<a href="phonegap_device_device.md.html#Device">Device</a> Version: '  + <a href="phonegap_device_device.md.html#device.version">device.version</a>  + '&lt;br /&gt;';
+        element.innerHTML = '<a href="cordova_device_device.md.html#Device">Device</a> Name: '     + <a href="cordova_device_device.md.html#device.name">device.name</a>     + '&lt;br /&gt;' + 
+                            '<a href="cordova_device_device.md.html#Device">Device</a> Cordova: '  + <a href="cordova_device_device.md.html#device.cordova">device.cordova</a>  + '&lt;br /&gt;' + 
+                            '<a href="cordova_device_device.md.html#Device">Device</a> Platform: ' + <a href="cordova_device_device.md.html#device.platform">device.platform</a> + '&lt;br /&gt;' + 
+                            '<a href="cordova_device_device.md.html#Device">Device</a> UUID: '     + <a href="cordova_device_device.md.html#device.uuid">device.uuid</a>     + '&lt;br /&gt;' + 
+                            '<a href="cordova_device_device.md.html#Device">Device</a> Version: '  + <a href="cordova_device_device.md.html#device.version">device.version</a>  + '&lt;br /&gt;';
     }
 
     &lt;/script&gt;
@@ -304,7 +313,7 @@ var name = <a href="phonegap_device_device.md.html#device.name">device.name</a>;
 
 <p>Get the device's operating system name.</p>
 
-<pre class="prettyprint"><code>var string = <a href="phonegap_device_device.md.html#device.platform">device.platform</a>;
+<pre class="prettyprint"><code>var string = <a href="cordova_device_device.md.html#device.platform">device.platform</a>;
 </code></pre>
 
 <h2>
@@ -313,7 +322,6 @@ var name = <a href="phonegap_device_device.md.html#device.name">device.name</a>;
 
 <ul>
 <li>Android</li>
-<li>BlackBerry</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
@@ -328,7 +336,7 @@ var name = <a href="phonegap_device_device.md.html#device.name">device.name</a>;
 //   - "iPhone"
 //   - "webOS"
 //   - "WinCE"
-var devicePlatform = <a href="phonegap_device_device.md.html#device.platform">device.platform</a>;
+var devicePlatform = <a href="cordova_device_device.md.html#device.platform">device.platform</a>;
 </code></pre>
 
 <h2>
@@ -338,25 +346,25 @@ var devicePlatform = <a href="phonegap_device_device.md.html#device.platform">de
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
+    &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Cordova is ready
     //
     function onDeviceReady() {
         var element = document.getElementById('deviceProperties');
 
-        element.innerHTML = '<a href="phonegap_device_device.md.html#Device">Device</a> Name: '     + <a href="phonegap_device_device.md.html#device.name">device.name</a>     + '&lt;br /&gt;' + 
-                            '<a href="phonegap_device_device.md.html#Device">Device</a> Cordova: '  + <a href="phonegap_device_device.md.html#device.cordova">device.cordova</a>  + '&lt;br /&gt;' + 
-                            '<a href="phonegap_device_device.md.html#Device">Device</a> Platform: ' + <a href="phonegap_device_device.md.html#device.platform">device.platform</a> + '&lt;br /&gt;' + 
-                            '<a href="phonegap_device_device.md.html#Device">Device</a> UUID: '     + <a href="phonegap_device_device.md.html#device.uuid">device.uuid</a>     + '&lt;br /&gt;' + 
-                            '<a href="phonegap_device_device.md.html#Device">Device</a> Version: '  + <a href="phonegap_device_device.md.html#device.version">device.version</a>  + '&lt;br /&gt;';
+        element.innerHTML = '<a href="cordova_device_device.md.html#Device">Device</a> Name: '     + <a href="cordova_device_device.md.html#device.name">device.name</a>     + '&lt;br /&gt;' + 
+                            '<a href="cordova_device_device.md.html#Device">Device</a> Cordova: '  + <a href="cordova_device_device.md.html#device.cordova">device.cordova</a>  + '&lt;br /&gt;' + 
+                            '<a href="cordova_device_device.md.html#Device">Device</a> Platform: ' + <a href="cordova_device_device.md.html#device.platform">device.platform</a> + '&lt;br /&gt;' + 
+                            '<a href="cordova_device_device.md.html#Device">Device</a> UUID: '     + <a href="cordova_device_device.md.html#device.uuid">device.uuid</a>     + '&lt;br /&gt;' + 
+                            '<a href="cordova_device_device.md.html#Device">Device</a> Version: '  + <a href="cordova_device_device.md.html#device.version">device.version</a>  + '&lt;br /&gt;';
     }
 
     &lt;/script&gt;
@@ -379,12 +387,18 @@ var devicePlatform = <a href="phonegap_device_device.md.html#device.platform">de
 
 <p>Devices may return the <a href="#device%20platform">device platform</a> version instead of the platform name.  For example, the Storm2 9550 would return '2.13.0.95' or similar.</p>
 
+<h2>
+<a name="device.platform_windows_phone_7_quirks">Windows Phone 7 Quirks</a>
+</h2>
+
+<p>Windows Phone 7 devices report platform as 'WinCE'</p>
+
 <hr>
 <h1><a name="device.uuid">device.uuid</a></h1>
 
 <p>Get the device's Universally Unique Identifier (<a class="external" href="http://en.wikipedia.org/wiki/Universally_Unique_Identifier">UUID</a>).</p>
 
-<pre class="prettyprint"><code>var string = <a href="phonegap_device_device.md.html#device.uuid">device.uuid</a>;
+<pre class="prettyprint"><code>var string = <a href="cordova_device_device.md.html#device.uuid">device.uuid</a>;
 </code></pre>
 
 <h2>
@@ -399,7 +413,6 @@ var devicePlatform = <a href="phonegap_device_device.md.html#device.platform">de
 
 <ul>
 <li>Android</li>
-<li>BlackBerry</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
@@ -421,7 +434,7 @@ var devicePlatform = <a href="phonegap_device_device.md.html#device.platform">de
 // Windows Phone 7 : Returns a hash of device+current user, 
 // if the user is not defined, a guid is generated and will persist until the app is uninstalled
 // 
-var deviceID = <a href="phonegap_device_device.md.html#device.uuid">device.uuid</a>;
+var deviceID = <a href="cordova_device_device.md.html#device.uuid">device.uuid</a>;
 </code></pre>
 
 <h2>
@@ -431,25 +444,25 @@ var deviceID = <a href="phonegap_device_device.md.html#device.uuid">device.uuid<
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
+    &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Cordova is ready
     //
     function onDeviceReady() {
         var element = document.getElementById('deviceProperties');
 
-        element.innerHTML = '<a href="phonegap_device_device.md.html#Device">Device</a> Name: '     + <a href="phonegap_device_device.md.html#device.name">device.name</a>     + '&lt;br /&gt;' + 
-                            '<a href="phonegap_device_device.md.html#Device">Device</a> Cordova: '  + <a href="phonegap_device_device.md.html#device.cordova">device.cordova</a>  + '&lt;br /&gt;' + 
-                            '<a href="phonegap_device_device.md.html#Device">Device</a> Platform: ' + <a href="phonegap_device_device.md.html#device.platform">device.platform</a> + '&lt;br /&gt;' + 
-                            '<a href="phonegap_device_device.md.html#Device">Device</a> UUID: '     + <a href="phonegap_device_device.md.html#device.uuid">device.uuid</a>     + '&lt;br /&gt;' + 
-                            '<a href="phonegap_device_device.md.html#Device">Device</a> Version: '  + <a href="phonegap_device_device.md.html#device.version">device.version</a>  + '&lt;br /&gt;';
+        element.innerHTML = '<a href="cordova_device_device.md.html#Device">Device</a> Name: '     + <a href="cordova_device_device.md.html#device.name">device.name</a>     + '&lt;br /&gt;' + 
+                            '<a href="cordova_device_device.md.html#Device">Device</a> Cordova: '  + <a href="cordova_device_device.md.html#device.cordova">device.cordova</a>  + '&lt;br /&gt;' + 
+                            '<a href="cordova_device_device.md.html#Device">Device</a> Platform: ' + <a href="cordova_device_device.md.html#device.platform">device.platform</a> + '&lt;br /&gt;' + 
+                            '<a href="cordova_device_device.md.html#Device">Device</a> UUID: '     + <a href="cordova_device_device.md.html#device.uuid">device.uuid</a>     + '&lt;br /&gt;' + 
+                            '<a href="cordova_device_device.md.html#Device">Device</a> Version: '  + <a href="cordova_device_device.md.html#device.version">device.version</a>  + '&lt;br /&gt;';
     }
 
     &lt;/script&gt;
@@ -460,12 +473,24 @@ var deviceID = <a href="phonegap_device_device.md.html#device.uuid">device.uuid<
 &lt;/html&gt;
 </code></pre>
 
+<h2>
+<a name="device.uuid_ios_quirk">iOS Quirk</a>
+</h2>
+
+<p>The uuid for iOS is not unique for a device, but is unique per application per install. This will change if you delete the app and re-install, and possibly also when you upgrade your iOS version, or even upgrade your app per version (as we've seen in iOS 5.1). Not a reliable value.</p>
+
+<h2>
+<a name="device.uuid_windows_phone_7_quirks">Windows Phone 7 Quirks</a>
+</h2>
+
+<p>The uuid for Windows Phone 7 requires the permission ID<em>CAP</em>IDENTITY_DEVICE.  Microsoft will likely be deprecating this property in the near future.  If the capablility is not available, the application generates a persistent guid, that will be maintained for the install-lifetime of the application on the device.</p>
+
 <hr>
 <h1><a name="device.version">device.version</a></h1>
 
 <p>Get the operating system version.</p>
 
-<pre class="prettyprint"><code>var string = <a href="phonegap_device_device.md.html#device.version">device.version</a>;
+<pre class="prettyprint"><code>var string = <a href="cordova_device_device.md.html#device.version">device.version</a>;
 </code></pre>
 
 <h2>
@@ -474,7 +499,6 @@ var deviceID = <a href="phonegap_device_device.md.html#device.uuid">device.uuid<
 
 <ul>
 <li>Android 2.1+</li>
-<li>BlackBerry</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
@@ -487,12 +511,12 @@ var deviceID = <a href="phonegap_device_device.md.html#device.uuid">device.uuid<
 //             Eclair OS would return "2.1", "2.0.1", or "2.0"
 //             Version can also return update level "2.1-update1" 
 //
-// BlackBerry: Bold 9000 using OS 4.6 would return "4.6.0.282"
+// BlackBerry: Torch 9800 using OS 6.0 would return "6.0.0.600"
 //
 // iPhone:     iOS 3.2 returns "3.2"
 //
 // Windows Phone 7: returns current OS version number, ex. on Mango returns 7.10.7720
-var deviceVersion = <a href="phonegap_device_device.md.html#device.version">device.version</a>;
+var deviceVersion = <a href="cordova_device_device.md.html#device.version">device.version</a>;
 </code></pre>
 
 <h2>
@@ -502,25 +526,25 @@ var deviceVersion = <a href="phonegap_device_device.md.html#device.version">devi
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
+    &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Cordova is ready
     //
     function onDeviceReady() {
         var element = document.getElementById('deviceProperties');
 
-        element.innerHTML = '<a href="phonegap_device_device.md.html#Device">Device</a> Name: '     + <a href="phonegap_device_device.md.html#device.name">device.name</a>     + '&lt;br /&gt;' + 
-                            '<a href="phonegap_device_device.md.html#Device">Device</a> Cordova: '  + <a href="phonegap_device_device.md.html#device.cordova">device.cordova</a>  + '&lt;br /&gt;' + 
-                            '<a href="phonegap_device_device.md.html#Device">Device</a> Platform: ' + <a href="phonegap_device_device.md.html#device.platform">device.platform</a> + '&lt;br /&gt;' + 
-                            '<a href="phonegap_device_device.md.html#Device">Device</a> UUID: '     + <a href="phonegap_device_device.md.html#device.uuid">device.uuid</a>     + '&lt;br /&gt;' + 
-                            '<a href="phonegap_device_device.md.html#Device">Device</a> Version: '  + <a href="phonegap_device_device.md.html#device.version">device.version</a>  + '&lt;br /&gt;';
+        element.innerHTML = '<a href="cordova_device_device.md.html#Device">Device</a> Name: '     + <a href="cordova_device_device.md.html#device.name">device.name</a>     + '&lt;br /&gt;' + 
+                            '<a href="cordova_device_device.md.html#Device">Device</a> Cordova: '  + <a href="cordova_device_device.md.html#device.cordova">device.cordova</a>  + '&lt;br /&gt;' + 
+                            '<a href="cordova_device_device.md.html#Device">Device</a> Platform: ' + <a href="cordova_device_device.md.html#device.platform">device.platform</a> + '&lt;br /&gt;' + 
+                            '<a href="cordova_device_device.md.html#Device">Device</a> UUID: '     + <a href="cordova_device_device.md.html#device.uuid">device.uuid</a>     + '&lt;br /&gt;' + 
+                            '<a href="cordova_device_device.md.html#Device">Device</a> Version: '  + <a href="cordova_device_device.md.html#device.version">device.version</a>  + '&lt;br /&gt;';
     }
 
     &lt;/script&gt;

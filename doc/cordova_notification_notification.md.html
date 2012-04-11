@@ -78,19 +78,19 @@
             <div class="vertical_divider"></div>
         <h1>API Reference</h1>
 <ul>
-<li><a href="phonegap_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
-<li><a href="phonegap_camera_camera.md.html#Camera">Camera</a></li>
-<li><a href="phonegap_media_capture_capture.md.html#Capture">Capture</a></li>
-<li><a href="phonegap_compass_compass.md.html#Compass">Compass</a></li>
-<li><a href="phonegap_connection_connection.md.html#Connection">Connection</a></li>
-<li><a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a></li>
-<li><a href="phonegap_device_device.md.html#Device">Device</a></li>
-<li><a href="phonegap_events_events.md.html#Events">Events</a></li>
-<li><a href="phonegap_file_file.md.html#File">File</a></li>
-<li><a href="phonegap_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
-<li><a href="phonegap_media_media.md.html#Media">Media</a></li>
-<li><a href="phonegap_notification_notification.md.html#Notification">Notification</a></li>
-<li><a href="phonegap_storage_storage.md.html#Storage">Storage</a></li>
+<li><a href="cordova_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
+<li><a href="cordova_camera_camera.md.html#Camera">Camera</a></li>
+<li><a href="cordova_media_capture_capture.md.html#Capture">Capture</a></li>
+<li><a href="cordova_compass_compass.md.html#Compass">Compass</a></li>
+<li><a href="cordova_connection_connection.md.html#Connection">Connection</a></li>
+<li><a href="cordova_contacts_contacts.md.html#Contacts">Contacts</a></li>
+<li><a href="cordova_device_device.md.html#Device">Device</a></li>
+<li><a href="cordova_events_events.md.html#Events">Events</a></li>
+<li><a href="cordova_file_file.md.html#File">File</a></li>
+<li><a href="cordova_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
+<li><a href="cordova_media_media.md.html#Media">Media</a></li>
+<li><a href="cordova_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="cordova_storage_storage.md.html#Storage">Storage</a></li>
 </ul>
 <h1>Guides</h1>
 <ul>
@@ -112,17 +112,17 @@
 </h2>
 
 <ul>
-<li><a href="phonegap_notification_notification.md.html#notification.alert">notification.alert</a></li>
-<li><a href="phonegap_notification_notification.md.html#notification.confirm">notification.confirm</a></li>
-<li><a href="phonegap_notification_notification.md.html#notification.beep">notification.beep</a></li>
-<li><a href="phonegap_notification_notification.md.html#notification.vibrate">notification.vibrate</a></li>
+<li><a href="cordova_notification_notification.md.html#notification.alert">notification.alert</a></li>
+<li><a href="cordova_notification_notification.md.html#notification.confirm">notification.confirm</a></li>
+<li><a href="cordova_notification_notification.md.html#notification.beep">notification.beep</a></li>
+<li><a href="cordova_notification_notification.md.html#notification.vibrate">notification.vibrate</a></li>
 </ul>
 <hr>
 <h1><a name="notification.alert">notification.alert</a></h1>
 
 <p>Shows a custom alert or dialog box.</p>
 
-<pre class="prettyprint"><code>navigator.<a href="phonegap_notification_notification.md.html#notification.alert">notification.alert</a>(message, alertCallback, [title], [buttonName])
+<pre class="prettyprint"><code>navigator.<a href="cordova_notification_notification.md.html#notification.alert">notification.alert</a>(message, alertCallback, [title], [buttonName])
 </code></pre>
 
 <ul>
@@ -147,7 +147,6 @@
 
 <ul>
 <li>Android</li>
-<li>BlackBerry (OS 4.6)</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
@@ -162,16 +161,12 @@ function alertDismissed() {
     // do something
 }
 
-navigator.<a href="phonegap_notification_notification.md.html#notification.alert">notification.alert</a>(
+navigator.<a href="cordova_notification_notification.md.html#notification.alert">notification.alert</a>(
     'You are the winner!',  // message
     alertDismissed,         // callback
     'Game Over',            // title
     'Done'                  // buttonName
 );
-
-// BlackBerry (OS 4.6) / webOS
-//
-navigator.<a href="phonegap_notification_notification.md.html#notification.alert">notification.alert</a>('You are the winner!');
 </code></pre>
 
 <h2>
@@ -181,14 +176,14 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.alert
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<a href="phonegap_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
+    &lt;title&gt;<a href="cordova_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Cordova is ready
     //
@@ -204,7 +199,7 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.alert
     // Show a custom alert
     //
     function showAlert() {
-        navigator.<a href="phonegap_notification_notification.md.html#notification.alert">notification.alert</a>(
+        navigator.<a href="cordova_notification_notification.md.html#notification.alert">notification.alert</a>(
             'You are the winner!',  // message
             alertDismissed,         // callback
             'Game Over',            // title
@@ -226,13 +221,15 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.alert
 
 <ul>
 <li>Ignores button names, always uses 'OK'</li>
+<li>There is no built in browser alert, so if you want to just write alert('foo'); you can assign window.alert = navigator.<a href="cordova_notification_notification.md.html#notification.alert">notification.alert</a>;</li>
+<li>alert + confirm calls are non-blocking, and result is only available asyncronously.</li>
 </ul>
 <hr>
 <h1><a name="notification.confirm">notification.confirm</a></h1>
 
 <p>Shows a customizable confirmation dialog box.</p>
 
-<pre class="prettyprint"><code>navigator.<a href="phonegap_notification_notification.md.html#notification.confirm">notification.confirm</a>(message, confirmCallback, [title], [buttonLabels])
+<pre class="prettyprint"><code>navigator.<a href="cordova_notification_notification.md.html#notification.confirm">notification.confirm</a>(message, confirmCallback, [title], [buttonLabels])
 </code></pre>
 
 <ul>
@@ -249,7 +246,7 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.alert
 <a name="notification.confirm_description">Description</a>
 </h2>
 
-<p>Function <code><a href="phonegap_notification_notification.md.html#notification.confirm">notification.confirm</a></code> displays a native dialog box that is more customizable than the browser's <code>confirm</code> function.</p>
+<p>Function <code><a href="cordova_notification_notification.md.html#notification.confirm">notification.confirm</a></code> displays a native dialog box that is more customizable than the browser's <code>confirm</code> function.</p>
 
 <h2>
 <a name="notification.confirm_supported_platforms">Supported Platforms</a>
@@ -273,7 +270,7 @@ function onConfirm(button) {
 // Show a custom confirmation dialog
 //
 function showConfirm() {
-    navigator.<a href="phonegap_notification_notification.md.html#notification.confirm">notification.confirm</a>(
+    navigator.<a href="cordova_notification_notification.md.html#notification.confirm">notification.confirm</a>(
         'You are the winner!',  // message
         onConfirm,              // callback to invoke with index of button pressed
         'Game Over',            // title
@@ -289,14 +286,14 @@ function showConfirm() {
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<a href="phonegap_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
+    &lt;title&gt;<a href="cordova_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Cordova is ready
     //
@@ -312,7 +309,7 @@ function showConfirm() {
     // Show a custom confirmation dialog
     //
     function showConfirm() {
-        navigator.<a href="phonegap_notification_notification.md.html#notification.confirm">notification.confirm</a>(
+        navigator.<a href="cordova_notification_notification.md.html#notification.confirm">notification.confirm</a>(
             'You are the winner!',  // message
             onConfirm,              // callback to invoke with index of button pressed
             'Game Over',            // title
@@ -334,13 +331,15 @@ function showConfirm() {
 
 <ul>
 <li>Ignores button names, always 'OK|Cancel'</li>
+<li>There is no built in browser confirm, so if you want to just write alert('foo'); you can assign window.confirm = navigator.<a href="cordova_notification_notification.md.html#notification.confirm">notification.confirm</a>;</li>
+<li>alert + confirm calls are non-blocking, and result is only available asyncronously.</li>
 </ul>
 <hr>
 <h1><a name="notification.beep">notification.beep</a></h1>
 
 <p>The device will play a beep sound.</p>
 
-<pre class="prettyprint"><code>navigator.<a href="phonegap_notification_notification.md.html#notification.beep">notification.beep</a>(times);
+<pre class="prettyprint"><code>navigator.<a href="cordova_notification_notification.md.html#notification.beep">notification.beep</a>(times);
 </code></pre>
 
 <ul>
@@ -353,7 +352,6 @@ function showConfirm() {
 
 <ul>
 <li>Android</li>
-<li>BlackBerry (OS 4.6)</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
@@ -363,7 +361,7 @@ function showConfirm() {
 </h2>
 
 <pre class="prettyprint"><code>// Beep twice!
-navigator.<a href="phonegap_notification_notification.md.html#notification.beep">notification.beep</a>(2);
+navigator.<a href="cordova_notification_notification.md.html#notification.beep">notification.beep</a>(2);
 </code></pre>
 
 <h2>
@@ -373,14 +371,14 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.beep"
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<a href="phonegap_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
+    &lt;title&gt;<a href="cordova_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Cordova is ready
     //
@@ -391,7 +389,7 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.beep"
     // Show a custom alert
     //
     function showAlert() {
-        navigator.<a href="phonegap_notification_notification.md.html#notification.alert">notification.alert</a>(
+        navigator.<a href="cordova_notification_notification.md.html#notification.alert">notification.alert</a>(
             'You are the winner!',  // message
             'Game Over',            // title
             'Done'                  // buttonName
@@ -401,13 +399,13 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.beep"
     // Beep three times
     //
     function playBeep() {
-        navigator.<a href="phonegap_notification_notification.md.html#notification.beep">notification.beep</a>(3);
+        navigator.<a href="cordova_notification_notification.md.html#notification.beep">notification.beep</a>(3);
     }
 
     // Vibrate for 2 seconds
     //
     function vibrate() {
-        navigator.<a href="phonegap_notification_notification.md.html#notification.vibrate">notification.vibrate</a>(2000);
+        navigator.<a href="cordova_notification_notification.md.html#notification.vibrate">notification.vibrate</a>(2000);
     }
 
     &lt;/script&gt;
@@ -425,7 +423,7 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.beep"
 </h2>
 
 <ul>
-<li>Android plays the default "<a href="phonegap_notification_notification.md.html#Notification">Notification</a> ringtone" specified under the "Settings/Sound &amp; Display" panel.</li>
+<li>Android plays the default "<a href="cordova_notification_notification.md.html#Notification">Notification</a> ringtone" specified under the "Settings/Sound &amp; Display" panel.</li>
 </ul>
 <h2>
 <a name="notification.beep_iphone_quirks">iPhone Quirks</a>
@@ -453,7 +451,7 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.beep"
 
 <p>Vibrates the device for the specified amount of time.</p>
 
-<pre class="prettyprint"><code>navigator.<a href="phonegap_notification_notification.md.html#notification.vibrate">notification.vibrate</a>(milliseconds)
+<pre class="prettyprint"><code>navigator.<a href="cordova_notification_notification.md.html#notification.vibrate">notification.vibrate</a>(milliseconds)
 </code></pre>
 
 <ul>
@@ -466,7 +464,6 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.beep"
 
 <ul>
 <li>Android</li>
-<li>BlackBerry (OS 4.6)</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
 <li>Windows Phone 7</li>
@@ -477,7 +474,7 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.beep"
 
 <pre class="prettyprint"><code>// Vibrate for 2.5 seconds
 //
-navigator.<a href="phonegap_notification_notification.md.html#notification.vibrate">notification.vibrate</a>(2500);
+navigator.<a href="cordova_notification_notification.md.html#notification.vibrate">notification.vibrate</a>(2500);
 </code></pre>
 
 <h2>
@@ -487,14 +484,14 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.vibra
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<a href="phonegap_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
+    &lt;title&gt;<a href="cordova_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Cordova is ready
     //
@@ -505,7 +502,7 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.vibra
     // Show a custom alert
     //
     function showAlert() {
-        navigator.<a href="phonegap_notification_notification.md.html#notification.alert">notification.alert</a>(
+        navigator.<a href="cordova_notification_notification.md.html#notification.alert">notification.alert</a>(
             'You are the winner!',  // message
             'Game Over',            // title
             'Done'                  // buttonName
@@ -515,13 +512,13 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.vibra
     // Beep three times
     //
     function playBeep() {
-        navigator.<a href="phonegap_notification_notification.md.html#notification.beep">notification.beep</a>(3);
+        navigator.<a href="cordova_notification_notification.md.html#notification.beep">notification.beep</a>(3);
     }
 
     // Vibrate for 2 seconds
     //
     function vibrate() {
-        navigator.<a href="phonegap_notification_notification.md.html#notification.vibrate">notification.vibrate</a>(2000);
+        navigator.<a href="cordova_notification_notification.md.html#notification.vibrate">notification.vibrate</a>(2000);
     }
 
     &lt;/script&gt;
@@ -542,8 +539,8 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.vibra
 <li>
 <p><strong>time:</strong> Ignores the time and vibrates for a pre-set amount of time.</p>
 
-<pre class="prettyprint"><code>navigator.<a href="phonegap_notification_notification.md.html#notification.vibrate">notification.vibrate</a>();
-navigator.<a href="phonegap_notification_notification.md.html#notification.vibrate">notification.vibrate</a>(2500);   // 2500 is ignored
+<pre class="prettyprint"><code>navigator.<a href="cordova_notification_notification.md.html#notification.vibrate">notification.vibrate</a>();
+navigator.<a href="cordova_notification_notification.md.html#notification.vibrate">notification.vibrate</a>(2500);   // 2500 is ignored
 </code></pre>
 </li>
 </ul>

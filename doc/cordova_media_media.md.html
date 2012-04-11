@@ -72,6 +72,7 @@
 <option value="media.play_supported_platforms">      - Supported Platforms</option>
 <option value="media.play_quick_example">      - Quick Example</option>
 <option value="media.play_full_example">      - Full Example</option>
+<option value="media.play_ios_quirk">      - iOS Quirk</option>
 <option value="media.release">media.release</option>
 <option value="media.release_description">      - Description</option>
 <option value="media.release_supported_platforms">      - Supported Platforms</option>
@@ -111,19 +112,19 @@
             <div class="vertical_divider"></div>
         <h1>API Reference</h1>
 <ul>
-<li><a href="phonegap_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
-<li><a href="phonegap_camera_camera.md.html#Camera">Camera</a></li>
-<li><a href="phonegap_media_capture_capture.md.html#Capture">Capture</a></li>
-<li><a href="phonegap_compass_compass.md.html#Compass">Compass</a></li>
-<li><a href="phonegap_connection_connection.md.html#Connection">Connection</a></li>
-<li><a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a></li>
-<li><a href="phonegap_device_device.md.html#Device">Device</a></li>
-<li><a href="phonegap_events_events.md.html#Events">Events</a></li>
-<li><a href="phonegap_file_file.md.html#File">File</a></li>
-<li><a href="phonegap_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
-<li><a href="phonegap_media_media.md.html#Media">Media</a></li>
-<li><a href="phonegap_notification_notification.md.html#Notification">Notification</a></li>
-<li><a href="phonegap_storage_storage.md.html#Storage">Storage</a></li>
+<li><a href="cordova_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
+<li><a href="cordova_camera_camera.md.html#Camera">Camera</a></li>
+<li><a href="cordova_media_capture_capture.md.html#Capture">Capture</a></li>
+<li><a href="cordova_compass_compass.md.html#Compass">Compass</a></li>
+<li><a href="cordova_connection_connection.md.html#Connection">Connection</a></li>
+<li><a href="cordova_contacts_contacts.md.html#Contacts">Contacts</a></li>
+<li><a href="cordova_device_device.md.html#Device">Device</a></li>
+<li><a href="cordova_events_events.md.html#Events">Events</a></li>
+<li><a href="cordova_file_file.md.html#File">File</a></li>
+<li><a href="cordova_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
+<li><a href="cordova_media_media.md.html#Media">Media</a></li>
+<li><a href="cordova_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="cordova_storage_storage.md.html#Storage">Storage</a></li>
 </ul>
 <h1>Guides</h1>
 <ul>
@@ -137,10 +138,10 @@
                 <h1><a name="Media">Media</a></h1>
 
 <blockquote>
-  <p>The <code><a href="phonegap_media_media.md.html#Media">Media</a></code> object provides the ability to record and play back audio files on a device. </p>
+  <p>The <code><a href="cordova_media_media.md.html#Media">Media</a></code> object provides the ability to record and play back audio files on a device. </p>
 </blockquote>
 
-<pre class="prettyprint"><code>var media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, mediaSuccess, [<a href="phonegap_media_media.md.html#mediaError">mediaError</a>], [mediaStatus]);
+<pre class="prettyprint"><code>var media = new <a href="cordova_media_media.md.html#Media">Media</a>(src, mediaSuccess, [<a href="cordova_media_media.md.html#mediaError">mediaError</a>], [mediaStatus]);
 </code></pre>
 
 <p>Note: The current implementation does not adhere to a W3C specification for media capture, and is provided for convenience only.  A future implementation will adhere to the latest W3C specification and may deprecate the current APIs.</p>
@@ -154,10 +155,10 @@
 <strong>src</strong>: A URI containing the audio content. <em>(DOMString)</em>
 </li>
 <li>
-<strong>mediaSuccess</strong>: (Optional) The callback that is invoked after a <a href="phonegap_media_media.md.html#Media">Media</a> object has completed the current play/record or stop action. <em>(Function)</em>
+<strong>mediaSuccess</strong>: (Optional) The callback that is invoked after a <a href="cordova_media_media.md.html#Media">Media</a> object has completed the current play/record or stop action. <em>(Function)</em>
 </li>
 <li>
-<strong><a href="phonegap_media_media.md.html#mediaError">mediaError</a></strong>: (Optional) The callback that is invoked if there was an error. <em>(Function)</em>
+<strong><a href="cordova_media_media.md.html#mediaError">mediaError</a></strong>: (Optional) The callback that is invoked if there was an error. <em>(Function)</em>
 </li>
 <li>
 <strong>mediaStatus</strong>: (Optional) The callback that is invoked to indicate status changes. <em>(Function)</em>
@@ -169,23 +170,23 @@
 
 <ul>
 <li>
-<a href="phonegap_media_media.md.html#media.getCurrentPosition">media.getCurrentPosition</a>: Returns the current position within an audio file.</li>
+<a href="cordova_media_media.md.html#media.getCurrentPosition">media.getCurrentPosition</a>: Returns the current position within an audio file.</li>
 <li>
-<a href="phonegap_media_media.md.html#media.getDuration">media.getDuration</a>: Returns the duration of an audio file.</li>
+<a href="cordova_media_media.md.html#media.getDuration">media.getDuration</a>: Returns the duration of an audio file.</li>
 <li>
-<a href="phonegap_media_media.md.html#media.play">media.play</a>: Start or <a href="phonegap_events_events.md.html#resume">resume</a> playing audio file.</li>
+<a href="cordova_media_media.md.html#media.play">media.play</a>: Start or <a href="cordova_events_events.md.html#resume">resume</a> playing audio file.</li>
 <li>
-<a href="phonegap_media_media.md.html#media.pause">media.pause</a>: Pause playing audio file.</li>
+<a href="cordova_media_media.md.html#media.pause">media.pause</a>: Pause playing audio file.</li>
 <li>
-<a href="phonegap_media_media.md.html#media.release">media.release</a>: Releases the underlying OS'es audio resources.</li>
+<a href="cordova_media_media.md.html#media.release">media.release</a>: Releases the underlying OS'es audio resources.</li>
 <li>
-<a href="phonegap_media_media.md.html#media.seekTo">media.seekTo</a>: Moves the position within the audio file.</li>
+<a href="cordova_media_media.md.html#media.seekTo">media.seekTo</a>: Moves the position within the audio file.</li>
 <li>
-<a href="phonegap_media_media.md.html#media.startRecord">media.startRecord</a>: Start recording audio file.</li>
+<a href="cordova_media_media.md.html#media.startRecord">media.startRecord</a>: Start recording audio file.</li>
 <li>
-<a href="phonegap_media_media.md.html#media.stopRecord">media.stopRecord</a>: Stop recording audio file.</li>
+<a href="cordova_media_media.md.html#media.stopRecord">media.stopRecord</a>: Stop recording audio file.</li>
 <li>
-<a href="phonegap_media_media.md.html#media.stop">media.stop</a>: Stop playing audio file.</li>
+<a href="cordova_media_media.md.html#media.stop">media.stop</a>: Stop playing audio file.</li>
 </ul>
 <h2>
 <a name="Media_additional_readonly_parameters">Additional ReadOnly Parameters</a>
@@ -211,7 +212,7 @@
 
 <p>Returns the current position within an audio file.</p>
 
-<pre class="prettyprint"><code><a href="phonegap_media_media.md.html#media.getCurrentPosition">media.getCurrentPosition</a>(mediaSuccess, [<a href="phonegap_media_media.md.html#mediaError">mediaError</a>]);
+<pre class="prettyprint"><code><a href="cordova_media_media.md.html#media.getCurrentPosition">media.getCurrentPosition</a>(mediaSuccess, [<a href="cordova_media_media.md.html#mediaError">mediaError</a>]);
 </code></pre>
 
 <h2>
@@ -222,13 +223,13 @@
 <li>
 <strong>mediaSuccess</strong>: The callback that is called with the current position in seconds.</li>
 <li>
-<strong><a href="phonegap_media_media.md.html#mediaError">mediaError</a></strong>: (Optional) The callback that is called if there was an error.</li>
+<strong><a href="cordova_media_media.md.html#mediaError">mediaError</a></strong>: (Optional) The callback that is called if there was an error.</li>
 </ul>
 <h2>
 <a name="media.getCurrentPosition_description">Description</a>
 </h2>
 
-<p>Function <code><a href="phonegap_media_media.md.html#media.getCurrentPosition">media.getCurrentPosition</a></code> is an asynchronous function that returns the current position of the underlying audio file of a <a href="phonegap_media_media.md.html#Media">Media</a> object. Also updates the <strong>_position</strong> parameter within the <a href="phonegap_media_media.md.html#Media">Media</a> object. </p>
+<p>Function <code><a href="cordova_media_media.md.html#media.getCurrentPosition">media.getCurrentPosition</a></code> is an asynchronous function that returns the current position of the underlying audio file of a <a href="cordova_media_media.md.html#Media">Media</a> object. Also updates the <strong>_position</strong> parameter within the <a href="cordova_media_media.md.html#Media">Media</a> object. </p>
 
 <h2>
 <a name="media.getCurrentPosition_supported_platforms">Supported Platforms</a>
@@ -245,7 +246,7 @@
 
 <pre class="prettyprint"><code>    // Audio player
     //
-    var my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+    var my_media = new <a href="cordova_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
 
     // Update media position every second
     var mediaTimer = setInterval(function() {
@@ -273,14 +274,14 @@
                   "http://www.w3.org/TR/html4/strict.dtd"&gt;
     &lt;html&gt;
       &lt;head&gt;
-        &lt;title&gt;<a href="phonegap_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
+        &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
         &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
         //
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+        document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
         // Cordova is ready
         //
@@ -296,8 +297,8 @@
         // Play audio
         //
         function playAudio(src) {
-            // Create <a href="phonegap_media_media.md.html#Media">Media</a> object from src
-            my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+            // Create <a href="cordova_media_media.md.html#Media">Media</a> object from src
+            my_media = new <a href="cordova_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
 
             // Play audio
             my_media.play();
@@ -327,7 +328,7 @@
         // 
         function pauseAudio() {
             if (my_media) {
-                my_media.<a href="phonegap_events_events.md.html#pause">pause</a>();
+                my_media.<a href="cordova_events_events.md.html#pause">pause</a>();
             }
         }
 
@@ -376,14 +377,14 @@
 
 <p>Returns the duration of an audio file.</p>
 
-<pre class="prettyprint"><code><a href="phonegap_media_media.md.html#media.getDuration">media.getDuration</a>();
+<pre class="prettyprint"><code><a href="cordova_media_media.md.html#media.getDuration">media.getDuration</a>();
 </code></pre>
 
 <h2>
 <a name="media.getDuration_description">Description</a>
 </h2>
 
-<p>Function <code><a href="phonegap_media_media.md.html#media.getDuration">media.getDuration</a></code> is a synchronous function that returns the duration of the audio file in seconds, if known.  If the duration is unknown, a value of -1 is returned.</p>
+<p>Function <code><a href="cordova_media_media.md.html#media.getDuration">media.getDuration</a></code> is a synchronous function that returns the duration of the audio file in seconds, if known.  If the duration is unknown, a value of -1 is returned.</p>
 
 <h2>
 <a name="media.getDuration_supported_platforms">Supported Platforms</a>
@@ -400,7 +401,7 @@
 
 <pre class="prettyprint"><code>    // Audio player
     //
-    var my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+    var my_media = new <a href="cordova_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
 
     // Get duration
     var counter = 0;
@@ -425,14 +426,14 @@
                           "http://www.w3.org/TR/html4/strict.dtd"&gt;
     &lt;html&gt;
       &lt;head&gt;
-        &lt;title&gt;<a href="phonegap_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
+        &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
         &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
         //
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+        document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
         // Cordova is ready
         //
@@ -448,8 +449,8 @@
         // Play audio
         //
         function playAudio(src) {
-            // Create <a href="phonegap_media_media.md.html#Media">Media</a> object from src
-            my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+            // Create <a href="cordova_media_media.md.html#Media">Media</a> object from src
+            my_media = new <a href="cordova_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
 
             // Play audio
             my_media.play();
@@ -479,7 +480,7 @@
         // 
         function pauseAudio() {
             if (my_media) {
-                my_media.<a href="phonegap_events_events.md.html#pause">pause</a>();
+                my_media.<a href="cordova_events_events.md.html#pause">pause</a>();
             }
         }
 
@@ -528,14 +529,14 @@
 
 <p>Pauses playing an audio file.</p>
 
-<pre class="prettyprint"><code><a href="phonegap_media_media.md.html#media.pause">media.pause</a>();
+<pre class="prettyprint"><code><a href="cordova_media_media.md.html#media.pause">media.pause</a>();
 </code></pre>
 
 <h2>
 <a name="media.pause_description">Description</a>
 </h2>
 
-<p>Function <code><a href="phonegap_media_media.md.html#media.pause">media.pause</a></code> is a synchronous function that pauses playing an audio file.</p>
+<p>Function <code><a href="cordova_media_media.md.html#media.pause">media.pause</a></code> is a synchronous function that pauses playing an audio file.</p>
 
 <h2>
 <a name="media.pause_supported_platforms">Supported Platforms</a>
@@ -554,7 +555,7 @@
 //
 function playAudio(url) {
     // Play the audio file at url
-    var my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(url,
+    var my_media = new <a href="cordova_media_media.md.html#Media">Media</a>(url,
         // success callback
         function() {
             console.log("playAudio():Audio Success");
@@ -569,7 +570,7 @@ function playAudio(url) {
 
     // Pause after 10 seconds
     setTimeout(function() {
-        <a href="phonegap_media_media.md.html#media.pause">media.pause</a>();
+        <a href="cordova_media_media.md.html#media.pause">media.pause</a>();
     }, 10000);        
 }
 </code></pre>
@@ -582,14 +583,14 @@ function playAudio(url) {
                           "http://www.w3.org/TR/html4/strict.dtd"&gt;
     &lt;html&gt;
       &lt;head&gt;
-        &lt;title&gt;<a href="phonegap_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
+        &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
         &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
         //
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+        document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
         // Cordova is ready
         //
@@ -605,8 +606,8 @@ function playAudio(url) {
         // Play audio
         //
         function playAudio(src) {
-            // Create <a href="phonegap_media_media.md.html#Media">Media</a> object from src
-            my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+            // Create <a href="cordova_media_media.md.html#Media">Media</a> object from src
+            my_media = new <a href="cordova_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
 
             // Play audio
             my_media.play();
@@ -636,7 +637,7 @@ function playAudio(url) {
         // 
         function pauseAudio() {
             if (my_media) {
-                my_media.<a href="phonegap_events_events.md.html#pause">pause</a>();
+                my_media.<a href="cordova_events_events.md.html#pause">pause</a>();
             }
         }
 
@@ -685,14 +686,14 @@ function playAudio(url) {
 
 <p>Starts or resumes playing an audio file.</p>
 
-<pre class="prettyprint"><code><a href="phonegap_media_media.md.html#media.play">media.play</a>();
+<pre class="prettyprint"><code><a href="cordova_media_media.md.html#media.play">media.play</a>();
 </code></pre>
 
 <h2>
 <a name="media.play_description">Description</a>
 </h2>
 
-<p>Function <code><a href="phonegap_media_media.md.html#media.play">media.play</a></code> is a synchronous function that starts or resumes playing an audio file.</p>
+<p>Function <code><a href="cordova_media_media.md.html#media.play">media.play</a></code> is a synchronous function that starts or resumes playing an audio file.</p>
 
 <h2>
 <a name="media.play_supported_platforms">Supported Platforms</a>
@@ -711,7 +712,7 @@ function playAudio(url) {
 //
 function playAudio(url) {
     // Play the audio file at url
-    var my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(url,
+    var my_media = new <a href="cordova_media_media.md.html#Media">Media</a>(url,
         // success callback
         function() {
             console.log("playAudio():Audio Success");
@@ -734,14 +735,14 @@ function playAudio(url) {
                           "http://www.w3.org/TR/html4/strict.dtd"&gt;
     &lt;html&gt;
       &lt;head&gt;
-        &lt;title&gt;<a href="phonegap_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
+        &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
         &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
         //
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+        document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
         // Cordova is ready
         //
@@ -758,8 +759,8 @@ function playAudio(url) {
         //
         function playAudio(src) {
             if (my_media == null) {
-                // Create <a href="phonegap_media_media.md.html#Media">Media</a> object from src
-                my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+                // Create <a href="cordova_media_media.md.html#Media">Media</a> object from src
+                my_media = new <a href="cordova_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
             } // else play current audio
             // Play audio
             my_media.play();
@@ -789,7 +790,7 @@ function playAudio(url) {
         // 
         function pauseAudio() {
             if (my_media) {
-                my_media.<a href="phonegap_events_events.md.html#pause">pause</a>();
+                my_media.<a href="cordova_events_events.md.html#pause">pause</a>();
             }
         }
 
@@ -833,19 +834,34 @@ function playAudio(url) {
     &lt;/html&gt;
 </code></pre>
 
+<h2>
+<a name="media.play_ios_quirk">iOS Quirk</a>
+</h2>
+
+<ul>
+<li>
+<p><strong>numberOfLoops</strong></p>
+
+<p>Pass in this option to the <strong>play</strong> method to specify the number of times you want the media file to play. e.g:</p>
+
+<pre class="prettyprint"><code>var myMedia = new <a href="cordova_media_media.md.html#Media">Media</a>("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3")
+myMedia.play({ numberOfLoops: 2 })
+</code></pre>
+</li>
+</ul>
 <hr>
 <h1><a name="media.release">media.release</a></h1>
 
 <p>Releases the underlying operating systems audio resources.</p>
 
-<pre class="prettyprint"><code><a href="phonegap_media_media.md.html#media.release">media.release</a>();
+<pre class="prettyprint"><code><a href="cordova_media_media.md.html#media.release">media.release</a>();
 </code></pre>
 
 <h2>
 <a name="media.release_description">Description</a>
 </h2>
 
-<p>Function <code><a href="phonegap_media_media.md.html#media.release">media.release</a></code> is a synchronous function that releases the underlying operating systems audio resources.  This function is particularly important for Android as there are a finite amount of OpenCore instances for media playback.  Developers should call the 'release' function when they no longer need the <a href="phonegap_media_media.md.html#Media">Media</a> resource.</p>
+<p>Function <code><a href="cordova_media_media.md.html#media.release">media.release</a></code> is a synchronous function that releases the underlying operating systems audio resources.  This function is particularly important for Android as there are a finite amount of OpenCore instances for media playback.  Developers should call the 'release' function when they no longer need the <a href="cordova_media_media.md.html#Media">Media</a> resource.</p>
 
 <h2>
 <a name="media.release_supported_platforms">Supported Platforms</a>
@@ -862,7 +878,7 @@ function playAudio(url) {
 
 <pre class="prettyprint"><code>    // Audio player
     //
-    var my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+    var my_media = new <a href="cordova_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
 
     my_media.play();
     my_media.stop();
@@ -877,14 +893,14 @@ function playAudio(url) {
                           "http://www.w3.org/TR/html4/strict.dtd"&gt;
     &lt;html&gt;
       &lt;head&gt;
-        &lt;title&gt;<a href="phonegap_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
+        &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
         &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
         //
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+        document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
         // Cordova is ready
         //
@@ -900,8 +916,8 @@ function playAudio(url) {
         // Play audio
         //
         function playAudio(src) {
-            // Create <a href="phonegap_media_media.md.html#Media">Media</a> object from src
-            my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+            // Create <a href="cordova_media_media.md.html#Media">Media</a> object from src
+            my_media = new <a href="cordova_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
 
             // Play audio
             my_media.play();
@@ -931,7 +947,7 @@ function playAudio(url) {
         // 
         function pauseAudio() {
             if (my_media) {
-                my_media.<a href="phonegap_events_events.md.html#pause">pause</a>();
+                my_media.<a href="cordova_events_events.md.html#pause">pause</a>();
             }
         }
 
@@ -980,7 +996,7 @@ function playAudio(url) {
 
 <p>Sets the current position within an audio file.</p>
 
-<pre class="prettyprint"><code><a href="phonegap_media_media.md.html#media.seekTo">media.seekTo</a>(milliseconds);
+<pre class="prettyprint"><code><a href="cordova_media_media.md.html#media.seekTo">media.seekTo</a>(milliseconds);
 </code></pre>
 
 <h2>
@@ -995,7 +1011,7 @@ function playAudio(url) {
 <a name="media.seekTo_description">Description</a>
 </h2>
 
-<p>Function <code><a href="phonegap_media_media.md.html#media.seekTo">media.seekTo</a></code> is an asynchronous function that updates the current position of the underlying audio file of a <a href="phonegap_media_media.md.html#Media">Media</a> object. Also updates the <strong>_position</strong> parameter within the <a href="phonegap_media_media.md.html#Media">Media</a> object. </p>
+<p>Function <code><a href="cordova_media_media.md.html#media.seekTo">media.seekTo</a></code> is an asynchronous function that updates the current position of the underlying audio file of a <a href="cordova_media_media.md.html#Media">Media</a> object. Also updates the <strong>_position</strong> parameter within the <a href="cordova_media_media.md.html#Media">Media</a> object. </p>
 
 <h2>
 <a name="media.seekTo_supported_platforms">Supported Platforms</a>
@@ -1012,7 +1028,7 @@ function playAudio(url) {
 
 <pre class="prettyprint"><code>    // Audio player
     //
-    var my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+    var my_media = new <a href="cordova_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
     my_media.play();
     // SeekTo to 10 seconds after 5 seconds
     setTimeout(function() {
@@ -1028,14 +1044,14 @@ function playAudio(url) {
                   "http://www.w3.org/TR/html4/strict.dtd"&gt;
     &lt;html&gt;
       &lt;head&gt;
-        &lt;title&gt;<a href="phonegap_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
+        &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
         &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
         //
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+        document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
         // Cordova is ready
         //
@@ -1051,8 +1067,8 @@ function playAudio(url) {
         // Play audio
         //
         function playAudio(src) {
-            // Create <a href="phonegap_media_media.md.html#Media">Media</a> object from src
-            my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+            // Create <a href="cordova_media_media.md.html#Media">Media</a> object from src
+            my_media = new <a href="cordova_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
 
             // Play audio
             my_media.play();
@@ -1122,14 +1138,14 @@ function playAudio(url) {
 
 <p>Starts recording an audio file.</p>
 
-<pre class="prettyprint"><code><a href="phonegap_media_media.md.html#media.startRecord">media.startRecord</a>();
+<pre class="prettyprint"><code><a href="cordova_media_media.md.html#media.startRecord">media.startRecord</a>();
 </code></pre>
 
 <h2>
 <a name="media.startRecord_description">Description</a>
 </h2>
 
-<p>Function <code><a href="phonegap_media_media.md.html#media.startRecord">media.startRecord</a></code> is a synchronous function that starts recording an audio file.</p>
+<p>Function <code><a href="cordova_media_media.md.html#media.startRecord">media.startRecord</a></code> is a synchronous function that starts recording an audio file.</p>
 
 <h2>
 <a name="media.startRecord_supported_platforms">Supported Platforms</a>
@@ -1148,7 +1164,7 @@ function playAudio(url) {
 // 
 function recordAudio() {
     var src = "myrecording.mp3";
-    var mediaRec = new <a href="phonegap_media_media.md.html#Media">Media</a>(src,
+    var mediaRec = new <a href="cordova_media_media.md.html#Media">Media</a>(src,
         // success callback
         function() {
             console.log("recordAudio():Audio Success");
@@ -1171,20 +1187,20 @@ function recordAudio() {
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
+    &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Record audio
     // 
     function recordAudio() {
         var src = "myrecording.mp3";
-        var mediaRec = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+        var mediaRec = new <a href="cordova_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
 
         // Record audio
         mediaRec.startRecord();
@@ -1240,21 +1256,21 @@ function recordAudio() {
 </h2>
 
 <ul>
-<li>The file to record to must already exist and should be of type .wav. The <a href="phonegap_file_file.md.html#File">File</a> API's can be used to create the file.</li>
+<li>The file to record to must already exist and should be of type .wav. The <a href="cordova_file_file.md.html#File">File</a> API's can be used to create the file.</li>
 </ul>
 <hr>
 <h1><a name="media.stop">media.stop</a></h1>
 
 <p>Stops playing an audio file.</p>
 
-<pre class="prettyprint"><code><a href="phonegap_media_media.md.html#media.stop">media.stop</a>();
+<pre class="prettyprint"><code><a href="cordova_media_media.md.html#media.stop">media.stop</a>();
 </code></pre>
 
 <h2>
 <a name="media.stop_description">Description</a>
 </h2>
 
-<p>Function <code><a href="phonegap_media_media.md.html#media.stop">media.stop</a></code> is a synchronous function that stops playing an audio file.</p>
+<p>Function <code><a href="cordova_media_media.md.html#media.stop">media.stop</a></code> is a synchronous function that stops playing an audio file.</p>
 
 <h2>
 <a name="media.stop_supported_platforms">Supported Platforms</a>
@@ -1273,7 +1289,7 @@ function recordAudio() {
 //
 function playAudio(url) {
     // Play the audio file at url
-    var my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(url,
+    var my_media = new <a href="cordova_media_media.md.html#Media">Media</a>(url,
         // success callback
         function() {
             console.log("playAudio():Audio Success");
@@ -1301,14 +1317,14 @@ function playAudio(url) {
                           "http://www.w3.org/TR/html4/strict.dtd"&gt;
     &lt;html&gt;
       &lt;head&gt;
-        &lt;title&gt;<a href="phonegap_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
+        &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
         &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
         //
-        document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+        document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
         // Cordova is ready
         //
@@ -1324,8 +1340,8 @@ function playAudio(url) {
         // Play audio
         //
         function playAudio(src) {
-            // Create <a href="phonegap_media_media.md.html#Media">Media</a> object from src
-            my_media = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+            // Create <a href="cordova_media_media.md.html#Media">Media</a> object from src
+            my_media = new <a href="cordova_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
 
             // Play audio
             my_media.play();
@@ -1355,7 +1371,7 @@ function playAudio(url) {
         // 
         function pauseAudio() {
             if (my_media) {
-                my_media.<a href="phonegap_events_events.md.html#pause">pause</a>();
+                my_media.<a href="cordova_events_events.md.html#pause">pause</a>();
             }
         }
 
@@ -1404,14 +1420,14 @@ function playAudio(url) {
 
 <p>Stops recording an audio file.</p>
 
-<pre class="prettyprint"><code><a href="phonegap_media_media.md.html#media.stopRecord">media.stopRecord</a>();
+<pre class="prettyprint"><code><a href="cordova_media_media.md.html#media.stopRecord">media.stopRecord</a>();
 </code></pre>
 
 <h2>
 <a name="media.stopRecord_description">Description</a>
 </h2>
 
-<p>Function <code><a href="phonegap_media_media.md.html#media.stopRecord">media.stopRecord</a></code> is a synchronous function that stops recording an audio file.</p>
+<p>Function <code><a href="cordova_media_media.md.html#media.stopRecord">media.stopRecord</a></code> is a synchronous function that stops recording an audio file.</p>
 
 <h2>
 <a name="media.stopRecord_supported_platforms">Supported Platforms</a>
@@ -1430,7 +1446,7 @@ function playAudio(url) {
 // 
 function recordAudio() {
     var src = "myrecording.mp3";
-    var mediaRec = new <a href="phonegap_media_media.md.html#Media">Media</a>(src,
+    var mediaRec = new <a href="cordova_media_media.md.html#Media">Media</a>(src,
         // success callback
         function() {
             console.log("recordAudio():Audio Success");
@@ -1458,20 +1474,20 @@ function recordAudio() {
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
+    &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Record audio
     // 
     function recordAudio() {
         var src = "myrecording.mp3";
-        var mediaRec = new <a href="phonegap_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+        var mediaRec = new <a href="cordova_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
 
         // Record audio
         mediaRec.startRecord();
@@ -1525,7 +1541,7 @@ function recordAudio() {
 <hr>
 <h1><a name="MediaError">MediaError</a></h1>
 
-<p>A <code><a href="phonegap_media_media.md.html#MediaError">MediaError</a></code> object is returned to the <code><a href="phonegap_media_media.md.html#mediaError">mediaError</a></code> callback function when an error occurs.</p>
+<p>A <code><a href="cordova_media_media.md.html#MediaError">MediaError</a></code> object is returned to the <code><a href="cordova_media_media.md.html#mediaError">mediaError</a></code> callback function when an error occurs.</p>
 
 <h2>
 <a name="MediaError_properties">Properties</a>
@@ -1542,16 +1558,16 @@ function recordAudio() {
 </h2>
 
 <ul>
-<li><code><a href="phonegap_media_media.md.html#MediaError">MediaError</a>.MEDIA_ERR_ABORTED</code></li>
-<li><code><a href="phonegap_media_media.md.html#MediaError">MediaError</a>.MEDIA_ERR_NETWORK</code></li>
-<li><code><a href="phonegap_media_media.md.html#MediaError">MediaError</a>.MEDIA_ERR_DECODE</code></li>
-<li><code><a href="phonegap_media_media.md.html#MediaError">MediaError</a>.MEDIA_ERR_NONE_SUPPORTED</code></li>
+<li><code><a href="cordova_media_media.md.html#MediaError">MediaError</a>.MEDIA_ERR_ABORTED</code></li>
+<li><code><a href="cordova_media_media.md.html#MediaError">MediaError</a>.MEDIA_ERR_NETWORK</code></li>
+<li><code><a href="cordova_media_media.md.html#MediaError">MediaError</a>.MEDIA_ERR_DECODE</code></li>
+<li><code><a href="cordova_media_media.md.html#MediaError">MediaError</a>.MEDIA_ERR_NONE_SUPPORTED</code></li>
 </ul>
 <h2>
 <a name="MediaError_description">Description</a>
 </h2>
 
-<p>The <code><a href="phonegap_media_media.md.html#MediaError">MediaError</a></code> object is returned to the user through the <code><a href="phonegap_media_media.md.html#mediaError">mediaError</a></code> callback function when an error occurs.</p>
+<p>The <code><a href="cordova_media_media.md.html#MediaError">MediaError</a></code> object is returned to the user through the <code><a href="cordova_media_media.md.html#mediaError">mediaError</a></code> callback function when an error occurs.</p>
 
 <hr>
 <h1><a name="mediaError">mediaError</a></h1>
@@ -1569,7 +1585,7 @@ function recordAudio() {
 
 <ul>
 <li>
-<strong>error:</strong> The error returned by the device. (<code><a href="phonegap_media_media.md.html#MediaError">MediaError</a></code>)</li>
+<strong>error:</strong> The error returned by the device. (<code><a href="cordova_media_media.md.html#MediaError">MediaError</a></code>)</li>
 </ul>
 </div>
         </div>

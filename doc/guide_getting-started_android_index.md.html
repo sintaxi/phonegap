@@ -47,7 +47,6 @@
         <div id="subheader">
             <h1>Getting Started with Android</h1>
             <small><select><option value="Getting%2520Started%2520with%2520Android">Getting Started with Android</option>
-<option value="Getting%20Started%20with%20Android_video_tutorials">      - Video Tutorials:</option>
 <option value="Getting%20Started%20with%20Android_1_requirements">      - 1. Requirements</option>
 <option value="Getting%20Started%20with%20Android_2_install_sdk_cordova">      - 2. Install SDK + Cordova</option>
 <option value="Getting%20Started%20with%20Android_3_setup_new_project">      -  3. Setup New Project</option>
@@ -62,19 +61,19 @@
             <div class="vertical_divider"></div>
         <h1>API Reference</h1>
 <ul>
-<li><a href="phonegap_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
-<li><a href="phonegap_camera_camera.md.html#Camera">Camera</a></li>
-<li><a href="phonegap_media_capture_capture.md.html#Capture">Capture</a></li>
-<li><a href="phonegap_compass_compass.md.html#Compass">Compass</a></li>
-<li><a href="phonegap_connection_connection.md.html#Connection">Connection</a></li>
-<li><a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a></li>
-<li><a href="phonegap_device_device.md.html#Device">Device</a></li>
-<li><a href="phonegap_events_events.md.html#Events">Events</a></li>
-<li><a href="phonegap_file_file.md.html#File">File</a></li>
-<li><a href="phonegap_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
-<li><a href="phonegap_media_media.md.html#Media">Media</a></li>
-<li><a href="phonegap_notification_notification.md.html#Notification">Notification</a></li>
-<li><a href="phonegap_storage_storage.md.html#Storage">Storage</a></li>
+<li><a href="cordova_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
+<li><a href="cordova_camera_camera.md.html#Camera">Camera</a></li>
+<li><a href="cordova_media_capture_capture.md.html#Capture">Capture</a></li>
+<li><a href="cordova_compass_compass.md.html#Compass">Compass</a></li>
+<li><a href="cordova_connection_connection.md.html#Connection">Connection</a></li>
+<li><a href="cordova_contacts_contacts.md.html#Contacts">Contacts</a></li>
+<li><a href="cordova_device_device.md.html#Device">Device</a></li>
+<li><a href="cordova_events_events.md.html#Events">Events</a></li>
+<li><a href="cordova_file_file.md.html#File">File</a></li>
+<li><a href="cordova_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
+<li><a href="cordova_media_media.md.html#Media">Media</a></li>
+<li><a href="cordova_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="cordova_storage_storage.md.html#Storage">Storage</a></li>
 </ul>
 <h1>Guides</h1>
 <ul>
@@ -90,21 +89,12 @@
 <p>This guide describes how to set up your development environment for Cordova and run a sample application.  Note that Cordova used to be called PhoneGap, so some of the sites still use the old PhoneGap name.</p>
 
 <h2>
-<a name="Getting%20Started%20with%20Android_video_tutorials">Video Tutorials:</a>
-</h2>
-
-<ul>
-<li><a class="external" href="http://www.youtube.com/v/MzcIcyBYJMA?autoplay=1">Cordova and Android Quick Start Video Using Ecliplse</a></li>
-</ul>
-<h2>
 <a name="Getting%20Started%20with%20Android_1_requirements">1. Requirements</a>
 </h2>
 
 <ul>
 <li>Eclipse 3.4+</li>
 </ul>
-<p>There is also a <a class="external" href="http://wiki.phonegap.com/w/page/30864168/phonegap-android-terminal-quickstart">Terminal</a> of this tutorial that doesn't use Eclipse.</p>
-
 <h2>
 <a name="Getting%20Started%20with%20Android_2_install_sdk_cordova">2. Install SDK + Cordova</a>
 </h2>
@@ -116,7 +106,7 @@
 </li>
 <li>Download and install <a class="external" href="http://developer.android.com/sdk/eclipse-adt.html#installing">ADT Plugin</a>
 </li>
-<li>Donwload the latest copy of <a class="external" href="http://phonegap.com/download">Cordova</a> and extract its contents. We will be working with the Android directory.</li>
+<li>Download the latest copy of <a class="external" href="http://phonegap.com/download">Cordova</a> and extract its contents. We will be working with the Android directory.</li>
 </ul>
 <h2>
 <a name="Getting%20Started%20with%20Android_3_setup_new_project"> 3. Setup New Project</a>
@@ -124,11 +114,13 @@
 
 <ul>
 <li>
-<p>Launch Eclipse, then under the menu select <strong>New &gt; Android Project</strong></p>
+<p>Launch Eclipse, and select menu item <strong>New &gt; Android Project</strong>.  Fill out the three panels of the <strong>New Android Project</strong> wizard shown below.</p>
 
 <p><img src="img/guide/getting-started/android/AndroidFlow.png" alt="" title=""></p>
 </li>
-<li>In the root directory of the project, create two new directories:
+<li>
+<p>In the root directory of your project, create two new directories:</p>
+
 <ul>
 <li><strong>/libs</strong></li>
 <li><strong>assets/www</strong></li>
@@ -138,27 +130,35 @@
 </li>
 <li>Copy <strong>cordova-1.6.0.jar</strong> from your Cordova download earlier to <strong>/libs</strong>
 </li>
-<li>Copy <strong>xml</strong> folder from your Cordova download earlier to <strong>/res</strong>
+<li><p>Copy <strong>xml</strong> folder from your Cordova download earlier to <strong>/res</strong></p></li>
+<li>
+<p>Verify that <strong>cordova-1.6.0.jar</strong> is listed in the Build Path for your project. Right click on the /libs folder and go to <strong>Build Paths/ &gt; Configure Build Path...</strong>. Then, in the Libraries tab, add <strong>cordova-1.6.0.jar</strong> to the project. If Eclipse is being temperamental, you might need to refresh (F5) the project once again.</p>
+
+<p><img src="img/guide/getting-started/android/buildPath.jpg" alt="" title=""></p>
 </li>
 <li>
-<p>Make a few adjustments too the project's main Java file found in the <strong>src</strong> folder in Eclipse: (view image below)</p>
+<p>Edit your project's main Java file found in the <strong>src</strong> folder in Eclipse:</p>
 
 <ul>
+<li>Add <strong>import org.apache.cordova.*;</strong>
+</li>
 <li>Change the class's extend from <strong>Activity</strong> to <strong>DroidGap</strong>
 </li>
 <li>Replace the <strong>setContentView()</strong> line with <strong>super.loadUrl("file:///android_asset/www/index.html");</strong> </li>
-<li>Add <strong>import org.apache.cordova.*;</strong>
-</li>
 </ul>
 <p><img src="img/guide/getting-started/android/javaSrc.jpg" alt="" title=""></p>
 </li>
-<li>You might experience an error here, where Eclipse can't find cordova-1.6.0.jar. In this case, right click on the /libs folder and go to Build Paths/ &gt; Configure Build Paths. Then, in the Libraries tab, add cordova-1.6.0.jar to the Project. If Eclipse is being temperamental, you might need to refresh (F5) the project once again.</li>
-<li>Right click on AndroidManifest.xml and select <strong>Open With &gt; Text Editor</strong>
-</li>
+<li><p>Right click on AndroidManifest.xml and select <strong>Open With &gt; XML Editor</strong></p></li>
 <li>
-<p>Paste the following permissions under versionName: (view image below)</p>
+<p>Paste the following permissions between the <strong>&lt;uses-sdk.../&gt;</strong> and <strong>&lt;application.../&gt;</strong> tags.</p>
 
-<pre class="prettyprint"><code>&lt;supports-screens android:largeScreens="true" android:normalScreens="true" android:smallScreens="true" android:resizeable="true" android:anyDensity="true" /&gt;
+<p></p>
+<pre class="prettyprint"><code>&lt;supports-screens 
+    android:largeScreens="true" 
+    android:normalScreens="true" 
+    android:smallScreens="true" 
+    android:resizeable="true" 
+    android:anyDensity="true" /&gt;
 &lt;uses-permission android:name="android.permission.CAMERA" /&gt;
 &lt;uses-permission android:name="android.permission.VIBRATE" /&gt;
 &lt;uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /&gt;
@@ -172,13 +172,22 @@
 &lt;uses-permission android:name="android.permission.READ_CONTACTS" /&gt;
 &lt;uses-permission android:name="android.permission.WRITE_CONTACTS" /&gt;
 &lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /&gt;
-&lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /&gt; &lt;uses-permission android:name="android.permission.GET_ACCOUNTS" /&gt;
+&lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /&gt; 
+&lt;uses-permission android:name="android.permission.GET_ACCOUNTS" /&gt;
 &lt;uses-permission android:name="android.permission.BROADCAST_STICKY" /&gt;
 </code></pre>
 </li>
 <li>
-<p>Add <code>android:configChanges="orientation|keyboardHidden"</code> to the activity tag in AndroidManifest. (view image below)</p>
+<p>Support orientation changes by pasting the folowing inside the <strong>&lt;activity&gt;</strong> tag.</p>
 
+<p></p>
+<pre class="prettyprint"><code>android:configChanges="orientation|keyboardHidden"
+</code></pre>
+</li>
+<li>
+<p>Your AndroidManifest.xml file should look like</p>
+
+<p></p>
 <p><img src="img/guide/getting-started/android/manifest.jpg" alt="" title=""></p>
 </li>
 </ul>
@@ -186,28 +195,29 @@
 <a name="Getting%20Started%20with%20Android_4_hello_world">4. Hello World</a>
 </h2>
 
-Now create and open a new file named **index.html** in the **assets/www** directory. Paste the following code:
+<ul>
+<li>
+<p>Create and open a new file named <strong>index.html</strong> in the <strong>assets/www</strong> directory. Paste the following code:</p>
 
-<pre class="prettyprint"><code>    &lt;!DOCTYPE HTML&gt;
-    &lt;html&gt;
-    &lt;head&gt;
-    &lt;title&gt;Cordova&lt;/title&gt;
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-    &lt;h1&gt;Hello World&lt;/h1&gt;
-    &lt;/body&gt;
-    &lt;/html&gt;
-
-*cordova-1.6.0.js might need to be replaced with latest cordova-&lt;VERSION NUMBER&gt;.js
+<pre class="prettyprint"><code>&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Cordova&lt;/title&gt;
+&lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Hello World&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
-
+</li>
+</ul>
 <h2>
 <a name="Getting%20Started%20with%20Android_5a_deploy_to_simulator">5A. Deploy to Simulator</a>
 </h2>
 
 <ul>
-<li>Right click the project and go to <strong>Run As</strong> and click <strong>Android Application</strong>
+<li>Right click the project and go to <strong>Run As &gt; Android Application</strong>
 </li>
 <li>Eclipse will ask you to select an appropriate AVD. If there isn't one, then you'll need to create it.</li>
 </ul>
@@ -217,15 +227,13 @@ Now create and open a new file named **index.html** in the **assets/www** direct
 </h2>
 
 <ul>
-<li>Make sure USB debugging is enabled on your device and plug it into your system. (Settings &gt; Applications &gt; Development)</li>
-<li>Right click the project and go to <strong>Run As</strong> and click <strong>Android Application</strong>
+<li>Make sure USB debugging is enabled on your device and plug it into your system. (<strong>Settings &gt; Applications &gt; Development</strong>)</li>
+<li>Right click the project and go to <strong>Run As &gt; Android Application</strong>
 </li>
 </ul>
 <h2>
 <a name="Getting%20Started%20with%20Android_done">Done!</a>
 </h2>
-
-<p>You can also checkout more detailed version of this guide <a class="external" href="http://wiki.phonegap.com/w/page/30862722/phonegap-android-eclipse-quickstart">here</a>.</p>
 
             </div>
         </div>

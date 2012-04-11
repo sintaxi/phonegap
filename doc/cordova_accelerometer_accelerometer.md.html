@@ -84,19 +84,19 @@
             <div class="vertical_divider"></div>
         <h1>API Reference</h1>
 <ul>
-<li><a href="phonegap_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
-<li><a href="phonegap_camera_camera.md.html#Camera">Camera</a></li>
-<li><a href="phonegap_media_capture_capture.md.html#Capture">Capture</a></li>
-<li><a href="phonegap_compass_compass.md.html#Compass">Compass</a></li>
-<li><a href="phonegap_connection_connection.md.html#Connection">Connection</a></li>
-<li><a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a></li>
-<li><a href="phonegap_device_device.md.html#Device">Device</a></li>
-<li><a href="phonegap_events_events.md.html#Events">Events</a></li>
-<li><a href="phonegap_file_file.md.html#File">File</a></li>
-<li><a href="phonegap_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
-<li><a href="phonegap_media_media.md.html#Media">Media</a></li>
-<li><a href="phonegap_notification_notification.md.html#Notification">Notification</a></li>
-<li><a href="phonegap_storage_storage.md.html#Storage">Storage</a></li>
+<li><a href="cordova_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
+<li><a href="cordova_camera_camera.md.html#Camera">Camera</a></li>
+<li><a href="cordova_media_capture_capture.md.html#Capture">Capture</a></li>
+<li><a href="cordova_compass_compass.md.html#Compass">Compass</a></li>
+<li><a href="cordova_connection_connection.md.html#Connection">Connection</a></li>
+<li><a href="cordova_contacts_contacts.md.html#Contacts">Contacts</a></li>
+<li><a href="cordova_device_device.md.html#Device">Device</a></li>
+<li><a href="cordova_events_events.md.html#Events">Events</a></li>
+<li><a href="cordova_file_file.md.html#File">File</a></li>
+<li><a href="cordova_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
+<li><a href="cordova_media_media.md.html#Media">Media</a></li>
+<li><a href="cordova_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="cordova_storage_storage.md.html#Storage">Storage</a></li>
 </ul>
 <h1>Guides</h1>
 <ul>
@@ -118,32 +118,32 @@
 </h2>
 
 <ul>
-<li><a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.getCurrentAcceleration">accelerometer.getCurrentAcceleration</a></li>
-<li><a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a></li>
-<li><a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.clearWatch">accelerometer.clearWatch</a></li>
+<li><a href="cordova_accelerometer_accelerometer.md.html#accelerometer.getCurrentAcceleration">accelerometer.getCurrentAcceleration</a></li>
+<li><a href="cordova_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a></li>
+<li><a href="cordova_accelerometer_accelerometer.md.html#accelerometer.clearWatch">accelerometer.clearWatch</a></li>
 </ul>
 <h2>
 <a name="Accelerometer_arguments">Arguments</a>
 </h2>
 
 <ul>
-<li><a href="phonegap_accelerometer_accelerometer.md.html#accelerometerSuccess">accelerometerSuccess</a></li>
-<li><a href="phonegap_accelerometer_accelerometer.md.html#accelerometerError">accelerometerError</a></li>
-<li><a href="phonegap_accelerometer_accelerometer.md.html#accelerometerOptions">accelerometerOptions</a></li>
+<li><a href="cordova_accelerometer_accelerometer.md.html#accelerometerSuccess">accelerometerSuccess</a></li>
+<li><a href="cordova_accelerometer_accelerometer.md.html#accelerometerError">accelerometerError</a></li>
+<li><a href="cordova_accelerometer_accelerometer.md.html#accelerometerOptions">accelerometerOptions</a></li>
 </ul>
 <h2>
 <a name="Accelerometer_objects_read_only">Objects (Read-Only)</a>
 </h2>
 
 <ul>
-<li><a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a></li>
+<li><a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a></li>
 </ul>
 <hr>
 <h1><a name="accelerometer.getCurrentAcceleration">accelerometer.getCurrentAcceleration</a></h1>
 
 <p>Get the current acceleration along the x, y, and z axis.</p>
 
-<pre class="prettyprint"><code>navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.getCurrentAcceleration">accelerometer.getCurrentAcceleration</a>(<a href="phonegap_accelerometer_accelerometer.md.html#accelerometerSuccess">accelerometerSuccess</a>, <a href="phonegap_accelerometer_accelerometer.md.html#accelerometerError">accelerometerError</a>);
+<pre class="prettyprint"><code>navigator.<a href="cordova_accelerometer_accelerometer.md.html#accelerometer.getCurrentAcceleration">accelerometer.getCurrentAcceleration</a>(<a href="cordova_accelerometer_accelerometer.md.html#accelerometerSuccess">accelerometerSuccess</a>, <a href="cordova_accelerometer_accelerometer.md.html#accelerometerError">accelerometerError</a>);
 </code></pre>
 
 <h2>
@@ -152,7 +152,7 @@
 
 <p>The accelerometer is a motion sensor that detects the change (delta) in movement relative to the current device orientation. The accelerometer can detect 3D movement along the x, y, and z axis.</p>
 
-<p>The acceleration is returned using the <code><a href="phonegap_accelerometer_accelerometer.md.html#accelerometerSuccess">accelerometerSuccess</a></code> callback function.</p>
+<p>The acceleration is returned using the <code><a href="cordova_accelerometer_accelerometer.md.html#accelerometerSuccess">accelerometerSuccess</a></code> callback function.</p>
 
 <h2>
 <a name="accelerometer.getCurrentAcceleration_supported_platforms">Supported Platforms</a>
@@ -162,15 +162,16 @@
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
+<li>Windows Phone 7 (Mango)</li>
 </ul>
 <h2>
 <a name="accelerometer.getCurrentAcceleration_quick_example">Quick Example</a>
 </h2>
 
 <pre class="prettyprint"><code>function onSuccess(acceleration) {
-    alert('<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> X: ' + acceleration.x + '\n' +
-          '<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Y: ' + acceleration.y + '\n' +
-          '<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Z: ' + acceleration.z + '\n' +
+    alert('<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> X: ' + acceleration.x + '\n' +
+          '<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Y: ' + acceleration.y + '\n' +
+          '<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Z: ' + acceleration.z + '\n' +
           'Timestamp: '      + acceleration.timestamp + '\n');
 };
 
@@ -178,7 +179,7 @@ function onError() {
     alert('onError!');
 };
 
-navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.getCurrentAcceleration">accelerometer.getCurrentAcceleration</a>(onSuccess, onError);
+navigator.<a href="cordova_accelerometer_accelerometer.md.html#accelerometer.getCurrentAcceleration">accelerometer.getCurrentAcceleration</a>(onSuccess, onError);
 </code></pre>
 
 <h2>
@@ -188,27 +189,27 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.ge
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Example&lt;/title&gt;
+    &lt;title&gt;<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Cordova is ready
     //
     function onDeviceReady() {
-        navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.getCurrentAcceleration">accelerometer.getCurrentAcceleration</a>(onSuccess, onError);
+        navigator.<a href="cordova_accelerometer_accelerometer.md.html#accelerometer.getCurrentAcceleration">accelerometer.getCurrentAcceleration</a>(onSuccess, onError);
     }
 
     // onSuccess: Get a snapshot of the current acceleration
     //
     function onSuccess(acceleration) {
-        alert('<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> X: ' + acceleration.x + '\n' +
-              '<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Y: ' + acceleration.y + '\n' +
-              '<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Z: ' + acceleration.z + '\n' +
+        alert('<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> X: ' + acceleration.x + '\n' +
+              '<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Y: ' + acceleration.y + '\n' +
+              '<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Z: ' + acceleration.z + '\n' +
               'Timestamp: '      + acceleration.timestamp + '\n');
     }
 
@@ -241,9 +242,9 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.ge
 
 <p>At a regular interval, get the acceleration along the x, y, and z axis.</p>
 
-<pre class="prettyprint"><code>var watchID = navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a>(<a href="phonegap_accelerometer_accelerometer.md.html#accelerometerSuccess">accelerometerSuccess</a>,
-                                                       <a href="phonegap_accelerometer_accelerometer.md.html#accelerometerError">accelerometerError</a>,
-                                                       [<a href="phonegap_accelerometer_accelerometer.md.html#accelerometerOptions">accelerometerOptions</a>]);
+<pre class="prettyprint"><code>var watchID = navigator.<a href="cordova_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a>(<a href="cordova_accelerometer_accelerometer.md.html#accelerometerSuccess">accelerometerSuccess</a>,
+                                                       <a href="cordova_accelerometer_accelerometer.md.html#accelerometerError">accelerometerError</a>,
+                                                       [<a href="cordova_accelerometer_accelerometer.md.html#accelerometerOptions">accelerometerOptions</a>]);
 </code></pre>
 
 <h2>
@@ -252,9 +253,9 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.ge
 
 <p>The accelerometer is a motion sensor that detects the change (delta) in movement relative to the current position. The accelerometer can detect 3D movement along the x, y, and z axis.</p>
 
-<p>The <code><a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a></code> gets the device's current acceleration at a regular interval. Each time the <code><a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a></code> is retrieved, the <code><a href="phonegap_accelerometer_accelerometer.md.html#accelerometerSuccess">accelerometerSuccess</a></code> callback function is executed. Specify the interval in milliseconds via the <code>frequency</code> parameter in the <code>acceleratorOptions</code> object.</p>
+<p>The <code><a href="cordova_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a></code> gets the device's current acceleration at a regular interval. Each time the <code><a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a></code> is retrieved, the <code><a href="cordova_accelerometer_accelerometer.md.html#accelerometerSuccess">accelerometerSuccess</a></code> callback function is executed. Specify the interval in milliseconds via the <code>frequency</code> parameter in the <code>acceleratorOptions</code> object.</p>
 
-<p>The returned watch ID references references the accelerometer watch interval. The watch ID can be used with <code><a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.clearWatch">accelerometer.clearWatch</a></code> to stop watching the accelerometer.</p>
+<p>The returned watch ID references references the accelerometer watch interval. The watch ID can be used with <code><a href="cordova_accelerometer_accelerometer.md.html#accelerometer.clearWatch">accelerometer.clearWatch</a></code> to stop watching the accelerometer.</p>
 
 <h2>
 <a name="accelerometer.watchAcceleration_supported_platforms">Supported Platforms</a>
@@ -264,15 +265,16 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.ge
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
+<li>Windows Phone 7 (Mango)</li>
 </ul>
 <h2>
 <a name="accelerometer.watchAcceleration_quick_example">Quick Example</a>
 </h2>
 
 <pre class="prettyprint"><code>function onSuccess(acceleration) {
-    alert('<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> X: ' + acceleration.x + '\n' +
-          '<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Y: ' + acceleration.y + '\n' +
-          '<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Z: ' + acceleration.z + '\n' +
+    alert('<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> X: ' + acceleration.x + '\n' +
+          '<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Y: ' + acceleration.y + '\n' +
+          '<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Z: ' + acceleration.z + '\n' +
           'Timestamp: '      + acceleration.timestamp + '\n');
 };
 
@@ -282,7 +284,7 @@ function onError() {
 
 var options = { frequency: 3000 };  // Update every 3 seconds
 
-var watchID = navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a>(onSuccess, onError, options);
+var watchID = navigator.<a href="cordova_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a>(onSuccess, onError, options);
 </code></pre>
 
 <h2>
@@ -292,7 +294,7 @@ var watchID = navigator.<a href="phonegap_accelerometer_accelerometer.md.html#ac
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Example&lt;/title&gt;
+    &lt;title&gt;<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
@@ -302,7 +304,7 @@ var watchID = navigator.<a href="phonegap_accelerometer_accelerometer.md.html#ac
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Cordova is ready
     //
@@ -317,14 +319,14 @@ var watchID = navigator.<a href="phonegap_accelerometer_accelerometer.md.html#ac
         // Update acceleration every 3 seconds
         var options = { frequency: 3000 };
 
-        watchID = navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a>(onSuccess, onError, options);
+        watchID = navigator.<a href="cordova_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a>(onSuccess, onError, options);
     }
 
     // Stop watching the acceleration
     //
     function stopWatch() {
         if (watchID) {
-            navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.clearWatch">accelerometer.clearWatch</a>(watchID);
+            navigator.<a href="cordova_accelerometer_accelerometer.md.html#accelerometer.clearWatch">accelerometer.clearWatch</a>(watchID);
             watchID = null;
         }
     }
@@ -333,9 +335,9 @@ var watchID = navigator.<a href="phonegap_accelerometer_accelerometer.md.html#ac
     //
     function onSuccess(acceleration) {
         var element = document.getElementById('accelerometer');
-        element.innerHTML = '<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> X: ' + acceleration.x + '&lt;br /&gt;' +
-                            '<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Y: ' + acceleration.y + '&lt;br /&gt;' +
-                            '<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Z: ' + acceleration.z + '&lt;br /&gt;' +
+        element.innerHTML = '<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> X: ' + acceleration.x + '&lt;br /&gt;' +
+                            '<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Y: ' + acceleration.y + '&lt;br /&gt;' +
+                            '<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Z: ' + acceleration.z + '&lt;br /&gt;' +
                             'Timestamp: '      + acceleration.timestamp + '&lt;br /&gt;';
     }
 
@@ -368,14 +370,14 @@ var watchID = navigator.<a href="phonegap_accelerometer_accelerometer.md.html#ac
 <hr>
 <h1><a name="accelerometer.clearWatch">accelerometer.clearWatch</a></h1>
 
-<p>Stop watching the <code><a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a></code> referenced by the watch ID parameter.</p>
+<p>Stop watching the <code><a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a></code> referenced by the watch ID parameter.</p>
 
-<pre class="prettyprint"><code>navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.clearWatch">accelerometer.clearWatch</a>(watchID);
+<pre class="prettyprint"><code>navigator.<a href="cordova_accelerometer_accelerometer.md.html#accelerometer.clearWatch">accelerometer.clearWatch</a>(watchID);
 </code></pre>
 
 <ul>
 <li>
-<strong>watchID</strong>: The ID returned by <code><a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a></code>.</li>
+<strong>watchID</strong>: The ID returned by <code><a href="cordova_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a></code>.</li>
 </ul>
 <h2>
 <a name="accelerometer.clearWatch_supported_platforms">Supported Platforms</a>
@@ -385,16 +387,17 @@ var watchID = navigator.<a href="phonegap_accelerometer_accelerometer.md.html#ac
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
+<li>Windows Phone 7 (Mango)</li>
 </ul>
 <h2>
 <a name="accelerometer.clearWatch_quick_example">Quick Example</a>
 </h2>
 
-<pre class="prettyprint"><code>var watchID = navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a>(onSuccess, onError, options);
+<pre class="prettyprint"><code>var watchID = navigator.<a href="cordova_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a>(onSuccess, onError, options);
 
 // ... later on ...
 
-navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.clearWatch">accelerometer.clearWatch</a>(watchID);
+navigator.<a href="cordova_accelerometer_accelerometer.md.html#accelerometer.clearWatch">accelerometer.clearWatch</a>(watchID);
 </code></pre>
 
 <h2>
@@ -404,7 +407,7 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.cl
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Example&lt;/title&gt;
+    &lt;title&gt;<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
@@ -414,7 +417,7 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.cl
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Cordova is ready
     //
@@ -429,14 +432,14 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.cl
         // Update acceleration every 3 seconds
         var options = { frequency: 3000 };
 
-        watchID = navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a>(onSuccess, onError, options);
+        watchID = navigator.<a href="cordova_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a>(onSuccess, onError, options);
     }
 
     // Stop watching the acceleration
     //
     function stopWatch() {
         if (watchID) {
-            navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.clearWatch">accelerometer.clearWatch</a>(watchID);
+            navigator.<a href="cordova_accelerometer_accelerometer.md.html#accelerometer.clearWatch">accelerometer.clearWatch</a>(watchID);
             watchID = null;
         }
     }
@@ -445,9 +448,9 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.cl
     //
     function onSuccess(acceleration) {
         var element = document.getElementById('accelerometer');
-        element.innerHTML = '<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> X: ' + acceleration.x + '&lt;br /&gt;' +
-                            '<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Y: ' + acceleration.y + '&lt;br /&gt;' +
-                            '<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Z: ' + acceleration.z + '&lt;br /&gt;' + 
+        element.innerHTML = '<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> X: ' + acceleration.x + '&lt;br /&gt;' +
+                            '<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Y: ' + acceleration.y + '&lt;br /&gt;' +
+                            '<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Z: ' + acceleration.z + '&lt;br /&gt;' + 
                             'Timestamp: '      + acceleration.timestamp + '&lt;br /&gt;';
     }
 
@@ -469,7 +472,7 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.cl
 <hr>
 <h1><a name="Acceleration">Acceleration</a></h1>
 
-<p>Contains <code><a href="phonegap_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></code> data captured at a specific point in time.</p>
+<p>Contains <code><a href="cordova_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></code> data captured at a specific point in time.</p>
 
 <h2>
 <a name="Acceleration_properties">Properties</a>
@@ -477,11 +480,11 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.cl
 
 <ul>
 <li>
-<strong>x:</strong> Amount of motion on the x-axis. Range [0, 1] (<code>Number</code>)</li>
+<strong>x:</strong>  Amount of acceleration on the x-axis. (in m/s^2) (<code>Number</code>)</li>
 <li>
-<strong>y:</strong> Amount of motion on the y-axis. Range [0, 1] (<code>Number</code>)</li>
+<strong>y:</strong>  Amount of acceleration on the y-axis. (in m/s^2) (<code>Number</code>)</li>
 <li>
-<strong>z:</strong> Amount of motion on the z-axis. Range [0, 1] (<code>Number</code>)</li>
+<strong>z:</strong>  Amount of acceleration on the z-axis. (in m/s^2) (<code>Number</code>)</li>
 <li>
 <strong>timestamp:</strong> Creation timestamp in milliseconds. (<code>DOMTimeStamp</code>)</li>
 </ul>
@@ -489,7 +492,7 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.cl
 <a name="Acceleration_description">Description</a>
 </h2>
 
-<p>This object is created and populated by Cordova, and returned by an <code><a href="phonegap_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></code> method.</p>
+<p>This object is created and populated by Cordova, and returned by an <code><a href="cordova_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></code> method. The x, y, z acceleration values include the effect of gravity (9.81 m/s^2), so at when a device is lying flat on a table facing up, the value returned should be x=0, y=0, z=9.81.</p>
 
 <h2>
 <a name="Acceleration_supported_platforms">Supported Platforms</a>
@@ -498,17 +501,17 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.cl
 <ul>
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
-<li>iPhone</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>iOS</li>
+<li>Windows Phone 7 (Mango)</li>
 </ul>
 <h2>
 <a name="Acceleration_quick_example">Quick Example</a>
 </h2>
 
 <pre class="prettyprint"><code>function onSuccess(acceleration) {
-    alert('<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> X: ' + acceleration.x + '\n' +
-          '<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Y: ' + acceleration.y + '\n' +
-          '<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Z: ' + acceleration.z + '\n' +
+    alert('<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> X: ' + acceleration.x + '\n' +
+          '<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Y: ' + acceleration.y + '\n' +
+          '<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Z: ' + acceleration.z + '\n' +
           'Timestamp: '      + acceleration.timestamp + '\n');
 };
 
@@ -516,7 +519,7 @@ function onError() {
     alert('onError!');
 };
 
-navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.getCurrentAcceleration">accelerometer.getCurrentAcceleration</a>(onSuccess, onError);
+navigator.<a href="cordova_accelerometer_accelerometer.md.html#accelerometer.getCurrentAcceleration">accelerometer.getCurrentAcceleration</a>(onSuccess, onError);
 </code></pre>
 
 <h2>
@@ -526,27 +529,27 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.ge
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Example&lt;/title&gt;
+    &lt;title&gt;<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Cordova is ready
     //
     function onDeviceReady() {
-        navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.getCurrentAcceleration">accelerometer.getCurrentAcceleration</a>(onSuccess, onError);
+        navigator.<a href="cordova_accelerometer_accelerometer.md.html#accelerometer.getCurrentAcceleration">accelerometer.getCurrentAcceleration</a>(onSuccess, onError);
     }
 
     // onSuccess: Get a snapshot of the current acceleration
     //
-    function onSuccess() {
-        alert('<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> X: ' + acceleration.x + '\n' +
-              '<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Y: ' + acceleration.y + '\n' +
-              '<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Z: ' + acceleration.z + '\n' +
+    function onSuccess(acceleration) {
+        alert('<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> X: ' + acceleration.x + '\n' +
+              '<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Y: ' + acceleration.y + '\n' +
+              '<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Z: ' + acceleration.z + '\n' +
               'Timestamp: '      + acceleration.timestamp + '\n');
     }
 
@@ -568,7 +571,7 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.ge
 <hr>
 <h1><a name="accelerometerSuccess">accelerometerSuccess</a></h1>
 
-<p>onSuccess callback function that provides the <a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> information.</p>
+<p>onSuccess callback function that provides the <a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> information.</p>
 
 <pre class="prettyprint"><code>function(acceleration) {
     // Do something
@@ -581,16 +584,16 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.ge
 
 <ul>
 <li>
-<strong>acceleration:</strong> The acceleration at a single moment in time. (<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a>)</li>
+<strong>acceleration:</strong> The acceleration at a single moment in time. (<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a>)</li>
 </ul>
 <h2>
 <a name="accelerometerSuccess_example">Example</a>
 </h2>
 
 <pre class="prettyprint"><code>function onSuccess(acceleration) {
-    alert('<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> X: ' + acceleration.x + '\n' +
-          '<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Y: ' + acceleration.y + '\n' +
-          '<a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Z: ' + acceleration.z + '\n' +
+    alert('<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> X: ' + acceleration.x + '\n' +
+          '<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Y: ' + acceleration.y + '\n' +
+          '<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Z: ' + acceleration.z + '\n' +
           'Timestamp: '      + acceleration.timestamp + '\n');
 };
 </code></pre>
@@ -616,7 +619,7 @@ navigator.<a href="phonegap_accelerometer_accelerometer.md.html#accelerometer.ge
 
 <ul>
 <li>
-<strong>frequency:</strong> How often to retrieve the <code><a href="phonegap_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a></code> in milliseconds. <em>(Number)</em> (Default: 10000)</li>
+<strong>frequency:</strong> How often to retrieve the <code><a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a></code> in milliseconds. <em>(Number)</em> (Default: 10000)</li>
 </ul>
 </div>
         </div>

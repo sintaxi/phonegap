@@ -49,6 +49,7 @@
             <small><select><option value="Connection">Connection</option>
 <option value="Connection_properties">      - Properties</option>
 <option value="Connection_constants">      - Constants</option>
+<option value="Connection_wp7_quirk">      - WP7 Quirk</option>
 <option value="connection.type">connection.type</option>
 <option value="connection.type_description">      - Description</option>
 <option value="connection.type_supported_platforms">      - Supported Platforms</option>
@@ -60,19 +61,19 @@
             <div class="vertical_divider"></div>
         <h1>API Reference</h1>
 <ul>
-<li><a href="phonegap_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
-<li><a href="phonegap_camera_camera.md.html#Camera">Camera</a></li>
-<li><a href="phonegap_media_capture_capture.md.html#Capture">Capture</a></li>
-<li><a href="phonegap_compass_compass.md.html#Compass">Compass</a></li>
-<li><a href="phonegap_connection_connection.md.html#Connection">Connection</a></li>
-<li><a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a></li>
-<li><a href="phonegap_device_device.md.html#Device">Device</a></li>
-<li><a href="phonegap_events_events.md.html#Events">Events</a></li>
-<li><a href="phonegap_file_file.md.html#File">File</a></li>
-<li><a href="phonegap_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
-<li><a href="phonegap_media_media.md.html#Media">Media</a></li>
-<li><a href="phonegap_notification_notification.md.html#Notification">Notification</a></li>
-<li><a href="phonegap_storage_storage.md.html#Storage">Storage</a></li>
+<li><a href="cordova_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
+<li><a href="cordova_camera_camera.md.html#Camera">Camera</a></li>
+<li><a href="cordova_media_capture_capture.md.html#Capture">Capture</a></li>
+<li><a href="cordova_compass_compass.md.html#Compass">Compass</a></li>
+<li><a href="cordova_connection_connection.md.html#Connection">Connection</a></li>
+<li><a href="cordova_contacts_contacts.md.html#Contacts">Contacts</a></li>
+<li><a href="cordova_device_device.md.html#Device">Device</a></li>
+<li><a href="cordova_events_events.md.html#Events">Events</a></li>
+<li><a href="cordova_file_file.md.html#File">File</a></li>
+<li><a href="cordova_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
+<li><a href="cordova_media_media.md.html#Media">Media</a></li>
+<li><a href="cordova_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="cordova_storage_storage.md.html#Storage">Storage</a></li>
 </ul>
 <h1>Guides</h1>
 <ul>
@@ -96,7 +97,7 @@
 </h2>
 
 <ul>
-<li><a href="phonegap_connection_connection.md.html#connection.type">connection.type</a></li>
+<li><a href="cordova_connection_connection.md.html#connection.type">connection.type</a></li>
 </ul>
 <h2>
 <a name="Connection_constants">Constants</a>
@@ -104,19 +105,28 @@
 
 <ul>
 <li>
-<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.UNKNOWN</li>
+<a href="cordova_connection_connection.md.html#Connection">Connection</a>.UNKNOWN</li>
 <li>
-<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.ETHERNET</li>
+<a href="cordova_connection_connection.md.html#Connection">Connection</a>.ETHERNET</li>
 <li>
-<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.WIFI</li>
+<a href="cordova_connection_connection.md.html#Connection">Connection</a>.WIFI</li>
 <li>
-<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.CELL_2G</li>
+<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_2G</li>
 <li>
-<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.CELL_3G</li>
+<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_3G</li>
 <li>
-<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.CELL_4G</li>
+<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_4G</li>
 <li>
-<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.NONE</li>
+<a href="cordova_connection_connection.md.html#Connection">Connection</a>.NONE</li>
+</ul>
+<h2>
+<a name="Connection_wp7_quirk">WP7 Quirk</a>
+</h2>
+
+<ul>
+<li>
+<strong>type:</strong>
+Windows Phone Emulator always reports navigator.network.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a> is <a href="cordova_connection_connection.md.html#Connection">Connection</a>.UNKNOWN</li>
 </ul>
 <hr>
 <h1><a name="connection.type">connection.type</a></h1>
@@ -144,18 +154,18 @@
 </h2>
 
 <pre class="prettyprint"><code>function checkConnection() {
-    var networkState = navigator.network.<a href="phonegap_connection_connection.md.html#connection.type">connection.type</a>;
+    var networkState = navigator.network.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a>;
 
     var states = {};
-    states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.UNKNOWN]  = 'Unknown connection';
-    states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.ETHERNET] = 'Ethernet connection';
-    states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.WIFI]     = 'WiFi connection';
-    states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.CELL_2G]  = 'Cell 2G connection';
-    states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.CELL_3G]  = 'Cell 3G connection';
-    states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.CELL_4G]  = 'Cell 4G connection';
-    states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.NONE]     = 'No network connection';
+    states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.UNKNOWN]  = 'Unknown connection';
+    states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.ETHERNET] = 'Ethernet connection';
+    states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.WIFI]     = 'WiFi connection';
+    states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_2G]  = 'Cell 2G connection';
+    states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_3G]  = 'Cell 3G connection';
+    states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_4G]  = 'Cell 4G connection';
+    states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.NONE]     = 'No network connection';
 
-    alert('<a href="phonegap_connection_connection.md.html#Connection">Connection</a> type: ' + states[networkState]);
+    alert('<a href="cordova_connection_connection.md.html#Connection">Connection</a> type: ' + states[networkState]);
 }
 
 checkConnection();
@@ -168,14 +178,14 @@ checkConnection();
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;navigator.network.<a href="phonegap_connection_connection.md.html#connection.type">connection.type</a> Example&lt;/title&gt;
+    &lt;title&gt;navigator.network.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a> Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
     // 
-    document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Cordova is loaded and it is now safe to make calls Cordova methods
     //
@@ -184,18 +194,18 @@ checkConnection();
     }
 
     function checkConnection() {
-        var networkState = navigator.network.<a href="phonegap_connection_connection.md.html#connection.type">connection.type</a>;
+        var networkState = navigator.network.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a>;
 
         var states = {};
-        states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.UNKNOWN]  = 'Unknown connection';
-        states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.ETHERNET] = 'Ethernet connection';
-        states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.WIFI]     = 'WiFi connection';
-        states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.CELL_2G]  = 'Cell 2G connection';
-        states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.CELL_3G]  = 'Cell 3G connection';
-        states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.CELL_4G]  = 'Cell 4G connection';
-        states[<a href="phonegap_connection_connection.md.html#Connection">Connection</a>.NONE]     = 'No network connection';
+        states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.UNKNOWN]  = 'Unknown connection';
+        states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.ETHERNET] = 'Ethernet connection';
+        states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.WIFI]     = 'WiFi connection';
+        states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_2G]  = 'Cell 2G connection';
+        states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_3G]  = 'Cell 3G connection';
+        states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_4G]  = 'Cell 4G connection';
+        states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.NONE]     = 'No network connection';
 
-        alert('<a href="phonegap_connection_connection.md.html#Connection">Connection</a> type: ' + states[networkState]);
+        alert('<a href="cordova_connection_connection.md.html#Connection">Connection</a> type: ' + states[networkState]);
     }
 
     &lt;/script&gt;

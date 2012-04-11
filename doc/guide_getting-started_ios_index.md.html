@@ -62,19 +62,19 @@
             <div class="vertical_divider"></div>
         <h1>API Reference</h1>
 <ul>
-<li><a href="phonegap_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
-<li><a href="phonegap_camera_camera.md.html#Camera">Camera</a></li>
-<li><a href="phonegap_media_capture_capture.md.html#Capture">Capture</a></li>
-<li><a href="phonegap_compass_compass.md.html#Compass">Compass</a></li>
-<li><a href="phonegap_connection_connection.md.html#Connection">Connection</a></li>
-<li><a href="phonegap_contacts_contacts.md.html#Contacts">Contacts</a></li>
-<li><a href="phonegap_device_device.md.html#Device">Device</a></li>
-<li><a href="phonegap_events_events.md.html#Events">Events</a></li>
-<li><a href="phonegap_file_file.md.html#File">File</a></li>
-<li><a href="phonegap_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
-<li><a href="phonegap_media_media.md.html#Media">Media</a></li>
-<li><a href="phonegap_notification_notification.md.html#Notification">Notification</a></li>
-<li><a href="phonegap_storage_storage.md.html#Storage">Storage</a></li>
+<li><a href="cordova_accelerometer_accelerometer.md.html#Accelerometer">Accelerometer</a></li>
+<li><a href="cordova_camera_camera.md.html#Camera">Camera</a></li>
+<li><a href="cordova_media_capture_capture.md.html#Capture">Capture</a></li>
+<li><a href="cordova_compass_compass.md.html#Compass">Compass</a></li>
+<li><a href="cordova_connection_connection.md.html#Connection">Connection</a></li>
+<li><a href="cordova_contacts_contacts.md.html#Contacts">Contacts</a></li>
+<li><a href="cordova_device_device.md.html#Device">Device</a></li>
+<li><a href="cordova_events_events.md.html#Events">Events</a></li>
+<li><a href="cordova_file_file.md.html#File">File</a></li>
+<li><a href="cordova_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
+<li><a href="cordova_media_media.md.html#Media">Media</a></li>
+<li><a href="cordova_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="cordova_storage_storage.md.html#Storage">Storage</a></li>
 </ul>
 <h1>Guides</h1>
 <ul>
@@ -87,7 +87,7 @@
             <div id="content">
                 <h1><a name="Getting%20Started%20with%20iOS">Getting Started with iOS</a></h1>
 
-<p>This guide describes how to set up your development environment for Cordova and run a sample application.  Note that Cordova used to be called PhoneGap, so some of the sites still use the old PhoneGap name.</p>
+<p>This guide describes how to set up your development environment for Cordova and run a sample application.</p>
 
 <h2>
 <a name="Getting%20Started%20with%20iOS_video_tutorials">Video Tutorials:</a>
@@ -101,11 +101,11 @@
 </h2>
 
 <ul>
-<li>Intel-based computer with Mac OS X Snow Leopard (10.6)</li>
-<li>Necessary for Installing on <a href="phonegap_device_device.md.html#Device">Device</a>:
+<li>Intel-based computer with Mac OS X Lion (10.7)</li>
+<li>Necessary for Installing on <a href="cordova_device_device.md.html#Device">Device</a>:
 <ul>
 <li>An Apple iOS device (iPhone, iPad, iPod Touch)</li>
-<li>iOS developer certification</li>
+<li>iOS ceveloper certification</li>
 </ul>
 </li>
 </ul>
@@ -114,51 +114,80 @@
 </h2>
 
 <ul>
-<li>Download and install Xcode from <a class="external" href="http://developer.apple.com">Apple Developer Portal</a> (Membership required)</li>
-<li>Donwload the latest copy of <a class="external" href="http://phonegap.com/download">Cordova</a> and extract its contents. We will be working with the Android directory.</li>
+<li>Install Xcode from the <a class="external" href="http://itunes.apple.com/us/app/xcode/id497799835?mt=12">Mac App Store</a> </li>
+<li>Donwload the latest copy of <a class="external" href="http://phonegap.com/download">Cordova</a> and extract its contents. We will be working with the <strong>lib/ios</strong> directory.</li>
 </ul>
 <h2>
 <a name="Getting%20Started%20with%20iOS_3_setup_new_project">3. Setup New Project</a>
 </h2>
 
 <ul>
-<li>Launch Xcode, then under the <a href="phonegap_file_file.md.html#File">File</a> menu select <strong>New</strong> and then <strong>New Project...</strong>
+<li>Launch Xcode</li>
+<li>Select the <strong><a href="cordova_file_file.md.html#File">File</a></strong> menu</li>
+<li>Select <strong>New</strong>, then <strong>New Project...</strong>
 </li>
 <li>
 <p>Select <strong>Cordova-based Application</strong> from the list of templates</p>
 
 <p><img src="img/guide/getting-started/ios/XCode4-templates.png" alt="" title=""></p>
 </li>
+<li>Select the <strong>Next</strong> button</li>
 <li>
-<p>Select the <strong>Next</strong> button, Fill in the "Product Name" &amp; "Company Identifier" for your app</p>
+<p>Fill in the "Product Name" &amp; "Company Identifier" for your app</p>
 
 <p><img src="img/guide/getting-started/ios/xcode4-name_your_app.png" alt="" title=""></p>
 </li>
-<li><p>Choose a directory to store your app</p></li>
-<li>You should see your project in Xcode 4 now. Press the <strong>Run</strong> button in the top left corner. Your build should succeed and launch in the simulator</li>
-<li>You should see a error in your simulator informing you index.html was not found</li>
-<li>To fix this, we need to copy the <strong>www</strong> directory into the project. Right click on the project in the left navigation window and click show in finder</li>
-<li>In Finder, you should see the <strong>www</strong> directory beside your project</li>
+<li><p>Do <strong>NOT</strong> check the "Use Automatic Reference Counting" checkbox</p></li>
+<li>Select the <strong>Next</strong> button</li>
 <li>
-<p>Next step is <strong>IMPORTANT</strong>! Drag the <strong>www</strong> folder into Xcode 4. You can't just drag the www folder into your app's folder. It needs to be dragged into Xcode 4!! In my case I would drag it and drop it on HiWorld shown below.</p>
+<strong>Choose a folder</strong> to save your new app in</li>
+<li>Select the <strong>Create</strong> button, this will create your project</li>
+<li>
+<p>Select the <strong>Run</strong> button in the top left corner. Your build should succeed and launch in the iOS Simulator</p>
+
+<p>a. You should see an error in the iOS Simulator informing you that <strong>www/index.html</strong> was not found</p>
+
+<p>b. To fix this, we need to add a folder reference to the <strong>www</strong> directory into the project. </p>
+
+<p><img src="img/guide/getting-started/ios/index-not-found.png" alt="" title=""></p>
+</li>
+<li><p><strong>Right-click</strong> on the project icon in the Project Navigator (left sidebar) and select <strong>Show in Finder</strong></p></li>
+<li>
+<p><strong>In the Finder</strong>, you should see the <strong>www</strong> directory beside your project</p>
+
+<p><img src="img/guide/getting-started/ios/www-folder.png" alt="" title=""></p>
+</li>
+<li>
+<p><strong>IMPORTANT</strong>! <strong>Drag</strong> the <strong>www</strong> folder into Xcode 4. <strong>Don't</strong> drag the www folder into your app's folder. <strong>It needs to be dragged into Xcode 4.</strong> For example, you would drag and drop it on the <strong>highlighted red section</strong> of the HelloWorld project shown below.</p>
 
 <p><img src="img/guide/getting-started/ios/project.jpg" alt="" title=""></p>
 </li>
-<li>After you drag, you should see a prompt with a few options. Make sure to select <strong>Create folder references for any added folders</strong>. Click Finish</li>
+<li>A window sheet should slide down with a few options, after the <strong>"www"</strong> folder has been dragged and dropped into the project. </li>
+<li>
+<p>Select the radio-button <strong>Create folder references for any added folders</strong>.</p>
+
+<p><img src="img/guide/getting-started/ios/create-folder-reference.png" alt="" title=""></p>
+</li>
+<li><p>Select the <strong>Finish</strong> button</p></li>
 </ul>
 <h2>
 <a name="Getting%20Started%20with%20iOS_4_hello_world">4. Hello World</a>
 </h2>
 
-<p>Open the folder named <strong>www</strong> and type <code>&lt;h1&gt;Hello World&lt;/h1&gt;</code> after the <code>&lt;body&gt;</code> tag in <strong>index.html</strong>. You can also add any associated Javascript and CSS files there as well.</p>
+<ul>
+<li>Select the folder named <strong>www</strong> in your Project Navigator in Xcode</li>
+<li>Select the <strong>index.html</strong> file</li>
+<li>Type <code>&lt;h1&gt;Hello World&lt;/h1&gt;</code> after the <code>&lt;body&gt;</code> tag</li>
+</ul>
+<p>You can also add any associated JavaScript and CSS files there as well.</p>
 
 <h2>
 <a name="Getting%20Started%20with%20iOS_5a_deploy_to_simulator">5A. Deploy to Simulator</a>
 </h2>
 
 <ul>
-<li>Make sure to change the Active SDK in the top left menu to <strong>Simulator+version#</strong>.</li>
-<li>Hit <strong>Run</strong> in your project window header.</li>
+<li>Change the Active SDK in the Scheme drop-down menu on the toolbar to <strong>iOS version# Simulator</strong>.</li>
+<li>Select the <strong>Run</strong> button in your project window's toolbar</li>
 </ul>
 <h2>
 <a name="Getting%20Started%20with%20iOS_5b_deploy_to_device">5B. Deploy to Device
@@ -166,10 +195,11 @@
 </h2>
 
 <ul>
-<li>Open [AppName]-Info.plist and change <strong>BundleIdentifier</strong> to the identifier provided by Apple. If you have a developer license, you can access and run the Assistant at <a class="external" href="http://developer.apple.com/iphone/manage/overview/index.action">here</a> and register your App.</li>
-<li>Make sure to change the Active SDK in the top left menu to <strong><a href="phonegap_device_device.md.html#Device">Device</a>+version#</strong>.</li>
+<li>Open [AppName]-Info.plist (where [AppName] is your application's name), under the "Supporting Files" group</li>
+<li>Change <strong>BundleIdentifier</strong> to the identifier provided by Apple, or your own bundle identifier. If you have a developer license, you can access and run the Assistant <a class="external" href="http://developer.apple.com/iphone/manage/overview/index.action">here</a> and register your app.</li>
+<li>Change the Active SDK in the Scheme drop-down menu on the toolbar to <strong>[DEVICENAME]</strong> where [DEVICENAME] is the name of the device you want to deploy to.</li>
 <li>
-<p>Hit <strong>Run</strong> in your project window header.</p>
+<p>Select the <strong>Run</strong> button in your project window's toolbar</p>
 
 <p><img src="img/guide/getting-started/ios/HelloWorldiPhone4.png" alt="" title=""></p>
 </li>
@@ -178,7 +208,7 @@
 <a name="Getting%20Started%20with%20iOS_done">Done!</a>
 </h2>
 
-<p>You can also checkout more detailed version of this guide <a class="external" href="http://wiki.phonegap.com/w/page/39991939/Getting-Started-with-PhoneGap-iOS-using-Xcode-4-%28Template-Version%29">here</a>.</p>
+<p>Add more HTML, CSS and JavaScript to your <strong>www</strong> folder outside of Xcode, your file additions will be picked up automatically inside Xcode.</p>
 
             </div>
         </div>
