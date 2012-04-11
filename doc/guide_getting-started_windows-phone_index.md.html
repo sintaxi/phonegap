@@ -4,19 +4,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
 <meta name="generator" content="joDoc">
-<title>PhoneGap API Documentation</title>
+<title>Cordova API Documentation</title>
 <link rel="stylesheet" type="text/css" href="index.css">
 <link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
 <link rel="stylesheet" type="text/css" href="prettify/prettify.css">
 </head>
 <body>
         <div id="header">
-            <h1><a href="index.html">Phone<strong>Gap</strong> Documentation</a></h1>
+            <h1><a href="index.html"><strong>Cordova</strong> Documentation</a></h1>
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="1.6.0rc1">1.6.0rc1</option>
+<option selected value="1.6.0">1.6.0</option>
 <option value="1.5.0rc1">1.5.0rc1</option>
-<option selected value="1.5.0">1.5.0</option>
+<option value="1.5.0">1.5.0</option>
 <option value="1.4.1">1.4.1</option>
 <option value="1.4.0rc1">1.4.0rc1</option>
 <option value="1.4.0">1.4.0</option>
@@ -47,7 +49,7 @@
             <small><select><option value="Getting%2520Started%2520with%2520Windows%2520Phone">Getting Started with Windows Phone</option>
 <option value="Getting%20Started%20with%20Windows%20Phone_video_tutorials">      - Video Tutorials:</option>
 <option value="Getting%20Started%20with%20Windows%20Phone_1_requirements">      - 1. Requirements</option>
-<option value="Getting%20Started%20with%20Windows%20Phone_2_install_sdk_phonegap">      - 2. Install SDK + PhoneGap</option>
+<option value="Getting%20Started%20with%20Windows%20Phone_2_install_sdk_cordova">      - 2. Install SDK + Cordova</option>
 <option value="Getting%20Started%20with%20Windows%20Phone_3_setup_new_project">      - 3. Setup New Project</option>
 <option value="Getting%20Started%20with%20Windows%20Phone_4_review_the_project_structure">      - 4. Review the project structure</option>
 <option value="Getting%20Started%20with%20Windows%20Phone_5_build_and_deploy_to_emulator">      - 5. Build and Deploy to Emulator</option>
@@ -84,13 +86,15 @@
             <div id="content">
                 <h1><a name="Getting%20Started%20with%20Windows%20Phone">Getting Started with Windows Phone</a></h1>
 
+<p>This guide describes how to set up your development environment for Cordova and run a sample application.  Note that Cordova used to be called PhoneGap, so some of the sites still use the old PhoneGap name.</p>
+
 <h2>
 <a name="Getting%20Started%20with%20Windows%20Phone_video_tutorials">Video Tutorials:</a>
 </h2>
 
 <ul>
-<li><a class="external" href="http://www.youtube.com/v/wO9xdRcNHIM?autoplay=1">PhoneGap and Windows Phone quick setup video</a></li>
-<li><a class="external" href="http://www.youtube.com/v/BJFX1GRUXj8?autoplay=1">PhoneGap and Windows Phone deep dive</a></li>
+<li><a class="external" href="http://www.youtube.com/v/wO9xdRcNHIM?autoplay=1">Cordova and Windows Phone quick setup video</a></li>
+<li><a class="external" href="http://www.youtube.com/v/BJFX1GRUXj8?autoplay=1">Cordova and Windows Phone deep dive</a></li>
 </ul>
 <h2>
 <a name="Getting%20Started%20with%20Windows%20Phone_1_requirements">1. Requirements</a>
@@ -107,13 +111,13 @@
 <li>Become an <a class="external" href="http://create.msdn.com/en-US/home/membership">App Hub member</a>.</li>
 </ul>
 <h2>
-<a name="Getting%20Started%20with%20Windows%20Phone_2_install_sdk_phonegap">2. Install SDK + PhoneGap</a>
+<a name="Getting%20Started%20with%20Windows%20Phone_2_install_sdk_cordova">2. Install SDK + Cordova</a>
 </h2>
 
 <ul>
 <li>Download and install <a class="external" href="http://www.microsoft.com/download/en/details.aspx?displaylang=en&amp;id=27570/">Windows Phone  SDK</a>
 </li>
-<li>Donwload the latest copy of <a class="external" href="http://phonegap.com/download">PhoneGap</a> and extract its contents. We will be working with the Android directory.</li>
+<li>Donwload the latest copy of <a class="external" href="http://phonegap.com/download">Cordova</a> and extract its contents. We will be working with the Android directory.</li>
 </ul>
 <h2>
 <a name="Getting%20Started%20with%20Windows%20Phone_3_setup_new_project">3. Setup New Project</a>
@@ -123,7 +127,7 @@
 <li>Open Visual Studio Express for Windows Phone and choose <strong>New Project</strong>.</li>
 <li>Select <strong>PhoneGapStarter</strong>.</li>
 <li>
-<p>Give your project a <a href="phonegap_storage_storage.md.html#name">name</a>, and select OK.</p>
+<p>Give your project a name, and select OK.</p>
 
 <p><img src="img/guide/getting-started/windows-phone/wpnewproj.PNG" alt="" title=""></p>
 </li>
@@ -133,7 +137,7 @@
 </h2>
 
 <ul>
-<li>The 'www' folder contains your PhoneGap html/js/css and any other resources included in your app.</li>
+<li>The 'www' folder contains your Cordova html/js/css and any other resources included in your app.</li>
 <li>
 <p>Any content that you add here needs to be a part of the Visual Studio project, and it must be set as content. </p>
 
@@ -171,7 +175,7 @@
 <a name="Getting%20Started%20with%20Windows%20Phone_done">Done!</a>
 </h2>
 
-<p>You can also checkout more detailed <a href="phonegap_storage_storage.md.html#version">version</a> of this guide <a class="external" href="http://wiki.phonegap.com/w/page/48672055/Getting%20Started%20with%20PhoneGap%20Windows%20Phone%207">here</a>.</p>
+<p>You can also checkout more detailed version of this guide <a class="external" href="http://wiki.phonegap.com/w/page/48672055/Getting%20Started%20with%20PhoneGap%20Windows%20Phone%207">here</a>.</p>
 
             </div>
         </div>

@@ -4,19 +4,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
 <meta name="generator" content="joDoc">
-<title>PhoneGap API Documentation</title>
+<title>Cordova API Documentation</title>
 <link rel="stylesheet" type="text/css" href="index.css">
 <link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
 <link rel="stylesheet" type="text/css" href="prettify/prettify.css">
 </head>
 <body>
         <div id="header">
-            <h1><a href="index.html">Phone<strong>Gap</strong> Documentation</a></h1>
+            <h1><a href="index.html"><strong>Cordova</strong> Documentation</a></h1>
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="1.6.0rc1">1.6.0rc1</option>
+<option selected value="1.6.0">1.6.0</option>
 <option value="1.5.0rc1">1.5.0rc1</option>
-<option selected value="1.5.0">1.5.0</option>
+<option value="1.5.0">1.5.0</option>
 <option value="1.4.1">1.4.1</option>
 <option value="1.4.0rc1">1.4.0rc1</option>
 <option value="1.4.0">1.4.0</option>
@@ -47,7 +49,7 @@
             <small><select><option value="Getting%2520Started%2520with%2520Blackberry">Getting Started with Blackberry</option>
 <option value="Getting%20Started%20with%20Blackberry_video_tutorials">      - Video Tutorials:</option>
 <option value="Getting%20Started%20with%20Blackberry_1_requirements">      - 1. Requirements</option>
-<option value="Getting%20Started%20with%20Blackberry_2_install_sdk_phonegap">      - 2. Install SDK + PhoneGap</option>
+<option value="Getting%20Started%20with%20Blackberry_2_install_sdk_cordova">      - 2. Install SDK + Cordova</option>
 <option value="Getting%20Started%20with%20Blackberry_3_setup_new_project">      - 3. Setup New Project</option>
 <option value="Getting%20Started%20with%20Blackberry_4_hello_world">      - 4. Hello World</option>
 <option value="Getting%20Started%20with%20Blackberry_5a_deploy_to_simulator_windows_only">      - 5A. Deploy to Simulator (Windows Only)</option>
@@ -84,12 +86,14 @@
             <div id="content">
                 <h1><a name="Getting%20Started%20with%20Blackberry">Getting Started with Blackberry</a></h1>
 
+<p>This guide describes how to set up your development environment for Cordova and run a sample application.  Note that Cordova used to be called PhoneGap, so some of the sites still use the old PhoneGap name.</p>
+
 <h2>
 <a name="Getting%20Started%20with%20Blackberry_video_tutorials">Video Tutorials:</a>
 </h2>
 
 <ul>
-<li><a class="external" href="http://www.youtube.com/v/eF0h0K0OLwI?autoplay=1">PhoneGap and BlackBerry Widgets uick Start Video</a></li>
+<li><a class="external" href="http://www.youtube.com/v/eF0h0K0OLwI?autoplay=1">Cordova and BlackBerry Widgets Quick Start Video</a></li>
 </ul>
 <h2>
 <a name="Getting%20Started%20with%20Blackberry_1_requirements">1. Requirements</a>
@@ -101,22 +105,22 @@
 <p>For 4.x devices check out <a class="external" href="http://wiki.phonegap.com/w/page/25653281/Getting%20Started%20with%20PhoneGap-BlackBerry%20with%20the%20Latest%20Environment">this guide</a>.</p>
 
 <h2>
-<a name="Getting%20Started%20with%20Blackberry_2_install_sdk_phonegap">2. Install SDK + PhoneGap</a>
+<a name="Getting%20Started%20with%20Blackberry_2_install_sdk_cordova">2. Install SDK + Cordova</a>
 </h2>
 
 <ul>
 <li>(Windows Only) Download and install <a class="external" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html#jdk">SUN JDK</a> (32-Bit Version). Add it to your PATH variable.</li>
 <li>(Windows Only) Download and extract <a class="external" href="http://ant.apache.org/bindownload.cgi">Apache Ant</a>. Add it to your PATH variable.</li>
 <li>Download <a href="ttps://bdsc.webapps.blackberry.com/html5/download/sdk">BlackBerry WebWorks Smartphone SDK</a> for BlackBerry development and/or <a class="external" href="https://bdsc.webapps.blackberry.com/html5/download/sdk">BlackBerry WebWorks Tablet OS SDK</a> for Playbook development. Keep note of the directories you install these SDKs.</li>
-<li>Donwload the latest copy of <a class="external" href="http://phonegap.com/download">PhoneGap</a> and extract its contents. We will be working with the Android directory.</li>
+<li>Donwload the latest copy of <a class="external" href="http://phonegap.com/download">Cordova</a> and extract its contents. We will be working with the Android directory.</li>
 </ul>
 <h2>
 <a name="Getting%20Started%20with%20Blackberry_3_setup_new_project">3. Setup New Project</a>
 </h2>
 
 <ul>
-<li>Open up a command prompt/terminal and navigate to where you extracted PhoneGap. CD into the PhoneGapBlackBerry directory.</li>
-<li>Create a PhoneGap BlackBerry and PlayBook project. Type 'ant create -Dproject.path='followed by the location you wish to create your project into the command prompt/terminal.</li>
+<li>Open up a command prompt/terminal and navigate to where you extracted Cordova. CD into the Cordova BlackBerry directory.</li>
+<li>Create a Cordova BlackBerry and PlayBook project. Type 'ant create -Dproject.path='followed by the location you wish to create your project into the command prompt/terminal.</li>
 <li>Change to the newly created directory located at <code>C:\Dev\bbw\sample</code>.</li>
 <li>Open up the project.properties file with your favourite editor and change the lines <code>BlackBerry.bbwp.dir=</code> and <code>PlayBook.bbwp.dir=</code> to equal the respective install locations of the SDKs you downloaded earlier.</li>
 </ul>
@@ -124,7 +128,7 @@
 <a name="Getting%20Started%20with%20Blackberry_4_hello_world">4. Hello World</a>
 </h2>
 
-<p>Build the PhoneGap sample project by typing <code>ant target build</code> in your command prompt/terminal while you are in your project's directory. Replace the target with either blackberry or playbook. Note this is the sample PhoneGap project and not a basic hello world application. You can go edit the index.html file located in the www directory of your project to make it say Hello World if you wish.</p>
+<p>Build the Cordova sample project by typing <code>ant target build</code> in your command prompt/terminal while you are in your project's directory. Replace the target with either blackberry or playbook. Note this is the sample Cordova project and not a basic hello world application. You can go edit the index.html file located in the www directory of your project to make it say Hello World if you wish.</p>
 
 <h2>
 <a name="Getting%20Started%20with%20Blackberry_5a_deploy_to_simulator_windows_only">5A. Deploy to Simulator (Windows Only)</a>
@@ -147,7 +151,7 @@
 <a name="Getting%20Started%20with%20Blackberry_done">Done!</a>
 </h2>
 
-<p>You can also checkout more detailed <a href="phonegap_storage_storage.md.html#version">version</a> of this guide <a class="external" href="http://wiki.phonegap.com/w/page/31930982/Getting-Started-with-PhoneGap-BlackBerry-WebWorks">here</a>.</p>
+<p>You can also checkout more detailed version of this guide <a class="external" href="http://wiki.phonegap.com/w/page/31930982/Getting-Started-with-PhoneGap-BlackBerry-WebWorks">here</a>.</p>
 
             </div>
         </div>

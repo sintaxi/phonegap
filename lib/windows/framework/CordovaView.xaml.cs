@@ -50,7 +50,18 @@ namespace WP7CordovaClassLib
         /// Prevents data clearing during page transitions.
         /// </summary>
         private bool IsBrowserInitialized = false;
+        
+        /// <summary>
+        /// Set when the user attaches a back button handler inside the WebBrowser
+        /// </summary>
         private bool OverrideBackButton = false;
+
+        /// <summary>
+        /// Used for keeping track of our history
+        /// </summary>
+        private Stack<Uri> history = new Stack<Uri>();
+        private bool IsBackButtonPressed = false;
+
 
         private static string AppRoot = "/app/";
 
@@ -311,9 +322,20 @@ namespace WP7CordovaClassLib
                     CordovaBrowser.InvokeScript("CordovaCommandResult", new string[] { "backbutton" });
                     e.Cancel = true;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
+                    Console.WriteLine("Exception while invoking backbutton into cordova view: " + ex.Message);
+                }
+            }
+            else
+            {
+                if (history.Count > 1)
+                {
+                    history.Pop();
+                    Uri next = history.Peek();
+                    IsBackButtonPressed = true;
+                    CordovaBrowser.Navigate(next);
+                    e.Cancel = true;
                 }
             }
         }
@@ -321,15 +343,37 @@ namespace WP7CordovaClassLib
         void GapBrowser_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
             this.CordovaBrowser.Opacity = 1;
+
+            string nativeReady = "(function(){ cordova.require('cordova/channel').onNativeReady.fire()})();";
+
+            try
+            {
+                CordovaBrowser.InvokeScript("execScript", new string[] { nativeReady });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error calling js to fire nativeReady event :: " + ex.Message);
+            }
         }
 
 
         void GapBrowser_Navigating(object sender, NavigatingEventArgs e)
         {
+            if (!IsBackButtonPressed)
+            {
+                history.Push(e.Uri);
+            }
+            else
+            {
+                IsBackButtonPressed = false;
+            }
+
             Debug.WriteLine("GapBrowser_Navigating to :: " + e.Uri.ToString());
             // TODO: tell any running plugins to stop doing what they are doing.
             // TODO: check whitelist / blacklist
             // NOTE: Navigation can be cancelled by setting :        e.Cancel = true;
+
+
         }
 
         /*
@@ -345,6 +389,8 @@ namespace WP7CordovaClassLib
         {
             string commandStr = e.Value;
 
+            Debug.WriteLine("ScriptNotify::" + commandStr);
+
             // DOMStorage/Local OR DOMStorage/Session
             if (commandStr.IndexOf("DOMStorage") == 0)
             {
@@ -358,7 +404,7 @@ namespace WP7CordovaClassLib
             }
 
             CordovaCommandCall commandCallParams = CordovaCommandCall.Parse(commandStr);
-
+            
             if (commandCallParams == null)
             {
                 // ERROR
@@ -369,13 +415,14 @@ namespace WP7CordovaClassLib
                 switch (commandCallParams.Action.ToLower())
                 {
                     case "overridebackbutton":
-                        string[] args = Cordova.JSON.JsonHelper.Deserialize<string[]>(commandCallParams.Args);
-                        this.OverrideBackButton = (args != null && args.Length > 0 && args[0] == "true");
+                        string args = commandCallParams.Args;
+                        this.OverrideBackButton = (args != null && args.Length > 0 && args == "true");
                         break;
                 }
             }
             else
             {
+                //Debug.WriteLine("ProcessCommand :: " + commandStr);
                 this.nativeExecution.ProcessCommand(commandCallParams);
             }
         }

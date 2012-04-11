@@ -189,6 +189,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
 
             JSONContact contact = JSON.JsonHelper.Deserialize<JSONContact>(jsonContact);
 
+
             SaveContactTask contactTask = new SaveContactTask();
 
             if (contact.nickname != null)
@@ -255,19 +256,26 @@ namespace WP7CordovaClassLib.Cordova.Commands
             {
                 foreach (JSONContactField field in contact.emails)
                 {
-                    string fieldType = field.type.ToLower();
-                    if (fieldType == "work")
+                    if (field != null)
                     {
-                        contactTask.WorkEmail = field.value;
+                        if (field.type != null)
+                        {
+                            string fieldType = field.type.ToLower();
+                            if (fieldType == "work")
+                            {
+                                contactTask.WorkEmail = field.value;
+                            }
+                            else if (fieldType == "home" || fieldType == "personal")
+                            {
+                                contactTask.PersonalEmail = field.value;
+                            }
+                        }
+                        else
+                        {
+                            contactTask.OtherEmail = field.value;
+                        }
                     }
-                    else if (fieldType == "home" || fieldType == "personal")
-                    {
-                        contactTask.PersonalEmail = field.value;
-                    }
-                    else
-                    {
-                        contactTask.OtherEmail = field.value;
-                    }
+                   
                 }
             }
             #endregion
@@ -482,14 +490,42 @@ namespace WP7CordovaClassLib.Cordova.Commands
             return retVal.TrimEnd(',');
         }
 
+        private string getFormattedJSONAddress(ContactAddress address, bool isPrefered)
+        {
+
+            string addressFormatString = "pref:{0}," + // bool
+                          "type:'{1}'," +
+                          "formatted:'{2}'," +
+                          "streetAddress:'{3}'," +
+                          "locality:'{4}'," +
+                          "region:'{5}'," +
+                          "postalCode:'{6}'," +
+                          "country:'{7}'";
+
+            string jsonAddress = string.Format(addressFormatString,
+                                               isPrefered ? "true" : "false",
+                                               address.Kind.ToString(),
+                                               "formattedAddress",
+                                               address.PhysicalAddress.AddressLine1 + " " + address.PhysicalAddress.AddressLine2,
+                                               address.PhysicalAddress.City,
+                                               address.PhysicalAddress.StateProvince,
+                                               address.PhysicalAddress.PostalCode,
+                                               address.PhysicalAddress.CountryRegion);
+
+
+
+
+            return "{" + jsonAddress + "}";
+        }
+
         private string FormatJSONAddresses(Contact con)
         {
             string retVal = "";
             foreach (ContactAddress address in con.Addresses)
             {
-                retVal += "\"" + address.ToString() + "\",";
+                retVal += this.getFormattedJSONAddress(address, false) + ",";
             }
-            return retVal.TrimEnd(',');
+            return "[" + retVal.TrimEnd(',') + "]";
         }
 
         private string FormatJSONWebsites(Contact con)

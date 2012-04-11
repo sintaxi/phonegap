@@ -98,8 +98,9 @@ namespace WP7CordovaClassLib.Cordova
 		/// <param name="status">Execution result</param>
 		/// <param name="message">The message</param>
 		public PluginResult(Status status, object message)
-			: this(status, message, null)
 		{
+            this.Result = status;
+            this.Message = JSON.JsonHelper.Serialize(message);
 		}
 
 		/// <summary>
@@ -108,6 +109,8 @@ namespace WP7CordovaClassLib.Cordova
 		/// <param name="status">Execution result</param>
 		/// <param name="message">The message</param>
 		/// <param name="cast">The cast parameter</param>
+        /// 
+        [Obsolete("Don't use Cast!!", false)]
 		public PluginResult(Status status, object message, string cast)
 		{
 			this.Result = status;
@@ -136,6 +139,7 @@ namespace WP7CordovaClassLib.Cordova
 				StringBuilder buf = new StringBuilder("");
 				if (this.Cast != null)
 				{
+                    Debug.WriteLine(callbackId + "this.Cast = " + this.Cast);
 					buf.Append("var temp = " + this.Cast + "(" + this.ToJSONString() + ");\n");
 					buf.Append(String.Format("{0}('{1}',temp);", successCallback, callbackId));
 				}

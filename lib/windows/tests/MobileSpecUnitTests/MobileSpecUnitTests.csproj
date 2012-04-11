@@ -82,6 +82,9 @@
     <None Include="Properties\WMAppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\..\js\pkg\cordova.wp7.js">
+      <Link>www\cordova.wp7.js</Link>
+    </Content>
     <Content Include="ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -89,34 +92,60 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="CordovaSourceDictionary.xml" />
-    <None Include="ManifestProcessor.js" />
-    <Content Include="SplashScreenImage.jpg" />
-    <Content Include="www\autotest\index.html">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="www\accelerometer\index.html" />
+    <Content Include="www\audio\index.html" />
+    <Content Include="www\autotest\index.html" />
+    <Content Include="www\autotest\pages\accelerometer.html" />
+    <Content Include="www\autotest\pages\all.html" />
+    <Content Include="www\autotest\pages\battery.html" />
+    <Content Include="www\autotest\pages\camera.html" />
+    <Content Include="www\autotest\pages\capture.html" />
+    <Content Include="www\autotest\pages\compass.html" />
+    <Content Include="www\autotest\pages\contacts.html" />
+    <Content Include="www\autotest\pages\device.html" />
+    <Content Include="www\autotest\pages\file.html" />
+    <Content Include="www\autotest\pages\geolocation.html" />
+    <Content Include="www\autotest\pages\media.html" />
+    <Content Include="www\autotest\pages\network.html" />
+    <Content Include="www\autotest\pages\notification.html" />
+    <Content Include="www\autotest\pages\platform.html" />
+    <Content Include="www\autotest\pages\storage.html" />
     <Content Include="www\autotest\qunit.css" />
     <Content Include="www\autotest\qunit.js" />
     <Content Include="www\autotest\test-runner.js" />
     <Content Include="www\autotest\tests\accelerometer.tests.js" />
+    <Content Include="www\autotest\tests\battery.tests.js" />
     <Content Include="www\autotest\tests\camera.tests.js" />
     <Content Include="www\autotest\tests\capture.tests.js" />
     <Content Include="www\autotest\tests\compass.tests.js" />
     <Content Include="www\autotest\tests\contacts.tests.js" />
     <Content Include="www\autotest\tests\device.tests.js" />
     <Content Include="www\autotest\tests\file.tests.js" />
-    <Content Include="www\autotest\tests\filetransfer.tests.js" />
     <Content Include="www\autotest\tests\geolocation.tests.js" />
     <Content Include="www\autotest\tests\media.tests.js" />
     <Content Include="www\autotest\tests\network.tests.js" />
     <Content Include="www\autotest\tests\notification.tests.js" />
     <Content Include="www\autotest\tests\orientation.tests.js" />
+    <Content Include="www\autotest\tests\platform.tests.js" />
     <Content Include="www\autotest\tests\storage.tests.js" />
     <Content Include="www\autotest\tests\system.tests.js" />
-    <Content Include="www\cordova-1.5.0.js" />
-    <Content Include="www\index.html">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="www\battery\index.html" />
+    <Content Include="www\camera\index.html" />
+    <Content Include="www\compass\index.html" />
+    <Content Include="www\contacts\index.html" />
+    <Content Include="www\events\index.html" />
+    <Content Include="www\index.html" />
+    <Content Include="www\location\index.html" />
+    <Content Include="www\main.js" />
     <Content Include="www\master.css" />
+    <Content Include="www\misc\index.html" />
+    <Content Include="www\misc\page2.html" />
+    <Content Include="www\notification\index.html" />
+    <Content Include="www\phonegap.js" />
+    <Content Include="www\sql\index.html" />
+    <Content Include="www\storage\index.html" />
+    <None Include="ManifestProcessor.js" />
+    <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

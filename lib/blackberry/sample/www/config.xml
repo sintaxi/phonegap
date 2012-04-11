@@ -43,9 +43,9 @@
   <access subdomains="true" uri="*" />
 
   <icon rim:hover="false" src="resources/icon.png" />
-  <icon rim:hover="true" src="resources/icon_hover.png" />
+  <icon rim:hover="true" src="resources/icon.png" />
 
-  <rim:loadingScreen backgroundColor="#000000"
+  <rim:loadingScreen backgroundColor="#CFCFCF"
                      foregroundImage="resources/loading_foreground.png"
 		     onFirstLaunch="true">
     <rim:transitionEffect type="fadeOut" />

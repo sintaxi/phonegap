@@ -4,19 +4,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
 <meta name="generator" content="joDoc">
-<title>PhoneGap API Documentation</title>
+<title>Cordova API Documentation</title>
 <link rel="stylesheet" type="text/css" href="index.css">
 <link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
 <link rel="stylesheet" type="text/css" href="prettify/prettify.css">
 </head>
 <body>
         <div id="header">
-            <h1><a href="index.html">Phone<strong>Gap</strong> Documentation</a></h1>
+            <h1><a href="index.html"><strong>Cordova</strong> Documentation</a></h1>
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="1.6.0rc1">1.6.0rc1</option>
+<option selected value="1.6.0">1.6.0</option>
 <option value="1.5.0rc1">1.5.0rc1</option>
-<option selected value="1.5.0">1.5.0</option>
+<option value="1.5.0">1.5.0</option>
 <option value="1.4.1">1.4.1</option>
 <option value="1.4.0rc1">1.4.0rc1</option>
 <option value="1.4.0">1.4.0</option>
@@ -157,7 +159,7 @@
                 <h1><a name="Events">Events</a></h1>
 
 <blockquote>
-  <p>PhoneGap lifecycle events.</p>
+  <p>Cordova lifecycle events.</p>
 </blockquote>
 
 <h2>
@@ -184,7 +186,7 @@
 <hr>
 <h1><a name="deviceready">deviceready</a></h1>
 
-<p>This is an event that fires when PhoneGap is fully loaded.</p>
+<p>This is an event that fires when Cordova is fully loaded.</p>
 
 <pre class="prettyprint"><code>document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", yourCallbackFunction, false);
 </code></pre>
@@ -193,11 +195,11 @@
 <a name="deviceready_details">Details</a>
 </h2>
 
-<p>This is a very important event that every PhoneGap application should use.</p>
+<p>This is a very important event that every Cordova application should use.</p>
 
-<p>PhoneGap consists of two code bases: native and JavaScript. While the native code is loading, a custom loading image is displayed. However, JavaScript is only loaded once the DOM loads. This means your web application could, potentially, call a PhoneGap JavaScript function before it is loaded.</p>
+<p>Cordova consists of two code bases: native and JavaScript. While the native code is loading, a custom loading image is displayed. However, JavaScript is only loaded once the DOM loads. This means your web application could, potentially, call a Cordova JavaScript function before it is loaded.</p>
 
-<p>The PhoneGap <code><a href="phonegap_events_events.md.html#deviceready">deviceready</a></code> event fires once PhoneGap has fully loaded. After the device has fired, you can safely make calls to PhoneGap function.</p>
+<p>The Cordova <code><a href="phonegap_events_events.md.html#deviceready">deviceready</a></code> event fires once Cordova has fully loaded. After the device has fired, you can safely make calls to Cordova function.</p>
 
 <p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once the HTML document's DOM has loaded.</p>
 
@@ -217,7 +219,7 @@
 <pre class="prettyprint"><code>document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
 function onDeviceReady() {
-    // Now safe to use the PhoneGap API
+    // Now safe to use the Cordova API
 }
 </code></pre>
 
@@ -228,25 +230,25 @@ function onDeviceReady() {
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;PhoneGap <a href="phonegap_device_device.md.html#Device">Device</a> Ready Example&lt;/title&gt;
+    &lt;title&gt;Cordova <a href="phonegap_device_device.md.html#Device">Device</a> Ready Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Call onDeviceReady when PhoneGap is loaded.
+    // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but phonegap.js has not.
-    // When PhoneGap is loaded and talking with the native device,
+    // At this point, the document has loaded but cordova-1.6.0.js has not.
+    // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
     //
     function onLoad() {
         document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
     }
 
-    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    // Cordova is loaded and it is now safe to make calls Cordova methods
     //
     function onDeviceReady() {
-        // Now safe to use the PhoneGap API
+        // Now safe to use the Cordova API
     }
 
     &lt;/script&gt;
@@ -262,15 +264,15 @@ function onDeviceReady() {
 
 <p>Custom events are not supported in the RIM BrowserField (web browser view), so the <code><a href="phonegap_events_events.md.html#deviceready">deviceready</a></code> event will never fire.</p>
 
-<p>A workaround is to manually query <code>PhoneGap.available</code> until PhoneGap has fully loaded.</p>
+<p>A workaround is to manually query <code>cordova.available</code> until Cordova has fully loaded.</p>
 
 <pre class="prettyprint"><code>function onLoad() {
     // BlackBerry OS 4 browser does not support events.
-    // So, manually wait until PhoneGap is available.
+    // So, manually wait until Cordova is available.
     //
     var intervalID = window.setInterval(
       function() {
-          if (PhoneGap.available) {
+          if (cordova.available) {
               window.clearInterval(intervalID);
               onDeviceReady();
           }
@@ -280,14 +282,14 @@ function onDeviceReady() {
 }
 
 function onDeviceReady() {
-    // Now safe to use the PhoneGap API
+    // Now safe to use the Cordova API
 }
 </code></pre>
 
 <hr>
 <h1><a name="pause">pause</a></h1>
 
-<p>This is an event that fires when a PhoneGap application is put into the background.</p>
+<p>This is an event that fires when a Cordova application is put into the background.</p>
 
 <pre class="prettyprint"><code>document.addEventListener("<a href="phonegap_events_events.md.html#pause">pause</a>", yourCallbackFunction, false);
 </code></pre>
@@ -296,9 +298,9 @@ function onDeviceReady() {
 <a name="pause_details">Details</a>
 </h2>
 
-<p>PhoneGap consists of two code bases: native and JavaScript. While the native code puts the application into the background the <a href="phonegap_events_events.md.html#pause">pause</a> event is fired.  </p>
+<p>Cordova consists of two code bases: native and JavaScript. While the native code puts the application into the background the <a href="phonegap_events_events.md.html#pause">pause</a> event is fired.  </p>
 
-<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the PhoneGap '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
+<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the Cordova '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
 
 <h2>
 <a name="pause_supported_platforms">Supported Platforms</a>
@@ -327,22 +329,22 @@ function onPause() {
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;PhoneGap Pause Example&lt;/title&gt;
+    &lt;title&gt;Cordova Pause Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Call onDeviceReady when PhoneGap is loaded.
+    // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but phonegap.js has not.
-    // When PhoneGap is loaded and talking with the native device,
+    // At this point, the document has loaded but cordova-1.6.0.js has not.
+    // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
     //
     function onLoad() {
         document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
     }
 
-    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    // Cordova is loaded and it is now safe to make calls Cordova methods
     //
     function onDeviceReady() {
         document.addEventListener("<a href="phonegap_events_events.md.html#pause">pause</a>", onPause, false);
@@ -364,12 +366,12 @@ function onPause() {
 <a name="pause_ios_quirks">iOS Quirks</a>
 </h2>
 
-<p>In the <a href="phonegap_events_events.md.html#pause">pause</a> handler, any calls that go through Objective-C will not work, nor will any calls that are interactive, like alerts. This means that you cannot call console.log (and its variants), or any calls from Plugins or the PhoneGap API. These will only be processed when the app resumes (processed on the next run-loop).</p>
+<p>In the <a href="phonegap_events_events.md.html#pause">pause</a> handler, any calls that go through Objective-C will not work, nor will any calls that are interactive, like alerts. This means that you cannot call console.log (and its variants), or any calls from Plugins or the Cordova API. These will only be processed when the app resumes (processed on the next run-loop).</p>
 
 <hr>
 <h1><a name="resume">resume</a></h1>
 
-<p>This is an event that fires when a PhoneGap application is retrieved from the background.</p>
+<p>This is an event that fires when a Cordova application is retrieved from the background.</p>
 
 <pre class="prettyprint"><code>document.addEventListener("<a href="phonegap_events_events.md.html#resume">resume</a>", yourCallbackFunction, false);
 </code></pre>
@@ -378,9 +380,9 @@ function onPause() {
 <a name="resume_details">Details</a>
 </h2>
 
-<p>PhoneGap consists of two code bases: native and JavaScript. While the native code pulls the application from the background the <a href="phonegap_events_events.md.html#resume">resume</a> event is fired.  </p>
+<p>Cordova consists of two code bases: native and JavaScript. While the native code pulls the application from the background the <a href="phonegap_events_events.md.html#resume">resume</a> event is fired.  </p>
 
-<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the PhoneGap '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
+<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the Cordova '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
 
 <h2>
 <a name="resume_supported_platforms">Supported Platforms</a>
@@ -409,22 +411,22 @@ function onResume() {
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;PhoneGap Resume Example&lt;/title&gt;
+    &lt;title&gt;Cordova Resume Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Call onDeviceReady when PhoneGap is loaded.
+    // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but phonegap.js has not.
-    // When PhoneGap is loaded and talking with the native device,
+    // At this point, the document has loaded but cordova-1.6.0.js has not.
+    // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
     //
     function onLoad() {
         document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
     }
 
-    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    // Cordova is loaded and it is now safe to make calls Cordova methods
     //
     function onDeviceReady() {
         document.addEventListener("<a href="phonegap_events_events.md.html#resume">resume</a>", onResume, false);
@@ -445,7 +447,7 @@ function onResume() {
 <hr>
 <h1><a name="online">online</a></h1>
 
-<p>This is an event that fires when a PhoneGap application is <a href="phonegap_events_events.md.html#online">online</a> (connected to the Internet).</p>
+<p>This is an event that fires when a Cordova application is <a href="phonegap_events_events.md.html#online">online</a> (connected to the Internet).</p>
 
 <pre class="prettyprint"><code>document.addEventListener("<a href="phonegap_events_events.md.html#online">online</a>", yourCallbackFunction, false);
 </code></pre>
@@ -456,7 +458,7 @@ function onResume() {
 
 <p>When the application's network connection changes to being <a href="phonegap_events_events.md.html#online">online</a>, the <a href="phonegap_events_events.md.html#online">online</a> event is fired.  </p>
 
-<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the PhoneGap '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
+<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the Cordova '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
 
 <h2>
 <a name="online_supported_platforms">Supported Platforms</a>
@@ -485,22 +487,22 @@ function onOnline() {
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;PhoneGap Online Example&lt;/title&gt;
+    &lt;title&gt;Cordova Online Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Call onDeviceReady when PhoneGap is loaded.
+    // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but phonegap.js has not.
-    // When PhoneGap is loaded and talking with the native device,
+    // At this point, the document has loaded but cordova-1.6.0.js has not.
+    // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
     //
     function onLoad() {
         document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
     }
 
-    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    // Cordova is loaded and it is now safe to make calls Cordova methods
     //
     function onDeviceReady() {
         document.addEventListener("<a href="phonegap_events_events.md.html#online">online</a>", onOnline, false);
@@ -527,7 +529,7 @@ function onOnline() {
 <hr>
 <h1><a name="offline">offline</a></h1>
 
-<p>This is an event that fires when a PhoneGap application is <a href="phonegap_events_events.md.html#offline">offline</a> (not connected to the Internet).</p>
+<p>This is an event that fires when a Cordova application is <a href="phonegap_events_events.md.html#offline">offline</a> (not connected to the Internet).</p>
 
 <pre class="prettyprint"><code>document.addEventListener("<a href="phonegap_events_events.md.html#offline">offline</a>", yourCallbackFunction, false);
 </code></pre>
@@ -538,7 +540,7 @@ function onOnline() {
 
 <p>When the application's network connection changes to being <a href="phonegap_events_events.md.html#offline">offline</a>, the <a href="phonegap_events_events.md.html#offline">offline</a> event is fired.  </p>
 
-<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the PhoneGap '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
+<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the Cordova '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
 
 <h2>
 <a name="offline_supported_platforms">Supported Platforms</a>
@@ -567,22 +569,22 @@ function onOffline() {
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;PhoneGap Offline Example&lt;/title&gt;
+    &lt;title&gt;Cordova Offline Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Call onDeviceReady when PhoneGap is loaded.
+    // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but phonegap.js has not.
-    // When PhoneGap is loaded and talking with the native device,
+    // At this point, the document has loaded but cordova-1.6.0.js has not.
+    // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
     //
     function onLoad() {
         document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
     }
 
-    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    // Cordova is loaded and it is now safe to make calls Cordova methods
     //
     function onDeviceReady() {
         document.addEventListener("<a href="phonegap_events_events.md.html#offline">offline</a>", onOffline, false);
@@ -620,7 +622,7 @@ function onOffline() {
 
 <p>If you need to override the default back button behaviour you can register an event listener for the '<a href="phonegap_events_events.md.html#backbutton">backbutton</a>' event.  It is no longer necessary to call any other method to over ride the back button behaviour.  Now, you only need to register an event listener for '<a href="phonegap_events_events.md.html#backbutton">backbutton</a>'.</p>
 
-<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the PhoneGap '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
+<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the Cordova '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
 
 <h2>
 <a name="backbutton_supported_platforms">Supported Platforms</a>
@@ -648,22 +650,22 @@ function onBackKeyDown() {
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;PhoneGap Back Button Example&lt;/title&gt;
+    &lt;title&gt;Cordova Back Button Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Call onDeviceReady when PhoneGap is loaded.
+    // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but phonegap.js has not.
-    // When PhoneGap is loaded and talking with the native device,
+    // At this point, the document has loaded but cordova-1.6.0.js has not.
+    // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
     //
     function onLoad() {
         document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
     }
 
-    // PhoneGap is loaded and it is now safe to call PhoneGap methods
+    // Cordova is loaded and it is now safe to call Cordova methods
     //
     function onDeviceReady() {
         // Register the event listener
@@ -685,7 +687,7 @@ function onBackKeyDown() {
 <hr>
 <h1><a name="batterycritical">batterycritical</a></h1>
 
-<p>This is an event that fires when a PhoneGap application detects the battery has reached the critical level threshold.</p>
+<p>This is an event that fires when a Cordova application detects the battery has reached the critical level threshold.</p>
 
 <pre class="prettyprint"><code>window.addEventListener("<a href="phonegap_events_events.md.html#batterycritical">batterycritical</a>", yourCallbackFunction, false);
 </code></pre>
@@ -694,7 +696,7 @@ function onBackKeyDown() {
 <a name="batterycritical_details">Details</a>
 </h2>
 
-<p>This event that fires when a PhoneGap application detects the percentage of battery has reached the critical battery threshold. This value is device specific.</p>
+<p>This event that fires when a Cordova application detects the percentage of battery has reached the critical battery threshold. This value is device specific.</p>
 
 <p>The <a href="phonegap_events_events.md.html#batterycritical">batterycritical</a> handler will be called with an object that contains two properties:</p>
 
@@ -706,7 +708,7 @@ function onBackKeyDown() {
 <strong>isPlugged:</strong> A boolean that represents whether or not the device is plugged in or not. <em>(Boolean)</em>
 </li>
 </ul>
-<p>Typically, you will want to attach an event listener with <code>window.addEventListener</code> once you receive the PhoneGap '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
+<p>Typically, you will want to attach an event listener with <code>window.addEventListener</code> once you receive the Cordova '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
 
 <h2>
 <a name="batterycritical_supported_platforms">Supported Platforms</a>
@@ -736,22 +738,22 @@ function onBatteryCritical(info) {
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;PhoneGap <a href="phonegap_device_device.md.html#Device">Device</a> Ready Example&lt;/title&gt;
+    &lt;title&gt;Cordova <a href="phonegap_device_device.md.html#Device">Device</a> Ready Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Call onDeviceReady when PhoneGap is loaded.
+    // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but phonegap.js has not.
-    // When PhoneGap is loaded and talking with the native device,
+    // At this point, the document has loaded but cordova-1.6.0.js has not.
+    // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
     // 
     function onLoad() {
         document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
     }
 
-    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    // Cordova is loaded and it is now safe to make calls Cordova methods
     //
     function onDeviceReady() {
         window.addEventListener("<a href="phonegap_events_events.md.html#batterycritical">batterycritical</a>", onBatteryCritical, false);
@@ -773,7 +775,7 @@ function onBatteryCritical(info) {
 <hr>
 <h1><a name="batterylow">batterylow</a></h1>
 
-<p>This is an event that fires when a PhoneGap application detects the battery has reached the low level threshold.</p>
+<p>This is an event that fires when a Cordova application detects the battery has reached the low level threshold.</p>
 
 <pre class="prettyprint"><code>window.addEventListener("<a href="phonegap_events_events.md.html#batterylow">batterylow</a>", yourCallbackFunction, false);
 </code></pre>
@@ -782,7 +784,7 @@ function onBatteryCritical(info) {
 <a name="batterylow_details">Details</a>
 </h2>
 
-<p>This event that fires when a PhoneGap application detects the percentage of battery has reached the low battery threshold. This value is device specific.</p>
+<p>This event that fires when a Cordova application detects the percentage of battery has reached the low battery threshold. This value is device specific.</p>
 
 <p>The <a href="phonegap_events_events.md.html#batterylow">batterylow</a> handler will be called with an object that contains two properties:</p>
 
@@ -794,7 +796,7 @@ function onBatteryCritical(info) {
 <strong>isPlugged:</strong> A boolean that represents whether or not the device is plugged in or not. <em>(Boolean)</em>
 </li>
 </ul>
-<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the PhoneGap '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
+<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the Cordova '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
 
 <h2>
 <a name="batterylow_supported_platforms">Supported Platforms</a>
@@ -824,22 +826,22 @@ function onBatteryLow(info) {
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;PhoneGap <a href="phonegap_device_device.md.html#Device">Device</a> Ready Example&lt;/title&gt;
+    &lt;title&gt;Cordova <a href="phonegap_device_device.md.html#Device">Device</a> Ready Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Call onDeviceReady when PhoneGap is loaded.
+    // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but phonegap.js has not.
-    // When PhoneGap is loaded and talking with the native device,
+    // At this point, the document has loaded but cordova-1.6.0.js has not.
+    // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
     // 
     function onLoad() {
         document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
     }
 
-    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    // Cordova is loaded and it is now safe to make calls Cordova methods
     //
     function onDeviceReady() {
         window.addEventListener("<a href="phonegap_events_events.md.html#batterylow">batterylow</a>", onBatteryLow, false);
@@ -861,7 +863,7 @@ function onBatteryLow(info) {
 <hr>
 <h1><a name="batterystatus">batterystatus</a></h1>
 
-<p>This is an event that fires when a PhoneGap application detects a change in the battery status.</p>
+<p>This is an event that fires when a Cordova application detects a change in the battery status.</p>
 
 <pre class="prettyprint"><code>window.addEventListener("<a href="phonegap_events_events.md.html#batterystatus">batterystatus</a>", yourCallbackFunction, false);
 </code></pre>
@@ -870,7 +872,7 @@ function onBatteryLow(info) {
 <a name="batterystatus_details">Details</a>
 </h2>
 
-<p>This event that fires when a PhoneGap application detects the percentage of battery has changed by at least 1 percent. It is also fired if the device has been plugged in or un-plugged.</p>
+<p>This event that fires when a Cordova application detects the percentage of battery has changed by at least 1 percent. It is also fired if the device has been plugged in or un-plugged.</p>
 
 <p>The battery status handler will be called with an object that contains two properties:</p>
 
@@ -882,7 +884,7 @@ function onBatteryLow(info) {
 <strong>isPlugged:</strong> A boolean that represents whether or not the device is plugged in or not. <em>(Boolean)</em>
 </li>
 </ul>
-<p>Typically, you will want to attach an event listener with <code>window.addEventListener</code> once you receive the PhoneGap '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
+<p>Typically, you will want to attach an event listener with <code>window.addEventListener</code> once you receive the Cordova '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
 
 <h2>
 <a name="batterystatus_supported_platforms">Supported Platforms</a>
@@ -912,22 +914,22 @@ function onBatteryStatus(info) {
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;PhoneGap <a href="phonegap_device_device.md.html#Device">Device</a> Ready Example&lt;/title&gt;
+    &lt;title&gt;Cordova <a href="phonegap_device_device.md.html#Device">Device</a> Ready Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Call onDeviceReady when PhoneGap is loaded.
+    // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but phonegap.js has not.
-    // When PhoneGap is loaded and talking with the native device,
+    // At this point, the document has loaded but cordova-1.6.0.js has not.
+    // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
     // 
     function onLoad() {
         document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
     }
 
-    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    // Cordova is loaded and it is now safe to make calls Cordova methods
     //
     function onDeviceReady() {
         window.addEventListener("<a href="phonegap_events_events.md.html#batterystatus">batterystatus</a>", onBatteryStatus, false);
@@ -960,7 +962,7 @@ function onBatteryStatus(info) {
 
 <p>If you need to override the default menu button behaviour you can register an event listenter for the '<a href="phonegap_events_events.md.html#menubutton">menubutton</a>' event.</p>
 
-<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the PhoneGap '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
+<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the Cordova '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
 
 <h2>
 <a name="menubutton_supported_platforms">Supported Platforms</a>
@@ -989,22 +991,22 @@ function onMenuKeyDown() {
                       "http://www.w3.org/TR/html4/strict.dtd"&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;PhoneGap Menu Button Example&lt;/title&gt;
+    &lt;title&gt;Cordova Menu Button Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Call onDeviceReady when PhoneGap is loaded.
+    // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but phonegap.js has not.
-    // When PhoneGap is loaded and talking with the native device,
+    // At this point, the document has loaded but cordova-1.6.0.js has not.
+    // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
     //
     function onLoad() {
         document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
     }
 
-    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    // Cordova is loaded and it is now safe to make calls Cordova methods
     //
     function onDeviceReady() {
         // Register the event listener
@@ -1037,7 +1039,7 @@ function onMenuKeyDown() {
 
 <p>If you need to override the default search button behaviour on Android you can register an event listener for the '<a href="phonegap_events_events.md.html#searchbutton">searchbutton</a>' event.</p>
 
-<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the PhoneGap '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
+<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the Cordova '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
 
 <h2>
 <a name="searchbutton_supported_platforms">Supported Platforms</a>
@@ -1065,22 +1067,22 @@ function onSearchKeyDown() {
                       "http://www.w3.org/TR/html4/strict.dtd"&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;PhoneGap Search Button Example&lt;/title&gt;
+    &lt;title&gt;Cordova Search Button Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Call onDeviceReady when PhoneGap is loaded.
+    // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but phonegap.js has not.
-    // When PhoneGap is loaded and talking with the native device,
+    // At this point, the document has loaded but cordova-1.6.0.js has not.
+    // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
     //
     function onLoad() {
         document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
     }
 
-    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    // Cordova is loaded and it is now safe to make calls Cordova methods
     //
     function onDeviceReady() {
         // Register the event listener
@@ -1113,7 +1115,7 @@ function onSearchKeyDown() {
 
 <p>If you need to override the default start call behaviour you can register an event listener for the '<a href="phonegap_events_events.md.html#startcallbutton">startcallbutton</a>' event.</p>
 
-<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the PhoneGap '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
+<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the Cordova '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
 
 <h2>
 <a name="startcallbutton_supported_platforms">Supported Platforms</a>
@@ -1141,22 +1143,22 @@ function onStartCallKeyDown() {
                       "http://www.w3.org/TR/html4/strict.dtd"&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;PhoneGap Start Call Button Example&lt;/title&gt;
+    &lt;title&gt;Cordova Start Call Button Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Call onDeviceReady when PhoneGap is loaded.
+    // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but phonegap.js has not.
-    // When PhoneGap is loaded and talking with the native device,
+    // At this point, the document has loaded but cordova-1.6.0.js has not.
+    // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
     //
     function onLoad() {
         document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
     }
 
-    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    // Cordova is loaded and it is now safe to make calls Cordova methods
     //
     function onDeviceReady() {
         // Register the event listener
@@ -1189,7 +1191,7 @@ function onStartCallKeyDown() {
 
 <p>If you need to override the default end call behaviour you can register an event listener for the '<a href="phonegap_events_events.md.html#endcallbutton">endcallbutton</a>' event.</p>
 
-<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the PhoneGap '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
+<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the Cordova '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
 
 <h2>
 <a name="endcallbutton_supported_platforms">Supported Platforms</a>
@@ -1217,22 +1219,22 @@ function onEndCallKeyDown() {
                       "http://www.w3.org/TR/html4/strict.dtd"&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;PhoneGap End Call Button Example&lt;/title&gt;
+    &lt;title&gt;Cordova End Call Button Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Call onDeviceReady when PhoneGap is loaded.
+    // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but phonegap.js has not.
-    // When PhoneGap is loaded and talking with the native device,
+    // At this point, the document has loaded but cordova-1.6.0.js has not.
+    // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
     //
     function onLoad() {
         document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
     }
 
-    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    // Cordova is loaded and it is now safe to make calls Cordova methods
     //
     function onDeviceReady() {
         // Register the event listener
@@ -1265,7 +1267,7 @@ function onEndCallKeyDown() {
 
 <p>If you need to override the default volume down behaviour you can register an event listener for the '<a href="phonegap_events_events.md.html#volumedownbutton">volumedownbutton</a>' event.</p>
 
-<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the PhoneGap '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
+<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the Cordova '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
 
 <h2>
 <a name="volumedownbutton_supported_platforms">Supported Platforms</a>
@@ -1293,22 +1295,22 @@ function onVolumeDownKeyDown() {
                       "http://www.w3.org/TR/html4/strict.dtd"&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;PhoneGap Volume Down Button Example&lt;/title&gt;
+    &lt;title&gt;Cordova Volume Down Button Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Call onDeviceReady when PhoneGap is loaded.
+    // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but phonegap.js has not.
-    // When PhoneGap is loaded and talking with the native device,
+    // At this point, the document has loaded but cordova-1.6.0.js has not.
+    // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
     //
     function onLoad() {
         document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
     }
 
-    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    // Cordova is loaded and it is now safe to make calls Cordova methods
     //
     function onDeviceReady() {
         // Register the event listener
@@ -1341,7 +1343,7 @@ function onVolumeDownKeyDown() {
 
 <p>If you need to override the default volume up behaviour you can register an event listener for the '<a href="phonegap_events_events.md.html#volumeupbutton">volumeupbutton</a>' event.</p>
 
-<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the PhoneGap '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
+<p>Typically, you will want to attach an event listener with <code>document.addEventListener</code> once you receive the Cordova '<a href="phonegap_events_events.md.html#deviceready">deviceready</a>' event.</p>
 
 <h2>
 <a name="volumeupbutton_supported_platforms">Supported Platforms</a>
@@ -1369,22 +1371,22 @@ function onVolumeUpKeyDown() {
                       "http://www.w3.org/TR/html4/strict.dtd"&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;PhoneGap Volume Up Button Example&lt;/title&gt;
+    &lt;title&gt;Cordova Volume Up Button Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Call onDeviceReady when PhoneGap is loaded.
+    // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but phonegap.js has not.
-    // When PhoneGap is loaded and talking with the native device,
+    // At this point, the document has loaded but cordova-1.6.0.js has not.
+    // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="phonegap_events_events.md.html#deviceready">deviceready</a>`.
     //
     function onLoad() {
         document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
     }
 
-    // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+    // Cordova is loaded and it is now safe to make calls Cordova methods
     //
     function onDeviceReady() {
         // Register the event listener

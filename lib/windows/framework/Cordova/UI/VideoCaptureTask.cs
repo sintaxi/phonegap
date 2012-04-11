@@ -28,7 +28,7 @@ namespace WP7CordovaClassLib.Cordova.UI
     {
         /// <summary>
         /// Represents recorded video returned from a call to the Show method of
-        /// a WP7GapClassLib.Cordova.Controls.VideoCaptureTask object
+        /// a WP7CordovaClassLib.Cordova.Controls.VideoCaptureTask object
         /// </summary>
         public class VideoResult : TaskEventArgs
         {
@@ -75,7 +75,7 @@ namespace WP7CordovaClassLib.Cordova.UI
                 root.Navigated += new System.Windows.Navigation.NavigatedEventHandler(NavigationService_Navigated);
 
                 // dummy parameter is used to always open a fresh version
-                root.Navigate(new System.Uri("/WP7GapClassLib;component/Cordova/UI/VideoRecorder.xaml?dummy=" + Guid.NewGuid().ToString(), UriKind.Relative));
+                root.Navigate(new System.Uri("/WP7CordovaClassLib;component/Cordova/UI/VideoRecorder.xaml?dummy=" + Guid.NewGuid().ToString(), UriKind.Relative));
             });
         }
 

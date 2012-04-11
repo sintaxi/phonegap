@@ -4,19 +4,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
 <meta name="generator" content="joDoc">
-<title>PhoneGap API Documentation</title>
+<title>Cordova API Documentation</title>
 <link rel="stylesheet" type="text/css" href="index.css">
 <link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
 <link rel="stylesheet" type="text/css" href="prettify/prettify.css">
 </head>
 <body>
         <div id="header">
-            <h1><a href="index.html">Phone<strong>Gap</strong> Documentation</a></h1>
+            <h1><a href="index.html"><strong>Cordova</strong> Documentation</a></h1>
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="1.6.0rc1">1.6.0rc1</option>
+<option selected value="1.6.0">1.6.0</option>
 <option value="1.5.0rc1">1.5.0rc1</option>
-<option selected value="1.5.0">1.5.0</option>
+<option value="1.5.0">1.5.0</option>
 <option value="1.4.1">1.4.1</option>
 <option value="1.4.0rc1">1.4.0rc1</option>
 <option value="1.4.0">1.4.0</option>
@@ -130,7 +132,7 @@
 
 <p><a href="phonegap_geolocation_geolocation.md.html#Geolocation">Geolocation</a> provides location information for the device, such as latitude and longitude. Common sources of location information include Global Positioning System (GPS) and location inferred from network signals such as IP address, RFID, WiFi and Bluetooth MAC addresses, and GSM/CDMA cell IDs. No guarantee is given that the API returns the device's actual location. </p>
 
-<p>This API is based on the <a class="external" href="http://dev.w3.org/geo/api/spec-source.html">W3C Geo location API Specification</a>.  Some devices already provide an implementation of this spec.  For those devices, the built-in support is used instead of replacing it with PhoneGap's implementation.  For devices that don't have geolocation support, PhoneGap's implementation should be compatible with the W3C specification.</p>
+<p>This API is based on the <a class="external" href="http://dev.w3.org/geo/api/spec-source.html">W3C Geo location API Specification</a>.  Some devices already provide an implementation of this spec.  For those devices, the built-in support is used instead of replacing it with Cordova's implementation.  For devices that don't have geolocation support, Cordova's implementation should be compatible with the W3C specification.</p>
 
 <h2>
 <a name="Geolocation_methods">Methods</a>
@@ -236,14 +238,14 @@ navigator.<a href="phonegap_geolocation_geolocation.md.html#geolocation.getCurre
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
+    // Wait for Cordova to load
     //
     document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
-    // PhoneGap is ready
+    // Cordova is ready
     //
     function onDeviceReady() {
         navigator.<a href="phonegap_geolocation_geolocation.md.html#geolocation.getCurrentPosition">geolocation.getCurrentPosition</a>(onSuccess, onError);
@@ -361,16 +363,16 @@ var watchID = navigator.<a href="phonegap_geolocation_geolocation.md.html#geoloc
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
+    // Wait for Cordova to load
     //
     document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     var watchID = null;
 
-    // PhoneGap is ready
+    // Cordova is ready
     //
     function onDeviceReady() {
         // Update every 3 seconds
@@ -457,16 +459,16 @@ navigator.<a href="phonegap_geolocation_geolocation.md.html#geolocation.clearWat
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
+    // Wait for Cordova to load
     //
     document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     var watchID = null;
 
-    // PhoneGap is ready
+    // Cordova is ready
     //
     function onDeviceReady() {
         // Update every 3 seconds
@@ -544,7 +546,7 @@ navigator.<a href="phonegap_geolocation_geolocation.md.html#geolocation.clearWat
 <a name="Coordinates_description">Description</a>
 </h2>
 
-<p>The <code><a href="phonegap_geolocation_geolocation.md.html#Coordinates">Coordinates</a></code> object is created and populated by PhoneGap, and attached to the <code><a href="phonegap_geolocation_geolocation.md.html#Position">Position</a></code> object. The <code><a href="phonegap_geolocation_geolocation.md.html#Position">Position</a></code> object is then returned to the user through a callback function.</p>
+<p>The <code><a href="phonegap_geolocation_geolocation.md.html#Coordinates">Coordinates</a></code> object is created and populated by Cordova, and attached to the <code><a href="phonegap_geolocation_geolocation.md.html#Position">Position</a></code> object. The <code><a href="phonegap_geolocation_geolocation.md.html#Position">Position</a></code> object is then returned to the user through a callback function.</p>
 
 <h2>
 <a name="Coordinates_supported_platforms">Supported Platforms</a>
@@ -591,14 +593,14 @@ navigator.<a href="phonegap_geolocation_geolocation.md.html#geolocation.getCurre
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_geolocation_geolocation.md.html#Geolocation">Geolocation</a> <a href="phonegap_geolocation_geolocation.md.html#Position">Position</a> Example&lt;/title&gt;
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Set an event to wait for PhoneGap to load
+    // Set an event to wait for Cordova to load
     //
     document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
-    // PhoneGap is loaded and Ready
+    // Cordova is loaded and Ready
     //
     function onDeviceReady() {
         navigator.<a href="phonegap_geolocation_geolocation.md.html#geolocation.getCurrentPosition">geolocation.getCurrentPosition</a>(onSuccess, onError);
@@ -659,7 +661,7 @@ navigator.<a href="phonegap_geolocation_geolocation.md.html#geolocation.getCurre
 <a name="Position_description">Description</a>
 </h2>
 
-<p>The <code><a href="phonegap_geolocation_geolocation.md.html#Position">Position</a></code> object is created and populated by PhoneGap, and returned to the user through a callback function.</p>
+<p>The <code><a href="phonegap_geolocation_geolocation.md.html#Position">Position</a></code> object is created and populated by Cordova, and returned to the user through a callback function.</p>
 
 <h2>
 <a name="Position_supported_platforms">Supported Platforms</a>
@@ -708,14 +710,14 @@ navigator.<a href="phonegap_geolocation_geolocation.md.html#geolocation.getCurre
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
+    // Wait for Cordova to load
     //
     document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
-    // PhoneGap is ready
+    // Cordova is ready
     //
     function onDeviceReady() {
         navigator.<a href="phonegap_geolocation_geolocation.md.html#geolocation.getCurrentPosition">geolocation.getCurrentPosition</a>(onSuccess, onError);

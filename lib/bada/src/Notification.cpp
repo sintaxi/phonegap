@@ -24,13 +24,13 @@ Notification::Run(const String& command) {
 			AppLogException("Not enough params");
 			return;
 		}
-		if((method == L"com.phonegap.Notification.alert" || method == L"com.phonegap.Notification.confirm")) {
+		if((method == L"com.cordova.Notification.alert" || method == L"com.cordova.Notification.confirm")) {
 			strTok.GetNextToken(callbackId);
 			AppLogDebug("%S %S", method.GetPointer(), callbackId.GetPointer());
 			if(!callbackId.IsEmpty()) {
 				Dialog();
 			}
-		} else if(method == L"com.phonegap.Notification.vibrate") {
+		} else if(method == L"com.cordova.Notification.vibrate") {
 			long duration;
 			String durationStr;
 
@@ -43,7 +43,7 @@ Notification::Run(const String& command) {
 				return;
 			}
 			Vibrate(duration);
-		} else if(method == L"com.phonegap.Notification.beep") {
+		} else if(method == L"com.cordova.Notification.beep") {
 			int count;
 			String countStr;
 

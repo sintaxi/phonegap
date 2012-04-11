@@ -152,7 +152,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
         /// </summary>
         CameraOptions cameraOptions;
 
-        public void getPicture(string options)
+        public void takePicture(string options)
         {
             try
             {

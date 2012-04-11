@@ -4,19 +4,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
 <meta name="generator" content="joDoc">
-<title>PhoneGap API Documentation</title>
+<title>Cordova API Documentation</title>
 <link rel="stylesheet" type="text/css" href="index.css">
 <link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
 <link rel="stylesheet" type="text/css" href="prettify/prettify.css">
 </head>
 <body>
         <div id="header">
-            <h1><a href="index.html">Phone<strong>Gap</strong> Documentation</a></h1>
+            <h1><a href="index.html"><strong>Cordova</strong> Documentation</a></h1>
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="1.6.0rc1">1.6.0rc1</option>
+<option selected value="1.6.0">1.6.0</option>
 <option value="1.5.0rc1">1.5.0rc1</option>
-<option selected value="1.5.0">1.5.0</option>
+<option value="1.5.0">1.5.0</option>
 <option value="1.4.1">1.4.1</option>
 <option value="1.4.0rc1">1.4.0rc1</option>
 <option value="1.4.0">1.4.0</option>
@@ -47,7 +49,7 @@
             <small><select><option value="Getting%2520Started%2520with%2520Android">Getting Started with Android</option>
 <option value="Getting%20Started%20with%20Android_video_tutorials">      - Video Tutorials:</option>
 <option value="Getting%20Started%20with%20Android_1_requirements">      - 1. Requirements</option>
-<option value="Getting%20Started%20with%20Android_2_install_sdk_phonegap">      - 2. Install SDK + PhoneGap</option>
+<option value="Getting%20Started%20with%20Android_2_install_sdk_cordova">      - 2. Install SDK + Cordova</option>
 <option value="Getting%20Started%20with%20Android_3_setup_new_project">      -  3. Setup New Project</option>
 <option value="Getting%20Started%20with%20Android_4_hello_world">      - 4. Hello World</option>
 <option value="Getting%20Started%20with%20Android_5a_deploy_to_simulator">      - 5A. Deploy to Simulator</option>
@@ -85,12 +87,14 @@
             <div id="content">
                 <h1><a name="Getting%20Started%20with%20Android">Getting Started with Android</a></h1>
 
+<p>This guide describes how to set up your development environment for Cordova and run a sample application.  Note that Cordova used to be called PhoneGap, so some of the sites still use the old PhoneGap name.</p>
+
 <h2>
 <a name="Getting%20Started%20with%20Android_video_tutorials">Video Tutorials:</a>
 </h2>
 
 <ul>
-<li><a class="external" href="http://www.youtube.com/v/MzcIcyBYJMA?autoplay=1">PhoneGap and Android Quick Start Video Using Ecliplse</a></li>
+<li><a class="external" href="http://www.youtube.com/v/MzcIcyBYJMA?autoplay=1">Cordova and Android Quick Start Video Using Ecliplse</a></li>
 </ul>
 <h2>
 <a name="Getting%20Started%20with%20Android_1_requirements">1. Requirements</a>
@@ -102,7 +106,7 @@
 <p>There is also a <a class="external" href="http://wiki.phonegap.com/w/page/30864168/phonegap-android-terminal-quickstart">Terminal</a> of this tutorial that doesn't use Eclipse.</p>
 
 <h2>
-<a name="Getting%20Started%20with%20Android_2_install_sdk_phonegap">2. Install SDK + PhoneGap</a>
+<a name="Getting%20Started%20with%20Android_2_install_sdk_cordova">2. Install SDK + Cordova</a>
 </h2>
 
 <ul>
@@ -112,7 +116,7 @@
 </li>
 <li>Download and install <a class="external" href="http://developer.android.com/sdk/eclipse-adt.html#installing">ADT Plugin</a>
 </li>
-<li>Donwload the latest copy of <a class="external" href="http://phonegap.com/download">PhoneGap</a> and extract its contents. We will be working with the Android directory.</li>
+<li>Donwload the latest copy of <a class="external" href="http://phonegap.com/download">Cordova</a> and extract its contents. We will be working with the Android directory.</li>
 </ul>
 <h2>
 <a name="Getting%20Started%20with%20Android_3_setup_new_project"> 3. Setup New Project</a>
@@ -122,7 +126,7 @@
 <li>
 <p>Launch Eclipse, then under the menu select <strong>New &gt; Android Project</strong></p>
 
-<p><img src="img/guide/getting-started/android/new_android_project.jpeg" alt="" title=""></p>
+<p><img src="img/guide/getting-started/android/AndroidFlow.png" alt="" title=""></p>
 </li>
 <li>In the root directory of the project, create two new directories:
 <ul>
@@ -130,11 +134,11 @@
 <li><strong>assets/www</strong></li>
 </ul>
 </li>
-<li>Copy <strong>phonegap.js</strong> from your PhoneGap download earlier to <strong>assets/www</strong>
+<li>Copy <strong>cordova-1.6.0.js</strong> from your Cordova download earlier to <strong>assets/www</strong>
 </li>
-<li>Copy <strong>phonegap.jar</strong> from your PhoneGap download earlier to <strong>/libs</strong>
+<li>Copy <strong>cordova-1.6.0.jar</strong> from your Cordova download earlier to <strong>/libs</strong>
 </li>
-<li>Copy <strong>xml</strong> folder from your PhoneGap download earlier to <strong>/res</strong>
+<li>Copy <strong>xml</strong> folder from your Cordova download earlier to <strong>/res</strong>
 </li>
 <li>
 <p>Make a few adjustments too the project's main Java file found in the <strong>src</strong> folder in Eclipse: (view image below)</p>
@@ -143,45 +147,38 @@
 <li>Change the class's extend from <strong>Activity</strong> to <strong>DroidGap</strong>
 </li>
 <li>Replace the <strong>setContentView()</strong> line with <strong>super.loadUrl("file:///android_asset/www/index.html");</strong> </li>
-<li>Add <strong>import com.phonegap.*;</strong>
-</li>
-<li>Remove <strong>import android.app.Activity;</strong>
+<li>Add <strong>import org.apache.cordova.*;</strong>
 </li>
 </ul>
 <p><img src="img/guide/getting-started/android/javaSrc.jpg" alt="" title=""></p>
 </li>
-<li>You might experience an error here, where Eclipse can't find phonegap-1.0.0.jar. In this case, right click on the /libs folder and go to Build Paths/ &gt; Configure Build Paths. Then, in the Libraries tab, add phonegap-1.0.0.jar to the Project. If Eclipse is being temperamental, you might need to refresh (F5) the project once again.</li>
+<li>You might experience an error here, where Eclipse can't find cordova-1.6.0.jar. In this case, right click on the /libs folder and go to Build Paths/ &gt; Configure Build Paths. Then, in the Libraries tab, add cordova-1.6.0.jar to the Project. If Eclipse is being temperamental, you might need to refresh (F5) the project once again.</li>
 <li>Right click on AndroidManifest.xml and select <strong>Open With &gt; Text Editor</strong>
 </li>
 <li>
 <p>Paste the following permissions under versionName: (view image below)</p>
 
 <pre class="prettyprint"><code>&lt;supports-screens android:largeScreens="true" android:normalScreens="true" android:smallScreens="true" android:resizeable="true" android:anyDensity="true" /&gt;
-&lt;uses-permission android:<a href="phonegap_storage_storage.md.html#name">name</a>="android.permission.CAMERA" /&gt;
-&lt;uses-permission android:<a href="phonegap_storage_storage.md.html#name">name</a>="android.permission.VIBRATE" /&gt;
-&lt;uses-permission android:<a href="phonegap_storage_storage.md.html#name">name</a>="android.permission.ACCESS_COARSE_LOCATION" /&gt;
-&lt;uses-permission android:<a href="phonegap_storage_storage.md.html#name">name</a>="android.permission.ACCESS_FINE_LOCATION" /&gt;
-&lt;uses-permission android:<a href="phonegap_storage_storage.md.html#name">name</a>="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /&gt;
-&lt;uses-permission android:<a href="phonegap_storage_storage.md.html#name">name</a>="android.permission.READ_PHONE_STATE" /&gt;
-&lt;uses-permission android:<a href="phonegap_storage_storage.md.html#name">name</a>="android.permission.INTERNET" /&gt;
-&lt;uses-permission android:<a href="phonegap_storage_storage.md.html#name">name</a>="android.permission.RECEIVE_SMS" /&gt;
-&lt;uses-permission android:<a href="phonegap_storage_storage.md.html#name">name</a>="android.permission.RECORD_AUDIO" /&gt;
-&lt;uses-permission android:<a href="phonegap_storage_storage.md.html#name">name</a>="android.permission.MODIFY_AUDIO_SETTINGS" /&gt;
-&lt;uses-permission android:<a href="phonegap_storage_storage.md.html#name">name</a>="android.permission.READ_CONTACTS" /&gt;
-&lt;uses-permission android:<a href="phonegap_storage_storage.md.html#name">name</a>="android.permission.WRITE_CONTACTS" /&gt;
-&lt;uses-permission android:<a href="phonegap_storage_storage.md.html#name">name</a>="android.permission.WRITE_EXTERNAL_STORAGE" /&gt;
-&lt;uses-permission android:<a href="phonegap_storage_storage.md.html#name">name</a>="android.permission.ACCESS_NETWORK_STATE" /&gt; &lt;uses-permission android:<a href="phonegap_storage_storage.md.html#name">name</a>="android.permission.GET_ACCOUNTS" /&gt;
-&lt;uses-permission android:<a href="phonegap_storage_storage.md.html#name">name</a>="android.permission.BROADCAST_STICKY" /&gt;
+&lt;uses-permission android:name="android.permission.CAMERA" /&gt;
+&lt;uses-permission android:name="android.permission.VIBRATE" /&gt;
+&lt;uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /&gt;
+&lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /&gt;
+&lt;uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /&gt;
+&lt;uses-permission android:name="android.permission.READ_PHONE_STATE" /&gt;
+&lt;uses-permission android:name="android.permission.INTERNET" /&gt;
+&lt;uses-permission android:name="android.permission.RECEIVE_SMS" /&gt;
+&lt;uses-permission android:name="android.permission.RECORD_AUDIO" /&gt;
+&lt;uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" /&gt;
+&lt;uses-permission android:name="android.permission.READ_CONTACTS" /&gt;
+&lt;uses-permission android:name="android.permission.WRITE_CONTACTS" /&gt;
+&lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /&gt;
+&lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /&gt; &lt;uses-permission android:name="android.permission.GET_ACCOUNTS" /&gt;
+&lt;uses-permission android:name="android.permission.BROADCAST_STICKY" /&gt;
 </code></pre>
 </li>
-<li><p>Add <code>android:configChanges="orientation|keyboardHidden"</code> to the activity tag in AndroidManifest. (view image below)</p></li>
 <li>
-<p>Add a second activity under you appliction tag in AndroidManifest. (view image below)</p>
+<p>Add <code>android:configChanges="orientation|keyboardHidden"</code> to the activity tag in AndroidManifest. (view image below)</p>
 
-<pre class="prettyprint"><code>&lt;activity android:<a href="phonegap_storage_storage.md.html#name">name</a>="com.phonegap.DroidGap" android:label="@string/app_name" android:configChanges="orientation|keyboardHidden"&gt; &lt;intent-filter&gt; &lt;/intent-filter&gt; &lt;/activity&gt;
-</code></pre>
-
-<p></p>
 <p><img src="img/guide/getting-started/android/manifest.jpg" alt="" title=""></p>
 </li>
 </ul>
@@ -189,20 +186,20 @@
 <a name="Getting%20Started%20with%20Android_4_hello_world">4. Hello World</a>
 </h2>
 
-<p>Now create and open a new file named <strong>index.html</strong> in the <strong>assets/www</strong> directory. Paste the following code:</p>
+Now create and open a new file named **index.html** in the **assets/www** directory. Paste the following code:
 
 <pre class="prettyprint"><code>    &lt;!DOCTYPE HTML&gt;
     &lt;html&gt;
     &lt;head&gt;
-    &lt;title&gt;PhoneGap&lt;/title&gt;
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;title&gt;Cordova&lt;/title&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;/head&gt;
     &lt;body&gt;
     &lt;h1&gt;Hello World&lt;/h1&gt;
     &lt;/body&gt;
     &lt;/html&gt;
 
-*phonegap.js might need to be replaced with phonegap-&amp;lt;VERSION NUMBER&amp;gt;.js
+*cordova-1.6.0.js might need to be replaced with latest cordova-&lt;VERSION NUMBER&gt;.js
 </code></pre>
 
 <h2>
@@ -228,7 +225,7 @@
 <a name="Getting%20Started%20with%20Android_done">Done!</a>
 </h2>
 
-<p>You can also checkout more detailed <a href="phonegap_storage_storage.md.html#version">version</a> of this guide <a class="external" href="http://wiki.phonegap.com/w/page/30862722/phonegap-android-eclipse-quickstart">here</a>.</p>
+<p>You can also checkout more detailed version of this guide <a class="external" href="http://wiki.phonegap.com/w/page/30862722/phonegap-android-eclipse-quickstart">here</a>.</p>
 
             </div>
         </div>

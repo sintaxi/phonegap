@@ -4,19 +4,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
 <meta name="generator" content="joDoc">
-<title>PhoneGap API Documentation</title>
+<title>Cordova API Documentation</title>
 <link rel="stylesheet" type="text/css" href="index.css">
 <link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
 <link rel="stylesheet" type="text/css" href="prettify/prettify.css">
 </head>
 <body>
         <div id="header">
-            <h1><a href="index.html">Phone<strong>Gap</strong> Documentation</a></h1>
+            <h1><a href="index.html"><strong>Cordova</strong> Documentation</a></h1>
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="1.6.0rc1">1.6.0rc1</option>
+<option selected value="1.6.0">1.6.0</option>
 <option value="1.5.0rc1">1.5.0rc1</option>
-<option selected value="1.5.0">1.5.0</option>
+<option value="1.5.0">1.5.0</option>
 <option value="1.4.1">1.4.1</option>
 <option value="1.4.0rc1">1.4.0rc1</option>
 <option value="1.4.0">1.4.0</option>
@@ -281,7 +283,7 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_media_capture_capture.md.html#Capture">Capture</a> Audio&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8" src="json2.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
@@ -313,7 +315,7 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
     function uploadFile(mediaFile) {
         var ft = new <a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a>(),
             path = mediaFile.fullPath,
-            <a href="phonegap_storage_storage.md.html#name">name</a> = mediaFile.<a href="phonegap_storage_storage.md.html#name">name</a>;
+            name = mediaFile.name;
 
         ft.upload(path,
             "http://my.domain.com/upload.php",
@@ -324,7 +326,7 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
             function(error) {
                 console.log('Error uploading file ' + path + ': ' + error.code);
             },
-            { fileName: <a href="phonegap_storage_storage.md.html#name">name</a> });   
+            { fileName: name });   
     }
 
     &lt;/script&gt;
@@ -340,7 +342,7 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
 </h2>
 
 <ul>
-<li>PhoneGap for BlackBerry WebWorks attempts to launch the <strong>Voice Notes Recorder</strong> application, provided by RIM, to capture the audio recordings.  The developer will receive a <a href="phonegap_media_capture_capture.md.html#CaptureError">CaptureError</a>.<code>CAPTURE_NOT_SUPPORTED</code> error code if the application is not installed on the device.</li>
+<li>Cordova for BlackBerry WebWorks attempts to launch the <strong>Voice Notes Recorder</strong> application, provided by RIM, to capture the audio recordings.  The developer will receive a <a href="phonegap_media_capture_capture.md.html#CaptureError">CaptureError</a>.<code>CAPTURE_NOT_SUPPORTED</code> error code if the application is not installed on the device.</li>
 </ul>
 <h2>
 <a name="capture.captureAudio_ios_quirks">iOS Quirks</a>
@@ -465,7 +467,7 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_media_capture_capture.md.html#Capture">Capture</a> Image&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8" src="json2.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
@@ -497,7 +499,7 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
     function uploadFile(mediaFile) {
         var ft = new <a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a>(),
             path = mediaFile.fullPath,
-            <a href="phonegap_storage_storage.md.html#name">name</a> = mediaFile.<a href="phonegap_storage_storage.md.html#name">name</a>;
+            name = mediaFile.name;
 
         ft.upload(path,
             "http://my.domain.com/upload.php",
@@ -508,7 +510,7 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
             function(error) {
                 console.log('Error uploading file ' + path + ': ' + error.code);
             },
-            { fileName: <a href="phonegap_storage_storage.md.html#name">name</a> });   
+            { fileName: name });   
     }
 
     &lt;/script&gt;
@@ -551,14 +553,14 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
 </h2>
 
 <ul>
-<li>The <strong>mode</strong> parameter is not supported.  The image <a href="phonegap_storage_storage.md.html#size">size</a> and format cannot be altered programmatically; however, the image <a href="phonegap_storage_storage.md.html#size">size</a> can be altered by the device user.  Images are saved in JPEG format (image/jpeg).</li>
+<li>The <strong>mode</strong> parameter is not supported.  The image size and format cannot be altered programmatically; however, the image size can be altered by the device user.  Images are saved in JPEG format (image/jpeg).</li>
 </ul>
 <h2>
 <a name="CaptureImageOptions_blackberry_webworks_quirks">BlackBerry WebWorks Quirks</a>
 </h2>
 
 <ul>
-<li>The <strong>mode</strong> parameter is not supported.  The image <a href="phonegap_storage_storage.md.html#size">size</a> and format cannot be altered programmatically; however, the image <a href="phonegap_storage_storage.md.html#size">size</a> can be altered by the device user.  Images are saved in JPEG format (image/jpeg).</li>
+<li>The <strong>mode</strong> parameter is not supported.  The image size and format cannot be altered programmatically; however, the image size can be altered by the device user.  Images are saved in JPEG format (image/jpeg).</li>
 </ul>
 <h2>
 <a name="CaptureImageOptions_ios_quirks">iOS Quirks</a>
@@ -566,7 +568,7 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
 
 <ul>
 <li>The <strong>limit</strong> parameter is not supported. One image is taken per invocation.</li>
-<li>The <strong>mode</strong> parameter is not supported.  The image <a href="phonegap_storage_storage.md.html#size">size</a> and format cannot be altered programmatically.  Images are saved in JPEG format (image/jpeg).</li>
+<li>The <strong>mode</strong> parameter is not supported.  The image size and format cannot be altered programmatically.  Images are saved in JPEG format (image/jpeg).</li>
 </ul>
 <hr>
 <h1><a name="capture.captureVideo">capture.captureVideo</a></h1>
@@ -631,7 +633,7 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_media_capture_capture.md.html#Capture">Capture</a> Video&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8" src="json2.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
@@ -663,7 +665,7 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
     function uploadFile(mediaFile) {
         var ft = new <a href="phonegap_file_file.md.html#FileTransfer">FileTransfer</a>(),
             path = mediaFile.fullPath,
-            <a href="phonegap_storage_storage.md.html#name">name</a> = mediaFile.<a href="phonegap_storage_storage.md.html#name">name</a>;
+            name = mediaFile.name;
 
         ft.upload(path,
             "http://my.domain.com/upload.php",
@@ -674,7 +676,7 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
             function(error) {
                 console.log('Error uploading file ' + path + ': ' + error.code);
             },
-            { fileName: <a href="phonegap_storage_storage.md.html#name">name</a> });   
+            { fileName: name });   
     }
 
     &lt;/script&gt;
@@ -690,7 +692,7 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
 </h2>
 
 <ul>
-<li>PhoneGap for BlackBerry WebWorks attempts to launch the <strong>Video Recorder</strong> application, provided by RIM, to capture the video recordings.  The developer will receive a <a href="phonegap_media_capture_capture.md.html#CaptureError">CaptureError</a>.<code>CAPTURE_NOT_SUPPORTED</code> error code if the application is not installed on the device.</li>
+<li>Cordova for BlackBerry WebWorks attempts to launch the <strong>Video Recorder</strong> application, provided by RIM, to capture the video recordings.  The developer will receive a <a href="phonegap_media_capture_capture.md.html#CaptureError">CaptureError</a>.<code>CAPTURE_NOT_SUPPORTED</code> error code if the application is not installed on the device.</li>
 </ul>
 <hr>
 <h1><a name="CaptureVideoOptions">CaptureVideoOptions</a></h1>
@@ -727,7 +729,7 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
 
 <ul>
 <li>The <strong>duration</strong> parameter is not supported.  Recording lengths cannot be limited programmatically.</li>
-<li>The <strong>mode</strong> parameter is not supported.  The video <a href="phonegap_storage_storage.md.html#size">size</a> and format cannot be altered programmatically; however, these parameters can be changed by the device user. By default, videos are recorded in 3GPP (video/3gpp) format.</li>
+<li>The <strong>mode</strong> parameter is not supported.  The video size and format cannot be altered programmatically; however, these parameters can be changed by the device user. By default, videos are recorded in 3GPP (video/3gpp) format.</li>
 </ul>
 <h2>
 <a name="CaptureVideoOptions_blackberry_webworks_quirks">BlackBerry WebWorks Quirks</a>
@@ -735,7 +737,7 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
 
 <ul>
 <li>The <strong>duration</strong> parameter is not supported.  Recording lengths cannot be limited programmatically.</li>
-<li>The <strong>mode</strong> parameter is not supported.  The video <a href="phonegap_storage_storage.md.html#size">size</a> and format cannot be altered programmatically; however, these parameters can be changed by the device user. By default, videos are recorded in 3GPP (video/3gpp) format.</li>
+<li>The <strong>mode</strong> parameter is not supported.  The video size and format cannot be altered programmatically; however, these parameters can be changed by the device user. By default, videos are recorded in 3GPP (video/3gpp) format.</li>
 </ul>
 <h2>
 <a name="CaptureVideoOptions_ios_quirks">iOS Quirks</a>
@@ -744,7 +746,7 @@ navigator.device.<a href="phonegap_media_capture_capture.md.html#capture.capture
 <ul>
 <li>The <strong>limit</strong> parameter is not supported.  One video is recorded per invocation.</li>
 <li>The <strong>duration</strong> parameter is not supported.  Recording lengths cannot be limited programmatically.</li>
-<li>The <strong>mode</strong> parameter is not supported.  The video <a href="phonegap_storage_storage.md.html#size">size</a> and format cannot be altered programmatically. By default, videos are recorded in MOV (video/quicktime) format.</li>
+<li>The <strong>mode</strong> parameter is not supported.  The video size and format cannot be altered programmatically. By default, videos are recorded in MOV (video/quicktime) format.</li>
 </ul>
 <hr>
 <h1><a name="CaptureError">CaptureError</a></h1>
@@ -904,15 +906,15 @@ for each (var mode in imageModes) {
 
 <ul>
 <li>
-<strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> The <a href="phonegap_storage_storage.md.html#name">name</a> of the file, without path information. (DOMString)</li>
+<strong>name:</strong> The name of the file, without path information. (DOMString)</li>
 <li>
-<strong>fullPath:</strong> The full path of the file, including the <a href="phonegap_storage_storage.md.html#name">name</a>. (DOMString)</li>
+<strong>fullPath:</strong> The full path of the file, including the name. (DOMString)</li>
 <li>
 <strong>type:</strong> The mime type (DOMString)</li>
 <li>
 <strong>lastModifiedDate:</strong> The date and time that the file was last modified. (Date)</li>
 <li>
-<strong><a href="phonegap_storage_storage.md.html#size">size</a>:</strong> The <a href="phonegap_storage_storage.md.html#size">size</a> of the file, in bytes. (Number)</li>
+<strong>size:</strong> The size of the file, in bytes. (Number)</li>
 </ul>
 <h2>
 <a name="MediaFile_methods">Methods</a>

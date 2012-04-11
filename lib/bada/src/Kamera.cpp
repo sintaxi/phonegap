@@ -25,7 +25,7 @@ Kamera::Run(const String& command) {
 			return;
 		}
 		strTok.GetNextToken(callbackId);
-		if(method == "com.phonegap.Camera.getPicture" && !callbackId.IsEmpty()) {
+		if(method == "com.cordova.Camera.getPicture" && !callbackId.IsEmpty()) {
 			GetPicture();
 		}
 	}

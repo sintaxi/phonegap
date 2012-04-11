@@ -473,7 +473,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                         }
                         else
                         {
-                            DispatchCommandResult(new PluginResult(PluginResult.Status.OK, files, "navigator.device.capture._castMediaFile"));
+                            DispatchCommandResult(new PluginResult(PluginResult.Status.OK, files));
                             files.Clear();
                         }
                     }
@@ -487,7 +487,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                     if (files.Count > 0)
                     {
                         // User canceled operation, but some images were made
-                        DispatchCommandResult(new PluginResult(PluginResult.Status.OK, files, "navigator.device.capture._castMediaFile"));
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.OK, files));
                         files.Clear();
                     }
                     else
@@ -499,7 +499,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                 default:
                     if (files.Count > 0)
                     {
-                        DispatchCommandResult(new PluginResult(PluginResult.Status.OK, files, "navigator.device.capture._castMediaFile"));
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.OK, files));
                         files.Clear();
                     }
                     else
@@ -540,7 +540,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                         }
                         else
                         {
-                            DispatchCommandResult(new PluginResult(PluginResult.Status.OK, files, "navigator.device.capture._castMediaFile"));
+                            DispatchCommandResult(new PluginResult(PluginResult.Status.OK, files));
                             files.Clear();
                         }
                     }
@@ -554,7 +554,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                     if (files.Count > 0)
                     {
                         // User canceled operation, but some audio clips were made
-                        DispatchCommandResult(new PluginResult(PluginResult.Status.OK, files, "navigator.device.capture._castMediaFile"));
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.OK, files));
                         files.Clear();
                     }
                     else
@@ -566,7 +566,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                 default:
                     if (files.Count > 0)
                     {
-                        DispatchCommandResult(new PluginResult(PluginResult.Status.OK, files, "navigator.device.capture._castMediaFile"));
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.OK, files));
                         files.Clear();
                     }
                     else
@@ -607,7 +607,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                         }
                         else
                         {
-                            DispatchCommandResult(new PluginResult(PluginResult.Status.OK, files, "navigator.device.capture._castMediaFile"));
+                            DispatchCommandResult(new PluginResult(PluginResult.Status.OK, files));
                             files.Clear();
                         }
                     }
@@ -633,7 +633,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                 default:
                     if (files.Count > 0)
                     {
-                        DispatchCommandResult(new PluginResult(PluginResult.Status.OK, files, "navigator.device.capture._castMediaFile"));
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.OK, files));
                         files.Clear();
                     }
                     else

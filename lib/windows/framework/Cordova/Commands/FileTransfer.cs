@@ -19,11 +19,25 @@ using System.IO.IsolatedStorage;
 using System.Net;
 using System.Runtime.Serialization;
 using System.Windows;
+using System.Security;
 
 namespace WP7CordovaClassLib.Cordova.Commands
 {
     public class FileTransfer : BaseCommand
-    {                
+    {
+        public class DownloadRequestState
+        {
+            // This class stores the State of the request.
+            public HttpWebRequest request;
+            public DownloadOptions options;
+
+            public DownloadRequestState()
+            {
+                request = null;
+                options = null;
+            }
+        }
+
 	    /// <summary>
         /// Boundary symbol
 	    /// </summary>       
@@ -33,6 +47,25 @@ namespace WP7CordovaClassLib.Cordova.Commands
 	    public const int FileNotFoundError = 1;
         public const int InvalidUrlError = 2;
         public const int ConnectionError = 3;
+
+                /// <summary>
+        /// Options for downloading file
+        /// </summary>
+        [DataContract]
+        public class DownloadOptions
+        {
+            /// <summary>
+            /// File path to download to
+            /// </summary>
+            [DataMember(Name = "filePath", IsRequired = true)]
+            public string FilePath { get; set; }
+
+            /// <summary>
+            /// Server address to the file to download
+            /// </summary>
+            [DataMember(Name = "url", IsRequired = true)]
+            public string Url { get; set; }
+        }
         
         /// <summary>
         /// Options for uploading file
@@ -214,6 +247,123 @@ namespace WP7CordovaClassLib.Cordova.Commands
                 DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new FileTransferError(ConnectionError)));
             }
         }
+
+        public void download(string options)
+        {
+            DownloadOptions downloadOptions = null;
+            HttpWebRequest webRequest = null;
+
+            try
+            {
+                downloadOptions = JSON.JsonHelper.Deserialize<DownloadOptions>(options);
+            }
+            catch (Exception)
+            {
+                DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
+                return;
+            }
+
+            try
+            {
+                webRequest = (HttpWebRequest)WebRequest.Create(downloadOptions.Url);
+            }
+            catch (Exception)
+            {
+                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new FileTransferError(InvalidUrlError)));
+                return;
+            }
+
+            if (downloadOptions != null && webRequest != null)
+            {
+                DownloadRequestState state = new DownloadRequestState();
+                state.options = downloadOptions;
+                state.request = webRequest;
+                webRequest.BeginGetResponse(new AsyncCallback(downloadCallback), state);
+            }
+
+
+            
+        }
+
+                /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="asynchronousResult"></param>
+        private void downloadCallback(IAsyncResult asynchronousResult)
+        {
+            DownloadRequestState reqState = (DownloadRequestState)asynchronousResult.AsyncState;
+            HttpWebRequest request = reqState.request;
+
+            try
+            {
+                HttpWebResponse response = (HttpWebResponse)request.EndGetResponse(asynchronousResult);
+
+                 using (IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForApplication())
+                {
+                    // create the file if not exists
+                    if (!isoFile.FileExists(reqState.options.FilePath))
+                    {
+                        var file = isoFile.CreateFile(reqState.options.FilePath);
+                        file.Close();
+                    }
+
+                    using (FileStream fileStream = new IsolatedStorageFileStream(reqState.options.FilePath, FileMode.Open, FileAccess.Write, isoFile))
+                    {
+                        long totalBytes = response.ContentLength;
+                        int bytesRead = 0;
+                        using (BinaryReader reader = new BinaryReader(response.GetResponseStream()))
+                        {
+                           
+                            using (BinaryWriter writer = new BinaryWriter(fileStream))
+                            {
+                                int BUFFER_SIZE = 1024;
+                                byte[] buffer;
+
+                                while (true)
+                                {
+                                    buffer = reader.ReadBytes(BUFFER_SIZE);
+                                    // fire a progress event ?
+                                    bytesRead += buffer.Length;
+                                    if (buffer.Length > 0)
+                                    {
+                                        writer.Write(buffer);
+                                    }
+                                    else
+                                    {
+                                        writer.Close();
+                                        reader.Close();
+                                        fileStream.Close();
+                                        break;
+                                    }
+                                }
+                            }  
+
+                        }
+
+                      
+                    }
+                }
+
+                 DispatchCommandResult(new PluginResult(PluginResult.Status.OK, reqState.options.FilePath));
+            }
+            catch (IsolatedStorageException)
+            {
+               // DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new ErrorCode(INVALID_MODIFICATION_ERR)));
+            }
+            catch (SecurityException)
+            {
+                //DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new ErrorCode(SECURITY_ERR)));
+            }
+            catch (Exception ex)
+            {
+                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new File.ErrorCode(File.NOT_FOUND_ERR)));
+            }
+
+
+                                
+        }
+
+
 
         /// <summary>
         /// Read file from Isolated Storage and sends it to server

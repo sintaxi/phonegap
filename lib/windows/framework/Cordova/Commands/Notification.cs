@@ -94,7 +94,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
         {
             int times = int.Parse(count);
 
-            StreamResourceInfo sri = Application.GetResourceStream(new Uri("/WP7GapClassLib;component/resources/notification-beep.wav", UriKind.Relative));
+            StreamResourceInfo sri = Application.GetResourceStream(new Uri("/WP7CordovaClassLib;component/resources/notification-beep.wav", UriKind.Relative));
             if (sri != null)
             {
                 SoundEffect effect = SoundEffect.FromStream(sri.Stream);

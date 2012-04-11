@@ -33,13 +33,13 @@ Accelerometer::Run(const String& command) {
 			strTok.GetNextToken(callbackId);
 			AppLogDebug("Method %S, CallbackId: %S", method.GetPointer(), callbackId.GetPointer());
 		}
-		if(method == L"com.phonegap.Accelerometer.watchAcceleration" && !callbackId.IsEmpty() && !IsStarted()) {
+		if(method == L"com.cordova.Accelerometer.watchAcceleration" && !callbackId.IsEmpty() && !IsStarted()) {
 			StartSensor();
 		}
-		if(method == L"com.phonegap.Accelerometer.clearWatch" && IsStarted()) {
+		if(method == L"com.cordova.Accelerometer.clearWatch" && IsStarted()) {
 			StopSensor();
 		}
-		if(method == L"com.phonegap.Accelerometer.getCurrentAcceleration" && !callbackId.IsEmpty() && !IsStarted()) {
+		if(method == L"com.cordova.Accelerometer.getCurrentAcceleration" && !callbackId.IsEmpty() && !IsStarted()) {
 			GetLastAcceleration();
 		}
 		AppLogDebug("Acceleration command %S completed", command.GetPointer());

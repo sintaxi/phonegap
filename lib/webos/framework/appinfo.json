@@ -1,9 +1,10 @@
 {
-	"id": "com.phonegap.webos",
+	"id": "com.cordova.webos",
 	"version": "0.0.1",
 	"vendor": "Palm",
 	"type": "web",
 	"main": "index.html",
-	"title": "PhoneGap WebOS",
+	"title": "Cordova WebOS",
+	"icon": "cordova_48.png",
 	"uiRevision": 2
 }

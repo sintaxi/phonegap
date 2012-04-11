@@ -13,17 +13,18 @@ Requires
 Getting Started
 ---
 
-- copy the file Cordova-1.5.0-Starter.zip to the folder : \My Documents\Visual Studio 2010\Templates\ProjectTemplates\
+- copy the file CordovaStarter-1.6.0.zip to the folder : \My Documents\Visual Studio 2010\Templates\ProjectTemplates\
 -- if you have just installed VisualStudio, you should launch it once to create this folder
--- if you prefer, you may add the project instead to the "Silverlight for Windows Phone" subfolder of "Visual C#".  This is up to you, and only affects where the project template is shown when creating a new project. You may need to create this folder.
+-- if you prefer, you may add the project instead to the "Silverlight for Windows Phone" subfolder of "Visual C#".  This is up to you, and only affects where the project template is shown when creating a new project. Also, You may need to create this folder.
 - Launch Visual Studio 2010 and select to create a new project
--- Cordova-1.5.0-Starter should be listed as an option, give your new project a name
+-- CordovaStarter should be listed as an option, give your new project a name
+--- Note: The description will let you know the version of Cordova you are targetting, if you have multiple templates.
 -- If you do not see it, you may have to select the top level 'Visual C#' to see it
 - Build and Run it!
 
 
 
-Note!!!
+Important!!!
 ---
 
 When you add or remove files/folders in the www folder you will need to do the following
@@ -38,7 +39,6 @@ BUGS?
 -----
 File them at Apache Incubator 
 https://issues.apache.org/jira/browse/CB
-<br />
 
 
 Further Reading

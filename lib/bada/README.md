@@ -1,16 +1,18 @@
-PhoneGap implementation for Samsung Bada
+DISCLAIMER: THIS IMPLEMENTATION DOES NOT WORK WITH THE BADA 2.x SDK. ONLY 1.2 is supported BY THIS IMPLEMENTATION!
+
+Cordova implementation for Samsung Bada
 ========================================
 
 Support for: Acceleration, Geolocation (native and browser), Network, Device, Compass, Camera
 
 Missing support: File
 
-Steps to build a PhoneGap app
+Steps to build a Cordova app
 -----------------------------
 1. Download Source Code (clone the repository)
 2. Import in bada C++ IDE
 3. Put your HTML/CSS files in the Res/ folder
-4. Run phonegap.bat under Res/phonegap directory
+4. Run cordova.bat under Res/cordova directory
 5. Build&Run!
 
 Runnning in the simulator

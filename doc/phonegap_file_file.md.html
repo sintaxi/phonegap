@@ -4,19 +4,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
 <meta name="generator" content="joDoc">
-<title>PhoneGap API Documentation</title>
+<title>Cordova API Documentation</title>
 <link rel="stylesheet" type="text/css" href="index.css">
 <link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
 <link rel="stylesheet" type="text/css" href="prettify/prettify.css">
 </head>
 <body>
         <div id="header">
-            <h1><a href="index.html">Phone<strong>Gap</strong> Documentation</a></h1>
+            <h1><a href="index.html"><strong>Cordova</strong> Documentation</a></h1>
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="1.6.0rc1">1.6.0rc1</option>
+<option selected value="1.6.0">1.6.0</option>
 <option value="1.5.0rc1">1.5.0rc1</option>
-<option selected value="1.5.0">1.5.0</option>
+<option value="1.5.0">1.5.0</option>
 <option value="1.4.1">1.4.1</option>
 <option value="1.4.0rc1">1.4.0rc1</option>
 <option value="1.4.0">1.4.0</option>
@@ -181,7 +183,7 @@ File System Quick Example</option>
                 <h1><a name="File">File</a></h1>
 
 <blockquote>
-  <p>An API to read, write and navigate file system hierarchies. </p>
+  <p>This API is based on the W3C <a class="external" href="http://www.w3.org/TR/FileAPI"></a><a href="phonegap_file_file.md.html#File">File</a> API. An API to read, write and navigate file system hierarchies. </p>
 </blockquote>
 
 <h2>
@@ -216,10 +218,10 @@ File System Quick Example</option>
 
 <ul>
 <li>
-<strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> The <a href="phonegap_storage_storage.md.html#name">name</a> of the file. <em>(DOMString)</em>
+<strong>name:</strong> The name of the file. <em>(DOMString)</em>
 </li>
 <li>
-<strong>fullPath:</strong> The full path of the file including the file <a href="phonegap_storage_storage.md.html#name">name</a>. <em>(DOMString)</em>
+<strong>fullPath:</strong> The full path of the file including the file name. <em>(DOMString)</em>
 </li>
 <li>
 <strong>type:</strong> The mime type of the file. <em>(DOMString)</em>
@@ -228,7 +230,7 @@ File System Quick Example</option>
 <strong>lastModifiedDate:</strong> The last time the file was modified. <em>(Date)</em>
 </li>
 <li>
-<strong><a href="phonegap_storage_storage.md.html#size">size</a>:</strong> The <a href="phonegap_storage_storage.md.html#size">size</a> of the file in bytes. <em>(long)</em>
+<strong>size:</strong> The size of the file in bytes. <em>(long)</em>
 </li>
 </ul>
 <h2>
@@ -398,16 +400,16 @@ entry.file(win, fail);
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_file_file.md.html#FileReader">FileReader</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
+    // Wait for Cordova to load
     //
     function onLoad() {
         document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
     }
 
-    // PhoneGap is ready
+    // Cordova is ready
     //
     function onDeviceReady() {
         window.requestFileSystem(<a href="phonegap_file_file.md.html#LocalFileSystem">LocalFileSystem</a>.PERSISTENT, 0, gotFS, fail);
@@ -478,7 +480,7 @@ entry.file(win, fail);
 <li>
 <strong>readyState:</strong> One of the three states the reader can be in INIT, WRITING or DONE.</li>
 <li>
-<strong>fileName:</strong> The <a href="phonegap_storage_storage.md.html#name">name</a> of the file to be written. <em>(DOMString)</em>
+<strong>fileName:</strong> The name of the file to be written. <em>(DOMString)</em>
 </li>
 <li>
 <strong>length:</strong> The length of the file to be written. <em>(long)</em>
@@ -635,14 +637,14 @@ entry.createWriter(win, fail);
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_file_file.md.html#FileWriter">FileWriter</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
+    // Wait for Cordova to load
     //
     document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
-    // PhoneGap is ready
+    // Cordova is ready
     //
     function onDeviceReady() {
         window.requestFileSystem(<a href="phonegap_file_file.md.html#LocalFileSystem">LocalFileSystem</a>.PERSISTENT, 0, gotFS, fail);
@@ -696,7 +698,7 @@ entry.createWriter(win, fail);
 
 <ul>
 <li>
-<strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> The <a href="phonegap_storage_storage.md.html#name">name</a> of the file system. <em>(DOMString)</em>
+<strong>name:</strong> The name of the file system. <em>(DOMString)</em>
 </li>
 <li>
 <strong>root:</strong> The root directory of the file system. <em>(<a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>)</em>
@@ -706,7 +708,7 @@ entry.createWriter(win, fail);
 <a name="FileSystem_details">Details</a>
 </h2>
 
-<p>The <code><a href="phonegap_file_file.md.html#FileSystem">FileSystem</a></code> object represents information about the file system. The <a href="phonegap_storage_storage.md.html#name">name</a> of the file system will be unique across the list of exposed file systems.  The root property contains a <code><a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a></code> object which represents the root directory of the file system.</p>
+<p>The <code><a href="phonegap_file_file.md.html#FileSystem">FileSystem</a></code> object represents information about the file system. The name of the file system will be unique across the list of exposed file systems.  The root property contains a <code><a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a></code> object which represents the root directory of the file system.</p>
 
 <h2>
 <a name="FileSystem_supported_platforms">Supported Platforms</a>
@@ -724,8 +726,8 @@ File System Quick Example</a>
 </h2>
 
 <pre class="prettyprint"><code>function onSuccess(fileSystem) {
-    console.log(fileSystem.<a href="phonegap_storage_storage.md.html#name">name</a>);
-    console.log(fileSystem.root.<a href="phonegap_storage_storage.md.html#name">name</a>);
+    console.log(fileSystem.name);
+    console.log(fileSystem.root.name);
 }
 
 // request the persistent file system
@@ -741,22 +743,22 @@ window.requestFileSystem(<a href="phonegap_file_file.md.html#LocalFileSystem">Lo
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_file_file.md.html#File">File</a> System Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
+    // Wait for Cordova to load
     //
     document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
-    // PhoneGap is ready
+    // Cordova is ready
     //
     function onDeviceReady() {
         window.requestFileSystem(<a href="phonegap_file_file.md.html#LocalFileSystem">LocalFileSystem</a>.PERSISTENT, 0, onFileSystemSuccess, fail);
     }
 
     function onFileSystemSuccess(fileSystem) {
-        console.log(fileSystem.<a href="phonegap_storage_storage.md.html#name">name</a>);
-        console.log(fileSystem.root.<a href="phonegap_storage_storage.md.html#name">name</a>);
+        console.log(fileSystem.name);
+        console.log(fileSystem.root.name);
     }
 
     function fail(evt) {
@@ -789,13 +791,13 @@ window.requestFileSystem(<a href="phonegap_file_file.md.html#LocalFileSystem">Lo
 <strong>isDirectory:</strong> Always false. <em>(boolean)</em>
 </li>
 <li>
-<strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> The <a href="phonegap_storage_storage.md.html#name">name</a> of the <a href="phonegap_file_file.md.html#FileEntry">FileEntry</a>, excluding the path leading to it. <em>(DOMString)</em>
+<strong>name:</strong> The name of the <a href="phonegap_file_file.md.html#FileEntry">FileEntry</a>, excluding the path leading to it. <em>(DOMString)</em>
 </li>
 <li>
 <strong>fullPath:</strong> The full absolute path from the root to the <a href="phonegap_file_file.md.html#FileEntry">FileEntry</a>. <em>(DOMString)</em>
 </li>
 </ul>
-<p>NOTE: The following attributes are defined by the W3C specification, but are <strong>not supported</strong> by PhoneGap:</p>
+<p>NOTE: The following attributes are defined by the W3C specification, but are <strong>not supported</strong> by Cordova:</p>
 
 <ul>
 <li>
@@ -871,7 +873,7 @@ entry.getMetadata(success, fail);
 <p>Move a file to a different location on the file system. It is an error to attempt to:</p>
 
 <ul>
-<li>move a file into its parent if a <a href="phonegap_storage_storage.md.html#name">name</a> different from its current one isn't provided;</li>
+<li>move a file into its parent if a name different from its current one isn't provided;</li>
 <li>move a file to a path occupied by a directory;</li>
 </ul>
 <p>In addition, an attempt to move a file on top of an existing file must attempt to delete and replace that file. </p>
@@ -883,7 +885,7 @@ entry.getMetadata(success, fail);
 <strong>parent</strong> - The parent directory to which to move the file. <em>(<a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>)</em>
 </li>
 <li>
-<strong>newName</strong> - The new <a href="phonegap_storage_storage.md.html#name">name</a> of the file. Defaults to the current <a href="phonegap_storage_storage.md.html#name">name</a> if unspecified. <em>(DOMString)</em>
+<strong>newName</strong> - The new name of the file. Defaults to the current name if unspecified. <em>(DOMString)</em>
 </li>
 <li>
 <strong>successCallback</strong> - A callback that is called with the <a href="phonegap_file_file.md.html#FileEntry">FileEntry</a> object of the new file. <em>(Function)</em>
@@ -918,7 +920,7 @@ function moveFile(entry) {
 <p>Copy a file to a new location on the file system.  It is an error to attempt to:</p>
 
 <ul>
-<li>copy a file into its parent if a <a href="phonegap_storage_storage.md.html#name">name</a> different from its current one is not provided. </li>
+<li>copy a file into its parent if a name different from its current one is not provided. </li>
 </ul>
 <p><strong>Parameters:</strong></p>
 
@@ -927,7 +929,7 @@ function moveFile(entry) {
 <strong>parent</strong> - The parent directory to which to copy the file. <em>(<a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>)</em>
 </li>
 <li>
-<strong>newName</strong> - The new <a href="phonegap_storage_storage.md.html#name">name</a> of the file. Defaults to the current <a href="phonegap_storage_storage.md.html#name">name</a> if unspecified. <em>(DOMString)</em>
+<strong>newName</strong> - The new name of the file. Defaults to the current name if unspecified. <em>(DOMString)</em>
 </li>
 <li>
 <strong>successCallback</strong> - A callback that is called with the <a href="phonegap_file_file.md.html#FileEntry">FileEntry</a> object of the new file. <em>(Function)</em>
@@ -1017,7 +1019,7 @@ entry.remove(success, fail);
 <p><strong>Quick Example</strong></p>
 
 <pre class="prettyprint"><code>function success(parent) {
-    console.log("Parent Name: " + parent.<a href="phonegap_storage_storage.md.html#name">name</a>);
+    console.log("Parent Name: " + parent.name);
 }
 
 function fail(error) {
@@ -1077,7 +1079,7 @@ entry.createWriter(success, fail);
 <p><strong>Quick Example</strong></p>
 
 <pre class="prettyprint"><code>function success(file) {
-    console.log("<a href="phonegap_file_file.md.html#File">File</a> <a href="phonegap_storage_storage.md.html#size">size</a>: " + file.<a href="phonegap_storage_storage.md.html#size">size</a>);
+    console.log("<a href="phonegap_file_file.md.html#File">File</a> size: " + file.size);
 }
 
 function fail(error) {
@@ -1105,13 +1107,13 @@ entry.file(success, fail);
 <strong>isDirectory:</strong> Always true. <em>(boolean)</em>
 </li>
 <li>
-<strong><a href="phonegap_storage_storage.md.html#name">name</a>:</strong> The <a href="phonegap_storage_storage.md.html#name">name</a> of the <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>, excluding the path leading to it. <em>(DOMString)</em>
+<strong>name:</strong> The name of the <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>, excluding the path leading to it. <em>(DOMString)</em>
 </li>
 <li>
 <strong>fullPath:</strong> The full absolute path from the root to the <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>. <em>(DOMString)</em>
 </li>
 </ul>
-<p>NOTE: The following attributes are defined by the W3C specification, but are <strong>not supported</strong> by PhoneGap:</p>
+<p>NOTE: The following attributes are defined by the W3C specification, but are <strong>not supported</strong> by Cordova:</p>
 
 <ul>
 <li>
@@ -1193,7 +1195,7 @@ entry.getMetadata(success, fail);
 
 <ul>
 <li>move a directory inside itself or to any child at any depth;</li>
-<li>move a directory into its parent if a <a href="phonegap_storage_storage.md.html#name">name</a> different from its current one is not provided;</li>
+<li>move a directory into its parent if a name different from its current one is not provided;</li>
 <li>move a directory to a path occupied by a file;</li>
 <li>move a directory to a path occupied by a directory which is not empty.</li>
 </ul>
@@ -1206,7 +1208,7 @@ entry.getMetadata(success, fail);
 <strong>parent</strong> - The parent directory to which to move the directory. <em>(<a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>)</em>
 </li>
 <li>
-<strong>newName</strong> - The new <a href="phonegap_storage_storage.md.html#name">name</a> of the directory. Defaults to the current <a href="phonegap_storage_storage.md.html#name">name</a> if unspecified. <em>(DOMString)</em>
+<strong>newName</strong> - The new name of the directory. Defaults to the current name if unspecified. <em>(DOMString)</em>
 </li>
 <li>
 <strong>successCallback</strong> - A callback that is called with the <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a> object of the new directory. <em>(Function)</em>
@@ -1243,7 +1245,7 @@ function moveDir(entry) {
 
 <ul>
 <li>copy a directory inside itself at any depth;</li>
-<li>copy a directory into its parent if a <a href="phonegap_storage_storage.md.html#name">name</a> different from its current one is not provided. </li>
+<li>copy a directory into its parent if a name different from its current one is not provided. </li>
 </ul>
 <p>Directory copies are always recursive - that is, they copy all contents of the directory.</p>
 
@@ -1254,7 +1256,7 @@ function moveDir(entry) {
 <strong>parent</strong> - The parent directory to which to copy the directory. <em>(<a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a>)</em>
 </li>
 <li>
-<strong>newName</strong> - The new <a href="phonegap_storage_storage.md.html#name">name</a> of the directory. Defaults to the current <a href="phonegap_storage_storage.md.html#name">name</a> if unspecified. <em>(DOMString)</em>
+<strong>newName</strong> - The new name of the directory. Defaults to the current name if unspecified. <em>(DOMString)</em>
 </li>
 <li>
 <strong>successCallback</strong> - A callback that is called with the <a href="phonegap_file_file.md.html#DirectoryEntry">DirectoryEntry</a> object of the new directory. <em>(Function)</em>
@@ -1349,7 +1351,7 @@ entry.remove(success, fail);
 <p><strong>Quick Example</strong></p>
 
 <pre class="prettyprint"><code>function success(parent) {
-    console.log("Parent Name: " + parent.<a href="phonegap_storage_storage.md.html#name">name</a>);
+    console.log("Parent Name: " + parent.name);
 }
 
 function fail(error) {
@@ -1400,7 +1402,7 @@ var directoryReader = entry.createReader();
 <p><strong>Quick Example</strong></p>
 
 <pre class="prettyprint"><code>function success(parent) {
-    console.log("Parent Name: " + parent.<a href="phonegap_storage_storage.md.html#name">name</a>);
+    console.log("Parent Name: " + parent.name);
 }
 
 function fail(error) {
@@ -1439,7 +1441,7 @@ entry.getDirectory("newDir", {create: true, exclusive: false}, success, fail);
 <p><strong>Quick Example</strong></p>
 
 <pre class="prettyprint"><code>function success(parent) {
-    console.log("Parent Name: " + parent.<a href="phonegap_storage_storage.md.html#name">name</a>);
+    console.log("Parent Name: " + parent.name);
 }
 
 function fail(error) {
@@ -1529,7 +1531,7 @@ entry.removeRecursively(success, fail);
 <pre class="prettyprint"><code>function success(entries) {
     var i;
     for (i=0; i&lt;entries.length; i++) {
-        console.log(entries[i].<a href="phonegap_storage_storage.md.html#name">name</a>);
+        console.log(entries[i].name);
     }
 }
 
@@ -1600,7 +1602,7 @@ It is also possible to download a file from remote and save it on the device (on
 <strong>errorCallback</strong> - A callback that is called if an error occurs retrieving the <a href="phonegap_file_file.md.html#Metadata">Metadata</a>. Invoked with a <a href="phonegap_file_file.md.html#FileError">FileError</a> object. <em>(Function)</em>
 </li>
 <li>
-<strong>options</strong> - Optional parameters such as file <a href="phonegap_storage_storage.md.html#name">name</a> and mimetype</li>
+<strong>options</strong> - Optional parameters such as file name and mimetype</li>
 </ul>
 <p><strong>Quick Example</strong></p>
 
@@ -1613,7 +1615,7 @@ var win = function(r) {
 }
 
 var fail = function(error) {
-    alert("An error has occurred: Code = " = error.code);
+    alert("An error has occurred: Code = " + error.code);
     console.log("upload error source " + error.source);
     console.log("upload error target " + error.target);
 }
@@ -1640,14 +1642,14 @@ ft.upload(fileURI, "http://some.server.com/upload.php", win, fail, options);
 &lt;head&gt;
     &lt;title&gt;<a href="phonegap_file_file.md.html#File">File</a> Transfer Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.0.9.4.min.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-        // Wait for PhoneGap to load
+        // Wait for Cordova to load
         //
         document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
-        // PhoneGap is ready
+        // Cordova is ready
         //
         function onDeviceReady() {
 
@@ -1684,7 +1686,7 @@ ft.upload(fileURI, "http://some.server.com/upload.php", win, fail, options);
         }
 
         function fail(error) {
-            alert("An error has occurred: Code = " = error.code);
+            alert("An error has occurred: Code = " + error.code);
             console.log("upload error source " + error.source);
             console.log("upload error target " + error.target);
         }
@@ -1747,9 +1749,9 @@ fileTransfer.download(
 
 <ul>
 <li>
-<strong>fileKey:</strong> The <a href="phonegap_storage_storage.md.html#name">name</a> of the form element.  If not set defaults to "file". (DOMString)</li>
+<strong>fileKey:</strong> The name of the form element.  If not set defaults to "file". (DOMString)</li>
 <li>
-<strong>fileName:</strong> The file <a href="phonegap_storage_storage.md.html#name">name</a> you want the file to be saved as on the server.  If not set defaults to "image.jpg". (DOMString)</li>
+<strong>fileName:</strong> The file name you want the file to be saved as on the server.  If not set defaults to "image.jpg". (DOMString)</li>
 <li>
 <strong>mimeType:</strong> The mime type of the data you are uploading.  If not set defaults to "image/jpeg". (DOMString)</li>
 <li>
@@ -1879,7 +1881,7 @@ lockFile = dataDir.getFile("lockfile.txt", {create: true, exclusive: true});
 </h2>
 
 <pre class="prettyprint"><code>function onSuccess(fileSystem) {
-    console.log(fileSystem.<a href="phonegap_storage_storage.md.html#name">name</a>);
+    console.log(fileSystem.name);
 }
 
 // request the persistent file system
@@ -1891,7 +1893,7 @@ window.requestFileSystem(<a href="phonegap_file_file.md.html#LocalFileSystem">Lo
 </h2>
 
 <pre class="prettyprint"><code>function onSuccess(fileEntry) {
-    console.log(fileEntry.<a href="phonegap_storage_storage.md.html#name">name</a>);
+    console.log(fileEntry.name);
 }
 
 window.resolveLocalFileSystemURI("file:///example.txt", onSuccess, onError);
@@ -1906,14 +1908,14 @@ window.resolveLocalFileSystemURI("file:///example.txt", onSuccess, onError);
   &lt;head&gt;
     &lt;title&gt;Local <a href="phonegap_file_file.md.html#File">File</a> System Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
+    // Wait for Cordova to load
     //
     document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
-    // PhoneGap is ready
+    // Cordova is ready
     //
     function onDeviceReady() {
         window.requestFileSystem(<a href="phonegap_file_file.md.html#LocalFileSystem">LocalFileSystem</a>.PERSISTENT, 0, onFileSystemSuccess, fail);
@@ -1921,11 +1923,11 @@ window.resolveLocalFileSystemURI("file:///example.txt", onSuccess, onError);
     }
 
     function onFileSystemSuccess(fileSystem) {
-        console.log(fileSystem.<a href="phonegap_storage_storage.md.html#name">name</a>);
+        console.log(fileSystem.name);
     }
 
     function onResolveSuccess(fileEntry) {
-        console.log(fileEntry.<a href="phonegap_storage_storage.md.html#name">name</a>);
+        console.log(fileEntry.name);
     }
 
     function fail(evt) {

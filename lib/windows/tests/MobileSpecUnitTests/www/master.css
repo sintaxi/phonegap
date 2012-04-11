@@ -1,12 +1,11 @@
-  
   body {
-	background:#222 none repeat scroll 0 0;
-	color:#FFC312;
-	font-family:Helvetica, Verdana, Geneva, sans-serif;
-	font-size:72%;
-	line-height:1.5em;
-	margin:0;
-	border-top:1px solid #393939;
+    background:#222 none repeat scroll 0 0;
+    color:#666;
+    font-family:Helvetica;
+    font-size:72%;
+    line-height:1.5em;
+    margin:0;
+    border-top:1px solid #393939;
   }
 
   #info{
@@ -18,7 +17,6 @@
     margin:15px 6px 0;
     width:295px;
     padding:4px 0px 2px 10px;
-	color:#666;
   }
   
   #info > h4{
@@ -91,10 +89,12 @@
   	padding:1.2em 0;
   	margin:3px 0px 3px 5px;
   }
-  #stage.theme .btn.large{
+  
+  #stage.theme .large{
   	width:308px;
   	padding:1.2em 0;
   }
+  
   #stage.theme .backBtn{
    border: 1px solid #555;
    -webkit-border-radius: 5px;

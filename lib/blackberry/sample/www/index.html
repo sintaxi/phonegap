@@ -1,29 +1,10 @@
-<!--
-   Licensed to the Apache Software Foundation (ASF) under one
-   or more contributor license agreements.  See the NOTICE file
-   distributed with this work for additional information
-   regarding copyright ownership.  The ASF licenses this file
-   to you under the Apache License, Version 2.0 (the
-   "License"); you may not use this file except in compliance
-   with the License.  You may obtain a copy of the License at
-
-     http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing,
-   software distributed under the License is distributed on an
-   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-   KIND, either express or implied.  See the License for the
-   specific language governing permissions and limitations
-   under the License.
--->
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" id="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no">
     <script src="json2.js" type="text/javascript"></script>
-    <script src="cordova-1.5.0.js" type="text/javascript"></script>
+    <script src="cordova-1.6.0.js" type="text/javascript"></script>
     <script type="text/javascript">
 
         //---------------------------------------------------------------------
@@ -215,10 +196,6 @@
         function onLocationFail(error) {
             alert('code: ' + error.code + '\n' +
                   'message: ' + error.message + '\n');
-        }
-      
-        function useCordovaGeo() {
-            Geolocation.useCordova();
         }
       
         //---------------------------------------------------------------------
@@ -578,7 +555,7 @@
                 };
             
             // create a file and write to it
-            root.getFile('bbcordova.txt', {create: true}, create_writer, onFileSystemError);
+            root.getFile('cordova.txt', {create: true}, create_writer, onFileSystemError);
         }
       
         // truncates a file
@@ -611,7 +588,7 @@
                 };
                 
             // retrieve a file and truncate it
-            root.getFile('bbcordova.txt', {create: false}, create_writer, onFileSystemError);
+            root.getFile('cordova.txt', {create: false}, create_writer, onFileSystemError);
         }
         
         // retrieve root file system
@@ -874,7 +851,7 @@
         }
 
     </script>
-    <title>Insert title here</title>
+    <title>Cordova API Sample</title>
   </head>
   <body onload="init()" onunload="unload()">
   
@@ -903,7 +880,6 @@
     <input type="button" value="Get Location" onclick="getLocation();return false;" /> 
     <input type="button" value="Watch Location" onclick="watchLocation();return false;" /> 
     <input type="button" value="Clear Geo" onclick="clearLocationWatch();return false;" /> 
-    <input type="button" value="Use Cordova" onclick="useCordovaGeo();return false;" />
 
     <h3>navigator.accelerometer</h3>
     <dl id="accel-data">

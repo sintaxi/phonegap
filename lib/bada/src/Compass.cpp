@@ -34,15 +34,15 @@ Compass::Run(const String& command) {
 		strTok.GetNextToken(callbackId);
 		AppLogDebug("Method %S, callbackId: %S", method.GetPointer(), callbackId.GetPointer());
 		// used to determine callback ID
-		if(method == L"com.phonegap.Compass.watchHeading" && !callbackId.IsEmpty() && !IsStarted()) {
+		if(method == L"com.cordova.Compass.watchHeading" && !callbackId.IsEmpty() && !IsStarted()) {
 			AppLogDebug("watching compass...");
 			StartSensor();
 		}
-		if(method == L"com.phonegap.Compass.clearWatch" && !callbackId.IsEmpty() && IsStarted()) {
+		if(method == L"com.cordova.Compass.clearWatch" && !callbackId.IsEmpty() && IsStarted()) {
 			AppLogDebug("stop watching compass...");
 			StopSensor();
 		}
-		if(method == L"com.phonegap.Compass.getCurrentHeading" && !callbackId.IsEmpty() && !IsStarted()) {
+		if(method == L"com.cordova.Compass.getCurrentHeading" && !callbackId.IsEmpty() && !IsStarted()) {
 			AppLogDebug("getting current compass...");
 			GetLastHeading();
 		}

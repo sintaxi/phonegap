@@ -4,19 +4,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
 <meta name="generator" content="joDoc">
-<title>PhoneGap API Documentation</title>
+<title>Cordova API Documentation</title>
 <link rel="stylesheet" type="text/css" href="index.css">
 <link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
 <link rel="stylesheet" type="text/css" href="prettify/prettify.css">
 </head>
 <body>
         <div id="header">
-            <h1><a href="index.html">Phone<strong>Gap</strong> Documentation</a></h1>
+            <h1><a href="index.html"><strong>Cordova</strong> Documentation</a></h1>
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="1.6.0rc1">1.6.0rc1</option>
+<option selected value="1.6.0">1.6.0</option>
 <option value="1.5.0rc1">1.5.0rc1</option>
-<option selected value="1.5.0">1.5.0</option>
+<option value="1.5.0">1.5.0</option>
 <option value="1.4.1">1.4.1</option>
 <option value="1.4.0rc1">1.4.0rc1</option>
 <option value="1.4.0">1.4.0</option>
@@ -131,13 +133,13 @@
 <li>
 <strong>title:</strong> Dialog title (<code>String</code>) (Optional, Default: "Alert")</li>
 <li>
-<strong>buttonName:</strong> Button <a href="phonegap_storage_storage.md.html#name">name</a> (<code>String</code>) (Optional, Default: "OK")</li>
+<strong>buttonName:</strong> Button name (<code>String</code>) (Optional, Default: "OK")</li>
 </ul>
 <h2>
 <a name="notification.alert_description">Description</a>
 </h2>
 
-<p>Most PhoneGap implementations use a native dialog box for this feature.  However, some platforms simply use the browser's <code>alert</code> function, which is typically less customizable.</p>
+<p>Most Cordova implementations use a native dialog box for this feature.  However, some platforms simply use the browser's <code>alert</code> function, which is typically less customizable.</p>
 
 <h2>
 <a name="notification.alert_supported_platforms">Supported Platforms</a>
@@ -181,14 +183,14 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.alert
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
+    // Wait for Cordova to load
     //
     document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
-    // PhoneGap is ready
+    // Cordova is ready
     //
     function onDeviceReady() {
         // Empty
@@ -289,14 +291,14 @@ function showConfirm() {
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
+    // Wait for Cordova to load
     //
     document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
-    // PhoneGap is ready
+    // Cordova is ready
     //
     function onDeviceReady() {
         // Empty
@@ -373,14 +375,14 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.beep"
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
+    // Wait for Cordova to load
     //
     document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
-    // PhoneGap is ready
+    // Cordova is ready
     //
     function onDeviceReady() {
         // Empty
@@ -433,7 +435,7 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.beep"
 <li>Ignores the beep count argument.</li>
 <li>There is no native beep API for iPhone.
 <ul>
-<li>PhoneGap implements beep by playing an audio file via the media API.</li>
+<li>Cordova implements beep by playing an audio file via the media API.</li>
 <li>The user must provide a file with the desired beep tone.</li>
 <li>This file must be less than 30 seconds long, located in the www/ root, and must be named <code>beep.wav</code>.</li>
 </ul>
@@ -444,7 +446,7 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.beep"
 </h2>
 
 <ul>
-<li>WP7 PhoneGap lib includes a generic beep file that is used.</li>
+<li>WP7 Cordova lib includes a generic beep file that is used.</li>
 </ul>
 <hr>
 <h1><a name="notification.vibrate">notification.vibrate</a></h1>
@@ -487,14 +489,14 @@ navigator.<a href="phonegap_notification_notification.md.html#notification.vibra
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
+    // Wait for Cordova to load
     //
     document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
-    // PhoneGap is ready
+    // Cordova is ready
     //
     function onDeviceReady() {
         // Empty

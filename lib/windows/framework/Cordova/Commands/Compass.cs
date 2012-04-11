@@ -173,12 +173,6 @@ namespace WP7CordovaClassLib.Cordova.Commands
                         this.SetStatus(Starting);
                     }
 
-                    //if (status == ErrorFailedToStart)
-                    //{
-                    //    DispatchCommandResult(new PluginResult(PluginResult.Status.IO_EXCEPTION, ErrorFailedToStart));
-                    //    return;
-                    //}
-
                     long timeout = 2000;
                     while ((currentStatus == Starting) && (timeout > 0))
                     {
@@ -200,7 +194,6 @@ namespace WP7CordovaClassLib.Cordova.Commands
                     {
                         compass.Stop();
                     }
-                    //DispatchCommandResult(new PluginResult(PluginResult.Status.OK, GetHeadingFormatted(compass.CurrentValue)));
                 }
             }
             catch (UnauthorizedAccessException)

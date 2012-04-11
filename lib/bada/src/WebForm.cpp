@@ -132,28 +132,28 @@ WebForm::OnLoadingCompleted() {
 
 	// Analyzing PhoneGap command
 	if(__cordovaCommand) {
-		if(__cordovaCommand->StartsWith(L"gap://com.phonegap.Geolocation", 0)) {
+		if(__cordovaCommand->StartsWith(L"gap://com.cordova.Geolocation", 0)) {
 			geolocation->Run(*__cordovaCommand);
 		}
-		else if(__cordovaCommand->StartsWith(L"gap://com.phonegap.Accelerometer", 0)) {
+		else if(__cordovaCommand->StartsWith(L"gap://com.cordova.Accelerometer", 0)) {
 			accel->Run(*__cordovaCommand);
 		}
-		else if(__cordovaCommand->StartsWith(L"gap://com.phonegap.Network", 0)) {
+		else if(__cordovaCommand->StartsWith(L"gap://com.cordova.Network", 0)) {
 			network->Run(*__cordovaCommand);
 		}
-		else if(__cordovaCommand->StartsWith(L"gap://com.phonegap.DebugConsole", 0)) {
+		else if(__cordovaCommand->StartsWith(L"gap://com.cordova.DebugConsole", 0)) {
 			console->Run(*__cordovaCommand);
 		}
-		else if(__cordovaCommand->StartsWith(L"gap://com.phonegap.Compass", 0)) {
+		else if(__cordovaCommand->StartsWith(L"gap://com.cordova.Compass", 0)) {
 			compass->Run(*__cordovaCommand);
 		}
-		else if(__cordovaCommand->StartsWith(L"gap://com.phonegap.Contacts", 0)) {
+		else if(__cordovaCommand->StartsWith(L"gap://com.cordova.Contacts", 0)) {
 			contacts->Run(*__cordovaCommand);
 		}
-		else if(__cordovaCommand->StartsWith(L"gap://com.phonegap.Notification", 0)) {
+		else if(__cordovaCommand->StartsWith(L"gap://com.cordova.Notification", 0)) {
 			notification->Run(*__cordovaCommand);
 		}
-		else if(__cordovaCommand->StartsWith(L"gap://com.phonegap.Camera", 0)) {
+		else if(__cordovaCommand->StartsWith(L"gap://com.cordova.Camera", 0)) {
 			camera->Run(*__cordovaCommand);
 		}
 		// Tell the JS code that we got this command, and we're ready for another

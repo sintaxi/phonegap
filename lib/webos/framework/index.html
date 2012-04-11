@@ -14,9 +14,9 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>PhoneGap WebOS</title>
+	<title>cordova WebOS</title>
 	
-	<script type="text/javascript" src="phonegap-1.0.0.js"></script>   
+	<script type="text/javascript" src="cordova-1.6.0.js"></script>   
 	<script type="text/javascript">
 		// create global var for sqlite database instance
 		var db;
@@ -31,14 +31,15 @@
 	<a onclick="page('screen');">Adjust Screen Settings</a>
 	<a onclick="page('notifications');">Notification Examples</a>
 	<a onclick="info();">Show Device Info</a>
-	<a onclick="net();">Show Network Info</a>		
+	<a onclick="page('net');">Show Network Info</a>		
 	<a onclick="window.debug.log('trace this');">Console Logging</a>
 	<a onclick="launchmap()">Launch Map App</a>
 	<a onclick="navigator.window.newCard('dashboard.html'); menu(false);">Launch New Card</a>
 	<a onclick="getPicture();">Launch Camera</a>
 	<a onclick="storage();">Storage Tests</a> 
-	<a onclick="callPhoneGapExec();menu(false);">PhoneGap Exec</a>
+	<a onclick="callCordovaExec();menu(false);">cordova Exec</a>
 	<a onclick="page('touchDemo');">Touch Events Examples</a>
+	<a onclick="page('compassDemo');">Compass API</a>
 	<a onclick="menu(false);">Done</a>
 </div>
 
@@ -73,7 +74,16 @@
 
 <div id="info" style="display: none;"></div>
 
-<div id="net" style="display: none;"></div>
+<div id="net" style="display: none;">
+    <p>navigator.network.isReachable</p>
+    <button id="isReachable" onclick="isReachable();">isReachable</button>
+    <p>navigator.network.connection</p>
+    <button id="connection" onclick="networkConnection();">connection</button>
+    <p>navigator.network.connection.type</p>
+    <button id="connectionType" onclick="networkConnectionType();">connection type</button>
+    <div id="networkResult"></div>
+    
+</div>
 
 <div id="camera" style="display: none;"></div>
 
@@ -96,10 +106,58 @@
 	<div id="storageResults"></div>
 </div>
 
+<div id="compassDemo" style="display: none;">
+    <p>Compass Demo</p>
+	<button id="btnGetCurrentHeading" onclick="displayCurrentHeading();">Get Current Heading</button>    
+    <p>Watch Heading</p>
+    <button id="btnStartCompassWatch" onclick="startCompassWatch();">Start Compass Watch</button>
+    <button id="btnStopCompassWatch" onclick="stopCompassWatch();">Stop Compass Watch</button>
+    <div id="compassResult"></div>
+
+</div>
+
 <script>                         
 document.addEventListener('deviceready', function () {
-    // PhoneGap is ready, do all your stuf here
+    // cordova is ready, do all your stuf here
 }, false);
+
+var watchId = null;
+
+function displayCurrentHeading() {
+    
+    function successful(response) {
+        //navigator.notification.alert("last heading: " + JSON.stringify(response));
+        var compassPage = document.getElementById("compassResult");
+        compassPage.innerHTML = "current heading: "
+        compassPage.innerHTML += JSON.stringify(response);
+    }
+    
+    var request = navigator.compass.getCurrentHeading(successful, {});
+    
+}
+
+function startCompassWatch() {
+    // set frequency of compass updates in milliseconds
+    var options = { frequency: 5000 };
+    
+    function onStartCompassSuccess(heading) {
+        navigator.notification.alert("Heading: " + heading);
+    }
+    
+    watchId = navigator.compass.watchHeading(onStartCompassSuccess, onCompassError, options);
+}
+
+function stopCompassWatch() {
+    if (watchId) {
+        navigator.compass.clearWatch(watchId);
+        watchId = null;
+    }
+}
+
+function onCompassError(compassError) {
+    navigator.notification.alert("Compass error");// + compassError.code);
+}
+
 
 // setup event listeners for touch events 
 document.querySelector('#btnTouchStart').addEventListener('touchstart', onTouchEvent, false);
@@ -114,9 +172,12 @@ function onTouchEvent(event) {
 	navigator.notification.alert(event.type);
 }
 
-function callPhoneGapExec() {
+function callCordovaExec() {
+    
+    navigator.notification.alert(Cordova.ready);
+    
 	//win, fail, clazz, action, args
-	PhoneGap.exec(success, fail, 'navigator.notification', 'alert', 'testing exec'); 
+	Cordova.exec(success, fail, 'navigator.notification', 'alert', 'testing exec'); 
 	
 	function success(msg) {
 		console.log(msg + ' exec succeeded');
@@ -175,9 +236,8 @@ function storage() {
 	page('storage');
 }
 
-function net() {
-	page('net');
-	var netpage = lastpage;
+function isReachable() {
+	var netpage = document.getElementById("networkResult");
 	netpage.innerHTML = "Requesting network info...";
 	
 	function successful(response) {
@@ -190,9 +250,45 @@ function net() {
 		
 		var r = JSON.stringify(states[response]);
 		netpage.innerHTML = r.replace(/,/g, ', ');
+		netpage.innerHTML += response.toString();
 	}
 	
 	var request = navigator.network.isReachable('palm://com.palm.connectionmanager', successful, {});
+}
+
+function networkConnection() {
+    
+    var netpage = document.getElementById("networkResult");
+	netpage.innerHTML = "Requesting connection info...";
+	
+    function successful(response) {
+        netpage.innerHTML = JSON.stringify(response);
+    }
+    
+    var request = navigator.network.connection('palm://com.palm.connectionmanager', successful, {});
+}
+
+function networkConnectionType() {
+    var netpage = document.getElementById("networkResult");
+ 	netpage.innerHTML = "Requesting connection type...";
+
+     function successful(response) {
+         
+ 		var connection = {};
+            connection[0] = Connection.UNKNOWN;
+            connection[1] = Connection.ETHERNET;
+            connection[2] = Connection.WIFI;
+            connection[3] = Connection.CELL_2G;
+            connection[4] = Connection.CELL_3G;
+            connection[5] = Connection.CELL_4G;
+            connection[6] = Connection.NONE;
+         
+         	var r = JSON.stringify(connection[response]);
+         	netpage.innerHTML = "connection type: ";
+    		netpage.innerHTML += r.replace(/,/g, ', ');
+     }
+
+     var request = navigator.network.connection.type('palm://com.palm.connectionmanager', successful, {});    
 }
 
 function displayCurrentOrientation() {

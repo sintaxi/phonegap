@@ -4,19 +4,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
 <meta name="generator" content="joDoc">
-<title>PhoneGap API Documentation</title>
+<title>Cordova API Documentation</title>
 <link rel="stylesheet" type="text/css" href="index.css">
 <link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
 <link rel="stylesheet" type="text/css" href="prettify/prettify.css">
 </head>
 <body>
         <div id="header">
-            <h1><a href="index.html">Phone<strong>Gap</strong> Documentation</a></h1>
+            <h1><a href="index.html"><strong>Cordova</strong> Documentation</a></h1>
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="1.6.0rc1">1.6.0rc1</option>
+<option selected value="1.6.0">1.6.0</option>
 <option value="1.5.0rc1">1.5.0rc1</option>
-<option selected value="1.5.0">1.5.0</option>
+<option value="1.5.0">1.5.0</option>
 <option value="1.4.1">1.4.1</option>
 <option value="1.4.0rc1">1.4.0rc1</option>
 <option value="1.4.0">1.4.0</option>
@@ -53,10 +55,10 @@
 <option value="openDatabase_supported_platforms">      - Supported Platforms</option>
 <option value="openDatabase_quick_example">      - Quick Example</option>
 <option value="openDatabase_full_example">      - Full Example</option>
-<option value="name">name</option>
-<option value="version">version</option>
-<option value="display_name">display_name</option>
-<option value="size">size</option>
+<option value="database_name">database_name</option>
+<option value="database_version">database_version</option>
+<option value="database_displayname">database_displayname</option>
+<option value="database_size">database_size</option>
 <option value="Database">Database</option>
 <option value="Database_methods">      - Methods</option>
 <option value="Database_details">      - Details</option>
@@ -133,7 +135,7 @@
   <p>Provides access to the devices storage options.  </p>
 </blockquote>
 
-<p>This API is based on the <a class="external" href="http://dev.w3.org/html5/webdatabase/">W3C Web SQL </a><a href="phonegap_storage_storage.md.html#Database">Database</a> Specification and <a class="external" href="http://dev.w3.org/html5/webstorage/">W3C Web </a><a href="phonegap_storage_storage.md.html#Storage">Storage</a> API Specification. Some devices already provide an implementation of this spec. For those devices, the built-in support is used instead of replacing it with PhoneGap's implementation. For devices that don't have storage support, PhoneGap's implementation should be compatible with the W3C specification.</p>
+<p>This API is based on the <a class="external" href="http://dev.w3.org/html5/webdatabase/">W3C Web SQL </a><a href="phonegap_storage_storage.md.html#Database">Database</a> Specification and <a class="external" href="http://dev.w3.org/html5/webstorage/">W3C Web </a><a href="phonegap_storage_storage.md.html#Storage">Storage</a> API Specification. Some devices already provide an implementation of this spec. For those devices, the built-in support is used instead of replacing it with Cordova's implementation. For devices that don't have storage support, Cordova's implementation should be compatible with the W3C specification.</p>
 
 <h2>
 <a name="Storage_methods">Methods</a>
@@ -147,10 +149,10 @@
 </h2>
 
 <ul>
-<li><a href="phonegap_storage_storage.md.html#name">name</a></li>
-<li><a href="phonegap_storage_storage.md.html#version">version</a></li>
-<li><a href="phonegap_storage_storage.md.html#display_name">display_name</a></li>
-<li><a href="phonegap_storage_storage.md.html#size">size</a></li>
+<li><a href="phonegap_storage_storage.md.html#database_name">database_name</a></li>
+<li><a href="phonegap_storage_storage.md.html#database_version">database_version</a></li>
+<li><a href="phonegap_storage_storage.md.html#database_displayname">database_displayname</a></li>
+<li><a href="phonegap_storage_storage.md.html#database_size">database_size</a></li>
 </ul>
 <h2>
 <a name="Storage_objects">Objects</a>
@@ -169,7 +171,7 @@
 
 <p>Returns a new <a href="phonegap_storage_storage.md.html#Database">Database</a> object.</p>
 
-<pre class="prettyprint"><code>var dbShell = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>(<a href="phonegap_storage_storage.md.html#name">name</a>, <a href="phonegap_storage_storage.md.html#version">version</a>, <a href="phonegap_storage_storage.md.html#display_name">display_name</a>, <a href="phonegap_storage_storage.md.html#size">size</a>);
+<pre class="prettyprint"><code>var dbShell = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>(<a href="phonegap_storage_storage.md.html#database_name">database_name</a>, <a href="phonegap_storage_storage.md.html#database_version">database_version</a>, <a href="phonegap_storage_storage.md.html#database_displayname">database_displayname</a>, <a href="phonegap_storage_storage.md.html#database_size">database_size</a>);
 </code></pre>
 
 <h2>
@@ -205,14 +207,14 @@
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
+    // Wait for Cordova to load
     //
     document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
-    // PhoneGap is ready
+    // Cordova is ready
     //
     function onDeviceReady() {
         var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("test", "1.0", "Test DB", 1000000);
@@ -228,24 +230,24 @@
 </code></pre>
 
 <hr>
-<h1><a name="name">name</a></h1>
+<h1><a name="database_name">database_name</a></h1>
 
-<p>The <a href="phonegap_storage_storage.md.html#name">name</a> of the database.</p>
-
-<hr>
-<h1><a name="version">version</a></h1>
-
-<p>The <a href="phonegap_storage_storage.md.html#version">version</a> of the database.</p>
+<p>The name of the database.</p>
 
 <hr>
-<h1><a name="display_name">display_name</a></h1>
+<h1><a name="database_version">database_version</a></h1>
 
-<p>The display <a href="phonegap_storage_storage.md.html#name">name</a> of the database.</p>
+<p>The version of the database.</p>
 
 <hr>
-<h1><a name="size">size</a></h1>
+<h1><a name="database_displayname">database_displayname</a></h1>
 
-<p>The <a href="phonegap_storage_storage.md.html#size">size</a> of the database in bytes.</p>
+<p>The display name of the database.</p>
+
+<hr>
+<h1><a name="database_size">database_size</a></h1>
+
+<p>The size of the database in bytes.</p>
 
 <hr>
 <h1><a name="Database">Database</a></h1>
@@ -260,7 +262,7 @@
 <li>
 <strong>transaction</strong>: Runs a database transaction. </li>
 <li>
-<strong>changeVersion</strong>: method allows scripts to atomically verify the <a href="phonegap_storage_storage.md.html#version">version</a> number and change it at the same time as doing a schema update. </li>
+<strong>changeVersion</strong>: method allows scripts to atomically verify the version number and change it at the same time as doing a schema update. </li>
 </ul>
 <h2>
 <a name="Database_details">Details</a>
@@ -296,7 +298,7 @@ function successCB() {
     alert("success!");
 }
 
-var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "PhoneGap Demo", 200000);
+var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Cordova Demo", 200000);
 db.transaction(populateDB, errorCB, successCB);
 </code></pre>
 
@@ -304,7 +306,7 @@ db.transaction(populateDB, errorCB, successCB);
 <a name="Database_change_version_quick_example">Change Version Quick Example</a>
 </h2>
 
-<pre class="prettyprint"><code>var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "PhoneGap Demo", 200000);
+<pre class="prettyprint"><code>var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Cordova Demo", 200000);
 db.changeVersion("1.0", "1.1");
 </code></pre>
 
@@ -317,17 +319,17 @@ db.changeVersion("1.0", "1.1");
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
+    // Wait for Cordova to load
     //
     document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
-    // PhoneGap is ready
+    // Cordova is ready
     //
     function onDeviceReady() {
-        var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "PhoneGap Demo", 200000);
+        var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Cordova Demo", 200000);
         db.transaction(populateDB, errorCB, successCB);
     }
 
@@ -416,7 +418,7 @@ function successCB() {
     alert("success!");
 }
 
-var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "PhoneGap Demo", 200000);
+var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Cordova Demo", 200000);
 db.transaction(populateDB, errorCB, successCB);
 </code></pre>
 
@@ -429,17 +431,17 @@ db.transaction(populateDB, errorCB, successCB);
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
+    // Wait for Cordova to load
     //
     document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
-    // PhoneGap is ready
+    // Cordova is ready
     //
     function onDeviceReady() {
-        var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "PhoneGap Demo", 200000);
+        var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Cordova Demo", 200000);
         db.transaction(populateDB, errorCB, successCB);
     }
 
@@ -526,7 +528,7 @@ function errorCB(err) {
     alert("Error processing SQL: "+err.code);
 }
 
-var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "PhoneGap Demo", 200000);
+var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Cordova Demo", 200000);
 db.transaction(queryDB, errorCB);
 </code></pre>
 
@@ -539,10 +541,10 @@ db.transaction(queryDB, errorCB);
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
+    // Wait for Cordova to load
     //
     document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
@@ -581,14 +583,14 @@ db.transaction(queryDB, errorCB);
     // Transaction success callback
     //
     function successCB() {
-        var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "PhoneGap Demo", 200000);
+        var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Cordova Demo", 200000);
         db.transaction(queryDB, errorCB);
     }
 
-    // PhoneGap is ready
+    // Cordova is ready
     //
     function onDeviceReady() {
-        var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "PhoneGap Demo", 200000);
+        var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Cordova Demo", 200000);
         db.transaction(populateDB, errorCB, successCB);
     }
 
@@ -657,7 +659,7 @@ function errorCB(err) {
     alert("Error processing SQL: "+err.code);
 }
 
-var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "PhoneGap Demo", 200000);
+var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Cordova Demo", 200000);
 db.transaction(queryDB, errorCB);
 </code></pre>
 
@@ -670,10 +672,10 @@ db.transaction(queryDB, errorCB);
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
+    // Wait for Cordova to load
     //
     document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
@@ -711,14 +713,14 @@ db.transaction(queryDB, errorCB);
     // Transaction success callback
     //
     function successCB() {
-        var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "PhoneGap Demo", 200000);
+        var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Cordova Demo", 200000);
         db.transaction(queryDB, errorCB);
     }
 
-    // PhoneGap is ready
+    // Cordova is ready
     //
     function onDeviceReady() {
-        var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "PhoneGap Demo", 200000);
+        var db = window.<a href="phonegap_storage_storage.md.html#openDatabase">openDatabase</a>("<a href="phonegap_storage_storage.md.html#Database">Database</a>", "1.0", "Cordova Demo", 200000);
         db.transaction(populateDB, errorCB, successCB);
     }
 
@@ -780,7 +782,7 @@ db.transaction(queryDB, errorCB);
 
 <ul>
 <li>
-<strong>key</strong>: Returns the <a href="phonegap_storage_storage.md.html#name">name</a> of the key at the position specified. </li>
+<strong>key</strong>: Returns the name of the key at the position specified. </li>
 <li>
 <strong>getItem</strong>: Returns the item identified by it's key.</li>
 <li>
@@ -850,14 +852,14 @@ db.transaction(queryDB, errorCB);
   &lt;head&gt;
     &lt;title&gt;<a href="phonegap_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="phonegap.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for PhoneGap to load
+    // Wait for Cordova to load
     //
     document.addEventListener("<a href="phonegap_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
-    // PhoneGap is ready
+    // Cordova is ready
     //
     function onDeviceReady() {
         window.<a href="phonegap_storage_storage.md.html#localStorage">localStorage</a>.setItem("key", "value");

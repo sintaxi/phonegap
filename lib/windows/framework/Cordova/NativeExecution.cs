@@ -191,6 +191,7 @@ namespace WP7CordovaClassLib.Cordova
             {
                 try
                 {
+                    //Debug.WriteLine("InvokingScript::" + script.ScriptName + " with args ::" + script.Args[0] + ", " + script.Args[1] + ", " + script.Args[2]);
                     this.webBrowser.InvokeScript(script.ScriptName, script.Args);
                 }
                 catch (Exception ex)

@@ -187,6 +187,35 @@ namespace WP7CordovaClassLib.Cordova.Commands
             }
         }
 
+        // Called when you create a new Media('blah') object in JS.
+        public void create(string options)
+        {
+            try
+            {
+                MediaOptions mediaOptions;
+
+                try
+                {
+                    mediaOptions = JSON.JsonHelper.Deserialize<MediaOptions>(options);
+                }
+                catch (Exception)
+                {
+                    DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION, "Error parsing options into create method"));
+                    return;
+                }
+
+                AudioPlayer audio = new AudioPlayer(this, mediaOptions.Id);
+                Media.players.Add(mediaOptions.Id, audio);
+          
+                DispatchCommandResult(new PluginResult(PluginResult.Status.OK));
+                  
+            }
+            catch (Exception e)
+            {
+                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, e.Message));
+            }
+        }
+
         /// <summary>
         /// Starts or resume playing audio file 
         /// </summary>

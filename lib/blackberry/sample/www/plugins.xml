@@ -3,13 +3,13 @@
   <plugin name="App"            value="org.apache.cordova.app.App"/>
   <plugin name="Device"         value="org.apache.cordova.device.Device"/>
   <plugin name="Camera"         value="org.apache.cordova.camera.Camera"/>
-  <plugin name="Network Status" value="org.apache.cordova.network.Network"/>
+  <plugin name="NetworkStatus"  value="org.apache.cordova.network.Network"/>
   <plugin name="Notification"   value="org.apache.cordova.notification.Notification"/>
   <plugin name="Accelerometer"  value="org.apache.cordova.accelerometer.Accelerometer"/>
   <plugin name="Geolocation"    value="org.apache.cordova.geolocation.Geolocation"/>
   <plugin name="File"           value="org.apache.cordova.file.FileManager"/>
   <plugin name="FileTransfer"   value="org.apache.cordova.http.FileTransfer"/>
   <plugin name="Contact"        value="org.apache.cordova.pim.Contact"/>
-  <plugin name="MediaCapture"   value="org.apache.cordova.media.MediaCapture"/>
+  <plugin name="Capture"        value="org.apache.cordova.media.MediaCapture"/>
   <plugin name="Battery"        value="org.apache.cordova.battery.Battery"/>
 </plugins>

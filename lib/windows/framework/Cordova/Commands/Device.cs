@@ -32,7 +32,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
 {
     public class Device : BaseCommand
     {
-        public void Get(string notused)
+        public void getDeviceInfo(string notused)
         {
 
             string res = String.Format("\"name\":\"{0}\",\"cordova\":\"{1}\",\"platform\":\"{2}\",\"uuid\":\"{3}\",\"version\":\"{4}\"",
@@ -43,8 +43,9 @@ namespace WP7CordovaClassLib.Cordova.Commands
                                         this.version);
 
 
+            
             res = "{" + res + "}";
-
+            //Debug.WriteLine("Result::" + res);
             DispatchCommandResult(new PluginResult(PluginResult.Status.OK, res));
         }
 
@@ -61,7 +62,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
             get
             {
                 // TODO: should be able to dynamically read the Cordova version from somewhere...
-                return "1.5.0";
+                return "1.6.0";
             }
         }
 
