@@ -9,6 +9,9 @@ Becky Gibson (7):
       Fixes cb-361 & use timeout to turn off compass sensor
       Fix CB-427 add back iOS only getPicture options
 
+Ben Birch (1):
+      Remove extra newlines from before content-length header so content-length is not interpreted as part of the body
+
 Fil Maj (25):
       device initialization going with a require-based pattern
       require syntax for firing events in ios
@@ -39,7 +42,7 @@ Fil Maj (25):
 Marcus Wu (1):
       Change FileTransfer download to not use a blocking call
 
-Shazron Abdullah (67):
+Shazron Abdullah (68):
       Fixed CB-260: Can't install Phonegap with new Xcode 4.3
       Fixed clobbered {VERSION} parameter in release notes.
       Fixed Xcode app detection (using Spotlight) in Makefile
@@ -107,6 +110,7 @@ Shazron Abdullah (67):
       Tweak CB-475 - download callback differentiation on error (via @marcuswu)
       Updated to latest 1.6.0 cordova-js
       Re-fix CB-475
+      Updated getting started guide link in sample index.html to edge
 
 blackberry
 Drew Walters (15):
