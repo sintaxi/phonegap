@@ -40,9 +40,10 @@ hermwong (1):
       update to 1.6.1
 
 bada
-Anis Kadri (4):
+Anis Kadri (5):
       updating bada project parameters
       adding artwork and removing old phonegap references
       CB-4 adding Apache Source Headers
       fixing network problem
+      updating version to 1.6.1
 
