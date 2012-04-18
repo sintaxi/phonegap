@@ -1,116 +1,6 @@
 ChangeLog
 ios
-Becky Gibson (7):
-      iOS updates for Media
-      Update for iOS Unified JS
-      Updating contacts for unified JS
-      Fix contacts.save ret val and Notification.confirm
-      More Unified JS bug fixes and code cleanup
-      Fixes cb-361 & use timeout to turn off compass sensor
-      Fix CB-427 add back iOS only getPicture options
-
-Ben Birch (1):
-      Remove extra newlines from before content-length header so content-length is not interpreted as part of the body
-
-Fil Maj (25):
-      device initialization going with a require-based pattern
-      require syntax for firing events in ios
-      tell webview that native is ready after didFinishLoad
-      adding a getConncetionInfo method for compatibility sake
-      using require in pluginresult helper funcs. added getConnectionInfo method to connection plugin to line up with other platforms
-      updating plist of plugin names -> classes to adhere to common labels
-      Rewrite of accel and removing DeviceInfo drop from old init approach
-      added warning about changing compiler settings in xcode
-      Accel values should be doubles. and doubles shouldnt be created via an integer constructor. duh
-      tweaking battery plugin for cordova-js use
-      updated interface to get camera working. dropped a whole bunch of todos in terms of cleanup
-      rewrote Location class to use cordova-js unified approach.
-      updating refs from require("cordova") to just "cordova", and other require calls to cordova.require
-      updating subproject cordovalib steps
-      reverting my breaking commits to location. also fixes compass!
-      part of the way there for fixing location + compass
-      return error code as integer in contacts
-      updates for location for cordova-js integration
-      added unification of accelerometer values on ios (based on android values)
-      removed old JS, added cordova-js version
-      changes to cordovalib makefile for generating JS
-      added cordova-{VERSION}.js file to gitignore
-      updating references to js file/folder in root makefile
-      Changing name of Network Status plugin label to NetworkStatus
-      updating JS to latest cordova-js drop
-
-Marcus Wu (1):
-      Change FileTransfer download to not use a blocking call
-
-Shazron Abdullah (80):
-      Fixed CB-260: Can't install Phonegap with new Xcode 4.3
-      Fixed clobbered {VERSION} parameter in release notes.
-      Fixed Xcode app detection (using Spotlight) in Makefile
-      Fixed CB-306 - Remove extra template App delegate methods
-      Fixed release notes which had truncated lines, and removed lines that did not convey any useful information.
-      Fixes CB-255 - iOS: a parameter with value 'null' is not passed to 'arguments' array
-      Fixed CB-236 - Add ContentLength Header in Upload request
-      Fixed CB-300 - CDVFileTransfer crashes with 303 and empty response
-      Fixed CB-148, CB-316: Playing HTTP / HTTPS urls using the Media API is not working
-      Improved Makefile for mixed Xcode 4.2 and Xcode 4.3.1 environment.
-      Fixed CB-329 - Add warning if multi-tasking is not supported on an iOS device (to console log)
-      Fixed CB-317 : Xcode: Shell Script Invocation Error when directory has spaces in name
-      Fixed CB-330 - localStorage / SQLDatabase no longer persistent after iOS 5.01 update     Fixed CB-347 - iOS 5.1 localStorage / SQLDatabase error after upgrading an app
-      Fixed shell script error - picks up new location of cordova.js now
-      Fixed NOTICE file with correct project name
-      Cleaned up and tweaked CDVLocalStorage fixes for CB-330, CB-347
-      Fixed static-analyzer warnings.
-      Added new CDVCommandDelegate stub to MainViewController
-      Prep Release Notes for 1.6.0rc1 release.
-      Added 1.6.0 constants
-      CDVLocalStorage class method renamed
-      Added older plugin compatibility headers.
-      Renamed IsiOSVersion macro to IsAtLeastiOSVersion
-      Fixed CB-49 - UUID replacement
-      Updated Release Notes for 1.6.0rc1
-      Fixed wrong key for FileTransfer core plugin
-      Added 1.6.0.rc1 cordova-js
-      Updated VERSION to 1.6.0rc1
-      Fixed CB-349 - Remove sessionKey usage (unused) in CDVViewController
-      Fixed CB-237 - Updated splash screen assets
-      Typo for __CORDOVA_1_6_0
-      Added stubs for CDVLocalStorageTests
-      CordovaLib: for easier testing, added CordovaLibApp scheme+target for application tests, as well as unit tests.
-      Removed last remnants of PG prefix in the code, with one deprecated method in CDVURLProtocol
-      Fixed CB-412 - main.m is missing Apache source license header
-      Removed strange whitelist entry from Cordova.plist
-      Fixed CB-387 - try/catch wrapper in native iOS code for cordova-js initialization firing alerts when page without cordova.js is loaded in
-      Removed space in service name for "Splash Screen" in Cordova.plist
-      Fixed CB-425 - Notification buttons and title are not working for confirm and alert
-      Fixed CB-440 - (LLVM-GCC only)     Wrong number of arguments specified for 'deprecated' attribute
-      Fixed CB-441 - make fails if PackageMaker.app installed at a path with spaces in a folder name.
-      Fixed CB-444 - Xcode template new project - AppDelegate's self.invokeString usage was removed
-      Fixed CB-380 - Update Cordova Upgrade Guide for 1.6.0
-      Fixed CB-445 - Update "How to use Cordova as Component" Guide for 1.6.0
-      Fixed CB-381 - Update Cordova Plugin Upgrade Guide for 1.6.0
-      Fixed formatting in "Cordova Upgrade Guide"
-      Fixed formatting in "How to use Cordova as a Component"
-      Fixed CB-406 - Update README.md
-      Fixed CB-433 - CDVFileTransfer.m methods - convert use of "options" object into "arguments" array
-      Removed verbose logging to only print under DEBUG configuration.
-      Fixed CB-377 - add a check for PM_APP,  XC_APP, and DEVELOPER in the Makefile
-      Fixed CB-407 - Update Release Notes for 1.6.0
-      Fixed CB-410 - Update Cordova version for 1.6.0
-      Re-fix CB-444 - Xcode template new project - AppDelegate's self.invokeString usage was removed
-      Interim cordova.ios.js for 1.6.0 until we get the final version.
-      Clean-up of CDFileTransfer class.
-      Clean-up of CDVLocation and fix static analyzer warnings.
-      Updated the "Cordova Plugin Upgrade Guide" regarding the lower-case "c" cordova object change.
-      Cordova Plugin Upgrade Guide - clarified 1.6.0 step 4(c)
-      Fix mobile-spec failing test - device.cordova was missing
-      Added 1.6.0 cordova-js
-      Typo in Cordova Upgrade Guide for 1.6.0
-      Fixed CB-474: "How to Use Cordova as a Component" - CordovaLib subproject is missing a step
-      Fixed CB-475 - FileTransfer js callbacks not working in 1.6.0
-      Tweak CB-475 - download callback differentiation on error (via @marcuswu)
-      Updated to latest 1.6.0 cordova-js
-      Re-fix CB-475
-      Updated getting started guide link in sample index.html to edge
+Shazron Abdullah (12):
       Fixed CB-496 - Camera.getPicture - will always return FILE_URI even though DATA_URL specified
       Fixed CB-497 - online and offline events are not being fired in 1.6.0
       Fixed CB-501 - orientationchange event is not being fired in 1.6.0
@@ -125,170 +15,32 @@ Shazron Abdullah (80):
       Re-fix CB-347 - don't apply .plist fix if the key does not exist
 
 blackberry
-Drew Walters (15):
-      Sync up with cordova-js.
-      Sync BB network native code with cordova-js.
-      Sync native Capture implementation with cordova-js.
-      Switch to cordova.require.
-      Switch to Cordova artwork for icon and loading screen.
-      Update build to use unified js.
-      Provide workaround for OS 7 file rename failures.
-      Normalize Accelerometer values and cleanup.
-      Sync plugins.xml with NetworkStatus change.
-      Update the distribution README file.
-      Cleanup sample html file for 1.6.
-      Update javascript to latest cordova-js.
-      Update version to 1.6.0rc1
-      Update javascript to 1.6.0 version.
-      Update version to 1.6.0.
-
 Fil Maj (1):
       version 1.6.1
 
 android
-Bryce Curtis (6):
-      [CB-352] Support initializing DroidGap with existing WebView, WebViewClient and webViewChrome.     [CB-353] Create PluginEntry object to use by PluginManager.
-      [CB-367] Back button event should fire on key up not key down     Also changed menu key and search key to be consistent.
-      Tests to verify Android native features.
-      [CB-423] Problem displaying patch-9 splash screen.
-      Update project template cordova.js reference and title.
-      Update to version 1.6.0.
-
-Fil Maj (6):
-      switched from "require" syntax to "cordova.require"
-      cordova.require("cordova") is pretty funny. wish i didnt write it
-      updates to JS: removing require+define from global scope, tweaking geolocation code, online/offline events fire on document now
-      removed old javascript files and removed unused target + commented out lines in build.xml
-      spacing fixes, null check in getPhoneType in contacts, returning error integers instead of objects in contacts
-      updating network status plugin label and updating cordova-js to latest
-
-Joe Bowser (18):
-      We show the default 404 on non-resolved domains
-      Fixing CB-210 with patch and adding fix for CB-210
-      Tweaked File Transfer to fix CB-74
-      Changing to the modern icon
-      Added temporary Cordova splash for now
-      Checking for the callback server before we call sendJavascript for the Kindle Fire, CB-247
-      Fixing CB-343: We need to respect the whitelist
-      Fixing a bug with File Upload on Android where Chunked mode isn't used by default
-      First stab at CB-21, I really need more info before I can close this
-      Tagged 1.6rc1
-      Fixing the template, since this doesn't have to be unit tested. :)
-      Starting Release Process
-      Updating the sample index.html
-      Updating with tagged JS
+Joe Bowser (4):
       Copying new XML into the templates for 1.6.1.  Turns out tags are broken
       Getting setup to tag 1.6.1
       CB-489 - Adding .js to the example, thought it was removed for a reason
       Adding fix for CB-482
 
-macdonst (15):
-      CB-383: Fixes issue with misspelled destinationType for Camera.getPicture()
-      Fix for CB-389: resolveLocalFileSystemURI does not work on a resized image captured from Camera.getPicture()
-      Fixing license header in com.phonegap.api.PluginManager
-      CB-321: Media API: 'mediaSuccess' callback param to new Media() is called soon after new obj created
-      CB-163: contactFindOptions.filter does not work as expected on Android
-      CB-426: camera.getPicture ignores mediaType in 1.5
-      Updating cordova.android.js for CB-421 and CB-426
-      CB-438: File metadata.modificationTime returns an invalid date
-      Return MediaError object and not error code from native side of Media API
-      CB-446: Enhance setting data source for local files in AudioPlayer
-      CB-453: FileWriter.append - Chinese characters are not appended to the file correctly
-      CB-446: Enhance setting data source for local files in AudioPlayer
-      CB-472: FileWriter.seek(0) does not actually seek to the beginning of the file
+macdonst (2):
       Remove duplicate files from repository
       Automatically update index.html in templates directory on version change
 
 windows
-Jesse MacFadyen (29):
-      file download API
-      CB-342 still had navigation to WP7GapClassLib
-      ignore DS_Store files
-      ignore generated files
-      Mark Cast callbacks as Obsolete
-      remove Cast callbacks from Capture
-      update device version 1.6.0
-      update tests for 1.6
-      update js to 1.6.0
-      added notice
-      contact formatting issues
-      Changes for use with commoner cordova-js
-      actually this was a rename ...
-      When execScript fails, it will continue to fail even with an separate thread and multiple tries.
-      updated mobile spec tests for CordovaJS
-      removed gen'd js file
-      spec pages cleanup
-      ignore changes to the CordovaSourceDictionary.xml
-      include battery tests in 'all'
-      minor cleanup
-      removed unused resources
-      built cordova-js for WP7 1.6.0
-      update template for 1.6.0
-      updated readme, added resource files to BuildStep
-      actual VS project parsing, to avoid including hidden files ex. .git folders
-      updated template to use new build script
+Jesse MacFadyen (3):
       cleanup console logging, toLower on OverrideBackButton
       updated for 1.6.1
       updated template, permissions, and js
 
-filmaj (7):
-      Dispatching onNativeReady trigger from native side on separate patch with slight delay. Definitely need to tweak the delay
-      Added a constant to multiply accelerometer values by, fixes CB-152 for WP7
-      Added timestamp to accel return method
-      [CB-460] Added Battery class that at least returns whether the device is plugged in or not
-      Added "create" media action
-      Fixed CB-459, now back button integrated
-      tweaked how native side picks up on non-command-based exec calls (specifically for back button overriding)
-
 webos
-Herm Wong (6):
-      update README
-      update README
-      update README
-      update README
-      update README
-      update README
-
-Markus Leutwyler (2):
-      Added initial compass support
-      added HP copyright notice
-
-Steven Gill (2):
-      updatd to 1.5.0
-      updatd to 1.5.0
-
-ghtomcat (2):
-      Added compassAPI function
-      Added mapping for compassAPI
-
-hermwong (16):
-      update sample application to demo compass api
-      changes for https://issues.apache.org/jira/browse/CB-231
-      add LICENSE & NOTICE file, CB-356
-      replace phonegap links with apache cordova links CB-404
-      update cordova splash / app icon; CB-237
-      added network connection api
-      added network connection type api
-      get compass api to pass mobile spec tests
-      changes for https://issues.apache.org/jira/browse/CB-231
-      add LICENSE & NOTICE file, CB-356
-      replace phonegap links with apache cordova links CB-404
-      update cordova splash / app icon; CB-237
-      added network connection api
-      added network connection type api
-      get compass api to pass mobile spec tests
+hermwong (1):
       update to 1.6.1
 
 bada
-Anis Kadri (12):
-      tagging 1.6.0rc1
-      CB-405 updating README.rd
-      more renaming
-      changing VERSION to 1.6.0
-      adding NOTICE file
-      fixing callbacks
-      fixing sample app
-      adding cordova.js to avoid users generating it
+Anis Kadri (4):
       updating bada project parameters
       adding artwork and removing old phonegap references
       CB-4 adding Apache Source Headers
