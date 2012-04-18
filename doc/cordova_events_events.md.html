@@ -15,8 +15,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="1.6.1">1.6.1</option>
 <option value="1.6.0rc1">1.6.0rc1</option>
-<option selected value="1.6.0">1.6.0</option>
+<option value="1.6.0">1.6.0</option>
 <option value="1.5.0rc1">1.5.0rc1</option>
 <option value="1.5.0">1.5.0</option>
 <option value="1.4.1">1.4.1</option>
@@ -64,6 +65,7 @@
 <option value="resume_supported_platforms">      - Supported Platforms</option>
 <option value="resume_quick_example">      - Quick Example</option>
 <option value="resume_full_example">      - Full Example</option>
+<option value="resume_ios_quirks">      - iOS Quirks</option>
 <option value="online">online</option>
 <option value="online_details">      - Details</option>
 <option value="online_supported_platforms">      - Supported Platforms</option>
@@ -344,6 +346,15 @@ function onPause() {
 
 <p>In the <a href="cordova_events_events.md.html#pause">pause</a> handler, any calls that go through Objective-C will not work, nor will any calls that are interactive, like alerts. This means that you cannot call console.log (and its variants), or any calls from Plugins or the Cordova API. These will only be processed when the app resumes (processed on the next run-loop).</p>
 
+<ul>
+<li>
+<p><strong>resign</strong> event </p>
+
+<p>This iOS specific event is available as a variant of the <strong><a href="cordova_events_events.md.html#pause">pause</a></strong> event, and is often used to detect when the "Lock" button has been pressed to lock the device when your app is the foreground app. If your app (and device) is enabled for multi-tasking, this will be paired with a subsequent <strong><a href="cordova_events_events.md.html#pause">pause</a></strong> event, but only under iOS 5 (effectively all "locked" apps in iOS 5 that have multi-tasking enabled are put to the background). </p>
+
+<p>Under iOS 5, if you want your app to still run when the device is locked, you will have to disable multi-tasking (UIApplicationExitsOnSuspend - YES) for your app. This is different when you are on iOS 4 - to have your app run when the device is locked, the multi-tasking setting for your app does not matter.</p>
+</li>
+</ul>
 <hr>
 <h1><a name="resume">resume</a></h1>
 
@@ -421,6 +432,21 @@ function onResume() {
 &lt;/html&gt;
 </code></pre>
 
+<h2>
+<a name="resume_ios_quirks">iOS Quirks</a>
+</h2>
+
+<p>Any calls to console.log during your <strong><a href="cordova_events_events.md.html#pause">pause</a></strong> event handler will be run now when the app resumes, see the iOS Quirks section for the <strong><a href="cordova_events_events.md.html#pause">pause</a></strong> event for an explanation. </p>
+
+<ul>
+<li>
+<p><strong>active</strong> event </p>
+
+<p>This iOS specific event is available as a variant of the <strong><a href="cordova_events_events.md.html#resume">resume</a></strong> event, and is often used to detect when the "Lock" button has been pressed to unlock the device when your app is the foreground app. If your app (and device) is enabled for multi-tasking, this will be paired with a subsequent <strong><a href="cordova_events_events.md.html#resume">resume</a></strong> event, but only under iOS 5 (effectively all "locked" apps in iOS 5 that have multi-tasking enabled are put to the background). </p>
+
+<p>Under iOS 5,  if you want your app to still run when the device is locked, you will have to disable multi-tasking (UIApplicationExitsOnSuspend - YES) for your app. This is different when you are on iOS 4 - to have your app run when the device is locked, the multi-tasking setting for your app does not matter.</p>
+</li>
+</ul>
 <hr>
 <h1><a name="online">online</a></h1>
 

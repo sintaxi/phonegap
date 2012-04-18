@@ -15,8 +15,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="1.6.1">1.6.1</option>
 <option value="1.6.0rc1">1.6.0rc1</option>
-<option selected value="1.6.0">1.6.0</option>
+<option value="1.6.0">1.6.0</option>
 <option value="1.5.0rc1">1.5.0rc1</option>
 <option value="1.5.0">1.5.0</option>
 <option value="1.4.1">1.4.1</option>
@@ -497,7 +498,7 @@ db.transaction(populateDB, errorCB, successCB);
 <a name="SQLResultSet_details">Details</a>
 </h2>
 
-<p>When you call the <a href="cordova_storage_storage.md.html#SQLTransaction">SQLTransaction</a> executeSql method it's callback methods will be called with a <a href="cordova_storage_storage.md.html#SQLResultSet">SQLResultSet</a> object.  The result object has three properties.  The first is the <code>insertId</code> which will return the row number of a success SQL insert statement.  If the SQL statement is not an insert then the <code>insertId</code> is not set.  The <code>rowsAffected</code> is always 0 for a SQL select statement.  For insert or update statements it returns the number of rows that have been modified.  The final property is of type <a href="cordova_storage_storage.md.html#SQLResultSetList">SQLResultSetList</a> and it contains the data returned from a SQL select statement.</p>
+<p>When you call the <a href="cordova_storage_storage.md.html#SQLTransaction">SQLTransaction</a> executeSql method its callback methods will be called with a <a href="cordova_storage_storage.md.html#SQLResultSet">SQLResultSet</a> object.  The result object has three properties.  The first is the <code>insertId</code> which will return the row number of a success SQL insert statement.  If the SQL statement is not an insert then the <code>insertId</code> is not set.  The <code>rowsAffected</code> is always 0 for a SQL select statement.  For insert or update statements it returns the number of rows that have been modified.  The final property is of type <a href="cordova_storage_storage.md.html#SQLResultSetList">SQLResultSetList</a> and it contains the data returned from a SQL select statement.</p>
 
 <h2>
 <a name="SQLResultSet_supported_platforms">Supported Platforms</a>
@@ -517,12 +518,14 @@ db.transaction(populateDB, errorCB, successCB);
 }
 
 function querySuccess(tx, results) {
-    // this will be empty since no rows were inserted.
-    console.log("Insert ID = " + results.insertId);
-    // this will be 0 since it is a select statement
-    console.log("Rows Affected = " + results.rowsAffected);
-    // the number of rows returned by the select statement
-    console.log("Insert ID = " + results.rows.length);
+console.log("Returned rows = " + results.rows.length);
+// this will be true since it was a select statement and so rowsAffected was 0
+if (!resultSet.rowsAffected) {
+  console.log('No rows affected!');
+  return false;
+}
+// for an insert statement, this property will return the ID of the last inserted row
+console.log("Last inserted row ID = " + results.insertId);
 }
 
 function errorCB(err) {
@@ -567,12 +570,14 @@ db.transaction(queryDB, errorCB);
     // Query the success callback
     //
     function querySuccess(tx, results) {
-        // this will be empty since no rows were inserted.
-        console.log("Insert ID = " + results.insertId);
-        // this will be 0 since it is a select statement
-        console.log("Rows Affected = " + results.rowsAffected);
-        // the number of rows returned by the select statement
-        console.log("Insert ID = " + results.rows.length);
+  console.log("Returned rows = " + results.rows.length);
+  // this will be true since it was a select statement and so rowsAffected was 0
+  if (!resultSet.rowsAffected) {
+    console.log('No rows affected!');
+    return false;
+  }
+  // for an insert statement, this property will return the ID of the last inserted row
+  console.log("Last inserted row ID = " + results.insertId);
     }
 
     // Transaction error callback

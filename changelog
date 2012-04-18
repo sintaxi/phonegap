@@ -42,7 +42,7 @@ Fil Maj (25):
 Marcus Wu (1):
       Change FileTransfer download to not use a blocking call
 
-Shazron Abdullah (68):
+Shazron Abdullah (80):
       Fixed CB-260: Can't install Phonegap with new Xcode 4.3
       Fixed clobbered {VERSION} parameter in release notes.
       Fixed Xcode app detection (using Spotlight) in Makefile
@@ -111,6 +111,18 @@ Shazron Abdullah (68):
       Updated to latest 1.6.0 cordova-js
       Re-fix CB-475
       Updated getting started guide link in sample index.html to edge
+      Fixed CB-496 - Camera.getPicture - will always return FILE_URI even though DATA_URL specified
+      Fixed CB-497 - online and offline events are not being fired in 1.6.0
+      Fixed CB-501 - orientationchange event is not being fired in 1.6.0
+      Re-fix CB-502, Fixed CB-302 - orientation change event fired off twice on iOS 5.x
+      Fixed CB-507 - Remove excessive debug logging in execute delegate method in CDVViewController
+      Improved the deprecation of appViewController in CDVPlugin.h
+      Added cordova-js (iOS) 1.6.1
+      Updated docs/guides for 1.6.1
+      Updated VERSION file to 1.6.1
+      Added 1.6.1 availability constants
+      Fixed pause and resume event firing to use cordova channels onPause and onResume
+      Re-fix CB-347 - don't apply .plist fix if the key does not exist
 
 blackberry
 Drew Walters (15):
@@ -130,6 +142,9 @@ Drew Walters (15):
       Update javascript to 1.6.0 version.
       Update version to 1.6.0.
 
+Fil Maj (1):
+      version 1.6.1
+
 android
 Bryce Curtis (6):
       [CB-352] Support initializing DroidGap with existing WebView, WebViewClient and webViewChrome.     [CB-353] Create PluginEntry object to use by PluginManager.
@@ -147,7 +162,7 @@ Fil Maj (6):
       spacing fixes, null check in getPhoneType in contacts, returning error integers instead of objects in contacts
       updating network status plugin label and updating cordova-js to latest
 
-Joe Bowser (14):
+Joe Bowser (18):
       We show the default 404 on non-resolved domains
       Fixing CB-210 with patch and adding fix for CB-210
       Tweaked File Transfer to fix CB-74
@@ -162,8 +177,12 @@ Joe Bowser (14):
       Starting Release Process
       Updating the sample index.html
       Updating with tagged JS
+      Copying new XML into the templates for 1.6.1.  Turns out tags are broken
+      Getting setup to tag 1.6.1
+      CB-489 - Adding .js to the example, thought it was removed for a reason
+      Adding fix for CB-482
 
-macdonst (12):
+macdonst (15):
       CB-383: Fixes issue with misspelled destinationType for Camera.getPicture()
       Fix for CB-389: resolveLocalFileSystemURI does not work on a resized image captured from Camera.getPicture()
       Fixing license header in com.phonegap.api.PluginManager
@@ -176,9 +195,12 @@ macdonst (12):
       CB-446: Enhance setting data source for local files in AudioPlayer
       CB-453: FileWriter.append - Chinese characters are not appended to the file correctly
       CB-446: Enhance setting data source for local files in AudioPlayer
+      CB-472: FileWriter.seek(0) does not actually seek to the beginning of the file
+      Remove duplicate files from repository
+      Automatically update index.html in templates directory on version change
 
 windows
-Jesse MacFadyen (26):
+Jesse MacFadyen (29):
       file download API
       CB-342 still had navigation to WP7GapClassLib
       ignore DS_Store files
@@ -205,6 +227,9 @@ Jesse MacFadyen (26):
       updated readme, added resource files to BuildStep
       actual VS project parsing, to avoid including hidden files ex. .git folders
       updated template to use new build script
+      cleanup console logging, toLower on OverrideBackButton
+      updated for 1.6.1
+      updated template, permissions, and js
 
 filmaj (7):
       Dispatching onNativeReady trigger from native side on separate patch with slight delay. Definitely need to tweak the delay
@@ -236,7 +261,7 @@ ghtomcat (2):
       Added compassAPI function
       Added mapping for compassAPI
 
-hermwong (15):
+hermwong (16):
       update sample application to demo compass api
       changes for https://issues.apache.org/jira/browse/CB-231
       add LICENSE & NOTICE file, CB-356
@@ -252,11 +277,20 @@ hermwong (15):
       added network connection api
       added network connection type api
       get compass api to pass mobile spec tests
+      update to 1.6.1
 
 bada
-Anis Kadri (4):
+Anis Kadri (12):
       tagging 1.6.0rc1
       CB-405 updating README.rd
       more renaming
       changing VERSION to 1.6.0
+      adding NOTICE file
+      fixing callbacks
+      fixing sample app
+      adding cordova.js to avoid users generating it
+      updating bada project parameters
+      adding artwork and removing old phonegap references
+      CB-4 adding Apache Source Headers
+      fixing network problem
 

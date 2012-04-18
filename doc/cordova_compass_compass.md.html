@@ -15,8 +15,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="1.6.1">1.6.1</option>
 <option value="1.6.0rc1">1.6.0rc1</option>
-<option selected value="1.6.0">1.6.0</option>
+<option value="1.6.0">1.6.0</option>
 <option value="1.5.0rc1">1.5.0rc1</option>
 <option value="1.5.0">1.5.0</option>
 <option value="1.4.1">1.4.1</option>
@@ -175,7 +176,7 @@
 };
 
 function onError(error) {
-    alert('<a href="cordova_compass_compass.md.html#CompassError">CompassError</a>: ' error.code);
+    alert('<a href="cordova_compass_compass.md.html#CompassError">CompassError</a>: ' + error.code);
 };
 
 navigator.<a href="cordova_compass_compass.md.html#compass.getCurrentHeading">compass.getCurrentHeading</a>(onSuccess, onError);

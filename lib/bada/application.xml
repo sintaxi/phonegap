@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Application>
-    <Entry>PhoneGap</Entry>
+    <Entry>Cordova</Entry>
     <Name>
-        <English>PhoneGap</English>
-        <eng-GB>PhoneGap</eng-GB>
+        <English>Cordova</English>
+        <eng-GB>Cordova</eng-GB>
     </Name>
     <Vendor/>
     <Description/>
     <Icons>
-        <MainMenu>PhoneGap.png<Type1>PhoneGap.png</Type1>
+        <MainMenu>Cordova.png<Type1>Cordova.png</Type1>
             <Type2/>
         </MainMenu>
         <Setting/>
         <Ticker/>
         <QuickPanel/>
-        <LaunchImage>Splash.png<Type1>Splash.png</Type1>
+        <LaunchImage>Cordova_Splash.png<Type1>Cordova_Splash.png</Type1>
             <Type2/>
         </LaunchImage>
     </Icons>

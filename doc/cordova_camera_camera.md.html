@@ -15,8 +15,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="1.6.1">1.6.1</option>
 <option value="1.6.0rc1">1.6.0rc1</option>
-<option selected value="1.6.0">1.6.0</option>
+<option value="1.6.0">1.6.0</option>
 <option value="1.5.0rc1">1.5.0rc1</option>
 <option value="1.5.0">1.5.0</option>
 <option value="1.4.1">1.4.1</option>
@@ -263,7 +264,7 @@ function onFail(message) {
     function capturePhoto() {
       // Take picture using device camera and retrieve image as base64-encoded string
       navigator.<a href="cordova_camera_camera.md.html#camera.getPicture">camera.getPicture</a>(onPhotoDataSuccess, onFail, { quality: 50,
-        destinationType.DATA_URL });
+        destinationType: destinationType.DATA_URL });
     }
 
     // A button will call this function
@@ -271,7 +272,7 @@ function onFail(message) {
     function capturePhotoEdit() {
       // Take picture using device camera, allow edit, and retrieve image as base64-encoded string  
       navigator.<a href="cordova_camera_camera.md.html#camera.getPicture">camera.getPicture</a>(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
-        destinationType.DATA_URL });
+        destinationType: destinationType.DATA_URL });
     }
 
     // A button will call this function

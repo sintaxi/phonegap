@@ -2,7 +2,24 @@
  * Contacts.cpp
  *
  *  Created on: Mar 25, 2011
- *      Author: Anis Kadri
+ *      Author: Anis Kadri <anis@adobe.com>
+ *
+ *  Licensed to the Apache Software Foundation (ASF) under one
+ *  or more contributor license agreements.  See the NOTICE file
+ *  distributed with this work for additional information
+ *  regarding copyright ownership.  The ASF licenses this file
+ *  to you under the Apache License, Version 2.0 (the
+ *  "License"); you may not use this file except in compliance
+ *  with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing,
+ *  software distributed under the License is distributed on an
+ *  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ *  KIND, either express or implied.  See the License for the
+ *  specific language governing permissions and limitations
+ *  under the License.
  */
 
 #include "../inc/Contacts.h"
@@ -409,11 +426,11 @@ Contacts::Create(const int cid) {
 
 	if(IsFailed(r)) {
 		AppLogException("Could not add contact");
-		eval.Format(128, L"PhoneGap.callbacks['%S'].fail({message:'%s',code:%d})", callbackId.GetPointer(), r, GetErrorMessage(r));
+		eval.Format(128, L"Cordova.callbacks['%S'].fail({message:'%s',code:%d})", callbackId.GetPointer(), r, GetErrorMessage(r));
 		pWeb->EvaluateJavascriptN(eval);
 	} else {
 		AppLogDebug("Contact Successfully Added");
-		eval.Format(128, L"PhoneGap.callbacks['%S'].success({message:'Contact added successfully'})", callbackId.GetPointer());
+		eval.Format(128, L"Cordova.callbacks['%S'].success({message:'Contact added successfully'})", callbackId.GetPointer());
 		AppLogDebug("%S", eval.GetPointer());
 		pWeb->EvaluateJavascriptN(eval);
 	}
@@ -544,10 +561,10 @@ Contacts::Find(const String& filter) {
 
 	delete value;
 	if(length > 0) {
-		eval.Format(128, L"PhoneGap.callbacks['%S'].success(navigator.service.contacts.results)", callbackId.GetPointer());
+		eval.Format(128, L"Cordova.callbacks['%S'].success(navigator.service.contacts.results)", callbackId.GetPointer());
 		pWeb->EvaluateJavascriptN(eval);
 	} else {
-		eval.Format(128, L"PhoneGap.callbacks['%S'].fail({message:'no contacts found',code:00})", callbackId.GetPointer());
+		eval.Format(128, L"Cordova.callbacks['%S'].fail({message:'no contacts found',code:00})", callbackId.GetPointer());
 		pWeb->EvaluateJavascriptN(eval);
 	}
 }
@@ -571,12 +588,12 @@ Contacts::Remove(const String& idStr) {
 		r = addressbook.RemoveContact(id);
 		if(IsFailed(r)) {
 			AppLogDebug("Contact Could not be removed %s %d", GetErrorMessage(r), r);
-			eval.Format(256, L"PhoneGap.callbacks['%S'].fail({message:'%s', code:ContactError.NOT_FOUND_ERROR})",
+			eval.Format(256, L"Cordova.callbacks['%S'].fail({message:'%s', code:ContactError.NOT_FOUND_ERROR})",
 															 callbackId.GetPointer(), GetErrorMessage(r));
 			pWeb->EvaluateJavascriptN(eval);
 		} else {
 			AppLogDebug("Contact %S removed", idStr.GetPointer());
-			eval.Format(256, L"PhoneGap.callbacks['%S'].success({message:'Contact with ID %d removed', code:01})", callbackId.GetPointer(), id);
+			eval.Format(256, L"Cordova.callbacks['%S'].success({message:'Contact with ID %d removed', code:01})", callbackId.GetPointer(), id);
 			pWeb->EvaluateJavascriptN(eval);
 		}
 	}

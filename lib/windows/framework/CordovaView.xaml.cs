@@ -389,9 +389,6 @@ namespace WP7CordovaClassLib
         {
             string commandStr = e.Value;
 
-            Debug.WriteLine("ScriptNotify::" + commandStr);
-
-            // DOMStorage/Local OR DOMStorage/Session
             if (commandStr.IndexOf("DOMStorage") == 0)
             {
                 this.domStorageHelper.HandleStorageCommand(commandStr);
@@ -416,7 +413,7 @@ namespace WP7CordovaClassLib
                 {
                     case "overridebackbutton":
                         string args = commandCallParams.Args;
-                        this.OverrideBackButton = (args != null && args.Length > 0 && args == "true");
+                        this.OverrideBackButton = (args != null && args.Length > 0 && args.ToLower() == "true");
                         break;
                 }
             }
