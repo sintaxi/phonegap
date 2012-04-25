@@ -406,6 +406,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                             string headerTemplate = "Content-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"" + lineEnd + "Content-Type: {2}" + lineEnd + lineEnd;
                             string header = string.Format(headerTemplate, uploadOptions.FileKey, uploadOptions.FileName, uploadOptions.MimeType);
                             byte[] headerBytes = System.Text.Encoding.UTF8.GetBytes(header);
+                            requestStream.Write(boundaryBytes, 0, boundaryBytes.Length);
                             requestStream.Write(headerBytes, 0, headerBytes.Length);
                             byte[] buffer = new byte[4096];
                             int bytesRead = 0;

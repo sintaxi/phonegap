@@ -104,8 +104,9 @@ namespace WP7CordovaClassLib.Cordova
                     {
                         bc.InvokeMethodNamed(commandCallParams.Action, commandCallParams.Args);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
+                        Debug.WriteLine("Exception in ProcessCommand :: " + ex.Message);
                         bc.OnCommandResult -= OnCommandResultHandler;
                         bc.OnCustomScript -= OnCustomScriptHandler;
 

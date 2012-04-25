@@ -15,7 +15,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="1.6.1">1.6.1</option>
+<option selected value="1.7.0rc1">1.7.0rc1</option>
+<option value="1.6.1">1.6.1</option>
 <option value="1.6.0rc1">1.6.0rc1</option>
 <option value="1.6.0">1.6.0</option>
 <option value="1.5.0rc1">1.5.0rc1</option>
@@ -139,7 +140,7 @@
 <li>Save the data locally (<code>LocalStorage</code>, <a class="external" href="http://brianleroux.github.com/lawnchair/">Lawnchair</a>, etc)</li>
 <li>Post the data to a remote server</li>
 </ul>
-<p>Note: The image quality of pictures taken using the camera on newer devices is quite good.  <em>Encoding such images using Base64 has caused memory issues on some of these devices (iPhone 4, BlackBerry Torch 9800).</em>  Therefore, using FILE_URI as the '<a href="cordova_camera_camera.md.html#Camera">Camera</a>.destinationType' is highly recommended.</p>
+<p>Note: The image quality of pictures taken using the camera on newer devices is quite good, and images from the Photo Album will not be downscaled to a lower quality, even if a quality parameter is specified.  <em>Encoding such images using Base64 has caused memory issues on some of these devices (iPhone 4, BlackBerry Torch 9800).</em>  Therefore, using FILE_URI as the '<a href="cordova_camera_camera.md.html#Camera">Camera</a>.destinationType' is highly recommended.</p>
 
 <h2>
 <a name="camera.getPicture_supported_platforms">Supported Platforms</a>

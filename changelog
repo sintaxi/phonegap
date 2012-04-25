@@ -1,6 +1,16 @@
 ChangeLog
 ios
-Shazron Abdullah (12):
+Ben Birch (2):
+      ios camera targetWidth/Height don't match the documentation Fixes CB-183 and CB-54
+      iOS camera targetWidth/Height don't match the documentation - changes per shazron
+
+Fil Maj (1):
+      [CB-511] Changed deviceproperties version to "cordova" property
+
+Shazron Abdullah (29):
+      Updated js for iOS only parameter cropToTargetSize (Camera.getPicture)
+      Fixed CB-483 - FileTransfer - unknown property attribute 'atomic' when building from source (Xcode 3 only)
+      Updated to cordova-js 1.6.1
       Fixed CB-496 - Camera.getPicture - will always return FILE_URI even though DATA_URL specified
       Fixed CB-497 - online and offline events are not being fired in 1.6.0
       Fixed CB-501 - orientationchange event is not being fired in 1.6.0
@@ -13,37 +23,64 @@ Shazron Abdullah (12):
       Added 1.6.1 availability constants
       Fixed pause and resume event firing to use cordova channels onPause and onResume
       Re-fix CB-347 - don't apply .plist fix if the key does not exist
+      Implemented CB-536 - Add new selector to CDVViewController to create a new CDVCordovaView, so subclasses can override it
+      Removed cropToSize option, defaults to NO always (like the other platforms) re: CB-54, CB-183
+      Removing verbose logging that is confusing devs.
+      Workaround for CB-509 - geolocation.clearWatch doesn't shut the GPS down under iOS
+      Fixed CB-537 - media.seekTo fails with NSRangeException
+      Fixed CB-544 - iOS Geolocation fails if Cordova.plist EnableLocation = YES
+      Fixed CB-543 - FileTransfer.upload WebKit discarded an uncaught exception
+      Fixed CB-391 - camera.getPicture crash
+      Update to CB-391 - remove 10 sec purge check, leaving it up to the iOS watchdog to re-send memory warning again
+      Fixed CB-535 - Add a way to log JavaScript exceptions, parse errors, and get JS stack frame events (with line numbers, etc)
+      Added doc for CB-535 - JavaScript Exception Logging
+      Fixed CB-494 - Move Cordova.plist section from "How to use Cordova as a Component Guide" to its own doc
+      Added cordova-js 1.7.0rc1
+      Updated VERSION to 1.7.0rc1,  updated Makefile to include new guides.
 
 blackberry
 Fil Maj (1):
-      version 1.6.1
+      bumping version to 1.7.0rc1
 
 android
-Joe Bowser (4):
-      Copying new XML into the templates for 1.6.1.  Turns out tags are broken
-      Getting setup to tag 1.6.1
-      CB-489 - Adding .js to the example, thought it was removed for a reason
-      Adding fix for CB-482
+Fil Maj (3):
+      [CB-164] Changed network plugin to sync from async and removed setKeepCallback(true) on plugin result in there. Fixes location.reload() not firing deviceready due to network plugin being unresponsive
+      Proper fix for CB-164. Online/offline events now propagated to webview properly
+      [CB-473] run ant clean before ant debug install
+
+Joe Bowser (5):
+      CB-480 work, back button and history issues are preventing this from being tested properly
+      Fixed back button behaviour.  WIN
+      Reverting the back button change that I made, for some reason certain methods aren't inherited when you extend DroidGap
+      Fix for CB-549
+      Incrementing project to 1.7.0rc1
 
 macdonst (2):
-      Remove duplicate files from repository
-      Automatically update index.html in templates directory on version change
+      CB-539: FileTransfer.download fails when target starts with 'file://'
+      Removing un-needed logs
 
 windows
-Jesse MacFadyen (3):
-      cleanup console logging, toLower on OverrideBackButton
-      updated for 1.6.1
-      updated template, permissions, and js
+Jesse MacFadyen (11):
+      added hint to debug output when device ready cannot fire because the dev did not include the tag in their page.
+      release was private, and therefore uncallable from js
+      changed test project to use updated tests + jasmine
+      remove method added, dispatches not supported error
+      debug output for exception in ProcessCommand
+      remove unused
+      added mouse support
+      fancy animation on load, ala metro style
+      splash image is animated away on load
+      update JS from cordova-js, update version file
+      rebuild of lib + template gen
+
+Takashi Okamoto (1):
+      Fixed filetransfer boundary without parameter.
 
 webos
 hermwong (1):
-      update to 1.6.1
+      update version to 1.7.0
 
 bada
-Anis Kadri (5):
-      updating bada project parameters
-      adding artwork and removing old phonegap references
-      CB-4 adding Apache Source Headers
-      fixing network problem
-      updating version to 1.6.1
+Anis Kadri (1):
+      updating version to 1.7.0rc1
 

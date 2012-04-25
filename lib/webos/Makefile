@@ -18,7 +18,7 @@ OPEN = open
 ECHO = echo
 ECHO_N = echo -n
 JAVA = java
-PGVERSION = 1.6.1
+PGVERSION = 1.7.0
 
 NAME = `$(CAT) framework/appinfo.json | $(GREP) '"id"' | $(CUT) -d \" -f 4`
 VERSION = `$(CAT) framework/appinfo.json | $(GREP) '"version"' | $(CUT) -d \" -f 4`

@@ -79,12 +79,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
-    <None Include="Properties\WMAppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\..\js\pkg\cordova.wp7.js">
-      <Link>www\cordova.wp7.js</Link>
-    </Content>
     <Content Include="ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -94,7 +93,15 @@
     <Content Include="CordovaSourceDictionary.xml" />
     <Content Include="www\accelerometer\index.html" />
     <Content Include="www\audio\index.html" />
+    <Content Include="www\autotest\html\HtmlReporter.js" />
+    <Content Include="www\autotest\html\HtmlReporterHelpers.js" />
+    <Content Include="www\autotest\html\ReporterView.js" />
+    <Content Include="www\autotest\html\SpecView.js" />
+    <Content Include="www\autotest\html\SuiteView.js" />
+    <Content Include="www\autotest\html\TrivialReporter.js" />
     <Content Include="www\autotest\index.html" />
+    <Content Include="www\autotest\jasmine.css" />
+    <Content Include="www\autotest\jasmine.js" />
     <Content Include="www\autotest\pages\accelerometer.html" />
     <Content Include="www\autotest\pages\all.html" />
     <Content Include="www\autotest\pages\battery.html" />
@@ -121,6 +128,7 @@
     <Content Include="www\autotest\tests\contacts.tests.js" />
     <Content Include="www\autotest\tests\device.tests.js" />
     <Content Include="www\autotest\tests\file.tests.js" />
+    <Content Include="www\autotest\tests\filetransfer.tests.js" />
     <Content Include="www\autotest\tests\geolocation.tests.js" />
     <Content Include="www\autotest\tests\media.tests.js" />
     <Content Include="www\autotest\tests\network.tests.js" />
@@ -133,6 +141,7 @@
     <Content Include="www\camera\index.html" />
     <Content Include="www\compass\index.html" />
     <Content Include="www\contacts\index.html" />
+    <Content Include="www\cordova-1.6.1.js" />
     <Content Include="www\events\index.html" />
     <Content Include="www\index.html" />
     <Content Include="www\location\index.html" />
@@ -144,7 +153,6 @@
     <Content Include="www\phonegap.js" />
     <Content Include="www\sql\index.html" />
     <Content Include="www\storage\index.html" />
-    <None Include="ManifestProcessor.js" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +175,6 @@
   -->
   <ProjectExtensions />
   <PropertyGroup>
-    <PreBuildEvent>CScript "$(ProjectDir)/ManifestProcessor.js" "$(ProjectPath)"</PreBuildEvent>
+    <PreBuildEvent>CScript "$(ProjectDir)/BuildManifestProcessor.js" "$(ProjectPath)"</PreBuildEvent>
   </PropertyGroup>
 </Project>

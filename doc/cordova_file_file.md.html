@@ -15,7 +15,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="1.6.1">1.6.1</option>
+<option selected value="1.7.0rc1">1.7.0rc1</option>
+<option value="1.6.1">1.6.1</option>
 <option value="1.6.0rc1">1.6.0rc1</option>
 <option value="1.6.0">1.6.0</option>
 <option value="1.5.0rc1">1.5.0rc1</option>
@@ -524,13 +525,13 @@ entry.file(win, fail);
 <li>
 <strong>truncate</strong>: Shortens the file to the length specified.</li>
 <li>
-<strong>write</strong>: Writes data to the file.</li>
+<strong>write</strong>: Writes data to the file with a UTF-8 encoding.</li>
 </ul>
 <h2>
 <a name="FileWriter_details">Details</a>
 </h2>
 
-<p>The <code><a href="cordova_file_file.md.html#FileWriter">FileWriter</a></code> object is a way to write files from the devices file system.  Users register their own event listeners to receive the writestart, progress, write, writeend, error and abort events.</p>
+<p>The <code><a href="cordova_file_file.md.html#FileWriter">FileWriter</a></code> object is a way to write files to the device file system (UTF-8 encoded).  Users register their own event listeners to receive the writestart, progress, write, writeend, error and abort events.</p>
 
 <p>A <a href="cordova_file_file.md.html#FileWriter">FileWriter</a> is created for a single file. You can use it to write to a file multiple times. The <a href="cordova_file_file.md.html#FileWriter">FileWriter</a> maintains the file's position and length attributes, so you can seek and write anywhere in the file. By default, the <a href="cordova_file_file.md.html#FileWriter">FileWriter</a> writes to the beginning of the file (will overwrite existing data). Set the optional append boolean to true in the <a href="cordova_file_file.md.html#FileWriter">FileWriter</a>'s constructor to begin writing to the end of the file.</p>
 

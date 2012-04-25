@@ -57,7 +57,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
         /// <summary>
         /// Releases the audio player instance to save memory.
         /// </summary>  
-        private void release(string options)
+        public void release(string options)
         {
             try
             {

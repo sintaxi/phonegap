@@ -13,10 +13,12 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         
         <phone:WebBrowser x:Name="CordovaBrowser" 
+                          Opacity="0"
                           HorizontalAlignment="Stretch"  
                           VerticalAlignment="Stretch" 
                           IsScriptEnabled="True" 
                           Foreground="White"
+                          Background="Black"
                           Navigated="GapBrowser_Navigated" 
                           Loaded="GapBrowser_Loaded" 
                           Unloaded="GapBrowser_Unloaded" 
@@ -24,7 +26,20 @@
                           LoadCompleted="GapBrowser_LoadCompleted" 
                           Navigating="GapBrowser_Navigating" 
                           NavigationFailed="GapBrowser_NavigationFailed" 
-                          IsGeolocationEnabled="True" />
+                          IsGeolocationEnabled="True">
+            <phone:WebBrowser.Projection>
+                <PlaneProjection x:Name="BrowserProjector" CenterOfRotationX="0" RotationY="-180"/>
+            </phone:WebBrowser.Projection>
+            <phone:WebBrowser.Resources>
+                <Storyboard x:Name="RotateIn" BeginTime="0:0:0.5">
+                    <DoubleAnimation
+                        Storyboard.TargetName="BrowserProjector"
+                        Storyboard.TargetProperty="RotationY"
+                        To="0" Duration="0:0:0.6"/>
+                </Storyboard>
+            </phone:WebBrowser.Resources>
+
+        </phone:WebBrowser>
         
     </Grid>
 </UserControl>

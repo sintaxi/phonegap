@@ -158,8 +158,18 @@ namespace WP7CordovaClassLib.Cordova.Commands
         public JSONContactAddress[] addresses { get; set; }
     }
 
+
     public class Contacts : BaseCommand
     {
+
+        public const int UNKNOWN_ERROR = 0;
+        public const int INVALID_ARGUMENT_ERROR = 1;
+        public const int TIMEOUT_ERROR = 2;
+        public const int PENDING_OPERATION_ERROR = 3;
+        public const int IO_ERROR = 4;
+        public const int NOT_SUPPORTED_ERROR = 5;
+        public const int PERMISSION_DENIED_ERROR = 20;
+        public const int SYNTAX_ERR = 8;
 
         public Contacts()
         {
@@ -354,7 +364,12 @@ namespace WP7CordovaClassLib.Cordova.Commands
         }
 
 
-        // TODO: we need to be able to pass a search param in.
+        
+        public void remove(string id)
+        {
+            DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, "{\"code\":" + NOT_SUPPORTED_ERROR + "}"));
+        }
+
         public void search(string searchCriteria)
         {
             ContactSearchParams searchParams = JSON.JsonHelper.Deserialize<ContactSearchParams>(searchCriteria);
@@ -457,7 +472,6 @@ namespace WP7CordovaClassLib.Cordova.Commands
             foreach (Contact contact in distinctContacts)
             {
                 strResult += FormatJSONContact(contact, null) + ",";
-
                 //contactList.Add(FormatJSONContact(contact, null));
                 if (!searchParams.options.multiple)
                 {
@@ -473,9 +487,15 @@ namespace WP7CordovaClassLib.Cordova.Commands
         private string FormatJSONPhoneNumbers(Contact con)
         {
             string retVal = "";
+            string contactFieldFormat = "\"type\":\"{0}\",\"value\":\"{1}\",\"pref\":\"false\"";
             foreach (ContactPhoneNumber number in con.PhoneNumbers)
             {
-                retVal += "\"" +  number.PhoneNumber + "\",";
+
+                string contactField = string.Format(contactFieldFormat,
+                                                    number.Kind.ToString(),
+                                                    number.PhoneNumber);
+
+                retVal += "{" + contactField + "},";
             }
             return retVal.TrimEnd(',');
         }
@@ -483,9 +503,14 @@ namespace WP7CordovaClassLib.Cordova.Commands
         private string FormatJSONEmails(Contact con)
         {
             string retVal = "";
+            string contactFieldFormat = "\"type\":\"{0}\",\"value\":\"{1}\",\"pref\":\"false\"";
             foreach (ContactEmailAddress address in con.EmailAddresses)
             {
-                retVal += "\"" + address.EmailAddress + "\",";
+                string contactField = string.Format(contactFieldFormat,
+                                                    address.Kind.ToString(),
+                                                    address.EmailAddress);
+
+                retVal += "{" + contactField + "},";
             }
             return retVal.TrimEnd(',');
         }
@@ -493,19 +518,26 @@ namespace WP7CordovaClassLib.Cordova.Commands
         private string getFormattedJSONAddress(ContactAddress address, bool isPrefered)
         {
 
-            string addressFormatString = "pref:{0}," + // bool
-                          "type:'{1}'," +
-                          "formatted:'{2}'," +
-                          "streetAddress:'{3}'," +
-                          "locality:'{4}'," +
-                          "region:'{5}'," +
-                          "postalCode:'{6}'," +
-                          "country:'{7}'";
+            string addressFormatString = "\"pref\":{0}," + // bool
+                          "\"type\":\"{1}\"," +
+                          "\"formatted\":\"{2}\"," +
+                          "\"streetAddress\":\"{3}\"," +
+                          "\"locality\":\"{4}\"," +
+                          "\"region\":\"{5}\"," +
+                          "\"postalCode\":\"{6}\"," +
+                          "\"country\":\"{7}\"";
+
+            string formattedAddress = address.PhysicalAddress.AddressLine1 + " " 
+                                    + address.PhysicalAddress.AddressLine2 + " " 
+                                    + address.PhysicalAddress.City + " " 
+                                    + address.PhysicalAddress.StateProvince + " " 
+                                    + address.PhysicalAddress.CountryRegion + " " 
+                                    + address.PhysicalAddress.PostalCode;
 
             string jsonAddress = string.Format(addressFormatString,
-                                               isPrefered ? "true" : "false",
+                                               isPrefered ? "\"true\"" : "\"false\"",
                                                address.Kind.ToString(),
-                                               "formattedAddress",
+                                               formattedAddress,
                                                address.PhysicalAddress.AddressLine1 + " " + address.PhysicalAddress.AddressLine2,
                                                address.PhysicalAddress.City,
                                                address.PhysicalAddress.StateProvince,
@@ -513,7 +545,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                                                address.PhysicalAddress.CountryRegion);
 
 
-
+            Debug.WriteLine("getFormattedJSONAddress returning :: " + jsonAddress);
 
             return "{" + jsonAddress + "}";
         }
@@ -525,7 +557,9 @@ namespace WP7CordovaClassLib.Cordova.Commands
             {
                 retVal += this.getFormattedJSONAddress(address, false) + ",";
             }
-            return "[" + retVal.TrimEnd(',') + "]";
+
+            Debug.WriteLine("FormatJSONAddresses returning :: " + retVal);
+            return retVal.TrimEnd(',');
         }
 
         private string FormatJSONWebsites(Contact con)
@@ -538,24 +572,61 @@ namespace WP7CordovaClassLib.Cordova.Commands
             return retVal.TrimEnd(',');
         }
 
+        /*
+         *  formatted: The complete name of the contact. (DOMString)
+            familyName: The contacts family name. (DOMString)
+            givenName: The contacts given name. (DOMString)
+            middleName: The contacts middle name. (DOMString)
+            honorificPrefix: The contacts prefix (example Mr. or Dr.) (DOMString)
+            honorificSuffix: The contacts suffix (example Esq.). (DOMString)
+         */
+        private string FormatJSONName(Contact con)
+        {
+            string retVal = "";
+            string formatStr = "\"formatted\":\"{0}\"," +
+                                "\"familyName\":\"{1}\"," +
+                                "\"givenName\":\"{2}\"," +
+                                "\"middleName\":\"{3}\"," +
+                                "\"honorificPrefix\":\"{4}\"," +
+                                "\"honorificSuffix\":\"{5}\"";
+
+            retVal = string.Format(formatStr,
+                                   con.CompleteName.FirstName, // TODO:
+                                   con.CompleteName.LastName,
+                                   con.CompleteName.FirstName,
+                                   con.CompleteName.MiddleName,
+                                   con.CompleteName.Title,
+                                   con.CompleteName.Suffix);
+
+            return "{" + retVal + "}";
+
+        }
+
         private string FormatJSONContact(Contact con, string[] fields)
         {
+            
             string contactFormatStr = "\"id\":\"{0}\"," +
                                       "\"displayName\":\"{1}\"," +
                                       "\"nickname\":\"{2}\"," +
                                       "\"phoneNumbers\":[{3}]," +
                                       "\"emails\":[{4}]," +
                                       "\"addresses\":[{5}]," +
-                                      "\"urls\":[{6}]";
+                                      "\"urls\":[{6}]," +
+                                      "\"name\":{7}," +
+                                      "\"note\":\"{8}\"";
 
             string jsonContact = String.Format(contactFormatStr, 
                                                con.GetHashCode(), 
                                                con.DisplayName, 
-                                               con.DisplayName, 
+                                               con.DisplayName,
                                                FormatJSONPhoneNumbers(con), 
-                                               FormatJSONEmails(con),
+                                               FormatJSONEmails(con), 
                                                FormatJSONAddresses(con),
-                                               FormatJSONWebsites(con));
+                                               FormatJSONWebsites(con),
+                                               FormatJSONName(con),
+                                               con.Notes.FirstOrDefault());
+
+            Debug.WriteLine("jsonContact = " + jsonContact);
 
             return "{" + jsonContact + "}";
         }

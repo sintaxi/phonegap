@@ -23,11 +23,30 @@ namespace GapExample
         public MainPage()
         {
             InitializeComponent();
+            this.PGView.Loaded += GapBrowser_Loaded;
         }
 
         private void GapBrowser_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            this.PGView.Loaded -= GapBrowser_Loaded;
+            Storyboard _storyBoard = new Storyboard();
+            DoubleAnimation animation = new DoubleAnimation()
+            {
+                From = 0,
+                Duration = TimeSpan.FromSeconds(0.6),
+                To = 90
+            };
+            Storyboard.SetTarget(animation, SplashProjector);
+            Storyboard.SetTargetProperty(animation, new PropertyPath("RotationY"));
+            _storyBoard.Children.Add(animation);
+            _storyBoard.Begin();
+            _storyBoard.Completed += Splash_Completed;
+        }
+
+        void Splash_Completed(object sender, EventArgs e)
+        {
+            (sender as Storyboard).Completed -= Splash_Completed;
+            LayoutRoot.Children.Remove(SplashImage);
         }
     }
 }
