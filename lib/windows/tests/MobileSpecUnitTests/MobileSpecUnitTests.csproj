@@ -61,7 +61,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Calculator.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -90,6 +89,7 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="BuildManifestProcessor.js" />
     <Content Include="CordovaSourceDictionary.xml" />
     <Content Include="www\accelerometer\index.html" />
     <Content Include="www\audio\index.html" />
@@ -102,7 +102,9 @@
     <Content Include="www\autotest\index.html" />
     <Content Include="www\autotest\jasmine.css" />
     <Content Include="www\autotest\jasmine.js" />
-    <Content Include="www\autotest\pages\accelerometer.html" />
+    <Content Include="www\autotest\pages\accelerometer.html">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="www\autotest\pages\all.html" />
     <Content Include="www\autotest\pages\battery.html" />
     <Content Include="www\autotest\pages\camera.html" />
@@ -111,6 +113,7 @@
     <Content Include="www\autotest\pages\contacts.html" />
     <Content Include="www\autotest\pages\device.html" />
     <Content Include="www\autotest\pages\file.html" />
+    <Content Include="www\autotest\pages\filetransfer.html" />
     <Content Include="www\autotest\pages\geolocation.html" />
     <Content Include="www\autotest\pages\media.html" />
     <Content Include="www\autotest\pages\network.html" />
@@ -141,7 +144,9 @@
     <Content Include="www\camera\index.html" />
     <Content Include="www\compass\index.html" />
     <Content Include="www\contacts\index.html" />
-    <Content Include="www\cordova-1.6.1.js" />
+    <Content Include="www\cordova-1.7.0.js" />
+    <Content Include="www\cordova.js" />
+    <Content Include="www\cordova.wp7.js" />
     <Content Include="www\events\index.html" />
     <Content Include="www\index.html" />
     <Content Include="www\location\index.html" />
@@ -149,8 +154,8 @@
     <Content Include="www\master.css" />
     <Content Include="www\misc\index.html" />
     <Content Include="www\misc\page2.html" />
+    <Content Include="www\network\index.html" />
     <Content Include="www\notification\index.html" />
-    <Content Include="www\phonegap.js" />
     <Content Include="www\sql\index.html" />
     <Content Include="www\storage\index.html" />
     <Content Include="SplashScreenImage.jpg" />

@@ -7,9 +7,9 @@
     <title>Cordova</title>
     <link rel="stylesheet" href="master.css" type="text/css" media="screen">
 
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>      
+    <script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
 
-      
+
 <script type="text/javascript" charset="utf-8">
 
 
@@ -27,7 +27,7 @@
     function playAudio(path) {
         console.log("playAudio()");
         console.log(" -- media="+media1);
-        var src = path; 
+        var src = path;
 
         // Stop playing if src is different from currently playing source
         if (src != audioSrc) {
@@ -63,10 +63,10 @@
         document.getElementById('audio_duration').innerHTML = "";
         // Play audio
         media1.play();
-        
+
         document.getElementById('play_caption').innerHTML = "Now playing: ";
         document.getElementById('file_name').innerHTML = path;
-        
+
         if (media1Timer == null && media1.getCurrentPosition) {
             media1Timer = setInterval(
                 function() {
@@ -101,8 +101,8 @@
                     document.getElementById('audio_duration').innerHTML = dur + " sec";
                 }
             }, 100);
-            
-    }    
+
+    }
 
     /**
      * Pause audio playback
@@ -226,12 +226,12 @@
 
   </head>
   <body onLoad="init();" id="stage" class="theme">
-  
-    <h1>Audio</h1>  
-    <div id="info">    
+
+    <h1>Audio</h1>
+    <div id="info">
         <table width="100%">
-        <tr><td id="play_caption">Now playing:</td><td id="file_name">&nbsp;</td></tr>
-        <tr><td>Status:</td><td id="audio_status">&nbsp;</td></tr>
+        <tr><td id="play_caption">Now playing:</td><td id="file_name"> </td></tr>
+        <tr><td>Status:</td><td id="audio_status"> </td></tr>
         <tr><td>Duration:</td><td id="audio_duration"></td></tr>
         <tr><td>Position:</td><td id="audio_position"></td></tr>
         </table>
@@ -243,7 +243,7 @@
     <a href="#" class="btn large" onClick="recordAudio();">Record Audio for 10 sec</a>
     <a href="#" class="btn large" onClick="playRecording();">Play/Unpause Recording</a>
     <a href="#" class="btn large" onClick="seekTo();">Seek To 15 sec</a>
-      <h2>&nbsp;</h2><a href="index.html" class="backBtn">Back</a>
-    
+      <h2> </h2><a href="index.html" class="backBtn">Back</a>
+
   </body>
-</html>      
+</html>

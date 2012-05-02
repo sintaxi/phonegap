@@ -103,6 +103,9 @@
     <Compile Include="Cordova\UI\AudioRecorder.xaml.cs">
       <DependentUpon>AudioRecorder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Cordova\UI\NotificationBox.xaml.cs">
+      <DependentUpon>NotificationBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Cordova\UI\VideoCaptureTask.cs" />
     <Compile Include="Cordova\UI\VideoRecorder.xaml.cs">
       <DependentUpon>VideoRecorder.xaml</DependentUpon>
@@ -120,6 +123,10 @@
     <Page Include="Cordova\UI\AudioRecorder.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Cordova\UI\NotificationBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Cordova\UI\VideoRecorder.xaml">
       <SubType>Designer</SubType>

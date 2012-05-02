@@ -26,6 +26,7 @@ using System.Runtime.Serialization.Json;
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics;
 
 namespace WP7CordovaClassLib.Cordova.JSON
 {
@@ -75,11 +76,21 @@ namespace WP7CordovaClassLib.Cordova.JSON
         public static T Deserialize<T>(string json)
         {
            DataContractJsonSerializer deserializer = new DataContractJsonSerializer(typeof(T));
-
-           using (MemoryStream mem = new MemoryStream(Encoding.UTF8.GetBytes(json)))
+           object result = null;
+           try
            {
-               return (T)deserializer.ReadObject(mem);
+               using (MemoryStream mem = new MemoryStream(Encoding.UTF8.GetBytes(json)))
+               {
+                   result = deserializer.ReadObject(mem);
+               }
            }
+           catch (Exception ex)
+           {
+               Debug.WriteLine(ex.Message);
+               Debug.WriteLine("Failed to deserialize " + typeof(T) + " with JSON value :: " + json);
+           }
+
+           return (T)result;
 
         }
     }

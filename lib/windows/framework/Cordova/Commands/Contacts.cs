@@ -618,7 +618,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
             string jsonContact = String.Format(contactFormatStr, 
                                                con.GetHashCode(), 
                                                con.DisplayName, 
-                                               con.DisplayName,
+                                               con.CompleteName.Nickname,
                                                FormatJSONPhoneNumbers(con), 
                                                FormatJSONEmails(con), 
                                                FormatJSONAddresses(con),

@@ -7,10 +7,10 @@
     <title>Cordova</title>
     <link rel="stylesheet" href="master.css" type="text/css" media="screen"/>
 
-   
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>   
 
-      
+    <script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
+
+
 <script type="text/javascript" charset="utf-8">
 
 
@@ -88,7 +88,7 @@
 
                 var player = document.getElementById('audio_player');
                 player.setAttribute('style', 'visibility:visible;');
-                player.src = mediaFile.fullPath; 
+                player.src = mediaFile.fullPath;
                 //player.play();
             },
             function (e) {
@@ -159,7 +159,7 @@
 
   </head>
   <body onLoad="init();" id="stage" class="theme">
-  
+
     <h1>Capture</h1>
     <div id="info">
         Status: <span id="capture_status"></span><br/>
@@ -172,11 +172,11 @@
 
 
         <div><table width="100%">
-            <tr><td width="20%">Name:</td><td id="name">&nbsp;</td></tr>
-            <tr><td width="20%">FullPath:</td><td id="fullPath">&nbsp;</td></tr>
-            <tr><td width="20%">Type:</td><td id="type">&nbsp;</td></tr>
-            <tr><td width="20%">Size:</td><td id="size">&nbsp;</td></tr>
-            <tr><td width="20%">Modified:</td><td id="lastModifiedDate">&nbsp;</td></tr>            
+            <tr><td width="20%">Name:</td><td id="name"> </td></tr>
+            <tr><td width="20%">FullPath:</td><td id="fullPath"> </td></tr>
+            <tr><td width="20%">Type:</td><td id="type"> </td></tr>
+            <tr><td width="20%">Size:</td><td id="size"> </td></tr>
+            <tr><td width="20%">Modified:</td><td id="lastModifiedDate"> </td></tr>
         </table></div>
 
     </div>
@@ -184,6 +184,6 @@
     <a href="#" class="btn large" onclick="captureImage();">Capture Image</a>
     <a href="#" class="btn large" onclick="captureAudio();">Capture Audio</a>
     <a href="#" class="btn large" onclick="captureVideo();">Capture Video</a>
-    <h2>&nbsp;</h2><a href="index.html" class="backBtn">Back</a>
+    <h2> </h2><a href="index.html" class="backBtn">Back</a>
   </body>
-</html>      
+</html>

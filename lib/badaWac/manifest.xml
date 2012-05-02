@@ -1,0 +1,37 @@
+<?xml version='1.0' ?>
+<Manifest>
+    <Id>texp59v0qj</Id>
+    <Secret>BC1078A6ABEBA3A60AA9DBDBA9A68869</Secret>
+  <AppVersion>2.0.0</AppVersion>
+  <ManifestVersion>1.2</ManifestVersion>
+  <AppType>WebApp</AppType>
+    <Privileges>
+        <Privilege>
+            <Name>CALENDARBOOK</Name>
+        </Privilege>
+        <Privilege>
+            <Name>CAMERA</Name>
+        </Privilege>
+        <Privilege>
+            <Name>RECORDING</Name>
+        </Privilege>
+        <Privilege>
+            <Name>ADDRESSBOOK</Name>
+        </Privilege>
+        <Privilege>
+            <Name>SYSTEM_SERVICE</Name>
+        </Privilege>
+        <Privilege>
+            <Name>TELEPHONY</Name>
+        </Privilege>
+        <Privilege>
+            <Name>MESSAGING</Name>
+        </Privilege>
+        <Privilege>
+            <Name>WEB_SERVICE</Name>
+        </Privilege>
+    </Privileges>
+    <DeviceProfile>
+        <APIVersion>2.0</APIVersion>
+    </DeviceProfile>
+</Manifest>

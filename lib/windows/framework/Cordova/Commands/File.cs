@@ -283,7 +283,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
             /// Creates object and sets necessary properties
             /// </summary>
             /// <param name="filePath"></param>
-            private FileEntry(string filePath)
+            public FileEntry(string filePath)
             {
                 if (string.IsNullOrEmpty(filePath))
                 {

@@ -7,27 +7,14 @@
     <title>Cordova</title>
     <link rel="stylesheet" href="master.css" type="text/css" media="screen"/>
 
-      <script type="text/javascript">
-        // provide our own console if it does not exist, huge dev aid!
-        if (typeof window.console == "undefined") {
-        window.console = { log: function (str) { window.external.Notify(str); } };
-        }
 
-        // output any errors to console log, created above.
-        window.onerror = function (e) {
-        console.log("window.onerror ::" + JSON.stringify(e));
-        };
 
-        console.log("Installed console ! ");
-      </script>
-      
-      
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
 
-    
+
 <script type="text/javascript" charset="utf-8">
 
-  
+
     var deviceReady = false;
 
     //-------------------------------------------------------------------------
@@ -38,21 +25,21 @@
         obj.filter = ""; //Brooks";
         obj.multiple = true;
         navigator.contacts.find(["displayName", "name", "phoneNumbers", "emails", "urls", "note"],
-            function(contacts) 
+            function(contacts)
 			{
 				console.log("received contacts :: " + contacts.length);
 				console.log("contacts[0] = " + contacts[0]);
-				
+
                 var s = "";
-                if (contacts.length == 0) 
+                if (contacts.length == 0)
 				{
                     s = "No contacts found";
                 }
-                else 
+                else
 				{
                     s = "Number of contacts: "+contacts.length+"<br/><table width='100%'><tr><th>Name</th><td>Phone</td><td>Email</td></tr>";
-                    
-					for (var i=0; i < contacts.length; i++) 
+
+					for (var i=0; i < contacts.length; i++)
 					{
 						try
 						{
@@ -61,17 +48,17 @@
 						catch(e)
 						{
 							console.log(e.message + " " + contacts[i]);
-							continue;	
+							continue;
 						}
                         s = s + "<tr><td>" + contact.displayName + "</td><td>";
-						
-                        if (contact.phoneNumbers && contact.phoneNumbers.length > 0) 
+
+                        if (contact.phoneNumbers && contact.phoneNumbers.length > 0)
 						{
                             s = s + contact.phoneNumbers[0];
                         }
                         s = s + "</td><td>"
-						
-                        if (contact.emails && contact.emails.length > 0) 
+
+                        if (contact.emails && contact.emails.length > 0)
 						{
                             s = s + contact.emails[0];
                         }
@@ -146,19 +133,19 @@
   }
 
                     </script>
-  
+
 
   </head>
   <body onLoad="init();" id="stage" class="theme">
-  
-    <h1>Contacts</h1>    
+
+    <h1>Contacts</h1>
     <div id="info">
         Results:<br/>
-        <span id="contacts_results">&nbsp;</span>
+        <span id="contacts_results"> </span>
     </div>
     <h2>Action</h2>
     <a href="#" class="btn large" onClick="getContacts();">Get phone's contacts</a>
     <a href="#" class="btn large" onClick="addContact();">Add a new contact 'Dooney Evans'</a>
-    <h2>&nbsp;</h2><a href="index.html" class="backBtn">Back</a>
+    <h2> </h2><a href="index.html" class="backBtn">Back</a>
   </body>
-</html>      
+</html>

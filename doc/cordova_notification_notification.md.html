@@ -1,5 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+--><html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
@@ -15,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="1.7.0rc1">1.7.0rc1</option>
+<option value="1.7.0rc1">1.7.0rc1</option>
+<option selected value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
 <option value="1.6.0rc1">1.6.0rc1</option>
 <option value="1.6.0">1.6.0</option>
@@ -56,12 +74,15 @@
 <option value="notification.alert_quick_example">      - Quick Example</option>
 <option value="notification.alert_full_example">      - Full Example</option>
 <option value="notification.alert_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
+<option value="notification.alert_bada_2_x_quirks">      - Bada 2.x Quirks</option>
 <option value="notification.confirm">notification.confirm</option>
 <option value="notification.confirm_description">      - Description</option>
 <option value="notification.confirm_supported_platforms">      - Supported Platforms</option>
 <option value="notification.confirm_quick_example">      - Quick Example</option>
 <option value="notification.confirm_full_example">      - Full Example</option>
 <option value="notification.confirm_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
+<option value="notification.confirm_bada_2_x_quirks">      - Bada 2.x Quirks</option>
+<option value="notification.confirm_bada_1_2_quirks">      - Bada 1.2 Quirks</option>
 <option value="notification.beep">notification.beep</option>
 <option value="notification.beep_supported_platforms">      - Supported Platforms</option>
 <option value="notification.beep_quick_example">      - Quick Example</option>
@@ -152,6 +173,7 @@
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
+<li>Bada 1.2 &amp; 2.x</li>
 </ul>
 <h2>
 <a name="notification.alert_quick_example">Quick Example</a>
@@ -180,7 +202,7 @@ navigator.<a href="cordova_notification_notification.md.html#notification.alert"
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -226,6 +248,13 @@ navigator.<a href="cordova_notification_notification.md.html#notification.alert"
 <li>There is no built in browser alert, so if you want to just write alert('foo'); you can assign window.alert = navigator.<a href="cordova_notification_notification.md.html#notification.alert">notification.alert</a>;</li>
 <li>alert + confirm calls are non-blocking, and result is only available asyncronously.</li>
 </ul>
+<h2>
+<a name="notification.alert_bada_2_x_quirks">Bada 2.x Quirks</a>
+</h2>
+
+<ul>
+<li>alert uses javascript alert</li>
+</ul>
 <hr>
 <h1><a name="notification.confirm">notification.confirm</a></h1>
 
@@ -259,6 +288,7 @@ navigator.<a href="cordova_notification_notification.md.html#notification.alert"
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
+<li>Bada 1.2 &amp; 2.x</li>
 </ul>
 <h2>
 <a name="notification.confirm_quick_example">Quick Example</a>
@@ -290,7 +320,7 @@ function showConfirm() {
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -336,6 +366,20 @@ function showConfirm() {
 <li>There is no built in browser confirm, so if you want to just write alert('foo'); you can assign window.confirm = navigator.<a href="cordova_notification_notification.md.html#notification.confirm">notification.confirm</a>;</li>
 <li>alert + confirm calls are non-blocking, and result is only available asyncronously.</li>
 </ul>
+<h2>
+<a name="notification.confirm_bada_2_x_quirks">Bada 2.x Quirks</a>
+</h2>
+
+<ul>
+<li>confirm uses javascript alert</li>
+</ul>
+<h2>
+<a name="notification.confirm_bada_1_2_quirks">Bada 1.2 Quirks</a>
+</h2>
+
+<ul>
+<li>Ignore button names, always 'OK|Cancel'</li>
+</ul>
 <hr>
 <h1><a name="notification.beep">notification.beep</a></h1>
 
@@ -357,6 +401,7 @@ function showConfirm() {
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
+<li>Bada 1.2 &amp; 2.x</li>
 </ul>
 <h2>
 <a name="notification.beep_quick_example">Quick Example</a>
@@ -375,7 +420,7 @@ navigator.<a href="cordova_notification_notification.md.html#notification.beep">
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -469,6 +514,7 @@ navigator.<a href="cordova_notification_notification.md.html#notification.beep">
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
 <li>Windows Phone 7</li>
+<li>Bada 1.2 &amp; 2.x</li>
 </ul>
 <h2>
 <a name="notification.vibrate_quick_example">Quick Example</a>
@@ -488,7 +534,7 @@ navigator.<a href="cordova_notification_notification.md.html#notification.vibrat
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load

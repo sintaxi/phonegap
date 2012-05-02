@@ -15,6 +15,7 @@
       <Capability Name="ID_CAP_SENSORS" />
       <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
       <Capability Name="ID_CAP_CONTACTS"/>
+      <Capability Name="ID_CAP_SENSORS"/>
       <Capability Name="ID_CAP_ISV_CAMERA"/>
       
     </Capabilities>

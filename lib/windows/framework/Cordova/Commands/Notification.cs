@@ -21,6 +21,7 @@ using System.Threading;
 using System.Windows.Resources;
 using Microsoft.Phone.Controls;
 using Microsoft.Xna.Framework.Audio;
+using WP7CordovaClassLib.Cordova.UI;
 
 namespace WP7CordovaClassLib.Cordova.Commands
 {
@@ -28,6 +29,22 @@ namespace WP7CordovaClassLib.Cordova.Commands
     {
         static ProgressBar progressBar = null;
         const int DEFAULT_DURATION = 5;
+
+        private NotificationBox notifBox;
+
+        private PhoneApplicationPage Page
+        {
+            get
+            {
+                PhoneApplicationPage page = null;
+                PhoneApplicationFrame frame = Application.Current.RootVisual as PhoneApplicationFrame;
+                if (frame != null)
+                {
+                    page = frame.Content as PhoneApplicationPage;
+                }
+                return page;
+            }
+        }
 
         // alert, confirm, blink, vibrate, beep
         // blink api - doesn't look like there is an equivalent api we can use...
@@ -73,9 +90,29 @@ namespace WP7CordovaClassLib.Cordova.Commands
             Deployment.Current.Dispatcher.BeginInvoke(() =>
             {
                 AlertOptions alertOpts = JSON.JsonHelper.Deserialize<AlertOptions>(options);
-                MessageBoxResult res = MessageBox.Show(alertOpts.message, alertOpts.title,MessageBoxButton.OK);
 
-                DispatchCommandResult(new PluginResult(PluginResult.Status.OK,(int)res));
+                PhoneApplicationPage page = Page;
+                if (page != null)
+                {
+                    Grid grid = page.FindName("LayoutRoot") as Grid;
+                    if (grid != null)
+                    {
+                        notifBox = new NotificationBox();
+                        notifBox.PageTitle.Text = alertOpts.title;
+                        notifBox.SubTitle.Text = alertOpts.message;
+                        Button btnOK = new Button();
+                        btnOK.Content = alertOpts.buttonLabel;
+                        btnOK.Click += new RoutedEventHandler(btnOK_Click);
+                        btnOK.Tag = 1;
+                        notifBox.ButtonPanel.Children.Add(btnOK);
+                        grid.Children.Add(notifBox);
+                        page.BackKeyPress += page_BackKeyPress;
+                    }
+                }
+                else
+                {
+                    DispatchCommandResult(new PluginResult(PluginResult.Status.INSTANTIATION_EXCEPTION));
+                }
             });
         }
 
@@ -85,10 +122,80 @@ namespace WP7CordovaClassLib.Cordova.Commands
             {
                 AlertOptions alertOpts = JSON.JsonHelper.Deserialize<AlertOptions>(options);
 
-                MessageBoxResult res = MessageBox.Show(alertOpts.message, alertOpts.title, MessageBoxButton.OKCancel);
-                DispatchCommandResult(new PluginResult(PluginResult.Status.OK, (int)res));
+                PhoneApplicationPage page = Page;
+                if (page != null)
+                {
+                    Grid grid = page.FindName("LayoutRoot") as Grid;
+                    if (grid != null)
+                    {
+                        notifBox = new NotificationBox();
+                        notifBox.PageTitle.Text = alertOpts.title;
+                        notifBox.SubTitle.Text = alertOpts.message;
+
+                        string[] labels = alertOpts.buttonLabel.Split(',');
+                        for (int n = 0; n < labels.Length; n++)
+                        {
+                            Button btn = new Button();
+                            btn.Content = labels[n];
+                            btn.Tag = n;
+                            btn.Click += new RoutedEventHandler(btnOK_Click);
+                            notifBox.ButtonPanel.Children.Add(btn);
+                        }
+
+                        grid.Children.Add(notifBox);
+                        page.BackKeyPress += page_BackKeyPress;
+                    }
+                }
+                else
+                {
+                    DispatchCommandResult(new PluginResult(PluginResult.Status.INSTANTIATION_EXCEPTION));
+                }
             });
         }
+
+        void page_BackKeyPress(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            PhoneApplicationPage page = sender as PhoneApplicationPage;
+            if (page != null && notifBox != null)
+            {
+                Grid grid = page.FindName("LayoutRoot") as Grid;
+                if (grid != null)
+                {
+                    grid.Children.Remove(notifBox);
+                }
+                notifBox = null;
+                page.BackKeyPress -= page_BackKeyPress;
+                e.Cancel = true;
+            }
+
+            DispatchCommandResult(new PluginResult(PluginResult.Status.OK, 0));
+        }
+
+        void btnOK_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            int retVal = 0;
+            if (btn != null)
+            {
+                retVal = (int)btn.Tag + 1;
+            }
+            if (notifBox != null)
+            {
+                PhoneApplicationPage page = Page;
+                if (page != null)
+                {
+                    Grid grid = page.FindName("LayoutRoot") as Grid;
+                    if (grid != null)
+                    {
+                        grid.Children.Remove(notifBox);
+                    }
+                }
+                notifBox = null;
+            }
+            DispatchCommandResult(new PluginResult(PluginResult.Status.OK, retVal));
+        }
+
+        
 
         public void beep(string count)
         {
@@ -120,10 +227,10 @@ namespace WP7CordovaClassLib.Cordova.Commands
         // Display an inderminate progress indicator
         public void activityStart(string unused)
         {
+           
             Deployment.Current.Dispatcher.BeginInvoke(() =>
             {
-                var t1 = Application.Current.RootVisual;
-                PhoneApplicationFrame frame =  t1 as PhoneApplicationFrame;
+                PhoneApplicationFrame frame =  Application.Current.RootVisual as PhoneApplicationFrame;
 
                 if (frame != null)
                 {

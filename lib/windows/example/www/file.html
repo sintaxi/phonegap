@@ -6,24 +6,11 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"> <!-- ISO-8859-1 -->
     <title>Cordova</title>
     <link rel="stylesheet" href="master.css" type="text/css" media="screen"/>
-   
-    <script type="text/javascript">
-        // provide our own console if it does not exist, huge dev aid!
-        if (typeof window.console == "undefined") {
-            window.console = { log: function (str) { window.external.Notify(str); } };
-        }
 
-        // output any errors to console log, created above.
-        window.onerror = function (e) {
-            console.log("window.onerror ::" + JSON.stringify(e));
-        };
 
-        console.log("Installed console ! ");
-    </script>
-   
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
 
-      
+
 <script type="text/javascript" charset="utf-8">
 
     var deviceReady = false;
@@ -45,7 +32,7 @@
 
         // public function returns private root entry
         return persistent_root;
- 
+
     });
 
 
@@ -58,7 +45,7 @@
         //TODO
         console.log(typeof root);
         var filePath = document.getElementById('filePath');
-        
+
         var onGetEntryError = function (fileError) {
         console.log("Error creating/opening file/directory: " + fileError.code);
         document.getElementById('file_status').innerHTML = "Error creating/opening file/directory: " + fileError.code;
@@ -84,12 +71,12 @@
     /**
     * Creates or opens file/directory
     */
-    function createOrOpen(isFile) {        
+    function createOrOpen(isFile) {
         var onGetEntrySuccess = function (fileEntry) {
         document.getElementById('file_status').innerHTML = "isFile: " + fileEntry.isFile + "; isDirectory: " + fileEntry.isDirectory + "; name: " + fileEntry.name + "; path: " + fileEntry.fullPath;
         entry = fileEntry;
         };
-        getEntry(isFile, onGetEntrySuccess, {create: true, exclusive: true});      
+        getEntry(isFile, onGetEntrySuccess, {create: true, exclusive: true});
     };
 
     /**
@@ -126,7 +113,7 @@
         }
     };
 
-    
+
 
     /**
     * Remove file or directory
@@ -144,7 +131,7 @@
                 document.getElementById('file_status').innerHTML = "file/directory was removed";
             };
 
-            fileEntry.remove(onRemoveSuccess, onRemoveError);            
+            fileEntry.remove(onRemoveSuccess, onRemoveError);
         };
 
         getEntry(isFile, onSuccess, {create: false});
@@ -169,7 +156,7 @@
             };
             writer.write(textToWrite.value);
             console.log("End writing");
-        };                
+        };
         console.log("Start getting entry");
         getEntry(true, onSuccess, { create: false });
     };
@@ -250,17 +237,17 @@
 
   </head>
   <body onLoad="init();" id="stage" class="theme">
-  
+
     <h1>File</h1>
-    <div id="info">        
+    <div id="info">
         <span class='tb-label'>Enter file/directory name here:</span> <span id="Span1"></span>
         <input type="text" id="filePath" style="width:250px;height:20px;"/>
         <br/>
         <span class='tb-label'>Enter text to write in file :</span> <span id="Span2"></span>
-        <input type="text" id="textToWrite" style="width:250px;height:20px;"/>        
+        <input type="text" id="textToWrite" style="width:250px;height:20px;"/>
         <br/>
         <span class='tb-label'>Enter URL to upload file to: </span> <span id="Span3"></span>
-        <input type="text" id="server" value='http://posttestserver.com/post.php?dir=phonegapTest' style="width:250px;height:20px;"/>        
+        <input type="text" id="server" value='http://posttestserver.com/post.php?dir=phonegapTest' style="width:250px;height:20px;"/>
         <br/>
         Result: <span id="file_status"></span>
     </div>
@@ -270,10 +257,10 @@
     <a href="#" class="btn large" onclick="isExists(true);">Check if file exists</a>
     <a href="#" class="btn large" onclick="isExists(false);">Check if directory exists</a>
     <a href="#" class="btn large" onclick="remove(true);">Remove file</a>
-    <a href="#" class="btn large" onclick="remove(false);">Remove directory</a>  
+    <a href="#" class="btn large" onclick="remove(false);">Remove directory</a>
     <a href="#" class="btn large" onclick="writeInFile();">Write in file (type text in the second field)</a>
     <a href="#" class="btn large" onclick="readAsBase64();">Read file as base64</a>
     <a href="#" class="btn large" onclick="uploadFile();">Upload file</a>
-    <h2>&nbsp;</h2><a href="index.html" class="backBtn">Back</a>
+    <h2> </h2><a href="index.html" class="backBtn">Back</a>
   </body>
-</html>      
+</html>

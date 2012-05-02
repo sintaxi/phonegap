@@ -6,40 +6,27 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"> <!-- ISO-8859-1 -->
     <title>Cordova</title>
     <link rel="stylesheet" href="master.css" type="text/css" media="screen"/>
-   
-    <script type="text/javascript">
-        // provide our own console if it does not exist, huge dev aid!
-        if (typeof window.console == "undefined") {
-            window.console = { log: function (str) { window.external.Notify(str); } };
-        }
 
-        // output any errors to console log, created above.
-        window.onerror = function (e) {
-            console.log("window.onerror ::" + JSON.stringify(e));
-        };
 
-        console.log("Installed console ! ");
-    </script>
-   
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>   
+    <script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
 
-      
+
 <script type="text/javascript" charset="utf-8">
 
     var deviceReady = false;
 
     //-------------------------------------------------------------------------
-    // Camera 
+    // Camera
     //-------------------------------------------------------------------------
 
     /**
      * Capture picture
      */
     function getPicture() {
-        
-        //navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50, 
+
+        //navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
         //    destinationType: Camera.DestinationType.FILE_URI, sourceType : Camera.PictureSourceType.CAMERA });
-        
+
         navigator.camera.getPicture(
             function(data) {
                 var img = document.getElementById('camera_image');
@@ -76,7 +63,7 @@
             { quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY });
     };
 
-    
+
     /**
      * Function called when page has finished loading.
      */
@@ -96,7 +83,7 @@
 
   </head>
   <body onLoad="init();" id="stage" class="theme">
-  
+
     <h1>Camera</h1>
     <div id="info">
         Status: <span id="camera_status"></span><br>
@@ -105,6 +92,6 @@
     <h2>Action</h2>
     <a href="#" class="btn large" onclick="getPicture();">Take Picture</a>
     <a href="#" class="btn large" onclick="getImage();">Select Image from Library</a>
-    <h2>&nbsp;</h2><a href="index.html" class="backBtn">Back</a>
+    <h2> </h2><a href="index.html" class="backBtn">Back</a>
   </body>
-</html>      
+</html>

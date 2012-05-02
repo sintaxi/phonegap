@@ -24,6 +24,7 @@ using Microsoft.Xna.Framework.Media;
 using WP7CordovaClassLib.Cordova.UI;
 using AudioResult = WP7CordovaClassLib.Cordova.UI.AudioCaptureTask.AudioResult;
 using VideoResult = WP7CordovaClassLib.Cordova.UI.VideoCaptureTask.VideoResult;
+using System.Windows;
 
 namespace WP7CordovaClassLib.Cordova.Commands
 {
@@ -363,16 +364,19 @@ namespace WP7CordovaClassLib.Cordova.Commands
 
                 if (mimeType.Equals("image/jpeg"))
                 {
-                    WriteableBitmap image = ExtractImageFromLocalStorage(mediaFormatOptions.FullPath);
-
-                    if (image == null)
+                    Deployment.Current.Dispatcher.BeginInvoke(() =>
                     {
-                        DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, "File not found"));
-                        return;
-                    }
+                        WriteableBitmap image = ExtractImageFromLocalStorage(mediaFormatOptions.FullPath);
 
-                    MediaFileData mediaData = new MediaFileData(image);
-                    DispatchCommandResult(new PluginResult(PluginResult.Status.OK, mediaData));
+                        if (image == null)
+                        {
+                            DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, "File not found"));
+                            return;
+                        }
+
+                        MediaFileData mediaData = new MediaFileData(image);
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.OK, mediaData));
+                    });
                 }
                 else
                 {

@@ -42,10 +42,10 @@ namespace WP7CordovaClassLib.Cordova
         private static readonly string BaseCommandNamespacePrefix  = "WP7CordovaClassLib.Cordova.Commands.";
 
         /// <summary>
-        /// Performance optimization allowing more faster create already known commands.
+        /// Cache instantiated commands in a map.
         /// </summary>
 
-        private static Dictionary<string, Type> commandMap = new Dictionary<string, Type>();
+        private static Dictionary<string, BaseCommand> commandMap = new Dictionary<string, BaseCommand>();
  
         /// <summary>
         /// Creates command using command class name. Returns null for unknown commands.
@@ -95,10 +95,10 @@ namespace WP7CordovaClassLib.Cordova
                     return null;
                 }
 
-                commandMap[service] = t;
+                commandMap[service] = Activator.CreateInstance(t) as BaseCommand;
             }
 
-            return Activator.CreateInstance(commandMap[service]) as BaseCommand;
+            return commandMap[service];
         }
     }
 }

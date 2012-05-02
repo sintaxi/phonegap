@@ -7,18 +7,9 @@
     <title>Cordova</title>
     <link rel="stylesheet" href="master.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
 
-    
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 
-    <script type="text/javascript">
+    <script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
 
-      // output any errors to console log, created above.
-      window.onerror=function(e)
-      {
-      console.log("window.onerror ::" + JSON.stringify(e));
-      };
-
-    </script>
     <script type="text/javascript" charset="utf-8">
 
       var deviceReady = false;
@@ -96,11 +87,11 @@
 
   </head>
   <body onLoad="init();" id="stage" class="theme">
-  
+
     <h1>Notifications and Dialogs</h1>
     <div id="info">
     </div>
-    
+
     <h2>Action</h2>
     <a href="#" class="btn large" onClick="doBeep();">Beep Once</a>
     <a href="#" class="btn large" onClick="doBeep(3);">Beep 3X</a>
@@ -109,6 +100,6 @@
     <a href="#" class="btn large" onClick="doConfirm();">Show Confirm Dialog</a>
     <a href="#" class="btn large" onClick="startActivity();">startActivity</a>
     <a href="#" class="btn large" onClick="stopActivity();">stopActivity</a>
-    <h2>&nbsp;</h2><a href="index.html" class="backBtn">Back</a>
+    <h2> </h2><a href="index.html" class="backBtn">Back</a>
   </body>
-</html>      
+</html>

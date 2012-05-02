@@ -16,7 +16,7 @@
   <script type="text/javascript" src="../html/TrivialReporter.js"></script>
 
   <!-- Source -->
-  <script type="text/javascript" src="../../phonegap.js"></script>
+  <script type="text/javascript" src="../../cordova.js"></script>
 
   <!-- Load Test Runner -->
   <script type="text/javascript" src="../test-runner.js"></script>
@@ -30,6 +30,7 @@
   <script type="text/javascript" src="../tests/camera.tests.js"></script>
   <script type="text/javascript" src="../tests/device.tests.js"></script>
   <script type="text/javascript" src="../tests/file.tests.js"></script>
+  <script type="text/javascript" src="../tests/filetransfer.tests.js"></script>
   <script type="text/javascript" src="../tests/geolocation.tests.js"></script>
   <script type="text/javascript" src="../tests/media.tests.js"></script>
   <script type="text/javascript" src="../tests/network.tests.js"></script>
@@ -38,6 +39,8 @@
   <script type="text/javascript" src="../tests/storage.tests.js"></script>
 
   <script type="text/javascript">
+      var root, temp_root, persistent_root;
+
       document.addEventListener('deviceready', function () {
           // one-time retrieval of the root file system entry
           var onError = function(e) {

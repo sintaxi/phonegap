@@ -1,5 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+--><html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
@@ -15,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="1.7.0rc1">1.7.0rc1</option>
+<option value="1.7.0rc1">1.7.0rc1</option>
+<option selected value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
 <option value="1.6.0rc1">1.6.0rc1</option>
 <option value="1.6.0">1.6.0</option>
@@ -59,6 +77,7 @@
 <option value="device.name_android_quirks">      - Android Quirks</option>
 <option value="device.name_iphone_quirks">      - iPhone Quirks</option>
 <option value="device.name_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
+<option value="device.name_bada_quirks">      - Bada Quirks</option>
 <option value="device.cordova">device.cordova</option>
 <option value="device.cordova_description">      - Description</option>
 <option value="device.cordova_supported_platforms">      - Supported Platforms</option>
@@ -163,6 +182,7 @@ var phoneName = <a href="cordova_device_device.md.html#device.name">device.name<
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
+<li>Bada 1.2 &amp; 2.x</li>
 </ul>
 <h2>
 <a name="device.name_quick_example">Quick Example</a>
@@ -185,7 +205,7 @@ var name = <a href="cordova_device_device.md.html#device.name">device.name</a>;
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -243,6 +263,13 @@ var name = <a href="cordova_device_device.md.html#device.name">device.name</a>;
 <ul>
 <li>returns the manufacturer specified <a href="#device%20name">device name</a>, for example, the Samsung Focus returns 'SGH-i917'</li>
 </ul>
+<h2>
+<a name="device.name_bada_quirks">Bada Quirks</a>
+</h2>
+
+<ul>
+<li>returns the manufacturer model name. For example 'Samsung Wave S8500'</li>
+</ul>
 <hr>
 <h1><a name="device.cordova">device.cordova</a></h1>
 
@@ -266,6 +293,7 @@ var name = <a href="cordova_device_device.md.html#device.name">device.name</a>;
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
+<li>Bada 1.2 &amp; 2.x</li>
 </ul>
 <h2>
 <a name="device.cordova_quick_example">Quick Example</a>
@@ -283,7 +311,7 @@ var name = <a href="cordova_device_device.md.html#device.name">device.name</a>;
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -327,6 +355,7 @@ var name = <a href="cordova_device_device.md.html#device.name">device.name</a>;
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
+<li>Bada 1.2 &amp; 2.x</li>
 </ul>
 <h2>
 <a name="device.platform_quick_example">Quick Example</a>
@@ -350,7 +379,7 @@ var devicePlatform = <a href="cordova_device_device.md.html#device.platform">dev
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -381,7 +410,7 @@ var devicePlatform = <a href="cordova_device_device.md.html#device.platform">dev
 <a name="device.platform_iphone_quirks">iPhone Quirks</a>
 </h2>
 
-<p>All devices return <code>iPhone</code> as the platform. This is inaccurate because Apple has rebranded the iPhone operating system as <code>iOS</code>.</p>
+<p>The iPhone returns <code>iPhone</code> as the platform. The iPad returns <code>iPad</code> as the platform.  In the simulator they will return <code>iPhone Simulator</code> and <code>iPad Simulator</code> respectively.  These are inaccurate in all cases because Apple has rebranded the iPhone operating system as <code>iOS</code>.</p>
 
 <h2>
 <a name="device.platform_blackberry_quirks">BlackBerry Quirks</a>
@@ -418,6 +447,7 @@ var devicePlatform = <a href="cordova_device_device.md.html#device.platform">dev
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
+<li>Bada 1.2 &amp; 2.x</li>
 </ul>
 <h2>
 <a name="device.uuid_quick_example">Quick Example</a>
@@ -448,7 +478,7 @@ var deviceID = <a href="cordova_device_device.md.html#device.uuid">device.uuid</
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -504,6 +534,7 @@ var deviceID = <a href="cordova_device_device.md.html#device.uuid">device.uuid</
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
+<li>Bada 1.2 &amp; 2.x</li>
 </ul>
 <h2>
 <a name="device.version_quick_example">Quick Example</a>
@@ -530,7 +561,7 @@ var deviceVersion = <a href="cordova_device_device.md.html#device.version">devic
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load

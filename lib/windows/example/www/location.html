@@ -3,31 +3,16 @@
   <head>
     <!-- meta name="viewport" content="width=device-width, height=device-height, user-scalable=yes, initial-scale=2.0, maximum-scale=4.0, minimum-scale=1.0" / -->
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8"> 
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>Cordova</title>
     <link rel="stylesheet" href="master.css" type="text/css" media="screen">
-    
-    <script type="text/javascript">
-      // provide our own console if it does not exist, huge dev aid!
-      if(typeof window.console == "undefined")
-      {
-      window.console = {log:function(str){window.external.Notify(str);}};
-      }
 
-      // output any errors to console log, created above.
-      window.onerror=function(e)
-      {
-      console.log("window.onerror ::" + JSON.stringify(e));
-      };
 
-      console.log("Installed console ! ");
-    </script>
-    
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>       
-    
- 
+    <script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
 
-      
+
+
+
 <script type="text/javascript" charset="utf-8">
 
     var deviceReady = false;
@@ -47,7 +32,7 @@
         var success = function(p){
             document.getElementById('latitude').innerHTML = p.coords.latitude;
             document.getElementById('longitude').innerHTML = p.coords.longitude;
-			
+
 			document.getElementById('tdAlt').innerHTML = p.coords.altitude;
 			document.getElementById('tdAcc').innerHTML = p.coords.accuracy;
 			document.getElementById('tdAltAcc').innerHTML = p.coords.altitudeAccuracy;
@@ -91,7 +76,7 @@
 		{
             document.getElementById('latitude').innerHTML = p.coords.latitude;
             document.getElementById('longitude').innerHTML = p.coords.longitude;
-			
+
 			document.getElementById('tdAlt').innerHTML = p.coords.altitude;
 			document.getElementById('tdAcc').innerHTML = p.coords.accuracy;
 			document.getElementById('tdAltAcc').innerHTML = p.coords.altitudeAccuracy;
@@ -119,7 +104,7 @@
     var setLocationStatus = function(status) {
         document.getElementById('location_status').innerHTML = status;
     };
-    
+
     /**
      * Function called when page has finished loading.
      */
@@ -139,24 +124,24 @@
 
   </head>
   <body onLoad="init();" id="stage" class="theme">
-  
+
     <h1>Location</h1>
     <div id="info">
         <b>Status:</b> <span id="location_status">Stopped</span>
         <table width="100%">
-            <tr><td><b>Latitude:</b></td><td id="latitude">&nbsp;</td></tr>
-            <tr><td><b>Longitude:</b></td><td id="longitude">&nbsp;</td></tr>
-            <tr><td><b>Altitude:</b></td><td id="tdAlt">&nbsp;</td></tr>
-            <tr><td><b>Accuracy:</b></td><td id="tdAcc">&nbsp;</td></tr>
-            <tr><td><b>Altitude Accuracy:</b></td><td id="tdAltAcc">&nbsp;</td></tr>
-            <tr><td><b>Heading:</b></td><td id="tdHeading">&nbsp;</td></tr>
-            <tr><td><b>Speed:</b></td><td id="tdSpeed">&nbsp;</td></tr>
+            <tr><td><b>Latitude:</b></td><td id="latitude"> </td></tr>
+            <tr><td><b>Longitude:</b></td><td id="longitude"> </td></tr>
+            <tr><td><b>Altitude:</b></td><td id="tdAlt"> </td></tr>
+            <tr><td><b>Accuracy:</b></td><td id="tdAcc"> </td></tr>
+            <tr><td><b>Altitude Accuracy:</b></td><td id="tdAltAcc"> </td></tr>
+            <tr><td><b>Heading:</b></td><td id="tdHeading"> </td></tr>
+            <tr><td><b>Speed:</b></td><td id="tdSpeed"> </td></tr>
         </table>
     </div>
     <h2>Action</h2>
     <a href="#" class="btn large" onClick="getLocation();">Get Location</a>
     <a href="#" class="btn large" onClick="watchLocation();">Start Watching Location</a>
     <a href="#" class="btn large" onClick="stopLocation();">Stop Watching Location</a>
-    <h2>&nbsp;</h2><a href="index.html" class="backBtn">Back</a>   
+    <h2> </h2><a href="index.html" class="backBtn">Back</a>
   </body>
-</html>      
+</html>

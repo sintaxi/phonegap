@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Application>
+    <Entry>cordova-bada-wac</Entry>
+    <Name>
+        <English>cordova-bada-wac</English>
+        <eng-GB>cordova-bada-wac</eng-GB>
+    </Name>
+    <Vendor/>
+    <Description/>
+    <Icons>
+        <MainMenu>cordova_bada_wac_icon_type4.png<Type1/>
+            <Type2/>
+            <Type3>cordova_bada_wac_icon_type3.png</Type3>
+            <Type4>cordova_bada_wac_icon_type4.png</Type4>
+            <Type5>cordova_bada_wac_icon_type5.png</Type5>
+        </MainMenu>
+        <Setting/>
+        <Ticker/>
+        <QuickPanel/>
+        <LaunchImage>codova_bada_wac_splash_type4.png<Type1/>
+            <Type2/>
+            <Type3>codova_bada_wac_splash_type3.png</Type3>
+            <Type4>codova_bada_wac_splash_type4.png</Type4>
+            <Type5>codova_bada_wac_splash_type5.png</Type5>
+        </LaunchImage>
+    </Icons>
+    <AutoScaling>
+        <Enabled>false</Enabled>
+    </AutoScaling>
+</Application>

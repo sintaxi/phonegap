@@ -19,6 +19,7 @@ ECHO = echo
 ECHO_N = echo -n
 JAVA = java
 PGVERSION = 1.7.0
+UNAME=$(SHELL uname)
 
 NAME = `$(CAT) framework/appinfo.json | $(GREP) '"id"' | $(CUT) -d \" -f 4`
 VERSION = `$(CAT) framework/appinfo.json | $(GREP) '"version"' | $(CUT) -d \" -f 4`
@@ -33,13 +34,44 @@ clean_libs:
 	-$(RM_RF) lib
 	
 package:
+ifeq ($(UNAME), Linux)
+    palm-package framework/
+else
+ifeq ($(UNAME), Darwin)
+# mac OSX
 	palm-package framework/
+else
+# assume windows OS
+    palm-package.bat framework/
+endif
+endif
+	
 
 deploy:
+ifeq ($(UNAME), Linux)
 	palm-install $(NAME)_$(VERSION)_all.ipk
+else
+ifeq ($(UNAME), Darwin)
+# mac OSX
+    palm-install $(NAME)_$(VERSION)_all.ipk
+else
+# assume windows OS
+    palm-install.bat $(NAME)_$(VERSION)_all.ipk
+endif
+endif
 	
 run:
+ifeq ($(UNAME), Linux)
 	palm-launch $(NAME)
+else
+ifeq ($(UNAME), Darwin)
+# mac OSX
+    palm-launch $(NAME)
+else
+# assume windows OS
+    palm-launch.bat $(NAME)
+endif
+endif
 	
 copy_js:
 	cp lib/cordova.js framework/cordova-$(PGVERSION).js

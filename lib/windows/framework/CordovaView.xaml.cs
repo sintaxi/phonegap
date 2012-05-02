@@ -147,7 +147,7 @@ namespace WP7CordovaClassLib
 
             // initializes native execution logic
             this.nativeExecution = new NativeExecution(ref this.CordovaBrowser);
-            this.bmHelper = new BrowserMouseHelper(this.CordovaBrowser);
+            this.bmHelper = new BrowserMouseHelper(ref this.CordovaBrowser);
         }
 
         

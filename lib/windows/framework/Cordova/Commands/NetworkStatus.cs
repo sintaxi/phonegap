@@ -13,7 +13,9 @@
 */
 
 using System;
+using System.Diagnostics;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -42,48 +44,88 @@ namespace WP7CordovaClassLib.Cordova.Commands
         const string CELL = "cellular";
 
 
-        public void getConnectionInfo(string empty)
+        public NetworkStatus()
+            : base()
         {
 
-            //DeviceNetworkInformation.NetworkAvailabilityChanged += new EventHandler<NetworkNotificationEventArgs>(DeviceNetworkInformation_NetworkAvailabilityChanged);
-
-            DispatchCommandResult(new PluginResult(PluginResult.Status.OK, checkConnectionType()));
+            DeviceNetworkInformation.NetworkAvailabilityChanged += new EventHandler<NetworkNotificationEventArgs>(ChangeDetected);
         }
 
-        //void DeviceNetworkInformation_NetworkAvailabilityChanged(object sender, NetworkNotificationEventArgs e)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        private string checkConnectionType()
+        public void getConnectionInfo(string empty)
         {
-
-            if (DeviceNetworkInformation.IsNetworkAvailable)
+            // Use the GetIsNetworkAvailable method to quickly determine if we have a connection or not
+            // Otherwise, resolving a DNS name with no connection takes a while.
+            if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
             {
-                if (DeviceNetworkInformation.IsWiFiEnabled)
-                {
-                    return WIFI;
-                }
-                else
-                {
-                    if (DeviceNetworkInformation.IsCellularDataEnabled)
-                    {
-                        // WP7 doesn't let us determine which type of cell data network
-                        // DeviceNetworkInformation.CellularMobileOperator
-                        return CELL;
-                    }
-                    else
-                    {
-                        return UNKNOWN;
-                    }
-                }
+                // We have to try to resolve a host name to get the specific subtype of network available.
+                // Kind of a shitty API here MSFT
+                DeviceNetworkInformation.ResolveHostNameAsync(
+                    new DnsEndPoint("microsoft.com", 80),
+                    new NameResolutionCallback(nrr =>
+                        {
+                            if (nrr.NetworkErrorCode == NetworkError.Success)
+                            {
+                                updateConnectionType(checkConnectionType(nrr.NetworkInterface.InterfaceSubtype));
+                            }
+                            else
+                            {
+                                updateConnectionType(NONE);
+                            }
+                        }
+                    ),
+                    null
+                );
             }
             else
             {
-                return NONE;
+                updateConnectionType(NONE);
             }
         }
 
-        
+        private string checkConnectionType(NetworkInterfaceSubType type)
+        {
+            switch (type)
+            {
+                case NetworkInterfaceSubType.Cellular_1XRTT: //cell
+                case NetworkInterfaceSubType.Cellular_GPRS: //cell
+                    return CELL;
+                case NetworkInterfaceSubType.Cellular_EDGE: //2
+                    return CELL_2G;
+                case NetworkInterfaceSubType.Cellular_3G:
+                case NetworkInterfaceSubType.Cellular_EVDO: //3
+                case NetworkInterfaceSubType.Cellular_EVDV: //3 
+                case NetworkInterfaceSubType.Cellular_HSPA: //3
+                    return CELL_3G;
+                case NetworkInterfaceSubType.WiFi:
+                    return WIFI;
+                case NetworkInterfaceSubType.Unknown:
+                case NetworkInterfaceSubType.Desktop_PassThru:
+                default:
+                    return UNKNOWN;
+            }
+        }
+
+        void ChangeDetected(object sender, NetworkNotificationEventArgs e)
+        {
+            switch (e.NotificationType)
+            {
+                case NetworkNotificationType.InterfaceConnected:
+                    updateConnectionType(checkConnectionType(e.NetworkInterface.InterfaceSubtype));
+                    break;
+                case NetworkNotificationType.InterfaceDisconnected:
+                    updateConnectionType(NONE);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void updateConnectionType(string type)
+        {
+            // This should also implicitly fire offline/online events as that is handled on the JS side
+            PluginResult result = new PluginResult(PluginResult.Status.OK, type);
+            result.KeepCallback = true;
+            DispatchCommandResult(result);
+        }
     }
 }

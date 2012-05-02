@@ -1,26 +1,34 @@
 ﻿<phone:PhoneApplicationPage 
-    x:Class="GapExample.MainPage"
+    x:Class="CordovaExample.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:my="clr-namespace:WP7CordovaClassLib;assembly=WP7CordovaClassLib"
     mc:Ignorable="d" FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
+    Background="Black"
     SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
-    shell:SystemTray.IsVisible="True" d:DesignHeight="768" d:DesignWidth="480">
-    <Grid x:Name="LayoutRoot" >
+    shell:SystemTray.IsVisible="True" d:DesignHeight="768" d:DesignWidth="480" 
+    xmlns:my="clr-namespace:WP7CordovaClassLib;assembly=WP7CordovaClassLib">
+    <Grid x:Name="LayoutRoot" Background="Transparent" HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
         <my:CordovaView HorizontalAlignment="Stretch" 
                    Margin="0,0,0,0"  
                    Name="PGView" 
                    VerticalAlignment="Stretch" />
+        <Image Source="SplashScreenImage.jpg"
+          x:Name="SplashImage"
+          VerticalAlignment="Center"
+          HorizontalAlignment="Stretch">
+            <Image.Projection>
+                <PlaneProjection x:Name="SplashProjector"  CenterOfRotationX="0"/>
+            </Image.Projection>
+        </Image>
     </Grid>
 
 </phone:PhoneApplicationPage>

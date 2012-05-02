@@ -1,5 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+--><html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
@@ -15,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="1.7.0rc1">1.7.0rc1</option>
+<option value="1.7.0rc1">1.7.0rc1</option>
+<option selected value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
 <option value="1.6.0rc1">1.6.0rc1</option>
 <option value="1.6.0">1.6.0</option>
@@ -52,6 +70,8 @@
 <option value="Connection_properties">      - Properties</option>
 <option value="Connection_constants">      - Constants</option>
 <option value="Connection_wp7_quirk">      - WP7 Quirk</option>
+<option value="Connection_ios_quirk">      - iOS Quirk</option>
+<option value="Connection_bada_quirk">      - Bada Quirk</option>
 <option value="connection.type">connection.type</option>
 <option value="connection.type_description">      - Description</option>
 <option value="connection.type_supported_platforms">      - Supported Platforms</option>
@@ -92,7 +112,7 @@
   <p>The <code>connection</code> object gives access to the device's cellular and wifi connection information.</p>
 </blockquote>
 
-<p>This object is accessed under the navigator.network interface.</p>
+<p>This object is accessed under the <code>navigator.network</code> interface.</p>
 
 <h2>
 <a name="Connection_properties">Properties</a>
@@ -130,6 +150,23 @@
 <strong>type:</strong>
 Windows Phone Emulator always reports navigator.network.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a> is <a href="cordova_connection_connection.md.html#Connection">Connection</a>.UNKNOWN</li>
 </ul>
+<h2>
+<a name="Connection_ios_quirk">iOS Quirk</a>
+</h2>
+
+<ul>
+<li>
+<strong>type:</strong>
+iOS can only report whether the device is on a cellular connection, not
+of what type, thus it will always report as CELL_2G</li>
+</ul>
+<h2>
+<a name="Connection_bada_quirk">Bada Quirk</a>
+</h2>
+
+<ul>
+<li>Bada can only report if device is on Wifi or connected to cellular connection CELL_2G ( type not reported )</li>
+</ul>
 <hr>
 <h1><a name="connection.type">connection.type</a></h1>
 
@@ -150,6 +187,7 @@ Windows Phone Emulator always reports navigator.network.<a href="cordova_connect
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>Windows Phone 7 ( Mango )</li>
+<li>Bada 2.x</li>
 </ul>
 <h2>
 <a name="connection.type_quick_example">Quick Example</a>
@@ -182,7 +220,7 @@ checkConnection();
   &lt;head&gt;
     &lt;title&gt;navigator.network.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.6.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load

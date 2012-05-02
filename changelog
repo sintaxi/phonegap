@@ -4,10 +4,12 @@ Ben Birch (2):
       ios camera targetWidth/Height don't match the documentation Fixes CB-183 and CB-54
       iOS camera targetWidth/Height don't match the documentation - changes per shazron
 
-Fil Maj (1):
+Fil Maj (3):
       [CB-511] Changed deviceproperties version to "cordova" property
+      [CB-571] stubbed out create method to remove error when creating Media objects, also added another check if file does not exist.
+      [CB-386] added retina ipad splash screens. made sure retina ipad icon files shows up during load.
 
-Shazron Abdullah (29):
+Shazron Abdullah (40):
       Updated js for iOS only parameter cropToTargetSize (Camera.getPicture)
       Fixed CB-483 - FileTransfer - unknown property attribute 'atomic' when building from source (Xcode 3 only)
       Updated to cordova-js 1.6.1
@@ -37,10 +39,27 @@ Shazron Abdullah (29):
       Fixed CB-494 - Move Cordova.plist section from "How to use Cordova as a Component Guide" to its own doc
       Added cordova-js 1.7.0rc1
       Updated VERSION to 1.7.0rc1,  updated Makefile to include new guides.
+      Fixed typo in JavaScript Logging Guide
+      Re-fix CB-347 - localStorage / SQLDatabase Error after App update
+      Updates for 1.7.0
+      Updated templates for the new splash-screen names.
+      Fixed crashing in iOS 5.x simulators for new project (malformed CFBundleIcons key)
+      Fixed import header for CDVDebugWebView (for framework and sub-project projects)
+      Interim checkin of 1.7.0 cordova-js
+      Removed extraneous semicolon at end of import (would cause warning, but not an error)
+      CDVDebugWebView - handle non-exceptions being thrown
+      Killed a zombie. After the heading update was stopped, we don't set the delegate to nil, so we continue to get updates.
+      Updated to cordova-js 1.7.0
+
+Tom Clarkson (1):
+      adjust splash screen position based on orientation and status bar size
 
 blackberry
 Fil Maj (1):
       bumping version to 1.7.0rc1
+
+shazron (1):
+      Updated BB to 1.7.0
 
 android
 Fil Maj (3):
@@ -48,19 +67,28 @@ Fil Maj (3):
       Proper fix for CB-164. Online/offline events now propagated to webview properly
       [CB-473] run ant clean before ant debug install
 
-Joe Bowser (5):
+Joe Bowser (8):
       CB-480 work, back button and history issues are preventing this from being tested properly
       Fixed back button behaviour.  WIN
       Reverting the back button change that I made, for some reason certain methods aren't inherited when you extend DroidGap
       Fix for CB-549
       Incrementing project to 1.7.0rc1
+      Incrementing project to 1.7.0rc1
+      Updating the version to 1.7.0
+      Updating the JS and re-tagging 1.7.0
 
-macdonst (2):
+macdonst (4):
       CB-539: FileTransfer.download fails when target starts with 'file://'
       Removing un-needed logs
+      Refactor Android SplashScreen
+      Adding SplashScreen plugin to plugins.xml
 
 windows
-Jesse MacFadyen (11):
+Fil Maj (2):
+      added issue with regards to debugging media functionality in the framework to the README
+      Updating various script files to latest
+
+Jesse MacFadyen (28):
       added hint to debug output when device ready cannot fire because the dev did not include the tag in their page.
       release was private, and therefore uncallable from js
       changed test project to use updated tests + jasmine
@@ -72,15 +100,41 @@ Jesse MacFadyen (11):
       splash image is animated away on load
       update JS from cordova-js, update version file
       rebuild of lib + template gen
+      Added notification alert/confirm button text. CB-110
+      remove version number from readme instructions so we don't have to change it every time.
+      remove old build cruft
+      rejigger, packaged zip is rc1 but assets are 1.7.0
+      updates 1.7.0.js file with latest changes, remove rc version
+      fetch meta viewport on page load
+      CB-596
+      wip for handling both meta + preventDefault
+      metaviewport tag content attribute user-scalable yes|no is observed.
+      added tagged 1.7.0 js src, alert patch in template with comment
+      1.7.0 release packaging
+      remove old template
+      update example to 1.7.0
+      filetransfer download returns FileEntry on success
+      repackage for 1.7.0
+      updated test project for jasmine tests
+      update template for 1.7.0
 
 Takashi Okamoto (1):
       Fixed filetransfer boundary without parameter.
 
+filmaj (4):
+      [CB-559] Cache instantiated plugins in CommandFactory
+      [CB-338] fixing firing online and offline events
+      [CB-336] getFormatData did not return due to threading issues in Capture.cs
+      [CB-334] Nickname was not being returned properly in contacts.search
+
 webos
-hermwong (1):
+hermwong (2):
       update version to 1.7.0
+      modify Makefile to work with windows
 
 bada
-Anis Kadri (1):
+Anis Kadri (2):
       updating version to 1.7.0rc1
+      updating version to 1.7.0
 
+badaWac

@@ -7,26 +7,11 @@
     <title>Cordova</title>
     <link rel="stylesheet" href="master.css" type="text/css" media="screen"/>
 
-      <script type="text/javascript">
-        // provide our own console if it does not exist, huge dev aid!
-        if(typeof window.console == "undefined")
-        {
-        window.console = {log:function(str){window.external.Notify(str);}};
-        }
 
-        // output any errors to console log, created above.
-        window.onerror=function(e)
-        {
-        console.log("window.onerror ::" + JSON.stringify(e));
-        };
 
-        console.log("Installed console ! ");
-      </script>
-      
-      
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
 
-      
+
 <script type="text/javascript" charset="utf-8">
 
     var deviceReady = false;
@@ -110,7 +95,7 @@
     var setCompassStatus = function(status) {
         document.getElementById('compass_status').innerHTML = status;
     };
-    
+
     /**
      * Function called when page has finished loading.
      */
@@ -130,18 +115,18 @@
 
   </head>
   <body onLoad="init();" id="stage" class="theme">
-  
+
     <h1>Compass</h1>
     <div id="info">
         Status: <span id="compass_status">Stopped</span>
         <table width="100%"><tr>
-            <td width="33%">Heading: <span id="compassHeading">&nbsp;</td>
+            <td width="33%">Heading: <span id="compassHeading"> </td>
         </tr></table>
     </div>
     <h2>Action</h2>
     <a href="#" class="btn large" onClick="getCompass();">Get Compass</a>
     <a href="#" class="btn large" onClick="watchCompass();">Start Watching Compass</a>
     <a href="#" class="btn large" onClick="stopCompass();">Stop Watching Compass</a>
-    <h2>&nbsp;</h2><a href="index.html" class="backBtn">Back</a>
+    <h2> </h2><a href="index.html" class="backBtn">Back</a>
   </body>
-</html>      
+</html>
