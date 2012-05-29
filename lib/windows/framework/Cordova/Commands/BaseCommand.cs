@@ -15,6 +15,7 @@
 using System;
 using System.Reflection;
 using Microsoft.Phone.Shell;
+using System.Diagnostics;
 
 namespace WP7CordovaClassLib.Cordova.Commands
 {
@@ -75,7 +76,8 @@ namespace WP7CordovaClassLib.Cordova.Commands
         {
             if (this.OnCustomScript != null)
             {
-                this.OnCustomScript(this, script);               
+                this.OnCustomScript(this, script);
+                this.OnCustomScript = null;
             }
         }
 

@@ -27,7 +27,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
     /// </summary>
     public class Accelerometer : BaseCommand
     {
-#region AccelerometerOptions class
+        #region AccelerometerOptions class
         /// <summary>
         /// Represents Accelerometer options.
         /// </summary>
@@ -68,7 +68,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
 
         #endregion
 
-#region Status codes and Constants
+        #region Status codes and Constants
 
         public const int Stopped = 0;
         public const int Starting = 1;
@@ -79,7 +79,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
 
         #endregion
 
-#region Static members
+        #region Static members
 
         /// <summary>
         /// Status of listener
@@ -87,157 +87,13 @@ namespace WP7CordovaClassLib.Cordova.Commands
         private static int currentStatus;
 
         /// <summary>
-        /// Id for get getAcceleration method
-        /// </summary>
-        private static string getAccelId = "getAccelId";
-
-        /// <summary>
         /// Accelerometer
         /// </summary>
         private static Microsoft.Devices.Sensors.Accelerometer accelerometer = new Microsoft.Devices.Sensors.Accelerometer();
 
-        /// <summary>
-        /// Listeners for callbacks
-        /// </summary>
-        private static Dictionary<string, Accelerometer> watchers = new Dictionary<string, Accelerometer>();
-
         private static DateTime StartOfEpoch = new DateTime(1970, 1, 1, 0, 0, 0);
 
         #endregion
-
-        /// <summary>
-        /// Time the value was last changed
-        /// </summary>
-        private DateTime lastValueChangedTime;
-
-        /// <summary>
-        /// Accelerometer options
-        /// </summary>
-        private AccelerometerOptions accelOptions;
-
-        /// <summary>
-        /// Start listening for acceleration sensor
-        /// </summary>
-        public void startWatch(string options)
-        {
-            try
-            {
-                accelOptions = JSON.JsonHelper.Deserialize<AccelerometerOptions>(options);
-            }
-            catch (Exception ex)
-            {
-                this.DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION, ex.Message));
-                return;
-            }
-
-            if (string.IsNullOrEmpty(accelOptions.Id))
-            {
-                this.DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
-                return;
-            }
-
-            try
-            {
-                lock (accelerometer)
-                {
-                    watchers.Add(accelOptions.Id, this);
-                    accelerometer.CurrentValueChanged += watchers[accelOptions.Id].accelerometer_CurrentValueChanged;
-                    accelerometer.Start();
-                    this.SetStatus(Starting);
-                }
-            }
-            catch (Exception)
-            {
-                this.DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, ErrorFailedToStart));
-                return;
-            }
-        }
-
-        /// <summary>
-        /// Stops listening to acceleration sensor
-        /// </summary>
-        public void stopWatch(string options)
-        {
-            try
-            {
-                accelOptions = JSON.JsonHelper.Deserialize<AccelerometerOptions>(options);
-            }
-            catch (Exception ex)
-            {
-                this.DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION, ex.Message));
-                return;
-            }
-
-            if (string.IsNullOrEmpty(accelOptions.Id))
-            {
-                this.DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
-                return;
-            }
-
-            if (currentStatus != Stopped)
-            {
-                lock (accelerometer)
-                {
-                    Accelerometer watcher = watchers[accelOptions.Id];
-                    
-                    watcher.Dispose();
-                    accelerometer.CurrentValueChanged -= watcher.accelerometer_CurrentValueChanged;
-                    watchers.Remove(accelOptions.Id);
-                }
-            }
-            this.SetStatus(Stopped);
-
-            this.DispatchCommandResult();
-        }
-
-        /// <summary>
-        /// Gets current accelerometer coordinates
-        /// </summary>
-        public void getAcceleration(string options)
-        {
-            try
-            {
-                if (currentStatus != Running)
-                {
-                    int status = this.start();
-                    if (status == ErrorFailedToStart)
-                    {
-                        DispatchCommandResult(new PluginResult(PluginResult.Status.IO_EXCEPTION, ErrorFailedToStart));
-                        return;
-                    }
-
-                    long timeout = 2000;
-                    while ((currentStatus == Starting) && (timeout > 0))
-                    {
-                        timeout = timeout - 100;
-                        Thread.Sleep(100);
-                    }
-
-                    if (currentStatus != Running)
-                    {
-                        DispatchCommandResult(new PluginResult(PluginResult.Status.IO_EXCEPTION, ErrorFailedToStart));
-                        return;
-                    }
-                }
-                lock (accelerometer)
-                {
-                    if (watchers.ContainsKey(getAccelId))
-                    {
-                        accelerometer.CurrentValueChanged -= watchers[getAccelId].accelerometer_CurrentValueChanged;
-                        watchers.Remove(getAccelId);
-                    }
-                    DispatchCommandResult(new PluginResult(PluginResult.Status.OK, GetCurrentAccelerationFormatted()));
-                }
-            }
-            catch (UnauthorizedAccessException)
-            {
-                DispatchCommandResult(new PluginResult(PluginResult.Status.ILLEGAL_ACCESS_EXCEPTION, ErrorFailedToStart));
-            }
-            catch (Exception)
-            {
-                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, ErrorFailedToStart));
-            }
-        }
 
         /// <summary>
         /// Sensor listener event
@@ -246,49 +102,67 @@ namespace WP7CordovaClassLib.Cordova.Commands
         {
             this.SetStatus(Running);
 
-            if (accelOptions != null)
-            {
-                if (((DateTime.Now - lastValueChangedTime).TotalMilliseconds) > accelOptions.Frequency)
-                {
-                    lastValueChangedTime = DateTime.Now;
-                    PluginResult result = new PluginResult(PluginResult.Status.OK, GetCurrentAccelerationFormatted());
-                    result.KeepCallback = true;
-                    DispatchCommandResult(result);
-                }
-            }
-
-            if (watchers.Count == 0)
-            {
-                accelerometer.Stop();
-                this.SetStatus(Stopped);
-            }
+            PluginResult result = new PluginResult(PluginResult.Status.OK, GetCurrentAccelerationFormatted());
+            result.KeepCallback = true;
+            DispatchCommandResult(result);
         }
 
         /// <summary>
         /// Starts listening for acceleration sensor
         /// </summary>
         /// <returns>status of listener</returns>
-        private int start()
+        public void start(string options)
         {
             if ((currentStatus == Running) || (currentStatus == Starting))
             {
-                return currentStatus;
+                return;
             }
             try
             {
                 lock (accelerometer)
                 {
-                    watchers.Add(getAccelId, this);
-                    accelerometer.CurrentValueChanged += watchers[getAccelId].accelerometer_CurrentValueChanged;
+                    accelerometer.CurrentValueChanged += accelerometer_CurrentValueChanged;
                     accelerometer.Start();
                     this.SetStatus(Starting);
+                }
+
+                long timeout = 2000;
+                while ((currentStatus == Starting) && (timeout > 0))
+                {
+                    timeout = timeout - 100;
+                    Thread.Sleep(100);
+                }
+
+                if (currentStatus != Running)
+                {
+                    this.SetStatus(ErrorFailedToStart);
+                    DispatchCommandResult(new PluginResult(PluginResult.Status.IO_EXCEPTION, ErrorFailedToStart));
+                    return;
                 }
             }
             catch (Exception)
             {
                 this.SetStatus(ErrorFailedToStart);
+                DispatchCommandResult(new PluginResult(PluginResult.Status.IO_EXCEPTION, ErrorFailedToStart));
+                return;
             }
-            return currentStatus;
+            PluginResult result = new PluginResult(PluginResult.Status.NO_RESULT);
+            result.KeepCallback = true;
+            DispatchCommandResult(result);
+        }
+
+        public void stop(string options)
+        {
+            if (currentStatus == Running)
+            {
+                lock (accelerometer)
+                {
+                    accelerometer.CurrentValueChanged -= accelerometer_CurrentValueChanged;
+                    accelerometer.Stop();
+                    this.SetStatus(Stopped);
+                }
+            }
+            DispatchCommandResult(new PluginResult(PluginResult.Status.OK));
         }
 
         /// <summary>
@@ -300,7 +174,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
             // convert to unix timestamp
             long timestamp = ((accelerometer.CurrentValue.Timestamp.DateTime - StartOfEpoch).Ticks) / 10000;
             string resultCoordinates = String.Format("\"x\":{0},\"y\":{1},\"z\":{2},\"timestamp\":{3}",
-                            (accelerometer.CurrentValue.Acceleration.X * gConstant).ToString("0.00000",CultureInfo.InvariantCulture),
+                            (accelerometer.CurrentValue.Acceleration.X * gConstant).ToString("0.00000", CultureInfo.InvariantCulture),
                             (accelerometer.CurrentValue.Acceleration.Y * gConstant).ToString("0.00000", CultureInfo.InvariantCulture),
                             (accelerometer.CurrentValue.Acceleration.Z * gConstant).ToString("0.00000", CultureInfo.InvariantCulture),
                             timestamp.ToString());

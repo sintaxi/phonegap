@@ -21,19 +21,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
 <meta name="generator" content="joDoc">
-<title>Cordova API Documentation</title>
+<title>Apache Cordova API Documentation</title>
 <link rel="stylesheet" type="text/css" href="index.css">
 <link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
 <link rel="stylesheet" type="text/css" href="prettify/prettify.css">
 </head>
 <body>
         <div id="header">
-            <h1><a href="index.html"><strong>Cordova</strong> Documentation</a></h1>
+            <h1><a href="index.html">Apache <strong>Cordova</strong> Documentation</a></h1>
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="1.8.0rc1">1.8.0rc1</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
-<option selected value="1.7.0">1.7.0</option>
+<option value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
 <option value="1.6.0rc1">1.6.0rc1</option>
 <option value="1.6.0">1.6.0</option>
@@ -68,9 +69,11 @@
             <h1>Camera</h1>
             <small><select><option value="Camera">Camera</option>
 <option value="Camera_methods">      - Methods</option>
+<option value="Camera_permissions">      - Permissions</option>
 <option value="camera.getPicture">camera.getPicture</option>
 <option value="camera.getPicture_description">      - Description</option>
 <option value="camera.getPicture_supported_platforms">      - Supported Platforms</option>
+<option value="camera.getPicture_ios_quirks">      - iOS Quirks</option>
 <option value="camera.getPicture_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
 <option value="camera.getPicture_quick_example">      - Quick Example</option>
 <option value="camera.getPicture_full_example">      - Full Example</option>
@@ -83,7 +86,7 @@
 <option value="cameraOptions_options">      - Options</option>
 <option value="cameraOptions_android_quirks">      - Android Quirks</option>
 <option value="cameraOptions_blackberry_quirks">      - BlackBerry Quirks</option>
-<option value="cameraOptions_palm_quirks">      - Palm Quirks</option>
+<option value="cameraOptions_webos_quirks">      - webOS Quirks</option>
 <option value="cameraOptions_ios_quirks">      - iOS Quirks</option>
 <option value="cameraOptions_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
 <option value="cameraOptions_bada_1_2_quirks">      - Bada 1.2 Quirks</option></select></small>
@@ -110,6 +113,8 @@
 <h1>Guides</h1>
 <ul>
 <li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
+<li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
+<li><a href="guide_whitelist_index.md.html#Domain%20Whitelist%20Guide">Domain Whitelist Guide</a></li>
 <li><a href="_index.html">Keyword Index</a></li>
 </ul>
 </div>
@@ -129,6 +134,72 @@
 <ul>
 <li><a href="cordova_camera_camera.md.html#camera.getPicture">camera.getPicture</a></li>
 </ul>
+<h2>
+<a name="Camera_permissions">Permissions</a>
+</h2>
+
+<h3>Android</h3>
+
+<h4>app/res/xml/plugins.xml</h4>
+
+<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_camera_camera.md.html#Camera">Camera</a>" value="org.apache.cordova.CameraLauncher" /&gt;
+</code></pre>
+
+<h4>app/AndroidManifest</h4>
+
+<pre class="prettyprint"><code>&lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /&gt;
+</code></pre>
+
+<h3>Bada</h3>
+
+<pre class="prettyprint"><code>@TODO
+</code></pre>
+
+<h3>BlackBerry WebWorks</h3>
+
+<h4>www/plugins.xml</h4>
+
+<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_camera_camera.md.html#Camera">Camera</a>" value="org.apache.cordova.camera.<a href="cordova_camera_camera.md.html#Camera">Camera</a>" /&gt;
+</code></pre>
+
+<h4>www/config.xml</h4>
+
+<pre class="prettyprint"><code>&lt;feature id="blackberry.media.camera" /&gt;
+
+&lt;rim:permissions&gt;
+    &lt;rim:permit&gt;use_camera&lt;/rim:permit&gt;
+&lt;/rim:permissions&gt;
+</code></pre>
+
+<h3>iOS</h3>
+
+<h4>App/Supporting Files/Cordova.plist</h4>
+
+<pre class="prettyprint"><code>&lt;key&gt;Plugins&lt;/key&gt;
+&lt;dict&gt;
+    &lt;key&gt;<a href="cordova_camera_camera.md.html#Camera">Camera</a>&lt;/key&gt;
+    &lt;string&gt;CDVCamera&lt;/string&gt;
+&lt;/dict&gt;
+</code></pre>
+
+<h3>webOS</h3>
+
+<pre class="prettyprint"><code>@TODO
+</code></pre>
+
+<h3>Windows Phone</h3>
+
+<h4>Properties/WPAppManifest.xml</h4>
+
+<pre class="prettyprint"><code>&lt;Capabilities&gt;
+    &lt;Capability Name="ID_CAP_CAMERA"/&gt;
+    &lt;Capability Name="ID_CAP_ISV_CAMERA"/&gt;
+    &lt;Capability Name="ID_HW_FRONTCAMERA"/&gt;
+&lt;/Capabilities&gt;
+</code></pre>
+
+<p>Reference: <a class="external" href="http://msdn.microsoft.com/en-us/library/ff769509%28v=vs.92%29.aspx">Application Manifest for Windows Phone</a></p>
+
 <hr>
 <h1><a name="camera.getPicture">camera.getPicture</a></h1>
 
@@ -168,10 +239,17 @@
 <ul>
 <li>Android</li>
 <li>Blackberry WebWorks (OS 5.0 and higher)</li>
-<li>iPhone</li>
+<li>iOS</li>
 <li>Windows Phone 7 ( Mango )</li>
 <li>Bada 1.2</li>
+<li>webOS</li>
 </ul>
+<h2>
+<a name="camera.getPicture_ios_quirks">iOS Quirks</a>
+</h2>
+
+<p>Including a JavaScript alert() in either of the callback functions can cause problems.  Wrap the alert in a setTimeout() to allow the iOS image picker or popover to fully close before the alert is displayed: setTimeout("alert('message');", 0);</p>
+
 <h2>
 <a name="camera.getPicture_windows_phone_7_quirks">Windows Phone 7 Quirks</a>
 </h2>
@@ -467,7 +545,7 @@ function cameraCallback(imageData) {
 <li>Ignores the <code>saveToPhotoAlbum</code> parameter.</li>
 </ul>
 <h2>
-<a name="cameraOptions_palm_quirks">Palm Quirks</a>
+<a name="cameraOptions_webos_quirks">webOS Quirks</a>
 </h2>
 
 <ul>
@@ -485,8 +563,7 @@ function cameraCallback(imageData) {
 
 <ul>
 <li>Set <code>quality</code> below 50 to avoid memory error on some devices.</li>
-<li>When <code>destinationType.FILE_URI</code> is used, photos are saved in the application's temporary directory.</li>
-<li>The contents of the application's temporary directory is deleted when the application ends. Developers may also delete the contents of this directory using the navigator.fileMgr APIs if storage space is a concern.</li>
+<li>When <code>destinationType.FILE_URI</code> is used, photos are saved in the application's temporary directory.  Developers may delete the contents of this directory using the navigator.fileMgr APIs if storage space is a concern.</li>
 </ul>
 <h2>
 <a name="cameraOptions_windows_phone_7_quirks">Windows Phone 7 Quirks</a>

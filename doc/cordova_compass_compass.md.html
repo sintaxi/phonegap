@@ -21,19 +21,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
 <meta name="generator" content="joDoc">
-<title>Cordova API Documentation</title>
+<title>Apache Cordova API Documentation</title>
 <link rel="stylesheet" type="text/css" href="index.css">
 <link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
 <link rel="stylesheet" type="text/css" href="prettify/prettify.css">
 </head>
 <body>
         <div id="header">
-            <h1><a href="index.html"><strong>Cordova</strong> Documentation</a></h1>
+            <h1><a href="index.html">Apache <strong>Cordova</strong> Documentation</a></h1>
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="1.8.0rc1">1.8.0rc1</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
-<option selected value="1.7.0">1.7.0</option>
+<option value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
 <option value="1.6.0rc1">1.6.0rc1</option>
 <option value="1.6.0">1.6.0</option>
@@ -69,6 +70,7 @@
             <small><select><option value="Compass">Compass</option>
 <option value="Compass_methods">      - Methods</option>
 <option value="Compass_arguments">      - Arguments</option>
+<option value="Compass_permissions">      - Permissions</option>
 <option value="compass.getCurrentHeading">compass.getCurrentHeading</option>
 <option value="compass.getCurrentHeading_description">      - Description</option>
 <option value="compass.getCurrentHeading_supported_platforms">      - Supported Platforms</option>
@@ -127,6 +129,8 @@
 <h1>Guides</h1>
 <ul>
 <li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
+<li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
+<li><a href="guide_whitelist_index.md.html#Domain%20Whitelist%20Guide">Domain Whitelist Guide</a></li>
 <li><a href="_index.html">Keyword Index</a></li>
 </ul>
 </div>
@@ -162,6 +166,54 @@
 <li><a href="cordova_compass_compass.md.html#compassOptions">compassOptions</a></li>
 <li><a href="cordova_compass_compass.md.html#compassHeading">compassHeading</a></li>
 </ul>
+<h2>
+<a name="Compass_permissions">Permissions</a>
+</h2>
+
+<h3>Android</h3>
+
+<h4>app/res/xml/plugins.xml</h4>
+
+<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_compass_compass.md.html#Compass">Compass</a>" value="org.apache.cordova.CompassListener" /&gt;
+</code></pre>
+
+<h3>Bada</h3>
+
+<pre class="prettyprint"><code>@TODO
+</code></pre>
+
+<h3>BlackBerry WebWorks</h3>
+
+<pre class="prettyprint"><code>@TODO
+</code></pre>
+
+<h3>iOS</h3>
+
+<h4>App/Supporting Files/Cordova.plist</h4>
+
+<pre class="prettyprint"><code>&lt;key&gt;Plugins&lt;/key&gt;
+&lt;dict&gt;
+    &lt;key&gt;<a href="cordova_compass_compass.md.html#Compass">Compass</a>&lt;/key&gt;
+    &lt;string&gt;CDVLocation&lt;/string&gt;
+&lt;/dict&gt;
+</code></pre>
+
+<h3>webOS</h3>
+
+<pre class="prettyprint"><code>@TODO
+</code></pre>
+
+<h3>Windows Phone</h3>
+
+<h4>Properties/WPAppManifest.xml</h4>
+
+<pre class="prettyprint"><code>&lt;Capabilities&gt;
+    &lt;Capability Name="ID_CAP_SENSORS"/&gt;
+&lt;/Capabilities&gt;
+</code></pre>
+
+<p>Reference: <a class="external" href="http://msdn.microsoft.com/en-us/library/ff769509%28v=vs.92%29.aspx">Application Manifest for Windows Phone</a></p>
+
 <hr>
 <h1><a name="compass.getCurrentHeading">compass.getCurrentHeading</a></h1>
 
@@ -187,6 +239,7 @@
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango ) if available in hardware</li>
 <li>Bada 1.2 &amp; 2.x</li>
+<li>webOS</li>
 </ul>
 <h2>
 <a name="compass.getCurrentHeading_quick_example">Quick Example</a>
@@ -273,6 +326,7 @@ navigator.<a href="cordova_compass_compass.md.html#compass.getCurrentHeading">co
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango ) if available in hardware</li>
 <li>Bada 1.2 &amp; 2.x</li>
+<li>webOS</li>
 </ul>
 <h2>
 <a name="compass.watchHeading_quick_example">Quick Example</a>
@@ -388,6 +442,7 @@ var watchID = navigator.<a href="cordova_compass_compass.md.html#compass.watchHe
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango ) if available in hardware</li>
 <li>Bada 1.2 &amp; 2.x</li>
+<li>webOS</li>
 </ul>
 <h2>
 <a name="compass.clearWatch_quick_example">Quick Example</a>

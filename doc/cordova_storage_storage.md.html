@@ -21,19 +21,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
 <meta name="generator" content="joDoc">
-<title>Cordova API Documentation</title>
+<title>Apache Cordova API Documentation</title>
 <link rel="stylesheet" type="text/css" href="index.css">
 <link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
 <link rel="stylesheet" type="text/css" href="prettify/prettify.css">
 </head>
 <body>
         <div id="header">
-            <h1><a href="index.html"><strong>Cordova</strong> Documentation</a></h1>
+            <h1><a href="index.html">Apache <strong>Cordova</strong> Documentation</a></h1>
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="1.8.0rc1">1.8.0rc1</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
-<option selected value="1.7.0">1.7.0</option>
+<option value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
 <option value="1.6.0rc1">1.6.0rc1</option>
 <option value="1.6.0">1.6.0</option>
@@ -70,6 +71,7 @@
 <option value="Storage_methods">      - Methods</option>
 <option value="Storage_arguments">      - Arguments</option>
 <option value="Storage_objects">      - Objects</option>
+<option value="Storage_permissions">      - Permissions</option>
 <option value="openDatabase">openDatabase</option>
 <option value="openDatabase_description">      - Description</option>
 <option value="openDatabase_supported_platforms">      - Supported Platforms</option>
@@ -144,6 +146,8 @@
 <h1>Guides</h1>
 <ul>
 <li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
+<li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
+<li><a href="guide_whitelist_index.md.html#Domain%20Whitelist%20Guide">Domain Whitelist Guide</a></li>
 <li><a href="_index.html">Keyword Index</a></li>
 </ul>
 </div>
@@ -153,7 +157,7 @@
                 <h1><a name="Storage">Storage</a></h1>
 
 <blockquote>
-  <p>Provides access to the devices storage options.  </p>
+  <p>Provides access to the devices storage options.</p>
 </blockquote>
 
 <p>This API is based on the <a class="external" href="http://dev.w3.org/html5/webdatabase/">W3C Web SQL </a><a href="cordova_storage_storage.md.html#Database">Database</a> Specification and <a class="external" href="http://dev.w3.org/html5/webstorage/">W3C Web </a><a href="cordova_storage_storage.md.html#Storage">Storage</a> API Specification. Some devices already provide an implementation of this spec. For those devices, the built-in support is used instead of replacing it with Cordova's implementation. For devices that don't have storage support, Cordova's implementation should be compatible with the W3C specification.</p>
@@ -187,6 +191,49 @@
 <li><a href="cordova_storage_storage.md.html#SQLError">SQLError</a></li>
 <li><a href="cordova_storage_storage.md.html#localStorage">localStorage</a></li>
 </ul>
+<h2>
+<a name="Storage_permissions">Permissions</a>
+</h2>
+
+<h3>Android</h3>
+
+<h4>app/res/xml/plugins.xml</h4>
+
+<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_storage_storage.md.html#Storage">Storage</a>" value="org.apache.cordova.<a href="cordova_storage_storage.md.html#Storage">Storage</a>"/&gt;
+</code></pre>
+
+<h3>Bada</h3>
+
+<pre class="prettyprint"><code>@TODO
+</code></pre>
+
+<h3>BlackBerry WebWorks</h3>
+
+<h4>www/plugins.xml</h4>
+
+<pre class="prettyprint"><code>@TODO
+</code></pre>
+
+<h4>www/config.xml</h4>
+
+<pre class="prettyprint"><code>&lt;feature id="blackberry.widgetcache" required="true" version="1.0.0.0"/&gt;
+</code></pre>
+
+<h3>iOS</h3>
+
+<pre class="prettyprint"><code>No plugin required.
+</code></pre>
+
+<h3>webOS</h3>
+
+<pre class="prettyprint"><code>@TODO
+</code></pre>
+
+<h3>Windows Phone</h3>
+
+<pre class="prettyprint"><code>No additional permissions required.
+</code></pre>
+
 <hr>
 <h1><a name="openDatabase">openDatabase</a></h1>
 
@@ -211,6 +258,7 @@
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 6.0 and higher)</li>
 <li>iPhone</li>
+<li>webOS</li>
 </ul>
 <h2>
 <a name="openDatabase_quick_example">Quick Example</a>
@@ -226,7 +274,7 @@
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
+    &lt;title&gt;<a href="cordova_storage_storage.md.html#Storage">Storage</a> Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
@@ -299,6 +347,7 @@
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 6.0 and higher)</li>
 <li>iPhone</li>
+<li>webOS</li>
 </ul>
 <h2>
 <a name="Database_transaction_quick_example">Transaction Quick Example</a>
@@ -338,7 +387,7 @@ db.changeVersion("1.0", "1.1");
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
+    &lt;title&gt;<a href="cordova_storage_storage.md.html#Storage">Storage</a> Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
@@ -419,6 +468,7 @@ db.changeVersion("1.0", "1.1");
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 6.0 and higher)</li>
 <li>iPhone</li>
+<li>webOS</li>
 </ul>
 <h2>
 <a name="SQLTransaction_execute_sql_quick_example">Execute SQL Quick Example</a>
@@ -450,7 +500,7 @@ db.transaction(populateDB, errorCB, successCB);
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
+    &lt;title&gt;<a href="cordova_storage_storage.md.html#Storage">Storage</a> Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
@@ -527,6 +577,7 @@ db.transaction(populateDB, errorCB, successCB);
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 6.0 and higher)</li>
 <li>iPhone</li>
+<li>webOS</li>
 </ul>
 <h2>
 <a name="SQLResultSet_execute_sql_quick_example">Execute SQL Quick Example</a>
@@ -562,7 +613,7 @@ db.transaction(queryDB, errorCB);
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
+    &lt;title&gt;<a href="cordova_storage_storage.md.html#Storage">Storage</a> Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
@@ -591,7 +642,7 @@ db.transaction(queryDB, errorCB);
     function querySuccess(tx, results) {
   console.log("Returned rows = " + results.rows.length);
   // this will be true since it was a select statement and so rowsAffected was 0
-  if (!resultSet.rowsAffected) {
+  if (!results.rowsAffected) {
     console.log('No rows affected!');
     return false;
   }
@@ -663,6 +714,7 @@ db.transaction(queryDB, errorCB);
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 6.0 and higher)</li>
 <li>iPhone</li>
+<li>webOS</li>
 </ul>
 <h2>
 <a name="SQLResultSetList_execute_sql_quick_example">Execute SQL Quick Example</a>
@@ -674,9 +726,9 @@ db.transaction(queryDB, errorCB);
 
 function querySuccess(tx, results) {
     var len = results.rows.length;
- � console.log("DEMO table: " + len + " rows found.");
-��� for (var i=0; i&lt;len; i++){
-����    console.log("Row = " + i + " ID = " + results.rows.item(i).id + " Data =  " + results.rows.item(i).data);
+    console.log("DEMO table: " + len + " rows found.");
+    for (var i=0; i&lt;len; i++){
+        console.log("Row = " + i + " ID = " + results.rows.item(i).id + " Data =  " + results.rows.item(i).data);
     }
 }
 
@@ -695,7 +747,7 @@ db.transaction(queryDB, errorCB);
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
+    &lt;title&gt;<a href="cordova_storage_storage.md.html#Storage">Storage</a> Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
@@ -834,6 +886,7 @@ db.transaction(queryDB, errorCB);
 <li>BlackBerry WebWorks (OS 6.0 and higher)</li>
 <li>iPhone</li>
 <li>Windows Phone 7</li>
+<li>webOS</li>
 </ul>
 <h2>
 <a name="localStorage_key_quick_example">Key Quick Example</a>
@@ -878,7 +931,7 @@ db.transaction(queryDB, errorCB);
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
+    &lt;title&gt;<a href="cordova_storage_storage.md.html#Storage">Storage</a> Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;

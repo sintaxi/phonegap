@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using WP7CordovaClassLib.Cordova.JSON;
+using System.Diagnostics;
 
 namespace WP7CordovaClassLib.Cordova
 {

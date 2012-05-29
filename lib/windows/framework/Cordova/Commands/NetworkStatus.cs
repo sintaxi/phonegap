@@ -43,43 +43,33 @@ namespace WP7CordovaClassLib.Cordova.Commands
         const string NONE = "none";
         const string CELL = "cellular";
 
+        private bool HasCallback = false;
 
         public NetworkStatus()
-            : base()
         {
-
             DeviceNetworkInformation.NetworkAvailabilityChanged += new EventHandler<NetworkNotificationEventArgs>(ChangeDetected);
         }
 
         public void getConnectionInfo(string empty)
         {
-            // Use the GetIsNetworkAvailable method to quickly determine if we have a connection or not
-            // Otherwise, resolving a DNS name with no connection takes a while.
-            if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+            HasCallback = true;
+            updateConnectionType(checkConnectionType());
+        }
+
+        private string checkConnectionType()
+        {
+            if (DeviceNetworkInformation.IsNetworkAvailable)
             {
-                // We have to try to resolve a host name to get the specific subtype of network available.
-                // Kind of a shitty API here MSFT
-                DeviceNetworkInformation.ResolveHostNameAsync(
-                    new DnsEndPoint("microsoft.com", 80),
-                    new NameResolutionCallback(nrr =>
-                        {
-                            if (nrr.NetworkErrorCode == NetworkError.Success)
-                            {
-                                updateConnectionType(checkConnectionType(nrr.NetworkInterface.InterfaceSubtype));
-                            }
-                            else
-                            {
-                                updateConnectionType(NONE);
-                            }
-                        }
-                    ),
-                    null
-                );
+                if (DeviceNetworkInformation.IsWiFiEnabled)
+                {
+                    return WIFI;
+                }
+                else
+                {
+                    return DeviceNetworkInformation.IsCellularDataEnabled ? CELL : UNKNOWN;
+                }
             }
-            else
-            {
-                updateConnectionType(NONE);
-            }
+            return NONE;
         }
 
         private string checkConnectionType(NetworkInterfaceSubType type)
@@ -123,9 +113,12 @@ namespace WP7CordovaClassLib.Cordova.Commands
         private void updateConnectionType(string type)
         {
             // This should also implicitly fire offline/online events as that is handled on the JS side
-            PluginResult result = new PluginResult(PluginResult.Status.OK, type);
-            result.KeepCallback = true;
-            DispatchCommandResult(result);
+            if (this.HasCallback)
+            {
+                PluginResult result = new PluginResult(PluginResult.Status.OK, type);
+                result.KeepCallback = true;
+                DispatchCommandResult(result);
+            }
         }
     }
 }

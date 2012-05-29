@@ -21,19 +21,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
 <meta name="generator" content="joDoc">
-<title>Cordova API Documentation</title>
+<title>Apache Cordova API Documentation</title>
 <link rel="stylesheet" type="text/css" href="index.css">
 <link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
 <link rel="stylesheet" type="text/css" href="prettify/prettify.css">
 </head>
 <body>
         <div id="header">
-            <h1><a href="index.html"><strong>Cordova</strong> Documentation</a></h1>
+            <h1><a href="index.html">Apache <strong>Cordova</strong> Documentation</a></h1>
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="1.8.0rc1">1.8.0rc1</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
-<option selected value="1.7.0">1.7.0</option>
+<option value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
 <option value="1.6.0rc1">1.6.0rc1</option>
 <option value="1.6.0">1.6.0</option>
@@ -71,6 +72,7 @@
 <option value="Media_methods">      - Methods</option>
 <option value="Media_additional_readonly_parameters">      - Additional ReadOnly Parameters</option>
 <option value="Media_supported_platforms">      - Supported Platforms</option>
+<option value="Media_permissions">      - Permissions</option>
 <option value="media.getCurrentPosition">media.getCurrentPosition</option>
 <option value="media.getCurrentPosition_parameters">      - Parameters</option>
 <option value="media.getCurrentPosition_description">      - Description</option>
@@ -92,6 +94,7 @@
 <option value="media.play_supported_platforms">      - Supported Platforms</option>
 <option value="media.play_quick_example">      - Quick Example</option>
 <option value="media.play_full_example">      - Full Example</option>
+<option value="media.play_blackberry_webworks_quirks">      - BlackBerry WebWorks Quirks</option>
 <option value="media.play_ios_quirk">      - iOS Quirk</option>
 <option value="media.release">media.release</option>
 <option value="media.release_description">      - Description</option>
@@ -104,11 +107,13 @@
 <option value="media.seekTo_supported_platforms">      - Supported Platforms</option>
 <option value="media.seekTo_quick_example">      - Quick Example</option>
 <option value="media.seekTo_full_example">      - Full Example</option>
+<option value="media.seekTo_blackberry_webworks_quirks">      - BlackBerry WebWorks Quirks</option>
 <option value="media.startRecord">media.startRecord</option>
 <option value="media.startRecord_description">      - Description</option>
 <option value="media.startRecord_supported_platforms">      - Supported Platforms</option>
 <option value="media.startRecord_quick_example">      - Quick Example</option>
 <option value="media.startRecord_full_example">      - Full Example</option>
+<option value="media.startRecord_blackberry_webworks_quirks">      - BlackBerry WebWorks Quirks</option>
 <option value="media.startRecord_ios_quirks">      - iOS Quirks</option>
 <option value="media.stop">media.stop</option>
 <option value="media.stop_description">      - Description</option>
@@ -149,6 +154,8 @@
 <h1>Guides</h1>
 <ul>
 <li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
+<li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
+<li><a href="guide_whitelist_index.md.html#Domain%20Whitelist%20Guide">Domain Whitelist Guide</a></li>
 <li><a href="_index.html">Keyword Index</a></li>
 </ul>
 </div>
@@ -158,7 +165,7 @@
                 <h1><a name="Media">Media</a></h1>
 
 <blockquote>
-  <p>The <code><a href="cordova_media_media.md.html#Media">Media</a></code> object provides the ability to record and play back audio files on a device. </p>
+  <p>The <code><a href="cordova_media_media.md.html#Media">Media</a></code> object provides the ability to record and play back audio files on a device.</p>
 </blockquote>
 
 <pre class="prettyprint"><code>var media = new <a href="cordova_media_media.md.html#Media">Media</a>(src, mediaSuccess, [<a href="cordova_media_media.md.html#mediaError">mediaError</a>], [mediaStatus]);
@@ -224,9 +231,76 @@
 
 <ul>
 <li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 ( Mango )</li>
 </ul>
+<h2>
+<a name="Media_permissions">Permissions</a>
+</h2>
+
+<h3>Android</h3>
+
+<h4>app/res/xml/plugins.xml</h4>
+
+<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_media_media.md.html#Media">Media</a>" value="org.apache.cordova.AudioHandler"/&gt;
+</code></pre>
+
+<h4>app/AndroidManifest.xml</h4>
+
+<pre class="prettyprint"><code>&lt;uses-permission android:name="android.permission.RECORD_AUDIO" /&gt;
+&lt;uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" /&gt;
+&lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /&gt;
+</code></pre>
+
+<h3>Bada</h3>
+
+<pre class="prettyprint"><code>@TODO
+</code></pre>
+
+<h3>BlackBerry WebWorks</h3>
+
+<h4>www/plugins.xml</h4>
+
+<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_media_capture_capture.md.html#Capture">Capture</a>" value="org.apache.cordova.media.MediaCapture"/&gt;
+</code></pre>
+
+<h4>www/config.xml</h4>
+
+<pre class="prettyprint"><code>@TODO
+</code></pre>
+
+<h3>iOS</h3>
+
+<h4>App/Supporting Files/Cordova.plist</h4>
+
+<pre class="prettyprint"><code>&lt;key&gt;Plugins&lt;/key&gt;
+&lt;dict&gt;
+    &lt;key&gt;<a href="cordova_media_media.md.html#Media">Media</a>&lt;/key&gt;
+    &lt;string&gt;CDVSound&lt;/string&gt;
+&lt;/dict&gt;
+</code></pre>
+
+<h3>webOS</h3>
+
+<pre class="prettyprint"><code>@TODO
+</code></pre>
+
+<h3>Windows Phone</h3>
+
+<h4>Properties/WPAppManifest.xml</h4>
+
+<pre class="prettyprint"><code>&lt;Capabilities&gt;
+    &lt;Capability Name="ID_CAP_MEDIALIB" /&gt;
+    &lt;Capability Name="ID_CAP_MICROPHONE"/&gt;
+    &lt;Capability Name="ID_HW_FRONTCAMERA"/&gt;
+    &lt;Capability Name="ID_CAP_ISV_CAMERA"/&gt;
+    &lt;Capability Name="ID_CAP_CAMERA"/&gt;
+&lt;/Capabilities&gt;
+</code></pre>
+
+<p>Reference: <a class="external" href="http://msdn.microsoft.com/en-us/library/ff769509%28v=vs.92%29.aspx">Application Manifest for Windows Phone</a></p>
+
 <hr>
 <h1><a name="media.getCurrentPosition">media.getCurrentPosition</a></h1>
 
@@ -257,6 +331,7 @@
 
 <ul>
 <li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 ( Mango )</li>
 </ul>
@@ -412,6 +487,7 @@
 
 <ul>
 <li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 ( Mango )</li>
 </ul>
@@ -564,6 +640,7 @@
 
 <ul>
 <li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 ( Mango )</li>
 </ul>
@@ -721,6 +798,7 @@ function playAudio(url) {
 
 <ul>
 <li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 ( Mango )</li>
 </ul>
@@ -855,6 +933,13 @@ function playAudio(url) {
 </code></pre>
 
 <h2>
+<a name="media.play_blackberry_webworks_quirks">BlackBerry WebWorks Quirks</a>
+</h2>
+
+<ul>
+<li>BlackBerry devices support a limited number of simultaneous audio channels. CDMA devices only support a single audio channel. Other devices support up to two simultaneous channels. Attempting to play more audio files then the supported amount will result in previous playback being stopped.</li>
+</ul>
+<h2>
 <a name="media.play_ios_quirk">iOS Quirk</a>
 </h2>
 
@@ -889,6 +974,7 @@ myMedia.play({ numberOfLoops: 2 })
 
 <ul>
 <li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 ( Mango )</li>
 </ul>
@@ -1039,6 +1125,7 @@ myMedia.play({ numberOfLoops: 2 })
 
 <ul>
 <li>Android</li>
+<li>BlackBerry WebWorks (OS 6.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 ( Mango )</li>
 </ul>
@@ -1153,6 +1240,13 @@ myMedia.play({ numberOfLoops: 2 })
     &lt;/html&gt;
 </code></pre>
 
+<h2>
+<a name="media.seekTo_blackberry_webworks_quirks">BlackBerry WebWorks Quirks</a>
+</h2>
+
+<ul>
+<li>This API is not supported on BlackBerry OS 5 devices.</li>
+</ul>
 <hr>
 <h1><a name="media.startRecord">media.startRecord</a></h1>
 
@@ -1173,6 +1267,7 @@ myMedia.play({ numberOfLoops: 2 })
 
 <ul>
 <li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 ( Mango )</li>
 </ul>
@@ -1272,6 +1367,13 @@ function recordAudio() {
 </code></pre>
 
 <h2>
+<a name="media.startRecord_blackberry_webworks_quirks">BlackBerry WebWorks Quirks</a>
+</h2>
+
+<ul>
+<li>BlackBerry devices record audio in Adaptive Multi-Rate format. The specified file must end with a .amr extension.</li>
+</ul>
+<h2>
 <a name="media.startRecord_ios_quirks">iOS Quirks</a>
 </h2>
 
@@ -1298,6 +1400,7 @@ function recordAudio() {
 
 <ul>
 <li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 ( Mango )</li>
 </ul>
@@ -1455,6 +1558,7 @@ function playAudio(url) {
 
 <ul>
 <li>Android</li>
+<li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 ( Mango )</li>
 </ul>

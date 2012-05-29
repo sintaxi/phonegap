@@ -9,7 +9,8 @@
   <plugin name="Geolocation"    value="org.apache.cordova.geolocation.Geolocation"/>
   <plugin name="File"           value="org.apache.cordova.file.FileManager"/>
   <plugin name="FileTransfer"   value="org.apache.cordova.http.FileTransfer"/>
-  <plugin name="Contact"        value="org.apache.cordova.pim.Contact"/>
-  <plugin name="Capture"        value="org.apache.cordova.media.MediaCapture"/>
+  <plugin name="Contacts"       value="org.apache.cordova.pim.Contact"/>
+  <plugin name="Capture"        value="org.apache.cordova.capture.MediaCapture"/>
   <plugin name="Battery"        value="org.apache.cordova.battery.Battery"/>
+  <plugin name="Media"          value="org.apache.cordova.media.Media"/>
 </plugins>

@@ -57,11 +57,11 @@ namespace WP7CordovaClassLib
         private bool OverrideBackButton = false;
 
         /// <summary>
-        /// Used for keeping track of our history
+        /// Sentinal to keep track of page changes as a result of the hardware back button
+        /// Set to false when the back-button is pressed, which calls js window.history.back()
+        /// If the page changes as a result of the back button the event is cancelled.
         /// </summary>
-        private Stack<Uri> history = new Stack<Uri>();
-        private bool IsBackButtonPressed = false;
-
+        private bool PageDidChange = false;
 
         private static string AppRoot = "/app/";
 
@@ -159,7 +159,7 @@ namespace WP7CordovaClassLib
 
         void AppDeactivated(object sender, DeactivatedEventArgs e)
         {
-            Debug.WriteLine("AppDeactivated");
+            Debug.WriteLine("INFO: AppDeactivated");
 
             try
             {
@@ -167,25 +167,25 @@ namespace WP7CordovaClassLib
             }
             catch (Exception)
             {
-                Debug.WriteLine("Pause event error");
+                Debug.WriteLine("ERROR: Pause event error");
             } 
         }
 
         void AppLaunching(object sender, LaunchingEventArgs e)
         {
-            Debug.WriteLine("AppLaunching");
+            Debug.WriteLine("INFO: AppLaunching");
         }
 
         void AppActivated(object sender, Microsoft.Phone.Shell.ActivatedEventArgs e)
         {
-            Debug.WriteLine("AppActivated");
+            Debug.WriteLine("INFO: AppActivated");
             try
             {
                 CordovaBrowser.InvokeScript("CordovaCommandResult", new string[] { "resume" });
             }
             catch (Exception)
             {
-                Debug.WriteLine("Resume event error");
+                Debug.WriteLine("ERROR: Resume event error");
             }  
         }
 
@@ -268,14 +268,14 @@ namespace WP7CordovaClassLib
 
                                     if(!appStorage.DirectoryExists(strBaseDir))
                                     {
-                                        //Debug.WriteLine("Creating Directory :: " + strBaseDir);
+                                        Debug.WriteLine("INFO: Creating Directory :: " + strBaseDir);
                                         appStorage.CreateDirectory(strBaseDir);
                                     }
 
                                     // This will truncate/overwrite an existing file, or 
                                     using (IsolatedStorageFileStream outFile = appStorage.OpenFile(AppRoot + file.path, FileMode.Create))
                                     {
-                                        Debug.WriteLine("Writing data for " + AppRoot + file.path + " and length = " + data.Length);
+                                        Debug.WriteLine("INFO: Writing data for " + AppRoot + file.path + " and length = " + data.Length);
                                         using (var writer = new BinaryWriter(outFile))
                                         {
                                             writer.Write(data);
@@ -285,7 +285,7 @@ namespace WP7CordovaClassLib
                             }
                             else
                             {
-                                Debug.WriteLine("Failed to write file :: " + file.path + " did you forget to add it to the project?");
+                                Debug.WriteLine("ERROR: Failed to write file :: " + file.path + " did you forget to add it to the project?");
                             }
                         }
                     }
@@ -297,7 +297,7 @@ namespace WP7CordovaClassLib
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("Exception in GapBrowser_Loaded :: {0}", ex.Message);
+                Debug.WriteLine("ERROR: Exception in GapBrowser_Loaded :: {0}", ex.Message);
             }
         }
 
@@ -320,6 +320,7 @@ namespace WP7CordovaClassLib
 
         void page_BackKeyPress(object sender, CancelEventArgs e)
         {
+           
             if (OverrideBackButton)
             {
                 try
@@ -334,13 +335,16 @@ namespace WP7CordovaClassLib
             }
             else
             {
-                if (history.Count > 1)
+                try
                 {
-                    history.Pop();
-                    Uri next = history.Peek();
-                    IsBackButtonPressed = true;
-                    CordovaBrowser.Navigate(next);
-                    e.Cancel = true;
+                    PageDidChange = false;
+                    // calling js history.back with result in a page change if history was valid.
+                    CordovaBrowser.InvokeScript("eval", new string[] { "(function(){window.history.back();})()" });
+                    e.Cancel = PageDidChange;
+                }
+                catch (Exception)
+                {
+                    e.Cancel = false; // exit the app ... ?
                 }
             }
         }
@@ -368,21 +372,11 @@ namespace WP7CordovaClassLib
 
         void GapBrowser_Navigating(object sender, NavigatingEventArgs e)
         {
-            if (!IsBackButtonPressed)
-            {
-                history.Push(e.Uri);
-            }
-            else
-            {
-                IsBackButtonPressed = false;
-            }
-
-            Debug.WriteLine("GapBrowser_Navigating to :: " + e.Uri.ToString());
+            this.PageDidChange = true;
+            // Debug.WriteLine("GapBrowser_Navigating to :: " + e.Uri.ToString());
             // TODO: tell any running plugins to stop doing what they are doing.
             // TODO: check whitelist / blacklist
             // NOTE: Navigation can be cancelled by setting :        e.Cancel = true;
-
-
         }
 
         /*
@@ -428,7 +422,6 @@ namespace WP7CordovaClassLib
             }
             else
             {
-                //Debug.WriteLine("ProcessCommand :: " + commandStr);
                 this.nativeExecution.ProcessCommand(commandCallParams);
             }
         }

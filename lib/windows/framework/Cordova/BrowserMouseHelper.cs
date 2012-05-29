@@ -21,7 +21,7 @@ namespace WP7CordovaClassLib
          * 
          * Full Script below, in use it is minified.
         */
-
+        /*
         private static string mouseScript =
         @"(function(win,doc){
             Object.defineProperty( MouseEvent.prototype, 'pageX', {
@@ -48,7 +48,7 @@ namespace WP7CordovaClassLib
                 catch(e) { return e;}
             }
         })(window,document);";
-
+        */
 
         private static string MinifiedMouseScript = "(function(f,a){Object.defineProperty(MouseEvent.prototype,'pageX',{configurable:!0,get:function(){return this.clientX}});Object.defineProperty(MouseEvent.prototype,'pageY',{configurable:!0,get:function(){return this.clientY}});f.onNativeMouseEvent=function(g,h,i)" 
         + "{try{var j=screen.logicalXDPI/screen.deviceXDPI,k=screen.logicalYDPI/screen.deviceYDPI,b=a.createEvent('MouseEvents'),c=a.body.scrollLeft+Math.round(j*h),d=a.body.scrollTop+Math.round(k*i),e=a.elementFromPoint(c,d);b.initMouseEvent(g,!0,!0,"

@@ -21,19 +21,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
 <meta name="generator" content="joDoc">
-<title>Cordova API Documentation</title>
+<title>Apache Cordova API Documentation</title>
 <link rel="stylesheet" type="text/css" href="index.css">
 <link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
 <link rel="stylesheet" type="text/css" href="prettify/prettify.css">
 </head>
 <body>
         <div id="header">
-            <h1><a href="index.html"><strong>Cordova</strong> Documentation</a></h1>
+            <h1><a href="index.html">Apache <strong>Cordova</strong> Documentation</a></h1>
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="1.8.0rc1">1.8.0rc1</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
-<option selected value="1.7.0">1.7.0</option>
+<option value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
 <option value="1.6.0rc1">1.6.0rc1</option>
 <option value="1.6.0">1.6.0</option>
@@ -68,6 +69,7 @@
             <h1>Notification</h1>
             <small><select><option value="Notification">Notification</option>
 <option value="Notification_methods">      - Methods</option>
+<option value="Notification_permissions">      - Permissions</option>
 <option value="notification.alert">notification.alert</option>
 <option value="notification.alert_description">      - Description</option>
 <option value="notification.alert_supported_platforms">      - Supported Platforms</option>
@@ -77,6 +79,7 @@
 <option value="notification.alert_bada_2_x_quirks">      - Bada 2.x Quirks</option>
 <option value="notification.confirm">notification.confirm</option>
 <option value="notification.confirm_description">      - Description</option>
+<option value="notification.confirm_confirmcallback">      - confirmCallback</option>
 <option value="notification.confirm_supported_platforms">      - Supported Platforms</option>
 <option value="notification.confirm_quick_example">      - Quick Example</option>
 <option value="notification.confirm_full_example">      - Full Example</option>
@@ -118,6 +121,8 @@
 <h1>Guides</h1>
 <ul>
 <li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
+<li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
+<li><a href="guide_whitelist_index.md.html#Domain%20Whitelist%20Guide">Domain Whitelist Guide</a></li>
 <li><a href="_index.html">Keyword Index</a></li>
 </ul>
 </div>
@@ -140,6 +145,59 @@
 <li><a href="cordova_notification_notification.md.html#notification.beep">notification.beep</a></li>
 <li><a href="cordova_notification_notification.md.html#notification.vibrate">notification.vibrate</a></li>
 </ul>
+<h2>
+<a name="Notification_permissions">Permissions</a>
+</h2>
+
+<h3>Android</h3>
+
+<h4>app/res/xml/plugins.xml</h4>
+
+<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_notification_notification.md.html#Notification">Notification</a>" value="org.apache.cordova.<a href="cordova_notification_notification.md.html#Notification">Notification</a>"/&gt;
+</code></pre>
+
+<h4>app/AndroidManifest.xml</h4>
+
+<pre class="prettyprint"><code>&lt;uses-permission android:name="android.permission.VIBRATE" /&gt;
+</code></pre>
+
+<h3>Bada</h3>
+
+<pre class="prettyprint"><code>@TODO
+</code></pre>
+
+<h3>BlackBerry WebWorks</h3>
+
+<h4>www/plugins.xml</h4>
+
+<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_notification_notification.md.html#Notification">Notification</a>" value="org.apache.cordova.notification.<a href="cordova_notification_notification.md.html#Notification">Notification</a>"/&gt;
+</code></pre>
+
+<h4>www/config.xml</h4>
+
+<p><feature id="blackberry.ui.dialog"></feature></p>
+
+<h3>iOS</h3>
+
+<h4>App/Supporting Files/Cordova.plist</h4>
+
+<pre class="prettyprint"><code>&lt;key&gt;Plugins&lt;/key&gt;
+&lt;dict&gt;
+    &lt;key&gt;<a href="cordova_notification_notification.md.html#Notification">Notification</a>&lt;/key&gt;
+    &lt;string&gt;CDVNotification&lt;/string&gt;
+&lt;/dict&gt;
+</code></pre>
+
+<h3>webOS</h3>
+
+<pre class="prettyprint"><code>@TODO
+</code></pre>
+
+<h3>Windows Phone</h3>
+
+<pre class="prettyprint"><code>No additional permissions required.
+</code></pre>
+
 <hr>
 <h1><a name="notification.alert">notification.alert</a></h1>
 
@@ -174,6 +232,7 @@
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
 <li>Bada 1.2 &amp; 2.x</li>
+<li>webOS</li>
 </ul>
 <h2>
 <a name="notification.alert_quick_example">Quick Example</a>
@@ -267,7 +326,7 @@ navigator.<a href="cordova_notification_notification.md.html#notification.alert"
 <li>
 <strong>message:</strong> Dialog message (<code>String</code>)</li>
 <li>
-<strong>confirmCallback:</strong> - Callback to invoke with index of button pressed (1, 2 or 3). (<code>Number</code>)</li>
+<strong>confirmCallback:</strong> - Callback to invoke with index of button pressed (1, 2 or 3). (<code>Function</code>)</li>
 <li>
 <strong>title:</strong> Dialog title (<code>String</code>) (Optional, Default: "Confirm")</li>
 <li>
@@ -278,6 +337,14 @@ navigator.<a href="cordova_notification_notification.md.html#notification.alert"
 </h2>
 
 <p>Function <code><a href="cordova_notification_notification.md.html#notification.confirm">notification.confirm</a></code> displays a native dialog box that is more customizable than the browser's <code>confirm</code> function.</p>
+
+<h2>
+<a name="notification.confirm_confirmcallback">confirmCallback</a>
+</h2>
+
+<p>The <code>confirmCallback</code> is called when the user has pressed one of the buttons on the confirmation dialog box.</p>
+
+<p>The callback takes the argument <code>buttonIndex</code> (<code>Number</code>), which is the index of the pressed button. It's important to note that the index uses one-based indexing, so the value will be <code>1</code>, <code>2</code>, <code>3</code>, etc.</p>
 
 <h2>
 <a name="notification.confirm_supported_platforms">Supported Platforms</a>
@@ -295,8 +362,8 @@ navigator.<a href="cordova_notification_notification.md.html#notification.alert"
 </h2>
 
 <pre class="prettyprint"><code>// process the confirmation dialog result
-function onConfirm(button) {
-    alert('You selected button ' + button);
+function onConfirm(buttonIndex) {
+    alert('You selected button ' + buttonIndex);
 }
 
 // Show a custom confirmation dialog
@@ -334,8 +401,8 @@ function showConfirm() {
     }
 
     // process the confirmation dialog result
-    function onConfirm(button) {
-        alert('You selected button ' + button);
+    function onConfirm(buttonIndex) {
+        alert('You selected button ' + buttonIndex);
     }
 
     // Show a custom confirmation dialog
@@ -362,23 +429,28 @@ function showConfirm() {
 </h2>
 
 <ul>
-<li>Ignores button names, always 'OK|Cancel'</li>
-<li>There is no built in browser confirm, so if you want to just write alert('foo'); you can assign window.confirm = navigator.<a href="cordova_notification_notification.md.html#notification.confirm">notification.confirm</a>;</li>
-<li>alert + confirm calls are non-blocking, and result is only available asyncronously.</li>
+<li>Ignores button names, always <code>'OK|Cancel'</code>.</li>
+<li>There is no built-in browser function for <code>window.confirm</code>
+<ul>
+<li>You can bind <code>window.confirm</code> by assigning <code>window.confirm = navigator.<a href="cordova_notification_notification.md.html#notification.confirm">notification.confirm</a>;</code>.</li>
+</ul>
+</li>
+<li>Calls to <code>alert</code> and <code>confirm</code> are non-blocking and result is only available asyncronously.</li>
 </ul>
 <h2>
 <a name="notification.confirm_bada_2_x_quirks">Bada 2.x Quirks</a>
 </h2>
 
 <ul>
-<li>confirm uses javascript alert</li>
+<li>
+<code>confirm</code> uses the browser's built-in <code>alert</code> function.</li>
 </ul>
 <h2>
 <a name="notification.confirm_bada_1_2_quirks">Bada 1.2 Quirks</a>
 </h2>
 
 <ul>
-<li>Ignore button names, always 'OK|Cancel'</li>
+<li>Ignore button names, always <code>'OK|Cancel'</code>.</li>
 </ul>
 <hr>
 <h1><a name="notification.beep">notification.beep</a></h1>

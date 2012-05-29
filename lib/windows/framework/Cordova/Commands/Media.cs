@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Windows;
+using System.Diagnostics;
 
 namespace WP7CordovaClassLib.Cordova.Commands
 {
@@ -244,6 +245,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                 }
                 else
                 {
+                    Debug.WriteLine("INFO: startPlayingAudio could not find mediaPlayer for " + mediaOptions.Id);
                     audio = Media.players[mediaOptions.Id];
                 }
 
@@ -296,6 +298,10 @@ namespace WP7CordovaClassLib.Cordova.Commands
                             AudioPlayer audio = Media.players[mediaOptions.Id];
                             audio.seekToPlaying(mediaOptions.Milliseconds);
                         }
+                        else
+                        {
+                            Debug.WriteLine("ERROR: seekToAudio could not find mediaPlayer for " + mediaOptions.Id);
+                        }
 
                         DispatchCommandResult(new PluginResult(PluginResult.Status.OK));
                     }
@@ -338,6 +344,10 @@ namespace WP7CordovaClassLib.Cordova.Commands
                             AudioPlayer audio = Media.players[mediaOptions.Id];
                             audio.pausePlaying();
                         }
+                        else
+                        {
+                            Debug.WriteLine("ERROR: pausePlayingAudio could not find mediaPlayer for " + mediaOptions.Id);
+                        }
 
                         DispatchCommandResult(new PluginResult(PluginResult.Status.OK));
                     }
@@ -377,6 +387,10 @@ namespace WP7CordovaClassLib.Cordova.Commands
                             AudioPlayer audio = Media.players[mediaOptions.Id];
                             audio.stopPlaying();
                         }
+                        else
+                        {
+                            Debug.WriteLine("stopPlaying could not find mediaPlayer for " + mediaOptions.Id);
+                        }
 
                         DispatchCommandResult(new PluginResult(PluginResult.Status.OK));
                     }
@@ -415,7 +429,6 @@ namespace WP7CordovaClassLib.Cordova.Commands
                 if (Media.players.ContainsKey(mediaOptions.Id))
                 {
                     AudioPlayer audio = Media.players[mediaOptions.Id];
-
                     Deployment.Current.Dispatcher.BeginInvoke(() =>
                     {
                         DispatchCommandResult(new PluginResult(PluginResult.Status.OK, audio.getCurrentPosition()));
@@ -460,6 +473,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                 }
                 else
                 {
+                    Debug.WriteLine("ERROR: getDurationAudio could not find mediaPlayer for " + mediaOptions.Id);
                     audio = new AudioPlayer(this, mediaOptions.Id);
                     Media.players.Add(mediaOptions.Id, audio);
                 }

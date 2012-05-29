@@ -21,19 +21,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
 <meta name="generator" content="joDoc">
-<title>Cordova API Documentation</title>
+<title>Apache Cordova API Documentation</title>
 <link rel="stylesheet" type="text/css" href="index.css">
 <link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
 <link rel="stylesheet" type="text/css" href="prettify/prettify.css">
 </head>
 <body>
         <div id="header">
-            <h1><a href="index.html"><strong>Cordova</strong> Documentation</a></h1>
+            <h1><a href="index.html">Apache <strong>Cordova</strong> Documentation</a></h1>
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="1.8.0rc1">1.8.0rc1</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
-<option selected value="1.7.0">1.7.0</option>
+<option value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
 <option value="1.6.0rc1">1.6.0rc1</option>
 <option value="1.6.0">1.6.0</option>
@@ -69,6 +70,7 @@
             <small><select><option value="Device">Device</option>
 <option value="Device_properties">      - Properties</option>
 <option value="Device_variable_scope">      - Variable Scope</option>
+<option value="Device_permissions">      - Permissions</option>
 <option value="device.name">device.name</option>
 <option value="device.name_description">      - Description</option>
 <option value="device.name_supported_platforms">      - Supported Platforms</option>
@@ -124,6 +126,8 @@
 <h1>Guides</h1>
 <ul>
 <li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
+<li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
+<li><a href="guide_whitelist_index.md.html#Domain%20Whitelist%20Guide">Domain Whitelist Guide</a></li>
 <li><a href="_index.html">Keyword Index</a></li>
 </ul>
 </div>
@@ -159,6 +163,65 @@ var phoneName = window.<a href="cordova_device_device.md.html#device.name">devic
 var phoneName = <a href="cordova_device_device.md.html#device.name">device.name</a>;
 </code></pre>
 
+<h2>
+<a name="Device_permissions">Permissions</a>
+</h2>
+
+<h3>Android</h3>
+
+<h4>app/res/xml/plugins.xml</h4>
+
+<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_device_device.md.html#Device">Device</a>" value="org.apache.cordova.<a href="cordova_device_device.md.html#Device">Device</a>"/&gt;
+</code></pre>
+
+<h4>app/AndroidManifest.xml</h4>
+
+<pre class="prettyprint"><code>&lt;uses-permission android:name="android.permission.READ_PHONE_STATE" /&gt;
+</code></pre>
+
+<h3>Bada</h3>
+
+<pre class="prettyprint"><code>@TODO
+</code></pre>
+
+<h3>BlackBerry WebWorks</h3>
+
+<h4>www/plugins.xml</h4>
+
+<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_device_device.md.html#Device">Device</a>" value="org.apache.cordova.device.<a href="cordova_device_device.md.html#Device">Device</a>"/&gt;
+</code></pre>
+
+<h4>www/config.xml</h4>
+
+<pre class="prettyprint"><code>&lt;feature id="blackberry.app" required="true" version="1.0.0.0" /&gt;
+&lt;rim:permissions&gt;
+    &lt;rim:permit&gt;read_device_identifying_information&lt;/rim:permit&gt;
+&lt;/rim:permissions&gt;
+</code></pre>
+
+<h3>iOS</h3>
+
+<pre class="prettyprint"><code><a href="cordova_device_device.md.html#Device">Device</a> is not implemented as a plugin.
+</code></pre>
+
+<h3>webOS</h3>
+
+<pre class="prettyprint"><code>@TODO
+</code></pre>
+
+<h3>Windows Phone</h3>
+
+<h4>Properties/WPAppManifest.xml</h4>
+
+<pre class="prettyprint"><code>&lt;Capabilities&gt;
+    &lt;Capability Name="ID_CAP_WEBBROWSERCOMPONENT" /&gt;
+    &lt;Capability Name="ID_CAP_IDENTITY_DEVICE" /&gt;
+    &lt;Capability Name="ID_CAP_IDENTITY_USER" /&gt;
+&lt;/Capabilities&gt;
+</code></pre>
+
+<p>Reference: <a class="external" href="http://msdn.microsoft.com/en-us/library/ff769509%28v=vs.92%29.aspx">Application Manifest for Windows Phone</a></p>
+
 <hr>
 <h1><a name="device.name">device.name</a></h1>
 
@@ -183,6 +246,7 @@ var phoneName = <a href="cordova_device_device.md.html#device.name">device.name<
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
 <li>Bada 1.2 &amp; 2.x</li>
+<li>webOS</li>
 </ul>
 <h2>
 <a name="device.name_quick_example">Quick Example</a>
@@ -356,6 +420,7 @@ var name = <a href="cordova_device_device.md.html#device.name">device.name</a>;
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
 <li>Bada 1.2 &amp; 2.x</li>
+<li>webOS</li>
 </ul>
 <h2>
 <a name="device.platform_quick_example">Quick Example</a>
@@ -448,6 +513,7 @@ var devicePlatform = <a href="cordova_device_device.md.html#device.platform">dev
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
 <li>Bada 1.2 &amp; 2.x</li>
+<li>webOS</li>
 </ul>
 <h2>
 <a name="device.uuid_quick_example">Quick Example</a>
@@ -466,6 +532,7 @@ var devicePlatform = <a href="cordova_device_device.md.html#device.platform">dev
 // Windows Phone 7 : Returns a hash of device+current user, 
 // if the user is not defined, a guid is generated and will persist until the app is uninstalled
 // 
+// webOS: returns the device NDUID
 var deviceID = <a href="cordova_device_device.md.html#device.uuid">device.uuid</a>;
 </code></pre>
 
@@ -535,6 +602,7 @@ var deviceID = <a href="cordova_device_device.md.html#device.uuid">device.uuid</
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
 <li>Bada 1.2 &amp; 2.x</li>
+<li>webOS</li>
 </ul>
 <h2>
 <a name="device.version_quick_example">Quick Example</a>
@@ -549,6 +617,7 @@ var deviceID = <a href="cordova_device_device.md.html#device.uuid">device.uuid</
 // iPhone:     iOS 3.2 returns "3.2"
 //
 // Windows Phone 7: returns current OS version number, ex. on Mango returns 7.10.7720
+// webOS: webOS 2.2.4 return 2.2.4
 var deviceVersion = <a href="cordova_device_device.md.html#device.version">device.version</a>;
 </code></pre>
 

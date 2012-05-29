@@ -21,19 +21,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
 <meta name="generator" content="joDoc">
-<title>Cordova API Documentation</title>
+<title>Apache Cordova API Documentation</title>
 <link rel="stylesheet" type="text/css" href="index.css">
 <link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
 <link rel="stylesheet" type="text/css" href="prettify/prettify.css">
 </head>
 <body>
         <div id="header">
-            <h1><a href="index.html"><strong>Cordova</strong> Documentation</a></h1>
+            <h1><a href="index.html">Apache <strong>Cordova</strong> Documentation</a></h1>
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="1.8.0rc1">1.8.0rc1</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
-<option selected value="1.7.0">1.7.0</option>
+<option value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
 <option value="1.6.0rc1">1.6.0rc1</option>
 <option value="1.6.0">1.6.0</option>
@@ -68,6 +69,7 @@
             <h1>Events</h1>
             <small><select><option value="Events">Events</option>
 <option value="Events_event_types">      - Event Types</option>
+<option value="Events_permissions">      - Permissions</option>
 <option value="deviceready">deviceready</option>
 <option value="deviceready_details">      - Details</option>
 <option value="deviceready_supported_platforms">      - Supported Platforms</option>
@@ -173,6 +175,8 @@
 <h1>Guides</h1>
 <ul>
 <li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
+<li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
+<li><a href="guide_whitelist_index.md.html#Domain%20Whitelist%20Guide">Domain Whitelist Guide</a></li>
 <li><a href="_index.html">Keyword Index</a></li>
 </ul>
 </div>
@@ -206,6 +210,59 @@
 <li><a href="cordova_events_events.md.html#volumedownbutton">volumedownbutton</a></li>
 <li><a href="cordova_events_events.md.html#volumeupbutton">volumeupbutton</a></li>
 </ul>
+<h2>
+<a name="Events_permissions">Permissions</a>
+</h2>
+
+<h3>Android</h3>
+
+<h4>app/res/xml/plugins.xml</h4>
+
+<pre class="prettyprint"><code>@TODO
+</code></pre>
+
+<h4>app/AndroidManifest.xml</h4>
+
+<pre class="prettyprint"><code>@TODO
+</code></pre>
+
+<h3>Bada</h3>
+
+<pre class="prettyprint"><code>@TODO
+</code></pre>
+
+<h3>BlackBerry WebWorks</h3>
+
+<h4>www/plugins.xml</h4>
+
+<pre class="prettyprint"><code>&lt;plugin name="Battery" value="org.apache.cordova.battery.Battery"/&gt;
+</code></pre>
+
+<h4>www/config.xml</h4>
+
+<p><feature id="blackberry.app" required="true" version="1.0.0.0"></feature><feature id="blackberry.app.event" required="true" version="1.0.0.0"></feature><feature id="blackberry.system.event" required="true" version="1.0.0.0"></feature></p>
+
+<h3>iOS</h3>
+
+<h4>App/Supporting Files/Cordova.plist</h4>
+
+<pre class="prettyprint"><code>&lt;key&gt;Plugins&lt;/key&gt;
+&lt;dict&gt;
+    &lt;key&gt;Battery&lt;/key&gt;
+    &lt;string&gt;CDVBattery&lt;/string&gt;
+&lt;/dict&gt;
+</code></pre>
+
+<h3>webOS</h3>
+
+<pre class="prettyprint"><code>@TODO
+</code></pre>
+
+<h3>Windows Phone</h3>
+
+<pre class="prettyprint"><code>No additional permissions required.
+</code></pre>
+
 <hr>
 <h1><a name="deviceready">deviceready</a></h1>
 

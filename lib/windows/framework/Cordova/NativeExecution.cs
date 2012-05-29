@@ -18,6 +18,7 @@ using System.Threading;
 using Microsoft.Devices;
 using Microsoft.Phone.Controls;
 using WP7CordovaClassLib.Cordova.Commands;
+using System.Windows;
 
 namespace WP7CordovaClassLib.Cordova
 {
@@ -69,7 +70,6 @@ namespace WP7CordovaClassLib.Cordova
 
             try
             {
-
                 BaseCommand bc = CommandFactory.CreateByServiceName(commandCallParams.Service);
 
                 if (bc == null)
@@ -96,21 +96,19 @@ namespace WP7CordovaClassLib.Cordova
                 // TODO: alternative way is using thread pool (ThreadPool.QueueUserWorkItem) instead of 
                 // new thread for every command call; but num threads are not sufficient - 2 threads per CPU core
 
-
                 Thread thread = new Thread(func =>
                 {
-
                     try
                     {
                         bc.InvokeMethodNamed(commandCallParams.Action, commandCallParams.Args);
                     }
                     catch (Exception ex)
                     {
-                        Debug.WriteLine("Exception in ProcessCommand :: " + ex.Message);
+                        Debug.WriteLine("ERROR: Exception in ProcessCommand :: " + ex.Message);
                         bc.OnCommandResult -= OnCommandResultHandler;
                         bc.OnCustomScript -= OnCustomScriptHandler;
 
-                        Debug.WriteLine("failed to InvokeMethodNamed :: " + commandCallParams.Action + " on Object :: " + commandCallParams.Service);
+                        Debug.WriteLine("ERROR: failed to InvokeMethodNamed :: " + commandCallParams.Action + " on Object :: " + commandCallParams.Service);
 
                         this.OnCommandResult(commandCallParams.CallbackId, new PluginResult(PluginResult.Status.INVALID_ACTION));
 
@@ -123,7 +121,7 @@ namespace WP7CordovaClassLib.Cordova
             catch (Exception ex)
             {
                 // ERROR
-                Debug.WriteLine(String.Format("Unable to execute command :: {0}:{1}:{3} ", 
+                Debug.WriteLine(String.Format("ERROR: Unable to execute command :: {0}:{1}:{3} ", 
                     commandCallParams.Service, commandCallParams.Action, ex.Message));
 
                 this.OnCommandResult(commandCallParams.CallbackId, new PluginResult(PluginResult.Status.ERROR));
@@ -142,13 +140,13 @@ namespace WP7CordovaClassLib.Cordova
             
             if (result == null)
             {
-                Debug.WriteLine("OnCommandResult missing result argument");
+                Debug.WriteLine("ERROR: OnCommandResult missing result argument");
                 return;
             }
 
             if (String.IsNullOrEmpty(callbackId))
             {
-                Debug.WriteLine("OnCommandResult missing callbackId argument");
+                Debug.WriteLine("ERROR: OnCommandResult missing callbackId argument");
                 return;
             }
 
@@ -188,17 +186,20 @@ namespace WP7CordovaClassLib.Cordova
                 throw new ArgumentNullException("ScriptName");
             }
 
+            //Debug.WriteLine("INFO:: About to invoke ::" + script.ScriptName + " with args ::" + script.Args[0]);
             this.webBrowser.Dispatcher.BeginInvoke((ThreadStart)delegate()
             {
+
                 try
                 {
-                    //Debug.WriteLine("InvokingScript::" + script.ScriptName + " with args ::" + script.Args[0] + ", " + script.Args[1] + ", " + script.Args[2]);
+                    //Debug.WriteLine("INFO:: InvokingScript::" + script.ScriptName + " with args ::" + script.Args[0]);
                     this.webBrowser.InvokeScript(script.ScriptName, script.Args);
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine("Exception in InvokeScriptCallback :: " + ex.Message);
+                    Debug.WriteLine("ERROR: Exception in InvokeScriptCallback :: " + ex.Message);
                 }
+               
             });
         }
 

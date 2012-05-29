@@ -21,19 +21,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
 <meta name="generator" content="joDoc">
-<title>Cordova API Documentation</title>
+<title>Apache Cordova API Documentation</title>
 <link rel="stylesheet" type="text/css" href="index.css">
 <link rel="stylesheet" type="text/css" href="mobile.css" media="only screen and (max-device-width: 1024px)">
 <link rel="stylesheet" type="text/css" href="prettify/prettify.css">
 </head>
 <body>
         <div id="header">
-            <h1><a href="index.html"><strong>Cordova</strong> Documentation</a></h1>
+            <h1><a href="index.html">Apache <strong>Cordova</strong> Documentation</a></h1>
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="1.8.0rc1">1.8.0rc1</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
-<option selected value="1.7.0">1.7.0</option>
+<option value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
 <option value="1.6.0rc1">1.6.0rc1</option>
 <option value="1.6.0">1.6.0</option>
@@ -68,6 +69,7 @@
             <h1>File</h1>
             <small><select><option value="File">File</option>
 <option value="File_objects">      - Objects</option>
+<option value="File_permissions">      - Permissions</option>
 <option value="File">File</option>
 <option value="File_properties">      - Properties</option>
 <option value="File_details">      - Details</option>
@@ -107,9 +109,10 @@ File System Quick Example</option>
 <option value="FileEntry_methods">      - Methods</option>
 <option value="FileEntry_supported_platforms">      - Supported Platforms</option>
 <option value="FileEntry_getmetadata">      - getMetadata</option>
+<option value="FileEntry_setmetadata">      - setMetadata</option>
 <option value="FileEntry_moveto">      - moveTo</option>
 <option value="FileEntry_copyto">      - copyTo</option>
-<option value="FileEntry_touri">      - toURI</option>
+<option value="FileEntry_tourl">      - toURL</option>
 <option value="FileEntry_remove">      - remove</option>
 <option value="FileEntry_getparent">      - getParent</option>
 <option value="FileEntry_createwriter">      - createWriter</option>
@@ -119,9 +122,10 @@ File System Quick Example</option>
 <option value="DirectoryEntry_methods">      - Methods</option>
 <option value="DirectoryEntry_supported_platforms">      - Supported Platforms</option>
 <option value="DirectoryEntry_getmetadata">      - getMetadata</option>
+<option value="DirectoryEntry_setmetadata">      - setMetadata</option>
 <option value="DirectoryEntry_moveto">      - moveTo</option>
 <option value="DirectoryEntry_copyto">      - copyTo</option>
-<option value="DirectoryEntry_touri">      - toURI</option>
+<option value="DirectoryEntry_tourl">      - toURL</option>
 <option value="DirectoryEntry_remove">      - remove</option>
 <option value="DirectoryEntry_getparent">      - getParent</option>
 <option value="DirectoryEntry_createreader">      - createReader</option>
@@ -196,6 +200,8 @@ File System Quick Example</option>
 <h1>Guides</h1>
 <ul>
 <li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
+<li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
+<li><a href="guide_whitelist_index.md.html#Domain%20Whitelist%20Guide">Domain Whitelist Guide</a></li>
 <li><a href="_index.html">Keyword Index</a></li>
 </ul>
 </div>
@@ -205,7 +211,7 @@ File System Quick Example</option>
                 <h1><a name="File">File</a></h1>
 
 <blockquote>
-  <p>This API is based on the W3C <a class="external" href="http://www.w3.org/TR/FileAPI"></a><a href="cordova_file_file.md.html#File">File</a> API. An API to read, write and navigate file system hierarchies. </p>
+  <p>This API is based on the W3C <a class="external" href="http://www.w3.org/TR/FileAPI"></a><a href="cordova_file_file.md.html#File">File</a> API. An API to read, write and navigate file system hierarchies.</p>
 </blockquote>
 
 <h2>
@@ -229,6 +235,66 @@ File System Quick Example</option>
 <li><a href="cordova_file_file.md.html#LocalFileSystem">LocalFileSystem</a></li>
 <li><a href="cordova_file_file.md.html#Metadata">Metadata</a></li>
 </ul>
+<h2>
+<a name="File_permissions">Permissions</a>
+</h2>
+
+<h3>Android</h3>
+
+<h4>app/res/xml/plugins.xml</h4>
+
+<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_file_file.md.html#File">File</a>" value="org.apache.cordova.FileUtils"/&gt;
+&lt;plugin name="<a href="cordova_file_file.md.html#FileTransfer">FileTransfer</a>" value="org.apache.cordova.<a href="cordova_file_file.md.html#FileTransfer">FileTransfer</a>"/&gt;
+</code></pre>
+
+<h4>app/AndroidManifest.xml</h4>
+
+<pre class="prettyprint"><code>&lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /&gt;
+</code></pre>
+
+<h3>Bada</h3>
+
+<pre class="prettyprint"><code>@TODO
+</code></pre>
+
+<h3>BlackBerry WebWorks</h3>
+
+<h4>www/plugins.xml</h4>
+
+<p><plugin name="&lt;a href=" cordova_file_file>File" value="org.apache.cordova.file.FileManager"/&gt;
+   <plugin name="&lt;a href=" cordova_file_file>FileTransfer"   value="org.apache.cordova.http.<a href="cordova_file_file.md.html#FileTransfer">FileTransfer</a>"/&gt;</plugin></plugin></p>
+
+<h4>www/config.xml</h4>
+
+<p><feature id="blackberry.io.file" required="true" version="1.0.0.0"></feature><feature id="blackberry.utils" required="true" version="1.0.0.0"></feature><feature id="blackberry.io.dir" required="true" version="1.0.0.0"></feature><permissions><permit>access_shared</permit></permissions></p>
+
+<h3>iOS</h3>
+
+<h4>App/Supporting Files/Cordova.plist</h4>
+
+<pre class="prettyprint"><code>&lt;key&gt;Plugins&lt;/key&gt;
+&lt;dict&gt;
+    &lt;key&gt;<a href="cordova_file_file.md.html#File">File</a>&lt;/key&gt;
+    &lt;string&gt;CDVFile&lt;/string&gt;
+&lt;/dict&gt;
+
+&lt;key&gt;Plugins&lt;/key&gt;
+&lt;dict&gt;
+    &lt;key&gt;<a href="cordova_file_file.md.html#FileTransfer">FileTransfer</a>&lt;/key&gt;
+    &lt;string&gt;CDVFileTransfer&lt;/string&gt;
+&lt;/dict&gt;
+</code></pre>
+
+<h3>webOS</h3>
+
+<pre class="prettyprint"><code>@TODO
+</code></pre>
+
+<h3>Windows Phone</h3>
+
+<pre class="prettyprint"><code>No additional permissions required.
+</code></pre>
+
 <hr>
 <h1><a name="File">File</a></h1>
 
@@ -832,15 +898,17 @@ window.requestFileSystem(<a href="cordova_file_file.md.html#LocalFileSystem">Loc
 
 <ul>
 <li>
-<strong>getMetadata</strong>: Look up metadata about a file. </li>
+<strong>getMetadata</strong>: Look up metadata about a file.</li>
+<li>
+<strong>setMetadata</strong>: Set metadata on a file.</li>
 <li>
 <strong>moveTo</strong>: Move a file to a different location on the file system.</li>
 <li>
 <strong>copyTo</strong>: Copy a file to a different location on the file system.</li>
 <li>
-<strong>toURI</strong>: Return a URI that can be used to locate a file.</li>
+<strong>toURL</strong>: Return a URL that can be used to locate a file.</li>
 <li>
-<strong>remove</strong>: Delete a file.  </li>
+<strong>remove</strong>: Delete a file.</li>
 <li>
 <strong>getParent</strong>: Look up the parent directory.</li>
 <li>
@@ -889,6 +957,45 @@ entry.getMetadata(success, fail);
 </code></pre>
 
 <h2>
+<a name="FileEntry_setmetadata">setMetadata</a>
+</h2>
+
+<p>Set metadata on a file.
+<strong>Only works on iOS currently</strong> - this will set the extended attributes of a file.</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>
+<strong>successCallback</strong> - A callback that is called when the metadata was successfully set. <em>(Function)</em>
+</li>
+<li>
+<strong>errorCallback</strong> - A callback that is called when the metadata was not successfully set. <em>(Function)</em>
+</li>
+<li>
+<strong>metadataObject</strong> - An object that contains the metadata keys and values. <em>(Object)</em>
+</li>
+</ul>
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>function success() {
+    console.log("The metadata was successfully set.");
+}
+
+function fail() {
+    alert("There was an error in setting the metadata");
+}
+
+// Set the metadata
+entry.setMetadata(success, fail, { "com.apple.MobileBackup", 1});
+</code></pre>
+
+<p><strong>iOS Quirk</strong></p>
+
+<ul>
+<li>only the <strong>"com.apple.MobileBackup"</strong> extended attribute is supported. Set the value to <strong>1</strong> to NOT enable the file to be backed up by iCloud. Set the value to <strong>0</strong> to re-enable the file to be backed up by iCloud.</li>
+</ul>
+<h2>
 <a name="FileEntry_moveto">moveTo</a>
 </h2>
 
@@ -898,7 +1005,7 @@ entry.getMetadata(success, fail);
 <li>move a file into its parent if a name different from its current one isn't provided;</li>
 <li>move a file to a path occupied by a directory;</li>
 </ul>
-<p>In addition, an attempt to move a file on top of an existing file must attempt to delete and replace that file. </p>
+<p>In addition, an attempt to move a file on top of an existing file must attempt to delete and replace that file.</p>
 
 <p><strong>Parameters:</strong></p>
 
@@ -942,7 +1049,7 @@ function moveFile(entry) {
 <p>Copy a file to a new location on the file system.  It is an error to attempt to:</p>
 
 <ul>
-<li>copy a file into its parent if a name different from its current one is not provided. </li>
+<li>copy a file into its parent if a name different from its current one is not provided.</li>
 </ul>
 <p><strong>Parameters:</strong></p>
 
@@ -980,23 +1087,23 @@ function copyFile(entry) {
 </code></pre>
 
 <h2>
-<a name="FileEntry_touri">toURI</a>
+<a name="FileEntry_tourl">toURL</a>
 </h2>
 
-<p>Returns a URI that can be used to locate the file. </p>
+<p>Returns a URL that can be used to locate the file.</p>
 
 <p><strong>Quick Example</strong></p>
 
-<pre class="prettyprint"><code>// Request the URI for this entry
-var uri = entry.toURI();
-console.log(uri);
+<pre class="prettyprint"><code>// Request the URL for this entry
+var fileURL = entry.toURL();
+console.log(fileURL);
 </code></pre>
 
 <h2>
 <a name="FileEntry_remove">remove</a>
 </h2>
 
-<p>Deletes a file. </p>
+<p>Deletes a file.</p>
 
 <p><strong>Parameters:</strong></p>
 
@@ -1026,7 +1133,7 @@ entry.remove(success, fail);
 <a name="FileEntry_getparent">getParent</a>
 </h2>
 
-<p>Look up the parent <a href="cordova_file_file.md.html#DirectoryEntry">DirectoryEntry</a> containing the file. </p>
+<p>Look up the parent <a href="cordova_file_file.md.html#DirectoryEntry">DirectoryEntry</a> containing the file.</p>
 
 <p><strong>Parameters:</strong></p>
 
@@ -1139,7 +1246,8 @@ entry.file(success, fail);
 
 <ul>
 <li>
-<strong>filesystem:</strong> The file system on which the <a href="cordova_file_file.md.html#DirectoryEntry">DirectoryEntry</a> resides. <em>(<a href="cordova_file_file.md.html#FileSystem">FileSystem</a>)</em> </li>
+<strong>filesystem:</strong> The file system on which the <a href="cordova_file_file.md.html#DirectoryEntry">DirectoryEntry</a> resides. <em>(<a href="cordova_file_file.md.html#FileSystem">FileSystem</a>)</em>
+</li>
 </ul>
 <h2>
 <a name="DirectoryEntry_methods">Methods</a>
@@ -1149,13 +1257,15 @@ entry.file(success, fail);
 
 <ul>
 <li>
-<strong>getMetadata</strong>: Look up metadata about a directory. </li>
+<strong>getMetadata</strong>: Look up metadata about a directory.</li>
+<li>
+<strong>setMetadata</strong>: Set metadata on a directory.</li>
 <li>
 <strong>moveTo</strong>: Move a directory to a different location on the file system.</li>
 <li>
 <strong>copyTo</strong>: Copy a directory to a different location on the file system.</li>
 <li>
-<strong>toURI</strong>: Return a URI that can be used to locate a directory.</li>
+<strong>toURL</strong>: Return a URL that can be used to locate a directory.</li>
 <li>
 <strong>remove</strong>: Delete a directory.  The directory must be empty.</li>
 <li>
@@ -1209,6 +1319,45 @@ function fail(error) {
 entry.getMetadata(success, fail);
 </code></pre>
 
+<h2>
+<a name="DirectoryEntry_setmetadata">setMetadata</a>
+</h2>
+
+<p>Set metadata on a directory.
+<strong>Only works on iOS currently</strong> - this will set the extended attributes of a directory.</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>
+<strong>successCallback</strong> - A callback that is called when the metadata was successfully set. <em>(Function)</em>
+</li>
+<li>
+<strong>errorCallback</strong> - A callback that is called when the metadata was not successfully set. <em>(Function)</em>
+</li>
+<li>
+<strong>metadataObject</strong> - An object that contains the metadata keys and values. <em>(Object)</em>
+</li>
+</ul>
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>function success() {
+    console.log("The metadata was successfully set.");
+}
+
+function fail() {
+    alert("There was an error in setting the metadata");
+}
+
+// Set the metadata
+entry.setMetadata(success, fail, { "com.apple.MobileBackup", 1});
+</code></pre>
+
+<p><strong>iOS Quirk</strong></p>
+
+<ul>
+<li>only the <strong>"com.apple.MobileBackup"</strong> extended attribute is supported. Set the value to <strong>1</strong> to NOT enable the directory to be backed up by iCloud. Set the value to <strong>0</strong> to re-enable the directory to be backed up by iCloud.</li>
+</ul>
 <h2>
 <a name="DirectoryEntry_moveto">moveTo</a>
 </h2>
@@ -1267,7 +1416,7 @@ function moveDir(entry) {
 
 <ul>
 <li>copy a directory inside itself at any depth;</li>
-<li>copy a directory into its parent if a name different from its current one is not provided. </li>
+<li>copy a directory into its parent if a name different from its current one is not provided.</li>
 </ul>
 <p>Directory copies are always recursive - that is, they copy all contents of the directory.</p>
 
@@ -1308,16 +1457,16 @@ function copyDir(entry) {
 </code></pre>
 
 <h2>
-<a name="DirectoryEntry_touri">toURI</a>
+<a name="DirectoryEntry_tourl">toURL</a>
 </h2>
 
-<p>Returns a URI that can be used to locate the directory. </p>
+<p>Returns a URL that can be used to locate the directory.</p>
 
 <p><strong>Quick Example</strong></p>
 
-<pre class="prettyprint"><code>// Get the URI for this directory
-var uri = entry.toURI();
-console.log(uri);
+<pre class="prettyprint"><code>// Get the URL for this directory
+var dirURL = entry.toURL();
+console.log(dirURL);
 </code></pre>
 
 <h2>
@@ -1358,7 +1507,7 @@ entry.remove(success, fail);
 <a name="DirectoryEntry_getparent">getParent</a>
 </h2>
 
-<p>Look up the parent <a href="cordova_file_file.md.html#DirectoryEntry">DirectoryEntry</a> containing the directory. </p>
+<p>Look up the parent <a href="cordova_file_file.md.html#DirectoryEntry">DirectoryEntry</a> containing the directory.</p>
 
 <p><strong>Parameters:</strong></p>
 
@@ -1478,8 +1627,8 @@ entry.getFile("newFile.txt", {create: true, exclusive: false}, success, fail);
 <a name="DirectoryEntry_removerecursively">removeRecursively</a>
 </h2>
 
-<p>Deletes a directory and all of its contents.  In the event of an error (e.g. trying to delete 
-a directory that contains a file that cannot be removed), some of the contents of the directory may 
+<p>Deletes a directory and all of its contents.  In the event of an error (e.g. trying to delete
+a directory that contains a file that cannot be removed), some of the contents of the directory may
 be deleted.   It is an error to attempt to:</p>
 
 <ul>
@@ -2078,6 +2227,8 @@ entry.getMetadata(win, null);
 <strong>source</strong> URI to the source (string)</li>
 <li>
 <strong>target</strong> URI to the target (string)</li>
+<li>
+<strong>http_status</strong> HTTP status code.  This attribute is only available when a response code is received from the HTTP connection. (int)</li>
 </ul>
 <h2>
 <a name="FileTransferError_constants">Constants</a>

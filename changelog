@@ -1,140 +1,194 @@
 ChangeLog
 ios
-Ben Birch (2):
-      ios camera targetWidth/Height don't match the documentation Fixes CB-183 and CB-54
-      iOS camera targetWidth/Height don't match the documentation - changes per shazron
+Becky Gibson (2):
+      Fixes CB-819 fail callback not invoked
+      fixes CB-56 popover placement
 
-Fil Maj (3):
-      [CB-511] Changed deviceproperties version to "cordova" property
-      [CB-571] stubbed out create method to remove error when creating Media objects, also added another check if file does not exist.
-      [CB-386] added retina ipad splash screens. made sure retina ipad icon files shows up during load.
+Don Coleman (1):
+      [CB-794] Add HTTP status code to FileTransferError object for iOS
 
-Shazron Abdullah (40):
-      Updated js for iOS only parameter cropToTargetSize (Camera.getPicture)
-      Fixed CB-483 - FileTransfer - unknown property attribute 'atomic' when building from source (Xcode 3 only)
-      Updated to cordova-js 1.6.1
-      Fixed CB-496 - Camera.getPicture - will always return FILE_URI even though DATA_URL specified
-      Fixed CB-497 - online and offline events are not being fired in 1.6.0
-      Fixed CB-501 - orientationchange event is not being fired in 1.6.0
-      Re-fix CB-502, Fixed CB-302 - orientation change event fired off twice on iOS 5.x
-      Fixed CB-507 - Remove excessive debug logging in execute delegate method in CDVViewController
-      Improved the deprecation of appViewController in CDVPlugin.h
-      Added cordova-js (iOS) 1.6.1
-      Updated docs/guides for 1.6.1
-      Updated VERSION file to 1.6.1
-      Added 1.6.1 availability constants
-      Fixed pause and resume event firing to use cordova channels onPause and onResume
-      Re-fix CB-347 - don't apply .plist fix if the key does not exist
-      Implemented CB-536 - Add new selector to CDVViewController to create a new CDVCordovaView, so subclasses can override it
-      Removed cropToSize option, defaults to NO always (like the other platforms) re: CB-54, CB-183
-      Removing verbose logging that is confusing devs.
-      Workaround for CB-509 - geolocation.clearWatch doesn't shut the GPS down under iOS
-      Fixed CB-537 - media.seekTo fails with NSRangeException
-      Fixed CB-544 - iOS Geolocation fails if Cordova.plist EnableLocation = YES
-      Fixed CB-543 - FileTransfer.upload WebKit discarded an uncaught exception
-      Fixed CB-391 - camera.getPicture crash
-      Update to CB-391 - remove 10 sec purge check, leaving it up to the iOS watchdog to re-send memory warning again
-      Fixed CB-535 - Add a way to log JavaScript exceptions, parse errors, and get JS stack frame events (with line numbers, etc)
-      Added doc for CB-535 - JavaScript Exception Logging
-      Fixed CB-494 - Move Cordova.plist section from "How to use Cordova as a Component Guide" to its own doc
-      Added cordova-js 1.7.0rc1
-      Updated VERSION to 1.7.0rc1,  updated Makefile to include new guides.
-      Fixed typo in JavaScript Logging Guide
-      Re-fix CB-347 - localStorage / SQLDatabase Error after App update
-      Updates for 1.7.0
-      Updated templates for the new splash-screen names.
-      Fixed crashing in iOS 5.x simulators for new project (malformed CFBundleIcons key)
-      Fixed import header for CDVDebugWebView (for framework and sub-project projects)
-      Interim checkin of 1.7.0 cordova-js
-      Removed extraneous semicolon at end of import (would cause warning, but not an error)
-      CDVDebugWebView - handle non-exceptions being thrown
-      Killed a zombie. After the heading update was stopped, we don't set the delegate to nil, so we continue to get updates.
-      Updated to cordova-js 1.7.0
+Fil Maj (8):
+      [CB-359] Updates to adhere to W3C spec for geolocation. Changing actions based on changes incorporated into cordova-js
+      [CB-359] updating JS file too
+      As per Beckys suggestion, iteration over watch dictionary needs to be done properly
+      updating to latest JS for geo updates
+      fixing a bad method invokation in new rewrite of geo
+      [CB-683] pause/resume events now should pass in event object into handlers
+      [CB-464] rewrite of accel plugin. not working yet.
+      [CB-464] Simplified accel to start/stop actions.
 
-Tom Clarkson (1):
-      adjust splash screen position based on orientation and status bar size
+Patrick Mueller (1):
+      [CB-623] added Logger plugin
+
+Shazron Abdullah (35):
+      FIXED CB-513 - Remove cast functionality from CDVPluginResult, obsolete
+      Fixed CB-594 - Remove checks for retainCount
+      Updated bin folder for Cordova 1.7.0
+      Fixed CB-637 - Add a doc on how to update the template project in the bin subfolder
+      Added Apache License to all the things
+      Added Apache License header to more things.
+      Deleted bin/node_modules, added package.json
+      Updating Apache license headers on /bin
+      Added Apache License header to guides and root README
+      Added Apache license headers to Installer docs
+      More Apache License header additions to files
+      Remove console.log (generated file)
+      Updated debug cli script.
+      Fixed CB-669 - verify.sh file in a new Cordova-based application project should not be included in the .app bundle
+      Fixes CB-471 - LocalFileSystem.PERSISTENT "do not back up" file attribute iOS
+      Noticed typo in File.getMetadata - error callback had OK instead of ERROR status
+      Fixes CB-610 - Capture.bundle missing microphone image resources for retina iPad results in mis-drawn recording interface
+      Fixes CB-751 - Undefined function is called when orientation change
+      Fixes CB-754 - Use of -weak_library in 'other library flags' of generated template XCode app causes crashes in Simulator when Obj-C Blocks are used
+      Fixes CB-628 - Scrub installation process, document artifacts of Xcode 3 support, mention no ARC
+      Fixed CB-628 - Scrub installation process, document artifacts of Xcode 3 support, mention no ARC
+      Fixes CB-684 - Not enough time for background execution of WebSQL/LocalStorage backup (when app goes to the background)
+      Fixes CB-766 - Update bin/debug shell script to point to Homebrew ios-sim 1.4 download
+      Fixes CB-464 - Refactor accelerometer native code in iOS
+      Fixes CB-760 - Camera returns incorrect image size
+      Fixed warning in CDVLocation
+      Fixed EXC_BAD_ACCESS error in CDVAccelerometer
+      Fixes CB-818 - Make CDVViewController also implement initWithNibName
+      Fixes CB-825 - Makefile: remove direct download of Markdown and wkhtmltopdf
+      Updated Makefile to with target to install wkhtmltopdf version 0.9.9 by default (0.11.0_rc1 has perf problems)
+      Updated the command-line template under the bin folder.
+      Updated VERSION and associated references to 1.8.0rc1.
+      Updated Makefile after testing on a system that didn't have homebrew installed.
+      Updated Guides for 1.8.0
+      Fixes CB-835 - watchPosition callbacks are not being called
 
 blackberry
-Fil Maj (1):
-      bumping version to 1.7.0rc1
+Don Coleman (1):
+      [CB-793] Add HTTP status code to FileTransferError object
 
-shazron (1):
-      Updated BB to 1.7.0
+Drew Walters (8):
+      Move org.apache.cordova.media to org.apache.cordova.capture.
+      Add Media API.
+      [CB-762] Change BlackBerry plugin from Contact to Contacts.
+      Prefix file:// protocol for resolveLocalFileSystemURI if not specified.
+      Move FileUtils from org.apache.cordova.file to org.apache.cordova.util.
+      [CB-465] Refactor Accelerometer code for addWatch / clearWatch.
+      [CB-822] Revert change to prefix file protocol for resolveLocalFileSystemURI
+      [CB-793] Minor formatting cleanup.
+
+Fil Maj (2):
+      [CB-465] First pass at accel update. Watch acceleration doesnt seem to work yet though
+      [CB-465] Simplified accel plugin (still based on Drews implementation) to just start/stop actions.
+
+Tim Kim (1):
+      Updating to 1.8.0rc1
 
 android
-Fil Maj (3):
-      [CB-164] Changed network plugin to sync from async and removed setKeepCallback(true) on plugin result in there. Fixes location.reload() not firing deviceready due to network plugin being unresponsive
-      Proper fix for CB-164. Online/offline events now propagated to webview properly
-      [CB-473] run ant clean before ant debug install
+Don Coleman (1):
+      [CB-792] Add HTTP status code to FileTransferError
 
-Joe Bowser (8):
-      CB-480 work, back button and history issues are preventing this from being tested properly
-      Fixed back button behaviour.  WIN
-      Reverting the back button change that I made, for some reason certain methods aren't inherited when you extend DroidGap
-      Fix for CB-549
-      Incrementing project to 1.7.0rc1
-      Incrementing project to 1.7.0rc1
-      Updating the version to 1.7.0
-      Updating the JS and re-tagging 1.7.0
+Fil Maj (21):
+      dont check in node_modules peepz!
+      added package.json for npm install goodness
+      documented running npm install
+      comeat me lawyers
+      adding node_modules to gitignore
+      restructured geolocation plugin
+      Fixes for new geo stuff
+      axing lowercase java file
+      adding uppercase java file!
+      updating JS to latest for geolocation updates
+      [CB-683] Pause and resume events should route through fireDocumentEvent so we get the event object passed into the handler
+      [CB-683] updating JS for fix for 683
+      [CB-804] ADded proper cordova icon sizes for the create script
+      [CB-463] rewrite of accel plugin
+      [CB-463] added the JS updates for accel refactor
+      [CB-463] added accuracy checking to native accel implementation, this way getCurrentAcceleration returns fairly accurate results
+      removed a trailing log
+      [CB-463] added accuracy checking to native accel implementation, this way getCurrentAcceleration returns fairly accurate results
+      removed a trailing log
+      [CB-463] updated js and rewrote accel plugin again to support the start/stop approach. optimized. single callback used for message passing
+      Small spacing fixes
 
-macdonst (4):
-      CB-539: FileTransfer.download fails when target starts with 'file://'
-      Removing un-needed logs
-      Refactor Android SplashScreen
-      Adding SplashScreen plugin to plugins.xml
+Joe Bowser (15):
+      We should not be having a compiled version of cordova.jar in the test directory
+      Adding Apache Header to Test Directory
+      Forgot to add lifecycle/index2.html's header
+      Adding more Apache Headers.  Not sure if this should have headers or not
+      Working towards Apache compliance
+      Adding more Apache licence headers
+      Accidentally committed a vim swp file
+      Adding header to test cordova.xml
+      updating the test plugins
+      Removing Default Android Graphics and replacing them with our own
+      Removing the commons-codec
+      Updating README telling people to copy commons-codec
+      Modifying generated classpath
+      Don't commit Eclipse preferences
+      Tweaked create so it fetches the commons-codec using curl
+
+Michael Brooks (1):
+      Fix README.md formatting to install commons-codec-1.6.jar
+
+filmaj (2):
+      [CB-659] create script should work on android
+      [CB-659] create script for android on windows now works fully. also pulls down commons-codec jar appropriately
+
+macdonst (5):
+      Properly querying the Andoid content DB when deleteing an image file
+      Switch to using stripFileProtocol in FileUtils.notifyDelete
+      Fix problem in Android template example getPicture
+      CB-808: CameraLauncher leaks bitmaps in Android
+      Upping version to 1.8.0rc1
 
 windows
-Fil Maj (2):
-      added issue with regards to debugging media functionality in the framework to the README
-      Updating various script files to latest
+Jesse MacFadyen (19):
+      CB-520 : back button handling is performed in js code and uses window.history.back()
+      parent path is now a string and not a FileEntry CB-665
+      added try/catch for backbutton handling when a page is not loaded in the webbrowser, was an exception
+      filepath contains the extra slash to match other devices, and passes tests that expect specific filepath string values, although cannonically the same
+      added output log for audio file not found
+      added deploy tool to install and launch on device WIP
+      removed duplicate mobile-spec tests, test project now redirects to tests hosted in the gh_pages branch of mobilespec
+      debug + emulate scripts
+      added usage, and parameterized device to deploy to
+      added command line tools to template
+      removed debug log
+      updated bare template with latest changes
+      Fixed threading issue in audio, + Defect [CB-602], added more info to log statements, INFO/ERROR
+      removed calls to resolve DNS because they take 30 seconds when no network is available and prevent deviceready
+      commented out unused - unminified js code
+      Consolidated exception handling + option parsing
+      update assembly info for 1.8
+      added platform info, for sanity
+      updated example,templates,tests to 1.8.0rc1
 
-Jesse MacFadyen (28):
-      added hint to debug output when device ready cannot fire because the dev did not include the tag in their page.
-      release was private, and therefore uncallable from js
-      changed test project to use updated tests + jasmine
-      remove method added, dispatches not supported error
-      debug output for exception in ProcessCommand
-      remove unused
-      added mouse support
-      fancy animation on load, ala metro style
-      splash image is animated away on load
-      update JS from cordova-js, update version file
-      rebuild of lib + template gen
-      Added notification alert/confirm button text. CB-110
-      remove version number from readme instructions so we don't have to change it every time.
-      remove old build cruft
-      rejigger, packaged zip is rc1 but assets are 1.7.0
-      updates 1.7.0.js file with latest changes, remove rc version
-      fetch meta viewport on page load
-      CB-596
-      wip for handling both meta + preventDefault
-      metaviewport tag content attribute user-scalable yes|no is observed.
-      added tagged 1.7.0 js src, alert patch in template with comment
-      1.7.0 release packaging
-      remove old template
-      update example to 1.7.0
-      filetransfer download returns FileEntry on success
-      repackage for 1.7.0
-      updated test project for jasmine tests
-      update template for 1.7.0
-
-Takashi Okamoto (1):
-      Fixed filetransfer boundary without parameter.
-
-filmaj (4):
-      [CB-559] Cache instantiated plugins in CommandFactory
-      [CB-338] fixing firing online and offline events
-      [CB-336] getFormatData did not return due to threading issues in Capture.cs
-      [CB-334] Nickname was not being returned properly in contacts.search
+filmaj (1):
+      [CB-466] Rewrite accel for WP7
 
 webos
-hermwong (2):
-      update version to 1.7.0
-      modify Makefile to work with windows
+hermwong (4):
+      modifications to OS checking in Makefile
+      CB-557 make sure Makefile works on Win & OSX
+      update to 1.8.0
+      added Apache license header
 
 bada
-Anis Kadri (2):
-      updating version to 1.7.0rc1
-      updating version to 1.7.0
+Anis Kadri (3):
+      updating apache licenses with apache rat
+      updating VERSION for 1.2
+      updating Device version
 
 badaWac
+Anis Kadri (15):
+      updating apache licences with apache rat
+      adding getPicture and captureImage examples
+      updating UI
+      adding captureVideo example
+      updating cordova.js
+      updating UI with video capture buttons
+      updating sample UI
+      updating cordova.js
+      updating sample code
+      adding latest cordovajs
+      changing filename
+      updating js reference
+      updating to lastest js
+      updating cordova.js version
+      updating VERSION
+
