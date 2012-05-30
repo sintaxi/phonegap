@@ -156,6 +156,12 @@
 <a name="Domain%20Whitelist%20Guide_android">Android</a>
 </h2>
 
+<p>The access rules are found in cordova.xml in res/xml/cordova.xml.  These rules follow the <a class="external" href="http://www.w3.org/TR/widgets-access/">W3C Widget Access</a> specification such that the
+access elements control the whitelist.  For example:</p>
+
+<pre class="prettyprint"><code>&lt;access origin="http://127.0.0.1*"/&gt;
+</code></pre>
+
 <h2>
 <a name="Domain%20Whitelist%20Guide_bada">Bada</a>
 </h2>
