@@ -1,0 +1,1 @@
+cscript bin\\create.js $*

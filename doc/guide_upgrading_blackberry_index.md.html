@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="1.8.0rc1">1.8.0rc1</option>
+<option value="1.8.0rc1">1.8.0rc1</option>
+<option selected value="1.8.0">1.8.0</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
@@ -68,7 +69,7 @@
         <div id="subheader">
             <h1>Upgrading Cordova BlackBerry</h1>
             <small><select><option value="Upgrading%2520Cordova%2520BlackBerry">Upgrading Cordova BlackBerry</option>
-<option value="Upgrading%20Cordova%20BlackBerry_upgrade_to_1_8_0_from_1_8_0">      - Upgrade to 1.8.0 from 1.8.0</option></select></small>
+<option value="Upgrading%20Cordova%20BlackBerry_upgrade_to_1_8_0_from_1_7_0">      - Upgrade to 1.8.0 from 1.7.0</option></select></small>
         </div>
 
         <div id="sidebar">
@@ -105,10 +106,10 @@
 <p>This document is for people who need to upgrade their Cordova versions from an older version to a current version of Cordova.</p>
 
 <ul>
-<li>To upgrade to 1.8.0, please go from 1.8.0</li>
+<li>To upgrade to 1.8.0, please go from 1.7.0</li>
 </ul>
 <h2>
-<a name="Upgrading%20Cordova%20BlackBerry_upgrade_to_1_8_0_from_1_8_0">Upgrade to 1.8.0 from 1.8.0</a>
+<a name="Upgrading%20Cordova%20BlackBerry_upgrade_to_1_8_0_from_1_7_0">Upgrade to 1.8.0 from 1.7.0</a>
 </h2>
 
 <p>Updating just the www folder:</p>
@@ -116,24 +117,54 @@
 <ol>
 <li>Open your <code>www/</code> folder, which contains your app.</li>
 <li>Remove and update the .jar file in the <code>ext/</code> folder.</li>
-<li>Update the contents of the <code>ext-air/</code> folder`</li>
+<li>Update the contents of the <code>ext-air/</code> folder.</li>
 <li>Copy the new <code>cordova-1.8.0.js</code> into your project.
 <ul>
 <li>If playbook, then update the .js file in the <code>playbook/</code> folder.</li>
 </ul>
 </li>
 <li>Update your HTML to use the new <code>cordova-1.8.0.js</code> file.</li>
+<li>
+<p>Update your <code>www/plugins.xml</code> file. Two plugins changed their
+namespace/service label. Change the old entries for the <a href="cordova_media_capture_capture.md.html#Capture">Capture</a> and
+<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> plugins from:</p>
+
+<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_media_capture_capture.md.html#Capture">Capture</a>" value="org.apache.cordova.media.MediaCapture"/&gt;
+&lt;plugin name="<a href="cordova_contacts_contacts.md.html#Contact">Contact</a>" value="org.apache.cordova.pim.<a href="cordova_contacts_contacts.md.html#Contact">Contact</a>"/&gt;
+</code></pre>
+
+<p>To:</p>
+
+<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_media_capture_capture.md.html#Capture">Capture</a>" value="org.apache.cordova.capture.MediaCapture"/&gt;
+&lt;plugin name="<a href="cordova_contacts_contacts.md.html#Contacts">Contacts</a>" value="org.apache.cordova.pim.<a href="cordova_contacts_contacts.md.html#Contact">Contact</a>"/&gt;
+</code></pre>
+</li>
 </ol>
 <p>Updating the sample folder (ie, updating using the ant tools):</p>
 
 <ol>
 <li>Open the <code>sample/lib/</code> folder.</li>
-<li>Update the .jar file in the <code>ext/</code> folder.</li>
-<li>Update the contents of the <code>ext-air/</code> folder.</li>
-<li>Update the .js file in the <code>javascript/</code> folder.</li>
-<li>Open the <code>sample/lib/</code> folder and rename the <code>1.8.0/</code> folder to <code>1.8.0/</code>.</li>
+<li>Update the .jar file in the <code>cordova.1.7.0/ext/</code> folder.</li>
+<li>Update the contents of the <code>cordova.1.7.0/ext-air/</code> folder.</li>
+<li>Update the .js file in the <code>cordova.1.7.0/javascript/</code> folder.</li>
+<li>Open the <code>sample/lib/</code> folder and rename the <code>cordova.1.7.0/</code> folder to <code>cordova.1.8.0/</code>.</li>
 <li>Type <code>ant blackberry build</code> or <code>ant playbook build</code> to update the <code>www/</code> folder with updated Cordova.</li>
 <li>Open the <code>www/</code> folder and update your HTML to use the new <code>cordova-1.8.0.js</code> file.</li>
+<li>
+<p>Open the <code>www/</code> folder and update the <code>plugins.xml</code> file. Two plugins
+changed their namespace/service label. Change the old entries for the
+<a href="cordova_media_capture_capture.md.html#Capture">Capture</a> and <a href="cordova_contacts_contacts.md.html#Contact">Contact</a> plugins from:</p>
+
+<pre class="prettyprint"><code> &lt;plugin name="<a href="cordova_media_capture_capture.md.html#Capture">Capture</a>" value="org.apache.cordova.media.MediaCapture"/&gt;
+ &lt;plugin name="<a href="cordova_contacts_contacts.md.html#Contact">Contact</a>" value="org.apache.cordova.pim.<a href="cordova_contacts_contacts.md.html#Contact">Contact</a>"/&gt;
+</code></pre>
+
+<p>To:</p>
+
+<pre class="prettyprint"><code> &lt;plugin name="<a href="cordova_media_capture_capture.md.html#Capture">Capture</a>" value="org.apache.cordova.capture.MediaCapture"/&gt;
+ &lt;plugin name="<a href="cordova_contacts_contacts.md.html#Contacts">Contacts</a>" value="org.apache.cordova.pim.<a href="cordova_contacts_contacts.md.html#Contact">Contact</a>"/&gt;
+</code></pre>
+</li>
 </ol>
 </div>
         </div>

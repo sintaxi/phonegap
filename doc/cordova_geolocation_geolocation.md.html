@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="1.8.0rc1">1.8.0rc1</option>
+<option value="1.8.0rc1">1.8.0rc1</option>
+<option selected value="1.8.0">1.8.0</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
@@ -192,7 +193,7 @@
 
 <h4>app/res/xml/plugins.xml</h4>
 
-<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_geolocation_geolocation.md.html#Geolocation">Geolocation</a>" value="org.apache.cordova.GeoBroker"/&gt;
+<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_geolocation_geolocation.md.html#Geolocation">Geolocation</a>" value="org.apache.cordova.GeoBroker" /&gt;
 </code></pre>
 
 <h4>app/AndroidManifest.xml</h4>
@@ -204,18 +205,22 @@
 
 <h3>Bada</h3>
 
-<pre class="prettyprint"><code>@TODO
+<pre class="prettyprint"><code>No permissions are required.
 </code></pre>
 
 <h3>BlackBerry WebWorks</h3>
 
 <h4>www/plugins.xml</h4>
 
-<p><plugin name="&lt;a href=" cordova_geolocation_geolocation>Geolocation"    value="org.apache.cordova.geolocation.<a href="cordova_geolocation_geolocation.md.html#Geolocation">Geolocation</a>"/&gt;</plugin></p>
+<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_geolocation_geolocation.md.html#Geolocation">Geolocation</a>" value="org.apache.cordova.geolocation.<a href="cordova_geolocation_geolocation.md.html#Geolocation">Geolocation</a>" /&gt;
+</code></pre>
 
 <h4>www/config.xml</h4>
 
-<p><permissions><permit>read_geolocation</permit></permissions></p>
+<pre class="prettyprint"><code>&lt;rim:permissions&gt;
+    &lt;rim:permit&gt;read_geolocation&lt;/rim:permit&gt;
+&lt;/rim:permissions&gt;
+</code></pre>
 
 <h3>iOS</h3>
 
@@ -230,7 +235,7 @@
 
 <h3>webOS</h3>
 
-<pre class="prettyprint"><code>@TODO
+<pre class="prettyprint"><code>No permissions are required.
 </code></pre>
 
 <h3>Windows Phone</h3>
@@ -300,7 +305,7 @@ var onSuccess = function(position) {
           'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
           'Heading: '           + position.coords.heading           + '\n' +
           'Speed: '             + position.coords.speed             + '\n' +
-          'Timestamp: '         + new Date(position.timestamp)      + '\n');
+          'Timestamp: '         + position.timestamp                + '\n');
 };
 
 // onError Callback receives a <a href="cordova_geolocation_geolocation.md.html#PositionError">PositionError</a> object
@@ -346,7 +351,7 @@ navigator.<a href="cordova_geolocation_geolocation.md.html#geolocation.getCurren
                             'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '&lt;br /&gt;' +
                             'Heading: '            + position.coords.heading               + '&lt;br /&gt;' +
                             'Speed: '              + position.coords.speed                 + '&lt;br /&gt;' +
-                            'Timestamp: '          + new Date(position.timestamp)          + '&lt;br /&gt;';
+                            'Timestamp: '          +                                   position.timestamp          + '&lt;br /&gt;';
     }
 
     // onError Callback receives a <a href="cordova_geolocation_geolocation.md.html#PositionError">PositionError</a> object
@@ -662,7 +667,7 @@ var onSuccess = function(position) {
           'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
           'Heading: '           + position.coords.heading           + '\n' +
           'Speed: '             + position.coords.speed             + '\n' +
-          'Timestamp: '         + new Date(position.timestamp)      + '\n');
+          'Timestamp: '         + position.timestamp                + '\n');
 };
 
 // onError Callback
@@ -743,7 +748,7 @@ navigator.<a href="cordova_geolocation_geolocation.md.html#geolocation.getCurren
 <strong>coords:</strong> A set of geographic coordinates. <em>(<a href="cordova_geolocation_geolocation.md.html#Coordinates">Coordinates</a>)</em>
 </li>
 <li>
-<strong>timestamp:</strong> Creation timestamp for <code>coords</code> in milliseconds. <em>(DOMTimeStamp)</em>
+<strong>timestamp:</strong> Creation timestamp for <code>coords</code>. <em>(Date)</em>
 </li>
 </ul>
 <h2>
@@ -778,7 +783,7 @@ var onSuccess = function(position) {
           'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
           'Heading: '           + position.coords.heading           + '\n' +
           'Speed: '             + position.coords.speed             + '\n' +
-          'Timestamp: '         + new Date(position.timestamp)      + '\n');
+          'Timestamp: '         + position.timestamp                + '\n');
 };
 
 // onError Callback receives a <a href="cordova_geolocation_geolocation.md.html#PositionError">PositionError</a> object
@@ -824,7 +829,8 @@ navigator.<a href="cordova_geolocation_geolocation.md.html#geolocation.getCurren
                             'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '&lt;br /&gt;' +
                             'Heading: '            + position.coords.heading               + '&lt;br /&gt;' +
                             'Speed: '              + position.coords.speed                 + '&lt;br /&gt;' +
-                            'Timestamp: '          + new Date(position.timestamp)          + '&lt;br /&gt;';
+                            'Timestamp: '          + 
+ position.timestamp                    + '&lt;br /&gt;';
     }
 
     // onError Callback receives a <a href="cordova_geolocation_geolocation.md.html#PositionError">PositionError</a> object
@@ -920,7 +926,7 @@ called into the <code><a href="cordova_geolocation_geolocation.md.html#geolocati
           'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
           'Heading: '           + position.coords.heading           + '\n' +
           'Speed: '             + position.coords.speed             + '\n' +
-          'Timestamp: '         + new Date(position.timestamp)      + '\n');
+          'Timestamp: '         + position.timestamp                + '\n');
 }
 </code></pre>
 

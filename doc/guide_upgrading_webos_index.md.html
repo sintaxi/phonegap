@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="1.8.0rc1">1.8.0rc1</option>
+<option value="1.8.0rc1">1.8.0rc1</option>
+<option selected value="1.8.0">1.8.0</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
@@ -67,7 +68,8 @@
         </div>
         <div id="subheader">
             <h1>Upgrading Cordova webOS</h1>
-            <small></small>
+            <small><select><option value="Upgrading%2520Cordova%2520webOS">Upgrading Cordova webOS</option>
+<option value="Upgrading%20Cordova%20webOS_upgrade_to_1_8_0_from_1_7_0">      - Upgrade to 1.8.0 from 1.7.0</option></select></small>
         </div>
 
         <div id="sidebar">
@@ -101,7 +103,26 @@
             <div id="content">
                 <h1><a name="Upgrading%20Cordova%20webOS">Upgrading Cordova webOS</a></h1>
 
-            </div>
+<p>This document is for people who need to upgrade their Cordova versions from an older version to a current version of Cordova.</p>
+
+<h2>
+<a name="Upgrading%20Cordova%20webOS_upgrade_to_1_8_0_from_1_7_0">Upgrade to 1.8.0 from 1.7.0</a>
+</h2>
+
+<ol>
+<li><p>remove cordova-1.7.0.js from your project</p></li>
+<li>
+<p>update the following line in your index.html:</p>
+
+<p>change this:</p>
+
+<script type="text/javascript" src="cordova-1.7.0.js"></script><p>to:</p>
+
+<script type="text/javascript" src="cordova-1.8.0.js"></script>
+</li>
+<li><p>run the makefile to generate the newest version of the cordova-1.8.0.js file</p></li>
+</ol>
+</div>
         </div>
 
         <!-- Functionality and Syntax Highlighting -->

@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="1.8.0rc1">1.8.0rc1</option>
+<option value="1.8.0rc1">1.8.0rc1</option>
+<option selected value="1.8.0">1.8.0</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
@@ -67,7 +68,8 @@
         </div>
         <div id="subheader">
             <h1>Upgrading Cordova Bada</h1>
-            <small></small>
+            <small><select><option value="Upgrading%2520Cordova%2520Bada">Upgrading Cordova Bada</option>
+<option value="Upgrading%20Cordova%20Bada_upgrade_to_1_8_0_from_1_7_0">      - Upgrade to 1.8.0 from 1.7.0</option></select></small>
         </div>
 
         <div id="sidebar">
@@ -100,6 +102,29 @@
         <div id="scrollable">
             <div id="content">
                 <h1><a name="Upgrading%20Cordova%20Bada">Upgrading Cordova Bada</a></h1>
+
+<p>This document is for people who need to upgrade their Cordova versions from an older version to a current version of Cordova.</p>
+
+<h2>
+<a name="Upgrading%20Cordova%20Bada_upgrade_to_1_8_0_from_1_7_0">Upgrade to 1.8.0 from 1.7.0</a>
+</h2>
+
+<ol>
+<li>Remove the cordova.bada.js file from the Res/js directory </li>
+<li>Add the new cordova.js file to your Res/js directory </li>
+<li>Update your Res/index.html to reference cordova.js instead of cordova.bada.js </li>
+</ol>
+<p>Change this line:</p>
+
+<pre class="prettyprint"><code>&lt;script type="text/javascript" src="./js/cordova.bada.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<p><em>to</em></p>
+
+<pre class="prettyprint"><code>&lt;script type="text/javascript" src="./js/cordova.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<p>As of Cordova 1.8, Bada 1.2 is no longer supported! The repository will be kept there as an archive for people who still want to use it. It contains some outdated APIs.</p>
 
             </div>
         </div>

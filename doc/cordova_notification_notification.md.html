@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="1.8.0rc1">1.8.0rc1</option>
+<option value="1.8.0rc1">1.8.0rc1</option>
+<option selected value="1.8.0">1.8.0</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
@@ -163,19 +164,24 @@
 
 <h3>Bada</h3>
 
-<pre class="prettyprint"><code>@TODO
+<h4>manifest.xml</h4>
+
+<pre class="prettyprint"><code>&lt;Privilege&gt;
+    &lt;Name&gt;SYSTEM_SERVICE&lt;/Name&gt;
+&lt;/Privilege&gt;
 </code></pre>
 
 <h3>BlackBerry WebWorks</h3>
 
 <h4>www/plugins.xml</h4>
 
-<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_notification_notification.md.html#Notification">Notification</a>" value="org.apache.cordova.notification.<a href="cordova_notification_notification.md.html#Notification">Notification</a>"/&gt;
+<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_notification_notification.md.html#Notification">Notification</a>" value="org.apache.cordova.notification.<a href="cordova_notification_notification.md.html#Notification">Notification</a>" /&gt;
 </code></pre>
 
 <h4>www/config.xml</h4>
 
-<p><feature id="blackberry.ui.dialog"></feature></p>
+<pre class="prettyprint"><code>&lt;feature id="blackberry.ui.dialog" /&gt;
+</code></pre>
 
 <h3>iOS</h3>
 
@@ -190,12 +196,12 @@
 
 <h3>webOS</h3>
 
-<pre class="prettyprint"><code>@TODO
+<pre class="prettyprint"><code>No permissions are required.
 </code></pre>
 
 <h3>Windows Phone</h3>
 
-<pre class="prettyprint"><code>No additional permissions required.
+<pre class="prettyprint"><code>No permissions are required.
 </code></pre>
 
 <hr>

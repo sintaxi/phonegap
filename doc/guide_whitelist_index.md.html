@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="1.8.0rc1">1.8.0rc1</option>
+<option value="1.8.0rc1">1.8.0rc1</option>
+<option selected value="1.8.0">1.8.0</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
@@ -156,61 +157,126 @@
 <a name="Domain%20Whitelist%20Guide_android">Android</a>
 </h2>
 
-<p>The access rules are found in cordova.xml in res/xml/cordova.xml.  These rules follow the <a class="external" href="http://www.w3.org/TR/widgets-access/">W3C Widget Access</a> specification such that the
-access elements control the whitelist.  For example:</p>
+<h3>Details</h3>
 
-<pre class="prettyprint"><code>&lt;access origin="http://127.0.0.1*"/&gt;
+<p>The whitelisting rules are found in <code>res/xml/cordova.xml</code> and declared with the element <code>&lt;access origin="..." /&gt;</code>.</p>
+
+<p>Android has full support for the whitelisting syntax.</p>
+
+<h3>Syntax</h3>
+
+<p>Access to <a class="external" href="http://google.com">google.com</a>:</p>
+
+<pre class="prettyprint"><code>&lt;access origin="http://google.com" /&gt;
 </code></pre>
 
 <h2>
 <a name="Domain%20Whitelist%20Guide_bada">Bada</a>
 </h2>
 
+<p>Domain whitelisting is unsupported on Bada. By default, all domains are accessible.</p>
+
 <h2>
 <a name="Domain%20Whitelist%20Guide_blackberry">BlackBerry</a>
 </h2>
+
+<h3>Details</h3>
+
+<p>The whitelisting rules are found in <code>www/config.xml</code> and declared with the element <code>&lt;access uri="..." /&gt;</code>.</p>
+
+<p>For a complete reference, see the <a class="external" href="https://developer.blackberry.com/html5/documentation/ww_developing/Access_element_834677_11.html">BlackBerry WebWorks Access Element documentation</a>.</p>
+
+<h3>Syntax</h3>
+
+<p>Access to <a class="external" href="http://google.com">google.com</a>:</p>
+
+<pre class="prettyprint"><code>&lt;access uri="http://google.com" subdomains="false" /&gt;
+</code></pre>
+
+<p>Access to  <a class="external" href="http://maps.google.com">maps.google.com</a>:</p>
+
+<pre class="prettyprint"><code>&lt;access uri="http://maps.google.com" subdomains="false" /&gt;
+</code></pre>
+
+<p>Access to all the subdomains on <a class="external" href="http://google.com">google.com</a>:</p>
+
+<pre class="prettyprint"><code>&lt;access uri="http://google.com" subdomains="true" /&gt;
+</code></pre>
+
+<p>Access to all domains, including <code>file://</code> protocol:</p>
+
+<pre class="prettyprint"><code>&lt;access uri="*" subdomains="true" /&gt;
+</code></pre>
 
 <h2>
 <a name="Domain%20Whitelist%20Guide_ios">iOS</a>
 </h2>
 
+<h3>Details</h3>
+
 <ol>
-<li>Search for the <strong>Cordova.plist</strong> file in your project. </li>
-<li>Add a new <strong>String</strong> value to the <strong>ExternalHosts</strong> key. </li>
+<li>Open <code>Cordova.plist</code>.
+<ul>
+<li>In Xcode, it is found at <code>AppName/Supporting Files/Cordova.plist</code>
+</li>
+<li>In the directory, it is found at <code>AppName/Cordova.plist</code>
+</li>
+</ul>
+</li>
+<li>Add a new <code>String</code> value under the <code>ExternalHosts</code> key.
+<ul>
+<li>We recommend using Xcode to avoid editing raw XML.</li>
+</ul>
+</li>
 </ol>
-<p>For the value of the String, just include the <strong>hostname / IP Address</strong> of the URL <strong>only</strong> without the scheme or the path of the URL.</p>
+<p>Domain protocols (e.g. <code>http://</code> and <code>https://</code>) are not supported by iOS.</p>
 
-<p>For example, if you have a URL like this: <strong>http://</strong>my.phonegap.com<strong>:443?is_awesome=yes</strong>, the whitelist value would be:</p>
+<h3>Syntax</h3>
 
-<pre class="prettyprint"><code>    my.phonegap.com
+<p>Access to <a class="external" href="http://google.com">google.com</a> and the secure <a class="external" href="https://google.com">google.com</a> (<code>https://</code>):</p>
+
+<pre class="prettyprint"><code>google.com
 </code></pre>
 
-<p>You can also use <strong>wildcards</strong> in the value. For example, if you want to <strong>allow all subdomains</strong>, you would use this value:</p>
+<p>Access to the subdomain <a class="external" href="http://maps.google.com">maps.google.com</a>:</p>
 
-<pre class="prettyprint"><code>    *.phonegap.com
+<pre class="prettyprint"><code>maps.google.com
 </code></pre>
 
-<p>Similarly, if you want to allow all TLDs also (.com, .net, etc) you would do this:</p>
+<p>Access to all the subdomains on <a class="external" href="http://google.com">google.com</a> (e.g. <a class="external" href="http://mail.google.com">mail.google.com</a> and <a class="external" href="http://docs.google.com">docs.google.com</a>):</p>
 
-<pre class="prettyprint"><code>    *.phonegap.*
+<pre class="prettyprint"><code>*.google.com
 </code></pre>
 
-<p>To allow all domains, you would just add <em>* "</em>" ** like so, this will effectively <strong>turn off the whitelist</strong>:</p>
+<p>Access to all domains (e.g. <a class="external" href="http://google.com">google.com</a> and <a class="external" href="http://developer.mozilla.org">developer.mozilla.org</a>):</p>
 
-<pre class="prettyprint"><code>    *
+<pre class="prettyprint"><code>*
+</code></pre>
+
+<p>Wildcards on iOS (<code>*</code>) are more flexible than the <a class="external" href="http://www.w3.org/TR/widgets-access/">W3C Widget Access</a> specification.</p>
+
+<p>Access to all subdomains and TLDs (<code>.com</code>, <code>.net</code>, etc):</p>
+
+<pre class="prettyprint"><code>*.google.*
 </code></pre>
 
 <h2>
 <a name="Domain%20Whitelist%20Guide_symbian">Symbian</a>
 </h2>
 
+<p>Domain whitelisting is unsupported on Symbian. By default, all domains are accessible.</p>
+
 <h2>
 <a name="Domain%20Whitelist%20Guide_webos">webOS</a>
 </h2>
 
+<p>Domain whitelisting is unsupported on webOS. By default, all domains are accessible.</p>
+
 <h2>
 <a name="Domain%20Whitelist%20Guide_windows_phone">Windows Phone</a>
 </h2>
+
+<p>Domain whitelisting is unsupported on Windows Phone. By default, all domains are accessible.</p>
 
             </div>
         </div>

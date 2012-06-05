@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="1.8.0rc1">1.8.0rc1</option>
+<option value="1.8.0rc1">1.8.0rc1</option>
+<option selected value="1.8.0">1.8.0</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
@@ -243,8 +244,8 @@ File System Quick Example</option>
 
 <h4>app/res/xml/plugins.xml</h4>
 
-<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_file_file.md.html#File">File</a>" value="org.apache.cordova.FileUtils"/&gt;
-&lt;plugin name="<a href="cordova_file_file.md.html#FileTransfer">FileTransfer</a>" value="org.apache.cordova.<a href="cordova_file_file.md.html#FileTransfer">FileTransfer</a>"/&gt;
+<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_file_file.md.html#File">File</a>" value="org.apache.cordova.FileUtils" /&gt;
+&lt;plugin name="<a href="cordova_file_file.md.html#FileTransfer">FileTransfer</a>" value="org.apache.cordova.<a href="cordova_file_file.md.html#FileTransfer">FileTransfer</a>" /&gt;
 </code></pre>
 
 <h4>app/AndroidManifest.xml</h4>
@@ -254,19 +255,26 @@ File System Quick Example</option>
 
 <h3>Bada</h3>
 
-<pre class="prettyprint"><code>@TODO
+<pre class="prettyprint"><code>No permissions are required.
 </code></pre>
 
 <h3>BlackBerry WebWorks</h3>
 
 <h4>www/plugins.xml</h4>
 
-<p><plugin name="&lt;a href=" cordova_file_file>File" value="org.apache.cordova.file.FileManager"/&gt;
-   <plugin name="&lt;a href=" cordova_file_file>FileTransfer"   value="org.apache.cordova.http.<a href="cordova_file_file.md.html#FileTransfer">FileTransfer</a>"/&gt;</plugin></plugin></p>
+<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_file_file.md.html#File">File</a>" value="org.apache.cordova.file.FileManager" /&gt;
+&lt;plugin name="<a href="cordova_file_file.md.html#FileTransfer">FileTransfer</a>" value="org.apache.cordova.http.<a href="cordova_file_file.md.html#FileTransfer">FileTransfer</a>" /&gt;
+</code></pre>
 
 <h4>www/config.xml</h4>
 
-<p><feature id="blackberry.io.file" required="true" version="1.0.0.0"></feature><feature id="blackberry.utils" required="true" version="1.0.0.0"></feature><feature id="blackberry.io.dir" required="true" version="1.0.0.0"></feature><permissions><permit>access_shared</permit></permissions></p>
+<pre class="prettyprint"><code>&lt;feature id="blackberry.io.file" required="true" version="1.0.0.0" /&gt;
+&lt;feature id="blackberry.utils"   required="true" version="1.0.0.0" /&gt;
+&lt;feature id="blackberry.io.dir"  required="true" version="1.0.0.0" /&gt;
+&lt;rim:permissions&gt;
+    &lt;rim:permit&gt;access_shared&lt;/rim:permit&gt;
+&lt;/rim:permissions&gt;
+</code></pre>
 
 <h3>iOS</h3>
 
@@ -287,12 +295,12 @@ File System Quick Example</option>
 
 <h3>webOS</h3>
 
-<pre class="prettyprint"><code>@TODO
+<pre class="prettyprint"><code>No permissions are required.
 </code></pre>
 
 <h3>Windows Phone</h3>
 
-<pre class="prettyprint"><code>No additional permissions required.
+<pre class="prettyprint"><code>No permissions are required.
 </code></pre>
 
 <hr>
@@ -987,7 +995,7 @@ function fail() {
 }
 
 // Set the metadata
-entry.setMetadata(success, fail, { "com.apple.MobileBackup", 1});
+entry.setMetadata(success, fail, { "com.apple.MobileBackup": 1});
 </code></pre>
 
 <p><strong>iOS Quirk</strong></p>
@@ -1350,7 +1358,7 @@ function fail() {
 }
 
 // Set the metadata
-entry.setMetadata(success, fail, { "com.apple.MobileBackup", 1});
+entry.setMetadata(success, fail, { "com.apple.MobileBackup": 1});
 </code></pre>
 
 <p><strong>iOS Quirk</strong></p>

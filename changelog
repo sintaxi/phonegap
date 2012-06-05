@@ -1,5 +1,8 @@
 ChangeLog
 ios
+Anis Kadri (1):
+      update script to be able to execute from anywhere
+
 Becky Gibson (2):
       Fixes CB-819 fail callback not invoked
       fixes CB-56 popover placement
@@ -17,10 +20,11 @@ Fil Maj (8):
       [CB-464] rewrite of accel plugin. not working yet.
       [CB-464] Simplified accel to start/stop actions.
 
-Patrick Mueller (1):
+Patrick Mueller (2):
       [CB-623] added Logger plugin
+      modify a comment
 
-Shazron Abdullah (35):
+Shazron Abdullah (41):
       FIXED CB-513 - Remove cast functionality from CDVPluginResult, obsolete
       Fixed CB-594 - Remove checks for retainCount
       Updated bin folder for Cordova 1.7.0
@@ -56,12 +60,18 @@ Shazron Abdullah (35):
       Updated Makefile after testing on a system that didn't have homebrew installed.
       Updated Guides for 1.8.0
       Fixes CB-835 - watchPosition callbacks are not being called
+      Fixes CB-843 - Makefile - installing wkhtmltopdf problems
+      Fixes CB-328 - Cordova crashes on iOS 3.x devices
+      Fixes CB-851 - guide for using url schemes in ios
+      Fixes CB-854 - Makefile generates 50 MB .dmg
+      Updated VERSION to 1.8.0
+      Added cordova-js 1.8.0 for iOS
 
 blackberry
 Don Coleman (1):
       [CB-793] Add HTTP status code to FileTransferError object
 
-Drew Walters (8):
+Drew Walters (9):
       Move org.apache.cordova.media to org.apache.cordova.capture.
       Add Media API.
       [CB-762] Change BlackBerry plugin from Contact to Contacts.
@@ -70,15 +80,21 @@ Drew Walters (8):
       [CB-465] Refactor Accelerometer code for addWatch / clearWatch.
       [CB-822] Revert change to prefix file protocol for resolveLocalFileSystemURI
       [CB-793] Minor formatting cleanup.
+      [CB-847] Recognize .MP4 as video recording extension.
 
-Fil Maj (2):
+Fil Maj (3):
       [CB-465] First pass at accel update. Watch acceleration doesnt seem to work yet though
       [CB-465] Simplified accel plugin (still based on Drews implementation) to just start/stop actions.
+      [CB-642] Add license headers according to apache RAT
 
-Tim Kim (1):
+Tim Kim (2):
       Updating to 1.8.0rc1
+      Updating to 1.8.0
 
 android
+Davide Bertola (1):
+      Fix calling  cordova.plugin.storage.failQuery function from native code
+
 Don Coleman (1):
       [CB-792] Add HTTP status code to FileTransferError
 
@@ -105,7 +121,7 @@ Fil Maj (21):
       [CB-463] updated js and rewrote accel plugin again to support the start/stop approach. optimized. single callback used for message passing
       Small spacing fixes
 
-Joe Bowser (15):
+Joe Bowser (18):
       We should not be having a compiled version of cordova.jar in the test directory
       Adding Apache Header to Test Directory
       Forgot to add lifecycle/index2.html's header
@@ -121,23 +137,41 @@ Joe Bowser (15):
       Modifying generated classpath
       Don't commit Eclipse preferences
       Tweaked create so it fetches the commons-codec using curl
+      Auto detect whether we have the jar already.  Also, just create the directory whether it exists or not
+      Changing from currentTimeMillis to nanoTime, we need precision on Android 2.3
+      Updating the JS and the version for tagging
 
 Michael Brooks (1):
       Fix README.md formatting to install commons-codec-1.6.jar
+
+Steven Gill (1):
+      updated create script CB 839
+
+William Quast (1):
+      Make PluginResult return valid JSON so the JS side can use JSON.parse
 
 filmaj (2):
       [CB-659] create script should work on android
       [CB-659] create script for android on windows now works fully. also pulls down commons-codec jar appropriately
 
-macdonst (5):
+macdonst (11):
       Properly querying the Andoid content DB when deleteing an image file
       Switch to using stripFileProtocol in FileUtils.notifyDelete
       Fix problem in Android template example getPicture
       CB-808: CameraLauncher leaks bitmaps in Android
       Upping version to 1.8.0rc1
+      CB-837: CaptureCB - mediaFile.fullPath does not resolve to file
+      CB-844: Contact.find does not return urls
+      CB-849: Cannot search by birthday
+      Change 'websites' to 'urls'
+      Cb-858: Media record defaults to sdcard which may not be mounted
+      CB-860: MediaFile.getFormatData broken for Image from Capture
 
-windows
-Jesse MacFadyen (19):
+windows-phone
+Fil Maj (1):
+      [CB-643] Added license headers where appropriate.
+
+Jesse MacFadyen (21):
       CB-520 : back button handling is performed in js code and uses window.history.back()
       parent path is now a string and not a FileEntry CB-665
       added try/catch for backbutton handling when a page is not loaded in the webbrowser, was an exception
@@ -157,9 +191,15 @@ Jesse MacFadyen (19):
       update assembly info for 1.8
       added platform info, for sanity
       updated example,templates,tests to 1.8.0rc1
+      updated tests + example
+      moar updating, rebuilk, release prep
 
 filmaj (1):
       [CB-466] Rewrite accel for WP7
+
+unknown (2):
+      create new project CLI
+      create new project CLI
 
 webos
 hermwong (4):
@@ -169,13 +209,14 @@ hermwong (4):
       added Apache license header
 
 bada
-Anis Kadri (3):
+Anis Kadri (4):
       updating apache licenses with apache rat
       updating VERSION for 1.2
       updating Device version
+      updating version to 1.8.0
 
 badaWac
-Anis Kadri (15):
+Anis Kadri (16):
       updating apache licences with apache rat
       adding getPicture and captureImage examples
       updating UI
@@ -191,4 +232,5 @@ Anis Kadri (15):
       updating to lastest js
       updating cordova.js version
       updating VERSION
+      reverting to old javascript and updating VERSION
 

@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="1.8.0rc1">1.8.0rc1</option>
+<option value="1.8.0rc1">1.8.0rc1</option>
+<option selected value="1.8.0">1.8.0</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
@@ -221,9 +222,13 @@
 
 <ul>
 <li>
-<strong>_position</strong>: The position within the audio playback in seconds.  Not automatically updated during play, call getCurrentPosition to update.</li>
+<strong>position</strong>: The position within the audio playback in seconds.
+<ul>
+<li>Not automatically updated during play, call <code>getCurrentPosition</code> to update.</li>
+</ul>
+</li>
 <li>
-<strong>_duration</strong>: The duration of the media in seconds.</li>
+<strong>duration</strong>: The duration of the media in seconds.</li>
 </ul>
 <h2>
 <a name="Media_supported_platforms">Supported Platforms</a>
@@ -233,7 +238,7 @@
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7 (Mango)</li>
 </ul>
 <h2>
 <a name="Media_permissions">Permissions</a>
@@ -243,7 +248,7 @@
 
 <h4>app/res/xml/plugins.xml</h4>
 
-<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_media_media.md.html#Media">Media</a>" value="org.apache.cordova.AudioHandler"/&gt;
+<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_media_media.md.html#Media">Media</a>" value="org.apache.cordova.AudioHandler" /&gt;
 </code></pre>
 
 <h4>app/AndroidManifest.xml</h4>
@@ -255,19 +260,18 @@
 
 <h3>Bada</h3>
 
-<pre class="prettyprint"><code>@TODO
+<h4>manifest.xml</h4>
+
+<pre class="prettyprint"><code>&lt;Privilege&gt;
+    &lt;Name&gt;RECORDING&lt;/Name&gt;
+&lt;/Privilege&gt;
 </code></pre>
 
 <h3>BlackBerry WebWorks</h3>
 
 <h4>www/plugins.xml</h4>
 
-<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_media_capture_capture.md.html#Capture">Capture</a>" value="org.apache.cordova.media.MediaCapture"/&gt;
-</code></pre>
-
-<h4>www/config.xml</h4>
-
-<pre class="prettyprint"><code>@TODO
+<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_media_capture_capture.md.html#Capture">Capture</a>" value="org.apache.cordova.media.MediaCapture" /&gt;
 </code></pre>
 
 <h3>iOS</h3>
@@ -283,7 +287,7 @@
 
 <h3>webOS</h3>
 
-<pre class="prettyprint"><code>@TODO
+<pre class="prettyprint"><code>No permissions are required.
 </code></pre>
 
 <h3>Windows Phone</h3>
@@ -292,10 +296,10 @@
 
 <pre class="prettyprint"><code>&lt;Capabilities&gt;
     &lt;Capability Name="ID_CAP_MEDIALIB" /&gt;
-    &lt;Capability Name="ID_CAP_MICROPHONE"/&gt;
-    &lt;Capability Name="ID_HW_FRONTCAMERA"/&gt;
-    &lt;Capability Name="ID_CAP_ISV_CAMERA"/&gt;
-    &lt;Capability Name="ID_CAP_CAMERA"/&gt;
+    &lt;Capability Name="ID_CAP_MICROPHONE" /&gt;
+    &lt;Capability Name="ID_HW_FRONTCAMERA" /&gt;
+    &lt;Capability Name="ID_CAP_ISV_CAMERA" /&gt;
+    &lt;Capability Name="ID_CAP_CAMERA" /&gt;
 &lt;/Capabilities&gt;
 </code></pre>
 

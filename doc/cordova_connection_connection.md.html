@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="1.8.0rc1">1.8.0rc1</option>
+<option value="1.8.0rc1">1.8.0rc1</option>
+<option selected value="1.8.0">1.8.0</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
@@ -70,16 +71,16 @@
             <small><select><option value="Connection">Connection</option>
 <option value="Connection_properties">      - Properties</option>
 <option value="Connection_constants">      - Constants</option>
-<option value="Connection_wp7_quirk">      - WP7 Quirk</option>
-<option value="Connection_ios_quirk">      - iOS Quirk</option>
-<option value="Connection_bada_quirk">      - Bada Quirk</option>
-<option value="Connection_webos_quirks">      - webOS Quirks</option>
 <option value="Connection_permissions">      - Permissions</option>
 <option value="connection.type">connection.type</option>
 <option value="connection.type_description">      - Description</option>
 <option value="connection.type_supported_platforms">      - Supported Platforms</option>
 <option value="connection.type_quick_example">      - Quick Example</option>
-<option value="connection.type_full_example">      - Full Example</option></select></small>
+<option value="connection.type_full_example">      - Full Example</option>
+<option value="connection.type_ios_quirks">      - iOS Quirks</option>
+<option value="connection.type_bada_quirks">      - Bada Quirks</option>
+<option value="connection.type_webos_quirks">      - webOS Quirks</option>
+<option value="connection.type_windows_phone_quirks">      - Windows Phone Quirks</option></select></small>
         </div>
 
         <div id="sidebar">
@@ -147,39 +148,6 @@
 <a href="cordova_connection_connection.md.html#Connection">Connection</a>.NONE</li>
 </ul>
 <h2>
-<a name="Connection_wp7_quirk">WP7 Quirk</a>
-</h2>
-
-<ul>
-<li>
-<strong>type:</strong>
-Windows Phone Emulator always reports navigator.network.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a> is <a href="cordova_connection_connection.md.html#Connection">Connection</a>.UNKNOWN</li>
-</ul>
-<h2>
-<a name="Connection_ios_quirk">iOS Quirk</a>
-</h2>
-
-<ul>
-<li>
-<strong>type:</strong>
-iOS can only report whether the device is on a cellular connection, not
-of what type, thus it will always report as CELL_2G</li>
-</ul>
-<h2>
-<a name="Connection_bada_quirk">Bada Quirk</a>
-</h2>
-
-<ul>
-<li>Bada can only report if device is on Wifi or connected to cellular connection CELL_2G ( type not reported )</li>
-</ul>
-<h2>
-<a name="Connection_webos_quirks">webOS Quirks</a>
-</h2>
-
-<ul>
-<li>will only show that a connection is available, but not which type</li>
-</ul>
-<h2>
 <a name="Connection_permissions">Permissions</a>
 </h2>
 
@@ -187,7 +155,7 @@ of what type, thus it will always report as CELL_2G</li>
 
 <h4>app/res/xml/plugins.xml</h4>
 
-<pre class="prettyprint"><code>&lt;plugin name="NetworkStatus" value="org.apache.cordova.NetworkManager"/&gt;
+<pre class="prettyprint"><code>&lt;plugin name="NetworkStatus" value="org.apache.cordova.NetworkManager" /&gt;
 </code></pre>
 
 <h4>app/AndroidManifest.xml</h4>
@@ -199,19 +167,16 @@ of what type, thus it will always report as CELL_2G</li>
 
 <h3>Bada</h3>
 
-<pre class="prettyprint"><code>@TODO
+<pre class="prettyprint"><code>&lt;Privilege&gt;
+    &lt;Name&gt;SYSTEM_SERVICE&lt;/Name&gt;
+&lt;/Privilege&gt;
 </code></pre>
 
 <h3>BlackBerry WebWorks</h3>
 
 <h4>www/plugins.xml</h4>
 
-<pre class="prettyprint"><code>&lt;plugin name="Network Status" value="org.apache.cordova.network.Network"/&gt;
-</code></pre>
-
-<h4>www/config.xml</h4>
-
-<pre class="prettyprint"><code>@TODO
+<pre class="prettyprint"><code>&lt;plugin name="Network Status" value="org.apache.cordova.network.Network" /&gt;
 </code></pre>
 
 <h3>iOS</h3>
@@ -227,7 +192,7 @@ of what type, thus it will always report as CELL_2G</li>
 
 <h3>webOS</h3>
 
-<pre class="prettyprint"><code>@TODO
+<pre class="prettyprint"><code>No permissions are required.
 </code></pre>
 
 <h3>Windows Phone</h3>
@@ -235,7 +200,7 @@ of what type, thus it will always report as CELL_2G</li>
 <h4>Properties/WPAppManifest.xml</h4>
 
 <pre class="prettyprint"><code>&lt;Capabilities&gt;
-    &lt;Capability Name="ID_CAP_NETWORKING"/&gt;
+    &lt;Capability Name="ID_CAP_NETWORKING" /&gt;
 &lt;/Capabilities&gt;
 </code></pre>
 
@@ -331,7 +296,45 @@ checkConnection();
 &lt;/html&gt;
 </code></pre>
 
-            </div>
+<h2>
+<a name="connection.type_ios_quirks">iOS Quirks</a>
+</h2>
+
+<ul>
+<li>iOS cannot detect the type of cellular network connection.
+<ul>
+<li>
+<code>navigator.network.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a></code> is set to <code><a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_2G</code> for all cellular data.</li>
+</ul>
+</li>
+</ul>
+<h2>
+<a name="connection.type_bada_quirks">Bada Quirks</a>
+</h2>
+
+<ul>
+<li>Bada can only detect a WiFi or cellular connection.
+<ul>
+<li>
+<code>navigator.network.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a></code> is set to <code><a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_2G</code> for all cellular data.</li>
+</ul>
+</li>
+</ul>
+<h2>
+<a name="connection.type_webos_quirks">webOS Quirks</a>
+</h2>
+
+<ul>
+<li>Only shows that a connection is available, but not which type.</li>
+</ul>
+<h2>
+<a name="connection.type_windows_phone_quirks">Windows Phone Quirks</a>
+</h2>
+
+<ul>
+<li>Windows Phone Emulator always detects <code>navigator.network.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a></code> as <code><a href="cordova_connection_connection.md.html#Connection">Connection</a>.UNKNOWN</code>.</li>
+</ul>
+</div>
         </div>
 
         <!-- Functionality and Syntax Highlighting -->

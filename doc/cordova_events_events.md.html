@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="1.8.0rc1">1.8.0rc1</option>
+<option value="1.8.0rc1">1.8.0rc1</option>
+<option selected value="1.8.0">1.8.0</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
@@ -218,29 +219,36 @@
 
 <h4>app/res/xml/plugins.xml</h4>
 
-<pre class="prettyprint"><code>@TODO
+<pre class="prettyprint"><code>&lt;plugin name="Battery" value="org.apache.cordova.BatteryListener" /&gt;
 </code></pre>
 
 <h4>app/AndroidManifest.xml</h4>
 
-<pre class="prettyprint"><code>@TODO
+<pre class="prettyprint"><code>&lt;uses-permission android:name="android.permission.BROADCAST_STICKY" /&gt;
 </code></pre>
 
 <h3>Bada</h3>
 
-<pre class="prettyprint"><code>@TODO
+<h4>manifest.xml</h4>
+
+<pre class="prettyprint"><code>&lt;Privilege&gt;
+    &lt;Name&gt;SYSTEM_SERVICE&lt;/Name&gt;
+&lt;/Privilege&gt;
 </code></pre>
 
 <h3>BlackBerry WebWorks</h3>
 
 <h4>www/plugins.xml</h4>
 
-<pre class="prettyprint"><code>&lt;plugin name="Battery" value="org.apache.cordova.battery.Battery"/&gt;
+<pre class="prettyprint"><code>&lt;plugin name="Battery" value="org.apache.cordova.battery.Battery" /&gt;
 </code></pre>
 
 <h4>www/config.xml</h4>
 
-<p><feature id="blackberry.app" required="true" version="1.0.0.0"></feature><feature id="blackberry.app.event" required="true" version="1.0.0.0"></feature><feature id="blackberry.system.event" required="true" version="1.0.0.0"></feature></p>
+<pre class="prettyprint"><code>&lt;feature id="blackberry.app"          required="true" version="1.0.0.0" /&gt;
+&lt;feature id="blackberry.app.event"    required="true" version="1.0.0.0" /&gt;
+&lt;feature id="blackberry.system.event" required="true" version="1.0.0.0" /&gt;
+</code></pre>
 
 <h3>iOS</h3>
 
@@ -255,12 +263,12 @@
 
 <h3>webOS</h3>
 
-<pre class="prettyprint"><code>@TODO
+<pre class="prettyprint"><code>No permissions are required.
 </code></pre>
 
 <h3>Windows Phone</h3>
 
-<pre class="prettyprint"><code>No additional permissions required.
+<pre class="prettyprint"><code>No permissions are required.
 </code></pre>
 
 <hr>

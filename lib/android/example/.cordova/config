@@ -1,4 +1,4 @@
-VERSION=1.8.0rc1
+VERSION=1.8.0
 PROJECT_PATH=./example
 PACKAGE=org.apache.cordova.example
 ACTIVITY=cordovaExample

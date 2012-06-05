@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="1.8.0rc1">1.8.0rc1</option>
+<option value="1.8.0rc1">1.8.0rc1</option>
+<option selected value="1.8.0">1.8.0</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
@@ -89,7 +90,10 @@
 <option value="cameraOptions_webos_quirks">      - webOS Quirks</option>
 <option value="cameraOptions_ios_quirks">      - iOS Quirks</option>
 <option value="cameraOptions_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
-<option value="cameraOptions_bada_1_2_quirks">      - Bada 1.2 Quirks</option></select></small>
+<option value="cameraOptions_bada_1_2_quirks">      - Bada 1.2 Quirks</option>
+<option value="CameraPopoverOptions">CameraPopoverOptions</option>
+<option value="CameraPopoverOptions_camerapopoveroptions">      - CameraPopoverOptions</option>
+<option value="CameraPopoverOptions_quick_example">      - Quick Example</option></select></small>
         </div>
 
         <div id="sidebar">
@@ -152,7 +156,14 @@
 
 <h3>Bada</h3>
 
-<pre class="prettyprint"><code>@TODO
+<h4>manifest.xml</h4>
+
+<pre class="prettyprint"><code>&lt;Privilege&gt;
+    &lt;Name&gt;CAMERA&lt;/Name&gt;
+&lt;/Privilege&gt;
+&lt;Privilege&gt;
+    &lt;Name&gt;RECORDING&lt;/Name&gt;
+&lt;/Privilege&gt;
 </code></pre>
 
 <h3>BlackBerry WebWorks</h3>
@@ -184,7 +195,7 @@
 
 <h3>webOS</h3>
 
-<pre class="prettyprint"><code>@TODO
+<pre class="prettyprint"><code>No permissions are required.
 </code></pre>
 
 <h3>Windows Phone</h3>
@@ -192,9 +203,9 @@
 <h4>Properties/WPAppManifest.xml</h4>
 
 <pre class="prettyprint"><code>&lt;Capabilities&gt;
-    &lt;Capability Name="ID_CAP_CAMERA"/&gt;
-    &lt;Capability Name="ID_CAP_ISV_CAMERA"/&gt;
-    &lt;Capability Name="ID_HW_FRONTCAMERA"/&gt;
+    &lt;Capability Name="ID_CAP_CAMERA" /&gt;
+    &lt;Capability Name="ID_CAP_ISV_CAMERA" /&gt;
+    &lt;Capability Name="ID_HW_FRONTCAMERA" /&gt;
 &lt;/Capabilities&gt;
 </code></pre>
 
@@ -461,7 +472,8 @@ function cameraCallback(imageData) {
   allowEdit : true,
   encodingType: <a href="cordova_camera_camera.md.html#Camera">Camera</a>.EncodingType.JPEG,
   targetWidth: 100,
-  targetHeight: 100 };
+  targetHeight: 100,
+  popoverOptions: <a href="cordova_camera_camera.md.html#CameraPopoverOptions">CameraPopoverOptions</a> };
 </code></pre>
 
 <h2>
@@ -515,6 +527,9 @@ function cameraCallback(imageData) {
 <li><p><strong>correctOrientation:</strong> Rotate the image to correct for the orientation of the device during capture. (<code>Boolean</code>)</p></li>
 <li>
 <strong>saveToPhotoAlbum:</strong> Save the image to the photo album on the device after capture. (<code>Boolean</code>)</li>
+<li>
+<strong>popoverOptions:</strong> iOS only options to specify popover location in iPad.  Defined in <a href="cordova_camera_camera.md.html#CameraPopoverOptions">CameraPopoverOptions</a>
+</li>
 </ul>
 <h2>
 <a name="cameraOptions_android_quirks">Android Quirks</a>
@@ -582,7 +597,63 @@ function cameraCallback(imageData) {
 <li>options not supported</li>
 <li>always returns a FILE URI</li>
 </ul>
-</div>
+<hr>
+<h1><a name="CameraPopoverOptions">CameraPopoverOptions</a></h1>
+
+<p>Parameters only used by iOS to specify the anchor element location and arrow direction of popover used on iPad when selecting images from the library or album.</p>
+
+<pre class="prettyprint"><code>{ x : 0, 
+  y :  32,
+  width : 320,
+  height : 480,
+  arrowDir : <a href="cordova_camera_camera.md.html#Camera">Camera</a>.PopoverArrowDirection.ARROW_ANY
+};
+</code></pre>
+
+<h2>
+<a name="CameraPopoverOptions_camerapopoveroptions">CameraPopoverOptions</a>
+</h2>
+
+<ul>
+<li><p><strong>x:</strong> x pixel coordinate of element on the screen to anchor popover onto. (<code>Number</code>)</p></li>
+<li><p><strong>y:</strong> y pixel coordinate of element on the screen to anchor popover onto. (<code>Number</code>)</p></li>
+<li><p><strong>width:</strong> width, in pixels, of the element on the screen to anchor popover onto. (<code>Number</code>)</p></li>
+<li><p><strong>height:</strong> height, in pixels, of the element on the screen to anchor popover onto. (<code>Number</code>)</p></li>
+<li>
+<p><strong>arrowDir:</strong> Direction the arrow on the popover should point.  Defined in <a href="cordova_camera_camera.md.html#Camera">Camera</a>.PopoverArrowDirection (<code>Number</code>)</p>
+
+<pre class="prettyprint"><code>    <a href="cordova_camera_camera.md.html#Camera">Camera</a>.PopoverArrowDirection = {
+        ARROW_UP : 1,        // matches iOS UIPopoverArrowDirection constants
+        ARROW_DOWN : 2,
+        ARROW_LEFT : 4,
+        ARROW_RIGHT : 8,
+        ARROW_ANY : 15
+    };
+</code></pre>
+</li>
+</ul>
+<p>Note that the size of the popover may change to adjust to the direction of the arrow and orientation of the screen.  Make sure to account for orientation changes when specifying the anchor element location. </p>
+
+<h2>
+<a name="CameraPopoverOptions_quick_example">Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code> var popover = new <a href="cordova_camera_camera.md.html#CameraPopoverOptions">CameraPopoverOptions</a>(300,300,100,100,<a href="cordova_camera_camera.md.html#Camera">Camera</a>.PopoverArrowDirection.ARROW_ANY);
+ var options = { quality: 50, destinationType: <a href="cordova_camera_camera.md.html#Camera">Camera</a>.DestinationType.DATA_URL,sourceType: <a href="cordova_camera_camera.md.html#Camera">Camera</a>.PictureSource.SAVEDPHOTOALBUM, popoverOptions : popover };
+
+ navigator.<a href="cordova_camera_camera.md.html#camera.getPicture">camera.getPicture</a>(onSuccess, onFail, options);
+
+ function onSuccess(imageData) {
+    var image = document.getElementById('myImage');
+    image.src = "data:image/jpeg;base64," + imageData;
+}
+
+function onFail(message) {
+    alert('Failed because: ' + message);
+}
+</code></pre>
+
+            </div>
         </div>
 
         <!-- Functionality and Syntax Highlighting -->
