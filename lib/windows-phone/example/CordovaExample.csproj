@@ -74,7 +74,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Xml" />
-    <Reference Include="WP7CordovaClassLib, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="WP7CordovaClassLib, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -97,11 +97,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\cordova-1.8.0.js">
-      <Link>www\cordova-1.8.0.js</Link>
-    </Content>
     <Content Include="CordovaSourceDictionary.xml" />
     <Content Include="GapLib\WP7CordovaClassLib.dll" />
+    <Content Include="www\cordova-1.8.1.js" />
     <Content Include="www\network.html" />
     <Content Include="www\notification.html" />
     <Content Include="www\storage.html">

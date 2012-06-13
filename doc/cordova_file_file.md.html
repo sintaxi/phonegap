@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="1.8.1">1.8.1</option>
 <option value="1.8.0rc1">1.8.0rc1</option>
-<option selected value="1.8.0">1.8.0</option>
+<option value="1.8.0">1.8.0</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
@@ -496,7 +497,7 @@ entry.file(win, fail);
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_file_file.md.html#FileReader">FileReader</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.8.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.8.1.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -733,7 +734,7 @@ entry.createWriter(win, fail);
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_file_file.md.html#FileWriter">FileWriter</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.8.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.8.1.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -839,7 +840,7 @@ window.requestFileSystem(<a href="cordova_file_file.md.html#LocalFileSystem">Loc
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_file_file.md.html#File">File</a> System Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.8.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.8.1.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -1043,7 +1044,8 @@ function fail(error) {
 
 function moveFile(entry) {
     var parent = document.getElementById('parent').value,
-        parentEntry = new <a href="cordova_file_file.md.html#DirectoryEntry">DirectoryEntry</a>({fullPath: parent});
+        parentName = parent.substring(parent.lastIndexOf('/')+1),
+        parentEntry = new <a href="cordova_file_file.md.html#DirectoryEntry">DirectoryEntry</a>(parentName, parent);
 
     // move the file to a new directory and rename it
     entry.moveTo(parentEntry, "newFile.txt", success, fail);
@@ -1087,7 +1089,8 @@ function fail(error) {
 
 function copyFile(entry) {
     var parent = document.getElementById('parent').value,
-        parentEntry = new <a href="cordova_file_file.md.html#DirectoryEntry">DirectoryEntry</a>({fullPath: parent});
+        parentName = parent.substring(parent.lastIndexOf('/')+1),
+        parentEntry = new <a href="cordova_file_file.md.html#DirectoryEntry">DirectoryEntry</a>(parentName, parent);
 
     // copy the file to a new directory and rename it
     entry.copyTo(parentEntry, "file.copy", success, fail);
@@ -1408,8 +1411,9 @@ function fail(error) {
 
 function moveDir(entry) {
     var parent = document.getElementById('parent').value,
+        parentName = parent.substring(parent.lastIndexOf('/')+1),
         newName = document.getElementById('newName').value,
-        parentEntry = new <a href="cordova_file_file.md.html#DirectoryEntry">DirectoryEntry</a>({fullPath: parent});
+        parentEntry = new <a href="cordova_file_file.md.html#DirectoryEntry">DirectoryEntry</a>(parentName, parent);
 
     // move the directory to a new directory and rename it
     entry.moveTo(parentEntry, newName, success, fail);
@@ -1456,8 +1460,9 @@ function fail(error) {
 
 function copyDir(entry) {
     var parent = document.getElementById('parent').value,
+        parentName = parent.substring(parent.lastIndexOf('/')+1),
         newName = document.getElementById('newName').value,
-        parentEntry = new <a href="cordova_file_file.md.html#DirectoryEntry">DirectoryEntry</a>({fullPath: parent});
+        parentEntry = new <a href="cordova_file_file.md.html#DirectoryEntry">DirectoryEntry</a>(parentName, parent);
 
     // copy the directory to a new directory and rename it
     entry.copyTo(parentEntry, newName, success, fail);
@@ -1821,7 +1826,7 @@ ft.upload(fileURI, "http://some.server.com/upload.php", win, fail, options);
 &lt;head&gt;
     &lt;title&gt;<a href="cordova_file_file.md.html#File">File</a> Transfer Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.8.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.8.1.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -2105,7 +2110,7 @@ window.resolveLocalFileSystemURI("file:///example.txt", onSuccess, onError);
   &lt;head&gt;
     &lt;title&gt;Local <a href="cordova_file_file.md.html#File">File</a> System Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.8.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.8.1.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load

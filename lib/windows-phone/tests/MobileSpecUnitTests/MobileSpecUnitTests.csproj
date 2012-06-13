@@ -101,9 +101,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\cordova-1.8.0.js">
-      <Link>www\cordova-1.8.0.js</Link>
-    </Content>
     <Content Include="ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -112,6 +109,7 @@
     </Content>
     <Content Include="BuildManifestProcessor.js" />
     <Content Include="CordovaSourceDictionary.xml" />
+    <Content Include="www\cordova-1.8.1.js" />
     <Content Include="www\index.html">
       <SubType>Designer</SubType>
     </Content>

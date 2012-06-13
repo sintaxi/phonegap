@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="1.8.1">1.8.1</option>
 <option value="1.8.0rc1">1.8.0rc1</option>
-<option selected value="1.8.0">1.8.0</option>
+<option value="1.8.0">1.8.0</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="1.6.1">1.6.1</option>
@@ -69,15 +70,15 @@
         <div id="subheader">
             <h1>Getting Started with iOS</h1>
             <small><select><option value="Getting%2520Started%2520with%2520iOS">Getting Started with iOS</option>
-<option value="Getting%20Started%20with%20iOS_video_tutorials">      - Video Tutorials:</option>
-<option value="Getting%20Started%20with%20iOS_1_requirements">      - 1. Requirements</option>
-<option value="Getting%20Started%20with%20iOS_2_install_sdk_cordova">      - 2. Install SDK + Cordova</option>
-<option value="Getting%20Started%20with%20iOS_3_setup_new_project">      - 3. Setup New Project</option>
-<option value="Getting%20Started%20with%20iOS_4_hello_world">      - 4. Hello World</option>
-<option value="Getting%20Started%20with%20iOS_5a_deploy_to_simulator">      - 5A. Deploy to Simulator</option>
-<option value="Getting%20Started%20with%20iOS_5b_deploy_to_device">      - 5B. Deploy to Device
+<option value="Getting%20Started%20with%20iOS_video_tutorial">      - Video Tutorial</option>
+<option value="Getting%20Started%20with%20iOS_requirements">      - Requirements</option>
+<option value="Getting%20Started%20with%20iOS_install_ios_sdk_and_apache_cordova">      - Install iOS SDK and Apache Cordova</option>
+<option value="Getting%20Started%20with%20iOS_setup_new_project">      - Setup New Project</option>
+<option value="Getting%20Started%20with%20iOS_hello_world">      - Hello World</option>
+<option value="Getting%20Started%20with%20iOS_deploy_to_simulator">      - Deploy to Simulator</option>
+<option value="Getting%20Started%20with%20iOS_deploy_to_device">      - Deploy to Device
 </option>
-<option value="Getting%20Started%20with%20iOS_done">      - Done!</option></select></small>
+<option value="Getting%20Started%20with%20iOS_build_your_app">      - Build Your App</option></select></small>
         </div>
 
         <div id="sidebar">
@@ -111,128 +112,171 @@
             <div id="content">
                 <h1><a name="Getting%20Started%20with%20iOS">Getting Started with iOS</a></h1>
 
-<p>This guide describes how to set up your development environment for Cordova and run a sample application.</p>
+<p>This guide describes how to set up your development environment for Apache Cordova and run a sample Apache Cordova application.</p>
 
 <h2>
-<a name="Getting%20Started%20with%20iOS_video_tutorials">Video Tutorials:</a>
+<a name="Getting%20Started%20with%20iOS_video_tutorial">Video Tutorial</a>
 </h2>
 
 <ul>
 <li><a class="external" href="http://www.youtube.com/v/R9zktJUN7AI?autoplay=1">Cordova Installer - Xcode 4 Template</a></li>
 </ul>
 <h2>
-<a name="Getting%20Started%20with%20iOS_1_requirements">1. Requirements</a>
+<a name="Getting%20Started%20with%20iOS_requirements">Requirements</a>
 </h2>
 
 <ul>
 <li>Intel-based computer with Mac OS X Lion (10.7)</li>
-<li>Necessary for Installing on <a href="cordova_device_device.md.html#Device">Device</a>:
+<li>Necessary for installing on device:
 <ul>
-<li>An Apple iOS device (iPhone, iPad, iPod Touch)</li>
-<li>iOS ceveloper certification</li>
+<li>Apple iOS device (iPhone, iPad, iPod Touch)</li>
+<li>iOS developer certificate</li>
 </ul>
 </li>
 </ul>
 <h2>
-<a name="Getting%20Started%20with%20iOS_2_install_sdk_cordova">2. Install SDK + Cordova</a>
+<a name="Getting%20Started%20with%20iOS_install_ios_sdk_and_apache_cordova">Install iOS SDK and Apache Cordova</a>
 </h2>
 
 <ul>
-<li>Install Xcode from the <a class="external" href="http://itunes.apple.com/us/app/xcode/id497799835?mt=12">Mac App Store</a> </li>
-<li>Donwload the latest copy of <a class="external" href="http://phonegap.com/download">Cordova</a> and extract its contents. We will be working with the <strong>lib/ios</strong> directory.</li>
+<li>Install Xcode from the <a class="external" href="http://itunes.apple.com/us/app/xcode/id497799835?mt=12">Mac App Store</a>
+</li>
+<li>Download the latest release of <a class="external" href="http://phonegap.com/download">Apache Cordova</a>
+<ul>
+<li>extract its contents</li>
+<li>Apache Cordova iOS is found under <code>lib/ios</code>
+</li>
+</ul>
+</li>
 </ul>
 <h2>
-<a name="Getting%20Started%20with%20iOS_3_setup_new_project">3. Setup New Project</a>
+<a name="Getting%20Started%20with%20iOS_setup_new_project">Setup New Project</a>
 </h2>
 
 <ul>
 <li>Launch Xcode</li>
-<li>Select the <strong><a href="cordova_file_file.md.html#File">File</a></strong> menu</li>
-<li>Select <strong>New</strong>, then <strong>New Project...</strong>
+<li>Select the <em><a href="cordova_file_file.md.html#File">File</a> Menu</em>
+</li>
+<li>Select <em>New</em> -&gt; <em>New Project...</em>
 </li>
 <li>
-<p>Select <strong>Cordova-based Application</strong> from the list of templates</p>
+<p>Select <em>Cordova-based Application</em> from the list of templates</p>
 
 <p><img src="img/guide/getting-started/ios/XCode4-templates.png" alt="" title=""></p>
 </li>
-<li>Select the <strong>Next</strong> button</li>
+<li><p>Select the <em>Next</em> button</p></li>
 <li>
-<p>Fill in the "Product Name" &amp; "Company Identifier" for your app</p>
+<p>Fill in the <em>Product Name</em> and <em>Company Identifier</em> for your app</p>
 
 <p><img src="img/guide/getting-started/ios/xcode4-name_your_app.png" alt="" title=""></p>
 </li>
-<li><p><strong>IMPORTANT! DO NOT CHECK</strong> the "Use Automatic Reference Counting" checkbox </p></li>
-<li>Select the <strong>Next</strong> button</li>
+<li><p><strong>Note:</strong> Do <strong>not</strong> check <em>Use Automatic Reference Counting</em></p></li>
+<li>Select the <em>Next</em> button</li>
+<li>Choose a folder to save your new app</li>
+<li>Select the <em>Create</em> button</li>
+</ul>
+<p>We've now created an Apache Cordova project. Next, we need to associate the
+project with a web directory. We need to do this step because of a limitation
+in Xcode project templates.</p>
+
+<ul>
 <li>
-<strong>Choose a folder</strong> to save your new app in</li>
-<li>Select the <strong>Create</strong> button, this will create your project</li>
-<li>
-<p>Select the <strong>Run</strong> button in the top left corner. Your build should succeed and launch in the iOS Simulator</p>
+<p>Select the <em>Run</em> button in the top left corner. </p>
 
-<p>a. You should see an error in the iOS Simulator informing you that <strong>www/index.html</strong> was not found</p>
-
-<p>b. To fix this, we need to add a folder reference to the <strong>www</strong> directory into the project. </p>
-
+<ul>
+<li>your build should succeed and launch in the iOS Simulator</li>
+<li>you should see an error in the iOS Simulator informing you that <em>www/index.html was not found</em>
+</li>
+<li>we can fix this by adding a folder to the project that references <code>www</code>
+</li>
+</ul>
 <p><img src="img/guide/getting-started/ios/index-not-found.png" alt="" title=""></p>
 </li>
-<li><p><strong>Right-click</strong> on the project icon in the Project Navigator (left sidebar) and select <strong>Show in Finder</strong></p></li>
+<li><p>Right-click on the project icon in the <em>Project Navigator</em> (left sidebar) and select <em>Show in Finder</em></p></li>
 <li>
-<p><strong>In the Finder</strong>, you should see the <strong>www</strong> directory beside your project</p>
+<p>Using Finder, you should see a <code>www</code> directory inside your project</p>
 
 <p><img src="img/guide/getting-started/ios/www-folder.png" alt="" title=""></p>
 </li>
 <li>
-<p><strong>IMPORTANT</strong>! <strong>Drag</strong> the <strong>www</strong> folder into Xcode 4. <strong>Don't</strong> drag the www folder into your app's folder. <strong>It needs to be dragged into Xcode 4.</strong> For example, you would drag and drop it on the <strong>highlighted red section</strong> of the HelloWorld project shown below.</p>
+<p>Drag the <code>www</code> directory into Xcode</p>
 
+<ul>
+<li>A common mistake is to drag the <code>www</code> directory into your app's directory inside of Finder</li>
+<li>Please follow the red highlighted section of the image below:</li>
+</ul>
 <p><img src="img/guide/getting-started/ios/project.jpg" alt="" title=""></p>
 </li>
-<li>A window sheet should slide down with a few options, after the <strong>"www"</strong> folder has been dragged and dropped into the project. </li>
 <li>
-<p>Select the radio-button <strong>Create folder references for any added folders</strong>.</p>
+<p>After dragging <code>www</code> into Xcode, you will be prompted with a few options.</p>
 
+<ul>
+<li>Select <em>Create folder references for any added folders</em>
+</li>
+<li>Select the <em>Finish</em> button</li>
+</ul>
+<p></p>
 <p><img src="img/guide/getting-started/ios/create-folder-reference.png" alt="" title=""></p>
 </li>
-<li><p>Select the <strong>Finish</strong> button</p></li>
 </ul>
 <h2>
-<a name="Getting%20Started%20with%20iOS_4_hello_world">4. Hello World</a>
+<a name="Getting%20Started%20with%20iOS_hello_world">Hello World</a>
 </h2>
 
 <ul>
-<li>Select the folder named <strong>www</strong> in your Project Navigator in Xcode</li>
-<li>Select the <strong>index.html</strong> file</li>
-<li>Type <code>&lt;h1&gt;Hello World&lt;/h1&gt;</code> after the <code>&lt;body&gt;</code> tag</li>
+<li>Select the folder named <code>www</code> in the Xcode <em>Project Navigator</em>
+</li>
+<li>Select the file <code>index.html</code>
+</li>
+<li>
+<p>Add the following after <code>&lt;body&gt;</code>:</p>
+
+<pre class="prettyprint"><code>&lt;h1&gt;Hello World&lt;/h1&gt;
+</code></pre>
+</li>
 </ul>
 <p>You can also add any associated JavaScript and CSS files there as well.</p>
 
 <h2>
-<a name="Getting%20Started%20with%20iOS_5a_deploy_to_simulator">5A. Deploy to Simulator</a>
+<a name="Getting%20Started%20with%20iOS_deploy_to_simulator">Deploy to Simulator</a>
 </h2>
 
 <ul>
-<li>Change the Active SDK in the Scheme drop-down menu on the toolbar to <strong>iOS version# Simulator</strong>.</li>
-<li>Select the <strong>Run</strong> button in your project window's toolbar</li>
+<li>Change the <em>Active SDK</em> in the Scheme drop-down menu on the toolbar to <em>iOS version Simulator</em>
+</li>
+<li>Select the <em>Run</em> button in your project window's toolbar</li>
 </ul>
 <h2>
-<a name="Getting%20Started%20with%20iOS_5b_deploy_to_device">5B. Deploy to Device
+<a name="Getting%20Started%20with%20iOS_deploy_to_device">Deploy to Device
 </a>
 </h2>
 
 <ul>
-<li>Open [AppName]-Info.plist (where [AppName] is your application's name), under the "Supporting Files" group</li>
-<li>Change <strong>BundleIdentifier</strong> to the identifier provided by Apple, or your own bundle identifier. If you have a developer license, you can access and run the Assistant <a class="external" href="http://developer.apple.com/iphone/manage/overview/index.action">here</a> and register your app.</li>
-<li>Change the Active SDK in the Scheme drop-down menu on the toolbar to <strong>[DEVICENAME]</strong> where [DEVICENAME] is the name of the device you want to deploy to.</li>
+<li>Open <code>YourAppName-Info.plist</code>, under the <em>Supporting Files</em> group</li>
+<li>Change <em>BundleIdentifier</em> to the identifier provided by Apple or your own bundle identifier
+<ul>
+<li>If you have a developer license, you can run the <a class="external" href="http://developer.apple.com/iphone/manage/overview/index.action">Assistant</a> to register your app</li>
+</ul>
+</li>
+<li>Change the <em>Active SDK</em> in the Scheme drop-down menu on the toolbar to <em>YourDeviceName</em>
+<ul>
+<li>You will need to have your device connected via USB</li>
+</ul>
+</li>
 <li>
-<p>Select the <strong>Run</strong> button in your project window's toolbar</p>
+<p>Select the <em>Run</em> button in your project window's toolbar</p>
 
 <p><img src="img/guide/getting-started/ios/HelloWorldiPhone4.png" alt="" title=""></p>
 </li>
 </ul>
 <h2>
-<a name="Getting%20Started%20with%20iOS_done">Done!</a>
+<a name="Getting%20Started%20with%20iOS_build_your_app">Build Your App</a>
 </h2>
 
-<p>Add more HTML, CSS and JavaScript to your <strong>www</strong> folder outside of Xcode, your file additions will be picked up automatically inside Xcode.</p>
+<p>You now have an Xcode project setup and you can build and run on the simulator and device.
+It is important to understand that you do not need to use Xcode to write your web application.
+You can use your favourite text editor and simply rebuild your project using Xcode.
+Xcode will automatically detect the files that are changed in <code>www</code>.</p>
 
             </div>
         </div>

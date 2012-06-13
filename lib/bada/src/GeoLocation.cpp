@@ -52,15 +52,15 @@ GeoLocation::Run(const String& command) {
 		}
 		AppLogDebug("Method %S, Callback: %S", method.GetPointer(), callbackId.GetPointer());
 		// used to determine callback ID
-		if(method == L"com.cordova.Geolocation.watchPosition" && !callbackId.IsEmpty() && !IsWatching()) {
+		if(method == L"org.apache.cordova.Geolocation.watchPosition" && !callbackId.IsEmpty() && !IsWatching()) {
 			AppLogDebug("watching position...");
 			StartWatching();
 		}
-		if(method == L"com.cordova.Geolocation.stop" && IsWatching()) {
+		if(method == L"org.apache.cordova.Geolocation.stop" && IsWatching()) {
 			AppLogDebug("stop watching position...");
 			StopWatching();
 		}
-		if(method == L"com.cordova.Geolocation.getCurrentPosition" && !callbackId.IsEmpty() && !IsWatching()) {
+		if(method == L"org.apache.cordova.Geolocation.getCurrentPosition" && !callbackId.IsEmpty() && !IsWatching()) {
 			AppLogDebug("getting current position...");
 			GetLastKnownLocation();
 		}

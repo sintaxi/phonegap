@@ -43,7 +43,7 @@ Contacts::Run(const String& command) {
 		}
 		strTok.GetNextToken(callbackId);
 		// Saving a new contact
-		if(method == L"com.cordova.Contacts.save" && !callbackId.IsEmpty()) {
+		if(method == L"org.apache.cordova.Contacts.save" && !callbackId.IsEmpty()) {
 			String contactId;
 			strTok.GetNextToken(contactId);
 			int cid = -1;
@@ -55,12 +55,12 @@ Contacts::Run(const String& command) {
 			AppLogDebug("Method %S callbackId %S contactId %d", method.GetPointer(), callbackId.GetPointer(), cid);
 			Create(cid);
 		// Finding an exisiting contact by Name/Phone Number/Email
-		} else if(method == L"com.cordova.Contacts.find" && !callbackId.IsEmpty()) {
+		} else if(method == L"org.apache.cordova.Contacts.find" && !callbackId.IsEmpty()) {
 			String filter;
 			strTok.GetNextToken(filter);
 			AppLogDebug("Method %S callbackId %S filter %S", method.GetPointer(), callbackId.GetPointer(), filter.GetPointer());
 			Find(filter);
-		} else if(method == L"com.cordova.Contacts.remove" && !callbackId.IsEmpty()) {
+		} else if(method == L"org.apache.cordova.Contacts.remove" && !callbackId.IsEmpty()) {
 			String id;
 			strTok.GetNextToken(id);
 			AppLogDebug("Method %S callbackId %S ID to remove %S", method.GetPointer(), callbackId.GetPointer(), id.GetPointer());

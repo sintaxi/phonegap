@@ -1,5 +1,5 @@
 {
-	"id": "com.cordova.webos",
+	"id": "org.apache.cordova.webos",
 	"version": "0.0.1",
 	"vendor": "Palm",
 	"type": "web",

@@ -52,7 +52,7 @@ Network::Run(const String& command) {
 		Uri uri;
 		uri.SetUri(hostAddr);
 		AppLogDebug("Method %S, callbackId %S, hostAddr %S URI %S", method.GetPointer(), callbackId.GetPointer(), hostAddr.GetPointer(), uri.ToString().GetPointer());
-		if(method == L"com.cordova.Network.isReachable") {
+		if(method == L"org.apache.cordova.Network.isReachable") {
 			IsReachable(uri.ToString());
 		}
 		AppLogDebug("Network command %S completed", command.GetPointer());

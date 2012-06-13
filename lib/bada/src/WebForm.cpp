@@ -151,28 +151,28 @@ WebForm::OnLoadingCompleted() {
 
 	// Analyzing Cordova command
 	if(__cordovaCommand) {
-		if(__cordovaCommand->StartsWith(L"gap://com.cordova.Geolocation", 0)) {
+		if(__cordovaCommand->StartsWith(L"gap://org.apache.cordova.Geolocation", 0)) {
 			geolocation->Run(*__cordovaCommand);
 		}
-		else if(__cordovaCommand->StartsWith(L"gap://com.cordova.Accelerometer", 0)) {
+		else if(__cordovaCommand->StartsWith(L"gap://org.apache.cordova.Accelerometer", 0)) {
 			accel->Run(*__cordovaCommand);
 		}
-		else if(__cordovaCommand->StartsWith(L"gap://com.cordova.Network", 0)) {
+		else if(__cordovaCommand->StartsWith(L"gap://org.apache.cordova.Network", 0)) {
 			network->Run(*__cordovaCommand);
 		}
-		else if(__cordovaCommand->StartsWith(L"gap://com.cordova.DebugConsole", 0)) {
+		else if(__cordovaCommand->StartsWith(L"gap://org.apache.cordova.DebugConsole", 0)) {
 			console->Run(*__cordovaCommand);
 		}
-		else if(__cordovaCommand->StartsWith(L"gap://com.cordova.Compass", 0)) {
+		else if(__cordovaCommand->StartsWith(L"gap://org.apache.cordova.Compass", 0)) {
 			compass->Run(*__cordovaCommand);
 		}
-		else if(__cordovaCommand->StartsWith(L"gap://com.cordova.Contacts", 0)) {
+		else if(__cordovaCommand->StartsWith(L"gap://org.apache.cordova.Contacts", 0)) {
 			contacts->Run(*__cordovaCommand);
 		}
-		else if(__cordovaCommand->StartsWith(L"gap://com.cordova.Notification", 0)) {
+		else if(__cordovaCommand->StartsWith(L"gap://org.apache.cordova.Notification", 0)) {
 			notification->Run(*__cordovaCommand);
 		}
-		else if(__cordovaCommand->StartsWith(L"gap://com.cordova.Camera", 0)) {
+		else if(__cordovaCommand->StartsWith(L"gap://org.apache.cordova.Camera", 0)) {
 			camera->Run(*__cordovaCommand);
 		}
 		// Tell the JS code that we got this command, and we're ready for another
