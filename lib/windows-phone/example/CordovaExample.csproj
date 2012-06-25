@@ -74,7 +74,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Xml" />
-    <Reference Include="WP7CordovaClassLib, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="WP7CordovaClassLib, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -97,31 +97,57 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CordovaSourceDictionary.xml" />
+    <Content Include="CordovaSourceDictionary.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="GapLib\WP7CordovaClassLib.dll" />
-    <Content Include="www\cordova-1.8.1.js" />
-    <Content Include="www\network.html" />
-    <Content Include="www\notification.html" />
+    <Content Include="www\cordova-1.9.0.js" />
+    <Content Include="www\network.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="www\notification.html">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="www\storage.html">
       <SubType>Designer</SubType>
     </Content>
     <None Include="BuildManifestProcessor.js" />
-    <Content Include="www\accelerometer.html" />
-    <Content Include="www\accelerometer2.html" />
-    <Content Include="www\audio.html" />
-    <Content Include="www\calculator.html" />
-    <Content Include="www\camera.html" />
-    <Content Include="www\capture.html" />
+    <Content Include="www\accelerometer.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="www\accelerometer2.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="www\audio.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="www\calculator.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="www\camera.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="www\capture.html">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="www\compass.html">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="www\contacts.html" />
-    <Content Include="www\events.html" />
-    <Content Include="www\file.html" />
+    <Content Include="www\contacts.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="www\events.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="www\file.html">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="www\index.html">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="www\location.html" />
+    <Content Include="www\location.html">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="www\master.css" />
     <None Include="Properties\AppManifest.xml">
       <SubType>Designer</SubType>

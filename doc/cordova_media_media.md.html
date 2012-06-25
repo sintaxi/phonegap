@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="1.8.1">1.8.1</option>
+<option selected value="1.9.0rc1">1.9.0rc1</option>
+<option value="1.8.1">1.8.1</option>
 <option value="1.8.0rc1">1.8.0rc1</option>
 <option value="1.8.0">1.8.0</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
@@ -156,6 +157,7 @@
 <h1>Guides</h1>
 <ul>
 <li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
+<li><a href="guide_command-line_index.md.html#Command-Line%20Usage">Command-Line Usage</a></li>
 <li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
 <li><a href="guide_whitelist_index.md.html#Domain%20Whitelist%20Guide">Domain Whitelist Guide</a></li>
 <li><a href="_index.html">Keyword Index</a></li>
@@ -376,7 +378,7 @@
       &lt;head&gt;
         &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-        &lt;script type="text/javascript" charset="utf-8" src="cordova-1.8.1.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -529,7 +531,7 @@
       &lt;head&gt;
         &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-        &lt;script type="text/javascript" charset="utf-8" src="cordova-1.8.1.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -687,7 +689,7 @@ function playAudio(url) {
       &lt;head&gt;
         &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-        &lt;script type="text/javascript" charset="utf-8" src="cordova-1.8.1.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -840,7 +842,7 @@ function playAudio(url) {
       &lt;head&gt;
         &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-        &lt;script type="text/javascript" charset="utf-8" src="cordova-1.8.1.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -958,6 +960,15 @@ function playAudio(url) {
 myMedia.play({ numberOfLoops: 2 })
 </code></pre>
 </li>
+<li>
+<p><strong>playAudioWhenScreenIsLocked</strong></p>
+
+<p>Pass in this option to the <strong>play</strong> method to specify whether you want to play the audio of the media file when the screen is locked (this defaults to true if not set). If this is set to true, it will ignore the state of the hardware mute button. e.g:</p>
+
+<pre class="prettyprint"><code>var myMedia = new <a href="cordova_media_media.md.html#Media">Media</a>("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3")
+myMedia.play({ playAudioWhenScreenIsLocked : false })
+</code></pre>
+</li>
 </ul>
 <hr>
 <h1><a name="media.release">media.release</a></h1>
@@ -1006,7 +1017,7 @@ myMedia.play({ numberOfLoops: 2 })
       &lt;head&gt;
         &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-        &lt;script type="text/javascript" charset="utf-8" src="cordova-1.8.1.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -1158,7 +1169,7 @@ myMedia.play({ numberOfLoops: 2 })
       &lt;head&gt;
         &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-        &lt;script type="text/javascript" charset="utf-8" src="cordova-1.8.1.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -1309,7 +1320,7 @@ function recordAudio() {
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.8.1.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -1447,7 +1458,7 @@ function playAudio(url) {
       &lt;head&gt;
         &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-        &lt;script type="text/javascript" charset="utf-8" src="cordova-1.8.1.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -1605,7 +1616,7 @@ function recordAudio() {
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.8.1.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load

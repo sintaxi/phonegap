@@ -20,6 +20,7 @@ using System.Net;
 using System.Runtime.Serialization;
 using System.Windows;
 using System.Security;
+using System.Diagnostics;
 
 namespace WP7CordovaClassLib.Cordova.Commands
 {
@@ -108,7 +109,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
             /// Additional options
             /// </summary>
             [DataMember(Name="params")]
-            public Dictionary<string,object> Params { get; set; }
+            public string Params { get; set; }
  
             /// <summary>
             /// Flag to recognize if we should trust every host (only in debug environments)
@@ -190,12 +191,40 @@ namespace WP7CordovaClassLib.Cordova.Commands
             public int Code { get; set; }
 
             /// <summary>
+            /// The source URI
+            /// </summary>
+            [DataMember(Name = "source", IsRequired = true)]
+            public string Source { get; set; }
+
+            /// <summary>
+            /// The target URI
+            /// </summary>
+            [DataMember(Name = "target", IsRequired = true)]
+            public string Target { get; set; }
+
+            /// <summary>
+            /// The http status code response from the remote URI
+            /// </summary>
+            [DataMember(Name = "http_status", IsRequired = true)]
+            public int HttpStatus { get; set; }
+
+            /// <summary>
             /// Creates FileTransferError object
             /// </summary>
             /// <param name="errorCode">Error code</param>
             public FileTransferError(int errorCode)
             {
                 this.Code = errorCode;
+                this.Source = null;
+                this.Target = null;
+                this.HttpStatus = 0;
+            }
+            public FileTransferError(int errorCode, string source, string target, int status)
+            {
+                this.Code = errorCode;
+                this.Source = source;
+                this.Target = target;
+                this.HttpStatus = status;
             }
         }
 
@@ -215,6 +244,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
         /// <param name="options">Upload options</param>
         public void upload(string options)
         {
+            Debug.WriteLine("options = " + options);
             options = options.Replace("{}", "null");
 
             try
@@ -236,7 +266,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                 }
                 catch (Exception)
                 {
-                    DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR,new FileTransferError(InvalidUrlError)));
+                    DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR,new FileTransferError(InvalidUrlError, uploadOptions.Server, null, 0)));
                     return;
                 }
                 HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(serverUri);
@@ -271,7 +301,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
             }
             catch (Exception)
             {
-                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new FileTransferError(InvalidUrlError)));
+                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new FileTransferError(InvalidUrlError, downloadOptions.Url, null, 0)));
                 return;
             }
 
@@ -300,7 +330,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
             {
                 HttpWebResponse response = (HttpWebResponse)request.EndGetResponse(asynchronousResult);
 
-                 using (IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForApplication())
+                using (IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForApplication())
                 {
                     // create the file if not exists
                     if (!isoFile.FileExists(reqState.options.FilePath))
@@ -315,7 +345,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                         int bytesRead = 0;
                         using (BinaryReader reader = new BinaryReader(response.GetResponseStream()))
                         {
-                           
+
                             using (BinaryWriter writer = new BinaryWriter(fileStream))
                             {
                                 int BUFFER_SIZE = 1024;
@@ -338,31 +368,46 @@ namespace WP7CordovaClassLib.Cordova.Commands
                                         break;
                                     }
                                 }
-                            }  
+                            }
 
                         }
 
-                      
+
                     }
                 }
-                 WP7CordovaClassLib.Cordova.Commands.File.FileEntry entry = new WP7CordovaClassLib.Cordova.Commands.File.FileEntry(reqState.options.FilePath);
-                 DispatchCommandResult(new PluginResult(PluginResult.Status.OK, entry));
+                WP7CordovaClassLib.Cordova.Commands.File.FileEntry entry = new WP7CordovaClassLib.Cordova.Commands.File.FileEntry(reqState.options.FilePath);
+                DispatchCommandResult(new PluginResult(PluginResult.Status.OK, entry));
             }
             catch (IsolatedStorageException)
             {
-               // DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new ErrorCode(INVALID_MODIFICATION_ERR)));
+                // Trying to write the file somewhere within the IsoStorage.
+                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new FileTransferError(FileNotFoundError)));
             }
             catch (SecurityException)
             {
-                //DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new ErrorCode(SECURITY_ERR)));
+                // Trying to write the file somewhere not allowed.
+                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new FileTransferError(FileNotFoundError)));
             }
-            catch (Exception ex)
+            catch (WebException webex)
             {
-                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new File.ErrorCode(File.NOT_FOUND_ERR)));
+                // TODO: probably need better work here to properly respond with all http status codes back to JS
+                // Right now am jumping through hoops just to detect 404.
+                if ((webex.Status == WebExceptionStatus.ProtocolError && ((HttpWebResponse)webex.Response).StatusCode == HttpStatusCode.NotFound) || webex.Status == WebExceptionStatus.UnknownError)
+                {
+                    // Weird MSFT detection of 404... seriously... just give us the f(*&#$@ status code as a number ffs!!!
+                    // "Numbers for HTTP status codes? Nah.... let's create our own set of enums/structs to abstract that stuff away."
+                    // FACEPALM
+                    DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new FileTransferError(ConnectionError, null, null, 404)));
+                }
+                else
+                {
+                    DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new FileTransferError(ConnectionError)));
+                }
             }
-
-
-                                
+            catch (Exception)
+            {
+                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new FileTransferError(FileNotFoundError)));
+            }             
         }
 
 
@@ -385,11 +430,16 @@ namespace WP7CordovaClassLib.Cordova.Commands
 
                     if (uploadOptions.Params != null)
                     {
-                        Dictionary<string, object> customParams = uploadOptions.Params;
-                        foreach (string key in customParams.Keys)
+                        
+                        string[] arrParams = uploadOptions.Params.Split(new []{'&'},StringSplitOptions.RemoveEmptyEntries);
+
+                        foreach (string param in arrParams)
                         {
+                            string[] split = param.Split('=');
+                            string key = split[0];
+                            string val = split[1];
                             requestStream.Write(boundaryBytes, 0, boundaryBytes.Length);
-                            string formItem = string.Format(formdataTemplate, key, customParams[key]);
+                            string formItem = string.Format(formdataTemplate, key, val);
                             byte[] formItemBytes = System.Text.Encoding.UTF8.GetBytes(formItem);
                             requestStream.Write(formItemBytes, 0, formItemBytes.Length);
                         }
@@ -399,7 +449,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                     {
                         if (!isoFile.FileExists(uploadOptions.FilePath))
                         {
-                            DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new FileTransferError(FileNotFoundError)));
+                            DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new FileTransferError(FileNotFoundError, uploadOptions.Server, uploadOptions.FilePath, 0)));
                             return;
                         }
 
@@ -444,25 +494,26 @@ namespace WP7CordovaClassLib.Cordova.Commands
             {
                 HttpWebRequest webRequest = (HttpWebRequest)asynchronousResult.AsyncState;
                 using (HttpWebResponse response = (HttpWebResponse)webRequest.EndGetResponse(asynchronousResult))
-                {                       
+                {
                     using (Stream streamResponse = response.GetResponseStream())
                     {
                         using (StreamReader streamReader = new StreamReader(streamResponse))
                         {
                             string responseString = streamReader.ReadToEnd();
-                            Deployment.Current.Dispatcher.BeginInvoke(() => 
-                            { 
-                                DispatchCommandResult(new PluginResult(PluginResult.Status.OK, new FileUploadResult(bytesSent, (long)response.StatusCode, responseString))); 
-                            });                            
+                            Deployment.Current.Dispatcher.BeginInvoke(() =>
+                            {
+                                DispatchCommandResult(new PluginResult(PluginResult.Status.OK, new FileUploadResult(bytesSent, (long)response.StatusCode, responseString)));
+                            });
                         }
                     }
                 }
             }
             catch (Exception)
             {
-                Deployment.Current.Dispatcher.BeginInvoke(() => 
-                { 
-                    DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new FileTransferError(ConnectionError)));
+                Deployment.Current.Dispatcher.BeginInvoke(() =>
+                {
+                    FileTransferError transferError = new FileTransferError(ConnectionError, uploadOptions.Server, uploadOptions.FilePath, 403);
+                    DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, transferError));
                 });
             }
         }

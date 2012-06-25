@@ -1,7 +1,7 @@
 {
 	"id": "org.apache.cordova.webos",
 	"version": "0.0.1",
-	"vendor": "Palm",
+	"vendor": "HP",
 	"type": "web",
 	"main": "index.html",
 	"title": "Cordova WebOS",

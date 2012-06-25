@@ -1,0 +1,84 @@
+#! /bin/sh
+
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+# 
+# http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#  KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+
+#
+# create a Cordova/iOS project
+# 
+# USAGE
+#   ./create [path package name]
+#
+# EXAMPLE
+#  ./create ~/Desktop/radness org.apache.cordova.radness Radness
+#
+set -e
+
+BINDIR=$( cd "$( dirname "$0" )" && pwd )
+PROJECT_PATH=${1:-"./example"}
+PACKAGE=${2:-"org.apache.cordova.example"}
+ACTIVITY=${3:-"CordovaExample"}
+
+# clobber any existing example
+if [ $# -eq 0 ]
+then
+    rm -rf $PROJECT_PATH
+fi
+
+# copy the files in; then modify them
+cp -r $BINDIR/templates/project $PROJECT_PATH
+
+# I've tried to be thorough in my documentation of the manual actions below...
+# on first brush it would seem that the right solution would be to brute force
+# recurse the directory tree renaming instances of __ID__ and __TESTING__ ...however this is a little blunt
+# and while so the below is too being very manual it was/is easier to test, fucking manually, and sort out the automation
+
+# rename the folders/files:
+#
+# - ./__TESTING__.xcodeproj/
+# - ./__TESTING__/
+# - ./__TESTING__/__TESTING__-info.plist
+# - ./__TESTING__/__TESTING__-Prefix.plist
+mv $PROJECT_PATH/__TESTING__.xcodeproj $PROJECT_PATH/$ACTIVITY.xcodeproj
+mv $PROJECT_PATH/__TESTING__ $PROJECT_PATH/$ACTIVITY
+mv $PROJECT_PATH/$ACTIVITY/__TESTING__-info.plist $PROJECT_PATH/$ACTIVITY/$ACTIVITY-info.plist
+mv $PROJECT_PATH/$ACTIVITY/__TESTING__-Prefix.pch $PROJECT_PATH/$ACTIVITY/$ACTIVITY-Prefix.pch
+
+# lets store a reference to the root
+R=$PROJECT_PATH/$ACTIVITY
+
+# replace __TESTING__ and --ID-- with ACTIVITY and ID strings, respectively, in:
+#
+# - ./__TESTING__.xcodeproj/project.pbxproj
+# - ./__TESTING__/Classes/AppDelegate.h
+# - ./__TESTING__/Classes/AppDelegate.m
+# - ./__TESTING__/Resources/main.m
+# - ./__TESTING__/Resources/__TESTING__-info.plist
+# - ./__TESTING__/Resources/__TESTING__-Prefix.plist
+
+$BINDIR/replaces $R.xcodeproj/project.pbxproj __TESTING__ $ACTIVITY
+$BINDIR/replaces $R/Classes/AppDelegate.h     __TESTING__ $ACTIVITY
+$BINDIR/replaces $R/Classes/AppDelegate.m     __TESTING__ $ACTIVITY
+$BINDIR/replaces $R/Classes/MainViewController.h     __TESTING__ $ACTIVITY
+$BINDIR/replaces $R/Classes/MainViewController.m     __TESTING__ $ACTIVITY
+$BINDIR/replaces $R/main.m                    __TESTING__ $ACTIVITY
+$BINDIR/replaces $R/$ACTIVITY-info.plist      __TESTING__ $ACTIVITY
+$BINDIR/replaces $R/$ACTIVITY-Prefix.pch      __TESTING__ $ACTIVITY
+
+$BINDIR/replaces $R/$ACTIVITY-info.plist --ID-- $PACKAGE

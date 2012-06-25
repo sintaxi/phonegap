@@ -1,53 +1,220 @@
 ChangeLog
 ios
-Shazron Abdullah (6):
-      Implemented CB-857 - Add deprecation notice if user is running iOS lesser than 4.2
-      Fixed CB-506 - images taken via Camera.getPicture do not get deleted
-      Fixes CB-885 - Crash when sliding the notification tray and/or tel link confirm dialog
-      Added 1.8.1 cordova-js
-      Updated VERSION to 1.8.1
-      Updated Release Notes for 1.8.1
+Fil Maj (1):
+      [CB-943] decrease accelerometer interval from 100ms to 40ms
+
+Shazron Abdullah (16):
+      Fixes CB-915 - Pause/resume events get fired twice
+      Fixes CB-877 - Opening a .doc file under iOS causes the file system API to break (and any other plugins that may use NSMutableArray pop)
+      Fixes CB-864 - Failure in writing a large file blocks Cordova
+      Fixes CB-907 - Wrong URL encoding when downloading/uploading files from/to URLs with Unicode characters in the path
+      Fixes CB-906 - Hardware mute button doesn't effect Media API playback
+      Removed conditionals #ifdef __IPHONE_3_0
+      Fixes CB-879 - Support to set the volume when playing short sounds
+      Enhanced CB-471 - LocalFileSystem.PERSISTENT "do not back up" file attribute iOS. Supports new iOS 5.1 iCloud Backup attribute (the old way is deprecated, and only for iOS 5.0.1)
+      Fixed CB-748 - refactored-UUID is broken and changes over time (changed according to Apple's guidelines for this)
+      Fixes CB-647 - Prefix/Namespace common native libraries
+      Fixes CB-942 - iOS failing FileTransfer malformed URL tests
+      Update VERSION to 1.9.0rc1
+      Updated cli-based project template to 1.9.0rc1
+      Added Apache v2.0 license to files that Apache RAT is complaining about.
+      Fixes CB-948 - Update Guides for 1.9.0
+      Added 1.9.0rc1 cordova-js
 
 blackberry
-Tim Kim (1):
-      1.8.1
+Fil Maj (5):
+      [CB-606] Added create script for unix and windows
+      removed node modules from version control, whoops
+      added debug and emulate commands. log not possible on BB/PB
+      Removed unused scripts/cruft.
+      Added debug flag parameter being passed to widget packager inside ./debug script
+
+Tim Kim (2):
+      [CB-752] Implement saveToPhotoAlbum CameraOption on bb device
+      Updating to 1.9.0rc1
 
 android
-Joe Bowser (2):
-      Updating the JS and the version for tagging
-      Incrementing version for tagging
+Anis Kadri (21):
+      adding a new create script
+      updating script to cleanup on exit/error
+      testing create2 script
+      updating Windows !@#% build script
+      removing old create and templates
+      renaming create2 and templates2
+      updating templates reference
+      renaming create2
+      updating cordova.js version
+      fixing create script
+      adding tools verification to batch file
+      updating build.xml templates reference
+      checking if project exits
+      updated reference in test
+      deleting old stuff
+      updating test for CB-916
+      adding bash helper scripts
+      updating bash create script and node test
+      adding appinfo
+      updating windows create.js and creating node test
+      updating windows create.js and creating node test
+
+Bryce Curtis (21):
+      Updates.
+      Formating and removal of commented code.
+      Updates.
+      Add exit message.
+      Update
+      Removed.
+      Merging nightmare.
+      Update for getActivity().
+      Add comments.
+      Enable onMessage() to return a value.
+      CB-369: Authentication Code doesn't seem to work.  -- Verified basic auth works and provided test case.
+      CB-779: Verify that fullscreen and backgroundColor preferences are set properly - This check-in enables fullscreen and adds test for it.
+      CB-779: Verify that fullscreen and backgroundColor preferences are set properly - This check-in enables background color and adds test for it.
+      CB-779: Verify that fullscreen and backgroundColor preferences are set properly - This check-in enables background color and adds test for it.
+      Add usage comment.
+      Remove unused imports.
+      CB-800: Fix preferences for the CordovaWebView. - Test case needed to implement CordovaInterface.
+      Optimize loading "about:blank"
+      Need to call pluginManager.onDestroy() to clean up plugins.
+      Backbutton broken by adding new onKeyDown method without calling its super.
+      Fix exception when defaultValue=null.
+
+Darryl Pogue (1):
+      Support showing the app title bar through a preference.
+
+Fil Maj (2):
+      CB-481 refactored prompt() call in JS to exec, moved showing of webview out of chrome client and into app plugin (so we can invoke via exec)
+      small tweaks to readme re: testing
+
+Joe Bowser (70):
+      Creating the CordovaWebView, modifying DroidGap to use that
+      Adding the tests from the GitHub Prototype
+      Cleaning out the asssets/www directory.  This should house mobile-spec
+      Work on CB-369, Moving Authentication OUT of DroidGap
+      Moving whitelisting into the WebView, still need to read the config in the WebView if required
+      Moving init code into the WebView
+      Partially moved the callback server into the WebView.  The WebView MUST own the CordovaWebViewClient and the CordovaWebChromeClient
+      Minor tweaks to DroidGap, allows for the ChromeClient and ViewClient to be overridden
+      Move the callback server into the View, preparing to start CordovaWebView testing
+      Tweaking DroidGap so it compiles into a JAR, starting testing
+      Updating the tests a bit, still not running
+      Fixing the manifest errors
+      Managed to get this building minus Jail Activity, still a long way to go
+      Rolling back half-baked change that broke the code in the branch, we need to rethink the Callback Server
+      Working. Pushing the callback server change again.
+      Massive refactor of CordovaInterface. Deprecation and Exception throwing to notify the user that we're changing things
+      Updated tweaks to get up and running
+      Removing runnable code for timeout because it's not thread-safe
+      Adding old code back, we can't access webViewClient methods without them being on the UI thread. :(
+      Added another runnable, this code is hideously awful
+      Removing Jail functions for now
+      Removing the cordova jar, it shouldn't be in the repo
+      Adding the CordovaException class
+      Changing viewClient to default visibility
+      Fixed the bug caused when running on Eclipse
+      Minor tweak to the test so it loads the correct HTML
+      Starting to move the history into the CordovaWebView, and getting the WebDriver working again
+      Tweaks to move history over into the WebView
+      Adding screenshot and activity to the test, although Actvity isn't a standard plugin
+      Moving preferences into CordovaWebView, need to discuss prefs when using CordovaWebView
+      Working on CB-585
+      Adding Apache headers to the new classes
+      Adding Apache headers to the tests on the branch
+      Removing the hacked-up jars that I used to get this to work, since I can't distribute them
+      Updating the history configuration.  We can switch between histories
+      Added loadConfiguration to the standalone WebView
+      Updating the project, removing generated artifacts
+      Moving the Callback Server Start/Stop to the onPageStarted fixed timing errors
+      A quick stab at CB-510
+      Broke the merge, need to add GPSListener.java
+      Adding empty tests. May have to re-think the way we test this method
+      Updating Activities
+      Forgot to recheck Plugin.  Adding it back
+      Removing tests that don't work and modifying CordovaWebView so it works as a stand-alone component again.  Mobile-spec currently doesn't work
+      Setting up a default CordovaWebViewClient and CordovaChromeClient for when we are blowing up via XML layouts
+      Forgot to add the proper constructor.  The Clients need to know about their webView.
+      First Draft of how to use CordovaWebView
+      Added JUnit to the README, removed WebDriver for now.  Need to figure out distribution.
+      Adding the Cordova Upgrade Guide
+      Removing the classes we agreed were not used
+      Adding tests to the README
+      Two automated tests completed
+      Missed this error in the merge commit
+      Working on tests
+      Weird merge error. Yo dawg, I heard you like catching exceptions, so we put a catch around your catch. FAIL
+      Adding logs
+      CB-582: Automating User WebView/WebViewClient/WebChromeClient tests
+      Adding the WebDriver Tests
+      Fixing up tests
+      This is a poorly written test.  What was I thinking?
+      Fixing up tests
+      This is a poorly written test.  What was I thinking?
+      I think we need to rethink how we automate this test
+      Incrementing version to 1.9.0rc1
+      Removed merge because I missed the preference set
+      Adding more undocumented features for app title bar and full-screen
+      Default should be false not true
+      One more time, getting the title default right
+      Incrementing version to 1.9.0rc1 and doing some variable cleanup
+      Adding updated JS
+
+Julien Bouquillon (4):
+      add volumeupbutton/volumedownbutton events
+      prevent volumeup/down default behaviour
+      listening to volume events now override default behaviour
+      upgrade to latest cordova.android.js
 
 Steven Gill (1):
       updated NOTICE file
 
-macdonst (1):
-      Changing all tabs to spaces
+macdonst (11):
+      CB-878: Splash screen in Android fullscreen mode showing not correct
+      CB-878: Splash screen in Android fullscreen mode showing not correct
+      Adding getContext, startActivity to CordovaInterface
+      Revert: Adding getContext, startActivity to CordovaInterface
+      Removed need for getFormatData/Image to load image into memory
+      CB-920: FileTransfer UTF-8 bug
+      Fixing merge error in FileUtils.notifyDelete
+      CB-883: SplashScreen without show() method, only hide()
+      CB-910: Camera out of memory error
+      CB-919: Camera Plugin returned with empty error message
+      CB-919: Camera Plugin returned with empty error message
 
 windows-phone
-Jesse MacFadyen (2):
-      1.8.1 packaging
-      removed DLL
+Jesse MacFadyen (12):
+      Capture parses EXIF data and rotates image based on EXIF_Orientation
+      camera API rotates image based on EXIF data
+      removed Debug logging, cleanup
+      added license header
+      fixed exiflib link
+      added image capture view - wip
+      CB-668 UploadOptions does not serialize Params
+      update version numbers
+      updated js file
+      update example
+      updated test proj
+      rebuild template for 1.9.0rc1
+
+filmaj (1):
+      [CB-795] Added HTTP status code to WP7 FileTransferError interface. Catches 404 on download.
+
+hermwong (2):
+      CB-570 resize image if user defined width & height provided
+      code formatting ResizePhoto  method name for code consistency
+
+pcibraro (1):
+      Created VS Package for automatically deploying the project template into visual studio
 
 webos
 Herm Wong (1):
-      CB-897 update webos apache headers / license headers
-
-Steven Gill (1):
-      updated Notice file
-
-hermwong (3):
-      CB-899 use org.apache.cordova namespace
-      CB-899 use org.apache.cordova namespace
-      update to version 1.8.1
+      update version to 1.9.0
 
 bada
-Anis Kadri (2):
-      CB-900 using org.apache.cordova namespace
-      updating version to 1.8.1
+Anis Kadri (1):
+      updating version
 
 badaWac
-Anis Kadri (3):
-      updating cordova.js with overriden objects
-      rocking with the latest cordovajs
-      updating VERSION file to 1.8.1
+Anis Kadri (1):
+      updating version
 

@@ -25,6 +25,8 @@ using WP7CordovaClassLib.Cordova.UI;
 using AudioResult = WP7CordovaClassLib.Cordova.UI.AudioCaptureTask.AudioResult;
 using VideoResult = WP7CordovaClassLib.Cordova.UI.VideoCaptureTask.VideoResult;
 using System.Windows;
+using System.Diagnostics;
+using Microsoft.Phone.Controls;
 
 namespace WP7CordovaClassLib.Cordova.Commands
 {
@@ -433,6 +435,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
             }
         }
 
+
         /// <summary>
         /// Handles result of capture to save image information 
         /// </summary>
@@ -458,14 +461,34 @@ namespace WP7CordovaClassLib.Cordova.Commands
                         MediaLibrary library = new MediaLibrary();
                         Picture image = library.SavePicture(fileName, e.ChosenPhoto);
 
+                        int orient = ImageExifHelper.getImageOrientationFromStream(e.ChosenPhoto);
+                        int newAngle = 0;
+                        switch (orient)
+                        {
+                            case ImageExifOrientation.LandscapeLeft :
+                                newAngle = 90;
+                                break;
+                            case ImageExifOrientation.PortraitUpsideDown :
+                                newAngle = 180;
+                                break;
+                            case ImageExifOrientation.LandscapeRight :
+                                newAngle = 270;
+                                break;
+                            case ImageExifOrientation.Portrait : default : break; // 0 default already set
+                        }
+
+                        Stream rotImageStream = ImageExifHelper.RotateStream(e.ChosenPhoto, newAngle);
+
                         // Save image in isolated storage    
 
                         // we should return stream position back after saving stream to media library
-                        e.ChosenPhoto.Seek(0, SeekOrigin.Begin);
-                        byte[] imageBytes = new byte[e.ChosenPhoto.Length];
-                        e.ChosenPhoto.Read(imageBytes, 0, imageBytes.Length);
+                        rotImageStream.Seek(0, SeekOrigin.Begin);
+                        
+                        byte[] imageBytes = new byte[rotImageStream.Length];
+                        rotImageStream.Read(imageBytes, 0, imageBytes.Length);
+                        rotImageStream.Dispose();
                         string pathLocalStorage = this.SaveImageToLocalStorage(fileName, isoFolder, imageBytes);
-
+                        imageBytes = null;
                         // Get image data
                         MediaFile data = new MediaFile(pathLocalStorage, image);
 
@@ -695,7 +718,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                 }
                 string filePath = System.IO.Path.Combine("/" + imageFolder + "/", imageFileName);
 
-                using (var stream = isoFile.CreateFile(filePath))
+                using (IsolatedStorageFileStream stream = isoFile.CreateFile(filePath))
                 {
                     stream.Write(imageBytes, 0, imageBytes.Length);
                 }

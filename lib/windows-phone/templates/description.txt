@@ -1,4 +1,4 @@
 CordovaStarter
 
-Starter project for building a Cordova app for Windows Phone version: 1.8.1 ( formerly PhoneGap )
+Starter project for building a Cordova app for Windows Phone version: 1.9.0rc1 ( formerly PhoneGap )
 

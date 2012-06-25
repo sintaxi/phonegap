@@ -1,5 +1,0 @@
-VERSION=1.8.1
-PROJECT_PATH=./example
-PACKAGE=org.apache.cordova.example
-ACTIVITY=cordovaExample
-TARGET=21

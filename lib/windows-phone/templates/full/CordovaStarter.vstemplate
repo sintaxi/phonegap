@@ -1,0 +1,44 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>CordovaStarter</Name>
+    <Description>Starter project for building a Cordova app for Windows Phone version: 1.7.0 ( formerly PhoneGap )</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>Silverlight for Windows Phone</ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>CordovaStarter</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>pg_templateIcon.png</Icon>
+    <PreviewImage>pg_templatePreview.jpg</PreviewImage>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="GapAppProj.csproj" File="GapAppProj.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="App.xaml">App.xaml</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="App.xaml.cs">App.xaml.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="ApplicationIcon.png">ApplicationIcon.png</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="Background.png">Background.png</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="BuildManifestProcessor.js">BuildManifestProcessor.js</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="CordovaSourceDictionary.xml">CordovaSourceDictionary.xml</ProjectItem>
+      <Folder Name="GapLib" TargetFolderName="GapLib">
+        <ProjectItem ReplaceParameters="false" TargetFileName="WP7CordovaClassLib.dll">WP7CordovaClassLib.dll</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="MainPage.xaml">MainPage.xaml</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="MainPage.xaml.cs">MainPage.xaml.cs</ProjectItem>
+      <Folder Name="Plugins" TargetFolderName="Plugins" />
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AppManifest.xml">AppManifest.xml</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="WMAppManifest.xml">WMAppManifest.xml</ProjectItem>
+      </Folder>
+      <Folder Name="Service References" TargetFolderName="Service References" />
+      <ProjectItem ReplaceParameters="false" TargetFileName="SplashScreenImage.jpg">SplashScreenImage.jpg</ProjectItem>
+      <Folder Name="www" TargetFolderName="www">
+        <ProjectItem ReplaceParameters="true" TargetFileName="cordova-1.7.0.js">cordova-1.7.0.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="index.html">index.html</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="master.css">master.css</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

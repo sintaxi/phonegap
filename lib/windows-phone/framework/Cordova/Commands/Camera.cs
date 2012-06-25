@@ -28,6 +28,8 @@ using System.IO;
 using System.IO.IsolatedStorage;
 using System.Windows.Media.Imaging;
 using Microsoft.Phone;
+using Microsoft.Xna.Framework.Media;
+using System.Diagnostics;
 
 namespace WP7CordovaClassLib.Cordova.Commands
 {
@@ -171,7 +173,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
             if (cameraOptions.PictureSourceType == CAMERA)
             {
                 cameraTask = new CameraCaptureTask();
-                cameraTask.Completed += onTaskCompleted;
+                cameraTask.Completed += onCameraTaskCompleted;
                 cameraTask.Show();
             }
             else
@@ -179,7 +181,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                 if ((cameraOptions.PictureSourceType == PHOTOLIBRARY) || (cameraOptions.PictureSourceType == SAVEDPHOTOALBUM))
                 {
                     photoChooserTask = new PhotoChooserTask();
-                    photoChooserTask.Completed += onTaskCompleted;
+                    photoChooserTask.Completed += onPickerTaskCompleted;
                     photoChooserTask.Show();
                 }
                 else
@@ -190,7 +192,87 @@ namespace WP7CordovaClassLib.Cordova.Commands
 
         }
 
-        public void onTaskCompleted(object sender, PhotoResult e)
+        public void onCameraTaskCompleted(object sender, PhotoResult e)
+        {
+            if (e.Error != null)
+            {
+                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR));
+                return;
+            }
+
+            switch (e.TaskResult)
+            {
+                case TaskResult.OK:
+                    try
+                    {
+                        string imagePathOrContent = string.Empty;
+
+                        if (cameraOptions.DestinationType == FILE_URI)
+                        {
+                            // Save image in media library
+                            // MediaLibrary library = new MediaLibrary();
+                            // Picture pict = library.SavePicture(e.OriginalFileName, e.ChosenPhoto); // to save to photo-roll ...
+
+                            int orient = ImageExifHelper.getImageOrientationFromStream(e.ChosenPhoto);
+                            int newAngle = 0;
+                            switch (orient)
+                            {
+                                case ImageExifOrientation.LandscapeLeft:
+                                    newAngle = 90;
+                                    break;
+                                case ImageExifOrientation.PortraitUpsideDown:
+                                    newAngle = 180;
+                                    break;
+                                case ImageExifOrientation.LandscapeRight:
+                                    newAngle = 270;
+                                    break;
+                                case ImageExifOrientation.Portrait:
+                                default: break; // 0 default already set
+                            }
+
+                            Stream rotImageStream = ImageExifHelper.RotateStream(e.ChosenPhoto, newAngle);
+
+                            // we should return stream position back after saving stream to media library
+                            rotImageStream.Seek(0, SeekOrigin.Begin);
+
+                            WriteableBitmap image = PictureDecoder.DecodeJpeg(rotImageStream);
+
+                            imagePathOrContent = this.SaveImageToLocalStorage(image, Path.GetFileName(e.OriginalFileName));
+
+
+                        }
+                        else if (cameraOptions.DestinationType == DATA_URL)
+                        {
+                            imagePathOrContent = this.GetImageContent(e.ChosenPhoto);
+                        }
+                        else
+                        {
+                            // TODO: shouldn't this happen before we launch the camera-picker?
+                            DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, "Incorrect option: destinationType"));
+                            return;
+                        }
+
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.OK, imagePathOrContent));
+
+                    }
+                    catch (Exception)
+                    {
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, "Error retrieving image."));
+                    }
+                    break;
+
+                case TaskResult.Cancel:
+                    DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, "Selection cancelled."));
+                    break;
+
+                default:
+                    DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, "Selection did not complete!"));
+                    break;
+            }
+
+        }
+
+        public void onPickerTaskCompleted(object sender, PhotoResult e)
         {
             if (e.Error != null)
             {
@@ -217,7 +299,8 @@ namespace WP7CordovaClassLib.Cordova.Commands
                         }
                         else
                         {
-                            DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, "Incorrec option: destinationType"));
+                            // TODO: shouldn't this happen before we launch the camera-picker?
+                            DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, "Incorrect option: destinationType"));
                             return;
                         }
 
@@ -240,7 +323,6 @@ namespace WP7CordovaClassLib.Cordova.Commands
             }
         }
 
-
         /// <summary>
         /// Returns image content in a form of base64 string
         /// </summary>
@@ -250,13 +332,58 @@ namespace WP7CordovaClassLib.Cordova.Commands
         {
             int streamLength = (int)stream.Length;
             byte[] fileData = new byte[streamLength + 1];
-            stream.Read(fileData, 0, streamLength);
-            stream.Close();
+            stream.Read(fileData, 0, streamLength);        
 
-            return Convert.ToBase64String(fileData);
+            //use photo's actual width & height if user doesn't provide width & height
+            if (cameraOptions.TargetWidth < 0 && cameraOptions.TargetHeight < 0)
+            {
+                stream.Close();
+                return Convert.ToBase64String(fileData);                
+            }
+            else
+            {
+                // resize photo
+                byte[] resizedFile = ResizePhoto(stream, fileData);
+                stream.Close();
+                return Convert.ToBase64String(resizedFile);
+            }
         }
 
+        /// <summary>
+        /// Resize image
+        /// </summary>
+        /// <param name="stream">Image stream</param>
+        /// <param name="fileData">File data</param>
+        /// <returns>resized image</returns>
+        private byte[] ResizePhoto(Stream stream, byte[] fileData)
+        {
+            int streamLength = (int)stream.Length;
+            int intResult = 0;
 
+            byte[] resizedFile;
+
+            stream.Read(fileData, 0, streamLength);
+
+            BitmapImage objBitmap = new BitmapImage();
+            MemoryStream objBitmapStream = new MemoryStream(fileData);
+            MemoryStream objBitmapStreamResized = new MemoryStream();
+            WriteableBitmap objWB;
+            objBitmap.SetSource(stream);
+            objWB = new WriteableBitmap(objBitmap);
+
+            // resize the photo with user defined TargetWidth & TargetHeight
+            Extensions.SaveJpeg(objWB, objBitmapStreamResized, cameraOptions.TargetWidth, cameraOptions.TargetHeight, 0, cameraOptions.Quality);
+
+            //Convert the resized stream to a byte array. 
+            streamLength = (int)objBitmapStreamResized.Length;
+            resizedFile = new Byte[streamLength]; //-1 
+            objBitmapStreamResized.Position = 0;
+            //for some reason we have to set Position to zero, but we don't have to earlier when we get the bytes from the chosen photo... 
+            intResult = objBitmapStreamResized.Read(resizedFile, 0, streamLength);
+
+            return resizedFile;
+        }
+        
         /// <summary>
         /// Saves captured image in isolated storage
         /// </summary>

@@ -96,6 +96,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Cordova\Commands\GeoLocation.cs" />
+    <Compile Include="Cordova\Commands\ImageExifHelper.cs" />
     <Compile Include="Cordova\Commands\Media.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -121,6 +122,9 @@
     <Compile Include="Cordova\UI\AudioRecorder.xaml.cs">
       <DependentUpon>AudioRecorder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Cordova\UI\ImageCapture.xaml.cs">
+      <DependentUpon>ImageCapture.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Cordova\UI\NotificationBox.xaml.cs">
       <DependentUpon>NotificationBox.xaml</DependentUpon>
     </Compile>
@@ -141,6 +145,10 @@
     <Page Include="Cordova\UI\AudioRecorder.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Cordova\UI\ImageCapture.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Cordova\UI\NotificationBox.xaml">
       <SubType>Designer</SubType>

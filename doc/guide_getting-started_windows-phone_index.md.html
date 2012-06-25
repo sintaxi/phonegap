@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="1.8.1">1.8.1</option>
+<option selected value="1.9.0rc1">1.9.0rc1</option>
+<option value="1.8.1">1.8.1</option>
 <option value="1.8.0rc1">1.8.0rc1</option>
 <option value="1.8.0">1.8.0</option>
 <option value="1.7.0rc1">1.7.0rc1</option>
@@ -101,6 +102,7 @@
 <h1>Guides</h1>
 <ul>
 <li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
+<li><a href="guide_command-line_index.md.html#Command-Line%20Usage">Command-Line Usage</a></li>
 <li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
 <li><a href="guide_whitelist_index.md.html#Domain%20Whitelist%20Guide">Domain Whitelist Guide</a></li>
 <li><a href="_index.html">Keyword Index</a></li>
@@ -142,7 +144,10 @@
 <ul>
 <li>Download and install <a class="external" href="http://www.microsoft.com/download/en/details.aspx?displaylang=en&amp;id=27570/">Windows Phone  SDK</a>
 </li>
-<li>Donwload the latest copy of <a class="external" href="http://phonegap.com/download">Cordova</a> and extract its contents. We will be working with the Android directory.</li>
+<li>Download the latest copy of <a class="external" href="http://phonegap.com/download">Cordova</a> and extract its contents. We will be working with the subfolder: lib\windows-phone\</li>
+<li>copy the file CordovaStarter-x.x.x.zip to the folder : \My Documents\Visual Studio 2010\Templates\ProjectTemplates\
+if you have just installed VisualStudio, you should launch it once to create this folder
+if you prefer, you may add the project instead to the "Silverlight for Windows Phone" subfolder of "Visual C#". This is up to you, and only affects where the project template is shown when creating a new project. Also, You may need to create this folder.</li>
 </ul>
 <h2>
 <a name="Getting%20Started%20with%20Windows%20Phone_3_setup_new_project">3. Setup New Project</a>
@@ -151,6 +156,9 @@
 <ul>
 <li>Open Visual Studio Express for Windows Phone and choose <strong>New Project</strong>.</li>
 <li>Select <strong>CordovaStarter</strong>. ( the version number will be displayed in the template description )</li>
+<li><ul>
+<li>note: If you do not see it, you may have to select the top level 'Visual C#' to see it</li>
+</ul></li>
 <li>
 <p>Give your project a name, and select OK.</p>
 
