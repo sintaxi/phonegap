@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="1.9.0rc1">1.9.0rc1</option>
+<option value="1.9.0rc1">1.9.0rc1</option>
+<option selected value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.8.0rc1">1.8.0rc1</option>
 <option value="1.8.0">1.8.0</option>
@@ -66,7 +67,10 @@
 <option value="1.2.0">1.2.0</option>
 <option value="1.1.0">1.1.0</option>
 </optgroup>
-<optgroup label="Japanese" value="jp"><option value="0.9.5">0.9.5</option></optgroup></select></small>
+<optgroup label="Japanese" value="jp">
+<option value="1.7.0">1.7.0</option>
+<option value="0.9.5">0.9.5</option>
+</optgroup></select></small>
         </div>
         <div id="subheader">
             <h1>File</h1>
@@ -145,6 +149,7 @@ File System Quick Example</option>
 <option value="FileTransfer_details">      - Details</option>
 <option value="FileTransfer_supported_platforms">      - Supported Platforms</option>
 <option value="FileTransfer_upload">      - upload</option>
+<option value="FileTransfer_ios_quirks">      - iOS Quirks</option>
 <option value="FileTransfer_download">      - download</option>
 <option value="FileUploadOptions">FileUploadOptions</option>
 <option value="FileUploadOptions_properties">      - Properties</option>
@@ -206,6 +211,7 @@ File System Quick Example</option>
 <li><a href="guide_command-line_index.md.html#Command-Line%20Usage">Command-Line Usage</a></li>
 <li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
 <li><a href="guide_whitelist_index.md.html#Domain%20Whitelist%20Guide">Domain Whitelist Guide</a></li>
+<li><a href="guide_cordova-webview_index.md.html#Embedding%20WebView">Embedding WebView</a></li>
 <li><a href="_index.html">Keyword Index</a></li>
 </ul>
 </div>
@@ -1884,6 +1890,42 @@ ft.upload(fileURI, "http://some.server.com/upload.php", win, fail, options);
     &lt;p&gt;Upload <a href="cordova_file_file.md.html#File">File</a>&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;
+</code></pre>
+
+<h2>
+<a name="FileTransfer_ios_quirks">iOS Quirks</a>
+</h2>
+
+<p>Setting headers for <a href="cordova_file_file.md.html#FileTransfer">FileTransfer</a> Upload:</p>
+
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>function win(r) {
+    console.log("Code = " + r.responseCode);
+    console.log("Response = " + r.response);
+    console.log("Sent = " + r.bytesSent);
+}
+
+function fail(error) {
+    alert("An error has occurred: Code = " + error.code);
+    console.log("upload error source " + error.source);
+    console.log("upload error target " + error.target);
+}
+
+var uri = "http://some.server.com/upload.php";
+
+var options = new <a href="cordova_file_file.md.html#FileUploadOptions">FileUploadOptions</a>();
+options.fileKey="file";
+options.fileName=fileURI.substr(fileURI.lastIndexOf('/')+1);
+options.mimeType="text/plain";
+
+var params = new Object();
+params.headers={'headerParam':'headerValue'};
+
+options.params = params;
+
+var ft = new <a href="cordova_file_file.md.html#FileTransfer">FileTransfer</a>();
+ft.upload(fileURI, uri, win, fail, options);
 </code></pre>
 
 <h2>

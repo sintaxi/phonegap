@@ -1,9 +1,16 @@
 ChangeLog
 ios
-Fil Maj (1):
-      [CB-943] decrease accelerometer interval from 100ms to 40ms
+Becky Gibson (2):
+      Fixes CB-961
+      Fixes CB-977 - MediaFile.getFormatData failing
 
-Shazron Abdullah (16):
+Fil Maj (4):
+      [CB-943] decrease accelerometer interval from 100ms to 40ms
+      [CB-943] decrease accelerometer interval from 100ms to 40ms
+      [CB-982] add usage help to create script, remove unnecessary parameters from debug project-level script
+      Removing component guide; going into the docs
+
+Shazron Abdullah (38):
       Fixes CB-915 - Pause/resume events get fired twice
       Fixes CB-877 - Opening a .doc file under iOS causes the file system API to break (and any other plugins that may use NSMutableArray pop)
       Fixes CB-864 - Failure in writing a large file blocks Cordova
@@ -20,8 +27,42 @@ Shazron Abdullah (16):
       Added Apache v2.0 license to files that Apache RAT is complaining about.
       Fixes CB-948 - Update Guides for 1.9.0
       Added 1.9.0rc1 cordova-js
+      Fixes CB-957 - (iOS) iOS Upgrade Guide Migration
+      Updated CB-957 - Include Xcode 4 requirement
+      Fixes CB-914 - Deactivate CDVLocalStorage (Backup/Restore, safari web preferences update)
+      Added BackupWebStorage setting in cli template
+      Enhanced CB-471 - LocalFileSystem.PERSISTENT "do not back up" file attribute iOS. Supports new iOS 5.1 iCloud Backup attribute (the old way is deprecated, and only for iOS 5.0.1)
+      Fixed CB-748 - refactored-UUID is broken and changes over time (changed according to Apple's guidelines for this)
+      Fixes CB-647 - Prefix/Namespace common native libraries
+      Fixes CB-942 - iOS failing FileTransfer malformed URL tests
+      Update VERSION to 1.9.0rc1
+      Updated cli-based project template to 1.9.0rc1
+      Added Apache v2.0 license to files that Apache RAT is complaining about.
+      Fixes CB-948 - Update Guides for 1.9.0
+      Added 1.9.0rc1 cordova-js
+      Fixes CB-957 - (iOS) iOS Upgrade Guide Migration
+      Updated CB-957 - Include Xcode 4 requirement
+      Fixes CB-914 - Deactivate CDVLocalStorage (Backup/Restore, safari web preferences update)
+      Added BackupWebStorage setting in cli template
+      Updated VERSION to 1.9.0 (release notes, cli template, etc)
+      Updated cordova-js to 1.9.0
+      Removed Upgrade Guide and Cleaver Guide from repo - they are all in docs.phonegap.com now
+      Removed local reference to Upgrade Guide (points to online version now)
+      Added CB-863 fix
+
+Sijmen Mulder (3):
+      Use localized UILaunchImageFile
+      Do not hardcode launch image filename on phone
+      localizedInfoDictionary returns only localized keys, use objectForInfoDictionaryKey instead
+
+hermwong (1):
+      [CB-765] Header Support iOS FileTransfer upload
 
 blackberry
+Drew Walters (2):
+      [CB-980] Quote key values in JSON returned from native.
+      [CB-981] Return FILE_NOT_FOUND error for bad file name.
+
 Fil Maj (5):
       [CB-606] Added create script for unix and windows
       removed node modules from version control, whoops
@@ -29,12 +70,29 @@ Fil Maj (5):
       Removed unused scripts/cruft.
       Added debug flag parameter being passed to widget packager inside ./debug script
 
-Tim Kim (2):
+Steven Gill (1):
+      CB-965: fixed create script to work with distribution and src
+
+Tim Kim (16):
       [CB-752] Implement saveToPhotoAlbum CameraOption on bb device
       Updating to 1.9.0rc1
+      Forgot to update version file
+      [CB-962] Fix for debug script not working on bb
+      [CB-962] Making build script work again with ant build and load-device commands on bb
+      Made sure cordova scripts are executable when copied over
+      Re-fixed cordova scripts being able to execute in bb
+      Added in captureAudio for playbook
+      Fixed up whitespace/tab issue
+      Semicolon
+      Adding in microphone permission/feature to config
+      [CB-973] Fixed up tab issue
+      [CB-962] - File permission stuff got overwritten in last few commits - bringing it back
+      [CB-965] - windows version of create script failing
+      [CB-965] - needed flag for destination directory
+      1.9.0
 
 android
-Anis Kadri (21):
+Anis Kadri (33):
       adding a new create script
       updating script to cleanup on exit/error
       testing create2 script
@@ -56,6 +114,18 @@ Anis Kadri (21):
       adding appinfo
       updating windows create.js and creating node test
       updating windows create.js and creating node test
+      adding windows scripts
+      fixing create
+      windows build/debug/launch scripts
+      removing echoes
+      deleting old BOOM
+      setting +x on script files
+      forgot to add +x on BOOM
+      creating project without source
+      updating create script to work from distro and source
+      log was actually doing nothing...fixing it
+      CB-937 fixing debug
+      CB-937 fixing debug for windows
 
 Bryce Curtis (21):
       Updates.
@@ -83,11 +153,28 @@ Bryce Curtis (21):
 Darryl Pogue (1):
       Support showing the app title bar through a preference.
 
-Fil Maj (2):
+Fil Maj (19):
       CB-481 refactored prompt() call in JS to exec, moved showing of webview out of chrome client and into app plugin (so we can invoke via exec)
       small tweaks to readme re: testing
+      Added MediaScanner abilities to camera launcher plugin. Now images saved to SD card should show up in the android gallery app right away
+      merge!!!!11one
+      Removing images and saving images to jail if SaveToPhotoAlbum is set to true
+      Tacked on file extension to camera file
+      added . in front of the temp files passed into camera app. presumably this hsould stop the gallery app from picking it up
+      Fixed the 0-byte files in gallery. Also fixed exif rewriter for saveToPhotoAlbum:false JPG files. Thanks for your help Simon!
+      Merging in use of uri variable between Simon and my changes.
+      Added MediaScanner abilities to camera launcher plugin. Now images saved to SD card should show up in the android gallery app right away
+      merge!!!!11one
+      Removing images and saving images to jail if SaveToPhotoAlbum is set to true
+      Tacked on file extension to camera file
+      added . in front of the temp files passed into camera app. presumably this hsould stop the gallery app from picking it up
+      Fixed the 0-byte files in gallery. Also fixed exif rewriter for saveToPhotoAlbum:false JPG files. Thanks for your help Simon!
+      Merging in use of uri variable between Simon and my changes.
+      Refactored cleanup in camera code a bit. Removed overrides for Scanner functionality
+      Removed some legacy button code that existed in droidgap + app plugins
+      Removing CordovaWebView Guide; its going into the docs
 
-Joe Bowser (70):
+Joe Bowser (79):
       Creating the CordovaWebView, modifying DroidGap to use that
       Adding the tests from the GitHub Prototype
       Cleaning out the asssets/www directory.  This should house mobile-spec
@@ -156,8 +243,22 @@ Joe Bowser (70):
       Adding more undocumented features for app title bar and full-screen
       Default should be false not true
       One more time, getting the title default right
+      Starting the Buttons Branch
       Incrementing version to 1.9.0rc1 and doing some variable cleanup
+      Tweaks to CordovaWebView to support other keys
+      Got up and down mixed
+      Fixing work-around to work for both ? and #
       Adding updated JS
+      Adding updated JS
+      Since we moved binding of buttons into a view, let's remove it from the Interface
+      Weird merge error didn't account for isBackButtonBound
+      Re-adding getContext because yo dawg, I heard you like contexts in your contexts
+      Forgot to add it renderscript.opt.level to the project.  This will fix ant issues
+
+Juan G. Hurtado (3):
+      Add Android 4.0 workaround for links with params
+      Add Android 4.0 workaround for links with params
+      Fix imports for changes in 45680a5
 
 Julien Bouquillon (4):
       add volumeupbutton/volumedownbutton events
@@ -168,7 +269,7 @@ Julien Bouquillon (4):
 Steven Gill (1):
       updated NOTICE file
 
-macdonst (11):
+macdonst (22):
       CB-878: Splash screen in Android fullscreen mode showing not correct
       CB-878: Splash screen in Android fullscreen mode showing not correct
       Adding getContext, startActivity to CordovaInterface
@@ -180,9 +281,20 @@ macdonst (11):
       CB-910: Camera out of memory error
       CB-919: Camera Plugin returned with empty error message
       CB-919: Camera Plugin returned with empty error message
+      CB-978: FileTransfer.upload from a directory with a space fails
+      Decode image from File instead of content resolver
+      Cache bust returned Image URI if saveToPhotoAlbum is false
+      Switch getPicture from Gallery to use file instead of content resolver
+      Using a better scaling algorithm to resize the image
+      Fix double image problem on Samsung phones
+      Rotate image if taken in portrait mode
+      Reset orientation exif information when photo is rotated
+      Wire rotation fix to correctOrientation parameter
+      Only load Exif information if necessary
+      Tagging to 1.9.0
 
 windows-phone
-Jesse MacFadyen (12):
+Jesse MacFadyen (15):
       Capture parses EXIF data and rotates image based on EXIF_Orientation
       camera API rotates image based on EXIF data
       removed Debug logging, cleanup
@@ -195,6 +307,12 @@ Jesse MacFadyen (12):
       update example
       updated test proj
       rebuild template for 1.9.0rc1
+      CB-953 mouse events fired twice
+      js+path updates for 1.9.0 release
+      rebuilt for 1.9.0 release
+
+Sergei Grebnov (1):
+      Minor improvement for CB-953 mouse events fired twice
 
 filmaj (1):
       [CB-795] Added HTTP status code to WP7 FileTransferError interface. Catches 404 on download.
@@ -211,10 +329,13 @@ Herm Wong (1):
       update version to 1.9.0
 
 bada
-Anis Kadri (1):
+Anis Kadri (2):
       updating version
+      updating version to 1.9.0
 
 badaWac
-Anis Kadri (1):
+Anis Kadri (3):
       updating version
+      CB-963 renaming LICENCE to us english
+      updating VERSION to 1.9.0
 

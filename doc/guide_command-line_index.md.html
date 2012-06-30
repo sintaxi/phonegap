@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="1.9.0rc1">1.9.0rc1</option>
+<option value="1.9.0rc1">1.9.0rc1</option>
+<option selected value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.8.0rc1">1.8.0rc1</option>
 <option value="1.8.0">1.8.0</option>
@@ -66,11 +67,18 @@
 <option value="1.2.0">1.2.0</option>
 <option value="1.1.0">1.1.0</option>
 </optgroup>
-<optgroup label="Japanese" value="jp"><option value="0.9.5">0.9.5</option></optgroup></select></small>
+<optgroup label="Japanese" value="jp">
+<option value="1.7.0">1.7.0</option>
+<option value="0.9.5">0.9.5</option>
+</optgroup></select></small>
         </div>
         <div id="subheader">
             <h1>Command-Line Usage</h1>
-            <small></small>
+            <small><select><option value="Command-Line%2520Usage">Command-Line Usage</option>
+<option value="Command-Line%20Usage_supported_platforms">      - Supported Platforms</option>
+<option value="Command-Line%20Usage_ios">      - iOS</option>
+<option value="Command-Line%20Usage_android">      - Android</option>
+<option value="Command-Line%20Usage_blackberry">      - BlackBerry</option></select></small>
         </div>
 
         <div id="sidebar">
@@ -97,6 +105,7 @@
 <li><a href="guide_command-line_index.md.html#Command-Line%20Usage">Command-Line Usage</a></li>
 <li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
 <li><a href="guide_whitelist_index.md.html#Domain%20Whitelist%20Guide">Domain Whitelist Guide</a></li>
+<li><a href="guide_cordova-webview_index.md.html#Embedding%20WebView">Embedding WebView</a></li>
 <li><a href="_index.html">Keyword Index</a></li>
 </ul>
 </div>
@@ -104,6 +113,202 @@
         <div id="scrollable">
             <div id="content">
                 <h1><a name="Command-Line%20Usage">Command-Line Usage</a></h1>
+
+<p>Cordova now ships with a set of command-line tools that make it easier
+for you to develop cross-platform applications. You can build, clean,
+and launch an emulator with a single command. You can consider these
+instructions as an alternative to the Getting Started guides. Whereas
+the Getting Started guides help you get setup with the default IDEs and
+tooling surrounding the platforms you are working with, the command-line
+tools aim to provide a shell-based approach to creating and working with
+Cordova projects.</p>
+
+<h2>
+<a name="Command-Line%20Usage_supported_platforms">Supported Platforms</a>
+</h2>
+
+<ul>
+<li><a href="#Command-Line%20Usage_ios">iOS</a></li>
+<li><a href="#Command-Line%20Usage_android">Android</a></li>
+<li><a href="#Command-Line%20Usage_blackberry">BlackBerry</a></li>
+</ul>
+<h2>
+<a name="Command-Line%20Usage_ios">iOS</a>
+</h2>
+
+<p>The iOS command-line tools are built upon shell scripts and rely on
+XCode command-line tools such as <code>xcode-select</code> and <code>xcodebuild</code>.</p>
+
+<h3>Create a project</h3>
+
+<p>Run the <code>create</code> command with the following parameters:</p>
+
+<ul>
+<li>Path to your new Cordova iOS project</li>
+<li>Package name, following reverse-domain style convention</li>
+<li>Project name</li>
+</ul>
+<!-- --><pre class="prettyprint"><code>$ ./path/to/cordova-ios/bin/create /path/to/my_new_cordova_project com.example.cordova_project_name CordovaProjectName
+</code></pre>
+
+<h3>Build a project</h3>
+
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/debug
+</code></pre>
+
+<h3>Launch emulator</h3>
+
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/emulate
+</code></pre>
+
+<h3>Logging</h3>
+
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/log
+</code></pre>
+
+<h2>
+<a name="Command-Line%20Usage_android">Android</a>
+</h2>
+
+<p>The Android command-line tools are built upon shell scripts. You <em>must</em>
+have the Android SDK's <code>tools</code> and <code>platform-tools</code> folders in your
+PATH!</p>
+
+<h3>Create a project</h3>
+
+<p>Run the <code>create</code> command with the following parameters:</p>
+
+<ul>
+<li>Path to your new Cordova Android project</li>
+<li>Package name, following reverse-domain style convention</li>
+<li>Main Activity name</li>
+</ul>
+<!-- --><pre class="prettyprint"><code>$ /path/to/cordova-android/bin/create /path/to/my_new_cordova_project com.example.cordova_project_name CordovaProjectName
+</code></pre>
+
+<p>or, on <strong>Windows</strong></p>
+
+<pre class="prettyprint"><code>$ /path/to/cordova-android/bin/create.bat /path/to/my_new_cordova_project com.example.cordova_project_name CordovaProjectName
+</code></pre>
+
+<h3>Build a project</h3>
+
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/debug
+</code></pre>
+
+<p>or, on <strong>Windows</strong></p>
+
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/debug.bat
+</code></pre>
+
+<h3>Launch emulator</h3>
+
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/emulate
+</code></pre>
+
+<p>or, on <strong>Windows</strong></p>
+
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/emulate.bat
+</code></pre>
+
+<p>Make sure you have created at least one Android Virtual <a href="cordova_device_device.md.html#Device">Device</a>. If you did not it will ask you to create one with the <code>android</code> command.
+If you have multiple AVDs, it will prompt you to select an AVD.</p>
+
+<h3>Logging</h3>
+
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/log
+</code></pre>
+
+<p>or, on <strong>Windows</strong></p>
+
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/log.bat
+</code></pre>
+
+<h3>Cleaning</h3>
+
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/clean
+</code></pre>
+
+<p>or, on <strong>Windows</strong></p>
+
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/clean.bat
+</code></pre>
+
+<h3>Clean, build, deploy and launch</h3>
+
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/BOOM
+</code></pre>
+
+<p>or, on <strong>Windows</strong></p>
+
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/BOOM.bat
+</code></pre>
+
+<p>Make sure you have an emulator or a device connected.</p>
+
+<h2>
+<a name="Command-Line%20Usage_blackberry">BlackBerry</a>
+</h2>
+
+<p>The BlackBerry command-line tools are built upon shell scripts.</p>
+
+<h3>Create a project</h3>
+
+<p>Run the <code>create</code> command with the following parameters:</p>
+
+<ul>
+<li>Path to your new Cordova BlackBerry project</li>
+<li>Application name</li>
+</ul>
+<!-- --><pre class="prettyprint"><code>$ /path/to/cordova-blackberry-webworks/bin/create /path/to/my_new_cordova_project CordovaProjectName
+</code></pre>
+
+<p>or, on <strong>Windows</strong></p>
+
+<pre class="prettyprint"><code>$ /path/to/cordova-blackberry-webworks/bin/create.bat /path/to/my_new_cordova_project CordovaProjectName
+</code></pre>
+
+<h3>Build a project</h3>
+
+<p>For BlackBerry projects, please make sure you customize the
+<code>project.properties</code> file in the root of your Cordova project folder.
+This is necessary for things like supplying your BlackBerry signing key
+password, location of the BlackBerry WebWorks SDK, and location of
+BlackBerry simulator executables.</p>
+
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/debug
+</code></pre>
+
+<p>or, on <strong>Windows</strong></p>
+
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/debug.bat
+</code></pre>
+
+<h3>Launch emulator</h3>
+
+<p>For BlackBerry projects, please make sure you customize the
+<code>project.properties</code> file in the root of your Cordova project folder.
+This is necessary for things like supplying your BlackBerry signing key
+password, location of the BlackBerry WebWorks SDK, and location of
+BlackBerry simulator executables.</p>
+
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/emulate
+</code></pre>
+
+<p>or, on <strong>Windows</strong></p>
+
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/emulate.bat
+</code></pre>
+
+<h3>Logging</h3>
+
+<p>Unfortunately streaming logs directly from the device is not
+supported at this time. However, BlackBerry offers built-in Web
+Inspector support for Playbook and BlackBerry smartphone devices running
+BlackBerry OS 7.0 and above. Additionally, you can access your
+application's logs (including any calls to <code>console.log</code>) on your device
+by holding down the ALT key from the home screen and hitting "lglg"
+keys.</p>
 
             </div>
         </div>

@@ -42,11 +42,13 @@ namespace WP7CordovaClassLib
         /*
         private static string mouseScript =
         @"(function(win,doc){
-            Object.defineProperty( MouseEvent.prototype, 'pageX', {
+            var mPro = MouseEvent.prototype;
+            var def = Object.defineProperty;
+            def( mPro, 'pageX', {
                configurable: true,
                get: function(){ return this.clientX }
             });
-            Object.defineProperty( MouseEvent.prototype, 'pageY', {
+            def( mPro, 'pageY', {
                configurable: true,
                get: function(){ return this.clientY }
             });
@@ -59,7 +61,11 @@ namespace WP7CordovaClassLib
                     var xPos =  doc.body.scrollLeft + Math.round(xMod * x);
                     var yPos =  doc.body.scrollTop + Math.round(yMod * y);
                     var element = doc.elementFromPoint(xPos,yPos);
-                    evt.initMouseEvent(type, true, true, win, 1, xPos, yPos, xPos, yPos, false, false, false, false, 0, element);
+                    
+                    evt.initMouseEvent(type, true, true, win, 1, xPos, yPos, xPos, yPos, false, false, false, false, -1, null);
+                    evt.timeStamp = +new Date;
+                    evt.isCordovaEvent = true;
+                    
                     var canceled = element ? !element.dispatchEvent(evt) : !doc.dispatchEvent(evt);
                     return canceled ? 'true' : 'false';
                 }
@@ -68,9 +74,9 @@ namespace WP7CordovaClassLib
         })(window,document);";
         */
 
-        private static string MinifiedMouseScript = "(function(f,a){Object.defineProperty(MouseEvent.prototype,'pageX',{configurable:!0,get:function(){return this.clientX}});Object.defineProperty(MouseEvent.prototype,'pageY',{configurable:!0,get:function(){return this.clientY}});f.onNativeMouseEvent=function(g,h,i)" 
-        + "{try{var j=screen.logicalXDPI/screen.deviceXDPI,k=screen.logicalYDPI/screen.deviceYDPI,b=a.createEvent('MouseEvents'),c=a.body.scrollLeft+Math.round(j*h),d=a.body.scrollTop+Math.round(k*i),e=a.elementFromPoint(c,d);b.initMouseEvent(g,!0,!0,"
-        + "f,1,c,d,c,d,!1,!1,!1,!1,0,e);return(e?!e.dispatchEvent(b):!a.dispatchEvent(b))?'true':'false'}catch(l){return l}}})(window,document);";
+        private static string MinifiedMouseScript = "(function(g,a){var c=MouseEvent.prototype,d=Object.defineProperty;d(c,'pageX',{configurable:!0,get:function(){return this.clientX}});d(c,'pageY',{configurable:!0,get:function(){return this.clientY}});g.onNativeMouseEvent=function(c,d,i)"
+        + "{try{var j=screen.logicalXDPI/screen.deviceXDPI,k=screen.logicalYDPI/screen.deviceYDPI,b=a.createEvent('MouseEvents'),e=a.body.scrollLeft+Math.round(j*d),f=a.body.scrollTop+Math.round(k*i),h=a.elementFromPoint(e,f);b.initMouseEvent(c,!0,!0,g,1,e,f,e,f,!1,!1,!1,!1,-1,"
+        + "null);b.timeStamp=+new Date;b.isCordovaEvent=!0;return(h?!h.dispatchEvent(b):!a.dispatchEvent(b))?'true':'false'}catch(l){return l}}})(window,document);";
 
 
         private WebBrowser _browser;
@@ -86,6 +92,17 @@ namespace WP7CordovaClassLib
         private double minScale = 0.5;
         protected Border border;
         private bool firstMouseMove = false;
+
+        /// <summary>
+        /// Represents last known mouse down position. 
+        /// Used to determine mouse move delta to avoid duplicate mouse events.
+        /// </summary>
+        private Point mouseDownPos;
+
+        /// <summary>
+        /// Represent min delta value to consider event as a mouse move. Experimental calculated.
+        /// </summary>
+        private const int MouseMoveDeltaThreshold = 10;
 
 
         public BrowserMouseHelper(ref WebBrowser browser)
@@ -108,6 +125,7 @@ namespace WP7CordovaClassLib
                 border.ManipulationDelta += Border_ManipulationDelta;
                 border.ManipulationCompleted += Border_ManipulationCompleted;
                 border.DoubleTap += Border_DoubleTap;
+                border.Tap += Border_Tap;
                 border.Hold += Border_Hold;
                 border.MouseLeftButtonDown += Border_MouseLeftButtonDown;
             }
@@ -115,6 +133,9 @@ namespace WP7CordovaClassLib
             _browser.LoadCompleted += Browser_LoadCompleted;
 
         }
+
+
+
 
         void ParseViewportMeta()
         {
@@ -192,7 +213,7 @@ namespace WP7CordovaClassLib
 
         void Border_Hold(object sender, GestureEventArgs e)
         {
-            Debug.WriteLine("Border_Hold");
+            //Debug.WriteLine("Border_Hold");
             e.Handled = true;
         }
 
@@ -202,42 +223,71 @@ namespace WP7CordovaClassLib
 
         void Border_DoubleTap(object sender, GestureEventArgs e)
         {
-            Debug.WriteLine("Border_DoubleTap");
+            //Debug.WriteLine("Border_DoubleTap");
             e.Handled = true;
         }
 
+        #endregion
+
+        #region Tap
+
+        void Border_Tap(object sender, GestureEventArgs e)
+        {
+            // prevents generating duplicated mouse events
+            // firstMouseMove == FALSE means we already handled this situation and generated mouse events
+            e.Handled = ! this.firstMouseMove;
+        }
         #endregion
 
         #region MouseEvents
 
         void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            //Debug.WriteLine("Border_MouseLeftButtonDown");
             border.MouseMove += new MouseEventHandler(Border_MouseMove);
             border.MouseLeftButtonUp += new MouseButtonEventHandler(Border_MouseLeftButtonUp);
-
+            
+            this.mouseDownPos = e.GetPosition(_browser);
+            // don't fire the down event until we know if this is a 'move' or not
             firstMouseMove = true;
-
-            Point pos = e.GetPosition(_browser);
-            InvokeSimulatedMouseEvent("mousedown", pos);
         }
-
+        //
         void Border_MouseMove(object sender, MouseEventArgs e)
         {
+            //Debug.WriteLine("Border_MouseMove");
             Point pos = e.GetPosition(_browser);
-            bool retVal = InvokeSimulatedMouseEvent("mousemove", pos);
             // only the return value from the first mouse move event should be used to determine if scrolling is prevented.
             if (firstMouseMove)
             {
-                ScrollDisabled = retVal;
+                // even for simple tap there are situations where ui control generates move with some little delta value
+                // we should avoid such situations allowing to browser control generate native js mousedown/up/click events
+                if (Math.Abs(pos.X - mouseDownPos.X) + Math.Abs(pos.Y - mouseDownPos.Y) <= MouseMoveDeltaThreshold)
+                {
+                    return;
+                }
+                
+                InvokeSimulatedMouseEvent("mousedown", pos);
+                firstMouseMove = false;
+                ScrollDisabled = InvokeSimulatedMouseEvent("mousemove", pos);
             }
+            else
+            {
+                InvokeSimulatedMouseEvent("mousemove", pos);
+            }
+
         }
 
         void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            //Debug.WriteLine("Border_MouseLeftButtonUp");
             border.MouseMove -= new MouseEventHandler(Border_MouseMove);
             border.MouseLeftButtonUp -= new MouseButtonEventHandler(Border_MouseLeftButtonUp);
-            Point pos = e.GetPosition(_browser);
-            e.Handled = InvokeSimulatedMouseEvent("mouseup", pos);
+            // if firstMouseMove is false, then we have sent our simulated mousedown, so we should also send a matching mouseup 
+            if (!firstMouseMove)
+            {
+                Point pos = e.GetPosition(_browser);
+                e.Handled = InvokeSimulatedMouseEvent("mouseup", pos);
+            }
             ScrollDisabled = false;
         }
 
@@ -248,6 +298,8 @@ namespace WP7CordovaClassLib
 
         void Border_ManipulationStarted(object sender, ManipulationStartedEventArgs e)
         {
+            //Debug.WriteLine("Border_ManipulationStarted");
+            
             if (ScrollDisabled)
             {
                 e.Handled = true;
@@ -257,6 +309,7 @@ namespace WP7CordovaClassLib
 
         private void Border_ManipulationDelta(object sender, ManipulationDeltaEventArgs e)
         {
+            //Debug.WriteLine("Border_ManipulationDelta");
             // optionally suppress zoom
             if ((ScrollDisabled || !userScalable) && (e.DeltaManipulation.Scale.X != 0.0 || e.DeltaManipulation.Scale.Y != 0.0))
             {
@@ -273,6 +326,7 @@ namespace WP7CordovaClassLib
 
         private void Border_ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
         {
+            //Debug.WriteLine("Border_ManipulationCompleted");
             // suppress zoom
             if (!userScalable && e.FinalVelocities != null)
             {

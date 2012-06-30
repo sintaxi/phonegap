@@ -212,18 +212,16 @@
                 <then>
                     <exec executable="${properties.blackberry.bbwp.bin}">
                         <arg file="${build.dir}/${cod.name}.zip" />
-                        <arg value="${debug.flag}" />
                         <arg value="/g" />
                         <arg value="${properties.blackberry.sigtool.password}" />
-                        <arg value="/o" />
+                        <arg line="${debug.flag} /o" />
                         <arg file="${build.dir}" />
                     </exec>
                 </then>
                 <else>
                     <exec executable="${properties.blackberry.bbwp.bin}">
                         <arg file="${build.dir}/${cod.name}.zip" />
-                        <arg value="${debug.flag}" />
-                        <arg value="/o" />
+                        <arg line="${debug.flag} /o" />
                         <arg file="${build.dir}" />
                     </exec>
                 </else>

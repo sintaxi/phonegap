@@ -64,13 +64,23 @@ ANT=$(which ant)
 
 MANIFEST_PATH=$PROJECT_PATH/www/config.xml
 
-# compile cordova.js and cordova.jar
-echo "Building cordova-$VERSION.jar and cordova-$VERSION.js ..."
-(cd $BUILD_PATH && $ANT dist &> /dev/null )
+# compile cordova.js and cordova.jar if in source, ignore if in distribution
+if [ ! -e $BUILD_PATH/www/ext/cordova-$VERSION.jar ] && [ -d $BUILD_PATH/framework ]
+then
+	echo "Building cordova-$VERSION.jar and cordova-$VERSION.js ..."
+	(cd $BUILD_PATH && $ANT dist &> /dev/null )
+	
+	# copy project template
+	echo "Copying assets and resources ..."
+	cp -r $BUILD_PATH/dist/sample/. $PROJECT_PATH
+else
+	# copy project template if in distribution
+	echo "Copying assets and resources ..."
+	cp -r $BUILD_PATH/sample/. $PROJECT_PATH
+fi
 
-# copy project template
-echo "Copying assets and resources ..."
-cp -r $BUILD_PATH/dist/sample/. $PROJECT_PATH
+# re-copy over cordova scripts because ant doesn't preserve file modes when copying
+cp -r -p $BUILD_PATH/bin/templates/project/cordova $PROJECT_PATH
 
 # interpolate the app name into config.xml
 echo "Updating config.xml ..."

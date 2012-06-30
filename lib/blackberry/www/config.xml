@@ -51,7 +51,8 @@
   <feature id="blackberry.widgetcache" required="true" version="1.0.0.0"/>
   <feature id="blackberry.media.camera" />
   <feature id="blackberry.ui.dialog" />
-
+  <feature id="blackberry.media.microphone" required="true" version="1.0.0.0"/>
+  
   <!-- Cordova API -->
   <access subdomains="true" uri="file:///store/home" />
   <access subdomains="true" uri="file:///SDCard" />
@@ -75,6 +76,7 @@
     <rim:permit>read_device_identifying_information</rim:permit>
     <rim:permit>access_shared</rim:permit>
     <rim:permit>read_geolocation</rim:permit>
+    <rim:permit>record_audio</rim:permit> 
   </rim:permissions>
 
 </widget>
