@@ -77,29 +77,6 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CordovaView.xaml.cs">
-      <DependentUpon>CordovaView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Cordova\BrowserMouseHelper.cs" />
-    <Compile Include="Cordova\CommandFactory.cs" />
-    <Compile Include="Cordova\Commands\BaseCommand.cs" />
-    <Compile Include="Cordova\Commands\DebugConsole.cs" />
-    <Compile Include="Cordova\Commands\Device.cs" />
-    <Compile Include="Cordova\Commands\File.cs" />
-    <Compile Include="Cordova\Commands\FileTransfer.cs" />
-    <Compile Include="Cordova\Commands\MimeTypeMapper.cs" />
-    <Compile Include="Cordova\Commands\NetworkStatus.cs" />
-    <Compile Include="Cordova\Commands\Notification.cs" />
-    <Compile Include="Cordova\CordovaCommandCall.cs" />
-    <Compile Include="Cordova\DOMStorageHelper.cs" />
-    <Compile Include="Cordova\JSON\JsonHelper.cs" />
-    <Compile Include="Cordova\NativeExecution.cs" />
-    <Compile Include="Cordova\OrientationHelper.cs" />
-    <Compile Include="Cordova\PluginResult.cs" />
-    <Compile Include="Cordova\ScriptCallback.cs" />
-    <Compile Include="Cordova\UI\NotificationBox.xaml.cs">
-      <DependentUpon>NotificationBox.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -129,16 +106,6 @@
     <Resource Include="resources\notification-beep.wav" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Page Include="CordovaView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Cordova\UI\NotificationBox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <ProjectExtensions />

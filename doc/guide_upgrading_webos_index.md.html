@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.0.0rc1">2.0.0rc1</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
-<option selected value="1.9.0">1.9.0</option>
+<option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.8.0rc1">1.8.0rc1</option>
 <option value="1.8.0">1.8.0</option>
@@ -68,6 +69,7 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="0.9.5">0.9.5</option>
 </optgroup></select></small>
@@ -75,6 +77,7 @@
         <div id="subheader">
             <h1>Upgrading Cordova webOS</h1>
             <small><select><option value="Upgrading%2520Cordova%2520webOS">Upgrading Cordova webOS</option>
+<option value="Upgrading%20Cordova%20webOS_upgrade_to_2_0_0_from_1_9_0">      - Upgrade to 2.0.0 from 1.9.0</option>
 <option value="Upgrading%20Cordova%20webOS_upgrade_to_1_9_0_from_1_8_1">      - Upgrade to 1.9.0 from 1.8.1</option></select></small>
         </div>
 
@@ -113,6 +116,23 @@
 
 <p>This document is for people who need to upgrade their Cordova versions from an older version to a current version of Cordova.</p>
 
+<h2>
+<a name="Upgrading%20Cordova%20webOS_upgrade_to_2_0_0_from_1_9_0">Upgrade to 2.0.0 from 1.9.0</a>
+</h2>
+
+<ol>
+<li><p>remove cordova-1.9.0.js from your project</p></li>
+<li>
+<p>update the following line in your index.html:</p>
+
+<p>change this:</p>
+
+<script type="text/javascript" src="cordova-1.9.0.js"></script><p>to:</p>
+
+<script type="text/javascript" src="cordova-2.0.0.js"></script>
+</li>
+<li><p>run the makefile to generate the newest version of the cordova-2.0.0.js file</p></li>
+</ol>
 <h2>
 <a name="Upgrading%20Cordova%20webOS_upgrade_to_1_9_0_from_1_8_1">Upgrade to 1.9.0 from 1.8.1</a>
 </h2>

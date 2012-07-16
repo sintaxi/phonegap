@@ -1,341 +1,162 @@
 ChangeLog
 ios
-Becky Gibson (2):
-      Fixes CB-961
-      Fixes CB-977 - MediaFile.getFormatData failing
+Andreas Wålm (1):
+      LocalStorage backup background task, set invalid when expired.
 
-Fil Maj (4):
-      [CB-943] decrease accelerometer interval from 100ms to 40ms
-      [CB-943] decrease accelerometer interval from 100ms to 40ms
-      [CB-982] add usage help to create script, remove unnecessary parameters from debug project-level script
-      Removing component guide; going into the docs
+Andrew Grieve (11):
+      Add VERSION file to the resources of CordovaLibApp
+      Remove unit test header files and simplify CDVWebViewTest.
+      Adds a dispose method to CDVViewController.
+      Adds a way for CordovaLibApp to recreate the ViewController.
+      Refactor of CDVWebViewTest and partial implementation of CDVLocalStorageTests
+      Don't use @autoreleasepool.
+      Added unit test for CDVLocalStorage::__verifyAndFixDatabaseLocations
+      Add support for chunked uploads to FileTransfer plugin.
+      Change mutable parameters to non-mutable ones in CDVFileTransfer.
+      Add tests for CDVFileTransfer.
+      Properly escape URLs within FileTransfer that end with slash.
 
-Shazron Abdullah (38):
-      Fixes CB-915 - Pause/resume events get fired twice
-      Fixes CB-877 - Opening a .doc file under iOS causes the file system API to break (and any other plugins that may use NSMutableArray pop)
-      Fixes CB-864 - Failure in writing a large file blocks Cordova
-      Fixes CB-907 - Wrong URL encoding when downloading/uploading files from/to URLs with Unicode characters in the path
-      Fixes CB-906 - Hardware mute button doesn't effect Media API playback
-      Removed conditionals #ifdef __IPHONE_3_0
-      Fixes CB-879 - Support to set the volume when playing short sounds
-      Enhanced CB-471 - LocalFileSystem.PERSISTENT "do not back up" file attribute iOS. Supports new iOS 5.1 iCloud Backup attribute (the old way is deprecated, and only for iOS 5.0.1)
-      Fixed CB-748 - refactored-UUID is broken and changes over time (changed according to Apple's guidelines for this)
-      Fixes CB-647 - Prefix/Namespace common native libraries
-      Fixes CB-942 - iOS failing FileTransfer malformed URL tests
-      Update VERSION to 1.9.0rc1
-      Updated cli-based project template to 1.9.0rc1
-      Added Apache v2.0 license to files that Apache RAT is complaining about.
-      Fixes CB-948 - Update Guides for 1.9.0
-      Added 1.9.0rc1 cordova-js
-      Fixes CB-957 - (iOS) iOS Upgrade Guide Migration
-      Updated CB-957 - Include Xcode 4 requirement
-      Fixes CB-914 - Deactivate CDVLocalStorage (Backup/Restore, safari web preferences update)
-      Added BackupWebStorage setting in cli template
-      Enhanced CB-471 - LocalFileSystem.PERSISTENT "do not back up" file attribute iOS. Supports new iOS 5.1 iCloud Backup attribute (the old way is deprecated, and only for iOS 5.0.1)
-      Fixed CB-748 - refactored-UUID is broken and changes over time (changed according to Apple's guidelines for this)
-      Fixes CB-647 - Prefix/Namespace common native libraries
-      Fixes CB-942 - iOS failing FileTransfer malformed URL tests
-      Update VERSION to 1.9.0rc1
-      Updated cli-based project template to 1.9.0rc1
-      Added Apache v2.0 license to files that Apache RAT is complaining about.
-      Fixes CB-948 - Update Guides for 1.9.0
-      Added 1.9.0rc1 cordova-js
-      Fixes CB-957 - (iOS) iOS Upgrade Guide Migration
-      Updated CB-957 - Include Xcode 4 requirement
-      Fixes CB-914 - Deactivate CDVLocalStorage (Backup/Restore, safari web preferences update)
-      Added BackupWebStorage setting in cli template
-      Updated VERSION to 1.9.0 (release notes, cli template, etc)
-      Updated cordova-js to 1.9.0
-      Removed Upgrade Guide and Cleaver Guide from repo - they are all in docs.phonegap.com now
-      Removed local reference to Upgrade Guide (points to online version now)
-      Added CB-863 fix
+Becky Gibson (1):
+      Fixes CB-997, CB-976 remove Organization
 
-Sijmen Mulder (3):
-      Use localized UILaunchImageFile
-      Do not hardcode launch image filename on phone
-      localizedInfoDictionary returns only localized keys, use objectForInfoDictionaryKey instead
+Eric Schultz (1):
+      Fixed FileTransfer upload params
 
-hermwong (1):
-      [CB-765] Header Support iOS FileTransfer upload
+Fil Maj (3):
+      [CB-1036] factored device info into its own plugin
+      [CB-1036] Updated cordova-js to latest to support new common device module.
+      Updating plist to include new device plugin.
+
+Shazron Abdullah (34):
+      Fixes CB-989 - dyld: Symbol not found: _NSURLIsExcludedFromBackupKey
+      Fixes CB-1000 - Namespace issue of JSONKit and other external libraries
+      Added Base64 unit tests.
+      Fixes CB-1025 - Failure to save contact results in a crash when printing the error
+      Fixes CB-989: dyld: Symbol not found: _NSURLIsExcludedFromBackupKey
+      Fixed CB-1030 - Add FAQ issue for NSURLIsExcludedFromBackupKey linker issue for archived builds in iOS 5.0.1 devices
+      Fixes CB-93 - Only support iOS 4.2 and greater
+      Update CB-1030 - add "-weak-framework CoreFoundation" to linker settings
+      Updated bin/create template to use sub-project based Xcode project template.
+      bin/create - updated help text, and typo for lowercase -info.plist
+      Adding Device plugin to Cordova.plist
+      Removed folders "Cordova-based Application" and "Cordova-based Application.xctemplate" - the Xcode 3/4 templates
+      Interim update to iOS cordova-js for new CDVDevice
+      Fixed warnings.
+      Added CDVDevice source to CordovaLib. Moved CDVDevice, CDVLogger to proper header sections in the various targets.
+      Moved ReleaseNotes from CordovaInstaller subfolder, to root.
+      Moved FirstRun from CordovaInstaller subfolder, to root
+      Added Apache v2.0 License headers to files that Apache Rat ratted on.
+      Updated the bin subfolder README.md
+      Updated Makefile to clean the bin folder.
+      Added bin subfolder (command line scripts) to .dmg distribution package
+      Updated FirstRun for new command-line project creation.
+      Improved bin/create script
+      Updated README.md for command line project creation.
+      Updated Release Notes for 2.0.0rc1
+      Updated VERSION to 2.0.0rc1
+      Updated macro to 2_0_0
+      Updated the iOS cordova-js to 2.0.0rc1
+      Updated location of Cordova.plist in CordovaLibApp target
+      Removed CordovaLib project targets: UniversalFramework and Cordova
+      Fixed bin command-line scripts.
+      Improved debug and emulate scripts.
+      Added Makefile target update-template to update the template in the bin directory automatically before packaging.
+      Modified older iOS runtime warning.
+
+tommy-carlos williams (1):
+      Fixes CB-1004
 
 blackberry
-Drew Walters (2):
-      [CB-980] Quote key values in JSON returned from native.
-      [CB-981] Return FILE_NOT_FOUND error for bad file name.
+Fil Maj (1):
+      [CB-1037] Updating JS to use latest common device module.
 
-Fil Maj (5):
-      [CB-606] Added create script for unix and windows
-      removed node modules from version control, whoops
-      added debug and emulate commands. log not possible on BB/PB
-      Removed unused scripts/cruft.
-      Added debug flag parameter being passed to widget packager inside ./debug script
-
-Steven Gill (1):
-      CB-965: fixed create script to work with distribution and src
-
-Tim Kim (16):
-      [CB-752] Implement saveToPhotoAlbum CameraOption on bb device
-      Updating to 1.9.0rc1
-      Forgot to update version file
-      [CB-962] Fix for debug script not working on bb
-      [CB-962] Making build script work again with ant build and load-device commands on bb
-      Made sure cordova scripts are executable when copied over
-      Re-fixed cordova scripts being able to execute in bb
-      Added in captureAudio for playbook
-      Fixed up whitespace/tab issue
-      Semicolon
-      Adding in microphone permission/feature to config
-      [CB-973] Fixed up tab issue
-      [CB-962] - File permission stuff got overwritten in last few commits - bringing it back
-      [CB-965] - windows version of create script failing
-      [CB-965] - needed flag for destination directory
-      1.9.0
+Tim Kim (6):
+      [CB-1019] - invalid name in config file when using ant dist
+      [CB-1019] - don't want to update both config files otherwise the create scripts won't work
+      [CB-962] - re-fix for how bb creates new project and permissions for the cordova scripts
+      Updating javascript for 2.0.0
+      2.0.0rc1
+      Whoops - forgot rc1 part of version
 
 android
-Anis Kadri (33):
-      adding a new create script
-      updating script to cleanup on exit/error
-      testing create2 script
-      updating Windows !@#% build script
-      removing old create and templates
-      renaming create2 and templates2
-      updating templates reference
-      renaming create2
-      updating cordova.js version
-      fixing create script
-      adding tools verification to batch file
-      updating build.xml templates reference
-      checking if project exits
-      updated reference in test
-      deleting old stuff
-      updating test for CB-916
-      adding bash helper scripts
-      updating bash create script and node test
-      adding appinfo
-      updating windows create.js and creating node test
-      updating windows create.js and creating node test
-      adding windows scripts
-      fixing create
-      windows build/debug/launch scripts
-      removing echoes
-      deleting old BOOM
-      setting +x on script files
-      forgot to add +x on BOOM
-      creating project without source
-      updating create script to work from distro and source
-      log was actually doing nothing...fixing it
-      CB-937 fixing debug
-      CB-937 fixing debug for windows
+Anis Kadri (1):
+      CB-1031 android create script fails
 
-Bryce Curtis (21):
-      Updates.
-      Formating and removal of commented code.
-      Updates.
-      Add exit message.
-      Update
-      Removed.
-      Merging nightmare.
-      Update for getActivity().
-      Add comments.
-      Enable onMessage() to return a value.
-      CB-369: Authentication Code doesn't seem to work.  -- Verified basic auth works and provided test case.
-      CB-779: Verify that fullscreen and backgroundColor preferences are set properly - This check-in enables fullscreen and adds test for it.
-      CB-779: Verify that fullscreen and backgroundColor preferences are set properly - This check-in enables background color and adds test for it.
-      CB-779: Verify that fullscreen and backgroundColor preferences are set properly - This check-in enables background color and adds test for it.
-      Add usage comment.
-      Remove unused imports.
-      CB-800: Fix preferences for the CordovaWebView. - Test case needed to implement CordovaInterface.
-      Optimize loading "about:blank"
-      Need to call pluginManager.onDestroy() to clean up plugins.
-      Backbutton broken by adding new onKeyDown method without calling its super.
-      Fix exception when defaultValue=null.
+Fil Maj (4):
+      [CB-481] Removed todo comment introduced by bryce, clarified what is going on
+      [CB-1022] Reverted nanoTime back to currentTimeMillis. Updated mobile-spec tests as well. This passes all accel tests.
+      [CB-1035] Including newest JS built based on refactored common device module.
+      [CB-574] Added backbutton automated unit test for android.
 
-Darryl Pogue (1):
-      Support showing the app title bar through a preference.
+Joe Bowser (3):
+      Fixing bug on ICS where the super.onKeyDown wasn't being called
+      Combining plugins.xml and cordova.xml to make config.xml
+      Tagging 2.0.0rc1
 
-Fil Maj (19):
-      CB-481 refactored prompt() call in JS to exec, moved showing of webview out of chrome client and into app plugin (so we can invoke via exec)
-      small tweaks to readme re: testing
-      Added MediaScanner abilities to camera launcher plugin. Now images saved to SD card should show up in the android gallery app right away
-      merge!!!!11one
-      Removing images and saving images to jail if SaveToPhotoAlbum is set to true
-      Tacked on file extension to camera file
-      added . in front of the temp files passed into camera app. presumably this hsould stop the gallery app from picking it up
-      Fixed the 0-byte files in gallery. Also fixed exif rewriter for saveToPhotoAlbum:false JPG files. Thanks for your help Simon!
-      Merging in use of uri variable between Simon and my changes.
-      Added MediaScanner abilities to camera launcher plugin. Now images saved to SD card should show up in the android gallery app right away
-      merge!!!!11one
-      Removing images and saving images to jail if SaveToPhotoAlbum is set to true
-      Tacked on file extension to camera file
-      added . in front of the temp files passed into camera app. presumably this hsould stop the gallery app from picking it up
-      Fixed the 0-byte files in gallery. Also fixed exif rewriter for saveToPhotoAlbum:false JPG files. Thanks for your help Simon!
-      Merging in use of uri variable between Simon and my changes.
-      Refactored cleanup in camera code a bit. Removed overrides for Scanner functionality
-      Removed some legacy button code that existed in droidgap + app plugins
-      Removing CordovaWebView Guide; its going into the docs
+Lorin Beer (11):
+      added create message handler, updated AudioPlayer constructor usage
+      added file requirement to constructor, all references to AudioPlayer constructor had direct access to file, so this caused no other changes
+      removed audio load code from startPlaying to a private function
+      made internal status static variables final as well, specifically so that they can be used in switch statements
+      halfway through refactor
+      fixed seek behaviour, but introduces a bunch of new problems
+      update to use ordinal instead of enum value
+      use enums to track internal states instead of int. Fixed 'unknown state' bug with the addition of loading state. Mega commit, lost some history.
+      Merge branches 'master' and 'dev'
+      changed handling of stopRecording to reflect handling of create message
+      added deleted tempfile setup
 
-Joe Bowser (79):
-      Creating the CordovaWebView, modifying DroidGap to use that
-      Adding the tests from the GitHub Prototype
-      Cleaning out the asssets/www directory.  This should house mobile-spec
-      Work on CB-369, Moving Authentication OUT of DroidGap
-      Moving whitelisting into the WebView, still need to read the config in the WebView if required
-      Moving init code into the WebView
-      Partially moved the callback server into the WebView.  The WebView MUST own the CordovaWebViewClient and the CordovaWebChromeClient
-      Minor tweaks to DroidGap, allows for the ChromeClient and ViewClient to be overridden
-      Move the callback server into the View, preparing to start CordovaWebView testing
-      Tweaking DroidGap so it compiles into a JAR, starting testing
-      Updating the tests a bit, still not running
-      Fixing the manifest errors
-      Managed to get this building minus Jail Activity, still a long way to go
-      Rolling back half-baked change that broke the code in the branch, we need to rethink the Callback Server
-      Working. Pushing the callback server change again.
-      Massive refactor of CordovaInterface. Deprecation and Exception throwing to notify the user that we're changing things
-      Updated tweaks to get up and running
-      Removing runnable code for timeout because it's not thread-safe
-      Adding old code back, we can't access webViewClient methods without them being on the UI thread. :(
-      Added another runnable, this code is hideously awful
-      Removing Jail functions for now
-      Removing the cordova jar, it shouldn't be in the repo
-      Adding the CordovaException class
-      Changing viewClient to default visibility
-      Fixed the bug caused when running on Eclipse
-      Minor tweak to the test so it loads the correct HTML
-      Starting to move the history into the CordovaWebView, and getting the WebDriver working again
-      Tweaks to move history over into the WebView
-      Adding screenshot and activity to the test, although Actvity isn't a standard plugin
-      Moving preferences into CordovaWebView, need to discuss prefs when using CordovaWebView
-      Working on CB-585
-      Adding Apache headers to the new classes
-      Adding Apache headers to the tests on the branch
-      Removing the hacked-up jars that I used to get this to work, since I can't distribute them
-      Updating the history configuration.  We can switch between histories
-      Added loadConfiguration to the standalone WebView
-      Updating the project, removing generated artifacts
-      Moving the Callback Server Start/Stop to the onPageStarted fixed timing errors
-      A quick stab at CB-510
-      Broke the merge, need to add GPSListener.java
-      Adding empty tests. May have to re-think the way we test this method
-      Updating Activities
-      Forgot to recheck Plugin.  Adding it back
-      Removing tests that don't work and modifying CordovaWebView so it works as a stand-alone component again.  Mobile-spec currently doesn't work
-      Setting up a default CordovaWebViewClient and CordovaChromeClient for when we are blowing up via XML layouts
-      Forgot to add the proper constructor.  The Clients need to know about their webView.
-      First Draft of how to use CordovaWebView
-      Added JUnit to the README, removed WebDriver for now.  Need to figure out distribution.
-      Adding the Cordova Upgrade Guide
-      Removing the classes we agreed were not used
-      Adding tests to the README
-      Two automated tests completed
-      Missed this error in the merge commit
-      Working on tests
-      Weird merge error. Yo dawg, I heard you like catching exceptions, so we put a catch around your catch. FAIL
-      Adding logs
-      CB-582: Automating User WebView/WebViewClient/WebChromeClient tests
-      Adding the WebDriver Tests
-      Fixing up tests
-      This is a poorly written test.  What was I thinking?
-      Fixing up tests
-      This is a poorly written test.  What was I thinking?
-      I think we need to rethink how we automate this test
-      Incrementing version to 1.9.0rc1
-      Removed merge because I missed the preference set
-      Adding more undocumented features for app title bar and full-screen
-      Default should be false not true
-      One more time, getting the title default right
-      Starting the Buttons Branch
-      Incrementing version to 1.9.0rc1 and doing some variable cleanup
-      Tweaks to CordovaWebView to support other keys
-      Got up and down mixed
-      Fixing work-around to work for both ? and #
-      Adding updated JS
-      Adding updated JS
-      Since we moved binding of buttons into a view, let's remove it from the Interface
-      Weird merge error didn't account for isBackButtonBound
-      Re-adding getContext because yo dawg, I heard you like contexts in your contexts
-      Forgot to add it renderscript.opt.level to the project.  This will fix ant issues
-
-Juan G. Hurtado (3):
-      Add Android 4.0 workaround for links with params
-      Add Android 4.0 workaround for links with params
-      Fix imports for changes in 45680a5
-
-Julien Bouquillon (4):
-      add volumeupbutton/volumedownbutton events
-      prevent volumeup/down default behaviour
-      listening to volume events now override default behaviour
-      upgrade to latest cordova.android.js
-
-Steven Gill (1):
-      updated NOTICE file
-
-macdonst (22):
-      CB-878: Splash screen in Android fullscreen mode showing not correct
-      CB-878: Splash screen in Android fullscreen mode showing not correct
-      Adding getContext, startActivity to CordovaInterface
-      Revert: Adding getContext, startActivity to CordovaInterface
-      Removed need for getFormatData/Image to load image into memory
-      CB-920: FileTransfer UTF-8 bug
-      Fixing merge error in FileUtils.notifyDelete
-      CB-883: SplashScreen without show() method, only hide()
-      CB-910: Camera out of memory error
-      CB-919: Camera Plugin returned with empty error message
-      CB-919: Camera Plugin returned with empty error message
-      CB-978: FileTransfer.upload from a directory with a space fails
-      Decode image from File instead of content resolver
-      Cache bust returned Image URI if saveToPhotoAlbum is false
-      Switch getPicture from Gallery to use file instead of content resolver
-      Using a better scaling algorithm to resize the image
-      Fix double image problem on Samsung phones
-      Rotate image if taken in portrait mode
-      Reset orientation exif information when photo is rotated
-      Wire rotation fix to correctOrientation parameter
-      Only load Exif information if necessary
-      Tagging to 1.9.0
+macdonst (13):
+      CB-993: Android plugin problems upgrading to 1.9.0
+      Fix mis-spelling in upgrade guide
+      Implementing CordovaInterface.getContext in test folder classes
+      CB-992: Camera tries to add temp photo to gallery
+      CB-1008: Camera with targetHeight, targetWidth loses image aspect ratio
+      CB-999: When getting images from the PHOTOLIBRARY apply the correctOrientation fix
+      CB-1014: Out of Memory error when getting image from photo library
+      Modify PluginResult(status) so it generates a JSON string that works with JSON.parse()
+      CB-1016: Zero width or height in getPicture throws java.lang.ArithmeticException
+      CB-1005: Can not remove contact phonenumber values
+      CB-993: Android plugin problems upgrading to 1.9.0
+      CB-952: Android showSplashScreen crashes
+      Adding deprecation notice to LegacyContext
 
 windows-phone
-Jesse MacFadyen (15):
-      Capture parses EXIF data and rotates image based on EXIF_Orientation
-      camera API rotates image based on EXIF data
-      removed Debug logging, cleanup
-      added license header
-      fixed exiflib link
-      added image capture view - wip
-      CB-668 UploadOptions does not serialize Params
-      update version numbers
-      updated js file
-      update example
-      updated test proj
-      rebuild template for 1.9.0rc1
-      CB-953 mouse events fired twice
-      js+path updates for 1.9.0 release
-      rebuilt for 1.9.0 release
+Jesse (7):
+      updated version info, added version info to templates, updated splash screen images
+      removed build cruft
+      moar prep, renaming
+      rejigger to the new structure
+      updated assembly info, like the file name suggests ..
+      removed dupes, and point to new loc of existing source files
+      restruct to use the library project, wtf is a dgml ?
 
-Sergei Grebnov (1):
-      Minor improvement for CB-953 mouse events fired twice
+Jesse MacFadyen (8):
+      [CB-986] backbutton navigation error
+      [CB-925] saveToPhotoAlbum CameraOption
+      update camera options
+      some dictionaries should not be ignored
+      this one too
+      just ignore these guys
+      make everything ref v2.0.0
+      update all templates
 
-filmaj (1):
-      [CB-795] Added HTTP status code to WP7 FileTransferError interface. Catches 404 on download.
-
-hermwong (2):
-      CB-570 resize image if user defined width & height provided
-      code formatting ResizePhoto  method name for code consistency
-
-pcibraro (1):
-      Created VS Package for automatically deploying the project template into visual studio
+Sergei Grebnov (2):
+      fixes mouse events generation script
+      back button fix
 
 webos
 Herm Wong (1):
-      update version to 1.9.0
+      update version to 2.0.0
 
 bada
-Anis Kadri (2):
-      updating version
-      updating version to 1.9.0
+Anis Kadri (1):
+      updating VERSION to 2.0.0rc1
 
 badaWac
-Anis Kadri (3):
-      updating version
-      CB-963 renaming LICENCE to us english
-      updating VERSION to 1.9.0
+Anis Kadri (1):
+      updating VERSION to 2.0.0rc1
+
+Fil Maj (1):
+      [CB-1038] Updating JS to latest to use refactored device module.
 

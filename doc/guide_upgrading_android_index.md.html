@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.0.0rc1">2.0.0rc1</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
-<option selected value="1.9.0">1.9.0</option>
+<option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.8.0rc1">1.8.0rc1</option>
 <option value="1.8.0">1.8.0</option>
@@ -68,6 +69,7 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="0.9.5">0.9.5</option>
 </optgroup></select></small>
@@ -75,15 +77,20 @@
         <div id="subheader">
             <h1>Upgrading Cordova Android</h1>
             <small><select><option value="Upgrading%2520Cordova%2520Android">Upgrading Cordova Android</option>
+<option value="Upgrading%20Cordova%20Android_upgrade_to_2_0_0_from_1_9_0">      - Upgrade to 2.0.0 from 1.9.0</option>
+<option value="Upgrading%20Cordova%20Android_upgrade_to_1_9_0_from_1_8_1">      - Upgrade to 1.9.0 from 1.8.1</option>
+<option value="Upgrading%20Cordova%20Android_upgrade_to_1_8_0_from_1_8_0">      - Upgrade to 1.8.0 from 1.8.0</option>
 <option value="Upgrading%20Cordova%20Android_upgrade_to_1_8_0_from_1_7_0">      - Upgrade to 1.8.0 from 1.7.0</option>
-<option value="Upgrading%20Cordova%20Android_upgrade_to_1_7_0_from_1_6_0">      - Upgrade to 1.7.0 from 1.6.0</option>
-<option value="Upgrade%2520to%25201.6.0%2520from%25201.5.0">Upgrade to 1.6.0 from 1.5.0</option>
-<option value="Upgrade%2520to%25201.5.0%2520from%25201.4.0">Upgrade to 1.5.0 from 1.4.0</option>
-<option value="Upgrade%2520to%25201.4.0%2520from%25201.3.0">Upgrade to 1.4.0 from 1.3.0</option>
-<option value="Upgrade%2520to%25201.3.0%2520from%25201.2.0">Upgrade to 1.3.0 from 1.2.0</option>
-<option value="Upgrade%2520to%25201.2.0%2520from%25201.1.0">Upgrade to 1.2.0 from 1.1.0</option>
-<option value="Upgrade%2520to%25201.1.0%2520from%25201.0.0">Upgrade to 1.1.0 from 1.0.0</option>
-<option value="Upgrade%2520to%25201.0.0%2520from%25200.9.6">Upgrade to 1.0.0 from 0.9.6</option></select></small>
+<option value="Upgrading%20Cordova%20Android_upgrade_to_1_8_0_from_1_7_0">      - Upgrade to 1.8.0 from 1.7.0</option>
+<option value="Upgrading%20Cordova%20Android_upgrade_to_1_7_0_from_1_6_1">      - Upgrade to 1.7.0 from 1.6.1</option>
+<option value="Upgrading%20Cordova%20Android_upgrade_to_1_6_1_from_1_6_0">      - Upgrade to 1.6.1 from 1.6.0</option>
+<option value="Upgrading%20Cordova%20Android_upgrade_to_1_6_0_from_1_5_0">      - Upgrade to 1.6.0 from 1.5.0</option>
+<option value="Upgrading%20Cordova%20Android_upgrade_to_1_5_0_from_1_4_0">      - Upgrade to 1.5.0 from 1.4.0</option>
+<option value="Upgrading%20Cordova%20Android_upgrade_to_1_4_0_from_1_3_0">      - Upgrade to 1.4.0 from 1.3.0</option>
+<option value="Upgrading%20Cordova%20Android_upgrade_to_1_3_0_from_1_2_0">      - Upgrade to 1.3.0 from 1.2.0</option>
+<option value="Upgrading%20Cordova%20Android_upgrade_to_1_2_0_from_1_1_0">      - Upgrade to 1.2.0 from 1.1.0</option>
+<option value="Upgrading%20Cordova%20Android_upgrade_to_1_1_0_from_1_0_0">      - Upgrade to 1.1.0 from 1.0.0</option>
+<option value="Upgrading%20Cordova%20Android_upgrade_to_1_0_0_from_0_9_6">      - Upgrade to 1.0.0 from 0.9.6</option></select></small>
         </div>
 
         <div id="sidebar">
@@ -121,11 +128,48 @@
 
 <p>This document is for people who need to upgrade their Cordova versions from an older version to a current version of Cordova.</p>
 
+<h2>
+<a name="Upgrading%20Cordova%20Android_upgrade_to_2_0_0_from_1_9_0">Upgrade to 2.0.0 from 1.9.0</a>
+</h2>
+
+<ol>
+<li>Remove cordova-1.9.0.jar from the libs directory in your project</li>
+<li>Add cordova-2.0.0.jar to the libs directory in your project</li>
+<li>If you are using Eclipse, please refresh your eclipse project and do a clean</li>
+<li>Copy the new cordova-2.0.0.js into your project</li>
+<li>Update your HTML to use the new cordova-2.0.0.js file</li>
+<li>Update the res/xml/plugins.xml to be the same as the one found in framework/res/xml/plugins.xml</li>
+</ol>
+<h2>
+<a name="Upgrading%20Cordova%20Android_upgrade_to_1_9_0_from_1_8_1">Upgrade to 1.9.0 from 1.8.1</a>
+</h2>
+
+<ol>
+<li>Remove cordova-1.8.0.jar from the libs directory in your project</li>
+<li>Add cordova-1.9.0.jar to the libs directory in your project</li>
+<li>If you are using Eclipse, please refresh your eclipse project and do a clean</li>
+<li>Copy the new cordova-1.9.0.js into your project</li>
+<li>Update your HTML to use the new cordova-1.9.0.js file</li>
+<li>Update the res/xml/plugins.xml to be the same as the one found in framework/res/xml/plugins.xml</li>
+</ol>
+<h3>Notes about 1.9.0 release</h3>
+
 <ul>
-<li>To upgrade to 1.8.0, please go from 1.7.0</li>
-<li>To upgrade to 1.7.0, please go from 1.6.0</li>
-<li>To upgrade to 1.0.0, please go from 0.9.6</li>
+<li>Third-Party plugins may or may not work.  This is because of the introduction of the CordovaWebView.  These plugins need to get a context from the CordovaInterface using
+getContext() or getActivity().  If you are not an experienced Android developer, please contact the plugin maintainer and add this task to their bug tracker.</li>
 </ul>
+<h2>
+<a name="Upgrading%20Cordova%20Android_upgrade_to_1_8_0_from_1_8_0">Upgrade to 1.8.0 from 1.8.0</a>
+</h2>
+
+<ol>
+<li>Remove cordova-1.8.0.jar from the libs directory in your project</li>
+<li>Add cordova-1.8.1.jar to the libs directory in your project</li>
+<li>If you are using Eclipse, please refresh your eclipse project and do a clean</li>
+<li>Copy the new cordova-1.8.1.js into your project</li>
+<li>Update your HTML to use the new cordova-1.8.1.js file</li>
+<li>Update the res/xml/plugins.xml to be the same as the one found in framework/res/xml/plugins.xml</li>
+</ol>
 <h2>
 <a name="Upgrading%20Cordova%20Android_upgrade_to_1_8_0_from_1_7_0">Upgrade to 1.8.0 from 1.7.0</a>
 </h2>
@@ -139,17 +183,42 @@
 <li>Update the res/xml/plugins.xml to be the same as the one found in framework/res/xml/plugins.xml</li>
 </ol>
 <h2>
-<a name="Upgrading%20Cordova%20Android_upgrade_to_1_7_0_from_1_6_0">Upgrade to 1.7.0 from 1.6.0</a>
+<a name="Upgrading%20Cordova%20Android_upgrade_to_1_8_0_from_1_7_0">Upgrade to 1.8.0 from 1.7.0</a>
 </h2>
 
 <ol>
-<li>Remove cordova-1.6.0.jar from the libs directory in your project</li>
+<li>Remove cordova-1.7.0.jar from the libs directory in your project</li>
+<li>Add cordova-1.8.0.jar to the libs directory in your project</li>
+<li>If you are using Eclipse, please refresh your eclipse project and do a clean</li>
+<li>Copy the new cordova-1.8.0.js into your project</li>
+<li>Update your HTML to use the new cordova-1.8.0.js file</li>
+<li>Update the res/xml/plugins.xml to be the same as the one found in framework/res/xml/plugins.xml</li>
+</ol>
+<h2>
+<a name="Upgrading%20Cordova%20Android_upgrade_to_1_7_0_from_1_6_1">Upgrade to 1.7.0 from 1.6.1</a>
+</h2>
+
+<ol>
+<li>Remove cordova-1.6.1.jar from the libs directory in your project</li>
 <li>Add cordova-1.7.0.jar to the libs directory in your project</li>
 <li>If you are using Eclipse, please refresh your eclipse project and do a clean</li>
 <li>Copy the new cordova-1.7.0.js into your project</li>
 <li>Update the res/xml/plugins.xml to be the same as the one found in framework/res/xml/plugins.xml</li>
 </ol>
-<h1><a name="Upgrade%20to%201.6.0%20from%201.5.0">Upgrade to 1.6.0 from 1.5.0</a></h1>
+<h2>
+<a name="Upgrading%20Cordova%20Android_upgrade_to_1_6_1_from_1_6_0">Upgrade to 1.6.1 from 1.6.0</a>
+</h2>
+
+<ol>
+<li>Remove cordova-1.6.0.jar from the libs directory in your project</li>
+<li>Add cordova-1.6.1.jar to the libs directory in your project</li>
+<li>If you are using Eclipse, please refresh your eclipse project and do a clean</li>
+<li>Copy the new cordova-1.6.1.js into your project</li>
+<li>Update the res/xml/plugins.xml to be the same as the one found in framework/res/xml/plugins.xml</li>
+</ol>
+<h2>
+<a name="Upgrading%20Cordova%20Android_upgrade_to_1_6_0_from_1_5_0">Upgrade to 1.6.0 from 1.5.0</a>
+</h2>
 
 <ol>
 <li>Remove cordova-1.5.0.jar from the libs directory in your project</li>
@@ -160,7 +229,9 @@
 <li>Update the res/xml/plugins.xml so that it is the same as the one found in framework/res/xml/plugins.xml</li>
 <li>Replace the res/xml/phonegap.xml with res/xml/cordova.xml so that it is the same as the one found in framework/res/xml/cordova.xml</li>
 </ol>
-<h1><a name="Upgrade%20to%201.5.0%20from%201.4.0">Upgrade to 1.5.0 from 1.4.0</a></h1>
+<h2>
+<a name="Upgrading%20Cordova%20Android_upgrade_to_1_5_0_from_1_4_0">Upgrade to 1.5.0 from 1.4.0</a>
+</h2>
 
 <ol>
 <li>Remove phonegap-1.4.0.jar from the libs directory in your project</li>
@@ -171,7 +242,9 @@
 <li>Update the res/xml/plugins.xml so that it is the same as the one found in framework/res/xml/plugins.xml</li>
 <li>Replace the res/xml/phonegap.xml with res/xml/cordova.xml so that it is the same as the one found in framework/res/xml/cordova.xml</li>
 </ol>
-<h1><a name="Upgrade%20to%201.4.0%20from%201.3.0">Upgrade to 1.4.0 from 1.3.0</a></h1>
+<h2>
+<a name="Upgrading%20Cordova%20Android_upgrade_to_1_4_0_from_1_3_0">Upgrade to 1.4.0 from 1.3.0</a>
+</h2>
 
 <ol>
 <li>Remove phonegap-1.3.0.jar from the libs directory in your project</li>
@@ -182,7 +255,9 @@
 <li>Update the res/xml/plugins.xml so that it is the same as the one found in framework/res/xml/plugins.xml</li>
 <li>Update the res/xml/phonegap.xml so that it is the same as the one found in framework/res/xml/phonegap.xml</li>
 </ol>
-<h1><a name="Upgrade%20to%201.3.0%20from%201.2.0">Upgrade to 1.3.0 from 1.2.0</a></h1>
+<h2>
+<a name="Upgrading%20Cordova%20Android_upgrade_to_1_3_0_from_1_2_0">Upgrade to 1.3.0 from 1.2.0</a>
+</h2>
 
 <ol>
 <li>Remove phonegap-1.2.0.jar from the libs directory in your project</li>
@@ -193,7 +268,9 @@
 <li>Update the res/xml/plugins.xml so that it is the same as the one found in framework/res/xml/plugins.xml</li>
 <li>Update the res/xml/phonegap.xml so that it is the same as the one found in framework/res/xml/phonegap.xml</li>
 </ol>
-<h1><a name="Upgrade%20to%201.2.0%20from%201.1.0">Upgrade to 1.2.0 from 1.1.0</a></h1>
+<h2>
+<a name="Upgrading%20Cordova%20Android_upgrade_to_1_2_0_from_1_1_0">Upgrade to 1.2.0 from 1.1.0</a>
+</h2>
 
 <ol>
 <li>Remove phonegap-1.1.0.jar from the libs directory in your project</li>
@@ -204,7 +281,9 @@
 <li>Update the res/xml/plugins.xml so that it is the same as the one found in framework/res/xml/plugins.xml</li>
 <li>Update the res/xml/phonegap.xml so that it is the same as the one found in framework/res/xml/phonegap.xml</li>
 </ol>
-<h1><a name="Upgrade%20to%201.1.0%20from%201.0.0">Upgrade to 1.1.0 from 1.0.0</a></h1>
+<h2>
+<a name="Upgrading%20Cordova%20Android_upgrade_to_1_1_0_from_1_0_0">Upgrade to 1.1.0 from 1.0.0</a>
+</h2>
 
 <ol>
 <li>Remove phonegap-1.0.0.jar from the libs directory in your project</li>
@@ -214,7 +293,9 @@
 <li>Update your HTML to use the new phonegap-1.1.0.js file</li>
 <li>Update the res/xml/plugins.xml so that it is the same as the one found in framework/res/xml/plugins.xml</li>
 </ol>
-<h1><a name="Upgrade%20to%201.0.0%20from%200.9.6">Upgrade to 1.0.0 from 0.9.6</a></h1>
+<h2>
+<a name="Upgrading%20Cordova%20Android_upgrade_to_1_0_0_from_0_9_6">Upgrade to 1.0.0 from 0.9.6</a>
+</h2>
 
 <ol>
 <li>Remove phonegap-0.9.6.jar from the libs directory in your project</li>

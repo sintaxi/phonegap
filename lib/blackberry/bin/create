@@ -79,9 +79,6 @@ else
 	cp -r $BUILD_PATH/sample/. $PROJECT_PATH
 fi
 
-# re-copy over cordova scripts because ant doesn't preserve file modes when copying
-cp -r -p $BUILD_PATH/bin/templates/project/cordova $PROJECT_PATH
-
 # interpolate the app name into config.xml
 echo "Updating config.xml ..."
 sed -i '' -e "s/__NAME__/${APPNAME}/g" $MANIFEST_PATH

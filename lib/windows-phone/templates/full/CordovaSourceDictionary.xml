@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- This file is auto-generated, do not edit! -jm -->
 <CordovaSourceDictionary>
+    <FilePath Value="www\cordova-2.0.0.js"/>
+    <FilePath Value="www\index.html"/>
+    <FilePath Value="www\master.css"/>
 </CordovaSourceDictionary>

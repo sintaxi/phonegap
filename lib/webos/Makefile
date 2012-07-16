@@ -37,7 +37,7 @@ OPEN = open
 ECHO = echo
 ECHO_N = echo -n
 JAVA = java
-PGVERSION = 1.9.0
+PGVERSION = 2.0.0
 UNAME := $(shell uname)
 
 NAME = `$(CAT) framework/appinfo.json | $(GREP) '"id"' | $(CUT) -d \" -f 4`

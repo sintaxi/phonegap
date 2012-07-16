@@ -74,7 +74,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Xml" />
-    <Reference Include="WP7CordovaClassLib, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -100,7 +99,6 @@
     <Content Include="CordovaSourceDictionary.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="GapLib\WP7CordovaClassLib.dll" />
     <Content Include="www\cordova-1.9.0.js" />
     <Content Include="www\network.html">
       <SubType>Designer</SubType>
@@ -171,7 +169,12 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\framework\WP7CordovaClassLib.csproj">
+      <Project>{FC6A1A70-892D-46AD-9E4A-9793F72AF780}</Project>
+      <Name>WP7CordovaClassLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

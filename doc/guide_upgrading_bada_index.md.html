@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.0.0rc1">2.0.0rc1</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
-<option selected value="1.9.0">1.9.0</option>
+<option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.8.0rc1">1.8.0rc1</option>
 <option value="1.8.0">1.8.0</option>
@@ -68,6 +69,7 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="0.9.5">0.9.5</option>
 </optgroup></select></small>
@@ -75,7 +77,9 @@
         <div id="subheader">
             <h1>Upgrading Cordova Bada</h1>
             <small><select><option value="Upgrading%2520Cordova%2520Bada">Upgrading Cordova Bada</option>
-<option value="Upgrading%20Cordova%20Bada_upgrade_to_1_8_0_from_1_7_0">      - Upgrade to 1.8.0 from 1.7.0</option></select></small>
+<option value="Upgrading%20Cordova%20Bada_upgrade_to_1_9_0_from_2_0_0">      - Upgrade to 1.9.0 from 2.0.0</option>
+<option value="Upgrading%20Cordova%20Bada_upgrade_to_1_9_0_from_1_8_x">      - Upgrade to 1.9.0 from 1.8.x</option>
+<option value="Upgrading%20Cordova%20Bada_upgrade_to_1_8_x_from_1_7_0">      - Upgrade to 1.8.x from 1.7.0</option></select></small>
         </div>
 
         <div id="sidebar">
@@ -111,10 +115,25 @@
             <div id="content">
                 <h1><a name="Upgrading%20Cordova%20Bada">Upgrading Cordova Bada</a></h1>
 
-<p>This document is for people who need to upgrade their Cordova versions from an older version to a current version of Cordova.</p>
+<p>This document is for people who need to upgrade their Cordova versions from an
+older version to a current version of Cordova.</p>
 
 <h2>
-<a name="Upgrading%20Cordova%20Bada_upgrade_to_1_8_0_from_1_7_0">Upgrade to 1.8.0 from 1.7.0</a>
+<a name="Upgrading%20Cordova%20Bada_upgrade_to_1_9_0_from_2_0_0">Upgrade to 1.9.0 from 2.0.0</a>
+</h2>
+
+<ol>
+<li>Update <code>Res/js/cordova.js</code> with the new JavaScript file.</li>
+</ol>
+<h2>
+<a name="Upgrading%20Cordova%20Bada_upgrade_to_1_9_0_from_1_8_x">Upgrade to 1.9.0 from 1.8.x</a>
+</h2>
+
+<ol>
+<li>Update <code>Res/js/cordova.js</code> with the new JavaScript file.</li>
+</ol>
+<h2>
+<a name="Upgrading%20Cordova%20Bada_upgrade_to_1_8_x_from_1_7_0">Upgrade to 1.8.x from 1.7.0</a>
 </h2>
 
 <ol>
@@ -127,12 +146,13 @@
 <pre class="prettyprint"><code>&lt;script type="text/javascript" src="./js/cordova.bada.js"&gt;&lt;/script&gt;
 </code></pre>
 
-<p><em>to</em></p>
+<p>to:</p>
 
 <pre class="prettyprint"><code>&lt;script type="text/javascript" src="./js/cordova.js"&gt;&lt;/script&gt;
 </code></pre>
 
-<p>As of Cordova 1.8, Bada 1.2 is no longer supported! The repository will be kept there as an archive for people who still want to use it. It contains some outdated APIs.</p>
+<p>As of Cordova 1.8, Bada 1.2 is no longer supported! The repository will be kept
+there as an archive for people who still want to use it. It contains some outdated APIs.</p>
 
             </div>
         </div>

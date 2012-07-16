@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.0.0rc1">2.0.0rc1</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
-<option selected value="1.9.0">1.9.0</option>
+<option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.8.0rc1">1.8.0rc1</option>
 <option value="1.8.0">1.8.0</option>
@@ -68,6 +69,7 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="0.9.5">0.9.5</option>
 </optgroup></select></small>
@@ -145,11 +147,22 @@
 </h2>
 
 <ul>
-<li>
-<p>Launch Eclipse, and select menu item <strong>New &gt; Android Project</strong>.  Fill out the three panels of the <strong>New Android Project</strong> wizard shown below.</p>
-
-<p><img src="img/guide/getting-started/android/AndroidFlow.png" alt="" title=""></p>
+<li>Launch Eclipse, and select menu item <strong>New Project</strong>
+<img src="img/guide/getting-started/android/step_1.jpg" alt="" title="">
 </li>
+<li>Then specify new application project
+<img src="img/guide/getting-started/android/step_2.jpg" alt="" title="">
+</li>
+<li>Then speciy an Application Name, a Project Name and Package Name with Namespace
+<img src="img/guide/getting-started/android/step_3.jpg" alt="" title="">
+</li>
+<li>Then select a graphic
+<img src="img/guide/getting-started/android/step_4.jpg" alt="" title="">
+</li>
+<li>Then Create a Blank Activity
+<img src="img/guide/getting-started/android/step_5.jpg" alt="" title="">
+</li>
+<li><p>Make sure the activity doesn't inherit from anything.  You most likely won't have PhoneGap on your Eclipse Workspace.  Once this is done, click finish</p></li>
 <li>
 <p>In the root directory of your project, create two new directories:</p>
 
@@ -180,11 +193,10 @@
 </ul>
 <p><img src="img/guide/getting-started/android/javaSrc.jpg" alt="" title=""></p>
 </li>
-<li><p>Right click on AndroidManifest.xml and select <strong>Open With &gt; XML Editor</strong></p></li>
+<li><p>Right click on AndroidManifest.xml and select <strong>Open With &gt; Text Editor</strong></p></li>
 <li>
 <p>Paste the following permissions between the <strong>&lt;uses-sdk.../&gt;</strong> and <strong>&lt;application.../&gt;</strong> tags.</p>
 
-<p></p>
 <pre class="prettyprint"><code>&lt;supports-screens 
     android:largeScreens="true" 
     android:normalScreens="true" 
@@ -207,19 +219,21 @@
 &lt;uses-permission android:name="android.permission.GET_ACCOUNTS" /&gt;
 &lt;uses-permission android:name="android.permission.BROADCAST_STICKY" /&gt;
 </code></pre>
+
+<p>*Note You are adding a blanket list of permissions to your application. You should remove permissions you aren't using before submitting your application to Google Play.</p>
 </li>
 <li>
-<p>Support orientation changes by pasting the folowing inside the <strong>&lt;activity&gt;</strong> tag.</p>
+<p>Support orientation changes by pasting the following inside the <strong>&lt;activity&gt;</strong> tag.</p>
 
 <p></p>
-<pre class="prettyprint"><code>android:configChanges="orientation|keyboardHidden|screenSize"
+<pre class="prettyprint"><code>android:configChanges="orientation|keyboardHidden"
 </code></pre>
 </li>
 <li>
 <p>Your AndroidManifest.xml file should look like</p>
 
 <p></p>
-<p><img src="img/guide/getting-started/android/manifest.jpg" alt="" title=""></p>
+<p><img src="img/guide/getting-started/android/manifest.png" alt="" title=""></p>
 </li>
 </ul>
 <h2>

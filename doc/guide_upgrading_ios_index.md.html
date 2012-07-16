@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.0.0rc1">2.0.0rc1</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
-<option selected value="1.9.0">1.9.0</option>
+<option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.8.0rc1">1.8.0rc1</option>
 <option value="1.8.0">1.8.0</option>
@@ -68,6 +69,7 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="0.9.5">0.9.5</option>
 </optgroup></select></small>
@@ -75,13 +77,18 @@
         <div id="subheader">
             <h1>Upgrading Cordova iOS</h1>
             <small><select><option value="Upgrading%2520Cordova%2520iOS">Upgrading Cordova iOS</option>
+<option value="Upgrading%20Cordova%20iOS_upgrading_cordova_1_9_0_projects_to_2_0_0">      - Upgrading Cordova 1.9.0 projects to 2.0.0</option>
 <option value="Upgrading%20Cordova%20iOS_upgrading_cordova_1_8_x_projects_to_1_9_0">      - Upgrading Cordova 1.8.x projects to 1.9.0</option>
 <option value="Upgrading%20Cordova%20iOS_upgrading_cordova_1_7_0_projects_to_1_8_x">      - Upgrading Cordova 1.7.0 projects to 1.8.x</option>
 <option value="Upgrading%20Cordova%20iOS_upgrading_cordova_1_6_x_projects_to_1_7_0">      - Upgrading Cordova 1.6.x projects to 1.7.0</option>
 <option value="Upgrading%20Cordova%20iOS_upgrading_cordova_1_5_0_projects_to_1_6_x">      - Upgrading Cordova 1.5.0 projects to 1.6.x</option>
 <option value="Upgrading%20Cordova%20iOS_upgrading_cordova_1_4_x_projects_to_1_5_0">      - Upgrading Cordova 1.4.x projects to 1.5.0</option>
 <option value="Upgrading%20Cordova%20iOS_upgrading_cordova_1_4_0_projects_to_1_4_1">      - Upgrading Cordova 1.4.0 projects to 1.4.1</option>
-<option value="Upgrading%20Cordova%20iOS_upgrading_cordova_1_3_0_projects_to_1_4_0">      - Upgrading Cordova 1.3.0 projects to 1.4.0</option></select></small>
+<option value="Upgrading%20Cordova%20iOS_upgrading_cordova_1_3_0_projects_to_1_4_0">      - Upgrading Cordova 1.3.0 projects to 1.4.0</option>
+<option value="Upgrading%20Cordova%20iOS_upgrading_cordova_1_2_0_projects_to_1_3_0">      - Upgrading Cordova 1.2.0 projects to 1.3.0</option>
+<option value="Upgrading%20Cordova%20iOS_upgrading_cordova_1_1_0_projects_to_1_2_0">      - Upgrading Cordova 1.1.0 projects to 1.2.0</option>
+<option value="Upgrading%20Cordova%20iOS_upgrading_cordova_1_0_0_projects_to_1_1_0">      - Upgrading Cordova 1.0.0 projects to 1.1.0</option>
+<option value="Upgrading%20Cordova%20iOS_upgrading_cordova_0_9_6_projects_to_1_0_0">      - Upgrading Cordova 0.9.6 projects to 1.0.0</option></select></small>
         </div>
 
         <div id="sidebar">
@@ -119,6 +126,23 @@
 
 <p>Please note that <strong>Xcode 4 is required</strong>. To submit to the Apple App Store, you must use the latest shipped version of the iOS SDK, which is iOS 5.1. The iOS 5.1 SDK requires Xcode 4.</p>
 
+<h2>
+<a name="Upgrading%20Cordova%20iOS_upgrading_cordova_1_9_0_projects_to_2_0_0">Upgrading Cordova 1.9.0 projects to 2.0.0</a>
+</h2>
+
+<ol>
+<li>
+<strong>Install</strong> Cordova 2.0.0</li>
+<li>
+<strong>Create a new project</strong> - you will have to grab assets from this new project</li>
+<li>
+<strong>Copy</strong> the <strong>www/cordova-2.0.0.js</strong> file from the new project into your <strong>www</strong> folder, and delete your <strong>www/cordova-1.9.0.js</strong> file</li>
+<li>
+<strong>Update</strong> the Cordova script reference in your <strong>www/index.html</strong> file (and any other files that contain the script reference) to point to the new <strong>cordova-2.0.0.js</strong> file</li>
+<li>
+<strong>Add</strong> a new entry under <strong>Plugins</strong> in your <strong>Cordova.plist</strong> file - key is <strong><a href="cordova_device_device.md.html#Device">Device</a></strong> and the value is <strong>CDVDevice</strong>
+</li>
+</ol>
 <h2>
 <a name="Upgrading%20Cordova%20iOS_upgrading_cordova_1_8_x_projects_to_1_9_0">Upgrading Cordova 1.8.x projects to 1.9.0</a>
 </h2>
@@ -320,6 +344,138 @@ MainViewController.xib
 <strong>Copy</strong> the <strong>www/phonegap-1.4.0.js</strong> file from the new project into your <strong>www</strong> folder, and delete your <strong>www/phonegap-1.3.0.js</strong> file</li>
 <li>
 <strong>Update</strong> the Cordova script reference in your <strong>www/index.html</strong> file (and any other files that contain the script reference) to point to the new <strong>phonegap-1.4.0.js</strong> file</li>
+<li>
+<strong>Add</strong> a new entry under <strong>Plugins</strong> in your <strong>PhoneGap.plist</strong> file - key is <strong>com.phonegap.battery</strong> and the value is <strong>PGBattery</strong>
+</li>
+<li>
+<strong>Integrate</strong> any project specific code that you have in your <strong>backed-up AppDelegate.h and AppDelegate.m</strong> into the new AppDelegate files</li>
+</ol>
+<h2>
+<a name="Upgrading%20Cordova%20iOS_upgrading_cordova_1_2_0_projects_to_1_3_0">Upgrading Cordova 1.2.0 projects to 1.3.0</a>
+</h2>
+
+<ol>
+<li>
+<strong>Install</strong> Cordova 1.3.0</li>
+<li>
+<strong>Make a backup</strong> of <strong>AppDelegate.m</strong> and <strong>AppDelegate.h</strong> in your project</li>
+<li>
+<strong>Create a new project</strong> - you will have to grab assets from this new project</li>
+<li>
+<p><strong>Copy</strong> these files from the <strong>new</strong> project into your 1.2.0 based project folder on disk, <strong>replacing</strong> any old files (<strong>backup</strong> your files first from step 2 above):</p>
+
+<pre class="prettyprint"><code>AppDelegate.h
+AppDelegate.m
+MainViewController.h
+MainViewController.m
+MainViewController.xib
+</code></pre>
+</li>
+<li>
+<strong>Add</strong> all the <strong>MainViewController</strong> files into your Xcode project</li>
+<li>
+<strong>Copy</strong> the <strong>www/phonegap-1.3.0.js</strong> file from the new project into your <strong>www</strong> folder, and delete your <strong>www/phonegap-1.2.0.js</strong> file</li>
+<li>
+<strong>Update</strong> the Cordova script reference in your <strong>www/index.html</strong> file (and any other files that contain the script reference) to point to the new <strong>phonegap-1.3.0.js</strong> file</li>
+<li>
+<strong>Add</strong> a new entry under <strong>Plugins</strong> in your <strong>PhoneGap.plist</strong> file - key is <strong>com.phonegap.battery</strong> and the value is <strong>PGBattery</strong>
+</li>
+<li>
+<strong>Integrate</strong> any project specific code that you have in your <strong>backed-up AppDelegate.h and AppDelegate.m</strong> into the new AppDelegate files</li>
+</ol>
+<h2>
+<a name="Upgrading%20Cordova%20iOS_upgrading_cordova_1_1_0_projects_to_1_2_0">Upgrading Cordova 1.1.0 projects to 1.2.0</a>
+</h2>
+
+<ol>
+<li>
+<strong>Install</strong> Cordova 1.2.0</li>
+<li>
+<strong>Make a backup</strong> of <strong>AppDelegate.m</strong> and <strong>AppDelegate.h</strong> in your project</li>
+<li>
+<strong>Create a new project</strong> - you will have to grab assets from this new project</li>
+<li>
+<p><strong>Copy</strong> these files from the <strong>new</strong> project into your 1.1.0 based project folder on disk, <strong>replacing</strong> any old files (<strong>backup</strong> your files first from step 2 above):</p>
+
+<pre class="prettyprint"><code>AppDelegate.h
+AppDelegate.m
+MainViewController.h
+MainViewController.m
+MainViewController.xib
+</code></pre>
+</li>
+<li>
+<strong>Add</strong> all the <strong>MainViewController</strong> files into your Xcode project</li>
+<li>
+<strong>Copy</strong> the <strong>www/phonegap-1.2.0.js</strong> file from the new project into your <strong>www</strong> folder, and delete your <strong>www/phonegap-1.1.0.js</strong> file</li>
+<li>
+<strong>Update</strong> the Cordova script reference in your <strong>www/index.html</strong> file (and any other files that contain the script reference) to point to the new <strong>phonegap-1.2.0.js</strong> file</li>
+<li>
+<strong>Add</strong> a new entry under <strong>Plugins</strong> in your <strong>PhoneGap.plist</strong> file - key is <strong>com.phonegap.battery</strong> and the value is <strong>PGBattery</strong>
+</li>
+<li>
+<strong>Integrate</strong> any project specific code that you have in your <strong>backed-up AppDelegate.h and AppDelegate.m</strong> into the new AppDelegate files</li>
+</ol>
+<h2>
+<a name="Upgrading%20Cordova%20iOS_upgrading_cordova_1_0_0_projects_to_1_1_0">Upgrading Cordova 1.0.0 projects to 1.1.0</a>
+</h2>
+
+<ol>
+<li>
+<strong>Install</strong> Cordova 1.1.0</li>
+<li>
+<strong>Make a backup</strong> of <strong>AppDelegate.m</strong> and <strong>AppDelegate.h</strong> in your project</li>
+<li>
+<strong>Create a new project</strong> - you will have to grab assets from this new project</li>
+<li>
+<p><strong>Copy</strong> these files from the <strong>new</strong> project into your 1.0.0 based project folder on disk, <strong>replacing</strong> any old files (<strong>backup</strong> your files first from step 2 above):</p>
+
+<pre class="prettyprint"><code>AppDelegate.h
+AppDelegate.m
+MainViewController.h
+MainViewController.m
+MainViewController.xib
+</code></pre>
+</li>
+<li>
+<strong>Add</strong> all the <strong>MainViewController</strong> files into your Xcode project</li>
+<li>
+<strong>Copy</strong> the <strong>www/phonegap-1.1.0.js</strong> file from the new project into your <strong>www</strong> folder, and delete your <strong>www/phonegap-1.0.0.js</strong> file</li>
+<li>
+<strong>Update</strong> the Cordova script reference in your <strong>www/index.html</strong> file (and any other files that contain the script reference) to point to the new <strong>phonegap-1.1.0.js</strong> file</li>
+<li>
+<strong>Add</strong> a new entry under <strong>Plugins</strong> in your <strong>PhoneGap.plist</strong> file - key is <strong>com.phonegap.battery</strong> and the value is <strong>PGBattery</strong>
+</li>
+<li>
+<strong>Integrate</strong> any project specific code that you have in your <strong>backed-up AppDelegate.h and AppDelegate.m</strong> into the new AppDelegate files</li>
+</ol>
+<h2>
+<a name="Upgrading%20Cordova%20iOS_upgrading_cordova_0_9_6_projects_to_1_0_0">Upgrading Cordova 0.9.6 projects to 1.0.0</a>
+</h2>
+
+<ol>
+<li>
+<strong>Install</strong> Cordova 1.0.0</li>
+<li>
+<strong>Make a backup</strong> of <strong>AppDelegate.m</strong> and <strong>AppDelegate.h</strong> in your project</li>
+<li>
+<strong>Create a new project</strong> - you will have to grab assets from this new project</li>
+<li>
+<p><strong>Copy</strong> these files from the <strong>new</strong> project into your 0.9.6 based project folder on disk, <strong>replacing</strong> any old files (<strong>backup</strong> your files first from step 2 above):</p>
+
+<pre class="prettyprint"><code>AppDelegate.h
+AppDelegate.m
+MainViewController.h
+MainViewController.m
+MainViewController.xib
+</code></pre>
+</li>
+<li>
+<strong>Add</strong> all the <strong>MainViewController</strong> files into your Xcode project</li>
+<li>
+<strong>Copy</strong> the <strong>www/phonegap-1.0.0.js</strong> file from the new project into your <strong>www</strong> folder, and delete your <strong>www/phonegap-0.9.6.js</strong> file</li>
+<li>
+<strong>Update</strong> the Cordova script reference in your <strong>www/index.html</strong> file (and any other files that contain the script reference) to point to the new <strong>phonegap-1.0.0.js</strong> file</li>
 <li>
 <strong>Add</strong> a new entry under <strong>Plugins</strong> in your <strong>PhoneGap.plist</strong> file - key is <strong>com.phonegap.battery</strong> and the value is <strong>PGBattery</strong>
 </li>
