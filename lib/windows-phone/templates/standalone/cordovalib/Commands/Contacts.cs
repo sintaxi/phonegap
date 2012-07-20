@@ -196,9 +196,8 @@ namespace WP7CordovaClassLib.Cordova.Commands
         // refer here for contact properties we can access: http://msdn.microsoft.com/en-us/library/microsoft.phone.tasks.savecontacttask_members%28v=VS.92%29.aspx
         public void save(string jsonContact)
         {
-
-            JSONContact contact = JSON.JsonHelper.Deserialize<JSONContact>(jsonContact);
-
+            // jsonContact is actually an array of 1 {contact}
+            JSONContact contact = JSON.JsonHelper.Deserialize<JSONContact[]>(jsonContact)[0];
 
             SaveContactTask contactTask = new SaveContactTask();
 
@@ -367,12 +366,22 @@ namespace WP7CordovaClassLib.Cordova.Commands
 
         public void remove(string id)
         {
+            // note id is wrapped in [] and always has exactly one string ...
             DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, "{\"code\":" + NOT_SUPPORTED_ERROR + "}"));
         }
 
         public void search(string searchCriteria)
         {
-            ContactSearchParams searchParams = JSON.JsonHelper.Deserialize<ContactSearchParams>(searchCriteria);
+            ContactSearchParams searchParams = null;
+            try
+            {
+                searchParams = JSON.JsonHelper.Deserialize<ContactSearchParams[]>(searchCriteria)[0];
+            }
+            catch (Exception)
+            {
+                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, INVALID_ARGUMENT_ERROR));
+                return;
+            }
 
             if (searchParams.options == null)
             {

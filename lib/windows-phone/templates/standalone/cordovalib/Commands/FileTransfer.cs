@@ -247,11 +247,11 @@ namespace WP7CordovaClassLib.Cordova.Commands
             Debug.WriteLine("options = " + options);
             options = options.Replace("{}", "null");
 
-            try
+            try 
             {
-                try
+                try 
                 {
-                    uploadOptions = JSON.JsonHelper.Deserialize<UploadOptions>(options);
+                    uploadOptions = JSON.JsonHelper.Deserialize<UploadOptions[]>(options)[0];
                 }
                 catch (Exception)
                 {
@@ -287,7 +287,11 @@ namespace WP7CordovaClassLib.Cordova.Commands
 
             try
             {
-                downloadOptions = JSON.JsonHelper.Deserialize<DownloadOptions>(options);
+                string[] optionStrings = JSON.JsonHelper.Deserialize<string[]>(options);
+
+                downloadOptions = new DownloadOptions();// JSON.JsonHelper.Deserialize<DownloadOptions>(options);
+                downloadOptions.Url = optionStrings[0];
+                downloadOptions.FilePath = optionStrings[1];
             }
             catch (Exception)
             {

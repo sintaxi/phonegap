@@ -245,7 +245,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                 try
                 {
                     this.captureImageOptions = String.IsNullOrEmpty(options) ?
-                        CaptureImageOptions.Default : JSON.JsonHelper.Deserialize<CaptureImageOptions>(options);
+                        CaptureImageOptions.Default : JSON.JsonHelper.Deserialize<CaptureImageOptions[]>(options)[0];
 
                 }
                 catch (Exception ex)
@@ -276,7 +276,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                 try
                 {
                     this.captureAudioOptions = String.IsNullOrEmpty(options) ?
-                        CaptureAudioOptions.Default : JSON.JsonHelper.Deserialize<CaptureAudioOptions>(options);
+                        CaptureAudioOptions.Default : JSON.JsonHelper.Deserialize<CaptureAudioOptions[]>(options)[0];
 
                 }
                 catch (Exception ex)
@@ -307,7 +307,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                 try
                 {
                     this.captureVideoOptions = String.IsNullOrEmpty(options) ?
-                        CaptureVideoOptions.Default : JSON.JsonHelper.Deserialize<CaptureVideoOptions>(options);
+                        CaptureVideoOptions.Default : JSON.JsonHelper.Deserialize<CaptureVideoOptions[]>(options)[0];
 
                 }
                 catch (Exception ex)
@@ -333,18 +333,15 @@ namespace WP7CordovaClassLib.Cordova.Commands
         /// <param name="options"></param>
         public void getFormatData(string options)
         {
-            if (String.IsNullOrEmpty(options))
-            {
-                this.DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
-                return;
-            }
-
             try
             {
                 MediaFormatOptions mediaFormatOptions;
                 try
                 {
-                    mediaFormatOptions = JSON.JsonHelper.Deserialize<MediaFormatOptions>(options);
+                    mediaFormatOptions = new MediaFormatOptions();
+                    string[] optionStrings = JSON.JsonHelper.Deserialize<string[]>(options);
+                    mediaFormatOptions.FullPath = optionStrings[0];
+                    mediaFormatOptions.Type = optionStrings[1];
                 }
                 catch (Exception ex)
                 {
@@ -403,7 +400,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
 
                 try
                 {
-                    file = String.IsNullOrEmpty(options) ? null : JSON.JsonHelper.Deserialize<MediaFile>(options);
+                    file = String.IsNullOrEmpty(options) ? null : JSON.JsonHelper.Deserialize<MediaFile[]>(options)[0];
 
                 }
                 catch (Exception ex)

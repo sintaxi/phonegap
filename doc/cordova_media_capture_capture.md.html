@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.0.0rc1">2.0.0rc1</option>
+<option value="2.0.0rc1">2.0.0rc1</option>
+<option selected value="2.0.0">2.0.0</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -104,6 +105,7 @@
 <option value="capture.captureImage_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
 <option value="capture.captureImage_quick_example">      - Quick Example</option>
 <option value="capture.captureImage_full_example">      - Full Example</option>
+<option value="capture.captureImage_bada_quirks">      - Bada Quirks</option>
 <option value="CaptureImageOptions">CaptureImageOptions</option>
 <option value="CaptureImageOptions_properties">      - Properties</option>
 <option value="CaptureImageOptions_quick_example">      - Quick Example</option>
@@ -116,6 +118,7 @@
 <option value="capture.captureVideo_quick_example">      - Quick Example</option>
 <option value="capture.captureVideo_full_example">      - Full Example</option>
 <option value="capture.captureVideo_blackberry_webworks_quirks">      - BlackBerry WebWorks Quirks</option>
+<option value="capture.captureVideo_bada_2_x_quirks">      - Bada 2.x Quirks</option>
 <option value="CaptureVideoOptions">CaptureVideoOptions</option>
 <option value="CaptureVideoOptions_properties">      - Properties</option>
 <option value="CaptureVideoOptions_quick_example">      - Quick Example</option>
@@ -174,6 +177,7 @@
 <li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
 <li><a href="guide_command-line_index.md.html#Command-Line%20Usage">Command-Line Usage</a></li>
 <li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
+<li><a href="guide_plugin-development_index.md.html#Plugin%20Development%20Guide">Plugin Development Guide</a></li>
 <li><a href="guide_whitelist_index.md.html#Domain%20Whitelist%20Guide">Domain Whitelist Guide</a></li>
 <li><a href="guide_cordova-webview_index.md.html#Embedding%20WebView">Embedding WebView</a></li>
 <li><a href="_index.html">Keyword Index</a></li>
@@ -547,6 +551,7 @@ navigator.device.<a href="cordova_media_capture_capture.md.html#capture.captureA
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 ( Mango )</li>
+<li>Bada 2.x</li>
 </ul>
 <h2>
 <a name="capture.captureImage_windows_phone_7_quirks">Windows Phone 7 Quirks</a>
@@ -640,6 +645,41 @@ navigator.device.<a href="cordova_media_capture_capture.md.html#capture.captureI
 &lt;/html&gt;
 </code></pre>
 
+<h2>
+<a name="capture.captureImage_bada_quirks">Bada Quirks</a>
+</h2>
+
+<p>Bada supports <em>captureImage</em> just like the other platforms. However there is <em>another</em> mode where you can capture a video or an image straight in the webview without launching any camera app. In order to do that you need to:</p>
+
+<ol>
+<li>
+<p>create a <em>&lt;div&gt;</em> element somewhere in your document and give it an id (such as "preview"). </p>
+
+<pre class="prettyprint"><code>&lt;div id="preview"&gt;&lt;/div&gt;
+</code></pre>
+</li>
+<li>
+<p>Initialize the camera preview with the following method</p>
+
+<pre class="prettyprint"><code>navigator.camera.showPreview("preview");
+</code></pre>
+</li>
+<li>
+<p>Once you get the preview you can</p>
+
+<p>3.1 <a href="cordova_media_capture_capture.md.html#Capture">Capture</a> an image with</p>
+
+<pre class="prettyprint"><code>var options = { destinationFilename: "images/cam01.jpg", highRes: false};
+navigator.<a href="cordova_media_capture_capture.md.html#capture.captureImage">capture.captureImage</a>(success, fail, options);
+</code></pre>
+</li>
+<li>
+<p>Hide the camera preview with the following method</p>
+
+<pre class="prettyprint"><code>navigator.camera.hidePreview("preview");
+</code></pre>
+</li>
+</ol>
 <hr>
 <h1><a name="CaptureImageOptions">CaptureImageOptions</a></h1>
 
@@ -720,6 +760,7 @@ navigator.device.<a href="cordova_media_capture_capture.md.html#capture.captureI
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 ( Mango )</li>
+<li>Bada 2.x</li>
 </ul>
 <h2>
 <a name="capture.captureVideo_quick_example">Quick Example</a>
@@ -813,6 +854,45 @@ navigator.device.<a href="cordova_media_capture_capture.md.html#capture.captureV
 <ul>
 <li>Cordova for BlackBerry WebWorks attempts to launch the <strong>Video Recorder</strong> application, provided by RIM, to capture the video recordings.  The developer will receive a <a href="cordova_media_capture_capture.md.html#CaptureError">CaptureError</a>.<code>CAPTURE_NOT_SUPPORTED</code> error code if the application is not installed on the device.</li>
 </ul>
+<h2>
+<a name="capture.captureVideo_bada_2_x_quirks">Bada 2.x Quirks</a>
+</h2>
+
+<p>Bada supports <em>captureVideo</em> just like the other platforms. However there is <em>another</em> mode where you can capture a video or an image straight in the webview without launching any camera apps. In order to do that you need to:</p>
+
+<ol>
+<li>
+<p>create a <em>&lt;div&gt;</em> element somewhere in your document and give it an id (such as "preview"). </p>
+
+<pre class="prettyprint"><code>&lt;div id="preview"&gt;&lt;/div&gt;
+</code></pre>
+</li>
+<li>
+<p>Initialize the camera preview with the following method</p>
+
+<pre class="prettyprint"><code>navigator.camera.showPreview("preview");
+</code></pre>
+</li>
+<li>
+<p>Once you get the preview you can</p>
+
+<p>3.1 Start capturing a video with</p>
+
+<pre class="prettyprint"><code>navigator.capture.startVideoCapture(success, fail, {duration: 5000, destinationFilename: "videos/a.3gp"});
+</code></pre>
+
+<p>3.2 Stop the video capture with</p>
+
+<pre class="prettyprint"><code>navigator.capture.stopVideoCapture();
+</code></pre>
+</li>
+<li>
+<p>Hide the camera preview with the following method</p>
+
+<pre class="prettyprint"><code>navigator.camera.hidePreview("preview");
+</code></pre>
+</li>
+</ol>
 <hr>
 <h1><a name="CaptureVideoOptions">CaptureVideoOptions</a></h1>
 

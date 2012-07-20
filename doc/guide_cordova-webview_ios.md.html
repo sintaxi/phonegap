@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.0.0rc1">2.0.0rc1</option>
+<option value="2.0.0rc1">2.0.0rc1</option>
+<option selected value="2.0.0">2.0.0</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -78,9 +79,7 @@
             <h1>Embedding Cordova WebView on iOS</h1>
             <small><select><option value="Embedding%2520Cordova%2520WebView%2520on%2520iOS">Embedding Cordova WebView on iOS</option>
 <option value="Embedding%20Cordova%20WebView%20on%20iOS_prerequisites">      - Prerequisites</option>
-<option value="Embedding%20Cordova%20WebView%20on%20iOS_adding_cleaver_to_your_xcode_project_cordova_framework">      - Adding Cleaver to your Xcode project (Cordova.framework)</option>
 <option value="Embedding%20Cordova%20WebView%20on%20iOS_adding_cleaver_to_your_xcode_project_cordovalib_sub_project">      - Adding Cleaver to your Xcode project (CordovaLib sub-project)</option>
-<option value="Embedding%20Cordova%20WebView%20on%20iOS_adding_new_classes_to_cordovalib_sub_project">      - Adding new classes to CordovaLib sub-project</option>
 <option value="Embedding%20Cordova%20WebView%20on%20iOS_using_cdvviewcontroller_in_your_code">      - Using CDVViewController in your code</option>
 <option value="Embedding%20Cordova%20WebView%20on%20iOS_adding_your_html_css_and_javascript_assets">      - Adding your HTML, CSS and JavaScript assets</option></select></small>
         </div>
@@ -108,6 +107,7 @@
 <li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
 <li><a href="guide_command-line_index.md.html#Command-Line%20Usage">Command-Line Usage</a></li>
 <li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
+<li><a href="guide_plugin-development_index.md.html#Plugin%20Development%20Guide">Plugin Development Guide</a></li>
 <li><a href="guide_whitelist_index.md.html#Domain%20Whitelist%20Guide">Domain Whitelist Guide</a></li>
 <li><a href="guide_cordova-webview_index.md.html#Embedding%20WebView">Embedding WebView</a></li>
 <li><a href="_index.html">Keyword Index</a></li>
@@ -122,7 +122,7 @@
 
 <p>New Cordova-based applications created using the Xcode template provided in Cordova 1.4 or greater use Cleaver, and this template is considered the reference implementation for Cleaver.</p>
 
-<p>It is recommended that you follow the <code>Cordova.framework</code> instructions below. The <code>CordovaLib</code> sub-project instructions are for Cordova core developers or users that have custom <code>CordovaLib</code> project code (for ease of debugging the core).</p>
+<p>Beginning with Cordova 2.0.0, we only support the sub-project based Cleaver implementation from now on.</p>
 
 <h2>
 <a name="Embedding%20Cordova%20WebView%20on%20iOS_prerequisites">Prerequisites</a>
@@ -130,57 +130,19 @@
 
 <ol>
 <li>
-<strong>Cordova 1.4.1</strong> or greater</li>
+<strong>Cordova 2.0.0</strong> or greater</li>
 <li>
-<strong>Xcode 4.2</strong> or greater</li>
+<strong>Xcode 4.3</strong> or greater</li>
 <li>
 <code>Cordova.plist</code> file</li>
-</ol>
-<h2>
-<a name="Embedding%20Cordova%20WebView%20on%20iOS_adding_cleaver_to_your_xcode_project_cordova_framework">Adding Cleaver to your Xcode project (Cordova.framework)</a>
-</h2>
-
-<ol>
-<li>
-<strong>Copy</strong> the <code>Cordova.plist</code> file into your project folder on disk</li>
-<li>
-<strong>Drag and drop</strong> the <code>Cordova.plist</code> file into the Project Navigator of Xcode</li>
-<li>
-<strong>Choose</strong> the radio-button <strong>"Create groups for any added folders"</strong>
-</li>
-<li>Press the key combination <strong>Option-Command-A</strong>, which should drop down a sheet to add files to your project (the <strong>"Add Files..." sheet</strong>). Make sure the <strong>"Created groups for any added folders"</strong> radio-button is selected</li>
-<li>Press the key combination <strong>Shift-Command-G</strong>, which should drop down another sheet for you to go to a folder (the <strong>"Go to the folder:" sheet</strong>)</li>
-<li>Enter <code>/Users/Shared/Cordova/Frameworks/Cordova.framework</code> in the <strong>"Go to the folder:" sheet</strong> and then press the <strong>"Go"</strong> button</li>
-<li>Press the <strong>"Add"</strong> button in the <strong>"Add Files..." sheet</strong>
-</li>
-<li>Select <code>Cordova.framework</code> in the Project Navigator</li>
-<li>Press the key combination <strong>Option-Command-1</strong> to show the <strong><a href="cordova_file_file.md.html#File">File</a> Inspector</strong>
-</li>
-<li>Choose <strong>"Absolute Path"</strong> in the <strong><a href="cordova_file_file.md.html#File">File</a> Inspector</strong> for the drop-down menu for <strong>Location</strong> </li>
-<li>Click on the <strong>project icon</strong> in the Project Navigator, select your <strong>Target</strong>, then select the <strong>"Build Phase"</strong> tab</li>
-<li>Expand <strong>"Link Binaries with Libraries"</strong>
-</li>
-<li>
-<p>Click on the <strong>"+" button</strong>, and add these <strong>frameworks</strong> (and optionally in the Project Navigator, <strong>move</strong> them under the Frameworks group):</p>
-
-<pre class="prettyprint"><code>AddressBook.framework
-AddressBookUI.framework
-AudioToolbox.framework
-AVFoundation.framework
-CoreLocation.framework
-MediaPlayer.framework
-QuartzCore.framework
-SystemConfiguration.framework
-MobileCoreServices.framework
-CoreMedia.framework
-</code></pre>
-</li>
 </ol>
 <h2>
 <a name="Embedding%20Cordova%20WebView%20on%20iOS_adding_cleaver_to_your_xcode_project_cordovalib_sub_project">Adding Cleaver to your Xcode project (CordovaLib sub-project)</a>
 </h2>
 
 <ol>
+<li>
+<strong>Install</strong> Cordova</li>
 <li>
 <strong>Copy</strong> the <code>Cordova.plist</code> file into your project folder on disk</li>
 <li>
@@ -205,8 +167,6 @@ CoreMedia.framework
 </li>
 <li>Choose <strong>"Relative to CORDOVALIB"</strong> in the <strong><a href="cordova_file_file.md.html#File">File</a> Inspector</strong> for the drop-down menu for <strong>Location</strong> </li>
 <li>Click on the <strong>project icon</strong> in the Project Navigator, select your <strong>Project</strong>, then select the <strong>"Build Settings"</strong> tab</li>
-<li>Enter <strong>"Header Search Paths"</strong> in the search field</li>
-<li>Add <code>$(CORDOVALIB)/Classes</code> and check the <strong>Recursive</strong> checkbox (the checkbox may be unlabeled) - for the <strong>"Header Search Paths"</strong> value</li>
 <li>Add <code>-all_load</code> and <code>-Obj-C</code> - for the <strong>"Other Linker <a href="cordova_file_file.md.html#Flags">Flags</a>"</strong> value</li>
 <li>Click on the <strong>project icon</strong> in the Project Navigator, select your <strong>Target</strong>, then select the <strong>"Build Phases"</strong> tab</li>
 <li>Expand <strong>"Link Binaries with Libraries"</strong> </li>
@@ -225,8 +185,7 @@ MobileCoreServices.framework
 CoreMedia.framework
 </code></pre>
 </li>
-<li><p>Expand <strong>"Target Dependencies"</strong> - the top box labeled like this if
-you have multiple boxes!</p></li>
+<li><p>Expand <strong>"Target Dependencies"</strong> - the top box labeled like this if you have multiple boxes!</p></li>
 <li>Click on the <strong>"+" button</strong>, and add the <code>CordovaLib</code> build product</li>
 <li>Expand <strong>"Link Binaries with Libraries"</strong> - the top box labeled like
 this if you have multiple boxes!</li>
@@ -234,37 +193,14 @@ this if you have multiple boxes!</li>
 </li>
 </ol>
 <h2>
-<a name="Embedding%20Cordova%20WebView%20on%20iOS_adding_new_classes_to_cordovalib_sub_project">Adding new classes to CordovaLib sub-project</a>
-</h2>
-
-<p>In general if you are only modifying or debugging existing CordovaLib
-classes you should be OK with just the above steps. However if you are
-adding new classes you need to follow a few additional steps:</p>
-
-<ol>
-<li>In your project's Frameworks directory in Xcode, remove
-<code>Cordova.framework</code>.</li>
-<li>Just to reiterate step 18 and 20 above: make sure your dependencies
-and libraries are in the top-most boxes under Build Phases for your
-project's Target.</li>
-<li>In your project's Target's Build Settings, search for "Other Linker
-<a href="cordova_file_file.md.html#Flags">Flags</a>". Add <code>-Obj-C</code> and <code>-all_load</code> to this.</li>
-</ol>
-<h2>
 <a name="Embedding%20Cordova%20WebView%20on%20iOS_using_cdvviewcontroller_in_your_code">Using CDVViewController in your code</a>
 </h2>
 
 <ol>
 <li>
-<p>Add this <strong>header</strong> if you used the <code>Cordova.framework</code>:</p>
+<p>Add this <strong>header</strong>:</p>
 
 <pre class="prettyprint"><code>#import &lt;Cordova/CDVViewController.h&gt;
-</code></pre>
-</li>
-<li>
-<p>Add this <strong>header</strong> if you used the <code>CordovaLib</code> sub-project:</p>
-
-<pre class="prettyprint"><code>#import "CDVViewController.h"
 </code></pre>
 </li>
 <li>

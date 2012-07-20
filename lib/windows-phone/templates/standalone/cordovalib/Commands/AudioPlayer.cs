@@ -352,6 +352,18 @@ namespace WP7CordovaClassLib.Cordova.Commands
         }
 
         /// <summary>
+        /// Set the volume of the player
+        /// </summary>
+        /// <param name="vol">volume 0.0-1.0, default value is 0.5</param>
+        public void setVolume(double vol)
+        {
+            if (this.player != null)
+            {
+                this.player.Volume = vol;
+            }
+        }
+
+        /// <summary>
         /// Pauses playing
         /// </summary>
         public void pausePlaying()

@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.0.0rc1">2.0.0rc1</option>
+<option value="2.0.0rc1">2.0.0rc1</option>
+<option selected value="2.0.0">2.0.0</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -116,6 +117,7 @@
 <li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
 <li><a href="guide_command-line_index.md.html#Command-Line%20Usage">Command-Line Usage</a></li>
 <li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
+<li><a href="guide_plugin-development_index.md.html#Plugin%20Development%20Guide">Plugin Development Guide</a></li>
 <li><a href="guide_whitelist_index.md.html#Domain%20Whitelist%20Guide">Domain Whitelist Guide</a></li>
 <li><a href="guide_cordova-webview_index.md.html#Embedding%20WebView">Embedding WebView</a></li>
 <li><a href="_index.html">Keyword Index</a></li>
@@ -138,8 +140,13 @@
 <li>If you are using Eclipse, please refresh your eclipse project and do a clean</li>
 <li>Copy the new cordova-2.0.0.js into your project</li>
 <li>Update your HTML to use the new cordova-2.0.0.js file</li>
-<li>Update the res/xml/plugins.xml to be the same as the one found in framework/res/xml/plugins.xml</li>
+<li>Copy the res/xml/config.xml to be the same as the one found in framework/res/xml/config.xmll</li>
 </ol>
+<h3>Notes about 2.0.0 release</h3>
+
+<p>config.xml will be replacing cordova.xml and plugins.xml.  This new file is a combination of the previous two.  However, the
+old files are deprecated, and and while currently still work, will cease working in a future release.</p>
+
 <h2>
 <a name="Upgrading%20Cordova%20Android_upgrade_to_1_9_0_from_1_8_1">Upgrade to 1.9.0 from 1.8.1</a>
 </h2>

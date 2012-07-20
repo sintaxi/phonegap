@@ -97,13 +97,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CordovaSourceDictionary.xml" />
+    <Content Include="www\js\index.js" />
     <None Include="BuildManifestProcessor.js" />
-    <Content Include="GapLib\WP7CordovaClassLib.dll" />
+    <Content Include="CordovaLib\WP7CordovaClassLib.dll" />
     <Content Include="www\cordova-2.0.0.js" />
+    <Content Include="www\css\index.css" />
+    <Content Include="www\img\cordova.png" />
     <Content Include="www\index.html">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="www\master.css" />
     <None Include="cordova\debug.bat" />
     <None Include="cordova\emulate.bat" />
     <None Include="Properties\AppManifest.xml">

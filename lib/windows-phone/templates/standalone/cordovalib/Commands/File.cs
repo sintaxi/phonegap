@@ -204,7 +204,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
             {
                 this.Encoding = "UTF-8";
                 this.FilePath = "";
-                this.FileSystemType = -1;
+                this.FileSystemType = -1; 
             }
         }
 
@@ -437,6 +437,21 @@ namespace WP7CordovaClassLib.Cordova.Commands
             return true;
         }
 
+        // returns null value if it fails.
+        private string getSingleStringOption(string options)
+        {
+            string result = null;
+            try
+            {
+                result = JSON.JsonHelper.Deserialize<string[]>(options)[0];
+            }
+            catch (Exception)
+            {
+                DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
+            }
+            return result;
+        }
+
         /// <summary>
         /// Gets amount of free space available for Isolated Storage
         /// </summary>
@@ -525,48 +540,49 @@ namespace WP7CordovaClassLib.Cordova.Commands
 
         public void readAsDataURL(string options)
         {
-            if (!LoadFileOptions(options))
+            // exception+PluginResult are handled by getSingleStringOptions 
+            string filePath = getSingleStringOption(options);
+            if (filePath != null)
             {
-                return;
-            }
-
-            try
-            {
-                string base64URL = null;
-
-                using (IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForApplication())
+                try
                 {
-                    if (!isoFile.FileExists(fileOptions.FilePath))
-                    {
-                        DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_FOUND_ERR));
-                        return;
-                    }
-                    string mimeType = MimeTypeMapper.GetMimeType(fileOptions.FilePath);
+                    string base64URL = null;
 
-                    using (IsolatedStorageFileStream stream = isoFile.OpenFile(fileOptions.FilePath, FileMode.Open, FileAccess.Read))
+                    using (IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForApplication())
                     {
-                        string base64String = GetFileContent(stream);
-                        base64URL = "data:" + mimeType + ";base64," + base64String;
+                        if (!isoFile.FileExists(filePath))
+                        {
+                            DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_FOUND_ERR));
+                            return;
+                        }
+                        string mimeType = MimeTypeMapper.GetMimeType(filePath);
+
+                        using (IsolatedStorageFileStream stream = isoFile.OpenFile(filePath, FileMode.Open, FileAccess.Read))
+                        {
+                            string base64String = GetFileContent(stream);
+                            base64URL = "data:" + mimeType + ";base64," + base64String;
+                        }
                     }
+
+                    DispatchCommandResult(new PluginResult(PluginResult.Status.OK, base64URL));
                 }
-
-                DispatchCommandResult(new PluginResult(PluginResult.Status.OK, base64URL));
-            }
-            catch (Exception ex)
-            {
-                if (!this.HandleException(ex))
+                catch (Exception ex)
                 {
-                    DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_READABLE_ERR));
+                    if (!this.HandleException(ex))
+                    {
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_READABLE_ERR));
+                    }
                 }
             }
         }
 
         public void readAsText(string options)
         {
-            if (!LoadFileOptions(options))
-            {
-                return;
-            }
+            // TODO: try/catch
+            string[] optStrings = JSON.JsonHelper.Deserialize<string[]>(options);
+            string filePath = optStrings[0];
+            string encStr = optStrings[1];
+
 
             try
             {
@@ -574,14 +590,14 @@ namespace WP7CordovaClassLib.Cordova.Commands
 
                 using (IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForApplication())
                 {
-                    if (!isoFile.FileExists(fileOptions.FilePath))
+                    if (!isoFile.FileExists(filePath))
                     {
                         DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_FOUND_ERR));
                         return;
                     }
-                    Encoding encoding = Encoding.GetEncoding(fileOptions.Encoding);
+                    Encoding encoding = Encoding.GetEncoding(encStr);
 
-                    using (TextReader reader = new StreamReader(isoFile.OpenFile(fileOptions.FilePath, FileMode.Open, FileAccess.Read), encoding))
+                    using (TextReader reader = new StreamReader(isoFile.OpenFile(filePath, FileMode.Open, FileAccess.Read), encoding))
                     {
                         text = reader.ReadToEnd();
                     }
@@ -601,10 +617,11 @@ namespace WP7CordovaClassLib.Cordova.Commands
 
         public void truncate(string options)
         {
-            if (!LoadFileOptions(options))
-            {
-                return;
-            }
+            // TODO: try/catch
+            string[] optStrings = JSON.JsonHelper.Deserialize<string[]>(options);
+
+            string filePath = optStrings[0];
+            int size = int.Parse(optStrings[1]);
 
             try
             {
@@ -612,17 +629,17 @@ namespace WP7CordovaClassLib.Cordova.Commands
 
                 using (IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForApplication())
                 {
-                    if (!isoFile.FileExists(fileOptions.FilePath))
+                    if (!isoFile.FileExists(filePath))
                     {
                         DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_FOUND_ERR));
                         return;
                     }
 
-                    using (FileStream stream = new IsolatedStorageFileStream(fileOptions.FilePath, FileMode.Open, FileAccess.ReadWrite, isoFile))
+                    using (FileStream stream = new IsolatedStorageFileStream(filePath, FileMode.Open, FileAccess.ReadWrite, isoFile))
                     {
-                        if (0 <= fileOptions.Size && fileOptions.Size < stream.Length)
+                        if (0 <= size && size < stream.Length)
                         {
-                            stream.SetLength(fileOptions.Size);
+                            stream.SetLength(size);
                         }
 
                         streamLength = stream.Length;
@@ -640,17 +657,21 @@ namespace WP7CordovaClassLib.Cordova.Commands
             }
         }
 
+        //write:["filePath","data","position"],
         public void write(string options)
         {
-            if (!LoadFileOptions(options))
-            {
-                return;
-            }
+            // TODO: try/catch
+            string[] optStrings = JSON.JsonHelper.Deserialize<string[]>(options);
+
+            string filePath = optStrings[0];
+            string data = optStrings[1];
+            int position = int.Parse(optStrings[2]);
 
             try
             {
-                if (string.IsNullOrEmpty(fileOptions.Data))
+                if (string.IsNullOrEmpty(data))
                 {
+                    Debug.WriteLine("Expected some data to be send in the write command to {0}", filePath);
                     DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
                     return;
                 }
@@ -658,27 +679,27 @@ namespace WP7CordovaClassLib.Cordova.Commands
                 using (IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForApplication())
                 {
                     // create the file if not exists
-                    if (!isoFile.FileExists(fileOptions.FilePath))
+                    if (!isoFile.FileExists(filePath))
                     {
-                        var file = isoFile.CreateFile(fileOptions.FilePath);
+                        var file = isoFile.CreateFile(filePath);
                         file.Close();
                     }
 
-                    using (FileStream stream = new IsolatedStorageFileStream(fileOptions.FilePath, FileMode.Open, FileAccess.ReadWrite, isoFile))
+                    using (FileStream stream = new IsolatedStorageFileStream(filePath, FileMode.Open, FileAccess.ReadWrite, isoFile))
                     {
-                        if (0 <= fileOptions.Position && fileOptions.Position < stream.Length)
+                        if (0 <= position && position < stream.Length)
                         {
-                            stream.SetLength(fileOptions.Position);
+                            stream.SetLength(position);
                         }
                         using (BinaryWriter writer = new BinaryWriter(stream))
                         {
                             writer.Seek(0, SeekOrigin.End);
-                            writer.Write(fileOptions.Data.ToCharArray());
+                            writer.Write(data.ToCharArray());
                         }
                     }
                 }
 
-                DispatchCommandResult(new PluginResult(PluginResult.Status.OK, fileOptions.Data.Length));
+                DispatchCommandResult(new PluginResult(PluginResult.Status.OK, data.Length));
             }
             catch (Exception ex)
             {
@@ -695,41 +716,41 @@ namespace WP7CordovaClassLib.Cordova.Commands
         /// <param name="options">filePath to entry</param>   
         public void getMetadata(string options)
         {
-            if (!LoadFileOptions(options))
-            {
-                return;
-            }
+            string filePath = getSingleStringOption(options);
 
-            try
+            if (filePath != null)
             {
-                using (IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForApplication())
+                try
                 {
-                    if (isoFile.FileExists(fileOptions.FullPath))
+                    using (IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForApplication())
                     {
-                        DispatchCommandResult(new PluginResult(PluginResult.Status.OK,
-                            new ModificationMetadata() { modificationTime = isoFile.GetLastWriteTime(fileOptions.FullPath).DateTime.ToString() }));
-                    }
-                    else if (isoFile.DirectoryExists(fileOptions.FullPath))
-                    {
-                        string modTime = isoFile.GetLastWriteTime(fileOptions.FullPath).DateTime.ToString();
-                        DispatchCommandResult(new PluginResult(PluginResult.Status.OK, new ModificationMetadata() { modificationTime = modTime }));
-                    }
-                    else
-                    {
-                        DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_FOUND_ERR));
-                    }
+                        if (isoFile.FileExists(filePath))
+                        {
+                            DispatchCommandResult(new PluginResult(PluginResult.Status.OK,
+                                new ModificationMetadata() { modificationTime = isoFile.GetLastWriteTime(filePath).DateTime.ToString() }));
+                        }
+                        else if (isoFile.DirectoryExists(filePath))
+                        {
+                            string modTime = isoFile.GetLastWriteTime(filePath).DateTime.ToString();
+                            DispatchCommandResult(new PluginResult(PluginResult.Status.OK, new ModificationMetadata() { modificationTime = modTime }));
+                        }
+                        else
+                        {
+                            DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_FOUND_ERR));
+                        }
 
+                    }
                 }
-            }
-            catch (IsolatedStorageException)
-            {
-                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_READABLE_ERR));
-            }
-            catch (Exception ex)
-            {
-                if (!this.HandleException(ex))
+                catch (IsolatedStorageException)
                 {
                     DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_READABLE_ERR));
+                }
+                catch (Exception ex)
+                {
+                    if (!this.HandleException(ex))
+                    {
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_READABLE_ERR));
+                    }
                 }
             }
 
@@ -743,25 +764,24 @@ namespace WP7CordovaClassLib.Cordova.Commands
         /// <returns></returns>
         public void getFileMetadata(string options)
         {
-            if (!LoadFileOptions(options))
+            string filePath = getSingleStringOption(options);
+            if (filePath != null)
             {
-                return;
-            }
-
-            try
-            {
-                FileMetadata metaData = new FileMetadata(fileOptions.FullPath);
-                DispatchCommandResult(new PluginResult(PluginResult.Status.OK, metaData));
-            }
-            catch (IsolatedStorageException)
-            {
-                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_READABLE_ERR));
-            }
-            catch (Exception ex)
-            {
-                if (!this.HandleException(ex))
+                try
+                {
+                    FileMetadata metaData = new FileMetadata(filePath);
+                    DispatchCommandResult(new PluginResult(PluginResult.Status.OK, metaData));
+                }
+                catch (IsolatedStorageException)
                 {
                     DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_READABLE_ERR));
+                }
+                catch (Exception ex)
+                {
+                    if (!this.HandleException(ex))
+                    {
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_READABLE_ERR));
+                    }
                 }
             }
         }
@@ -773,168 +793,172 @@ namespace WP7CordovaClassLib.Cordova.Commands
         /// <param name="options"></param>
         public void getParent(string options)
         {
-            if (!LoadFileOptions(options))
+            string filePath = getSingleStringOption(options);
+            if (filePath != null)
             {
-                return;
-            }
-
-            try
-            {
-
-                if (string.IsNullOrEmpty(fileOptions.FullPath))
+                try
                 {
-                    DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_FOUND_ERR));
-                    return;
-                }
-
-                using (IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForApplication())
-                {
-                    FileEntry entry;
-
-                    if (isoFile.FileExists(fileOptions.FullPath) || isoFile.DirectoryExists(fileOptions.FullPath))
+                    if (string.IsNullOrEmpty(filePath))
                     {
-                        string path = this.GetParentDirectory(fileOptions.FullPath);
-                        entry = FileEntry.GetEntry(path);
-                        DispatchCommandResult(new PluginResult(PluginResult.Status.OK, entry));
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
+                        return;
                     }
-                    else
+
+                    using (IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForApplication())
+                    {
+                        FileEntry entry;
+
+                        if (isoFile.FileExists(filePath) || isoFile.DirectoryExists(filePath))
+                        {
+                            string path = this.GetParentDirectory(filePath);
+                            entry = FileEntry.GetEntry(path);
+                            DispatchCommandResult(new PluginResult(PluginResult.Status.OK, entry));
+                        }
+                        else
+                        {
+                            DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_FOUND_ERR));
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (!this.HandleException(ex))
                     {
                         DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_FOUND_ERR));
                     }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                if (!this.HandleException(ex))
-                {
-                    DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_FOUND_ERR));
                 }
             }
         }
 
         public void remove(string options)
         {
-            if (!LoadFileOptions(options))
+            string filePath = getSingleStringOption(options);
+            if (filePath != null)
             {
-                return;
-            }
-
-            try
-            {
-                using (IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForApplication())
+                try
                 {
-                    if (isoFile.FileExists(fileOptions.FullPath))
+                    using (IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForApplication())
                     {
-                        isoFile.DeleteFile(fileOptions.FullPath);
-                    }
-                    else
-                    {
-                        if (isoFile.DirectoryExists(fileOptions.FullPath))
+                        if (isoFile.FileExists(filePath))
                         {
-                            isoFile.DeleteDirectory(fileOptions.FullPath);
+                            isoFile.DeleteFile(filePath);
                         }
                         else
                         {
-                            DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_FOUND_ERR));
-                            return;
+                            if (isoFile.DirectoryExists(filePath))
+                            {
+                                isoFile.DeleteDirectory(filePath);
+                            }
+                            else
+                            {
+                                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_FOUND_ERR));
+                                return;
+                            }
                         }
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.OK));
                     }
-                    DispatchCommandResult(new PluginResult(PluginResult.Status.OK));
                 }
-            }
-            catch (Exception ex)
-            {
-                if (!this.HandleException(ex))
+                catch (Exception ex)
                 {
-                    DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NO_MODIFICATION_ALLOWED_ERR));
+                    if (!this.HandleException(ex))
+                    {
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NO_MODIFICATION_ALLOWED_ERR));
+                    }
                 }
             }
         }
 
         public void removeRecursively(string options)
         {
-            if (!LoadFileOptions(options))
+            string filePath = getSingleStringOption(options);
+            if (filePath != null)
             {
-                return;
+                if (string.IsNullOrEmpty(filePath))
+                {
+                    DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
+                }
+                else
+                {
+                    removeDirRecursively(filePath);
+                    DispatchCommandResult(new PluginResult(PluginResult.Status.OK));
+                }
             }
-
-            if (string.IsNullOrEmpty(fileOptions.FullPath))
-            {
-                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_FOUND_ERR));
-                return;
-            }
-            removeDirRecursively(fileOptions.FullPath);
-            DispatchCommandResult(new PluginResult(PluginResult.Status.OK));
         }
 
         public void readEntries(string options)
         {
-            if (!LoadFileOptions(options))
+            string filePath = getSingleStringOption(options);
+            if (filePath != null)
             {
-                return;
-            }
-
-            try
-            {
-                if (string.IsNullOrEmpty(fileOptions.FullPath))
+                try
                 {
-                    DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_FOUND_ERR));
-                    return;
-                }
-
-                using (IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForApplication())
-                {
-                    if (isoFile.DirectoryExists(fileOptions.FullPath))
+                    if (string.IsNullOrEmpty(filePath))
                     {
-                        string path = File.AddSlashToDirectory(fileOptions.FullPath);
-                        List<FileEntry> entries = new List<FileEntry>();
-                        string[] files = isoFile.GetFileNames(path + "*");
-                        string[] dirs = isoFile.GetDirectoryNames(path + "*");
-                        foreach (string file in files)
-                        {
-                            entries.Add(FileEntry.GetEntry(path + file));
-                        }
-                        foreach (string dir in dirs)
-                        {
-                            entries.Add(FileEntry.GetEntry(path + dir + "/"));
-                        }
-                        DispatchCommandResult(new PluginResult(PluginResult.Status.OK, entries));
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
+                        return;
                     }
-                    else
+
+                    using (IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForApplication())
                     {
-                        DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_FOUND_ERR));
+                        if (isoFile.DirectoryExists(filePath))
+                        {
+                            string path = File.AddSlashToDirectory(filePath);
+                            List<FileEntry> entries = new List<FileEntry>();
+                            string[] files = isoFile.GetFileNames(path + "*");
+                            string[] dirs = isoFile.GetDirectoryNames(path + "*");
+                            foreach (string file in files)
+                            {
+                                entries.Add(FileEntry.GetEntry(path + file));
+                            }
+                            foreach (string dir in dirs)
+                            {
+                                entries.Add(FileEntry.GetEntry(path + dir + "/"));
+                            }
+                            DispatchCommandResult(new PluginResult(PluginResult.Status.OK, entries));
+                        }
+                        else
+                        {
+                            DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_FOUND_ERR));
+                        }
                     }
                 }
-            }
-            //catch (SecurityException)
-            //{
-            //    DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, SECURITY_ERR));
-            //}
-            catch (Exception ex)
-            {
-                if (!this.HandleException(ex))
+                //catch (SecurityException)
+                //{
+                //    DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, SECURITY_ERR));
+                //}
+                catch (Exception ex)
                 {
-                    DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NO_MODIFICATION_ALLOWED_ERR));
+                    if (!this.HandleException(ex))
+                    {
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NO_MODIFICATION_ALLOWED_ERR));
+                    }
                 }
             }
         }
 
         public void requestFileSystem(string options)
         {
-            if (!LoadFileOptions(options))
+            // TODO: try/catch
+            double[] optVals = JSON.JsonHelper.Deserialize<double[]>(options);
+
+            double fileSystemType = optVals[0];
+            double size = optVals[1];
+
+            if (size > (10 * 1024 * 1024)) // 10 MB, compier will clean this up!
             {
+                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, QUOTA_EXCEEDED_ERR));
                 return;
             }
 
             try
             {
-                if (fileOptions.Size != 0)
+                if (size != 0)
                 {
                     using (IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForApplication())
                     {
                         long availableSize = isoFile.AvailableFreeSpace;
-                        if (fileOptions.Size > availableSize)
+                        if (size > availableSize)
                         {
                             DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, QUOTA_EXCEEDED_ERR));
                             return;
@@ -942,12 +966,12 @@ namespace WP7CordovaClassLib.Cordova.Commands
                     }
                 }
 
-                if (fileOptions.FileSystemType == PERSISTENT)
+                if (fileSystemType == PERSISTENT)
                 {
                     // TODO: this should be in it's own folder to prevent overwriting of the app assets, which are also in ISO
                     DispatchCommandResult(new PluginResult(PluginResult.Status.OK, new FileSystemInfo("persistent", FileEntry.GetEntry("/"))));
                 }
-                else if (fileOptions.FileSystemType == TEMPORARY)
+                else if (fileSystemType == TEMPORARY)
                 {
                     using (IsolatedStorageFile isoStorage = IsolatedStorageFile.GetUserStoreForApplication())
                     {
@@ -994,46 +1018,46 @@ namespace WP7CordovaClassLib.Cordova.Commands
 
         public void resolveLocalFileSystemURI(string options)
         {
-            if (!LoadFileOptions(options))
+            string uri = getSingleStringOption(options);
+            if (uri != null)
             {
-                return;
-            }
 
-            try
-            {
-                if (!Uri.IsWellFormedUriString(fileOptions.Uri, UriKind.Absolute))
+                try
                 {
-                    DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, ENCODING_ERR));
-                    return;
+                    if (!Uri.IsWellFormedUriString(uri, UriKind.Absolute))
+                    {
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, ENCODING_ERR));
+                        return;
+                    }
+
+                    Uri fileUri = new Uri(Uri.UnescapeDataString(uri));
+                    string path = fileUri.LocalPath;
+
+                    // TODO: research this :
+                    //if (Uri.UriSchemeFile == fileUri.Scheme)
+                    //{
+                    //}
+
+                    FileEntry uriEntry = FileEntry.GetEntry(path);
+                    if (uriEntry != null)
+                    {
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.OK, uriEntry));
+                    }
+                    else
+                    {
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_FOUND_ERR));
+                    }
                 }
-
-                Uri fileUri = new Uri(Uri.UnescapeDataString(fileOptions.Uri));
-                string path = fileUri.LocalPath;
-
-                // TODO: research this :
-                //if (Uri.UriSchemeFile == fileUri.Scheme)
+                //catch (SecurityException)
                 //{
+                //    DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, SECURITY_ERR));
                 //}
-
-                FileEntry uriEntry = FileEntry.GetEntry(path);
-                if (uriEntry != null)
+                catch (Exception ex)
                 {
-                    DispatchCommandResult(new PluginResult(PluginResult.Status.OK, uriEntry));
-                }
-                else
-                {
-                    DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_FOUND_ERR));
-                }
-            }
-            //catch (SecurityException)
-            //{
-            //    DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, SECURITY_ERR));
-            //}
-            catch (Exception ex)
-            {
-                if (!this.HandleException(ex))
-                {
-                    DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NO_MODIFICATION_ALLOWED_ERR));
+                    if (!this.HandleException(ex))
+                    {
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NO_MODIFICATION_ALLOWED_ERR));
+                    }
                 }
             }
         }
@@ -1122,23 +1146,28 @@ namespace WP7CordovaClassLib.Cordova.Commands
             }
         }
 
+        /*
+         *  copyTo:["fullPath","parent", "newName"],
+         *  moveTo:["fullPath","parent", "newName"],
+         */
         private void TransferTo(string options, bool move)
         {
-            if (!LoadFileOptions(options))
-            {
-                return;
-            }
+            // TODO: try/catch
+            string[] optStrings = JSON.JsonHelper.Deserialize<string[]>(options);
+            string fullPath = optStrings[0];
+            string parent = optStrings[1];
+            string newFileName = optStrings[2];
 
             try
             {
-                if ((fileOptions.Parent == null) || (string.IsNullOrEmpty(fileOptions.Parent)) || (string.IsNullOrEmpty(fileOptions.FullPath)))
+                if ((parent == null) || (string.IsNullOrEmpty(parent)) || (string.IsNullOrEmpty(fullPath)))
                 {
                     DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_FOUND_ERR));
                     return;
                 }
 
-                string parentPath = File.AddSlashToDirectory(fileOptions.Parent);
-                string currentPath = fileOptions.FullPath;
+                string parentPath = File.AddSlashToDirectory(parent);
+                string currentPath = fullPath;
 
                 using (IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForApplication())
                 {
@@ -1155,9 +1184,9 @@ namespace WP7CordovaClassLib.Cordova.Commands
                     string newPath;
                     if (isFileExist)
                     {
-                        newName = (string.IsNullOrEmpty(fileOptions.NewName))
+                        newName = (string.IsNullOrEmpty(newFileName))
                                     ? Path.GetFileName(currentPath)
-                                    : fileOptions.NewName;
+                                    : newFileName;
 
                         newPath = Path.Combine(parentPath, newName);
 
@@ -1178,9 +1207,9 @@ namespace WP7CordovaClassLib.Cordova.Commands
                     }
                     else
                     {
-                        newName = (string.IsNullOrEmpty(fileOptions.NewName))
+                        newName = (string.IsNullOrEmpty(newFileName))
                                     ? currentPath
-                                    : fileOptions.NewName;
+                                    : newFileName;
 
                         newPath = Path.Combine(parentPath, newName);
 
@@ -1280,13 +1309,19 @@ namespace WP7CordovaClassLib.Cordova.Commands
             }
         }
 
+        // TODO: this is NOT working, object is not valid ...
         private void GetFileOrDirectory(string options, bool getDirectory)
         {
-            if (!LoadFileOptions(options))
+            FileOptions fOptions = new FileOptions();
+            try
             {
-                return;
+                string[] args = JSON.JsonHelper.Deserialize<string[]>(options);
+
+                fOptions.FullPath = args[0];
+                fOptions.Path = args[1];
+                fOptions.CreatingOpt = JSON.JsonHelper.Deserialize<CreatingOptions>(args[2]);
             }
-            if (fileOptions == null)
+            catch (Exception)
             {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
                 return;
@@ -1294,7 +1329,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
 
             try
             {
-                if ((string.IsNullOrEmpty(fileOptions.Path)) || (string.IsNullOrEmpty(fileOptions.FullPath)))
+                if ((string.IsNullOrEmpty(fOptions.Path)) || (string.IsNullOrEmpty(fOptions.FullPath)))
                 {
                     DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, NOT_FOUND_ERR));
                     return;
@@ -1304,7 +1339,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
 
                 try
                 {
-                    path = Path.Combine(fileOptions.FullPath + "/", fileOptions.Path);
+                    path = Path.Combine(fOptions.FullPath + "/", fOptions.Path);
                 }
                 catch (Exception)
                 {
@@ -1316,8 +1351,8 @@ namespace WP7CordovaClassLib.Cordova.Commands
                 {
                     bool isFile = isoFile.FileExists(path);
                     bool isDirectory = isoFile.DirectoryExists(path);
-                    bool create = (fileOptions.CreatingOpt == null) ? false : fileOptions.CreatingOpt.Create;
-                    bool exclusive = (fileOptions.CreatingOpt == null) ? false : fileOptions.CreatingOpt.Exclusive;
+                    bool create = (fOptions.CreatingOpt == null) ? false : fOptions.CreatingOpt.Create;
+                    bool exclusive = (fOptions.CreatingOpt == null) ? false : fOptions.CreatingOpt.Exclusive;
                     if (create)
                     {
                         if (exclusive && (isoFile.FileExists(path) || isoFile.DirectoryExists(path)))

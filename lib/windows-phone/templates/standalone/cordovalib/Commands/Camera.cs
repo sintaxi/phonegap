@@ -195,8 +195,23 @@ namespace WP7CordovaClassLib.Cordova.Commands
         {
             try
             {
-                this.cameraOptions = String.IsNullOrEmpty(options) ?
-                        new CameraOptions() : JSON.JsonHelper.Deserialize<CameraOptions>(options);
+                string[] args = JSON.JsonHelper.Deserialize<string[]>(options);
+                // ["quality", "destinationType", "sourceType", "targetWidth", "targetHeight", "encodingType",
+                //     "mediaType", "allowEdit", "correctOrientation", "saveToPhotoAlbum" ]
+                this.cameraOptions = new CameraOptions();
+                this.cameraOptions.Quality = int.Parse(args[0]);
+                this.cameraOptions.DestinationType = int.Parse(args[1]);
+                this.cameraOptions.PictureSourceType = int.Parse(args[2]);
+                this.cameraOptions.TargetWidth = int.Parse(args[3]);
+                this.cameraOptions.TargetHeight = int.Parse(args[4]);
+                this.cameraOptions.EncodingType = int.Parse(args[5]);
+                this.cameraOptions.MediaType = int.Parse(args[6]);
+                this.cameraOptions.AllowEdit = bool.Parse(args[7]);
+                this.cameraOptions.CorrectOrientation = bool.Parse(args[8]);
+                this.cameraOptions.SaveToPhotoAlbum = bool.Parse(args[9]);
+                
+                //this.cameraOptions = String.IsNullOrEmpty(options) ?
+                //        new CameraOptions() : JSON.JsonHelper.Deserialize<CameraOptions>(options);
             }
             catch (Exception ex)
             {

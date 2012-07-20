@@ -19,6 +19,9 @@ Andrew Grieve (11):
 Becky Gibson (1):
       Fixes CB-997, CB-976 remove Organization
 
+Darryl Pogue (1):
+      Fix project templates not getting copied to the right path.
+
 Eric Schultz (1):
       Fixed FileTransfer upload params
 
@@ -27,7 +30,10 @@ Fil Maj (3):
       [CB-1036] Updated cordova-js to latest to support new common device module.
       Updating plist to include new device plugin.
 
-Shazron Abdullah (34):
+Ian Suda (1):
+      Fix debug and emulate command line tools for xcode 4.3
+
+Shazron Abdullah (51):
       Fixes CB-989 - dyld: Symbol not found: _NSURLIsExcludedFromBackupKey
       Fixes CB-1000 - Namespace issue of JSONKit and other external libraries
       Added Base64 unit tests.
@@ -62,6 +68,23 @@ Shazron Abdullah (34):
       Improved debug and emulate scripts.
       Added Makefile target update-template to update the template in the bin directory automatically before packaging.
       Modified older iOS runtime warning.
+      [CB-1075] - Cordova 2.0 installer - rename old Xcode project templates to minimize confusion
+      [CB-853] Deprecate window.invokeString - use window.handleOpenURL(url) instead
+      [CB-886] Change Xcode CordovaLib (sub)project format to support easy header inclusion
+      [CB-1082] Add url shortcut in .dmg for "Create a New Project"
+      debug cli tool - changed 'scheme' parameter to 'target', set the configuration to Debug
+      Revert [CB-907] - cross-platform inconsistency. A doc issue should suffice [CB-1083]
+      Updated the Cordova Plugin Upgrade Guide
+      Removed references to the static framework and Xcode template.
+      Updated cordova-js to 2.0.0
+      Updated VERSION to 2.0.0
+      Updated RELEASENOTES for 2.0.0
+      Removed unused file in the template.
+      Fixed failing test because [CB-907] was reverted
+      [CB-1095] Added "Hello Cordova" sample app as default
+      [CDV-1099] Remove deprecated functions in CDVPlugin (verifyArguments, appViewController)
+      Updated RELEASENOTES again
+      Updated Cordova Plugin Upgrade Guide for deprecated CDVPlugin methods being removed
 
 tommy-carlos williams (1):
       Fixes CB-1004
@@ -70,15 +93,20 @@ blackberry
 Fil Maj (1):
       [CB-1037] Updating JS to use latest common device module.
 
-Tim Kim (6):
+Tim Kim (8):
       [CB-1019] - invalid name in config file when using ant dist
       [CB-1019] - don't want to update both config files otherwise the create scripts won't work
       [CB-962] - re-fix for how bb creates new project and permissions for the cordova scripts
       Updating javascript for 2.0.0
       2.0.0rc1
       Whoops - forgot rc1 part of version
+      Update to 2.0.0
+      Whoops - accidently added this file
 
 android
+Andrew Grieve (1):
+      Remove cordova.xml and plugins.xml from framework/res/xml.
+
 Anis Kadri (1):
       CB-1031 android create script fails
 
@@ -88,10 +116,13 @@ Fil Maj (4):
       [CB-1035] Including newest JS built based on refactored common device module.
       [CB-574] Added backbutton automated unit test for android.
 
-Joe Bowser (3):
+Joe Bowser (6):
       Fixing bug on ICS where the super.onKeyDown wasn't being called
       Combining plugins.xml and cordova.xml to make config.xml
       Tagging 2.0.0rc1
+      Throwing code over the fence to fix CB-1087, I can't repro on my Galaxy Nexus
+      Fix for CB-1085
+      Upping the version to 2.0.0
 
 Lorin Beer (11):
       added create message handler, updated AudioPlayer constructor usage
@@ -131,7 +162,7 @@ Jesse (7):
       removed dupes, and point to new loc of existing source files
       restruct to use the library project, wtf is a dgml ?
 
-Jesse MacFadyen (8):
+Jesse MacFadyen (20):
       [CB-986] backbutton navigation error
       [CB-925] saveToPhotoAlbum CameraOption
       update camera options
@@ -140,22 +171,34 @@ Jesse MacFadyen (8):
       just ignore these guys
       make everything ref v2.0.0
       update all templates
+      Camera + Notification
+      updated Media and Contact methods
+      added dispatch wrapper to setVolume
+      update Capture methods"
+      Updated FileTransfer
+      added File methods param parsing, fixed Notification.vibrate
+      updating templates for 2.0
+      updated full template for 2.0
+      updated minimal template for 2.0
+      updated standalone template for 2.0
+      remove spec overhead stuff
+      updated template
 
 Sergei Grebnov (2):
       fixes mouse events generation script
       back button fix
 
 webos
-Herm Wong (1):
+Herm Wong (2):
       update version to 2.0.0
+      CB-1096 hello cordova app for webOS
 
 bada
-Anis Kadri (1):
-      updating VERSION to 2.0.0rc1
-
 badaWac
-Anis Kadri (1):
+Anis Kadri (3):
       updating VERSION to 2.0.0rc1
+      adding standard sample app to bada
+      updating VERSION file
 
 Fil Maj (1):
       [CB-1038] Updating JS to latest to use refactored device module.

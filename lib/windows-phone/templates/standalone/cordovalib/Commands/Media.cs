@@ -66,7 +66,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
 
                 try
                 {
-                    mediaOptions = JSON.JsonHelper.Deserialize<MediaOptions>(options);
+                    mediaOptions = JSON.JsonHelper.Deserialize<MediaOptions[]>(options)[0];
                 }
                 catch (Exception)
                 {
@@ -112,7 +112,10 @@ namespace WP7CordovaClassLib.Cordova.Commands
 
                 try
                 {
-                    mediaOptions = JSON.JsonHelper.Deserialize<MediaOptions>(options);
+                    string[] optionsString = JSON.JsonHelper.Deserialize<string[]>(options);
+                    mediaOptions = new MediaOptions();
+                    mediaOptions.Id = optionsString[0];
+                    mediaOptions.Src = optionsString[1];
                 }
                 catch (Exception)
                 {
@@ -120,24 +123,32 @@ namespace WP7CordovaClassLib.Cordova.Commands
                     return;
                 }
 
-                Deployment.Current.Dispatcher.BeginInvoke(() =>
+                if (mediaOptions != null)
                 {
-                    try
-                    {
-                        if (!Media.players.ContainsKey(mediaOptions.Id))
-                        {
-                            AudioPlayer audio = new AudioPlayer(this, mediaOptions.Id);
-                            Media.players.Add(mediaOptions.Id, audio);
-                            audio.startRecording(mediaOptions.Src);
-                        }
-                        DispatchCommandResult(new PluginResult(PluginResult.Status.OK));
-                    }
-                    catch (Exception e)
-                    {
-                        DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, e.Message));
-                    }
 
-                });
+                    Deployment.Current.Dispatcher.BeginInvoke(() =>
+                    {
+                        try
+                        {
+                            if (!Media.players.ContainsKey(mediaOptions.Id))
+                            {
+                                AudioPlayer audio = new AudioPlayer(this, mediaOptions.Id);
+                                Media.players.Add(mediaOptions.Id, audio);
+                                audio.startRecording(mediaOptions.Src);
+                            }
+                            DispatchCommandResult(new PluginResult(PluginResult.Status.OK));
+                        }
+                        catch (Exception e)
+                        {
+                            DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, e.Message));
+                        }
+
+                    });
+                }
+                else
+                {
+                    DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
+                }
             }
             catch (Exception e)
             {
@@ -152,27 +163,16 @@ namespace WP7CordovaClassLib.Cordova.Commands
         {
             try
             {
-                MediaOptions mediaOptions;
-
-                try
-                {
-                    mediaOptions = JSON.JsonHelper.Deserialize<MediaOptions>(options);
-                }
-                catch (Exception)
-                {
-                    DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
-                    return;
-                }
-
+                string mediaId = JSON.JsonHelper.Deserialize<string[]>(options)[0];
                 Deployment.Current.Dispatcher.BeginInvoke(() =>
                 {
                     try
                     {
-                        if (Media.players.ContainsKey(mediaOptions.Id))
+                        if (Media.players.ContainsKey(mediaId))
                         {
-                            AudioPlayer audio = Media.players[mediaOptions.Id];
+                            AudioPlayer audio = Media.players[mediaId];
                             audio.stopRecording();
-                            Media.players.Remove(mediaOptions.Id);
+                            Media.players.Remove(mediaId);
                         }
                         DispatchCommandResult(new PluginResult(PluginResult.Status.OK));
                     }
@@ -182,9 +182,40 @@ namespace WP7CordovaClassLib.Cordova.Commands
                     }
                 });
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, e.Message));
+                DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
+            }
+        }
+
+        public void setVolume(string options) // id,volume
+        {
+            try
+            {
+                string[] optionsString = JSON.JsonHelper.Deserialize<string[]>(options);
+                string id = optionsString[0];
+                double volume = double.Parse(optionsString[1]);
+
+                if (Media.players.ContainsKey(id))
+                {
+                    Deployment.Current.Dispatcher.BeginInvoke(() =>
+                    {
+                        try
+                        {
+                            AudioPlayer player = Media.players[id];
+                            player.setVolume(volume);
+                        }
+                        catch (Exception e)
+                        {
+                            DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, e.Message));
+                        }
+                    });
+                }
+            }
+            catch (Exception)
+            {
+                DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION, "Error parsing options into setVolume method"));
+                return;
             }
         }
 
@@ -197,7 +228,10 @@ namespace WP7CordovaClassLib.Cordova.Commands
 
                 try
                 {
-                    mediaOptions = JSON.JsonHelper.Deserialize<MediaOptions>(options);
+                    string[] optionsString = JSON.JsonHelper.Deserialize<string[]>(options);
+                    mediaOptions = new MediaOptions();
+                    mediaOptions.Id = optionsString[0];
+                    mediaOptions.Src = optionsString[1];
                 }
                 catch (Exception)
                 {
@@ -228,7 +262,12 @@ namespace WP7CordovaClassLib.Cordova.Commands
 
                 try
                 {
-                    mediaOptions = JSON.JsonHelper.Deserialize<MediaOptions>(options);
+                    string[] optionsString = JSON.JsonHelper.Deserialize<string[]>(options);
+                    mediaOptions = new MediaOptions();
+                    mediaOptions.Id = optionsString[0];
+                    mediaOptions.Src = optionsString[1];
+                    mediaOptions.Milliseconds = int.Parse(optionsString[2]);
+
                 }
                 catch (Exception)
                 {
@@ -281,7 +320,10 @@ namespace WP7CordovaClassLib.Cordova.Commands
 
                 try
                 {
-                    mediaOptions = JSON.JsonHelper.Deserialize<MediaOptions>(options);
+                    string[] optionsString = JSON.JsonHelper.Deserialize<string[]>(options);
+                    mediaOptions = new MediaOptions();
+                    mediaOptions.Id = optionsString[0];
+                    mediaOptions.Milliseconds = int.Parse(optionsString[1]);
                 }
                 catch (Exception)
                 {
@@ -323,39 +365,40 @@ namespace WP7CordovaClassLib.Cordova.Commands
         public void pausePlayingAudio(string options)
         {
 
-            MediaOptions mediaOptions;
-
             try
             {
-                mediaOptions = JSON.JsonHelper.Deserialize<MediaOptions>(options);
+                string mediaId = JSON.JsonHelper.Deserialize<string[]>(options)[0];
+
+                Deployment.Current.Dispatcher.BeginInvoke(() =>
+                {
+                    try
+                    {
+                        if (Media.players.ContainsKey(mediaId))
+                        {
+                            AudioPlayer audio = Media.players[mediaId];
+                            audio.pausePlaying();
+                        }
+                        else
+                        {
+                            Debug.WriteLine("ERROR: pausePlayingAudio could not find mediaPlayer for " + mediaId);
+                        }
+
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.OK));
+                    }
+                    catch (Exception e)
+                    {
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, e.Message));
+                    }
+                });
+
+
             }
             catch (Exception)
             {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
-                return;
             }
 
-            Deployment.Current.Dispatcher.BeginInvoke(() =>
-            {
-                try
-                {
-                    if (Media.players.ContainsKey(mediaOptions.Id))
-                    {
-                        AudioPlayer audio = Media.players[mediaOptions.Id];
-                        audio.pausePlaying();
-                    }
-                    else
-                    {
-                        Debug.WriteLine("ERROR: pausePlayingAudio could not find mediaPlayer for " + mediaOptions.Id);
-                    }
 
-                    DispatchCommandResult(new PluginResult(PluginResult.Status.OK));
-                }
-                catch (Exception e)
-                {
-                    DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, e.Message));
-                }
-            });
         }
 
 
@@ -366,30 +409,19 @@ namespace WP7CordovaClassLib.Cordova.Commands
         {
             try
             {
-                MediaOptions mediaOptions;
-
-                try
-                {
-                    mediaOptions = JSON.JsonHelper.Deserialize<MediaOptions>(options);
-                }
-                catch (Exception)
-                {
-                    DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
-                    return;
-                }
-
+                string mediaId = JSON.JsonHelper.Deserialize<string[]>(options)[0];
                 Deployment.Current.Dispatcher.BeginInvoke(() =>
                 {
                     try
                     {
-                        if (Media.players.ContainsKey(mediaOptions.Id))
+                        if (Media.players.ContainsKey(mediaId))
                         {
-                            AudioPlayer audio = Media.players[mediaOptions.Id];
+                            AudioPlayer audio = Media.players[mediaId];
                             audio.stopPlaying();
                         }
                         else
                         {
-                            Debug.WriteLine("stopPlaying could not find mediaPlayer for " + mediaOptions.Id);
+                            Debug.WriteLine("stopPlaying could not find mediaPlayer for " + mediaId);
                         }
 
                         DispatchCommandResult(new PluginResult(PluginResult.Status.OK));
@@ -399,12 +431,12 @@ namespace WP7CordovaClassLib.Cordova.Commands
                         DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, e.Message));
                     }
                 });
-            }
-            catch (Exception e)
-            {
-                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, e.Message));
-            }
 
+            }
+            catch (Exception)
+            {
+                DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
+            }
         }
 
         /// <summary>
@@ -414,35 +446,31 @@ namespace WP7CordovaClassLib.Cordova.Commands
         {
             try
             {
-                MediaOptions mediaOptions;
-
-                try
+                string mediaId = JSON.JsonHelper.Deserialize<string[]>(options)[0];
+                Deployment.Current.Dispatcher.BeginInvoke(() =>
                 {
-                    mediaOptions = JSON.JsonHelper.Deserialize<MediaOptions>(options);
-                }
-                catch (Exception)
-                {
-                    DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
-                    return;
-                }
-
-                if (Media.players.ContainsKey(mediaOptions.Id))
-                {
-                    AudioPlayer audio = Media.players[mediaOptions.Id];
-                    Deployment.Current.Dispatcher.BeginInvoke(() =>
+                    try
                     {
-                        DispatchCommandResult(new PluginResult(PluginResult.Status.OK, audio.getCurrentPosition()));
-                    });
-                    return;
-                }
-                else
-                {
-                    DispatchCommandResult(new PluginResult(PluginResult.Status.OK, -1));
-                }
+                        if (Media.players.ContainsKey(mediaId))
+                        {
+                            AudioPlayer audio = Media.players[mediaId];
+                            DispatchCommandResult(new PluginResult(PluginResult.Status.OK, audio.getCurrentPosition()));
+                        }
+                        else
+                        {
+                            DispatchCommandResult(new PluginResult(PluginResult.Status.OK, -1));
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, e.Message));
+                    }
+                });
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, e.Message));
+                DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
+                return;
             }
         }
 
@@ -450,6 +478,8 @@ namespace WP7CordovaClassLib.Cordova.Commands
         /// <summary>
         /// Gets the duration of the audio file
         /// </summary>
+        
+        [Obsolete("This method will be removed shortly")]
         public void getDurationAudio(string options)
         {
             try
@@ -488,6 +518,5 @@ namespace WP7CordovaClassLib.Cordova.Commands
                 DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, e.Message));
             }
         }
-
     }
 }
