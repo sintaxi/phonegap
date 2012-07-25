@@ -1,24 +1,18 @@
 PhoneGap
 ========
 
-PhoneGap is a web platform that exposes native mobile device apis and data to JavaScript.
+> PhoneGap is a web platform that exposes native mobile device apis and data to JavaScript.
 
-### PhoneGap has been accepted into the Apache Software Foundation for incubation as Apache Cordova, where it will remain free and open source. This will ensure open, independent stewardship of the project over the long term.
-
----
-
-More information on Apache Incubator Callback Project and the incubation process can be found here:
-[http://incubator.apache.org/projects/callback.html](http://incubator.apache.org/projects/callback.html)
-
-Get started
+Get Started
 -----------
 
-[phonegap.com/start](http://phonegap.com/start)
+[Getting Started Guides](http://docs.phonegap.com/guide_getting-started_index.md.html)
 
 Community
 ---------
 
 - [Website](http://phonegap.com)
+- [Documentation](http://docs.phonegap.com/)
 - [Twitter](http://twitter.com/phonegap)
 - [Facebook](http://facebook.com/phonegap)
 - [Wiki](http://wiki.phonegap.com/)
@@ -42,3 +36,14 @@ Directory Structure
 	  |-license ....... the Apache Software License v2
 	  |-version ....... release version in plain text
 	  '-readme.md ..... release readme
+
+Apache Foundation
+-----------------
+
+PhoneGap has been accepted into the Apache Software Foundation for incubation as
+Apache Cordova, where it will remain free and open source. This will ensure open,
+independent stewardship of the project over the long term.
+
+More information on Apache Incubator Callback Project and the incubation process can be found here:
+[http://incubator.apache.org/projects/callback.html](http://incubator.apache.org/projects/callback.html)
+
