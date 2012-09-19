@@ -32,8 +32,11 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="2.1.0rc2">2.1.0rc2</option>
+<option value="2.1.0rc1">2.1.0rc1</option>
+<option selected value="2.1.0">2.1.0</option>
 <option value="2.0.0rc1">2.0.0rc1</option>
-<option selected value="2.0.0">2.0.0</option>
+<option value="2.0.0">2.0.0</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -70,10 +73,13 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.0.0">2.0.0</option>
+<option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="0.9.5">0.9.5</option>
-</optgroup></select></small>
+</optgroup>
+<optgroup label="Korean" value="kr"><option value="2.0.0">2.0.0</option></optgroup></select></small>
         </div>
         <div id="subheader">
             <h1>Developing a Plugin on BlackBerry</h1>
@@ -189,7 +195,6 @@ import org.apache.cordova.api.PluginResult;
 import org.apache.cordova.json4j.JSONArray;
 import org.apache.cordova.json4j.JSONException;
 import org.apache.cordova.json4j.JSONObject;
-import org.apache.cordova.util.Logger;
 /**
  * A simple plugin to demonstrate how to build a plugin for Blackberry
  * Basically echos back the msg that a user calls to this plugin 
@@ -202,12 +207,11 @@ public final class Echo extends Plugin {
         PluginResult result = new PluginResult(PluginResult.Status.INVALID_ACTION, "Echo: Invalid action:" + action);
         if(action.equals(echo)){
             try {
-                JSONObject echoObj = new JSONObject();
                 String theMsg = args.getString(0);
-                if(theMsg.length()&gt;0){   
+                if(theMsg!= null || theMsg.length()&gt;0){   
                     result = new PluginResult(PluginResult.Status.OK, theMsg);
                 }else{
-                    result = new PluginResult(PluginResult.Status.ERROR, theMsg);
+                    result = new PluginResult(PluginResult.Status.ERROR, "Nothing to echo.");
                 }
             } catch (JSONException e) {
                 result = new PluginResult(PluginResult.Status.JSON_EXCEPTION, e.getMessage());

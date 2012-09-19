@@ -32,8 +32,11 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="2.1.0rc2">2.1.0rc2</option>
+<option value="2.1.0rc1">2.1.0rc1</option>
+<option selected value="2.1.0">2.1.0</option>
 <option value="2.0.0rc1">2.0.0rc1</option>
-<option selected value="2.0.0">2.0.0</option>
+<option value="2.0.0">2.0.0</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -70,10 +73,13 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.0.0">2.0.0</option>
+<option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="0.9.5">0.9.5</option>
-</optgroup></select></small>
+</optgroup>
+<optgroup label="Korean" value="kr"><option value="2.0.0">2.0.0</option></optgroup></select></small>
         </div>
         <div id="subheader">
             <h1>Storage</h1>
@@ -242,6 +248,11 @@
 <pre class="prettyprint"><code>No permissions are required.
 </code></pre>
 
+<h3>Tizen</h3>
+
+<pre class="prettyprint"><code>No permissions are required.
+</code></pre>
+
 <hr>
 <h1><a name="openDatabase">openDatabase</a></h1>
 
@@ -267,6 +278,7 @@
 <li>BlackBerry WebWorks (OS 6.0 and higher)</li>
 <li>iPhone</li>
 <li>webOS</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="openDatabase_quick_example">Quick Example</a>
@@ -284,7 +296,7 @@
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_storage_storage.md.html#Storage">Storage</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -356,6 +368,7 @@
 <li>BlackBerry WebWorks (OS 6.0 and higher)</li>
 <li>iPhone</li>
 <li>webOS</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="Database_transaction_quick_example">Transaction Quick Example</a>
@@ -397,7 +410,7 @@ db.changeVersion("1.0", "1.1");
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_storage_storage.md.html#Storage">Storage</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -477,6 +490,7 @@ db.changeVersion("1.0", "1.1");
 <li>BlackBerry WebWorks (OS 6.0 and higher)</li>
 <li>iPhone</li>
 <li>webOS</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="SQLTransaction_execute_sql_quick_example">Execute SQL Quick Example</a>
@@ -510,7 +524,7 @@ db.transaction(populateDB, errorCB, successCB);
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_storage_storage.md.html#Storage">Storage</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -586,6 +600,7 @@ db.transaction(populateDB, errorCB, successCB);
 <li>BlackBerry WebWorks (OS 6.0 and higher)</li>
 <li>iPhone</li>
 <li>webOS</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="SQLResultSet_execute_sql_quick_example">Execute SQL Quick Example</a>
@@ -623,7 +638,7 @@ db.transaction(queryDB, errorCB);
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_storage_storage.md.html#Storage">Storage</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -723,6 +738,7 @@ db.transaction(queryDB, errorCB);
 <li>BlackBerry WebWorks (OS 6.0 and higher)</li>
 <li>iPhone</li>
 <li>webOS</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="SQLResultSetList_execute_sql_quick_example">Execute SQL Quick Example</a>
@@ -757,7 +773,7 @@ db.transaction(queryDB, errorCB);
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_storage_storage.md.html#Storage">Storage</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -895,6 +911,7 @@ db.transaction(queryDB, errorCB);
 <li>iPhone</li>
 <li>Windows Phone 7</li>
 <li>webOS</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="localStorage_key_quick_example">Key Quick Example</a>
@@ -941,7 +958,7 @@ db.transaction(queryDB, errorCB);
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_storage_storage.md.html#Storage">Storage</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load

@@ -32,8 +32,11 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="2.1.0rc2">2.1.0rc2</option>
+<option value="2.1.0rc1">2.1.0rc1</option>
+<option selected value="2.1.0">2.1.0</option>
 <option value="2.0.0rc1">2.0.0rc1</option>
-<option selected value="2.0.0">2.0.0</option>
+<option value="2.0.0">2.0.0</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -70,22 +73,28 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.0.0">2.0.0</option>
+<option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="0.9.5">0.9.5</option>
-</optgroup></select></small>
+</optgroup>
+<optgroup label="Korean" value="kr"><option value="2.0.0">2.0.0</option></optgroup></select></small>
         </div>
         <div id="subheader">
             <h1>Getting Started with iOS</h1>
             <small><select><option value="Getting%2520Started%2520with%2520iOS">Getting Started with iOS</option>
 <option value="Getting%20Started%20with%20iOS_requirements">      - Requirements</option>
 <option value="Getting%20Started%20with%20iOS_install_the_ios_sdk_and_apache_cordova">      - Install the iOS SDK and Apache Cordova</option>
-<option value="Getting%20Started%20with%20iOS_setup_new_project">      - Setup New Project</option>
-<option value="Getting%20Started%20with%20iOS_hello_world">      - Hello World</option>
+<option value="Getting%20Started%20with%20iOS_install_cordovalib">      - Install CordovaLib </option>
+<option value="Getting%20Started%20with%20iOS_create_a_new_project">      - Create a New Project</option>
 <option value="Getting%20Started%20with%20iOS_deploy_to_simulator">      - Deploy to Simulator</option>
 <option value="Getting%20Started%20with%20iOS_deploy_to_device">      - Deploy to Device
 </option>
-<option value="Getting%20Started%20with%20iOS_build_your_app">      - Build Your App</option></select></small>
+<option value="Getting%20Started%20with%20iOS_results">      - Results</option>
+<option value="Getting%20Started%20with%20iOS_problems_in_xcode">      - Problems in Xcode</option>
+<option value="Getting%20Started%20with%20iOS_build_your_app">      - Build Your App</option>
+<option value="Getting%20Started%20with%20iOS_problems_in_the_command_line_tools">      - Problems in the Command Line Tools</option></select></small>
         </div>
 
         <div id="sidebar">
@@ -129,7 +138,8 @@
 </h2>
 
 <ul>
-<li>Xcode 4.x</li>
+<li>Xcode 4.3+</li>
+<li>Xcode Command Line Tools </li>
 <li>Intel-based computer with Mac OS X Lion or greater (10.7+)</li>
 <li>Necessary for installing on device:
 <ul>
@@ -143,8 +153,9 @@
 </h2>
 
 <ul>
-<li>Install Xcode from the <a class="external" href="http://itunes.apple.com/us/app/xcode/id497799835?mt=12">Mac App Store</a>
+<li>Install <strong>Xcode</strong> from the <a class="external" href="http://itunes.apple.com/us/app/xcode/id497799835?mt=12">Mac App Store</a> or <a class="external" href="http://developer.apple.com/downloads">Apple Developer Downloads</a>
 </li>
+<li>Install the <strong>Xcode Command Line Tools</strong> (<strong>Xcode Preferences -&gt; Downloads -&gt; Components -&gt; Command Line Tools -&gt; Install</strong>).</li>
 <li>Download the latest release of <a class="external" href="http://phonegap.com/download">Apache Cordova</a>
 <ul>
 <li>extract its contents</li>
@@ -154,19 +165,26 @@
 </li>
 </ul>
 <h2>
-<a name="Getting%20Started%20with%20iOS_setup_new_project">Setup New Project</a>
+<a name="Getting%20Started%20with%20iOS_install_cordovalib">Install CordovaLib </a>
+</h2>
+
+<ol>
+<li>
+<strong>Download</strong> the Cordova source</li>
+<li>
+<strong>Extract</strong> to source to their final permanent location on your hard drive (for example, to ~/Documents/CordovaLib-2.X.X)</li>
+<li>There is no step 3</li>
+</ol>
+<h2>
+<a name="Getting%20Started%20with%20iOS_create_a_new_project">Create a New Project</a>
 </h2>
 
 <ul>
-<li>
-<p>Copy the <strong>bin</strong> folder (either from the source, or from the .dmg) to a location on your hard drive</p>
-
-<p><img src="img/guide/getting-started/ios/bin_folder.png" alt="" title=""></p>
+<li>Launch <strong>Terminal.app</strong>
 </li>
-<li><p>Launch <strong>Terminal.app</strong></p></li>
-<li>Drag the copied <strong>bin</strong> folder to the <strong>Terminal.app</strong> icon in your Dock, it should launch a new Terminal window</li>
+<li>Drag the <strong>bin</strong> folder (located in the permanent folder location of Cordova, from the <strong>"Install CordovaLib"</strong> section above) to the <strong>Terminal.app</strong> icon in your Dock, it should launch a new Terminal window</li>
 <li>
-<p>Type in <code>./create &lt;project_folder_path&gt; &lt;bundle_id&gt; &lt;project_name&gt;</code> then press <strong>"Enter"</strong></p>
+<p>Type in <code>./create &lt;project_folder_path&gt; &lt;package_name&gt; &lt;project_name&gt;</code> then press <strong>"Enter"</strong></p>
 
 <pre class="prettyprint"><code>&lt;project_folder_path&gt; is the path to your new Cordova iOS project (it must be empty if it exists)
 &lt;package_name&gt; is the package name, following reverse-domain style convention
@@ -180,32 +198,17 @@
 <strong>Launch</strong> the .xcodeproj file in the folder</li>
 </ul>
 <h2>
-<a name="Getting%20Started%20with%20iOS_hello_world">Hello World</a>
-</h2>
-
-<ul>
-<li>Select the folder named <code>www</code> in the Xcode <em>Project Navigator</em>
-</li>
-<li>Select the file <code>index.html</code>
-</li>
-<li>
-<p>Add the following after <code>&lt;body&gt;</code>:</p>
-
-<pre class="prettyprint"><code>&lt;h1&gt;Hello World&lt;/h1&gt;
-</code></pre>
-</li>
-</ul>
-<p>You can also add any associated JavaScript and CSS files there as well.</p>
-
-<h2>
 <a name="Getting%20Started%20with%20iOS_deploy_to_simulator">Deploy to Simulator</a>
 </h2>
 
 <ul>
 <li>Change the <strong>Target</strong> in the <strong>Scheme</strong> drop-down menu on the toolbar to <strong>"HelloWorld"</strong> (your project name)</li>
-<li>Change the <strong>Active SDK</strong> in the <strong>Scheme</strong> drop-down menu on the toolbar to <strong>iOS [version] Simulator</strong>
+<li>
+<p>Change the <strong>Active SDK</strong> in the <strong>Scheme</strong> drop-down menu on the toolbar to <strong>iOS [version] Simulator</strong></p>
+
+<p><img src="img/guide/getting-started/ios/active_scheme_simulator.png" alt="" title=""></p>
 </li>
-<li>Select the <strong>Run</strong> button in your project window's toolbar</li>
+<li><p>Select the <strong>Run</strong> button in your project window's toolbar</p></li>
 </ul>
 <h2>
 <a name="Getting%20Started%20with%20iOS_deploy_to_device">Deploy to Device
@@ -213,23 +216,41 @@
 </h2>
 
 <ul>
-<li>Open <code>HelloWorld-Info.plist</code>, under the <strong>Supporting Files</strong> group</li>
+<li>Open <code>HelloWorld-Info.plist</code>, under the <strong>Resources</strong> group</li>
 <li>Change <strong>BundleIdentifier</strong> to the identifier provided by Apple or your own bundle identifier
 <ul>
 <li>If you have a developer license, you can run the <a class="external" href="http://developer.apple.com/iphone/manage/overview/index.action">Assistant</a> to register your app</li>
 </ul>
 </li>
-<li>Change the <strong>Active SDK</strong> in the Scheme drop-down menu on the toolbar to <strong>[Your <a href="cordova_device_device.md.html#Device">Device</a> Name]</strong>
+<li>Change the <strong>Target</strong> in the <strong>Scheme</strong> drop-down menu on the toolbar to <strong>"HelloWorld"</strong> (your project name)</li>
+<li>
+<p>Change the <strong>Active SDK</strong> in the Scheme drop-down menu on the toolbar to <strong>[Your <a href="cordova_device_device.md.html#Device">Device</a> Name]</strong></p>
+
 <ul>
 <li>You will need to have your device connected via USB</li>
 </ul>
+<p></p>
+<p><img src="img/guide/getting-started/ios/active_scheme_device.png" alt="" title=""></p>
 </li>
-<li>
-<p>Select the <strong>Run</strong> button in your project window's toolbar</p>
+<li><p>Select the <strong>Run</strong> button in your project window's toolbar</p></li>
+</ul>
+<h2>
+<a name="Getting%20Started%20with%20iOS_results">Results</a>
+</h2>
 
-<p><img src="img/guide/getting-started/ios/HelloWorldiPhone4.png" alt="" title=""></p>
+<ul>
+<li>
+<p>You should see the screen below, with a pulsating green <strong>"device is ready"</strong> message</p>
+
+<p><img src="img/guide/getting-started/ios/HelloWorldStandard.png" alt="" title=""></p>
 </li>
 </ul>
+<h2>
+<a name="Getting%20Started%20with%20iOS_problems_in_xcode">Problems in Xcode</a>
+</h2>
+
+<p>If you have compilation problems related to missing headers, the build products should <strong>build into the same build directory</strong>. You may need to set the preference <strong>"Xcode Preferences -&gt; Locations -&gt; Derived Data -&gt; Advanced…"</strong> to <strong>"Unique"</strong>. This is the default setting for Xcode on a fresh new install, if you upgraded from older versions of Xcode, you might have a legacy preference in there that you need to update.</p>
+
 <h2>
 <a name="Getting%20Started%20with%20iOS_build_your_app">Build Your App</a>
 </h2>
@@ -238,6 +259,15 @@
 It is important to understand that you do not need to use Xcode to write your web application.
 You can use your favourite text editor and simply rebuild your project using Xcode, or the <a href="guide_command-line_index.md.html#Command-Line%20Usage">command-line tools</a> in your project folder (under the <strong>cordova</strong> sub-folder)
 Xcode will automatically detect the files that are changed in <code>www</code>.</p>
+
+<h2>
+<a name="Getting%20Started%20with%20iOS_problems_in_the_command_line_tools">Problems in the Command Line Tools</a>
+</h2>
+
+<p>If you see this error: <strong>"Error: No developer directory found at /Developer. Run /usr/bin/xcode-select to update the developer directory path."</strong> Run this to set your Developer folder:</p>
+
+<pre class="prettyprint"><code>    sudo /usr/bin/xcode-select -switch /Applications/Xcode.app/Contents/Developer
+</code></pre>
 
             </div>
         </div>

@@ -171,7 +171,7 @@
         <!-- Copy the WebWorks application -->
         <mkdir dir="${widget.dir}" />
         <copy todir="${widget.dir}" overwrite="true">
-            <fileset dir="www" excludes="ext-air/**,playbook/**"/>
+            <fileset dir="www" excludes="ext-air/**,playbook/**,ext-qnx/**,qnx/**"/>
         </copy>
         
         <!-- Package the WebWorks app by zipping the widget dir. -->

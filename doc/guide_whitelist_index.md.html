@@ -32,8 +32,11 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="2.1.0rc2">2.1.0rc2</option>
+<option value="2.1.0rc1">2.1.0rc1</option>
+<option selected value="2.1.0">2.1.0</option>
 <option value="2.0.0rc1">2.0.0rc1</option>
-<option selected value="2.0.0">2.0.0</option>
+<option value="2.0.0">2.0.0</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -70,10 +73,13 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.0.0">2.0.0</option>
+<option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="0.9.5">0.9.5</option>
-</optgroup></select></small>
+</optgroup>
+<optgroup label="Korean" value="kr"><option value="2.0.0">2.0.0</option></optgroup></select></small>
         </div>
         <div id="subheader">
             <h1>Domain Whitelist Guide</h1>
@@ -87,7 +93,8 @@
 <option value="Domain%20Whitelist%20Guide_ios">      - iOS</option>
 <option value="Domain%20Whitelist%20Guide_symbian">      - Symbian</option>
 <option value="Domain%20Whitelist%20Guide_webos">      - webOS</option>
-<option value="Domain%20Whitelist%20Guide_windows_phone">      - Windows Phone</option></select></small>
+<option value="Domain%20Whitelist%20Guide_windows_phone">      - Windows Phone</option>
+<option value="Domain%20Whitelist%20Guide_tizen">      - Tizen</option></select></small>
         </div>
 
         <div id="sidebar">
@@ -229,7 +236,7 @@
 <ol>
 <li>Open <code>Cordova.plist</code>.
 <ul>
-<li>In Xcode, it is found at <code>AppName/Supporting Files/Cordova.plist</code>
+<li>In Xcode, it is found at <code>AppName/Resources/Cordova.plist</code>
 </li>
 <li>In the directory, it is found at <code>AppName/Cordova.plist</code>
 </li>
@@ -241,8 +248,6 @@
 </ul>
 </li>
 </ol>
-<p>Domain protocols (e.g. <code>http://</code> and <code>https://</code>) are not supported by iOS.</p>
-
 <h3>Syntax</h3>
 
 <p>Access to <a class="external" href="http://google.com">google.com</a> and the secure <a class="external" href="https://google.com">google.com</a> (<code>https://</code>):</p>
@@ -289,6 +294,38 @@
 </h2>
 
 <p>Domain whitelisting is unsupported on Windows Phone. By default, all domains are accessible.</p>
+
+<h2>
+<a name="Domain%20Whitelist%20Guide_tizen">Tizen</a>
+</h2>
+
+<h3>Details</h3>
+
+<p>The domain whitelisting rules are found in <code>config.xml</code> located in your application root directory.
+They are declared with the element <code>&lt;access origin="..." /&gt;</code>.
+For a complete reference, see the [Tizen Accessing External Network Resources documentation][10].</p>
+
+<h3>Syntax</h3>
+
+<p>Access to <a class="external" href="http://google.com">google.com</a>:</p>
+
+<pre class="prettyprint"><code>&lt;access origin="http://google.com" subdomains="false" /&gt;
+</code></pre>
+
+<p>Access to the secure <a class="external" href="https://google.com">google.com</a> (<code>https://</code>):</p>
+
+<pre class="prettyprint"><code>&lt;access origin="https://google.com" subdomains="false" /&gt;
+</code></pre>
+
+<p>Access to all the subdomains on <a class="external" href="http://google.com">google.com</a>:</p>
+
+<pre class="prettyprint"><code>&lt;access origin="http://google.com" subdomains="true" /&gt;
+</code></pre>
+
+<p>Access to all domains, including <code>file://</code> protocol:</p>
+
+<pre class="prettyprint"><code>&lt;access origin="*" subdomains="true" /&gt;
+</code></pre>
 
             </div>
         </div>

@@ -46,5 +46,5 @@ https://issues.apache.org/jira/browse/CB
 Further Reading
 ---
 
-- [http://docs.phonegap.com](http://docs.phonegap.com)
-- [http://wiki.phonegap.com](http://wiki.phonegap.com)
+- [http://docs.cordova.io](http://docs.cordova.io)
+- [http://wiki.cordova.io](http://wiki.cordova.io)

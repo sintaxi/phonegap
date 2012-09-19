@@ -32,8 +32,11 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="2.1.0rc2">2.1.0rc2</option>
+<option value="2.1.0rc1">2.1.0rc1</option>
+<option selected value="2.1.0">2.1.0</option>
 <option value="2.0.0rc1">2.0.0rc1</option>
-<option selected value="2.0.0">2.0.0</option>
+<option value="2.0.0">2.0.0</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -70,10 +73,13 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.0.0">2.0.0</option>
+<option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="0.9.5">0.9.5</option>
-</optgroup></select></small>
+</optgroup>
+<optgroup label="Korean" value="kr"><option value="2.0.0">2.0.0</option></optgroup></select></small>
         </div>
         <div id="subheader">
             <h1>Getting Started with Android</h1>
@@ -150,19 +156,19 @@
 
 <ul>
 <li>Launch Eclipse, and select menu item <strong>New Project</strong>
-<img src="img/guide/getting-started/android/step_1.jpg" alt="" title="">
+<img src="img/guide/getting-started/android/step_1.png" alt="" title="">
 </li>
 <li>Then specify new application project
-<img src="img/guide/getting-started/android/step_2.jpg" alt="" title="">
+<img src="img/guide/getting-started/android/step_2.png" alt="" title="">
 </li>
 <li>Then speciy an Application Name, a Project Name and Package Name with Namespace
-<img src="img/guide/getting-started/android/step_3.jpg" alt="" title="">
+<img src="img/guide/getting-started/android/step_3.png" alt="" title="">
 </li>
 <li>Then select a graphic
-<img src="img/guide/getting-started/android/step_4.jpg" alt="" title="">
+<img src="img/guide/getting-started/android/step_4.png" alt="" title="">
 </li>
 <li>Then Create a Blank Activity
-<img src="img/guide/getting-started/android/step_5.jpg" alt="" title="">
+<img src="img/guide/getting-started/android/step_5.png" alt="" title="">
 </li>
 <li><p>Make sure the activity doesn't inherit from anything.  You most likely won't have PhoneGap on your Eclipse Workspace.  Once this is done, click finish</p></li>
 <li>
@@ -173,13 +179,13 @@
 <li><strong>assets/www</strong></li>
 </ul>
 </li>
-<li>Copy <strong>cordova-1.9.0.js</strong> from your Cordova download earlier to <strong>assets/www</strong>
+<li>Copy <strong>cordova-2.0.0.js</strong> from your Cordova download earlier to <strong>assets/www</strong>
 </li>
-<li>Copy <strong>cordova-1.9.0.jar</strong> from your Cordova download earlier to <strong>/libs</strong>
+<li>Copy <strong>cordova-2.0.0.jar</strong> from your Cordova download earlier to <strong>/libs</strong>
 </li>
 <li><p>Copy <strong>xml</strong> folder from your Cordova download earlier to <strong>/res</strong></p></li>
 <li>
-<p>Verify that <strong>cordova-1.9.0.jar</strong> is listed in the Build Path for your project. Right click on the /libs folder and go to <strong>Build Paths/ &gt; Configure Build Path...</strong>. Then, in the Libraries tab, add <strong>cordova-1.9.0.jar</strong> to the project. If Eclipse is being temperamental, you might need to refresh (F5) the project once again.</p>
+<p>Verify that <strong>cordova-2.0.0.jar</strong> is listed in the Build Path for your project. Right click on the /libs folder and go to <strong>Build Paths/ &gt; Configure Build Path...</strong>. Then, in the Libraries tab, add <strong>cordova-2.0.0.jar</strong> to the project. If Eclipse is being temperamental, you might need to refresh (F5) the project once again.</p>
 
 <p><img src="img/guide/getting-started/android/buildPath.jpg" alt="" title=""></p>
 </li>
@@ -228,7 +234,7 @@
 <p>Support orientation changes by pasting the following inside the <strong>&lt;activity&gt;</strong> tag.</p>
 
 <p></p>
-<pre class="prettyprint"><code>android:configChanges="orientation|keyboardHidden"
+<pre class="prettyprint"><code>android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"
 </code></pre>
 </li>
 <li>

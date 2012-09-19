@@ -32,8 +32,11 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="2.1.0rc2">2.1.0rc2</option>
+<option value="2.1.0rc1">2.1.0rc1</option>
+<option selected value="2.1.0">2.1.0</option>
 <option value="2.0.0rc1">2.0.0rc1</option>
-<option selected value="2.0.0">2.0.0</option>
+<option value="2.0.0">2.0.0</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -70,10 +73,13 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.0.0">2.0.0</option>
+<option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="0.9.5">0.9.5</option>
-</optgroup></select></small>
+</optgroup>
+<optgroup label="Korean" value="kr"><option value="2.0.0">2.0.0</option></optgroup></select></small>
         </div>
         <div id="subheader">
             <h1>Device</h1>
@@ -90,6 +96,7 @@
 <option value="device.name_iphone_quirks">      - iPhone Quirks</option>
 <option value="device.name_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
 <option value="device.name_bada_quirks">      - Bada Quirks</option>
+<option value="device.name_tizen_quirks">      - Tizen Quirks</option>
 <option value="device.cordova">device.cordova</option>
 <option value="device.cordova_description">      - Description</option>
 <option value="device.cordova_supported_platforms">      - Supported Platforms</option>
@@ -238,6 +245,15 @@ var phoneName = <a href="cordova_device_device.md.html#device.name">device.name<
 
 <p>Reference: <a class="external" href="http://msdn.microsoft.com/en-us/library/ff769509%28v=vs.92%29.aspx">Application Manifest for Windows Phone</a></p>
 
+<h3>Tizen</h3>
+
+<h4>config.xml</h4>
+
+<pre class="prettyprint"><code>&lt;feature name="http://tizen.org/api/systeminfo" required="true"/&gt;
+</code></pre>
+
+<p>Reference: <a class="external" href="https://developer.tizen.org/help/topic/org.tizen.help.gs/Creating%20a%20Project.html?path=0_1_1_3#8814682_CreatingaProject-EditingconfigxmlFeatures">Application Manifest for Tizen Web Application</a></p>
+
 <hr>
 <h1><a name="device.name">device.name</a></h1>
 
@@ -263,6 +279,7 @@ var phoneName = <a href="cordova_device_device.md.html#device.name">device.name<
 <li>Windows Phone 7 ( Mango )</li>
 <li>Bada 1.2 &amp; 2.x</li>
 <li>webOS</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="device.name_quick_example">Quick Example</a>
@@ -285,7 +302,7 @@ var name = <a href="cordova_device_device.md.html#device.name">device.name</a>;
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -350,6 +367,13 @@ var name = <a href="cordova_device_device.md.html#device.name">device.name</a>;
 <ul>
 <li>returns the manufacturer model name. For example 'Samsung Wave S8500'</li>
 </ul>
+<h2>
+<a name="device.name_tizen_quirks">Tizen Quirks</a>
+</h2>
+
+<ul>
+<li>returns the device model assigned by the vendor. For example 'TIZEN'</li>
+</ul>
 <hr>
 <h1><a name="device.cordova">device.cordova</a></h1>
 
@@ -374,6 +398,7 @@ var name = <a href="cordova_device_device.md.html#device.name">device.name</a>;
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
 <li>Bada 1.2 &amp; 2.x</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="device.cordova_quick_example">Quick Example</a>
@@ -391,7 +416,7 @@ var name = <a href="cordova_device_device.md.html#device.name">device.name</a>;
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -437,6 +462,7 @@ var name = <a href="cordova_device_device.md.html#device.name">device.name</a>;
 <li>Windows Phone 7 ( Mango )</li>
 <li>Bada 1.2 &amp; 2.x</li>
 <li>webOS</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="device.platform_quick_example">Quick Example</a>
@@ -448,6 +474,7 @@ var name = <a href="cordova_device_device.md.html#device.name">device.name</a>;
 //   - "iPhone"
 //   - "webOS"
 //   - "WinCE"
+//   - "Tizen"
 var devicePlatform = <a href="cordova_device_device.md.html#device.platform">device.platform</a>;
 </code></pre>
 
@@ -460,7 +487,7 @@ var devicePlatform = <a href="cordova_device_device.md.html#device.platform">dev
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -530,6 +557,7 @@ var devicePlatform = <a href="cordova_device_device.md.html#device.platform">dev
 <li>Windows Phone 7 ( Mango )</li>
 <li>Bada 1.2 &amp; 2.x</li>
 <li>webOS</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="device.uuid_quick_example">Quick Example</a>
@@ -549,6 +577,9 @@ var devicePlatform = <a href="cordova_device_device.md.html#device.platform">dev
 // if the user is not defined, a guid is generated and will persist until the app is uninstalled
 // 
 // webOS: returns the device NDUID
+//
+// Tizen: returns the device IMEI (International Mobile Equipment Identity or IMEI is a number
+// unique to every GSM and UMTS mobile phone.
 var deviceID = <a href="cordova_device_device.md.html#device.uuid">device.uuid</a>;
 </code></pre>
 
@@ -561,7 +592,7 @@ var deviceID = <a href="cordova_device_device.md.html#device.uuid">device.uuid</
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -619,6 +650,7 @@ var deviceID = <a href="cordova_device_device.md.html#device.uuid">device.uuid</
 <li>Windows Phone 7 ( Mango )</li>
 <li>Bada 1.2 &amp; 2.x</li>
 <li>webOS</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="device.version_quick_example">Quick Example</a>
@@ -634,6 +666,7 @@ var deviceID = <a href="cordova_device_device.md.html#device.uuid">device.uuid</
 //
 // Windows Phone 7: returns current OS version number, ex. on Mango returns 7.10.7720
 // webOS: webOS 2.2.4 return 2.2.4
+// Tizen: returns "TIZEN_20120425_2"
 var deviceVersion = <a href="cordova_device_device.md.html#device.version">device.version</a>;
 </code></pre>
 
@@ -646,7 +679,7 @@ var deviceVersion = <a href="cordova_device_device.md.html#device.version">devic
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load

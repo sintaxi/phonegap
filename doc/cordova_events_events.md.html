@@ -32,8 +32,11 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="2.1.0rc2">2.1.0rc2</option>
+<option value="2.1.0rc1">2.1.0rc1</option>
+<option selected value="2.1.0">2.1.0</option>
 <option value="2.0.0rc1">2.0.0rc1</option>
-<option selected value="2.0.0">2.0.0</option>
+<option value="2.0.0">2.0.0</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -70,10 +73,13 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.0.0">2.0.0</option>
+<option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="0.9.5">0.9.5</option>
-</optgroup></select></small>
+</optgroup>
+<optgroup label="Korean" value="kr"><option value="2.0.0">2.0.0</option></optgroup></select></small>
         </div>
         <div id="subheader">
             <h1>Events</h1>
@@ -283,6 +289,15 @@
 <pre class="prettyprint"><code>No permissions are required.
 </code></pre>
 
+<h3>Tizen</h3>
+
+<h4>config.xml</h4>
+
+<pre class="prettyprint"><code>&lt;feature name="http://tizen.org/api/systeminfo" required="true"/&gt;
+</code></pre>
+
+<p>Reference: <a class="external" href="https://developer.tizen.org/help/topic/org.tizen.help.gs/Creating%20a%20Project.html?path=0_1_1_3#8814682_CreatingaProject-EditingconfigxmlFeatures">Application Manifest for Tizen Web Application</a></p>
+
 <hr>
 <h1><a name="deviceready">deviceready</a></h1>
 
@@ -313,6 +328,7 @@
 <li>iOS</li>
 <li>Windows Phone 7</li>
 <li>Bada 1.2 &amp; 2.x</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="deviceready_quick_example">Quick Example</a>
@@ -334,12 +350,12 @@ function onDeviceReady() {
   &lt;head&gt;
     &lt;title&gt;Cordova <a href="cordova_device_device.md.html#Device">Device</a> Ready Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but cordova-2.0.0.js has not.
+    // At this point, the document has loaded but cordova-2.1.0.js has not.
     // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="cordova_events_events.md.html#deviceready">deviceready</a>`.
     //
@@ -406,12 +422,12 @@ function onPause() {
   &lt;head&gt;
     &lt;title&gt;Cordova Pause Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but cordova-2.0.0.js has not.
+    // At this point, the document has loaded but cordova-2.1.0.js has not.
     // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="cordova_events_events.md.html#deviceready">deviceready</a>`.
     //
@@ -498,12 +514,12 @@ function onResume() {
   &lt;head&gt;
     &lt;title&gt;Cordova Resume Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but cordova-2.0.0.js has not.
+    // At this point, the document has loaded but cordova-2.1.0.js has not.
     // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="cordova_events_events.md.html#deviceready">deviceready</a>`.
     //
@@ -543,6 +559,19 @@ function onResume() {
 
 <p>Under iOS 5,  if you want your app to still run when the device is locked, you will have to disable multi-tasking (UIApplicationExitsOnSuspend - YES) for your app. This is different when you are on iOS 4 - to have your app run when the device is locked, the multi-tasking setting for your app does not matter.</p>
 </li>
+<li>
+<p><strong><a href="cordova_events_events.md.html#resume">resume</a></strong> event </p>
+
+<p>Interactive functions like alert() when the <a href="cordova_events_events.md.html#resume">resume</a> event fires will need to be wrapped in a setTimeout call with a timeout value of zero, or else the app will hang. e.g.</p>
+
+<pre class="prettyprint"><code>document.addEventListener("<a href="cordova_events_events.md.html#resume">resume</a>", onResume, false);
+function onResume() {
+   setTimeout(function() {
+          // TODO: do your thing!
+        }, 0);
+}
+</code></pre>
+</li>
 </ul>
 <hr>
 <h1><a name="online">online</a></h1>
@@ -569,6 +598,7 @@ function onResume() {
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="online_quick_example">Quick Example</a>
@@ -590,12 +620,12 @@ function onOnline() {
   &lt;head&gt;
     &lt;title&gt;Cordova Online Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but cordova-2.0.0.js has not.
+    // At this point, the document has loaded but cordova-2.1.0.js has not.
     // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="cordova_events_events.md.html#deviceready">deviceready</a>`.
     //
@@ -658,6 +688,7 @@ function onOnline() {
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="offline_quick_example">Quick Example</a>
@@ -679,12 +710,12 @@ function onOffline() {
   &lt;head&gt;
     &lt;title&gt;Cordova Offline Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but cordova-2.0.0.js has not.
+    // At this point, the document has loaded but cordova-2.1.0.js has not.
     // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="cordova_events_events.md.html#deviceready">deviceready</a>`.
     //
@@ -767,12 +798,12 @@ function onBackKeyDown() {
   &lt;head&gt;
     &lt;title&gt;Cordova Back Button Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but cordova-2.0.0.js has not.
+    // At this point, the document has loaded but cordova-2.1.0.js has not.
     // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="cordova_events_events.md.html#deviceready">deviceready</a>`.
     //
@@ -833,6 +864,7 @@ function onBackKeyDown() {
 <li>iOS</li>
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="batterycritical_quick_example">Quick Example</a>
@@ -853,14 +885,14 @@ function onBatteryCritical(info) {
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;Cordova <a href="cordova_device_device.md.html#Device">Device</a> Ready Example&lt;/title&gt;
+    &lt;title&gt;Cordova Battery Criticaly Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but cordova-2.0.0.js has not.
+    // At this point, the document has loaded but cordova-2.1.0.js has not.
     // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="cordova_events_events.md.html#deviceready">deviceready</a>`.
     // 
@@ -921,6 +953,7 @@ function onBatteryCritical(info) {
 <li>iOS</li>
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="batterylow_quick_example">Quick Example</a>
@@ -943,12 +976,12 @@ function onBatteryLow(info) {
   &lt;head&gt;
     &lt;title&gt;Cordova <a href="cordova_device_device.md.html#Device">Device</a> Ready Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but cordova-2.0.0.js has not.
+    // At this point, the document has loaded but cordova-2.1.0.js has not.
     // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="cordova_events_events.md.html#deviceready">deviceready</a>`.
     // 
@@ -1010,6 +1043,7 @@ function onBatteryLow(info) {
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>Windows Phone 7 ( Mango )</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="batterystatus_windows_phone_7_quirks">Windows Phone 7 Quirks</a>
@@ -1040,12 +1074,12 @@ function onBatteryStatus(info) {
   &lt;head&gt;
     &lt;title&gt;Cordova <a href="cordova_device_device.md.html#Device">Device</a> Ready Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but cordova-2.0.0.js has not.
+    // At this point, the document has loaded but cordova-2.1.0.js has not.
     // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="cordova_events_events.md.html#deviceready">deviceready</a>`.
     // 
@@ -1117,12 +1151,12 @@ function onMenuKeyDown() {
   &lt;head&gt;
     &lt;title&gt;Cordova Menu Button Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but cordova-2.0.0.js has not.
+    // At this point, the document has loaded but cordova-2.1.0.js has not.
     // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="cordova_events_events.md.html#deviceready">deviceready</a>`.
     //
@@ -1193,12 +1227,12 @@ function onSearchKeyDown() {
   &lt;head&gt;
     &lt;title&gt;Cordova Search Button Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but cordova-2.0.0.js has not.
+    // At this point, the document has loaded but cordova-2.1.0.js has not.
     // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="cordova_events_events.md.html#deviceready">deviceready</a>`.
     //
@@ -1269,12 +1303,12 @@ function onStartCallKeyDown() {
   &lt;head&gt;
     &lt;title&gt;Cordova Start Call Button Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but cordova-2.0.0.js has not.
+    // At this point, the document has loaded but cordova-2.1.0.js has not.
     // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="cordova_events_events.md.html#deviceready">deviceready</a>`.
     //
@@ -1345,12 +1379,12 @@ function onEndCallKeyDown() {
   &lt;head&gt;
     &lt;title&gt;Cordova End Call Button Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but cordova-2.0.0.js has not.
+    // At this point, the document has loaded but cordova-2.1.0.js has not.
     // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="cordova_events_events.md.html#deviceready">deviceready</a>`.
     //
@@ -1421,12 +1455,12 @@ function onVolumeDownKeyDown() {
   &lt;head&gt;
     &lt;title&gt;Cordova Volume Down Button Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but cordova-2.0.0.js has not.
+    // At this point, the document has loaded but cordova-2.1.0.js has not.
     // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="cordova_events_events.md.html#deviceready">deviceready</a>`.
     //
@@ -1497,12 +1531,12 @@ function onVolumeUpKeyDown() {
   &lt;head&gt;
     &lt;title&gt;Cordova Volume Up Button Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Call onDeviceReady when Cordova is loaded.
     //
-    // At this point, the document has loaded but cordova-2.0.0.js has not.
+    // At this point, the document has loaded but cordova-2.1.0.js has not.
     // When Cordova is loaded and talking with the native device,
     // it will call the event `<a href="cordova_events_events.md.html#deviceready">deviceready</a>`.
     //

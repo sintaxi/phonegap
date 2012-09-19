@@ -72,12 +72,15 @@ namespace WP7CordovaClassLib.Cordova.Commands
         }
 
 
-        public void InvokeCustomScript(ScriptCallback script)
+        public void InvokeCustomScript(ScriptCallback script, bool removeHandler)
         {
             if (this.OnCustomScript != null)
             {
                 this.OnCustomScript(this, script);
-                this.OnCustomScript = null;
+                if (removeHandler)
+                {
+                    this.OnCustomScript = null;
+                }
             }
         }
 
@@ -121,6 +124,15 @@ namespace WP7CordovaClassLib.Cordova.Commands
             service.Activated -= this.OnResume;
             service.Deactivated -= this.OnPause;
             this.OnCommandResult = null;
+        }
+
+        public static string GetBaseURL()
+        {
+#if CORDOVA_CLASSLIB
+            return "/WP7CordovaClassLib;component/";
+#else
+            return "./";
+#endif
         }
     }
 

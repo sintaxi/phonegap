@@ -32,8 +32,11 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="2.1.0rc2">2.1.0rc2</option>
+<option value="2.1.0rc1">2.1.0rc1</option>
+<option selected value="2.1.0">2.1.0</option>
 <option value="2.0.0rc1">2.0.0rc1</option>
-<option selected value="2.0.0">2.0.0</option>
+<option value="2.0.0">2.0.0</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -70,15 +73,19 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.0.0">2.0.0</option>
+<option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="0.9.5">0.9.5</option>
-</optgroup></select></small>
+</optgroup>
+<optgroup label="Korean" value="kr"><option value="2.0.0">2.0.0</option></optgroup></select></small>
         </div>
         <div id="subheader">
             <h1>Media</h1>
             <small><select><option value="Media">Media</option>
 <option value="Media_parameters">      - Parameters</option>
+<option value="Media_constants">      - Constants</option>
 <option value="Media_methods">      - Methods</option>
 <option value="Media_additional_readonly_parameters">      - Additional ReadOnly Parameters</option>
 <option value="Media_supported_platforms">      - Supported Platforms</option>
@@ -125,6 +132,7 @@
 <option value="media.startRecord_full_example">      - Full Example</option>
 <option value="media.startRecord_blackberry_webworks_quirks">      - BlackBerry WebWorks Quirks</option>
 <option value="media.startRecord_ios_quirks">      - iOS Quirks</option>
+<option value="media.startRecord_tizen_quirks">      - Tizen Quirks</option>
 <option value="media.stop">media.stop</option>
 <option value="media.stop_description">      - Description</option>
 <option value="media.stop_supported_platforms">      - Supported Platforms</option>
@@ -135,6 +143,7 @@
 <option value="media.stopRecord_supported_platforms">      - Supported Platforms</option>
 <option value="media.stopRecord_quick_example">      - Quick Example</option>
 <option value="media.stopRecord_full_example">      - Full Example</option>
+<option value="media.stopRecord_tizen_quirks">      - Tizen Quirks</option>
 <option value="MediaError">MediaError</option>
 <option value="MediaError_properties">      - Properties</option>
 <option value="MediaError_constants">      - Constants</option>
@@ -205,6 +214,24 @@
 </li>
 </ul>
 <h2>
+<a name="Media_constants">Constants</a>
+</h2>
+
+<p>The following constants are reported as the only parameter to the <strong>mediaStatus</strong> callback function.</p>
+
+<ul>
+<li>
+<code><a href="cordova_media_media.md.html#Media">Media</a>.MEDIA_NONE</code>     = 0;</li>
+<li>
+<code><a href="cordova_media_media.md.html#Media">Media</a>.MEDIA_STARTING</code> = 1;</li>
+<li>
+<code><a href="cordova_media_media.md.html#Media">Media</a>.MEDIA_RUNNING</code>  = 2;</li>
+<li>
+<code><a href="cordova_media_media.md.html#Media">Media</a>.MEDIA_PAUSED</code>   = 3;</li>
+<li>
+<code><a href="cordova_media_media.md.html#Media">Media</a>.MEDIA_STOPPED</code>  = 4;</li>
+</ul>
+<h2>
 <a name="Media_methods">Methods</a>
 </h2>
 
@@ -250,7 +277,8 @@
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 (Mango)</li>
+<li>Windows Phone 7.5</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="Media_permissions">Permissions</a>
@@ -317,6 +345,17 @@
 
 <p>Reference: <a class="external" href="http://msdn.microsoft.com/en-us/library/ff769509%28v=vs.92%29.aspx">Application Manifest for Windows Phone</a></p>
 
+<h3>Tizen</h3>
+
+<pre class="prettyprint"><code>No permissions are required.
+</code></pre>
+
+<h3>Windows Phone Quirks</h3>
+
+<pre class="prettyprint"><code>Only one media file can be played back at a time.
+There are strict restrictions as to how your application interacts with other media. See http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh184838(v=vs.92).aspx
+</code></pre>
+
 <hr>
 <h1><a name="media.getCurrentPosition">media.getCurrentPosition</a></h1>
 
@@ -350,6 +389,7 @@
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 ( Mango )</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="media.getCurrentPosition_quick_example">Quick Example</a>
@@ -387,7 +427,7 @@
       &lt;head&gt;
         &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -506,6 +546,7 @@
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 ( Mango )</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="media.getDuration_quick_example">Quick Example</a>
@@ -540,7 +581,7 @@
       &lt;head&gt;
         &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -659,6 +700,7 @@
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 ( Mango )</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="media.pause_quick_example">Quick Example</a>
@@ -698,7 +740,7 @@ function playAudio(url) {
       &lt;head&gt;
         &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -817,6 +859,7 @@ function playAudio(url) {
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 ( Mango )</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="media.play_quick_example">Quick Example</a>
@@ -851,7 +894,7 @@ function playAudio(url) {
       &lt;head&gt;
         &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -1002,6 +1045,7 @@ myMedia.play({ playAudioWhenScreenIsLocked : false })
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 ( Mango )</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="media.release_quick_example">Quick Example</a>
@@ -1026,7 +1070,7 @@ myMedia.play({ playAudioWhenScreenIsLocked : false })
       &lt;head&gt;
         &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -1153,6 +1197,7 @@ myMedia.play({ playAudioWhenScreenIsLocked : false })
 <li>BlackBerry WebWorks (OS 6.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 ( Mango )</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="media.seekTo_quick_example">Quick Example</a>
@@ -1178,7 +1223,7 @@ myMedia.play({ playAudioWhenScreenIsLocked : false })
       &lt;head&gt;
         &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -1329,7 +1374,7 @@ function recordAudio() {
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -1405,6 +1450,13 @@ function recordAudio() {
 <ul>
 <li>The file to record to must already exist and should be of type .wav. The <a href="cordova_file_file.md.html#File">File</a> API's can be used to create the file.</li>
 </ul>
+<h2>
+<a name="media.startRecord_tizen_quirks">Tizen Quirks</a>
+</h2>
+
+<ul>
+<li>This API is not supported on Tizen devices.</li>
+</ul>
 <hr>
 <h1><a name="media.stop">media.stop</a></h1>
 
@@ -1428,6 +1480,7 @@ function recordAudio() {
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 ( Mango )</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="media.stop_quick_example">Quick Example</a>
@@ -1467,7 +1520,7 @@ function playAudio(url) {
       &lt;head&gt;
         &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -1625,7 +1678,7 @@ function recordAudio() {
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -1687,6 +1740,13 @@ function recordAudio() {
 &lt;/html&gt;
 </code></pre>
 
+<h2>
+<a name="media.stopRecord_tizen_quirks">Tizen Quirks</a>
+</h2>
+
+<ul>
+<li>This API is not supported on Tizen devices.</li>
+</ul>
 <hr>
 <h1><a name="MediaError">MediaError</a></h1>
 

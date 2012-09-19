@@ -40,8 +40,7 @@
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <XapFilename>CordovaApp.xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
-    <SilverlightAppEntry>
-    </SilverlightAppEntry>
+    <SilverlightAppEntry>CordovaApp.App</SilverlightAppEntry>
     <ValidateXaml>true</ValidateXaml>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
   </PropertyGroup>
@@ -165,6 +164,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="resources\notification-beep.wav" />
+    <Content Include="www\img\logo.png" />
     <Content Include="www\js\index.js" />
     <None Include="VERSION" />
     <Resource Include="cordovalib\Images\appbar.back.rest.png" />
@@ -178,9 +179,8 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="BuildManifestProcessor.js" />
-    <Content Include="www\cordova-2.0.0.js" />
+    <Content Include="www\cordova-2.1.0.js" />
     <Content Include="www\css\index.css" />
-    <Content Include="www\img\cordova.png" />
     <Content Include="www\index.html">
       <SubType>Designer</SubType>
     </Content>

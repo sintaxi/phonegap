@@ -32,8 +32,11 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="2.1.0rc2">2.1.0rc2</option>
+<option value="2.1.0rc1">2.1.0rc1</option>
+<option selected value="2.1.0">2.1.0</option>
 <option value="2.0.0rc1">2.0.0rc1</option>
-<option selected value="2.0.0">2.0.0</option>
+<option value="2.0.0">2.0.0</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -70,10 +73,13 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.0.0">2.0.0</option>
+<option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="0.9.5">0.9.5</option>
-</optgroup></select></small>
+</optgroup>
+<optgroup label="Korean" value="kr"><option value="2.0.0">2.0.0</option></optgroup></select></small>
         </div>
         <div id="subheader">
             <h1>Connection</h1>
@@ -89,7 +95,8 @@
 <option value="connection.type_ios_quirks">      - iOS Quirks</option>
 <option value="connection.type_bada_quirks">      - Bada Quirks</option>
 <option value="connection.type_webos_quirks">      - webOS Quirks</option>
-<option value="connection.type_windows_phone_quirks">      - Windows Phone Quirks</option></select></small>
+<option value="connection.type_windows_phone_quirks">      - Windows Phone Quirks</option>
+<option value="connection.type_tizen_quirks">      - Tizen Quirks</option></select></small>
         </div>
 
         <div id="sidebar">
@@ -218,6 +225,15 @@
 
 <p>Reference: <a class="external" href="http://msdn.microsoft.com/en-us/library/ff769509%28v=vs.92%29.aspx">Application Manifest for Windows Phone</a></p>
 
+<h3>Tizen</h3>
+
+<h4>config.xml</h4>
+
+<pre class="prettyprint"><code>&lt;feature name="http://tizen.org/api/systeminfo" required="true"/&gt;
+</code></pre>
+
+<p>Reference: <a class="external" href="https://developer.tizen.org/help/topic/org.tizen.help.gs/Creating%20a%20Project.html?path=0_1_1_3#8814682_CreatingaProject-EditingconfigxmlFeatures">Application Manifest for Tizen Web Application</a></p>
+
 <hr>
 <h1><a name="connection.type">connection.type</a></h1>
 
@@ -240,6 +256,7 @@
 <li>Windows Phone 7 ( Mango )</li>
 <li>Bada 2.x</li>
 <li>webOS</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="connection.type_quick_example">Quick Example</a>
@@ -272,7 +289,7 @@ checkConnection();
   &lt;head&gt;
     &lt;title&gt;navigator.network.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -345,6 +362,18 @@ checkConnection();
 
 <ul>
 <li>Windows Phone Emulator always detects <code>navigator.network.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a></code> as <code><a href="cordova_connection_connection.md.html#Connection">Connection</a>.UNKNOWN</code>.</li>
+</ul>
+<h2>
+<a name="connection.type_tizen_quirks">Tizen Quirks</a>
+</h2>
+
+<ul>
+<li>Tizen can only detect a WiFi or cellular connection.
+<ul>
+<li>
+<code>navigator.network.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a></code> is set to <code><a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_2G</code> for all cellular data.</li>
+</ul>
+</li>
 </ul>
 </div>
         </div>

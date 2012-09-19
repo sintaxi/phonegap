@@ -18,7 +18,7 @@
        under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:windowSoftInputMode="adjustPan"
-      package="__PACKAGE__" android:versionName="1.1" android:versionCode="5">
+      package="__PACKAGE__" android:versionName="1.1" android:versionCode="5" android:hardwareAccelerated="true">
     <supports-screens
         android:largeScreens="true"
         android:normalScreens="true"
@@ -48,8 +48,8 @@
 
     <application android:icon="@drawable/icon" android:label="@string/app_name"
         android:debuggable="true">
-        <activity android:name="__ACTIVITY__" android:label="@string/app_name" 
-                  android:configChanges="orientation|keyboardHidden">
+        <activity android:name="__ACTIVITY__" android:label="@string/app_name"
+                android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -57,5 +57,5 @@
         </activity>
     </application>
 
-    <uses-sdk android:minSdkVersion="5" />
+    <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="__APILEVEL__"/>
 </manifest> 

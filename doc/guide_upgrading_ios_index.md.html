@@ -32,8 +32,11 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="2.1.0rc2">2.1.0rc2</option>
+<option value="2.1.0rc1">2.1.0rc1</option>
+<option selected value="2.1.0">2.1.0</option>
 <option value="2.0.0rc1">2.0.0rc1</option>
-<option selected value="2.0.0">2.0.0</option>
+<option value="2.0.0">2.0.0</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -70,14 +73,18 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.0.0">2.0.0</option>
+<option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="0.9.5">0.9.5</option>
-</optgroup></select></small>
+</optgroup>
+<optgroup label="Korean" value="kr"><option value="2.0.0">2.0.0</option></optgroup></select></small>
         </div>
         <div id="subheader">
             <h1>Upgrading Cordova iOS</h1>
             <small><select><option value="Upgrading%2520Cordova%2520iOS">Upgrading Cordova iOS</option>
+<option value="Upgrading%20Cordova%20iOS_upgrading_cordova_2_0_0_projects_to_2_1_0">      - Upgrading Cordova 2.0.0 projects to 2.1.0</option>
 <option value="Upgrading%20Cordova%20iOS_upgrading_cordova_1_9_0_projects_to_2_0_0">      - Upgrading Cordova 1.9.0 projects to 2.0.0</option>
 <option value="Upgrading%20Cordova%20iOS_upgrading_cordova_1_8_x_projects_to_1_9_0">      - Upgrading Cordova 1.8.x projects to 1.9.0</option>
 <option value="Upgrading%20Cordova%20iOS_upgrading_cordova_1_7_0_projects_to_1_8_x">      - Upgrading Cordova 1.7.0 projects to 1.8.x</option>
@@ -129,6 +136,48 @@
 <p>Please note that <strong>Xcode 4 is required</strong>. To submit to the Apple App Store, you must use the latest shipped version of the iOS SDK, which is iOS 5.1. The iOS 5.1 SDK requires Xcode 4.</p>
 
 <h2>
+<a name="Upgrading%20Cordova%20iOS_upgrading_cordova_2_0_0_projects_to_2_1_0">Upgrading Cordova 2.0.0 projects to 2.1.0</a>
+</h2>
+
+<p>With <strong>Cordova 2.1.0</strong>, CordovaLib has been upgraded to use <strong>Automatic Reference Counting (ARC)</strong>. You don't need to upgrade to <strong>ARC</strong> to use CordovaLib, but if you want to upgrade your project to use <strong>ARC</strong>, please use the Xcode migration wizard from the menu: <strong>Edit -&gt; Refactor -&gt; Convert to Objective-C ARC…</strong>, <strong>de-select libCordova.a</strong>, then run the wizard to completion. </p>
+
+<ol>
+<li>
+<strong>Download and extract the Cordova 2.1.0 source</strong> to a <strong>permanent folder location</strong> on your hard drive (say to ~/Documents/Cordova-2.1.0)</li>
+<li>
+<strong>Quit Xcode</strong> if it is running.</li>
+<li>
+<strong>Navigate</strong> to the directory where you put the downloaded source above, using <strong>Terminal.app</strong>.</li>
+<li>
+<a href="guide_command-line_index.md.html#Command-Line%20Usage_ios"><strong>Create a new project</strong></a> from the command-line tools - you will have to grab the assets from this new project</li>
+<li>
+<strong>Copy</strong> the <strong>www/cordova-2.1.0.js</strong> file from the new project into your <strong>www</strong> folder, and delete your <strong>www/cordova-2.0.0.js</strong> file</li>
+<li>
+<strong>Update</strong> the Cordova script reference in your <strong>www/index.html</strong> file (and any other files that contain the script reference) to point to the new <strong>cordova-2.1.0.js</strong> file</li>
+<li>Update (or replace, if you never changed the file) your <strong>AppDelegate.m</strong> according to the one from the new project:
+<ul>
+<li>Edited -&gt; application:didFinishLaunchingWithOptions:</li>
+<li>Added  -&gt; application:supportedInterfaceOrientationsForWindow:</li>
+</ul>
+</li>
+<li>Copy the <strong>"cordova"</strong> folder from the new project into your project's root folder <strong>(in 2.1.0, this has the updated scripts to support paths with spaces)</strong> </li>
+<li>Remove the <strong>VERSION</strong> file reference from your <strong>project</strong> (<strong>NOT</strong> the one in CordovaLib)</li>
+<li>
+<p>Next, update your CordovaLib sub-project reference. Beginning with Cordova 2.1.0, we are not using the CORDOVALIB Xcode variable anymore when referencing where CordovaLib resides, the reference is an absolute file reference now.</p>
+
+<ol>
+<li>Launch <strong>Terminal.app</strong>
+</li>
+<li>Go to the location where you installed Cordova <strong>(see Step 1)</strong>, in the <strong>bin</strong> sub-folder</li>
+<li>
+<p>Run the script below where the first parameter is the path to your project's <strong>.xcodeproj</strong> file:</p>
+
+<p><code>update_cordova_subproject path/to/your/project/xcodeproj</code></p>
+</li>
+</ol>
+</li>
+</ol>
+<h2>
 <a name="Upgrading%20Cordova%20iOS_upgrading_cordova_1_9_0_projects_to_2_0_0">Upgrading Cordova 1.9.0 projects to 2.0.0</a>
 </h2>
 
@@ -136,7 +185,7 @@
 <li>
 <strong>Install</strong> Cordova 2.0.0</li>
 <li>
-<strong>Create a new project</strong> from the command-line tools - you will have to grab the assets from this new project</li>
+<a href="guide_command-line_index.md.html#Command-Line%20Usage_ios"><strong>Create a new project</strong></a> from the command-line tools - you will have to grab the assets from this new project</li>
 <li>
 <strong>Copy</strong> the <strong>www/cordova-2.0.0.js</strong> file from the new project into your <strong>www</strong> folder, and delete your <strong>www/cordova-1.9.0.js</strong> file</li>
 <li>
@@ -186,18 +235,34 @@
 <li>Press the key combination <strong>Option-Command-1</strong> to show the <strong><a href="cordova_file_file.md.html#File">File</a> Inspector</strong> (or menuitem <strong>View -&gt; Utilities -&gt; Show <a href="cordova_file_file.md.html#File">File</a> Inspector</strong>)</li>
 <li>Choose <strong>"Relative to CORDOVALIB"</strong> in the <strong><a href="cordova_file_file.md.html#File">File</a> Inspector</strong> for the drop-down menu for <strong>Location</strong>
 </li>
+<li>Set the Xcode preference <strong>"Xcode Preferences -&gt; Locations -&gt; Derived Data -&gt; Advanced…"</strong> to <strong>"Unique"</strong> (this is so the unified headers can be found)</li>
+<li>Select the <strong>project icon</strong> in the Project Navigator, select your <strong>Target</strong>, then select the <strong>"Build Settings"</strong> tab</li>
 <li>
-<strong>Build</strong> your project, it should compile and link with <strong>no issues</strong>.</li>
+<p>Search for <strong>"Header Search Paths"</strong>. For that setting, add these three values below (with quotes):</p>
+
+<pre class="prettyprint"><code>"$(TARGET_BUILD_DIR)/usr/local/lib/include"
+
+
+"$(OBJROOT)/UninstalledProducts/include"
+
+
+"$(BUILT_PRODUCTS_DIR)"
+</code></pre>
+</li>
+<li>
+<p>Search for <strong>"Other Linker <a href="cordova_file_file.md.html#Flags">Flags</a>"</strong>. For that setting, add this value below:</p>
+
+<pre class="prettyprint"><code>-weak_framework CoreFoundation
+</code></pre>
+</li>
+<li><p><strong>Build</strong> your project, it should compile and link with <strong>no issues</strong>.</p></li>
 <li>
 <strong>Select your project</strong> from the <strong>Scheme</strong> drop-down, and then select <strong>"iPhone 5.1 Simulator"</strong>
 </li>
 <li>Select the <strong>Run</strong> button</li>
 </ol>
-<p><strong>NOTE 1:</strong><br> 
+<p><strong>NOTE:</strong><br> 
 If your project is <strong>not working</strong> as expected in the Simulator, please <strong>take a note of any errors</strong> in the <strong>console log in Xcode</strong> for clues.</p>
-
-<p><strong>NOTE 2:</strong><br> 
-For the <strong>unified #import headers</strong> to work, the build products should <strong>build into the same build directory</strong>. You may need to set the preference <strong>"Xcode Preferences -&gt; Locations -&gt; Derived Data -&gt; Advanced…"</strong> to <strong>"Unique"</strong></p>
 
 <h2>
 <a name="Upgrading%20Cordova%20iOS_upgrading_cordova_1_8_x_projects_to_1_9_0">Upgrading Cordova 1.8.x projects to 1.9.0</a>

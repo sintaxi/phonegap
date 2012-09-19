@@ -32,8 +32,11 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="2.1.0rc2">2.1.0rc2</option>
+<option value="2.1.0rc1">2.1.0rc1</option>
+<option selected value="2.1.0">2.1.0</option>
 <option value="2.0.0rc1">2.0.0rc1</option>
-<option selected value="2.0.0">2.0.0</option>
+<option value="2.0.0">2.0.0</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -70,10 +73,13 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.0.0">2.0.0</option>
+<option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="0.9.5">0.9.5</option>
-</optgroup></select></small>
+</optgroup>
+<optgroup label="Korean" value="kr"><option value="2.0.0">2.0.0</option></optgroup></select></small>
         </div>
         <div id="subheader">
             <h1>Contacts</h1>
@@ -348,7 +354,7 @@
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -429,7 +435,8 @@ function onError(<a href="cordova_contacts_contacts.md.html#contactError">contac
 
 // find all contacts with 'Bob' in any name field
 var options = new <a href="cordova_contacts_contacts.md.html#ContactFindOptions">ContactFindOptions</a>();
-options.filter="Bob"; 
+options.filter="Bob";
+options.multiple=true; 
 var fields = ["displayName", "name"];
 navigator.<a href="cordova_contacts_contacts.md.html#contacts.find">contacts.find</a>(fields, onSuccess, onError, options);
 </code></pre>
@@ -443,7 +450,7 @@ navigator.<a href="cordova_contacts_contacts.md.html#contacts.find">contacts.fin
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -629,7 +636,7 @@ contact.remove(onSuccess,onError);
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -868,7 +875,7 @@ navigator.<a href="cordova_contacts_contacts.md.html#contacts.find">contacts.fin
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -1053,7 +1060,7 @@ contact.save();
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -1207,7 +1214,7 @@ navigator.<a href="cordova_contacts_contacts.md.html#contacts.find">contacts.fin
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -1335,7 +1342,7 @@ navigator.<a href="cordova_contacts_contacts.md.html#contacts.find">contacts.fin
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -1502,7 +1509,7 @@ navigator.<a href="cordova_contacts_contacts.md.html#contacts.find">contacts.fin
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load

@@ -32,8 +32,11 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="2.1.0rc2">2.1.0rc2</option>
+<option value="2.1.0rc1">2.1.0rc1</option>
+<option selected value="2.1.0">2.1.0</option>
 <option value="2.0.0rc1">2.0.0rc1</option>
-<option selected value="2.0.0">2.0.0</option>
+<option value="2.0.0">2.0.0</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -70,10 +73,13 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.0.0">2.0.0</option>
+<option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="0.9.5">0.9.5</option>
-</optgroup></select></small>
+</optgroup>
+<optgroup label="Korean" value="kr"><option value="2.0.0">2.0.0</option></optgroup></select></small>
         </div>
         <div id="subheader">
             <h1>Camera</h1>
@@ -85,6 +91,7 @@
 <option value="camera.getPicture_supported_platforms">      - Supported Platforms</option>
 <option value="camera.getPicture_ios_quirks">      - iOS Quirks</option>
 <option value="camera.getPicture_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
+<option value="camera.getPicture_tizen_quirks">      - Tizen Quirks</option>
 <option value="camera.getPicture_quick_example">      - Quick Example</option>
 <option value="camera.getPicture_full_example">      - Full Example</option>
 <option value="cameraSuccess">cameraSuccess</option>
@@ -100,6 +107,7 @@
 <option value="cameraOptions_ios_quirks">      - iOS Quirks</option>
 <option value="cameraOptions_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
 <option value="cameraOptions_bada_1_2_quirks">      - Bada 1.2 Quirks</option>
+<option value="cameraOptions_tizen_quirks">      - Tizen Quirks</option>
 <option value="CameraPopoverOptions">CameraPopoverOptions</option>
 <option value="CameraPopoverOptions_camerapopoveroptions">      - CameraPopoverOptions</option>
 <option value="CameraPopoverOptions_quick_example">      - Quick Example</option></select></small>
@@ -224,6 +232,16 @@
 
 <p>Reference: <a class="external" href="http://msdn.microsoft.com/en-us/library/ff769509%28v=vs.92%29.aspx">Application Manifest for Windows Phone</a></p>
 
+<h3>Tizen</h3>
+
+<h4>config.xml</h4>
+
+<pre class="prettyprint"><code>&lt;feature name="http://tizen.org/api/application" required="true"/&gt;
+&lt;feature name="http://tizen.org/api/application.launch" required="true"/&gt;
+</code></pre>
+
+<p>Reference: <a class="external" href="https://developer.tizen.org/help/topic/org.tizen.help.gs/Creating%20a%20Project.html?path=0_1_1_3#8814682_CreatingaProject-EditingconfigxmlFeatures">Application Manifest for Tizen Web Application</a></p>
+
 <hr>
 <h1><a name="camera.getPicture">camera.getPicture</a></h1>
 
@@ -254,7 +272,7 @@
 <li>Save the data locally (<code>LocalStorage</code>, <a class="external" href="http://brianleroux.github.com/lawnchair/">Lawnchair</a>, etc)</li>
 <li>Post the data to a remote server</li>
 </ul>
-<p>Note: The image quality of pictures taken using the camera on newer devices is quite good, and images from the Photo Album will not be downscaled to a lower quality, even if a quality parameter is specified.  <em>Encoding such images using Base64 has caused memory issues on some of these devices (iPhone 4, BlackBerry Torch 9800).</em>  Therefore, using FILE_URI as the '<a href="cordova_camera_camera.md.html#Camera">Camera</a>.destinationType' is highly recommended.</p>
+<p><strong>Note:</strong> The image quality of pictures taken using the camera on newer devices is quite good, and images from the Photo Album will not be downscaled to a lower quality, even if a quality parameter is specified.  <strong><em>Encoding such images using Base64 has caused memory issues on many newer devices.  Therefore, using FILE</em>URI as the '<a href="cordova_camera_camera.md.html#Camera">Camera</a>.destinationType' is highly recommended._</strong></p>
 
 <h2>
 <a name="camera.getPicture_supported_platforms">Supported Platforms</a>
@@ -267,12 +285,18 @@
 <li>Windows Phone 7 ( Mango )</li>
 <li>Bada 1.2</li>
 <li>webOS</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="camera.getPicture_ios_quirks">iOS Quirks</a>
 </h2>
 
-<p>Including a JavaScript alert() in either of the callback functions can cause problems.  Wrap the alert in a setTimeout() to allow the iOS image picker or popover to fully close before the alert is displayed: setTimeout("alert('message');", 0);</p>
+<p>Including a JavaScript alert() in either of the callback functions can cause problems.  Wrap the alert in a setTimeout() to allow the iOS image picker or popover to fully close before the alert is displayed: </p>
+
+<pre class="prettyprint"><code>setTimeout(function() { 
+    // do your thing here!
+}, 0);
+</code></pre>
 
 <h2>
 <a name="camera.getPicture_windows_phone_7_quirks">Windows Phone 7 Quirks</a>
@@ -280,6 +304,12 @@
 
 <p>Invoking the native camera application while your device is connected
 via Zune will not work, and the error callback will be triggered.</p>
+
+<h2>
+<a name="camera.getPicture_tizen_quirks">Tizen Quirks</a>
+</h2>
+
+<p>Only 'destinationType: <a href="cordova_camera_camera.md.html#Camera">Camera</a>.DestinationType.FILE_URI' and 'sourceType: <a href="cordova_camera_camera.md.html#Camera">Camera</a>.PictureSourceType.PHOTOLIBRARY' are supported.</p>
 
 <h2>
 <a name="camera.getPicture_quick_example">Quick Example</a>
@@ -325,7 +355,7 @@ function onFail(message) {
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_media_capture_capture.md.html#Capture">Capture</a> Photo&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     var pictureSource;   // picture source
@@ -599,6 +629,14 @@ function cameraCallback(imageData) {
 </ul>
 <h2>
 <a name="cameraOptions_bada_1_2_quirks">Bada 1.2 Quirks</a>
+</h2>
+
+<ul>
+<li>options not supported</li>
+<li>always returns a FILE URI</li>
+</ul>
+<h2>
+<a name="cameraOptions_tizen_quirks">Tizen Quirks</a>
 </h2>
 
 <ul>

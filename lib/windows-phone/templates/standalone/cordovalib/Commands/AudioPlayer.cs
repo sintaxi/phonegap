@@ -34,11 +34,11 @@ namespace WP7CordovaClassLib.Cordova.Commands
         #region Constants
 
         // AudioPlayer states
-        private const int MediaNone = 0;
-        private const int MediaStarting = 1;
-        private const int MediaRunning = 2;
-        private const int MediaPaused = 3;
-        private const int MediaStopped = 4;
+        private const int PlayerState_None = 0;
+        private const int PlayerState_Starting = 1;
+        private const int PlayerState_Running = 2;
+        private const int PlayerState_Paused = 3;
+        private const int PlayerState_Stopped = 4;
 
         // AudioPlayer messages
         private const int MediaState = 1;
@@ -89,7 +89,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
         /// <summary>
         /// State of recording or playback
         /// </summary>
-        private int state = MediaNone;
+        private int state = PlayerState_None;
 
         /// <summary>
         /// File name to play or record to
@@ -155,7 +155,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
         {
             if (this.player != null)
             {
-                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorPlayModeSet));
+                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorPlayModeSet),false);
             }
             else if (this.recorder == null)
             {
@@ -171,17 +171,17 @@ namespace WP7CordovaClassLib.Cordova.Commands
                     this.WriteWavHeader(this.memoryStream, this.recorder.SampleRate);
                     this.recorder.Start();
                     FrameworkDispatcher.Update();
-                    this.SetState(MediaRunning);
+                    this.SetState(PlayerState_Running);
                 }
                 catch (Exception)
                 {
-                    this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorStartingRecording));
+                    this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorStartingRecording),false);
                 }
             }
             else
             {
 
-                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorAlreadyRecording));
+                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorAlreadyRecording),false);
             }
         }
 
@@ -192,7 +192,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
         {
             if (this.recorder != null)
             {
-                if (this.state == MediaRunning)
+                if (this.state == PlayerState_Running)
                 {
                     try
                     {
@@ -201,7 +201,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                         this.recorder = null;
                         SaveAudioClipToLocalStorage();
                         this.FinalizeXnaGameLoop();
-                        this.SetState(MediaStopped);
+                        this.SetState(PlayerState_Stopped);
                     }
                     catch (Exception)
                     {
@@ -223,40 +223,48 @@ namespace WP7CordovaClassLib.Cordova.Commands
         {
             if (this.recorder != null)
             {
-                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorRecordModeSet));
+                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorRecordModeSet),false);
                 return;
             }
 
 
-            if (this.player == null)
+            if (this.player == null || this.player.Source.AbsolutePath.LastIndexOf(filePath) < 0)
             {
                 try
                 {
-                    if (this.player == null)
+                    // this.player is a MediaElement, it must be added to the visual tree in order to play
+                    PhoneApplicationFrame frame = Application.Current.RootVisual as PhoneApplicationFrame;
+                    if (frame != null)
                     {
-                        // this.player is a MediaElement, it must be added to the visual tree in order to play
-                        PhoneApplicationFrame frame = Application.Current.RootVisual as PhoneApplicationFrame;
-                        if (frame != null)
+                        PhoneApplicationPage page = frame.Content as PhoneApplicationPage;
+                        if (page != null)
                         {
-                            PhoneApplicationPage page = frame.Content as PhoneApplicationPage;
-                            if (page != null)
+                            Grid grid = page.FindName("LayoutRoot") as Grid;
+                            if (grid != null)
                             {
-                                Grid grid = page.FindName("LayoutRoot") as Grid;
-                                if (grid != null)
-                                {
 
+                                //Microsoft.Xna.Framework.Media.MediaPlayer.Play(
+                                this.player = grid.FindName("playerMediaElement") as MediaElement;
+                                if (this.player == null) // still null ?
+                                {
                                     this.player = new MediaElement();
                                     this.player.Name = "playerMediaElement";
                                     grid.Children.Add(this.player);
-                                    this.player.Visibility = Visibility.Collapsed;
-                                    this.player.MediaOpened += MediaOpened;
-                                    this.player.MediaEnded += MediaEnded;
-                                    this.player.MediaFailed += MediaFailed;
+                                    this.player.Visibility = Visibility.Visible;
                                 }
+                                if (this.player.CurrentState == System.Windows.Media.MediaElementState.Playing)
+                                {
+                                    this.player.Stop(); // stop it!
+                                }
+                                
+                                this.player.Source = null; // Garbage collect it.
+                                this.player.MediaOpened += MediaOpened;
+                                this.player.MediaEnded += MediaEnded;
+                                this.player.MediaFailed += MediaFailed;
                             }
                         }
-
                     }
+
                     this.audioFile = filePath;
 
                     Uri uri = new Uri(filePath, UriKind.RelativeOrAbsolute);
@@ -278,28 +286,30 @@ namespace WP7CordovaClassLib.Cordova.Commands
                             else
                             {
                                 Debug.WriteLine("Error: source doesn't exist :: " + filePath);
-                                throw new ArgumentException("Source doesn't exist");
+                                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, 1),false);
+                                return;
+                                //throw new ArgumentException("Source doesn't exist");
                             }
                         }
                     }
-                    this.SetState(MediaStarting);
+                    this.SetState(PlayerState_Starting);
                 }
                 catch (Exception e)
                 {
                     Debug.WriteLine("Error: " + e.Message);
-                    this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorStartingPlayback));
+                    this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorStartingPlayback),false);
                 }
             }
             else
             {
-                if (this.state != MediaRunning)
+                if (this.state != PlayerState_Running)
                 {
                     this.player.Play();
-                    this.SetState(MediaRunning);
+                    this.SetState(PlayerState_Running);
                 }
                 else
                 {
-                    this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorResumeState));
+                    this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorResumeState),false);
                 }
             }
         }
@@ -309,15 +319,21 @@ namespace WP7CordovaClassLib.Cordova.Commands
         /// </summary>
         private void MediaOpened(object sender, RoutedEventArgs arg)
         {
-            if (!this.prepareOnly)
+            if (this.player != null)
             {
-                this.player.Play();
-                this.SetState(MediaRunning);
+                this.duration = this.player.NaturalDuration.TimeSpan.TotalSeconds;
+                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaDuration, this.duration),false);
+                if (!this.prepareOnly)
+                {
+                    this.player.Play();
+                    this.SetState(PlayerState_Running);
+                }
+                this.prepareOnly = false;
             }
-
-            this.duration = this.player.NaturalDuration.TimeSpan.TotalSeconds;
-            this.prepareOnly = false;
-            this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaDuration, this.duration));
+            else
+            {
+                // TODO: occasionally MediaOpened is signalled, but player is null
+            }
         }
 
         /// <summary>
@@ -325,7 +341,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
         /// </summary>
         private void MediaEnded(object sender, RoutedEventArgs arg)
         {
-            this.SetState(MediaStopped);
+            this.SetState(PlayerState_Stopped);
         }
 
         /// <summary>
@@ -334,7 +350,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
         private void MediaFailed(object sender, RoutedEventArgs arg)
         {
             player.Stop();
-            this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError.ToString(), "Media failed"));
+            this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError.ToString(), "Media failed"),false);
         }
 
         /// <summary>
@@ -347,7 +363,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
             {
                 TimeSpan tsPos = new TimeSpan(0, 0, 0, 0, milliseconds);
                 this.player.Position = tsPos;
-                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaPosition, milliseconds / 1000.0f));
+                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaPosition, milliseconds / 1000.0f),false);
             }
         }
 
@@ -368,14 +384,14 @@ namespace WP7CordovaClassLib.Cordova.Commands
         /// </summary>
         public void pausePlaying()
         {
-            if (this.state == MediaRunning)
+            if (this.state == PlayerState_Running)
             {
                 this.player.Pause();
-                this.SetState(MediaPaused);
+                this.SetState(PlayerState_Paused);
             }
             else
             {
-                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorPauseState));
+                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorPauseState),false);
             }
         }
 
@@ -385,17 +401,17 @@ namespace WP7CordovaClassLib.Cordova.Commands
         /// </summary>
         public void stopPlaying()
         {
-            if ((this.state == MediaRunning) || (this.state == MediaPaused))
+            if ((this.state == PlayerState_Running) || (this.state == PlayerState_Paused))
             {
                 this.player.Stop();
 
                 this.player.Position = new TimeSpan(0L);
-                this.SetState(MediaStopped);
+                this.SetState(PlayerState_Stopped);
             }
-            else
-            {
-                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorStopState));
-            }
+            //else // Why is it an error to call stop on a stopped media?
+            //{
+            //    this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorStopState), false);
+            //}
         }
 
         /// <summary>
@@ -404,15 +420,15 @@ namespace WP7CordovaClassLib.Cordova.Commands
         /// <returns>current position</returns>
         public double getCurrentPosition()
         {
-            if ((this.state == MediaRunning) || (this.state == MediaPaused))
+            if ((this.state == PlayerState_Running) || (this.state == PlayerState_Paused))
             {
                 double currentPosition = this.player.Position.TotalSeconds;
-                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaPosition, currentPosition));
+                //this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaPosition, currentPosition),false);
                 return currentPosition;
             }
             else
             {
-                return -1;
+                return 0;
             }
         }
 
@@ -449,7 +465,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
         {
             if (this.state != state)
             {
-                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaState, state));
+                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaState, state),false);
             }
 
             this.state = state;

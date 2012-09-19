@@ -21,7 +21,7 @@
   <App xmlns="" ProductID="{252f4997-3d6c-4d7a-9d5b-59818888a810}" Title="CordovaExample" 
        RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal"  
        Author="CordovaExample author" 
-       Description="PhoneGap for Windows Phone 7" 
+       Description="Apache Cordova for Windows Phone 7"
        Publisher="CordovaExample">
     
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>

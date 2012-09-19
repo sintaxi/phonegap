@@ -32,8 +32,11 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="2.1.0rc2">2.1.0rc2</option>
+<option value="2.1.0rc1">2.1.0rc1</option>
+<option selected value="2.1.0">2.1.0</option>
 <option value="2.0.0rc1">2.0.0rc1</option>
-<option selected value="2.0.0">2.0.0</option>
+<option value="2.0.0">2.0.0</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -70,10 +73,13 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.0.0">2.0.0</option>
+<option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="0.9.5">0.9.5</option>
-</optgroup></select></small>
+</optgroup>
+<optgroup label="Korean" value="kr"><option value="2.0.0">2.0.0</option></optgroup></select></small>
         </div>
         <div id="subheader">
             <h1>Compass</h1>
@@ -107,6 +113,7 @@
 <option value="compassOptions_options">      - Options</option>
 <option value="compassOptions_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
 <option value="compassOptions_bada_quirks">      - Bada Quirks</option>
+<option value="compassOptions_tizen_quirks">      - Tizen Quirks</option>
 <option value="compassHeading">compassHeading</option>
 <option value="compassHeading_properties">      - Properties</option>
 <option value="compassHeading_description">      - Description</option>
@@ -227,6 +234,11 @@
 
 <p>Reference: <a class="external" href="http://msdn.microsoft.com/en-us/library/ff769509%28v=vs.92%29.aspx">Application Manifest for Windows Phone</a></p>
 
+<h3>Tizen</h3>
+
+<pre class="prettyprint"><code>No permissions are required.
+</code></pre>
+
 <hr>
 <h1><a name="compass.getCurrentHeading">compass.getCurrentHeading</a></h1>
 
@@ -253,6 +265,7 @@
 <li>Windows Phone 7 ( Mango ) if available in hardware</li>
 <li>Bada 1.2 &amp; 2.x</li>
 <li>webOS</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="compass.getCurrentHeading_quick_example">Quick Example</a>
@@ -278,7 +291,7 @@ navigator.<a href="cordova_compass_compass.md.html#compass.getCurrentHeading">co
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_compass_compass.md.html#Compass">Compass</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -340,6 +353,7 @@ navigator.<a href="cordova_compass_compass.md.html#compass.getCurrentHeading">co
 <li>Windows Phone 7 ( Mango ) if available in hardware</li>
 <li>Bada 1.2 &amp; 2.x</li>
 <li>webOS</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="compass.watchHeading_quick_example">Quick Example</a>
@@ -368,7 +382,7 @@ var watchID = navigator.<a href="cordova_compass_compass.md.html#compass.watchHe
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_compass_compass.md.html#Compass">Compass</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // The watch id references the current `watchHeading`
@@ -456,6 +470,7 @@ var watchID = navigator.<a href="cordova_compass_compass.md.html#compass.watchHe
 <li>Windows Phone 7 ( Mango ) if available in hardware</li>
 <li>Bada 1.2 &amp; 2.x</li>
 <li>webOS</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="compass.clearWatch_quick_example">Quick Example</a>
@@ -477,7 +492,7 @@ navigator.<a href="cordova_compass_compass.md.html#compass.clearWatch">compass.c
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_compass_compass.md.html#Compass">Compass</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // The watch id references the current `watchHeading`
@@ -618,6 +633,13 @@ navigator.<a href="cordova_compass_compass.md.html#compass.clearWatch">compass.c
 </ul>
 <h2>
 <a name="compassOptions_bada_quirks">Bada Quirks</a>
+</h2>
+
+<ul>
+<li>filter is not supported.</li>
+</ul>
+<h2>
+<a name="compassOptions_tizen_quirks">Tizen Quirks</a>
 </h2>
 
 <ul>

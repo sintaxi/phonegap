@@ -129,14 +129,13 @@ namespace WP7CordovaClassLib.Cordova.Commands
         /// </summary>
         /// <returns>Coordinates in JSON format</returns>
         private string GetHeadingFormatted(CompassReading reading)
-        {
-            string result = String.Format("\"magneticHeading\":{0},\"headingAccuracy\":{1},\"trueHeading\":{2},\"timestamp\":{3}",
+        {   
+            // NOTE: timestamp is generated on the JS side, to avoid issues with format conversions
+            string result = String.Format("\"magneticHeading\":{0},\"headingAccuracy\":{1},\"trueHeading\":{2}",
                             reading.MagneticHeading.ToString("0.0", CultureInfo.InvariantCulture),
                             reading.HeadingAccuracy.ToString("0.0", CultureInfo.InvariantCulture),
-                            reading.TrueHeading.ToString("0.0", CultureInfo.InvariantCulture),
-                            reading.Timestamp.UtcTicks.ToString());
-            result = "{" + result + "}";
-            return result;
+                            reading.TrueHeading.ToString("0.0", CultureInfo.InvariantCulture));
+            return "{" + result + "}";
         }
 
         public void getHeading(string options)
@@ -165,7 +164,6 @@ namespace WP7CordovaClassLib.Cordova.Commands
             {
                 if (currentStatus != Running)
                 {
-
                     lock (compass)
                     {
                         compass.CurrentValueChanged += compass_SingleHeadingValueChanged;
@@ -188,11 +186,11 @@ namespace WP7CordovaClassLib.Cordova.Commands
                 }
                 lock (compass)
                 {
-
                     compass.CurrentValueChanged -= compass_SingleHeadingValueChanged;
                     if (watchers.Count < 1)
                     {
                         compass.Stop();
+                        this.SetStatus(Stopped);
                     }
                 }
             }

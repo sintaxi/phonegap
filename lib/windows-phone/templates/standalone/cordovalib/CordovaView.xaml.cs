@@ -420,8 +420,8 @@ namespace WP7CordovaClassLib
                 switch (commandCallParams.Action.ToLower())
                 {
                     case "overridebackbutton":
-                        string args = commandCallParams.Args;
-                        this.OverrideBackButton = (args != null && args.Length > 0 && args.ToLower() == "true");
+                        string arg0 = WP7CordovaClassLib.Cordova.JSON.JsonHelper.Deserialize<string[]>(commandCallParams.Args)[0];
+                        this.OverrideBackButton = (arg0 != null && arg0.Length > 0 && arg0.ToLower() == "true"); 
                         break;
                 }
             }

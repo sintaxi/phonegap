@@ -74,7 +74,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Xml" />
-    <Reference Include="WP7CordovaClassLib, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="WP7CordovaClassLib, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -97,12 +97,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CordovaSourceDictionary.xml" />
+    <Content Include="www\img\logo.png" />
     <Content Include="www\js\index.js" />
     <None Include="BuildManifestProcessor.js" />
     <Content Include="CordovaLib\WP7CordovaClassLib.dll" />
-    <Content Include="www\cordova-2.0.0.js" />
+    <Content Include="www\cordova-2.1.0.js" />
     <Content Include="www\css\index.css" />
-    <Content Include="www\img\cordova.png" />
     <Content Include="www\index.html">
       <SubType>Designer</SubType>
     </Content>

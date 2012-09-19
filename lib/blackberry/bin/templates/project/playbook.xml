@@ -201,7 +201,7 @@
     
     <!-- CLEAN SIMULATOR -->
     
-    <target name="clean-simulator">
+    <target name="clean-simulator" depends="generate-cod-name">
         <exec executable="${blackberry-deploy}" dir="." failonerror="true">
             <arg value="-uninstallApp" />
             <arg value="-device" />

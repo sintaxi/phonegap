@@ -196,8 +196,12 @@ namespace WP7CordovaClassLib.Cordova.Commands
         // refer here for contact properties we can access: http://msdn.microsoft.com/en-us/library/microsoft.phone.tasks.savecontacttask_members%28v=VS.92%29.aspx
         public void save(string jsonContact)
         {
+
             // jsonContact is actually an array of 1 {contact}
-            JSONContact contact = JSON.JsonHelper.Deserialize<JSONContact[]>(jsonContact)[0];
+            string[] args = JSON.JsonHelper.Deserialize<string[]>(jsonContact);
+
+
+            JSONContact contact = JSON.JsonHelper.Deserialize<JSONContact>(args[0]) ;
 
             SaveContactTask contactTask = new SaveContactTask();
 
@@ -289,11 +293,20 @@ namespace WP7CordovaClassLib.Cordova.Commands
             }
             #endregion
 
+            if (contact.note != null && contact.note.Length > 0)
+            {
+                contactTask.Notes = contact.note;
+            }
+
             #region contact.addresses
             if (contact.addresses != null && contact.addresses.Length > 0)
             {
                 foreach (JSONContactAddress address in contact.addresses)
                 {
+                    if (address.type == null)
+                    {
+                        address.type = "home"; // set a default
+                    }
                     string fieldType = address.type.ToLower();
                     if (fieldType == "work")
                     {
@@ -372,10 +385,13 @@ namespace WP7CordovaClassLib.Cordova.Commands
 
         public void search(string searchCriteria)
         {
-            ContactSearchParams searchParams = null;
+            string[] args = JSON.JsonHelper.Deserialize<string[]>(searchCriteria);
+
+            ContactSearchParams searchParams = new ContactSearchParams();
             try
             {
-                searchParams = JSON.JsonHelper.Deserialize<ContactSearchParams[]>(searchCriteria)[0];
+                searchParams.fields = JSON.JsonHelper.Deserialize<string[]>(args[0]);
+                searchParams.options = JSON.JsonHelper.Deserialize<SearchOptions>(args[1]);
             }
             catch (Exception)
             {
@@ -553,8 +569,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                                                address.PhysicalAddress.PostalCode,
                                                address.PhysicalAddress.CountryRegion);
 
-
-            Debug.WriteLine("getFormattedJSONAddress returning :: " + jsonAddress);
+            //Debug.WriteLine("getFormattedJSONAddress returning :: " + jsonAddress);
 
             return "{" + jsonAddress + "}";
         }
@@ -567,7 +582,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
                 retVal += this.getFormattedJSONAddress(address, false) + ",";
             }
 
-            Debug.WriteLine("FormatJSONAddresses returning :: " + retVal);
+            //Debug.WriteLine("FormatJSONAddresses returning :: " + retVal);
             return retVal.TrimEnd(',');
         }
 
@@ -635,9 +650,9 @@ namespace WP7CordovaClassLib.Cordova.Commands
                                                FormatJSONName(con),
                                                con.Notes.FirstOrDefault());
 
-            Debug.WriteLine("jsonContact = " + jsonContact);
-
-            return "{" + jsonContact + "}";
+            //Debug.WriteLine("jsonContact = " + jsonContact);
+            // JSON requires new line characters be escaped
+            return "{" + jsonContact.Replace("\n", "\\n") +"}";
         }
     }
 }

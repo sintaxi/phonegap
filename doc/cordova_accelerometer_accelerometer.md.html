@@ -32,8 +32,11 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="2.1.0rc2">2.1.0rc2</option>
+<option value="2.1.0rc1">2.1.0rc1</option>
+<option selected value="2.1.0">2.1.0</option>
 <option value="2.0.0rc1">2.0.0rc1</option>
-<option selected value="2.0.0">2.0.0</option>
+<option value="2.0.0">2.0.0</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -70,10 +73,13 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.0.0">2.0.0</option>
+<option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="0.9.5">0.9.5</option>
-</optgroup></select></small>
+</optgroup>
+<optgroup label="Korean" value="kr"><option value="2.0.0">2.0.0</option></optgroup></select></small>
         </div>
         <div id="subheader">
             <h1>Accelerometer</h1>
@@ -231,6 +237,11 @@
 
 <p>Reference: <a class="external" href="http://msdn.microsoft.com/en-us/library/ff769509%28v=vs.92%29.aspx">Application Manifest for Windows Phone</a></p>
 
+<h3>Tizen</h3>
+
+<pre class="prettyprint"><code>No permissions are required.
+</code></pre>
+
 <hr>
 <h1><a name="accelerometer.getCurrentAcceleration">accelerometer.getCurrentAcceleration</a></h1>
 
@@ -257,6 +268,7 @@
 <li>iPhone</li>
 <li>Windows Phone 7 (Mango)</li>
 <li>Bada 1.2 &amp; 2.x</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="accelerometer.getCurrentAcceleration_quick_example">Quick Example</a>
@@ -285,7 +297,7 @@ navigator.<a href="cordova_accelerometer_accelerometer.md.html#accelerometer.get
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -349,7 +361,7 @@ navigator.<a href="cordova_accelerometer_accelerometer.md.html#accelerometer.get
 
 <p>The <code><a href="cordova_accelerometer_accelerometer.md.html#accelerometer.watchAcceleration">accelerometer.watchAcceleration</a></code> gets the device's current acceleration at a regular interval. Each time the <code><a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a></code> is retrieved, the <code><a href="cordova_accelerometer_accelerometer.md.html#accelerometerSuccess">accelerometerSuccess</a></code> callback function is executed. Specify the interval in milliseconds via the <code>frequency</code> parameter in the <code>acceleratorOptions</code> object.</p>
 
-<p>The returned watch ID references references the accelerometer watch interval. The watch ID can be used with <code><a href="cordova_accelerometer_accelerometer.md.html#accelerometer.clearWatch">accelerometer.clearWatch</a></code> to stop watching the accelerometer.</p>
+<p>The returned watch ID references the accelerometer watch interval. The watch ID can be used with <code><a href="cordova_accelerometer_accelerometer.md.html#accelerometer.clearWatch">accelerometer.clearWatch</a></code> to stop watching the accelerometer.</p>
 
 <h2>
 <a name="accelerometer.watchAcceleration_supported_platforms">Supported Platforms</a>
@@ -361,6 +373,7 @@ navigator.<a href="cordova_accelerometer_accelerometer.md.html#accelerometer.get
 <li>iPhone</li>
 <li>Windows Phone 7 (Mango)</li>
 <li>Bada 1.2 &amp; 2.x</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="accelerometer.watchAcceleration_quick_example">Quick Example</a>
@@ -391,7 +404,7 @@ var watchID = navigator.<a href="cordova_accelerometer_accelerometer.md.html#acc
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // The watch id references the current `watchAcceleration`
@@ -484,6 +497,7 @@ var watchID = navigator.<a href="cordova_accelerometer_accelerometer.md.html#acc
 <li>iPhone</li>
 <li>Windows Phone 7 (Mango)</li>
 <li>Bada 1.2 &amp; 2.x</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="accelerometer.clearWatch_quick_example">Quick Example</a>
@@ -505,7 +519,7 @@ navigator.<a href="cordova_accelerometer_accelerometer.md.html#accelerometer.cle
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // The watch id references the current `watchAcceleration`
@@ -601,6 +615,7 @@ navigator.<a href="cordova_accelerometer_accelerometer.md.html#accelerometer.cle
 <li>Windows Phone 7 (Mango)</li>
 <li>Bada 1.2 &amp; 2.x</li>
 <li>webOS</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="Acceleration_quick_example">Quick Example</a>
@@ -629,7 +644,7 @@ navigator.<a href="cordova_accelerometer_accelerometer.md.html#accelerometer.get
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_accelerometer_accelerometer.md.html#Acceleration">Acceleration</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load

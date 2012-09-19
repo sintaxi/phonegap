@@ -27,10 +27,11 @@
 
     <!-- <access origin="https://example.com" /> allow any secure requests to example.com -->
     <!-- <access origin="https://example.com" subdomains="true" /> such as above, but including subdomains, such as www -->
-    <!-- <access origin=".*"/> Allow all domains, suggested development use only -->
+    <access origin=".*"/>
 
     <log level="DEBUG"/>
     <preference name="useBrowserHistory" value="false" />
+    <preference name="exit-on-suspend" value="false" />
 <plugins>
     <plugin name="App" value="org.apache.cordova.App"/>
     <plugin name="Geolocation" value="org.apache.cordova.GeoBroker"/>
@@ -49,6 +50,7 @@
     <plugin name="Capture" value="org.apache.cordova.Capture"/>
     <plugin name="Battery" value="org.apache.cordova.BatteryListener"/>
     <plugin name="SplashScreen" value="org.apache.cordova.SplashScreen"/>
+    <plugin name="Echo" value="org.apache.cordova.Echo" />
 </plugins>
 </cordova>
 

@@ -3,7 +3,7 @@
   <App xmlns="" ProductID="{$guid1$}" Title="$safeprojectname$" 
        RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal"  
        Author="$safeprojectname$ author" BitsPerPixel="32" 
-       Description="PhoneGap for Windows Phone 7" 
+       Description="Apache Cordova for Windows Phone 7"
        Publisher="$safeprojectname$">
     
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>

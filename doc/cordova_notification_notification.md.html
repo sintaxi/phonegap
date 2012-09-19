@@ -32,8 +32,11 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="2.1.0rc2">2.1.0rc2</option>
+<option value="2.1.0rc1">2.1.0rc1</option>
+<option selected value="2.1.0">2.1.0</option>
 <option value="2.0.0rc1">2.0.0rc1</option>
-<option selected value="2.0.0">2.0.0</option>
+<option value="2.0.0">2.0.0</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -70,10 +73,13 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.0.0">2.0.0</option>
+<option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="0.9.5">0.9.5</option>
-</optgroup></select></small>
+</optgroup>
+<optgroup label="Korean" value="kr"><option value="2.0.0">2.0.0</option></optgroup></select></small>
         </div>
         <div id="subheader">
             <h1>Notification</h1>
@@ -103,6 +109,7 @@
 <option value="notification.beep_android_quirks">      - Android Quirks</option>
 <option value="notification.beep_iphone_quirks">      - iPhone Quirks</option>
 <option value="notification.beep_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
+<option value="notification.beep_tizen_quirks">      - Tizen Quirks</option>
 <option value="notification.vibrate">notification.vibrate</option>
 <option value="notification.vibrate_supported_platforms">      - Supported Platforms</option>
 <option value="notification.vibrate_quick_example">      - Quick Example</option>
@@ -216,6 +223,11 @@
 <pre class="prettyprint"><code>No permissions are required.
 </code></pre>
 
+<h3>Tizen</h3>
+
+<pre class="prettyprint"><code>No permissions are required.
+</code></pre>
+
 <hr>
 <h1><a name="notification.alert">notification.alert</a></h1>
 
@@ -251,12 +263,13 @@
 <li>Windows Phone 7 ( Mango )</li>
 <li>Bada 1.2 &amp; 2.x</li>
 <li>webOS</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="notification.alert_quick_example">Quick Example</a>
 </h2>
 
-<pre class="prettyprint"><code>// Android / BlackBerry WebWorks (OS 5.0 and higher) / iPhone
+<pre class="prettyprint"><code>// Android / BlackBerry WebWorks (OS 5.0 and higher) / iPhone / Tizen
 //
 function alertDismissed() {
     // do something
@@ -279,7 +292,7 @@ navigator.<a href="cordova_notification_notification.md.html#notification.alert"
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -374,6 +387,7 @@ navigator.<a href="cordova_notification_notification.md.html#notification.alert"
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
 <li>Bada 1.2 &amp; 2.x</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="notification.confirm_quick_example">Quick Example</a>
@@ -405,7 +419,7 @@ function showConfirm() {
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -492,6 +506,7 @@ function showConfirm() {
 <li>iPhone</li>
 <li>Windows Phone 7 ( Mango )</li>
 <li>Bada 1.2 &amp; 2.x</li>
+<li>Tizen</li>
 </ul>
 <h2>
 <a name="notification.beep_quick_example">Quick Example</a>
@@ -510,7 +525,7 @@ navigator.<a href="cordova_notification_notification.md.html#notification.beep">
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -581,7 +596,15 @@ navigator.<a href="cordova_notification_notification.md.html#notification.beep">
 </h2>
 
 <ul>
-<li>WP7 Cordova lib includes a generic beep file that is used.</li>
+<li>WP7 Cordova lib includes a generic beep file that is used. </li>
+</ul>
+<h2>
+<a name="notification.beep_tizen_quirks">Tizen Quirks</a>
+</h2>
+
+<ul>
+<li>Tizen implements beep by playing an audio file via the media API.</li>
+<li>This beep file must be short, named <code>beep.wav</code> and has to be located in a 'sounds' sub-directory of the application root disctory.</li>
 </ul>
 <hr>
 <h1><a name="notification.vibrate">notification.vibrate</a></h1>
@@ -624,7 +647,7 @@ navigator.<a href="cordova_notification_notification.md.html#notification.vibrat
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load

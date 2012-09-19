@@ -32,8 +32,11 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="2.1.0rc2">2.1.0rc2</option>
+<option value="2.1.0rc1">2.1.0rc1</option>
+<option selected value="2.1.0">2.1.0</option>
 <option value="2.0.0rc1">2.0.0rc1</option>
-<option selected value="2.0.0">2.0.0</option>
+<option value="2.0.0">2.0.0</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -70,10 +73,13 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.0.0">2.0.0</option>
+<option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="0.9.5">0.9.5</option>
-</optgroup></select></small>
+</optgroup>
+<optgroup label="Korean" value="kr"><option value="2.0.0">2.0.0</option></optgroup></select></small>
         </div>
         <div id="subheader">
             <h1>File</h1>
@@ -508,7 +514,7 @@ entry.file(win, fail);
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_file_file.md.html#FileReader">FileReader</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -745,7 +751,7 @@ entry.createWriter(win, fail);
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_file_file.md.html#FileWriter">FileWriter</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -851,7 +857,7 @@ window.requestFileSystem(<a href="cordova_file_file.md.html#LocalFileSystem">Loc
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_file_file.md.html#File">File</a> System Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -1015,6 +1021,38 @@ entry.setMetadata(success, fail, { "com.apple.MobileBackup": 1});
 <ul>
 <li>only the <strong>"com.apple.MobileBackup"</strong> extended attribute is supported. Set the value to <strong>1</strong> to NOT enable the file to be backed up by iCloud. Set the value to <strong>0</strong> to re-enable the file to be backed up by iCloud.</li>
 </ul>
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>function setFileMetadata(localFileSystem, filePath, metadataKey, metadataValue) 
+{
+    var onSetMetadataWin = function() {
+      console.log("success setting metadata")
+    }
+    var onSetMetadataFail = function() {
+      console.log("error setting metadata")
+    }
+
+    var onGetFileWin = function(parent) {
+      parent.setMetadata(onSetMetadataWin, onSetMetadataFail, { metadataKey: metadataValue});
+    }
+    var onGetFileFail = function() {
+      console.log("error getting file")
+    }
+
+    var onFSWin = function(fileSystem) {
+      fileSystem.root.getFile(filePath, {create: true, exclusive: false}, onGetFileWin, onGetFileFail);
+    }
+
+    var onFSFail = function(evt) {
+      console.log(evt.target.error.code);
+    }
+
+    window.requestFileSystem(localFileSystem, 0, onFSWin, onFSFail);
+}
+
+setFileMetadata(<a href="cordova_file_file.md.html#LocalFileSystem">LocalFileSystem</a>.PERSISTENT, "Backups/sqlite.db", "com.apple.MobileBackup", 1);
+</code></pre>
+
 <h2>
 <a name="FileEntry_moveto">moveTo</a>
 </h2>
@@ -1380,6 +1418,38 @@ entry.setMetadata(success, fail, { "com.apple.MobileBackup": 1});
 <ul>
 <li>only the <strong>"com.apple.MobileBackup"</strong> extended attribute is supported. Set the value to <strong>1</strong> to NOT enable the directory to be backed up by iCloud. Set the value to <strong>0</strong> to re-enable the directory to be backed up by iCloud.</li>
 </ul>
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>function setFolderMetadata(localFileSystem, subFolder, metadataKey, metadataValue) 
+{
+    var onSetMetadataWin = function() {
+      console.log("success setting metadata")
+    }
+    var onSetMetadataFail = function() {
+      console.log("error setting metadata")
+    }
+
+    var onGetDirectoryWin = function(parent) {
+      parent.setMetadata(onSetMetadataWin, onSetMetadataFail, { metadataKey: metadataValue});
+    }
+    var onGetDirectoryFail = function() {
+      console.log("error getting dir")
+    }
+
+    var onFSWin = function(fileSystem) {
+      fileSystem.root.getDirectory(subFolder, {create: true, exclusive: false}, onGetDirectoryWin, onGetDirectoryFail);
+    }
+
+    var onFSFail = function(evt) {
+      console.log(evt.target.error.code);
+    }
+
+    window.requestFileSystem(localFileSystem, 0, onFSWin, onFSFail);
+}
+
+setFolderMetadata(<a href="cordova_file_file.md.html#LocalFileSystem">LocalFileSystem</a>.PERSISTENT, "Backups", "com.apple.MobileBackup", 1);
+</code></pre>
+
 <h2>
 <a name="DirectoryEntry_moveto">moveTo</a>
 </h2>
@@ -1837,7 +1907,7 @@ ft.upload(fileURI, encodeURI("http://some.server.com/upload.php"), win, fail, op
 &lt;head&gt;
     &lt;title&gt;<a href="cordova_file_file.md.html#File">File</a> Transfer Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -1990,6 +2060,8 @@ fileTransfer.download(
 <strong>params:</strong> A set of optional key/value pairs to be passed along in the HTTP request. (Object)</li>
 <li>
 <strong>chunkedMode:</strong> Should the data be uploaded in chunked streaming mode. If not set defaults to "true". (Boolean)</li>
+<li>
+<strong>headers:</strong> A map of header name =&gt; header value. To specify multiple values for a header, use an array of values. (Object)</li>
 </ul>
 <h2>
 <a name="FileUploadOptions_description">Description</a>
@@ -2149,7 +2221,7 @@ window.resolveLocalFileSystemURI("file:///example.txt", onSuccess, onError);
   &lt;head&gt;
     &lt;title&gt;Local <a href="cordova_file_file.md.html#File">File</a> System Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load

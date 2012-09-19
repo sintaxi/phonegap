@@ -32,8 +32,11 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option value="2.1.0rc2">2.1.0rc2</option>
+<option value="2.1.0rc1">2.1.0rc1</option>
+<option selected value="2.1.0">2.1.0</option>
 <option value="2.0.0rc1">2.0.0rc1</option>
-<option selected value="2.0.0">2.0.0</option>
+<option value="2.0.0">2.0.0</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -70,19 +73,25 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.0.0">2.0.0</option>
+<option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
 <option value="0.9.5">0.9.5</option>
-</optgroup></select></small>
+</optgroup>
+<optgroup label="Korean" value="kr"><option value="2.0.0">2.0.0</option></optgroup></select></small>
         </div>
         <div id="subheader">
             <h1>Developing a Plugin on iOS</h1>
             <small><select><option value="Developing%2520a%2520Plugin%2520on%2520iOS">Developing a Plugin on iOS</option>
 <option value="Developing%20a%20Plugin%20on%20iOS_plugin_class_mapping">      - Plugin Class Mapping</option>
 <option value="Developing%20a%20Plugin%20on%20iOS_writing_an_ios_cordova_plugin">      - Writing an iOS Cordova Plugin</option>
+<option value="Developing%20a%20Plugin%20on%20iOS_plugin_signatures">      - Plugin Signatures</option>
+<option value="Developing%20a%20Plugin%20on%20iOS_echo_plugin_ios_plugin">      - Echo Plugin iOS Plugin</option>
 <option value="Developing%20a%20Plugin%20on%20iOS_advanced_plugin_functionality">      - Advanced Plugin Functionality</option>
 <option value="Developing%20a%20Plugin%20on%20iOS_debugging_plugins">      - Debugging Plugins</option>
-<option value="Developing%20a%20Plugin%20on%20iOS_common_pitfalls">      - Common Pitfalls</option></select></small>
+<option value="Developing%20a%20Plugin%20on%20iOS_common_pitfalls">      - Common Pitfalls</option>
+<option value="Developing%20a%20Plugin%20on%20iOS_deprecated_plugin_signature_note">      - Deprecated Plugin Signature Note</option></select></small>
         </div>
 
         <div id="sidebar">
@@ -134,8 +143,6 @@
 
 <p>This will marshall a request from the UIWebView to the iOS native side, more or less boiling down to calling the <code>action</code> method on the <code>service</code> class, with the arguments passed in the <code>args</code> Array. </p>
 
-<p>The <code>options</code> parameter for the Objective-C plugin method is being deprecated, and it should not be used. For legacy reasons - the last JavaScript object passed in the <code>args</code> Array will be passed in as the <code>options</code> dictionary of the method in Objective-C. You must make sure that any JavaScript object that is passed in as an element in the <code>args</code> array occurs as the last item in the Array, if not it will throw off the array index of all subsequent parameters of the Array in Objective-C. Only one JavaScript object is supported for the options dictionary, and only the last one encountered will be passed to the native method. It is because of these error-prone reasons that they are being deprecated.</p>
-
 <p>The plugin must be added to <code>Plugins</code> key (a Dictionary) of the <code>Cordova.plist</code> file in your Cordova-iOS application's project folder.</p>
 
 <pre class="prettyprint"><code>&lt;key&gt;service_name&lt;/key&gt;
@@ -150,32 +157,52 @@
 
 <p>We have JavaScript fire off a plugin request to the native side. We have the iOS Objective-C plugin mapped properly via the <code>Cordova.plist</code> file. So what does the final iOS Objective-C Plugin class look like?</p>
 
-<p>What gets dispatched to the plugin via JavaScript's <code>exec</code> function gets passed into the corresponding Plugin class's <code>action</code> method. Most method implementations look like this:</p>
+<p>What gets dispatched to the plugin via JavaScript's <code>exec</code> function gets passed into the corresponding Plugin class's <code>action</code> method. A plugin method has this signature:</p>
 
-<pre class="prettyprint"><code>- (void) myMethod:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options
+<pre class="prettyprint"><code>- (void) myMethod:(CDVInvokedUrlCommand*)command
 {
-    NSString* callbackId = [arguments objectAtIndex:0];
-
     CDVPluginResult* pluginResult = nil;
     NSString* javaScript = nil;
 
     @try {
-        NSString* myarg = [arguments objectAtIndex:1];
+        NSString* myarg = [command.arguments objectAtIndex:0];
 
         if (myarg != nil) {
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-            javaScript = [pluginResult toSuccessCallbackString:callbackId];
+            javaScript = [pluginResult toSuccessCallbackString:command.callbackId];
         } 
     } @catch (id exception) {
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_JSON_EXCEPTION messageAsString:[exception reason]];
-        javaScript = [pluginResult toErrorCallbackString:callbackId];
+        javaScript = [pluginResult toErrorCallbackString:command.callbackId];
     }
 
     [self writeJavascript:javaScript];
 }
 </code></pre>
 
-<h3>Echo Plugin iOS Plugin</h3>
+<ol>
+<li><a class="external" href="https://github.com/apache/incubator-cordova-ios/blob/master/CordovaLib/Classes/CDVInvokedUrlCommand.h">CDVInvokedUrlCommand.h</a></li>
+<li><a class="external" href="https://github.com/apache/incubator-cordova-ios/blob/master/CordovaLib/Classes/CDVPluginResult.h">CDVPluginResult.h</a></li>
+</ol>
+<h2>
+<a name="Developing%20a%20Plugin%20on%20iOS_plugin_signatures">Plugin Signatures</a>
+</h2>
+
+<p>The <strong>new signature</strong> supported beginning in <strong>Cordova 2.1.0</strong> is:</p>
+
+<pre class="prettyprint"><code>    - (void) myMethod:(CDVInvokedUrlCommand*)command;
+</code></pre>
+
+<p>The <strong>old (deprecated)</strong> signature is:</p>
+
+<pre class="prettyprint"><code>    - (void) myMethod:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
+</code></pre>
+
+<p>Basically, the options dictionary has been removed for the new signature, and the callbackId is not the 0th index item for the arguments array, but it is now in a separate property. </p>
+
+<h2>
+<a name="Developing%20a%20Plugin%20on%20iOS_echo_plugin_ios_plugin">Echo Plugin iOS Plugin</a>
+</h2>
 
 <p>We would add the following to the <code>Plugins</code> key (a Dictionary) of the project's <code>Cordova.plist</code> file:</p>
 
@@ -188,41 +215,39 @@ application folder:</p>
 
 <pre class="prettyprint"><code>/********* Echo.h Cordova Plugin Header *******/
 
-#import &lt;Cordova/CDVPlugin.h&gt;
+#import &lt;Cordova/CDV.h&gt;
 
 @interface Echo : CDVPlugin
 
-- (void) echo:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
+- (void) echo:(CDVInvokedUrlCommand*)command;
 
 @end
 
 /********* Echo.m Cordova Plugin Implementation *******/
 
 #import "Echo.h"
-#import &lt;Cordova/CDVPluginResult.h&gt;
+#import &lt;Cordova/CDV.h&gt;
 
 @implementation Echo
 
-- (void) echo:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options
+- (void) echo:(CDVInvokedUrlCommand*)command
 {
-    NSString* callbackId = [arguments objectAtIndex:0];
-
     CDVPluginResult* pluginResult = nil;
     NSString* javaScript = nil;
 
     @try {
-        NSString* echo = [arguments objectAtIndex:1];
+        NSString* echo = [command.arguments objectAtIndex:0];
 
         if (echo != nil &amp;&amp; [echo length] &gt; 0) {
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:echo];
-            javaScript = [pluginResult toSuccessCallbackString:callbackId];
+            javaScript = [pluginResult toSuccessCallbackString:command.callbackId];
         } else {
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
-            javaScript = [pluginResult toErrorCallbackString:callbackId];
+            javaScript = [pluginResult toErrorCallbackString:command.callbackId];
         }
     } @catch (NSException* exception) {
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_JSON_EXCEPTION messageAsString:[exception reason]];
-        javaScript = [pluginResult toErrorCallbackString:callbackId];
+        javaScript = [pluginResult toErrorCallbackString:command.callbackId];
     }
 
     [self writeJavascript:javaScript];
@@ -233,7 +258,7 @@ application folder:</p>
 
 <p>Let's take a look at the code. At the top we have all of the necessary Cordova imports. Our class extends from <code>CDVPlugin</code> - very important. </p>
 
-<p>This plugin only supports one action, the <code>echo</code> action. First, we grab the <code>callbackId</code> parameter, which is always the 0th item in the arguments array. Next, we grab the echo string using the <code>objectAtIndex</code> method on our <code>args</code>, telling it we want to get the 1st parameter in the arguments array. We do a bit of parameter checking: make sure it is not <code>nil</code>, and make sure it is not a zero-length string.</p>
+<p>This plugin only supports one action, the <code>echo</code> action. First, we grab the echo string using the <code>objectAtIndex</code> method on our <code>args</code>, telling it we want to get the 0th parameter in the arguments array. We do a bit of parameter checking: make sure it is not <code>nil</code>, and make sure it is not a zero-length string.</p>
 
 <p>If it is, we return a <code>PluginResult</code> with an <code>ERROR</code> status. If all of those checks pass, then we return a <code>PluginResult</code> with an <code>OK</code> status, and pass in the <code>echo</code> string we received in the first place as a parameter. Then, we convert the <code>PluginResult</code> to JavaScript by calling either the <code>toSuccessCallbackString</code> (if it was OK) or <code>toErrorCallbackString</code> (if it was an error) methods.</p>
 
@@ -257,6 +282,8 @@ application folder:</p>
 
 <p>To debug the Objective-C side, you would use Xcode's built in debugger. For JavaScript, you can use <a class="external" href="https://github.com/apache/incubator-cordova-weinre">Weinre, an Apache Cordova Project</a> or <a class="external" href="http://www.iwebinspector.com/">iWebInspector, a third-party utility</a></p>
 
+<p>For iOS 6, you would use Safari 6.0 to simply attach to your app running in the iOS 6 Simulator.</p>
+
 <h2>
 <a name="Developing%20a%20Plugin%20on%20iOS_common_pitfalls">Common Pitfalls</a>
 </h2>
@@ -273,7 +300,18 @@ application folder:</p>
 </code></pre>
 </li>
 </ul>
-</div>
+<h2>
+<a name="Developing%20a%20Plugin%20on%20iOS_deprecated_plugin_signature_note">Deprecated Plugin Signature Note</a>
+</h2>
+
+<p>The <strong>old (deprecated)</strong> signature is:</p>
+
+<pre class="prettyprint"><code>    - (void) myMethod:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
+</code></pre>
+
+<p>The options parameter for the Objective-C plugin method is being deprecated, and it should not be used. For legacy reasons - the last JavaScript object passed in the args Array will be passed in as the options dictionary of the method in Objective-C. You must make sure that any JavaScript object that is passed in as an element in the args array occurs as the last item in the Array, if not it will throw off the array index of all subsequent parameters of the Array in Objective-C. Only one JavaScript object is supported for the options dictionary, and only the last one encountered will be passed to the native method. It is because of these error-prone reasons that they are being deprecated.</p>
+
+            </div>
         </div>
 
         <!-- Functionality and Syntax Highlighting -->
