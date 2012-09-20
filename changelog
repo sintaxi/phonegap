@@ -246,6 +246,10 @@ f2afa4d Tweaking the Android Manfest to cope with new target changes: CB-1147
 b234b0b Utility Methods based on Feedback
 b9b2c6a Updating sample project
 1d2efa0 Fixing leaking sockets
+
+Windows Phone 
+-------------
+
 22477ea updated JS from new tag
 eb7e6f1 removed built dll, source only in the repo now ...
 f1a8e12 updated VERSION to 2.1.0
