@@ -19,6 +19,7 @@ Requires
 - Apache ANT
 - Android SDK [http://developer.android.com](http://developer.android.com)
 - Apache Commons Codec [http://commons.apache.org/codec/](http://commons.apache.org/codec/)
+- NPM Node.js [http://nodejs.org/download/](http://nodejs.org/download/)
 
 Test Requirements
 ---
@@ -33,7 +34,7 @@ To create your cordova.jar, copy the commons codec:
 
 then run in the framework directory:
 
-    android update project -p . -t android-15
+    android update project -p . -t android-16
     ant jar
 
 
