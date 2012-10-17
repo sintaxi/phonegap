@@ -97,11 +97,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CordovaSourceDictionary.xml" />
+    <Content Include="www\cordova-2.2.0.js" />
     <Content Include="www\img\logo.png" />
     <Content Include="www\js\index.js" />
     <None Include="BuildManifestProcessor.js" />
-    <Content Include="CordovaLib\WP7CordovaClassLib.dll" />
-    <Content Include="www\cordova-2.1.0.js" />
     <Content Include="www\css\index.css" />
     <Content Include="www\index.html">
       <SubType>Designer</SubType>
@@ -131,6 +130,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="CordovaLib\" />
     <Folder Include="Plugins\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />

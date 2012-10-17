@@ -26,15 +26,9 @@ then
   exit 0
 fi
 
-if [ "$1" == "blackberry" ]
+if [ "$1" == "blackberry" -o "$1" == "playbook" -o "$1" == "qnx" ]
 then
-  $ANT blackberry load-simulator
+  $ANT $1 load-simulator
 else
-  if [ "$1" == "playbook" ]
-  then
-    $ANT playbook load-simulator
-  else
-    echo 'Platform not recognized! Please use one of "blackberry" or "playbook" for the platform parameter.'
-  fi
+  echo 'Platform not recognized! Please use one of "blackberry", "playbook", or "qnx" for the platform parameter.'
 fi
-

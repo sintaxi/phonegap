@@ -42,6 +42,7 @@
   <feature id="org.apache.cordova" required="true" version="1.0.0" />
   <feature id="blackberry.find" required="true" version="1.0.0.0" />
   <feature id="blackberry.identity" required="true" version="1.0.0.0" />
+  <feature id="blackberry.identity.phone" required="true" version="1.0.0.0" />
   <feature id="blackberry.pim.Address" required="true" version="1.0.0.0" />
   <feature id="blackberry.pim.Contact" required="true" version="1.0.0.0" />
   <feature id="blackberry.io.file" required="true" version="1.0.0.0" />
@@ -54,6 +55,15 @@
   <feature id="blackberry.media.camera" />
   <feature id="blackberry.ui.dialog" />
   <feature id="blackberry.connection" />
+  <feature id="blackberry.bbm.platform" />
+  <feature id="blackberry.invoke.card" />
+  <feature id="blackberry.pim.contacts" />
+  <feature id="blackberry.ui.contextmenu" />
+  <feature id="blackberry.io.filetransfer" />
+  <feature id="blackberry.io" />
+  <feature id="blackberry.invoke" />
+  <feature id="blackberry.invoked" />
+  <feature id="blackberry.push" />
   <feature id="blackberry.media.microphone" required="true" version="1.0.0.0"/>
   
   <!-- Cordova API -->

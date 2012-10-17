@@ -32,9 +32,10 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.1.0rc2">2.1.0rc2</option>
 <option value="2.1.0rc1">2.1.0rc1</option>
-<option selected value="2.1.0">2.1.0</option>
+<option value="2.1.0">2.1.0</option>
 <option value="2.0.0rc1">2.0.0rc1</option>
 <option value="2.0.0">2.0.0</option>
 <option value="1.9.0rc1">1.9.0rc1</option>
@@ -87,6 +88,7 @@
 <option value="Getting%20Started%20with%20Windows%20Phone_video_tutorials">      - Video Tutorials:</option>
 <option value="Getting%20Started%20with%20Windows%20Phone_1_requirements">      - 1. Requirements</option>
 <option value="Getting%20Started%20with%20Windows%20Phone_2_install_sdk_cordova">      - 2. Install SDK + Cordova</option>
+<option value="Getting%20Started%20with%20Windows%20Phone_2_1_building_the_template">      - 2.1. Building the template</option>
 <option value="Getting%20Started%20with%20Windows%20Phone_3_setup_new_project">      - 3. Setup New Project</option>
 <option value="Getting%20Started%20with%20Windows%20Phone_4_review_the_project_structure">      - 4. Review the project structure</option>
 <option value="Getting%20Started%20with%20Windows%20Phone_5_build_and_deploy_to_emulator">      - 5. Build and Deploy to Emulator</option>
@@ -108,6 +110,7 @@
 <li><a href="cordova_events_events.md.html#Events">Events</a></li>
 <li><a href="cordova_file_file.md.html#File">File</a></li>
 <li><a href="cordova_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
+<li><a href="cordova_globalization_globalization.md.html#Globalization">Globalization</a></li>
 <li><a href="cordova_media_media.md.html#Media">Media</a></li>
 <li><a href="cordova_notification_notification.md.html#Notification">Notification</a></li>
 <li><a href="cordova_storage_storage.md.html#Storage">Storage</a></li>
@@ -117,6 +120,7 @@
 <li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
 <li><a href="guide_command-line_index.md.html#Command-Line%20Usage">Command-Line Usage</a></li>
 <li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
+<li><a href="guide_project-settings_index.md.html#Project%20Settings">Project Settings</a></li>
 <li><a href="guide_plugin-development_index.md.html#Plugin%20Development%20Guide">Plugin Development Guide</a></li>
 <li><a href="guide_whitelist_index.md.html#Domain%20Whitelist%20Guide">Domain Whitelist Guide</a></li>
 <li><a href="guide_cordova-webview_index.md.html#Embedding%20WebView">Embedding WebView</a></li>
@@ -161,9 +165,23 @@
 </li>
 <li>Download the latest copy of <a class="external" href="http://phonegap.com/download">Cordova</a> and extract its contents. We will be working with the subfolder: lib\windows-phone\</li>
 <li>copy the file CordovaStarter-x.x.x.zip to the folder : \My Documents\Visual Studio 2010\Templates\ProjectTemplates\
+( if the template file does not exist, you will need to build it. See 2.1 below )
 if you have just installed VisualStudio, you should launch it once to create this folder
-if you prefer, you may add the project instead to the "Silverlight for Windows Phone" subfolder of "Visual C#". This is up to you, and only affects where the project template is shown when creating a new project. Also, You may need to create this folder.</li>
+if you prefer, you may add the project instead to the "Silverlight for Windows Phone" subfolder of "Visual C#". This is up to you, and only affects where the project template is shown when creating a new project. Also, You may need to create this folder. </li>
 </ul>
+<h2>
+<a name="Getting%20Started%20with%20Windows%20Phone_2_1_building_the_template">2.1. Building the template</a>
+</h2>
+
+<p>( note, this step may not be required.  If the lib\windows-phone directory already contains a file CordovaStarter-x.x.x.zip then you may skip this step )
+- Open the file lib\windows-phone\templates\standalone\CordovaSolution.sln in Visual Studio Express for Windows Phone
+- From the file menu, select 'Export Template...' 
+- Choose template type 'Project template'
+- Give the exported template a name, ex. CordovaStarter-2.1.0 will produce CordovaStarter-2.1.0.zip
+- Optionally, you may add a description, icon image, and Preview image.  These are what is displayed in Visual Studio in the 'New Project' dialog.- 
+- Note: If you select ( 'Automatically import the template ... ') then you will not need to copy the .zip file over as outlined in step 2.
+- Press 'Finish'</p>
+
 <h2>
 <a name="Getting%20Started%20with%20Windows%20Phone_3_setup_new_project">3. Setup New Project</a>
 </h2>

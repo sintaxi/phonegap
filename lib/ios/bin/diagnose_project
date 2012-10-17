@@ -1,5 +1,23 @@
 #!/usr/bin/python
 """
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+"""
+"""
 Prints out information regarding a Cordova project for diagnostic purposes.
 Currently this only reports information but does not give any recommendations yet.
 
@@ -37,7 +55,30 @@ def getXcodePlist(pbxPath):
 
 	return plistlib.readPlist( tmpfile )
 	
-def getXcodeBuildSettings(diagKeys, xcodePlist):
+def getTargetBuildSettings(diagKeys, xcodePlist):
+	allObjects = xcodePlist['objects']
+	rootObj = allObjects[ xcodePlist['rootObject'] ]
+	
+	buildSettings = {};
+	
+	targetguids = rootObj['targets']
+	for targetguid in targetguids:
+		target = allObjects[ targetguid ]
+		targetname = target['name']
+		targetSettings = {}
+		bclist = allObjects[ target['buildConfigurationList'] ]['buildConfigurations']
+		for conflist in bclist:
+			cl = allObjects[conflist];
+			clname = cl.get("name", 'no name')
+			targetSettings[clname] = {}
+			for key in diagKeys:
+				val = cl['buildSettings'].get(key, '(not found)')
+				targetSettings[clname][key] = val
+		buildSettings[targetname] = targetSettings
+
+	return buildSettings
+
+def getProjectBuildSettings(diagKeys, xcodePlist):
 	allObjects = xcodePlist['objects']
 	rootObj = allObjects[ xcodePlist['rootObject'] ]
 	
@@ -53,6 +94,16 @@ def getXcodeBuildSettings(diagKeys, xcodePlist):
 			buildSettings[clname][key] = val
 	
 	return buildSettings
+	
+def getXcodeBuildSettings(diagKeys, xcodePlist):
+	projectSettings = getProjectBuildSettings(diagKeys, xcodePlist)
+	targetSettings = getTargetBuildSettings(diagKeys, xcodePlist)
+
+	settings = {}
+	settings['Project'] = projectSettings
+	settings['Targets'] = targetSettings
+	
+	return settings
   
 def main(argv):
 	if len(argv) != 2:
@@ -118,15 +169,16 @@ def main(argv):
 	for sp in subprojValues:
 	  if cdvlibProjName in sp['path']:
 	  	if 'CORDOVALIB' in sp['sourceTree']:
-			print "Your project is using the CORDOVALIB Xcode variable (source tree)."
+			print "Your project *IS* using the CORDOVALIB Xcode variable (source tree)."
 	  		cdvlibPath = os.path.join( xcodeCordovaLib, cdvlibProjName)
 	  	else:
+			print "Your project is *NOT* using the CORDOVALIB Xcode variable (source tree)."
 	  		cdvlibPath = sp['path']
   	
-	print "Path is:", cdvlibPath, "\n"
-
 	cdvlibNormalizedPath = os.path.normpath( os.path.join(parent_project_path, cdvlibPath) )
 	cdvlibPbx = os.path.join( cdvlibNormalizedPath , 'project.pbxproj' )
+
+	print "Path is:", cdvlibNormalizedPath, "\n"
 
 	cdvPlist = getXcodePlist(cdvlibPbx)
 	cdvBuildSettingsKeys = ['PUBLIC_HEADERS_FOLDER_PATH', 'ARCHS', 'USER_HEADER_SEARCH_PATHS', 'IPHONEOS_DEPLOYMENT_TARGET', 'OTHER_LDFLAGS', 'GCC_VERSION']

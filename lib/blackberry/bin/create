@@ -16,7 +16,7 @@
 #       specific language governing permissions and limitations
 #       under the License.
 #
-# create a cordova/android project
+# create a cordova/blackberry project
 # 
 # USAGE
 #   ./create [path appname]
@@ -47,7 +47,6 @@ fi
 function on_exit {
     echo "Cleaning up ..."
     [ -d "$BUILD_PATH/build" ] && rm -rf "$BUILD_PATH/build"
-    [ -d "$BUILD_PATH/dist" ] && rm -rf "$BUILD_PATH/dist"
     echo "Remember to update the project.properties file inside your application directory!"
 }
 
@@ -67,6 +66,14 @@ MANIFEST_PATH="$PROJECT_PATH/www/config.xml"
 # compile cordova.js and cordova.jar if in source, ignore if in distribution
 if [ ! -e "$BUILD_PATH/www/ext/cordova-$VERSION.jar" ] && [ -d "$BUILD_PATH/framework" ]
 then
+    if [ ! -e "$BUILD_PATH"/bin/templates/project/lib/ant-contrib/ant-contrib-1.0b3.jar ]; then
+        echo "Downloading ant-contrib"
+        # Use curl to get the jar
+        curl -OL http://central.maven.org/maven2/ant-contrib/ant-contrib/1.0b3/ant-contrib-1.0b3.jar &> /dev/null
+        mkdir -p "$BUILD_PATH"/bin/templates/project/lib/ant-contrib
+        mv ant-contrib-1.0b3.jar "$BUILD_PATH"/bin/templates/project/lib/ant-contrib
+    fi
+    
 	echo "Building cordova-$VERSION.jar and cordova-$VERSION.js ..."
 	(cd "$BUILD_PATH" && "$ANT" dist &> /dev/null )
 	

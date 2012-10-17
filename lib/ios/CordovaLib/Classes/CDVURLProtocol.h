@@ -6,9 +6,9 @@
  to you under the Apache License, Version 2.0 (the
  "License"); you may not use this file except in compliance
  with the License.  You may obtain a copy of the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing,
  software distributed under the License is distributed on an
  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -18,33 +18,15 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "CDVAvailability.h"
 
 @class CDVViewController;
 
-@interface CDVURLProtocol : NSURLProtocol {
-}
+@interface CDVURLProtocol : NSURLProtocol {}
 
-+ (void) registerPGHttpURLProtocol 
-#ifdef __clang__
-    __attribute__ ((deprecated("No longer required.")));
-#else
-    __attribute__ ((deprecated()));
-#endif
-
-+ (void) registerURLProtocol
-#ifdef __clang__
-    __attribute__ ((deprecated("No longer required.")));
-#else
-    __attribute__ ((deprecated()));
-#endif
++ (void)registerPGHttpURLProtocol CDV_DEPRECATED (2.0, "This is now a no-op and should be removed.");
++ (void)registerURLProtocol CDV_DEPRECATED (2.0, "This is now a no-op and should be removed.");
 
 + (void)registerViewController:(CDVViewController*)viewController;
 + (void)unregisterViewController:(CDVViewController*)viewController;
-@end
-
-@interface CDVHTTPURLResponse : NSHTTPURLResponse {
-} 
-
-- (CDVHTTPURLResponse*) initWithUnauthorizedURL:(NSURL*)url;
-
 @end

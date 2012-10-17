@@ -165,6 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="resources\notification-beep.wav" />
+    <Content Include="www\cordova-2.2.0.js" />
     <Content Include="www\img\logo.png" />
     <Content Include="www\js\index.js" />
     <None Include="VERSION" />
@@ -179,7 +180,6 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="BuildManifestProcessor.js" />
-    <Content Include="www\cordova-2.1.0.js" />
     <Content Include="www\css\index.css" />
     <Content Include="www\index.html">
       <SubType>Designer</SubType>

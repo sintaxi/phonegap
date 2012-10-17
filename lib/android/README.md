@@ -15,11 +15,10 @@ indicate that the project has yet to be fully endorsed by the ASF.
 Requires
 ---
 
-- Java JDK 1.5
-- Apache ANT
+- Java JDK 1.5 or greater
+- Apache ANT 1.8.0 or greater
 - Android SDK [http://developer.android.com](http://developer.android.com)
 - Apache Commons Codec [http://commons.apache.org/codec/](http://commons.apache.org/codec/)
-- NPM Node.js [http://nodejs.org/download/](http://nodejs.org/download/)
 
 Test Requirements
 ---
@@ -62,7 +61,7 @@ Project Commands
 
 These commands live in a generated Cordova Android project.
 
-    ./cordovap/debug [path] ..................... install to first device
+    ./cordova/debug [path] ..................... install to first device
     ./cordova/emulate .......................... start avd (emulator) named default
     ./cordova/log .............................. starts logcat
 

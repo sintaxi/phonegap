@@ -107,6 +107,7 @@
                 <exclude name="ext/**"/>
                 <exclude name="ext-air/**"/>
                 <exclude name="playbook/**"/>
+                <exclude name="res/resourceBundles/**"/>
             </fileset>
         </copy>
         

@@ -76,7 +76,7 @@ namespace WP7CordovaClassLib.Cordova.UI
 
                 string baseUrl = WP7CordovaClassLib.Cordova.Commands.BaseCommand.GetBaseURL();
                 // dummy parameter is used to always open a fresh version
-                root.Navigate(new System.Uri( baseUrl + "Cordova/UI/VideoRecorder.xaml?dummy=" + Guid.NewGuid().ToString(), UriKind.Relative));
+                root.Navigate(new System.Uri(baseUrl + "CordovaLib/UI/VideoRecorder.xaml?dummy=" + Guid.NewGuid().ToString(), UriKind.Relative));
             });
         }
 

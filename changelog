@@ -3,316 +3,309 @@ CHANGELOG
 iOS 
 ---
 
-f03d502 [CB-1457] Remove unused CDVMotion core plugin - causes Apple App Store upload rejection
-1041cac [CB-1453] Namespace issue of JSONKit (JSONKitSerializingBlockAdditions)
-94b0d79 Updated js to newly tagged 2.1.0 cordova-js
-8e2825b [CB-1412] iOS Whitelist is never used, all urls will pass the whitelist
-132fd93 Updated RELEASENOTES.md for 2.1.0
-ba63ae2 Updated VERSION to 2.1.0
-1539bb1 Updated cordova-js to 2.1.0
-6aa58d2 Fix executing legacy plugins when callbackId is null.
-cbee723 Removed unused code from bin/diagnose_project (so it can run out of the bin folder)
-21d285d [CB-1122] Diagnostic tool for Cordova iOS Xcode projects
-1acd9cb [CB-1402] Media API - wrong JavaScript callback is called for onStatus (typo)
-bec1bb0 [ios] Renaming macro IsIPad to CDV_IsIPad
-c0b09b0 [ios] fixing IsIPad() macro to not depended on include order for correctness.
-73f77bf [CB-1384] Online .wav files cannot be played, but ones local to www can
-ed7e5e4 [ios] Fix data uri from being blocked
-d4db380 The new project template had ARC enabled - set CLANG_ENABLE_OBJC_ARC to NO.
-e1781b0 Fix null dereference in file upload when URL is invalid.
-f90626c Updated RELEASENOTES for 2.1.0rc2
-6deee4f [CB-1338] Update www/ Application
-158b64a Added cordova-js 2.1.0rc2
-2b03685 Updated VERSION to 2.1.0rc2
-6d4790a [CB-1258] Add documentation for the new logic to toggle between different exec() techniques on iOS.
-cb33d9f [CB-1315] Setting the view controller's view size in viewWillAppear, use rootViewController
-9510225 Merge branch 'refs/heads/CB-1182' into upstream-master
-0a99ba3 [CB-1307] Graduation: Remove PhoneGap References
-fdbac9b Update .js with fix for broken bridge on 4.2 (CB-1296)
-d8575d7 [CB-1182] Fixing IOS6 screen orientation/rotation without breaking ios5.1 or xcode 4.4 build.
-a0558e3 Merge branch 'refs/heads/upstream-master' into shazron-master
-c0a1bf5 Fixed headers for CDVDebugView
-a3eb27d Removed unused script.
-964c5c0 Updated README for 2.1.0rc1
-a864199 Removed setting of Xcode variable CORDOVALIB (the CordovaLib sub-project in the template uses an absolute file reference now)
-0c8eda9 Updated RELEASENOTES for 2.1.0rc1
-0b772fb Deployment target for CordovaLib was not updated to 4.2 (we changed it in the template, but not the lib)
-9fd1816 Deployment target for CordovaLib was not updated to 4.2 (we changed it in the template, but not the lib)
-f1fd9d2 Updated VERSION and cordova-js to 2.1.0rc1, updated hello-world-app to latest
-e8630a5 Have the create script call update_cordova_subproject.
-ebf4efa Add update_cordova_subproject script.
-7ebbd83 Merge branch 'ios6_user_pref_persist_web_storage' of https://github.com/mmocny/incubator-cordova-ios into mmocny-ios6_user_pref_persist_web_storage
-1a0dcb7 Fixes #CB-828 Use blocks in contact.save
-3b00653 Update directory locations for webstorage on ios6. Fix issue with copyTo not working if dest dir didn't exist.
-e6788ba Minor cleanups
-1d146cc resolving merge
-09883f8 Restore backups if they exist, then remove them (for upgrade from 5.1)
-b7741dc [ios] On iOS6, set UserDefaults and don't use the LocalStorage Plugin to persists WebStorage
-242837e Update cordova.ios.js.
-ab39032 [ios] On iOS6, set UserDefaults and don't use the LocalStorage Plugin to persists WebStorage
-aa88659 Remove exec() bridge from CordovaLibApp.
-2a43d79 Updated interim js (for exec method switching)
-fdf8043 Support JS->Native messages via an XHR & URL Protocol.
-5a7b1ce Move Echo plugin into CordovaLib from CordovaLibApp.
-07ee5c7 Updated project template with interim js
-4d88bcc Updated chooseContact implementation for allowEditing
-f4ee4ee Udpated CDVContacts chooseContact() to support allowsEditing behavior.
-92e159b Refactor peoplePickerNavigationControllerDidCancel, always return dictionnary with id kABRecordInvalidID.
-4845fcf Refactor chooseContact() to retreive contact information instead of just a contactId.
-5c4b670 Removing references to version 1.7.0
-0cb7722 Updating guide for setting up Cordova JavaScript Exception Logging in face of ARC issues
-2979d14 [CB-1138] Default logging level for file access should not log file contents.
-40de740 Remove copyright header from project file and Info.plist files
-8a5173e Register CDVURLProtocol in CordovaLibApp's AppDelegate
-9c51ce7 Fix another @if->if typo iOS Makefile
-23b7600 Setting supportedOrientations in view controller's init method
-2cef313 Add a benchmark into CordovaLibApp for measuring exec() speed.
-444a890 [CB-45] Add support for full urls in white-list, extract hostname
-ee9704e Copy cordova.ios.js into www/ before Copy Resources instead of afterwards.
-b85a497 Fix wrong LIBRARY_SEARCH_PATH in CordovaLibApp for release mode.
-f726204 Fixed warnings in CordovaTests
-4c37661 Fix ARC errors in CordovaLibApp.
-2fab10f Split out CordovaLibApp and CordovaTests into a separate Xcode project.
-7b0e6c6 [CB-1192] Update template to set GCC_THUMB_SUPPORT=NO in Build Settings
-e70e9cc Fixed warning for CDVNotification
-7aa44ac Fixing NSString initWithString with empty string to just use empty string.
-0b9c472 Update CDVLocalStorage to new exec format.
-46ecf98 Update CDVFile to new exec format.
-b4c70c2 Update CDVSound and CDVNotification to new exec format.
-09a3a48 Update CDVCamera and CDVConnection to new exec format.
-8e97f50 Update CDVLocation to new exec format.
-8da8fbc Update CDVFile to new exec format.
-151a0f6 Update CDVContact and CDVContacts to new exec format.
-886a4fc Update CDVCamera and CDVCapture to new exec format.
-01eb22d Update some plugins to new Exec format.
-fe006ae Fix typo in Makefile.
-24ef5ea [CB-1188] Update Plugin Upgrade Guide for new iOS plugin signature (old one still supported, but deprecated)
-13ffa9c [CB-1186] Update README.md, FirstRun.md for new install method
-1eb3c2c Merge branch 'ARC'
-c71f5ed [CB-1173] Clean up default project template
-a6b67be Changes for ARC
-446d456 [CB-1166] Remove dependency on VERSION file
-3c94037 Availability constant should be decimal, not octal
-2e06754 [CB-994] CDVLocalStorage core plugin does not fully backup when app setting "Application does not run in background" is YES
-75bcbce [CB-1164] Fix warnings and analyzer issues reported with the newer LLVM in Xcode 4.4
-2999028 [CB-1124] "create" script (and possibly others) provided in bin directory do not escape arguments
-3336c49 Updated project template with interim js.
-9dc099f Cleaned up Makefile.
-52ba596 Merge branch 'refs/heads/1091' into master
-56404a8 Update JS bundle to pull in recent changes to incubator-cordova-js.
-3db7593 Enhances iOS FileTransfer's support for upload headers
-8300635 Change wire format of exec handler.
-07abacf [CB-1149] hello-world sample web app is missing lib folder, in a newly created app
-81eb0a6 Removed unused script.
-1e48801 Improved bin/test script
-6e7ff96 Fixed bin/create to detect both symlinks and regular paths
-cfa66b5 [CB-1137] emulate and log script failure when launched from external working directory
-9c97f68 Deleted non-cross platform and undocumented bin script
-7a1f5c0 [CB-1136] symlink to bin/create script fails
-5711d18 Update JS bundle to pull in recent changes to incubator-cordova-js.
-fa8cbda Enhances iOS FileTransfer's support for upload headers
-ad836cb Change wire format of exec handler.
-b8e0f17 [CB-1149] hello-world sample web app is missing lib folder, in a newly created app
-4faa296 Removed unused script.
-e5e208d Improved bin/test script
-385122d Fixed bin/create to detect both symlinks and regular paths
-0cd6873 [CB-1137] emulate and log script failure when launched from external working directory
-67d25e3 Deleted non-cross platform and undocumented bin script
-22982cc [CB-1136] symlink to bin/create script fails
-8ba8bc1 [CB-1091] Added check for if xcode is running, and throw error if it is.
-b464e4c [CB-1091] Removed installer and related dependencies. Moved original post-install script into makefile under "install" target (which is default target).
-c181db1 [CB-1105] Add JSONKit doc issue for iOS Plugin Upgrade Guide
-26a5b13 [CB-1000] Namespace issue of JSONKit and other external libraries
-05eaee3 Removed trademark symbol from the end of Apache Cordova for the sample app in the default template.
+b74752f Added 2.2.0rc1 Release Notes
+6595b90 Do not prompt user about whether to build from the emulate script.
+48d3b51 Updated cordova-js to tagged 2.2.0rc1, updated iOS version to 2.2.0rc1, updated cordova-hello-world to 2.2.0rc1
+ab21592 Update version to 2.2.0 and added interim 2.2.0 js
+53ce7aa [CB-1502] Update Capture Audio images for iPhone 5
+d1b8a3a Fixed two bugs concerning file uploads.
+0a978a6 Fixes CB-1619 Shutter stays shut
+380c4d9 Refs CB-1617 remove iOS5 only api
+237f42e Fixes CB-1617 update CDVGlobalization for ARC
+ffdc81b CDVConnection: Use multiple callback results instead of evalling JS
+ea5d5ec Update remaining stringByEvaluatingJavascriptString calls
+be29551 Update JS
+37113b1 Fix commandDelegate.evalJs to actually bundle exec() calls.
+7b4014c Fix alert dead-lock in contacts mobile-spec test.
+4d322c0 CB-1473 - add iOS implementation for globalization
+70d5b14 CB-1600 check class before casting URLResponse
+994e234 Move CDVCommandDelegateImpl into Classes directory (oops).
+e68e9d4 Add a method to CDVCommandDelegate for executing on a background thread.
+20cdaf9 Deprecate CDVCommandDelegate's execute and registerPlugin methods.
+f1ec68f Fixes CB-1515 doc new iOS plist settings
+99b424f Fixes CB-1578 remove notification observers
+4a3b220 Fixed CB-902 Contacts Permissions in iOS6
+db38469 Add a macro for deprecating symbols and use it in a couple of places.
+234df84 Remove CDVDeprecated.h. 7 months old.
+9f25460 Remove deprecated methods in CDVFile.
+3247261 Delete deprecated method "closePicker" from CDVCamera.
+686509f Remove obsolete comment.
+59ef643 Remove deprecated methods in CDVSound
+afb673b Adds CDVCommandDelegateImpl.
+88302e1 Make plugins and CommandQueue use weak refs for CDVViewController.
+15f8a5d Removing useless NSLog
+60050cb Update CDVDebug.h with better logging tools.
+6e17087 IOS6 - Fixing LocalStorage/WebSQL storage locations
+035e2fb Update core plugins to use commandDelegate::sendPluginResult
+780be09 Update JS with new exec() bridge functions.
+de046f7 Delete cordova.commandQueueFlushing flag.
+4e52b1e Add a method to CDVCommandDelegate for executing JS.
+ba7d771 Add CDVCommandDelegate::sendPluginResult and use it in CDVEcho.
+9e1aa3d Refactor most of the command queue logic into a separate class.
+5c41ef6 Update uncrustify rules for ternary operators.
+c8ac3c2 Remove setTimeout() when sending plugin results.
+1a41569 Remove commandDelegate property of CDVViewController.
+fb9169b Add --shared optional parameter to create script
+d78514e Update uncrustify hook to make the commands more copy & pastable (again)
+a07ed8d Tweaks to iOS XHR bridge:
+e7b16f4 Don't URL-encode FileTransfer.upload's response field.
+5c08162 Change create script to copy CordovaLib into new projects.
+88bb559 Convert unit tests to ARC.
+c681026 Tweak pre-commit message to make command more copy&paste-able.
+4d003a7 Move test lib and test app out of CordovaLib.
+4aea2d5 Delete unused CordovaBuildSettings.xcconfig from project template.
+f3cc105 Various spelling & grammer fixes.
+ca0cb89 Change XHR bridge mode to succeed instead of fail.
+0ac47db Implement asyncEcho in the iOS echo plugin.
+1a60935 [ios] Fixing LocalStorage not persisting on first app launch on ios6
+4ab9c41 Merge branch 'master' into plugin_reset
+0f006ec Cleanups suggested by Andrew Grieve.
+8fd987e Add onReset to CDVSound.
+17930ab Add onReset for CDVLocation.
+bdcf8e4 Add onReset to CDVFileTransfer.
+b612a58 Updating JS with default bridge now XHR_OPTIONAL_PAYLOAD.
+e9706dc Add onReset for CDVConnection.
+1252c54 Add onReset for CDVBattery.
+1a62a75 Add onReset to CDVAccelerometer.
+fd72ae2 Fix bug in FileTransfer progress events.
+d0488e3 Fixes CB-1511 force portrait in captureAudio
+c573953 [CB-1514] Xcode 4.5 - Static Analyzer Issues in CordovaLib and default template
+31797a7 [CB-1520] InvalidArgumentException when EnableLocation is Yes on Cordova.plist
+1f13eb6 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-ios
+6fa7f3d Add a comment explaining what the statements in the nativeReady eval do.
+4fe0e8b Add onReset() to plugins on iOS.
+0c0b87b Change FileTransfer's form boundary from *** to +++
+ecf289c bin/uncrustify.sh --all
+360eab9 Update JS to include FileProgress abort & progress support.
+56602c0 Minor fixes to FileTransfer.abort.
+31f894c [CB-622] Progress events for downloads
+d1ff5a7 [CB-836] Readonly property, duplicate activeTransfer, send pluginResult on abort
+7c4fa19 [CB-836] Storing connection delegates for aborting connections quicker
+de69937 [CB-622] Added upload progress to FileTransfer
+33afb30 [CB-836] Abort functionality added to FileTransfer
+4f75831 [CB-1502] Re-fix - rename asset for @2x, remove scaling
+1dd9b33 [CB-1502] Update Capture Audio images for iPhone 5 (partial fix - image is still placeholder)
+5bbae2c Added CDV_IsIPhone5 macro
+5c52975 [CB-1479] Cordova 2.1 Capture Problem if no options provided
+1c9ce2a [CB-1499] use of Camera in Cordova video mode results in field of view different than in native video mode
+4bad0e5 Default template: Re-added quotes around the product name that were clobbered by Xcode's plist writer
+ca70509 For JIRA CB-1482: Add splash screen image for iPhone 5's 4" display.
+2d42517 [CB-1461] UIWebView property check for compiling on SDKs < iOS 6
+2bbf168 [CB-1461] Added plist settings to default template
+6351d49 additional changes for CB-1461
+916c407 CB-1461 Add the two new iOS 6 UIWebView properties as Cordova.plist settings
+3368777 CB-1461 added new iOS 6 UIWebView properties
+07b54f1 [CB-1360] Conditionally add architectures based on iOS version in CordovaLib
+cf2412b Fixed 2.1.0 release notes
+c5b7427 Update cordova.ios.js.
+fe04a36 Add git hook that runs uncrustify before commits.
+934062a Add uncrustify config and script for auto-formatting code.
+681016b [CB-1465] WebView too small after closing of a ChildBrowser in landscape orientation
+4bdfe36 [CB-1486] Added missing apache source headers
+f187cdd [CB-1456] bin/diagnose_project script prints Build Settings from the project settings, not the target settings
 
 BlackBerry 
 ----------
 
-49d7c61 Updating to 2.1.0
-a1d8ea1 [CB-1429] - updating www app
-039bdec [CB-1414] - updating javascript
-d6084dc Forgot webworks reference
-936e26b Updating version
-3d7b4ce Updating sample app
-d97cac0 Synching javascript
-33d9a3a No more references to phonegap in the readme
-0df5633 Remove reference to callback
-6d73373 Fixed up links in the readme
-9cebb3e Updating readme
-67b391f Fix for hello world app to work with 2.1.0rc1 out of the box
-eb145bf Updating hello world app
-a50a058 hack to support building alongside bb10
-8e1b9ba get rid of bundled webworks.js
-b811557 get rid of error warning
-690e80c Updates for the new Webworks SDK
-94bfc06 Synching javascript
-ad39f54 2.1.0rc1
-724ee4d Synching javascript files
-0d77ad5 Fixed blackberry.xml so it doesn't package the qnx stuff
-98b4c9a made sample project work on bb10 with a custom config.xml and including webworks.js
-ce8c37b added cordova.qnx.js from my branch of cordova.js
-f85a39c added some notes for BB10 Development
-dad90af added initial building support for bb10
-62a9301 Synching up javascript files
-625d3e5 Spell BlackBerry with two capital B's
-33782b8 Allow for spaces in directory paths
-aaeb70f Fix file path issue
-8b7a0c4 Using Mike's hello world as the default sample app
-9dda45d trying to get mike's sample app as new sample template
-19b5ee8 Synching up javascript files
+e72c24c [CB-1647] - updating to 2.2.0rc1
+ee91b5e [CB-1637] - Updating www/
+3f7a96d [CB-1627] - updating javascript
+05ba03c CB-1621 Add Globalization Plug-in for BlackBerry.
+dfd79ee Made addWebworks script more robust - checks for existing references of webworks.js
+f1b9ead removed some cruft from addWebworks script
+4a8f60d Added helper script to auto add webworks.js reference to html pages
+4462079 [CB-1567] - keep dist folder around
+fd5abf6 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-blackberry-webworks
+1f95e97 Fixed building of older platforms with bb10 additions
+6ee9879 Some changes with the release of the new BlackBerry 10 SDK
+4c86c33 [CB-1541] - updating readme
+4c09715 Update framework/ext/src/org/apache/cordova/http/FileUploader.java
+000e28c [CB-1493] - updated links to use maven instead of sourceforge
+533a6c5 [CB-1493] - finally got this stuff working on windows
+adb1d9d Updated url to download jar
+b7f7e43 Left open string
+8876266 [CB-1493] - antcontrib download function for windows create script
+bf85a57 [CB-1493] - removing jar file from src and added an auto downloader for that jar
+c6040d8 [CB-1485] - missing apache header
 
 Android 
 -------
 
-311a2f6 Updating JS with feeling - See CB-1420
-59a3cf9 Tagging 2.1.0
-a42f095 CB-1409: Clicking the menu button crashes Jellybean
-a293405 CB-1293: Camera.getPicture crashes when selecting from a Picasa album on Android
-5ad7a7c Forgot to put back echo
-c6fa7e4 Reverting to the previously known to work config.xml, we'll introduce the new format in 2.2
-d4b248f Merge conflict on the plugins
-48881d0 Adding support for data uri
-3310244 Fixed the backbutton issues with the keyboard without causing issues with the menu button so far
-9d0c534 CB-1304: Update PhoneGap References to Apache Cordova
-dc40d8a CB-1335: Update www/ Application
-005877b CB-1303: Remove References to the Callback Project
-774d217 Tagging 2.1.0rc2
-12e5b39 Fixing failing 'should return MediaError for bad filename' Media test case
-4d5e452 CB-1358: Getting Force Close in incoming Cal while recording the Audio?
-1ba3ecb [#1301] Remove releasenotes.md
-db6695c [#1305] Remove guides/ directory
-b3f5e03 Fixing 'FileTransfer.download() - should handle unknown host' failing mobile-spec test case
-c3e17fb Fix broken file upload in mobile-spec tests (CB-1290).
-f7ae7fe CB=1293: Camera.getPicture crashes when selecting from a Picasa album on Android
-e078223 CB-1289: The menubutton event fires twice
-07439ff Refactor to avoid adb warnings of VFY: on start-up.
-f111c24 Tagging 2.1.0rc1
-c3502da arg forgot dest file
-4012108 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
-4a0605e CB-1235 Fixing Android create script on Windows
-250380d Implement LOAD_URL exec bridge.
-b30f5d7 Fix JS timers being disabled on pause and never re-enabled.
-b00cd9b Updating the .gitignore file
-e11f8f6 Greatly improve speed of fetching contacts.
-92b1de8 Update cordova.android.js to pull in exec changes.
-bbafe53 Added Native-JS bridge mode that uses private WebView APIs.
-e239fd9 Implement the online events based Native->JS bridge.
-7fa4515 Implements the LOAD_URL Native->JS bridge mode
-b40eb0a Fix API lint warnings in CordovaChromeClient and CordovaWebViewClient.
-5e3e9dd Refactor Native->JS messaging logic into its own class.
-a9a5284 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
-afe504d CB-1267: Reuse Media object for recording
-0c484dd Make Eclipse recognize framework as a library project
-8d0e806 CB-1264: Media.stop() puts media into an unplayable state
-1d28506 Fix for CB-1257
-1b33dbe Provide an addJavascriptInterface() exec object.
-80654c0 Add an Echo plugin for benchmarking purposes.
-999c548 Fix FileTransfer running out of memory over HTTPS (CB-312).
-e42913a Fix API Level linter errors in CordovaWebView.java
-ee07cbe Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
-fffaa9b Forgot to add the Apache headers on IceCreamCordovaWebViewClient.java
-6195b2c CB-930: DirectoryReader creates null error code for inaccessible directory
-2dc0727 CB-1151: FileTransfer.download decodes the URL, resulting in a 404 error
-a219fea Downgrade min sdk version of sample app
-f3a09da Modify min sdk version in AndroidManifest.xml
-946e345 Add service methods to legacy ctx varialbe
-6cb8d11 CB-1196: No onSuccess callback after a complete play of the local mp3 file
-fdcf9c5 Reapply: CB-1211: Media record uses a .mp3 extension when it is a .3gp file
-45c714c reset of seekOnPrepared changed to properly reset only once playback has begun
-7352a30 CB-1217: Clicking back button does not dismiss navigator.notification.alert() dialog
-b297fe6 Fix a NPE in GeoBroker when there is no previous location.
-e575212 GeoBroker checks if location service avialable for device first.
-c52dc10 CB-1212: When camera is started, and then cancelled with no photo, attempt to read exif data results in fatal error
-d35c913 CB-1211: Media record uses a .mp3 extension when it is a .3gp file
-9bac59b CB-1206: file uri not handled correctly by Media Player
-5016253 Update to use latest Android SDK
-0389307 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
-d3dc94c CB-578 - Adding a test of pause and resume to make sure that they're being called. Need to elaborate on this
-af0feab Prefer setFixedLengthStreamingMode over setChunkedStreamingMode in FileTransfer.
-81ab0a4 I forgot that Jellybean has some wacky changes on the onKeyUp and onKeyDown events, fixing CB-1181
-ecd6ca0 Moving the fix for # and ? to a new class to fix CB-995
-db7ee19 This was a red herring.  There was an XML error on the example when compared with master
-2ec0b60 Commenting out this past code, turns out this breaks more things than it fixes: CB-1101
-79feb6d CB-1101: Specifying Jellybean means that we have to override the default CORS policy
-8013b76 Adding functionality to read a config.xml file with plugin details implemented inside of it
-a29b8e5 Caught error with the back button again. backHistory actually goes back in history, used canGoBack() instead
-9ef487a fixing replace for mountain lion
-563fa46 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
-7865c06 CB-1148 fix for directories with spaces
-3d53b92 Adds FileTransfer support for upload headers.
-f2afa4d Tweaking the Android Manfest to cope with new target changes: CB-1147
-893ecec Minor fix to deal with weird keyboard focus issues and the back button. CB-1146
-401584d Throwing code over the fence for CB-1128, We need a Samsung Galaxy S running 2.3.5 to confirm this fix
-b234b0b Utility Methods based on Feedback
-b9b2c6a Updating sample project
-1d2efa0 Fixing leaking sockets
+d3ee322 Updating Hello World
+7ec20e7 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+08dfb13 Updating Android to 2.2.0rc1
+6a5cddd Remove use of PluginResult.Status.NO_RESULT in GeoBroker.
+dc50783 Remove manual catching of JSONException where possible.
+1bc0328 Fix contact mobile-spec tests that were failing.
+e562e4e Removed overrides, fixed CB-1620
+0ffffa9 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+0f2303e This time, we fixed the back button for real! CB-1658
+31f7f81 Merge branch 'master' into cordovaplugin_update
+fe1f57c Port Storage to use CordovaPlugin.
+29a0b01 Port SplashScreen to CordovaPlugin. Untested, no tests for it.
+621e116 Port Notification to CordovaPlugin.
+17d64cf Port NetworkManager to CordovaPlugin.
+7379d21 Port Globalization to CordovaPlugin.
+c55fd06 Fix mountain of trailing whitespace.
+d81727a Port Location listeners and plugin to CordovaPlugin.
+b582e15 Port FileUtils to CordovaPlugin.
+dd8533a Port Device to use CordovaPlugin.
+d72a8cb Port Contacts to CordovaPlugin.
+fe0876d Port CompassListener to CordovaPlugin.
+fa15763 Port Capture to use CordovaPlugin. Untested beyond compiling!
+205215d Port CameraLauncher to CordovaPlugin.
+076bfcd Port BatteryListener to CordovaPlugin.
+1051048 Port AudioHandler and AudioPlayer to CordovaPlugin.
+e1dea5b Port AccelListener to CordovaPlugin.
+891f8d0 Cleanups to CordovaPlugin.
+0d409f0 Setting browser history as the default.  This was supposed to be done earlier, sorry about that. CB-1611
+4e0c898 get commons-codec from apache archive, not osuosl
+a741c66 Updating Native Tests to correspond with changes - CB-1580
+3e6a7cb CB-1574: On Android 4.1 events are only sent on every second menu button press
+5d34aa0 Guard against null pointer exception in ES File Explorer being used to get a picture using DATA_URL
+979ae94 Merge branch 'master' of http://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+8d7b85b CB-1573: Can we remove framework/src/org/apache/cordova/TempListener.java
+686977a CB-1573: Can we remove framework/src/org/apache/cordova/TempListener.java
+9c6c782 Apply trustEveryone to the current connection and not globally.
+ca9539b More tweaks to FileTransfer.
+ff25be8 Fix warnings in FileTransfer.java
+d1ab1b5 Remove @Override from interface methods
+05bc186 Change FileTransfer to use the new plugin signature.
+6e6e027 Create CordovaPlugin.java and make Plugin.java a compatibility shim.
+ec3c5b2 Delete IPlugin interface.
+5289d56 Fix NPE caused by NetworkManager sending update before JS is ready.
+6f873ff Fix default bridge mode being PRIVATE_API (should be ONLINE_EVENTS).
+467cbe9 Fixing merge conflict
+bfd1bfe CB-1564: DroidGap.loadUrl follows a path that never checks the white list
+3404a6c CB-1564: DroidGap.loadUrl follows a path that never checks the white list
+17a4b51 CB-1359 set target SDK to the highest available
+d406e2e merging conflict with create script
+0bfc993 CB-1359 simplifying API_LEVEL command
+64c6cbe Update JS snapshot after deleting callback server.
+2245db3 Delete CallbackServer.java
+6f19a50 Update .classpath file to use commons-codec-1.7.jar
+c7ce959 Remove unused async arg from PluginManager.exec().
+afcdccf Add an app-wide thead pool to CordovaInterface.
+1bf1284 Allow for predefined ANDROID_BIN value, fix for paths with spaces
+da8fbee Merge branch 'master' of http://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+4021f26 Globalization plugin should return an error object and not a code
+8eab843 CB-1468 fixing paths with spaces
+1b4096b Guard against null pointer exception in ES File Explorer being used to get a picture
+54caa6e Fail the build gracefully with helpful error messages if the local.properties file is missing, or if the commons-codec jar is missing, or if ant is not at the minimum required version. Also add a little more detail to README.md.
+486eb14 Merge branch 'master' into plugin_reset
+faa034a Don't unregister the listener if it was never registered.
+2cd3ebc Fix NPE on reset with undefined NetworkListener.
+7e3af6c Add onReset() to TempListener.
+dd4de16 Add onReset to Storage.
+ba8577f Add onReset() to NetworkManager.
+6192319 Add onReset() to GeoBroker.
+fed368d Set the total field for FileTransfer upload progress events.
+20c8854 Add onReset to CompassListener.
+9318ee3 Add onReset to BatteryListener.
+8b6c957 Make AudioHandler stop and clean up on onReset()
+3131481 Make AccelListener stop listening onReset()
+6e1fdc7 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+2a9582e Fixing CB-1521 - NullPointerException on Default Jellybean Emulator
+dd1cd46 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+9961d9e Add onReset to Plugin API, call on navigate.
+7eb1211 Add a work-around for a FileTransfer bug on 2.3 only.
+3d62744 CB-1512: FileTransfer API and Mojolicious
+17af417 Fix up some minor FileTransfer bugs / warnings.
+df9d314 Update JS to include FileProgress abort & progress support.
+610e0c9 Add progress callbacks, abort for FileTransfer.upload and FileTransfer.download
+3688fca Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+9bc89c7 Switching to ONLINE_EVENT
+79682f5 updating windows create script test
+c206ac0 Fixing CB-1504
+3484017 Adding headers and converting tabs to spaces
+6312457 CB-1469: Add Globalization Plug-in for Android
+f71e664 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+80d559f removing verbosity
+772aedc Fixing CB-1462, there's a difference betwene Global and Local listeners:
+45d7c12 fixing windows appinfo.jar
+73abb20 Resolving CB-1496, this is faster than a pull request
+0baf104 Fix a deadlock in CallbackServer.java.
+302d51c Updated JS snapshot.
+d3cbfd5 Add a flag to disable exec() chaining for benchmarking.
+9e3e7e1 Remove TODO comment about calling webView from non-ui thread.
+18893bf Use a thread pool when executing async plugin operations.
+f53161d Always send as many messages native->JS in one payload as possible.
+4c9a571 Add constant to disable non-exec() messages in Native->JS bridge.
+365edca Optimize encoding of PluginResults within NativeToJsMessageQueue.
+ae9047a Refactor how PluginResults are sent to JS.
+9c0e58d Disable debug logging of loadUrl for javascript URLs.
+ee34f11 Set the initial network-available state on start-up.
+6ca6d88 Fix NPE when using LOCATION_CHANGE exec bridge.
+65a397f Abstract JS->Native API calls into a class.
+0a66907 Fix warning about .close() not being called in FileUtils.
+451688a CB-1126: Splashscreen
+d181d89 CB-1411: Add trustAllHosts option to FileTransfer.download on Android
+ac14b0d CB-1481: ContactName - name.formatted returns with a trailing white space
+0f42c65 CB-1321: IMS types returning as other
+37b3e98 CB-1362: We should add android:hardwareAccelerated=true to the template manifest.xml
+eb49e01 CB-1405: navigator.language
+e0a73f7 Spelling: throw
+e217ab2 Spelling: success
+ca58386 Spelling: substituted
+5e7efde Spelling: retrieve
+2c7c134 Spelling: polyfill
+ac4fc3e Spelling: occurred
+46db36a Spelling: necessary
+3d073be Spelling: milliseconds
+1bc49fe Spelling: explicitly
+1f7fe9a Spelling: definition
+5217abf Spelling: containing
+2ecbde8 Spelling: conjunction
+bf7fc66 Spelling: comparisons
+5a94b38 Spelling (en-us): behavior [slightly more instances of this spelling than the British]
+1bc55f5 Typo stray paren
+04c9542 Spelling: application
+17e739f Spelling: aperture
+4f5515f Spelling: after
+ae3ba12 Spelling: activities
+6b92a0f Brand: cordova
+d859bb8 adding windows createAppInfoJar
+f12bbf7 Added license headers to test java files
+b723beb [CB-1484] License headers audit
+47daaaf Fixing up the commons-codec issue - CB-1483
+9ba5bae Updating commons-codec
+dbfa2d7 Change bin/create to use bash as shell
+8134f86 Fixing CB-1467
+5c60b09 Updating the manifest so that it is correct
+20a19d6 Put this on the wrong branch
 
 Windows Phone 
 -------------
 
-22477ea updated JS from new tag
-eb7e6f1 removed built dll, source only in the repo now ...
-f1a8e12 updated VERSION to 2.1.0
-1e9b4fe updated cordova.js for 2.1.0
-1925d76 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-wp7
-fe9e0a8 removed verbose console output, added default address type 'home', [CB-1374] escape new line char in returned contacts.
-a27394b added param to retain callback script, renamed MediaStates, fixed deserialization error
-051bd86 bump version to 2.1.0
-ae300da timestamps were incorrect, leaving JS to create timestamps that are consistent with other platforms.
-2fd27cb allow appending to files
-1fa215c update hello app html
-027d90b update hello app, rejigger beep linkage
-e35f30b Startup Object not set when changes to namespace
-e4126b2 removed warning, unused var
-a50bcbb updated to latest hello app + latest cordova-js
-d011080 Notification.confirm buttonLabels are not a real array, but a comma delim string.
-86611cd MediaElement only supported one at a time, CB-941, CB-988
-7cc000f Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-wp7
-1d7b999 Merge pull request #19 from purplecabbage/Lib.vs.Proj
-932e0a3 paths are resolved via BaseCommand which conditionally adds the DLL resource path if built into a library project
-610273d [#1313] Update PhoneGap references to Apache Cordova.
-b781273 CORDOVA_CLASSLIB build time define to resolve resource linkage
-e13733a updated readmes
-4d2a0f6 Cleanup tests, added readmes
-6c1e959 updated Device.cs for 2.1.0rc1
-a205a24 remove old custom lib version, not supported lately
-764f10b mass rename for 2.1.0rc1
-d99b563 CB-1252
-86d1b25 adjusted contact deserialization for updated exec calls
-9c0c1f8 Merge pull request #18 from purplecabbage/CB-629
-47e4b1a File tests passing
-f82ab3d [CB-1174]
-c737859 Merge pull request #17 from hermwong/5373b5ba334c7ad0aced8bc12637d0cb12ef480a
-5373b5b CB-805 getCurrentHeading returns success only once
-d04b87a [CB-1112] overridebackbutton
+25399a3 Merge pull request #21 from purplecabbage/2.2.0rc1_prep
+5efc570 Update templates, [CB-1660]
+656c3eb update files so they don't need to change with every version
+bb6c6f4 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-wp7
+72f6c94 Merge pull request #20 from sgrebnov/master
+06dc27a fixes capture api
+e224839 [CB-1491] added missing src headers
 
 WebOS 
 -----
 
-3ace500 update hello world example app for 2.1
-70eebbb update to 2.1.0rc1
+90107ec update webOS to 2.2.0
+ce9995e update hello world app to 2.2.0
 
 Bada 
 ----
 
+e815027 bumping version
 
 BadaWac 
 -------
 
-6bf358d updating cordova.js
-6df4c2c updating to latest cordova.js
-0172371 updating VERSION file
-e925311 removing irrelevant files and fixing a minor js issue
-7bc7982 removing unused files
-baf1e63 updating to latest hello world app
-19d5be8 updating www
-db7563e updating version and reference to file
-493720e updating javascript and version
-8bd1eb4 updating icon
+7b22e35 updating cordova version
 
 Tizen 
 -----
 
+bb7d71e bumping version number
+5470dec adding apache header license
 
 Mac 
 ---
@@ -321,3 +314,5 @@ Mac
 Qt 
 --
 
+1362016 bumping version number
+ed508de adding apache header license

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- This file is auto-generated, do not edit! -jm -->
 <CordovaSourceDictionary>
-    <FilePath Value="www\cordova-2.1.0.js"/>
+    <FilePath Value="www\cordova-2.2.0.js"/>
+    <FilePath Value="www\cordova-current.js"/>
     <FilePath Value="www\network.html"/>
     <FilePath Value="www\notification.html"/>
     <FilePath Value="www\storage.html"/>

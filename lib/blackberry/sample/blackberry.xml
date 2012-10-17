@@ -23,7 +23,8 @@
     <property name="build.dir"    location="build" />
     <property name="widget.dir"   location="${build.dir}/widget" />
     <property name="code.sign"    value="false" />
-    <property name="generate.ext"   value="cod" />
+    <property name="generate.ext" value="cod" />
+    <property name="globalization" value="false" />
     
     <!-- BlackBerry WebWorks Packager directory is required. -->
     <fail unless="properties.blackberry.bbwp.dir" message="Please specify BlackBerry WebWorks Packager directory using 'blackberry.bbwp.dir' in your 'project.properties' file." />
@@ -171,7 +172,13 @@
         <!-- Copy the WebWorks application -->
         <mkdir dir="${widget.dir}" />
         <copy todir="${widget.dir}" overwrite="true">
-            <fileset dir="www" excludes="ext-air/**,playbook/**,ext-qnx/**,qnx/**"/>
+            <fileset dir="www" >
+                <exclude name="ext-air/**"/>
+                <exclude name="ext-qnx/**"/>
+                <exclude name="playbook/**"/>
+                <exclude name="qnx/**"/>
+                <exclude name="res/resourceBundles/**" unless="${globalization}"/>
+            </fileset>
         </copy>
         
         <!-- Package the WebWorks app by zipping the widget dir. -->

@@ -22,6 +22,10 @@
 -->
 <plist version="1.0">
 <dict>
+	<key>KeyboardDisplayRequiresUserAction</key>
+	<true/>
+	<key>SuppressesIncrementalRendering</key>
+	<false/>
 	<key>UIWebViewBounce</key>
 	<true/>
 	<key>TopActivityIndicator</key>
@@ -80,6 +84,8 @@
 		<string>CDVSplashScreen</string>
 		<key>Battery</key>
 		<string>CDVBattery</string>
+		<key>Globalization</key>
+		<string>CDVGlobalization</string>
 	</dict>
 </dict>
 </plist>
