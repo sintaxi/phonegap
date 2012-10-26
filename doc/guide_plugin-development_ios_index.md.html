@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.2.0rc1">2.2.0rc1</option>
+<option selected value="2.2.0rc2">2.2.0rc2</option>
+<option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.1.0rc2">2.1.0rc2</option>
 <option value="2.1.0rc1">2.1.0rc1</option>
 <option value="2.1.0">2.1.0</option>
@@ -89,6 +90,7 @@
 <option value="Developing%20a%20Plugin%20on%20iOS_writing_an_ios_cordova_plugin">      - Writing an iOS Cordova Plugin</option>
 <option value="Developing%20a%20Plugin%20on%20iOS_plugin_signatures">      - Plugin Signatures</option>
 <option value="Developing%20a%20Plugin%20on%20iOS_echo_plugin_ios_plugin">      - Echo Plugin iOS Plugin</option>
+<option value="Developing%20a%20Plugin%20on%20iOS_threading">      - Threading</option>
 <option value="Developing%20a%20Plugin%20on%20iOS_advanced_plugin_functionality">      - Advanced Plugin Functionality</option>
 <option value="Developing%20a%20Plugin%20on%20iOS_debugging_plugins">      - Debugging Plugins</option>
 <option value="Developing%20a%20Plugin%20on%20iOS_common_pitfalls">      - Common Pitfalls</option>
@@ -112,6 +114,7 @@
 <li><a href="cordova_globalization_globalization.md.html#Globalization">Globalization</a></li>
 <li><a href="cordova_media_media.md.html#Media">Media</a></li>
 <li><a href="cordova_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="cordova_splashscreen_splashscreen.md.html#Splashscreen">Splashscreen</a></li>
 <li><a href="cordova_storage_storage.md.html#Storage">Storage</a></li>
 </ul>
 <h1>Guides</h1>
@@ -131,9 +134,9 @@
             <div id="content">
                 <h1><a name="Developing%20a%20Plugin%20on%20iOS">Developing a Plugin on iOS</a></h1>
 
-<p>Writing a plugin requires an understanding of the architecture of Cordova-iOS. Cordova-iOS consists of a UIWebView where intercept commands passed in as url changes. These plugins are represented as class mappings in the Cordova.plist file, under the Plugins key.</p>
-
 <p>A plugin is an Objective-C class that extends the <code>CDVPlugin</code> class.</p>
+
+<p>Each plugin class must be registered using the Cordova.plist file, under the Plugins key.</p>
 
 <h2>
 <a name="Developing%20a%20Plugin%20on%20iOS_plugin_class_mapping">Plugin Class Mapping</a>
@@ -164,30 +167,24 @@
 
 <p>What gets dispatched to the plugin via JavaScript's <code>exec</code> function gets passed into the corresponding Plugin class's <code>action</code> method. A plugin method has this signature:</p>
 
-<pre class="prettyprint"><code>- (void) myMethod:(CDVInvokedUrlCommand*)command
+<pre class="prettyprint"><code>- (void)myMethod:(CDVInvokedUrlCommand*)command
 {
     CDVPluginResult* pluginResult = nil;
-    NSString* javaScript = nil;
+    NSString* myarg = [command.arguments objectAtIndex:0];
 
-    @try {
-        NSString* myarg = [command.arguments objectAtIndex:0];
-
-        if (myarg != nil) {
-            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-            javaScript = [pluginResult toSuccessCallbackString:command.callbackId];
-        } 
-    } @catch (id exception) {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_JSON_EXCEPTION messageAsString:[exception reason]];
-        javaScript = [pluginResult toErrorCallbackString:command.callbackId];
+    if (myarg != nil) {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    } else { 
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Arg was null"];
     }
-
-    [self writeJavascript:javaScript];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 </code></pre>
 
 <ol>
 <li><a class="external" href="https://github.com/apache/incubator-cordova-ios/blob/master/CordovaLib/Classes/CDVInvokedUrlCommand.h">CDVInvokedUrlCommand.h</a></li>
 <li><a class="external" href="https://github.com/apache/incubator-cordova-ios/blob/master/CordovaLib/Classes/CDVPluginResult.h">CDVPluginResult.h</a></li>
+<li><a class="external" href="https://github.com/apache/incubator-cordova-ios/blob/master/CordovaLib/Classes/CDVCommandDelegate.h">CDVCommandDelegate.h</a></li>
 </ol>
 <h2>
 <a name="Developing%20a%20Plugin%20on%20iOS_plugin_signatures">Plugin Signatures</a>
@@ -195,12 +192,12 @@
 
 <p>The <strong>new signature</strong> supported beginning in <strong>Cordova 2.1.0</strong> is:</p>
 
-<pre class="prettyprint"><code>    - (void) myMethod:(CDVInvokedUrlCommand*)command;
+<pre class="prettyprint"><code>    - (void)myMethod:(CDVInvokedUrlCommand*)command;
 </code></pre>
 
 <p>The <strong>old (deprecated)</strong> signature is:</p>
 
-<pre class="prettyprint"><code>    - (void) myMethod:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
+<pre class="prettyprint"><code>    - (void)myMethod:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 </code></pre>
 
 <p>Basically, the options dictionary has been removed for the new signature, and the callbackId is not the 0th index item for the arguments array, but it is now in a separate property. </p>
@@ -224,7 +221,7 @@ application folder:</p>
 
 @interface Echo : CDVPlugin
 
-- (void) echo:(CDVInvokedUrlCommand*)command;
+- (void)echo:(CDVInvokedUrlCommand*)command;
 
 @end
 
@@ -235,27 +232,18 @@ application folder:</p>
 
 @implementation Echo
 
-- (void) echo:(CDVInvokedUrlCommand*)command
+- (void)echo:(CDVInvokedUrlCommand*)command
 {
     CDVPluginResult* pluginResult = nil;
-    NSString* javaScript = nil;
+    NSString* echo = [command.arguments objectAtIndex:0];
 
-    @try {
-        NSString* echo = [command.arguments objectAtIndex:0];
-
-        if (echo != nil &amp;&amp; [echo length] &gt; 0) {
-            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:echo];
-            javaScript = [pluginResult toSuccessCallbackString:command.callbackId];
-        } else {
-            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
-            javaScript = [pluginResult toErrorCallbackString:command.callbackId];
-        }
-    } @catch (NSException* exception) {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_JSON_EXCEPTION messageAsString:[exception reason]];
-        javaScript = [pluginResult toErrorCallbackString:command.callbackId];
+    if (echo != nil &amp;&amp; [echo length] &gt; 0) {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:echo];
+    } else {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
     }
 
-    [self writeJavascript:javaScript];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 @end
@@ -265,9 +253,28 @@ application folder:</p>
 
 <p>This plugin only supports one action, the <code>echo</code> action. First, we grab the echo string using the <code>objectAtIndex</code> method on our <code>args</code>, telling it we want to get the 0th parameter in the arguments array. We do a bit of parameter checking: make sure it is not <code>nil</code>, and make sure it is not a zero-length string.</p>
 
-<p>If it is, we return a <code>PluginResult</code> with an <code>ERROR</code> status. If all of those checks pass, then we return a <code>PluginResult</code> with an <code>OK</code> status, and pass in the <code>echo</code> string we received in the first place as a parameter. Then, we convert the <code>PluginResult</code> to JavaScript by calling either the <code>toSuccessCallbackString</code> (if it was OK) or <code>toErrorCallbackString</code> (if it was an error) methods.</p>
+<p>If it is, we return a <code>PluginResult</code> with an <code>ERROR</code> status. If all of those checks pass, then we return a <code>PluginResult</code> with an <code>OK</code> status, and pass in the <code>echo</code> string we received in the first place as a parameter.</p>
 
-<p>Finally we write the JavaScript back to the UIWebView, which will execute the JavaScript that will callback to success or failure callbacks of the exec method on the JavaScript side. If the success callback was called, it will pass the <code>echo</code> parameter as a parameter.</p>
+<p>Finally, we send the result to <code>self.commandDelegate</code>, which will execute the JavaScript that will callback to success or failure callbacks of the exec method on the JavaScript side. If the success callback was called, it will pass the <code>echo</code> parameter as a parameter.</p>
+
+<h2>
+<a name="Developing%20a%20Plugin%20on%20iOS_threading">Threading</a>
+</h2>
+
+<p>Although UIWebViews run on a dedicated thread, plugin methods are executed on the UI thread. If your plugin requires a non-trivial amount of processing or requires a blocking call, you should make use of a background thread. An example:</p>
+
+<pre class="prettyprint"><code>- (void)myPluginMethod:(CDVInvokedUrlCommand*)command
+{
+    // Check command.arguments here.
+    [self.commandDelegate runInBackground:^{
+        NSString* payload = nil;
+        // Some blocking logic...
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:payload];
+        // The sendPluginResult method is thread-safe.
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }];
+}
+</code></pre>
 
 <h2>
 <a name="Developing%20a%20Plugin%20on%20iOS_advanced_plugin_functionality">Advanced Plugin Functionality</a>
@@ -285,7 +292,7 @@ application folder:</p>
 <a name="Developing%20a%20Plugin%20on%20iOS_debugging_plugins">Debugging Plugins</a>
 </h2>
 
-<p>To debug the Objective-C side, you would use Xcode's built in debugger. For JavaScript, you can use <a class="external" href="https://github.com/apache/incubator-cordova-weinre">Weinre, an Apache Cordova Project</a> or <a class="external" href="http://www.iwebinspector.com/">iWebInspector, a third-party utility</a></p>
+<p>To debug the Objective-C side, you would use Xcode's built in debugger. For JavaScript, on iOS 5.0 you can use <a class="external" href="https://github.com/apache/incubator-cordova-weinre">Weinre, an Apache Cordova Project</a> or <a class="external" href="http://www.iwebinspector.com/">iWebInspector, a third-party utility</a></p>
 
 <p>For iOS 6, you would use Safari 6.0 to simply attach to your app running in the iOS 6 Simulator.</p>
 
@@ -296,14 +303,6 @@ application folder:</p>
 <ul>
 <li>Don't forget to add your plugin's mapping to Cordova.plist - if you forgot, an error will be printed to the Xcode console log</li>
 <li>Don't forget to add any hosts you connect to in the <a href="guide_whitelist_index.md.html#Domain%20Whitelist%20Guide">whitelist</a> - if you forgot, an error will be printed to the Xcode console log</li>
-<li>
-<p>If you handle the <a href="cordova_events_events.md.html#resume">resume</a> event, and the app resumes, you can hang the app if you send out a JavaScript call that executes a native function, like alerts. To be safe, wrap your JavaScript call in a setTimeout call, with a timeout value of zero:</p>
-
-<pre class="prettyprint"><code>setTimeout(function() {
-    // do your thing here!
-}, 0);
-</code></pre>
-</li>
 </ul>
 <h2>
 <a name="Developing%20a%20Plugin%20on%20iOS_deprecated_plugin_signature_note">Deprecated Plugin Signature Note</a>

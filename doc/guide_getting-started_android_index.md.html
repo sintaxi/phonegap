@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.2.0rc1">2.2.0rc1</option>
+<option selected value="2.2.0rc2">2.2.0rc2</option>
+<option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.1.0rc2">2.1.0rc2</option>
 <option value="2.1.0rc1">2.1.0rc1</option>
 <option value="2.1.0">2.1.0</option>
@@ -87,12 +88,10 @@
             <small><select><option value="Getting%2520Started%2520with%2520Android">Getting Started with Android</option>
 <option value="Getting%20Started%20with%20Android_1_requirements">      - 1. Requirements</option>
 <option value="Getting%20Started%20with%20Android_2_install_sdk_cordova">      - 2. Install SDK + Cordova</option>
-<option value="Getting%20Started%20with%20Android_3_setup_new_project">      -  3. Setup New Project</option>
-<option value="Getting%20Started%20with%20Android_4_hello_world">      - 4. Hello World</option>
-<option value="Getting%20Started%20with%20Android_5a_deploy_to_simulator">      - 5A. Deploy to Simulator</option>
-<option value="Getting%20Started%20with%20Android_5b_deploy_to_device">      - 5B. Deploy to Device
-</option>
-<option value="Getting%20Started%20with%20Android_done">      - Done!</option></select></small>
+<option value="Getting%20Started%20with%20Android_3_setup_new_project">      - 3. Setup New Project</option>
+<option value="Getting%20Started%20with%20Android_4a_deploy_to_emulator">      - 4A. Deploy to Emulator</option>
+<option value="Getting%20Started%20with%20Android_4b_deploy_to_device">      - 4B. Deploy to Device
+</option></select></small>
         </div>
 
         <div id="sidebar">
@@ -112,6 +111,7 @@
 <li><a href="cordova_globalization_globalization.md.html#Globalization">Globalization</a></li>
 <li><a href="cordova_media_media.md.html#Media">Media</a></li>
 <li><a href="cordova_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="cordova_splashscreen_splashscreen.md.html#Splashscreen">Splashscreen</a></li>
 <li><a href="cordova_storage_storage.md.html#Storage">Storage</a></li>
 </ul>
 <h1>Guides</h1>
@@ -131,7 +131,7 @@
             <div id="content">
                 <h1><a name="Getting%20Started%20with%20Android">Getting Started with Android</a></h1>
 
-<p>This guide describes how to set up your development environment for Cordova and run a sample application.  Note that Cordova used to be called PhoneGap, so some of the sites still use the old PhoneGap name.</p>
+<p>This guide describes how to set up your development environment for Cordova and run a sample application.</p>
 
 <h2>
 <a name="Getting%20Started%20with%20Android_1_requirements">1. Requirements</a>
@@ -151,125 +151,30 @@
 </li>
 <li>Download and install <a class="external" href="http://developer.android.com/sdk/eclipse-adt.html#installing">ADT Plugin</a>
 </li>
-<li>Download the latest copy of <a class="external" href="http://phonegap.com/download">Cordova</a> and extract its contents. We will be working with the Android directory.</li>
+<li>Download the latest copy of <a class="external" href="http://incubator.apache.org/cordova/#download">Cordova</a> and extract its contents. We will be working with the Android directory.</li>
 </ul>
 <h2>
-<a name="Getting%20Started%20with%20Android_3_setup_new_project"> 3. Setup New Project</a>
+<a name="Getting%20Started%20with%20Android_3_setup_new_project">3. Setup New Project</a>
 </h2>
 
 <ul>
-<li>Launch Eclipse, and select menu item <strong>New Project</strong>
-<img src="img/guide/getting-started/android/step_1.png" alt="" title="">
-</li>
-<li>Then specify new application project
-<img src="img/guide/getting-started/android/step_2.png" alt="" title="">
-</li>
-<li>Then speciy an Application Name, a Project Name and Package Name with Namespace
-<img src="img/guide/getting-started/android/step_3.png" alt="" title="">
-</li>
-<li>Then select a graphic
-<img src="img/guide/getting-started/android/step_4.png" alt="" title="">
-</li>
-<li>Then Create a Blank Activity
-<img src="img/guide/getting-started/android/step_5.png" alt="" title="">
-</li>
-<li><p>Make sure the activity doesn't inherit from anything.  You most likely won't have PhoneGap on your Eclipse Workspace.  Once this is done, click finish</p></li>
+<li>In a terminal window, navigate to the <code>bin</code> directory within the <code>android</code> subfolder of the Cordova distribution.</li>
 <li>
-<p>In the root directory of your project, create two new directories:</p>
+<p>Type in <code>./create &lt;project_folder_path&gt; &lt;package_name&gt; &lt;project_name&gt;</code> then press <strong>"Enter"</strong></p>
 
-<ul>
-<li><strong>/libs</strong></li>
-<li><strong>assets/www</strong></li>
-</ul>
-</li>
-<li>Copy <strong>cordova-2.0.0.js</strong> from your Cordova download earlier to <strong>assets/www</strong>
-</li>
-<li>Copy <strong>cordova-2.0.0.jar</strong> from your Cordova download earlier to <strong>/libs</strong>
-</li>
-<li><p>Copy <strong>xml</strong> folder from your Cordova download earlier to <strong>/res</strong></p></li>
-<li>
-<p>Verify that <strong>cordova-2.0.0.jar</strong> is listed in the Build Path for your project. Right click on the /libs folder and go to <strong>Build Paths/ &gt; Configure Build Path...</strong>. Then, in the Libraries tab, add <strong>cordova-2.0.0.jar</strong> to the project. If Eclipse is being temperamental, you might need to refresh (F5) the project once again.</p>
-
-<p><img src="img/guide/getting-started/android/buildPath.jpg" alt="" title=""></p>
-</li>
-<li>
-<p>Edit your project's main Java file found in the <strong>src</strong> folder in Eclipse:</p>
-
-<ul>
-<li>Add <strong>import org.apache.cordova.*;</strong>
-</li>
-<li>Change the class's extend from <strong>Activity</strong> to <strong>DroidGap</strong>
-</li>
-<li>Replace the <strong>setContentView()</strong> line with <strong>super.loadUrl("file:///android_asset/www/index.html");</strong> </li>
-</ul>
-<p><img src="img/guide/getting-started/android/javaSrc.jpg" alt="" title=""></p>
-</li>
-<li><p>Right click on AndroidManifest.xml and select <strong>Open With &gt; Text Editor</strong></p></li>
-<li>
-<p>Paste the following permissions between the <strong>&lt;uses-sdk.../&gt;</strong> and <strong>&lt;application.../&gt;</strong> tags.</p>
-
-<pre class="prettyprint"><code>&lt;supports-screens 
-    android:largeScreens="true" 
-    android:normalScreens="true" 
-    android:smallScreens="true" 
-    android:resizeable="true" 
-    android:anyDensity="true" /&gt;
-&lt;uses-permission android:name="android.permission.VIBRATE" /&gt;
-&lt;uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /&gt;
-&lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /&gt;
-&lt;uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /&gt;
-&lt;uses-permission android:name="android.permission.READ_PHONE_STATE" /&gt;
-&lt;uses-permission android:name="android.permission.INTERNET" /&gt;
-&lt;uses-permission android:name="android.permission.RECEIVE_SMS" /&gt;
-&lt;uses-permission android:name="android.permission.RECORD_AUDIO" /&gt;
-&lt;uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" /&gt;
-&lt;uses-permission android:name="android.permission.READ_CONTACTS" /&gt;
-&lt;uses-permission android:name="android.permission.WRITE_CONTACTS" /&gt;
-&lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /&gt;
-&lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /&gt; 
-&lt;uses-permission android:name="android.permission.GET_ACCOUNTS" /&gt;
-&lt;uses-permission android:name="android.permission.BROADCAST_STICKY" /&gt;
-</code></pre>
-
-<p>*Note You are adding a blanket list of permissions to your application. You should remove permissions you aren't using before submitting your application to Google Play.</p>
-</li>
-<li>
-<p>Support orientation changes by pasting the following inside the <strong>&lt;activity&gt;</strong> tag.</p>
-
-<p></p>
-<pre class="prettyprint"><code>android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"
+<pre class="prettyprint"><code>&lt;project_folder_path&gt; is the path to your new Cordova Android project
+&lt;package_name&gt; is the package name, e.g. com.YourCompany.YourAppName
+&lt;project_name&gt; is the project name, e.g. YourApp (Must not contain spaces)
 </code></pre>
 </li>
-<li>
-<p>Your AndroidManifest.xml file should look like</p>
-
-<p></p>
-<p><img src="img/guide/getting-started/android/manifest.png" alt="" title=""></p>
+<li><p>Launch Eclipse, and select menu item <strong>New Project</strong>
+<img src="img/guide/getting-started/android/eclipse_new_project.png" alt="" title=""></p></li>
+<li>Select the directory you used for <code>&lt;project_folder_path&gt;</code>
 </li>
+<li>Click Finish.</li>
 </ul>
 <h2>
-<a name="Getting%20Started%20with%20Android_4_hello_world">4. Hello World</a>
-</h2>
-
-<ul>
-<li>
-<p>Create and open a new file named <strong>index.html</strong> in the <strong>assets/www</strong> directory. Paste the following code:</p>
-
-<pre class="prettyprint"><code>&lt;!DOCTYPE HTML&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;Cordova&lt;/title&gt;
-&lt;script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"&gt;&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h1&gt;Hello World&lt;/h1&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-</li>
-</ul>
-<h2>
-<a name="Getting%20Started%20with%20Android_5a_deploy_to_simulator">5A. Deploy to Simulator</a>
+<a name="Getting%20Started%20with%20Android_4a_deploy_to_emulator">4A. Deploy to Emulator</a>
 </h2>
 
 <ul>
@@ -277,8 +182,19 @@
 </li>
 <li>Eclipse will ask you to select an appropriate AVD. If there isn't one, then you'll need to create it.</li>
 </ul>
+<p><strong>Note: For a faster experience, use an Intel-based emulator image:</strong></p>
+
+<ul>
+<li>Open the Android SDK Manager
+<img src="img/guide/getting-started/android/eclipse_android_sdk_button.png" alt="" title="">
+</li>
+<li>Install one or more <code>Intel x86 Atom</code> System Images as well as the <code>Intel Hardware Accelerated Execution Manager</code> (under Extras).</li>
+<li>Run the Intel installer, which has been downloaded to: <code>extras/intel/Hardware_Accelerated_Execution_Manager</code> within your Android SDK</li>
+<li>Create a new AVD with the Target set to an Intel image.</li>
+<li>When starting the emulator, ensure there are no error messages about the HAX module failing to load.</li>
+</ul>
 <h2>
-<a name="Getting%20Started%20with%20Android_5b_deploy_to_device">5B. Deploy to Device
+<a name="Getting%20Started%20with%20Android_4b_deploy_to_device">4B. Deploy to Device
 </a>
 </h2>
 
@@ -287,11 +203,7 @@
 <li>Right click the project and go to <strong>Run As &gt; Android Application</strong>
 </li>
 </ul>
-<h2>
-<a name="Getting%20Started%20with%20Android_done">Done!</a>
-</h2>
-
-            </div>
+</div>
         </div>
 
         <!-- Functionality and Syntax Highlighting -->

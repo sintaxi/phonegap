@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.2.0rc1">2.2.0rc1</option>
+<option selected value="2.2.0rc2">2.2.0rc2</option>
+<option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.1.0rc2">2.1.0rc2</option>
 <option value="2.1.0rc1">2.1.0rc1</option>
 <option value="2.1.0">2.1.0</option>
@@ -85,6 +86,8 @@
         <div id="subheader">
             <h1>Upgrading Cordova Android</h1>
             <small><select><option value="Upgrading%2520Cordova%2520Android">Upgrading Cordova Android</option>
+<option value="Upgrading%20Cordova%20Android_upgrade_to_2_2_0_from_2_1_0">      - Upgrade to 2.2.0 from 2.1.0</option>
+<option value="Upgrading%20Cordova%20Android_upgrade_to_2_1_0_from_2_0_0">      - Upgrade to 2.1.0 from 2.0.0</option>
 <option value="Upgrading%20Cordova%20Android_upgrade_to_2_0_0_from_1_9_0">      - Upgrade to 2.0.0 from 1.9.0</option>
 <option value="Upgrading%20Cordova%20Android_upgrade_to_1_9_0_from_1_8_1">      - Upgrade to 1.9.0 from 1.8.1</option>
 <option value="Upgrading%20Cordova%20Android_upgrade_to_1_8_0_from_1_8_0">      - Upgrade to 1.8.0 from 1.8.0</option>
@@ -118,6 +121,7 @@
 <li><a href="cordova_globalization_globalization.md.html#Globalization">Globalization</a></li>
 <li><a href="cordova_media_media.md.html#Media">Media</a></li>
 <li><a href="cordova_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="cordova_splashscreen_splashscreen.md.html#Splashscreen">Splashscreen</a></li>
 <li><a href="cordova_storage_storage.md.html#Storage">Storage</a></li>
 </ul>
 <h1>Guides</h1>
@@ -140,6 +144,30 @@
 <p>This document is for people who need to upgrade their Cordova versions from an older version to a current version of Cordova.</p>
 
 <h2>
+<a name="Upgrading%20Cordova%20Android_upgrade_to_2_2_0_from_2_1_0">Upgrade to 2.2.0 from 2.1.0</a>
+</h2>
+
+<ol>
+<li>Remove cordova-2.1.0.jar from the libs directory in your project</li>
+<li>Add cordova-2.2.0.jar to the libs directory in your project</li>
+<li>If you are using Eclipse, please refresh your eclipse project and do a clean</li>
+<li>Copy the new cordova-2.2.0.js into your project</li>
+<li>Update your HTML to use the new cordova-2.2.0.js file</li>
+<li>Copy the res/xml/config.xml to be the same as the one found in framework/res/xml/config.xml</li>
+</ol>
+<h2>
+<a name="Upgrading%20Cordova%20Android_upgrade_to_2_1_0_from_2_0_0">Upgrade to 2.1.0 from 2.0.0</a>
+</h2>
+
+<ol>
+<li>Remove cordova-2.0.0.jar from the libs directory in your project</li>
+<li>Add cordova-2.1.0.jar to the libs directory in your project</li>
+<li>If you are using Eclipse, please refresh your eclipse project and do a clean</li>
+<li>Copy the new cordova-2.1.0.js into your project</li>
+<li>Update your HTML to use the new cordova-2.1.0.js file</li>
+<li>Copy the res/xml/config.xml to be the same as the one found in framework/res/xml/config.xml</li>
+</ol>
+<h2>
 <a name="Upgrading%20Cordova%20Android_upgrade_to_2_0_0_from_1_9_0">Upgrade to 2.0.0 from 1.9.0</a>
 </h2>
 
@@ -149,7 +177,7 @@
 <li>If you are using Eclipse, please refresh your eclipse project and do a clean</li>
 <li>Copy the new cordova-2.0.0.js into your project</li>
 <li>Update your HTML to use the new cordova-2.0.0.js file</li>
-<li>Copy the res/xml/config.xml to be the same as the one found in framework/res/xml/config.xmll</li>
+<li>Copy the res/xml/config.xml to be the same as the one found in framework/res/xml/config.xml</li>
 </ol>
 <h3>Notes about 2.0.0 release</h3>
 

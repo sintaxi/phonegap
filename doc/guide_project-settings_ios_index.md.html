@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.2.0rc1">2.2.0rc1</option>
+<option selected value="2.2.0rc2">2.2.0rc2</option>
+<option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.1.0rc2">2.1.0rc2</option>
 <option value="2.1.0rc1">2.1.0rc1</option>
 <option value="2.1.0">2.1.0</option>
@@ -104,6 +105,7 @@
 <li><a href="cordova_globalization_globalization.md.html#Globalization">Globalization</a></li>
 <li><a href="cordova_media_media.md.html#Media">Media</a></li>
 <li><a href="cordova_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="cordova_splashscreen_splashscreen.md.html#Splashscreen">Splashscreen</a></li>
 <li><a href="cordova_storage_storage.md.html#Storage">Storage</a></li>
 </ul>
 <h1>Guides</h1>
@@ -162,7 +164,7 @@
 
 <p>e. <strong>AutoHideSplashScreen (boolean, defaults to YES)</strong> - set to NO to control when the splashscreen is hidden through a JavaScript API</p>
 
-<p>f. <strong>ShowSplashScreenSpinner (boolean, defaults to YES)</strong> - set to NO to hide the splash-screen spinner</p>
+<p>f. <strong>ShowSplashScreenSpinner (boolean, defaults to YES)</strong> - set to NO to <a href="cordova_splashscreen_splashscreen.md.html#hide">hide</a> the splash-screen spinner</p>
 
 <p>g. <strong>MediaPlaybackRequiresUserAction (boolean, defaults to NO)</strong> - set to YES to not allow autoplayed HTML5 video</p>
 
@@ -170,9 +172,9 @@
 
 <p>i. <strong>OpenAllWhitelistURLsInWebView (boolean, defaults to NO)</strong> - set to YES to open all white-listed URLs in the main WebView</p>
 
-<p>j. <strong>BackupWebStorage (boolean, defaults to YES)</strong> - set to NO to prevent the backup of <a href="cordova_storage_storage.md.html#localStorage">localStorage</a> and WebSQL databases to the Documents/Backups folder. This was a fix for this <a class="external" href="http://phonegap.com/2012/04/18/ios-5-1-and-the-embedded-uiwebview-with-cordova/">Apple bug</a></p>
+<p>j. <strong>BackupWebStorage (string, defaults to 'cloud')</strong> - valid values are 'none', 'cloud' and 'local'. Set to 'cloud' to allow the web storage data to be backed up to iCloud, and set to 'local' to only allow local backups (iTunes sync). Set to 'none' to not allow any backups of web storage.</p>
 
-<p>k. <strong>KeyboardDisplayRequiresUserAction (boolean, defaults to YES)</strong> - set to NO to open keyboard when form elements get focus via JavaScript focus() call.</p>
+<p>k. <strong>KeyboardDisplayRequiresUserAction (boolean, defaults to YES)</strong> - set to NO to open the keyboard when form elements get focus via the JavaScript focus() call.</p>
 
 <p>l. <strong>SuppressesIncrementalRendering (boolean, defaults to NO)</strong> - set to YES to wait until all new view content has been received before it is rendered.</p>
 </li>

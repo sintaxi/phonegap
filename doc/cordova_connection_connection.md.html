@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.2.0rc1">2.2.0rc1</option>
+<option selected value="2.2.0rc2">2.2.0rc2</option>
+<option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.1.0rc2">2.1.0rc2</option>
 <option value="2.1.0rc1">2.1.0rc1</option>
 <option value="2.1.0">2.1.0</option>
@@ -93,6 +94,7 @@
 <option value="connection.type_supported_platforms">      - Supported Platforms</option>
 <option value="connection.type_quick_example">      - Quick Example</option>
 <option value="connection.type_full_example">      - Full Example</option>
+<option value="connection.type_api_change">      - API Change</option>
 <option value="connection.type_ios_quirks">      - iOS Quirks</option>
 <option value="connection.type_bada_quirks">      - Bada Quirks</option>
 <option value="connection.type_webos_quirks">      - webOS Quirks</option>
@@ -117,6 +119,7 @@
 <li><a href="cordova_globalization_globalization.md.html#Globalization">Globalization</a></li>
 <li><a href="cordova_media_media.md.html#Media">Media</a></li>
 <li><a href="cordova_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="cordova_splashscreen_splashscreen.md.html#Splashscreen">Splashscreen</a></li>
 <li><a href="cordova_storage_storage.md.html#Storage">Storage</a></li>
 </ul>
 <h1>Guides</h1>
@@ -140,7 +143,7 @@
   <p>The <code>connection</code> object gives access to the device's cellular and wifi connection information.</p>
 </blockquote>
 
-<p>This object is accessed under the <code>navigator.network</code> interface.</p>
+<p>This object is exposed as <code>navigator.connection</code>.</p>
 
 <h2>
 <a name="Connection_properties">Properties</a>
@@ -175,7 +178,7 @@
 
 <h3>Android</h3>
 
-<h4>app/res/xml/plugins.xml</h4>
+<h4>app/res/xml/config.xml</h4>
 
 <pre class="prettyprint"><code>&lt;plugin name="NetworkStatus" value="org.apache.cordova.NetworkManager" /&gt;
 </code></pre>
@@ -266,7 +269,7 @@
 </h2>
 
 <pre class="prettyprint"><code>function checkConnection() {
-    var networkState = navigator.network.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a>;
+    var networkState = navigator.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a>;
 
     var states = {};
     states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.UNKNOWN]  = 'Unknown connection';
@@ -290,7 +293,7 @@ checkConnection();
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;navigator.network.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a> Example&lt;/title&gt;
+    &lt;title&gt;navigator.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a> Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
@@ -306,7 +309,7 @@ checkConnection();
     }
 
     function checkConnection() {
-        var networkState = navigator.network.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a>;
+        var networkState = navigator.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a>;
 
         var states = {};
         states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.UNKNOWN]  = 'Unknown connection';
@@ -329,6 +332,16 @@ checkConnection();
 </code></pre>
 
 <h2>
+<a name="connection.type_api_change">API Change</a>
+</h2>
+
+<p>Before Cordova 2.2.0, the <a href="cordova_connection_connection.md.html#Connection">Connection</a> object existed at: <code>navigator.network.connection</code>.</p>
+
+<p>To match the spec, this was changed to <code>navigator.connection</code> in 2.2.0.</p>
+
+<p><code>navigator.network.connection</code> still exists, but is now deprecated and will be removed in a future release.</p>
+
+<h2>
 <a name="connection.type_ios_quirks">iOS Quirks</a>
 </h2>
 
@@ -336,7 +349,7 @@ checkConnection();
 <li>iOS cannot detect the type of cellular network connection.
 <ul>
 <li>
-<code>navigator.network.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a></code> is set to <code><a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_2G</code> for all cellular data.</li>
+<code>navigator.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a></code> is set to <code><a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_2G</code> for all cellular data.</li>
 </ul>
 </li>
 </ul>
@@ -348,7 +361,7 @@ checkConnection();
 <li>Bada can only detect a WiFi or cellular connection.
 <ul>
 <li>
-<code>navigator.network.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a></code> is set to <code><a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_2G</code> for all cellular data.</li>
+<code>navigator.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a></code> is set to <code><a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_2G</code> for all cellular data.</li>
 </ul>
 </li>
 </ul>
@@ -364,7 +377,7 @@ checkConnection();
 </h2>
 
 <ul>
-<li>Windows Phone Emulator always detects <code>navigator.network.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a></code> as <code><a href="cordova_connection_connection.md.html#Connection">Connection</a>.UNKNOWN</code>.</li>
+<li>Windows Phone Emulator always detects <code>navigator.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a></code> as <code><a href="cordova_connection_connection.md.html#Connection">Connection</a>.UNKNOWN</code>.</li>
 </ul>
 <h2>
 <a name="connection.type_tizen_quirks">Tizen Quirks</a>
@@ -374,7 +387,7 @@ checkConnection();
 <li>Tizen can only detect a WiFi or cellular connection.
 <ul>
 <li>
-<code>navigator.network.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a></code> is set to <code><a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_2G</code> for all cellular data.</li>
+<code>navigator.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a></code> is set to <code><a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_2G</code> for all cellular data.</li>
 </ul>
 </li>
 </ul>

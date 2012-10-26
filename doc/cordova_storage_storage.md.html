@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.2.0rc1">2.2.0rc1</option>
+<option selected value="2.2.0rc2">2.2.0rc2</option>
+<option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.1.0rc2">2.1.0rc2</option>
 <option value="2.1.0rc1">2.1.0rc1</option>
 <option value="2.1.0">2.1.0</option>
@@ -105,7 +106,6 @@
 <option value="Database_transaction_quick_example">      - Transaction Quick Example</option>
 <option value="Database_change_version_quick_example">      - Change Version Quick Example</option>
 <option value="Database_full_example">      - Full Example</option>
-<option value="Database_android_1_x_quirks">      - Android 1.X Quirks</option>
 <option value="SQLTransaction">SQLTransaction</option>
 <option value="SQLTransaction_methods">      - Methods</option>
 <option value="SQLTransaction_details">      - Details</option>
@@ -159,6 +159,7 @@
 <li><a href="cordova_globalization_globalization.md.html#Globalization">Globalization</a></li>
 <li><a href="cordova_media_media.md.html#Media">Media</a></li>
 <li><a href="cordova_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="cordova_splashscreen_splashscreen.md.html#Splashscreen">Splashscreen</a></li>
 <li><a href="cordova_storage_storage.md.html#Storage">Storage</a></li>
 </ul>
 <h1>Guides</h1>
@@ -219,7 +220,7 @@
 
 <h3>Android</h3>
 
-<h4>app/res/xml/plugins.xml</h4>
+<h4>app/res/xml/config.xml</h4>
 
 <pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_storage_storage.md.html#Storage">Storage</a>" value="org.apache.cordova.<a href="cordova_storage_storage.md.html#Storage">Storage</a>" /&gt;
 </code></pre>
@@ -457,14 +458,6 @@ db.changeVersion("1.0", "1.1");
 &lt;/html&gt;
 </code></pre>
 
-<h2>
-<a name="Database_android_1_x_quirks">Android 1.X Quirks</a>
-</h2>
-
-<ul>
-<li>
-<strong>changeVersion:</strong> This method is not support by Android 1.X devices.</li>
-</ul>
 <hr>
 <h1><a name="SQLTransaction">SQLTransaction</a></h1>
 

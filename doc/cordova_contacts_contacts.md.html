@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.2.0rc1">2.2.0rc1</option>
+<option selected value="2.2.0rc2">2.2.0rc2</option>
+<option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.1.0rc2">2.1.0rc2</option>
 <option value="2.1.0rc1">2.1.0rc1</option>
 <option value="2.1.0">2.1.0</option>
@@ -110,7 +111,6 @@
 <option value="Contact_remove_quick_example">      - Remove Quick Example</option>
 <option value="Contact_full_example">      - Full Example</option>
 <option value="Contact_android_2_x_quirks">      - Android 2.X Quirks</option>
-<option value="Contact_android_1_x_quirks">      - Android 1.X Quirks</option>
 <option value="Contact_blackberry_webworks_os_5_0_and_higher_quirks">      - BlackBerry WebWorks (OS 5.0 and higher) Quirks</option>
 <option value="Contact_ios_quirks">      - iOS Quirks</option>
 <option value="Contact_bada_quirks">      - Bada Quirks</option>
@@ -121,7 +121,6 @@
 <option value="ContactAddress_quick_example">      - Quick Example</option>
 <option value="ContactAddress_full_example">      - Full Example</option>
 <option value="ContactAddress_android_2_x_quirks">      - Android 2.X Quirks</option>
-<option value="ContactAddress_android_1_x_quirks">      - Android 1.X Quirks</option>
 <option value="ContactAddress_blackberry_webworks_os_5_0_and_higher_quirks">      - BlackBerry WebWorks (OS 5.0 and higher) Quirks</option>
 <option value="ContactAddress_ios_quirks">      - iOS Quirks</option>
 <option value="ContactAddress_bada_quirks">      - Bada Quirks</option>
@@ -158,7 +157,6 @@
 <option value="ContactOrganization_quick_example">      - Quick Example</option>
 <option value="ContactOrganization_full_example">      - Full Example</option>
 <option value="ContactOrganization_android_2_x_quirks">      - Android 2.X Quirks</option>
-<option value="ContactOrganization_android_1_x_quirks">      - Android 1.X Quirks</option>
 <option value="ContactOrganization_blackberry_webworks_os_5_0_and_higher_quirks">      - BlackBerry WebWorks (OS 5.0 and higher) Quirks</option>
 <option value="ContactOrganization_ios_quirks">      - iOS Quirks</option>
 <option value="ContactOrganization_bada_2_0_quirks">      - Bada 2.0 Quirks</option>
@@ -192,6 +190,7 @@
 <li><a href="cordova_globalization_globalization.md.html#Globalization">Globalization</a></li>
 <li><a href="cordova_media_media.md.html#Media">Media</a></li>
 <li><a href="cordova_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="cordova_splashscreen_splashscreen.md.html#Splashscreen">Splashscreen</a></li>
 <li><a href="cordova_storage_storage.md.html#Storage">Storage</a></li>
 </ul>
 <h1>Guides</h1>
@@ -252,7 +251,7 @@
 
 <h3>Android</h3>
 
-<h4>app/res/xml/plugins.xml</h4>
+<h4>app/res/xml/config.xml</h4>
 
 <pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_contacts_contacts.md.html#Contacts">Contacts</a>" value="org.apache.cordova.ContactManager" /&gt;
 </code></pre>
@@ -713,24 +712,6 @@ contact.remove(onSuccess,onError);
 <strong>categories:</strong>  This property is not support by Android 2.X devices, and will always be returned as <code>null</code>.</li>
 </ul>
 <h2>
-<a name="Contact_android_1_x_quirks">Android 1.X Quirks</a>
-</h2>
-
-<ul>
-<li>
-<strong>name:</strong> This property is not support by Android 1.X devices, and will always be returned as <code>null</code>.</li>
-<li>
-<strong>nickname:</strong> This property is not support by Android 1.X devices, and will always be returned as <code>null</code>.</li>
-<li>
-<strong>birthday:</strong> This property is not support by Android 1.X devices, and will always be returned as <code>null</code>.</li>
-<li>
-<strong>photos:</strong> This property is not support by Android 1.X devices, and will always be returned as <code>null</code>.</li>
-<li>
-<strong>categories:</strong>  This property is not support by Android 1.X devices, and will always be returned as <code>null</code>.</li>
-<li>
-<strong>urls:</strong>  This property is not support by Android 1.X devices, and will always be returned as <code>null</code>.</li>
-</ul>
-<h2>
 <a name="Contact_blackberry_webworks_os_5_0_and_higher_quirks">BlackBerry WebWorks (OS 5.0 and higher) Quirks</a>
 </h2>
 
@@ -935,26 +916,6 @@ navigator.<a href="cordova_contacts_contacts.md.html#contacts.find">contacts.fin
 <ul>
 <li>
 <strong>pref:</strong> This property is not supported by Android 2.X devices and will always return <code>false</code>.</li>
-</ul>
-<h2>
-<a name="ContactAddress_android_1_x_quirks">Android 1.X Quirks</a>
-</h2>
-
-<ul>
-<li>
-<strong>pref:</strong> This property is not supported by Android 1.X devices and will always return <code>false</code>.</li>
-<li>
-<strong>type:</strong> This property is not supported by Android 1.X devices and will always return <code>null</code>.</li>
-<li>
-<strong>streetAddress:</strong> This property is not support by Android 1.X devices, and will always return <code>null</code>.</li>
-<li>
-<strong>locality:</strong> This property is not support by Android 1.X devices, and will always return <code>null</code>.</li>
-<li>
-<strong>region:</strong> This property is not support by Android 1.X devices, and will always return <code>null</code>.</li>
-<li>
-<strong>postalCode:</strong> This property is not support by Android 1.X devices, and will always return <code>null</code>.</li>
-<li>
-<strong>country:</strong> This property is not support by Android 1.X devices, and will always return <code>null</code>.</li>
 </ul>
 <h2>
 <a name="ContactAddress_blackberry_webworks_os_5_0_and_higher_quirks">BlackBerry WebWorks (OS 5.0 and higher) Quirks</a>
@@ -1564,18 +1525,6 @@ navigator.<a href="cordova_contacts_contacts.md.html#contacts.find">contacts.fin
 <ul>
 <li>
 <strong>pref:</strong> This property is not supported by Android 2.X devices and will always return <code>false</code>.</li>
-</ul>
-<h2>
-<a name="ContactOrganization_android_1_x_quirks">Android 1.X Quirks</a>
-</h2>
-
-<ul>
-<li>
-<strong>pref:</strong> This property is not supported by Android 1.X devices and will always return <code>false</code>.</li>
-<li>
-<strong>type:</strong> This property is not supported by Android 1.X devices and will always return <code>null</code>.</li>
-<li>
-<strong>title:</strong> This property is not supported by Android 1.X devices, and will always be returned as <code>null</code>. </li>
 </ul>
 <h2>
 <a name="ContactOrganization_blackberry_webworks_os_5_0_and_higher_quirks">BlackBerry WebWorks (OS 5.0 and higher) Quirks</a>

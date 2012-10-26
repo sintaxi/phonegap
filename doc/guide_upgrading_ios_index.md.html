@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.2.0rc1">2.2.0rc1</option>
+<option selected value="2.2.0rc2">2.2.0rc2</option>
+<option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.1.0rc2">2.1.0rc2</option>
 <option value="2.1.0rc1">2.1.0rc1</option>
 <option value="2.1.0">2.1.0</option>
@@ -85,6 +86,7 @@
         <div id="subheader">
             <h1>Upgrading Cordova iOS</h1>
             <small><select><option value="Upgrading%2520Cordova%2520iOS">Upgrading Cordova iOS</option>
+<option value="Upgrading%20Cordova%20iOS_upgrading_cordova_2_1_0_projects_to_2_2_0">      - Upgrading Cordova 2.1.0 projects to 2.2.0</option>
 <option value="Upgrading%20Cordova%20iOS_upgrading_cordova_2_0_0_projects_to_2_1_0">      - Upgrading Cordova 2.0.0 projects to 2.1.0</option>
 <option value="Upgrading%20Cordova%20iOS_upgrading_cordova_1_9_0_projects_to_2_0_0">      - Upgrading Cordova 1.9.0 projects to 2.0.0</option>
 <option value="Upgrading%20Cordova%20iOS_upgrading_cordova_1_8_x_projects_to_1_9_0">      - Upgrading Cordova 1.8.x projects to 1.9.0</option>
@@ -117,6 +119,7 @@
 <li><a href="cordova_globalization_globalization.md.html#Globalization">Globalization</a></li>
 <li><a href="cordova_media_media.md.html#Media">Media</a></li>
 <li><a href="cordova_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="cordova_splashscreen_splashscreen.md.html#Splashscreen">Splashscreen</a></li>
 <li><a href="cordova_storage_storage.md.html#Storage">Storage</a></li>
 </ul>
 <h1>Guides</h1>
@@ -136,7 +139,47 @@
             <div id="content">
                 <h1><a name="Upgrading%20Cordova%20iOS">Upgrading Cordova iOS</a></h1>
 
-<p>Please note that <strong>Xcode 4 is required</strong>. To submit to the Apple App Store, you must use the latest shipped version of the iOS SDK, which is iOS 5.1. The iOS 5.1 SDK requires Xcode 4.</p>
+<p>Please note that <strong>Xcode 4.5 is required</strong>. To submit to the Apple App Store, you must use the latest shipped version of the iOS SDK, which is iOS 6. The iOS 6 SDK requires Xcode 4.5.</p>
+
+<h2>
+<a name="Upgrading%20Cordova%20iOS_upgrading_cordova_2_1_0_projects_to_2_2_0">Upgrading Cordova 2.1.0 projects to 2.2.0</a>
+</h2>
+
+<ol>
+<li>
+<strong>Download and extract the Cordova 2.2.0 source</strong> to a <strong>permanent folder location</strong> on your hard drive (say to ~/Documents/Cordova-2.2.0)</li>
+<li>
+<strong>Quit Xcode</strong> if it is running.</li>
+<li>
+<strong>Navigate</strong> to the directory where you put the downloaded source above, using <strong>Terminal.app</strong>.</li>
+<li>
+<a href="guide_command-line_index.md.html#Command-Line%20Usage_ios"><strong>Create a new project</strong></a> from the command-line tools - you will have to grab the assets from this new project</li>
+<li>
+<strong>Copy</strong> the <strong>www/cordova-2.2.0.js</strong> file from the new project into your <strong>www</strong> folder, and delete your <strong>www/cordova-2.1.0.js</strong> file</li>
+<li>
+<strong>Update</strong> the Cordova script reference in your <strong>www/index.html</strong> file (and any other files that contain the script reference) to point to the new <strong>cordova-2.2.0.js</strong> file</li>
+<li>Update (or replace, if you never changed the file) your <strong>MainViewController.m</strong> according to the one from the new project:
+<ul>
+<li>Updated -&gt; viewWillAppear</li>
+</ul>
+</li>
+<li>Copy the <strong>"cordova"</strong> folder from the new project into your project's root folder <strong>(in 2.2.0, this has an updated 'emulate' script)</strong> </li>
+<li>
+<p>Next, update your CordovaLib sub-project reference. Beginning with Cordova 2.1.0, we are not using the CORDOVALIB Xcode variable anymore when referencing where CordovaLib resides, the reference is an absolute file reference now.</p>
+
+<ol>
+<li>Launch <strong>Terminal.app</strong>
+</li>
+<li>Go to the location where you installed Cordova <strong>(see Step 1)</strong>, in the <strong>bin</strong> sub-folder</li>
+<li>
+<p>Run the script below where the first parameter is the path to your project's <strong>.xcodeproj</strong> file:</p>
+
+<p><code>update_cordova_subproject path/to/your/project/xcodeproj</code></p>
+</li>
+</ol>
+</li>
+</ol>
+<p><strong>Note</strong> that in 2.2.0, the <strong>bin/create</strong> script will copy in the CordovaLib sub-project into your project now. To have the same kind of setup, just copy in the right CordovaLib into your project folder, and update the CordovaLib sub-project location (relative to the project) in the Xcode <a href="cordova_file_file.md.html#File">File</a> Inspector.</p>
 
 <h2>
 <a name="Upgrading%20Cordova%20iOS_upgrading_cordova_2_0_0_projects_to_2_1_0">Upgrading Cordova 2.0.0 projects to 2.1.0</a>
@@ -240,7 +283,7 @@
 <li>Locate the <strong>"VERSION"</strong> file, drag it into your main project (we want to create a link to it, not a copy)</li>
 <li>Select the <strong>"Create groups for any added folders"</strong> radiobutton, then select the <strong>"Finish"</strong> button</li>
 <li>Select the <strong>"VERSION"</strong> file that you just dragged in a previous step</li>
-<li>Press the key combination <strong>Option-Command-1</strong> to show the <strong><a href="cordova_file_file.md.html#File">File</a> Inspector</strong> (or menuitem <strong>View -&gt; Utilities -&gt; Show <a href="cordova_file_file.md.html#File">File</a> Inspector</strong>)</li>
+<li>Press the key combination <strong>Option-Command-1</strong> to <a href="cordova_splashscreen_splashscreen.md.html#show">show</a> the <strong><a href="cordova_file_file.md.html#File">File</a> Inspector</strong> (or menuitem <strong>View -&gt; Utilities -&gt; Show <a href="cordova_file_file.md.html#File">File</a> Inspector</strong>)</li>
 <li>Choose <strong>"Relative to CORDOVALIB"</strong> in the <strong><a href="cordova_file_file.md.html#File">File</a> Inspector</strong> for the drop-down menu for <strong>Location</strong>
 </li>
 <li>Set the Xcode preference <strong>"Xcode Preferences -&gt; Locations -&gt; Derived Data -&gt; Advanced…"</strong> to <strong>"Unique"</strong> (this is so the unified headers can be found)</li>
@@ -388,7 +431,7 @@ Cordova.plist
 </li>
 <li>
 <strong>Select "Cordova.framework"</strong> in the Project Navigator</li>
-<li>Press the key combination <strong>Option-Command-1</strong> to show the <strong><a href="cordova_file_file.md.html#File">File</a> Inspector</strong>
+<li>Press the key combination <strong>Option-Command-1</strong> to <a href="cordova_splashscreen_splashscreen.md.html#show">show</a> the <strong><a href="cordova_file_file.md.html#File">File</a> Inspector</strong>
 </li>
 <li>Choose <strong>"Absolute Path"</strong> in the <strong><a href="cordova_file_file.md.html#File">File</a> Inspector</strong> for the drop-down menu for <strong>Location</strong>
 </li>

@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.2.0rc1">2.2.0rc1</option>
+<option selected value="2.2.0rc2">2.2.0rc2</option>
+<option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.1.0rc2">2.1.0rc2</option>
 <option value="2.1.0rc1">2.1.0rc1</option>
 <option value="2.1.0">2.1.0</option>
@@ -159,8 +160,9 @@ File System Quick Example</option>
 <option value="FileTransfer_details">      - Details</option>
 <option value="FileTransfer_supported_platforms">      - Supported Platforms</option>
 <option value="FileTransfer_upload">      - upload</option>
-<option value="FileTransfer_ios_quirks">      - iOS Quirks</option>
 <option value="FileTransfer_download">      - download</option>
+<option value="FileTransfer_abort">      - abort</option>
+<option value="FileTransfer_onprogress">      - onprogress</option>
 <option value="FileUploadOptions">FileUploadOptions</option>
 <option value="FileUploadOptions_properties">      - Properties</option>
 <option value="FileUploadOptions_description">      - Description</option>
@@ -213,6 +215,7 @@ File System Quick Example</option>
 <li><a href="cordova_globalization_globalization.md.html#Globalization">Globalization</a></li>
 <li><a href="cordova_media_media.md.html#Media">Media</a></li>
 <li><a href="cordova_notification_notification.md.html#Notification">Notification</a></li>
+<li><a href="cordova_splashscreen_splashscreen.md.html#Splashscreen">Splashscreen</a></li>
 <li><a href="cordova_storage_storage.md.html#Storage">Storage</a></li>
 </ul>
 <h1>Guides</h1>
@@ -263,7 +266,7 @@ File System Quick Example</option>
 
 <h3>Android</h3>
 
-<h4>app/res/xml/plugins.xml</h4>
+<h4>app/res/xml/config.xml</h4>
 
 <pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_file_file.md.html#File">File</a>" value="org.apache.cordova.FileUtils" /&gt;
 &lt;plugin name="<a href="cordova_file_file.md.html#FileTransfer">FileTransfer</a>" value="org.apache.cordova.<a href="cordova_file_file.md.html#FileTransfer">FileTransfer</a>" /&gt;
@@ -1036,7 +1039,9 @@ entry.setMetadata(success, fail, { "com.apple.MobileBackup": 1});
     }
 
     var onGetFileWin = function(parent) {
-      parent.setMetadata(onSetMetadataWin, onSetMetadataFail, { metadataKey: metadataValue});
+      var data = {};
+      data[metadataKey] = metadataValue;
+      parent.setMetadata(onSetMetadataWin, onSetMetadataFail, data);
     }
     var onGetFileFail = function() {
       console.log("error getting file")
@@ -1433,7 +1438,9 @@ entry.setMetadata(success, fail, { "com.apple.MobileBackup": 1});
     }
 
     var onGetDirectoryWin = function(parent) {
-      parent.setMetadata(onSetMetadataWin, onSetMetadataFail, { metadataKey: metadataValue});
+      var data = {};
+      data[metadataKey] = metadataValue;
+      parent.setMetadata(onSetMetadataWin, onSetMetadataFail, data);
     }
     var onGetDirectoryFail = function() {
       console.log("error getting dir")
@@ -1823,8 +1830,11 @@ directoryReader.readEntries(success,fail);
 <a name="FileTransfer_properties">Properties</a>
 </h2>
 
-<p>N/A</p>
-
+<ul>
+<li>
+<strong>onprogress:</strong> Called with a ProgressEvent whenever a new chunk of data is transferred. <em>(Function)</em>
+</li>
+</ul>
 <h2>
 <a name="FileTransfer_methods">Methods</a>
 </h2>
@@ -1834,6 +1844,8 @@ directoryReader.readEntries(success,fail);
 <strong>upload</strong>: sends a file to a server. </li>
 <li>
 <strong>download</strong>: downloads a file from server.</li>
+<li>
+<strong>abort</strong>: Aborts an in-progress transfer.</li>
 </ul>
 <h2>
 <a name="FileTransfer_details">Details</a>
@@ -1874,7 +1886,7 @@ It is also possible to download a file from remote and save it on the device (on
 </ul>
 <p><strong>Quick Example</strong></p>
 
-<pre class="prettyprint"><code>// !! Assumes variable fileURI contains a valid URI to a  text file on the device
+<pre class="prettyprint"><code>// !! Assumes variable fileURI contains a valid URI to a text file on the device
 
 var win = function(r) {
     console.log("Code = " + r.responseCode);
@@ -1892,12 +1904,13 @@ var options = new <a href="cordova_file_file.md.html#FileUploadOptions">FileUplo
 options.fileKey="file";
 options.fileName=fileURI.substr(fileURI.lastIndexOf('/')+1);
 options.mimeType="text/plain";
+</code></pre>
 
-var params = new Object();
-params.value1 = "test";
-params.value2 = "param";
+<p>var params = {};
+    params.value1 = "test";
+    params.value2 = "param";</p>
 
-options.params = params;
+<pre class="prettyprint"><code>options.params = params;
 
 var ft = new <a href="cordova_file_file.md.html#FileTransfer">FileTransfer</a>();
 ft.upload(fileURI, encodeURI("http://some.server.com/upload.php"), win, fail, options);
@@ -1937,7 +1950,7 @@ ft.upload(fileURI, encodeURI("http://some.server.com/upload.php"), win, fail, op
             options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
             options.mimeType="image/jpeg";
 
-            var params = new Object();
+            var params = {};
             params.value1 = "test";
             params.value2 = "param";
 
@@ -1968,13 +1981,9 @@ ft.upload(fileURI, encodeURI("http://some.server.com/upload.php"), win, fail, op
 &lt;/html&gt;
 </code></pre>
 
-<h2>
-<a name="FileTransfer_ios_quirks">iOS Quirks</a>
-</h2>
+<p><strong>Setting Upload Headers</strong></p>
 
-<p>Setting headers for <a href="cordova_file_file.md.html#FileTransfer">FileTransfer</a> Upload:</p>
-
-<p><strong>Quick Example</strong></p>
+<p>Supported on Android and iOS</p>
 
 <pre class="prettyprint"><code>function win(r) {
     console.log("Code = " + r.responseCode);
@@ -1995,7 +2004,7 @@ options.fileKey="file";
 options.fileName=fileURI.substr(fileURI.lastIndexOf('/')+1);
 options.mimeType="text/plain";
 
-var params = new Object();
+var params = {};
 params.headers={'headerParam':'headerValue'};
 
 options.params = params;
@@ -2024,7 +2033,7 @@ ft.upload(fileURI, uri, win, fail, options);
 </ul>
 <p><strong>Quick Example</strong></p>
 
-<pre class="prettyprint"><code> // !! Assumes variable url contains a valid URI to a file on a server and filePath is a valid path on the device
+<pre class="prettyprint"><code>// !! Assumes filePath is a valid path on the device
 
 var fileTransfer = new <a href="cordova_file_file.md.html#FileTransfer">FileTransfer</a>();
 var uri = encodeURI("http://some.server.com/download.php");
@@ -2042,6 +2051,45 @@ fileTransfer.download(
     }
 );
 </code></pre>
+
+<h2>
+<a name="FileTransfer_abort">abort</a>
+</h2>
+
+<p>Aborts an in-progress transfer. The onerror callback will be called with a <a href="cordova_file_file.md.html#FileTransferError">FileTransferError</a> object which has an error code of <a href="cordova_file_file.md.html#FileTransferError">FileTransferError</a>.ABORT_ERR.</p>
+
+<p><strong>Supported Platforms</strong></p>
+
+<ul>
+<li>Android</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="FileTransfer_onprogress">onprogress</a>
+</h2>
+
+<p>Called with a ProgressEvent whenever a new chunk of data is transferred.</p>
+
+<p><strong>Supported Platforms</strong></p>
+
+<ul>
+<li>Android</li>
+<li>iOS</li>
+</ul>
+<p><strong>Example</strong></p>
+
+<pre class="prettyprint"><code>fileTransfer.onprogress = function(progressEvent) {
+    if (progressEvent.lengthComputable) {
+      loadingStatus.setPercentage(progressEvent.loaded / progressEvent.total);
+    } else {
+      loadingStatus.increment();
+    }
+};
+fileTransfer.download(...); // or fileTransfer.upload(...);
+</code></pre>
+
+<p><strong>Quirks</strong>
+- On both Android an iOS, lengthComputable is false for downloads that use gzip encoding.</p>
 
 <hr>
 <h1><a name="FileUploadOptions">FileUploadOptions</a></h1>
@@ -2365,6 +2413,7 @@ entry.getMetadata(win, null);
 <li><code><a href="cordova_file_file.md.html#FileTransferError">FileTransferError</a>.FILE_NOT_FOUND_ERR</code></li>
 <li><code><a href="cordova_file_file.md.html#FileTransferError">FileTransferError</a>.INVALID_URL_ERR</code></li>
 <li><code><a href="cordova_file_file.md.html#FileTransferError">FileTransferError</a>.CONNECTION_ERR</code></li>
+<li><code><a href="cordova_file_file.md.html#FileTransferError">FileTransferError</a>.ABORT_ERR</code></li>
 </ul>
 <h2>
 <a name="FileTransferError_description">Description</a>

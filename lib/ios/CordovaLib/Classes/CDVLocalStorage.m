@@ -31,21 +31,18 @@
 
 @synthesize backupInfo, webviewDelegate;
 
-- (CDVPlugin*)initWithWebView:(UIWebView*)theWebView
+- (CDVPlugin*)initWithWebView:(UIWebView*)theWebView settings:(NSDictionary*)classSettings
 {
-    self = (CDVLocalStorage*)[super initWithWebView:theWebView];
+    self = (CDVLocalStorage*)[super initWithWebView:theWebView settings:classSettings];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onResignActive)
                                                      name:UIApplicationWillResignActiveNotification object:nil];
 
-        self.backupInfo = [[self class] createBackupInfo];
+        self.backupInfo = [[self class] createBackupInfoWithCloudBackup:[(NSString*)[classSettings objectForKey:@"backupType"] isEqualToString:@"cloud"]];
 
         // over-ride current webview delegate (for restore reasons)
         self.webviewDelegate = theWebView.delegate;
         theWebView.delegate = self;
-
-        // verify the and fix the iOS 5.1 database locations once
-        [[self class] __verifyAndFixDatabaseLocations];
     }
 
     return self;
@@ -54,8 +51,18 @@
 #pragma mark -
 #pragma mark Plugin interface methods
 
-+ (NSMutableArray*)createBackupInfoWithTargetDir:(NSString*)targetDir backupDir:(NSString*)backupDir rename:(BOOL)rename
++ (NSMutableArray*)createBackupInfoWithTargetDir:(NSString*)targetDir backupDir:(NSString*)backupDir targetDirNests:(BOOL)targetDirNests backupDirNests:(BOOL)backupDirNests rename:(BOOL)rename
 {
+    /*
+     This "helper" does so much work and has so many options it would probably be clearer to refactor the whole thing.
+     Basically, there are three database locations:
+
+     1. "Normal" dir -- LIB/<nested dires WebKit/LocalStorage etc>/<normal filenames>
+     2. "Caches" dir -- LIB/Caches/<normal filenames>
+     3. "Backup" dir -- DOC/Backups/<renamed filenames>
+
+     And between these three, there are various migration paths, most of which only consider 2 of the 3, which is why this helper is based on 2 locations and has a notion of "direction".
+     */
     NSMutableArray* backupInfo = [NSMutableArray arrayWithCapacity:3];
 
     NSString* original;
@@ -64,8 +71,9 @@
 
     // ////////// LOCALSTORAGE
 
-    original = [targetDir stringByAppendingPathComponent:@"file__0.localstorage"];
-    backup = [backupDir stringByAppendingPathComponent:rename ? @"localstorage.appdata.db":@"file__0.localstorage"];
+    original = [targetDir stringByAppendingPathComponent:targetDirNests ? @"WebKit/LocalStorage/file__0.localstorage":@"file__0.localstorage"];
+    backup = [backupDir stringByAppendingPathComponent:(backupDirNests ? @"WebKit/LocalStorage":@"")];
+    backup = [backup stringByAppendingPathComponent:(rename ? @"localstorage.appdata.db":@"file__0.localstorage")];
 
     backupItem = [[CDVBackupInfo alloc] init];
     backupItem.backup = backup;
@@ -76,8 +84,9 @@
 
     // ////////// WEBSQL MAIN DB
 
-    original = [targetDir stringByAppendingPathComponent:@"Databases.db"];
-    backup = [backupDir stringByAppendingPathComponent:rename ? @"websqlmain.appdata.db":@"Databases.db"];
+    original = [targetDir stringByAppendingPathComponent:targetDirNests ? @"WebKit/Databases/Databases.db":@"Databases.db"];
+    backup = [backupDir stringByAppendingPathComponent:(backupDirNests ? @"WebKit/Databases":@"")];
+    backup = [backup stringByAppendingPathComponent:(rename ? @"websqlmain.appdata.db":@"Databases.db")];
 
     backupItem = [[CDVBackupInfo alloc] init];
     backupItem.backup = backup;
@@ -88,8 +97,9 @@
 
     // ////////// WEBSQL DATABASES
 
-    original = [targetDir stringByAppendingPathComponent:@"file__0"];
-    backup = [backupDir stringByAppendingPathComponent:rename ? @"websqldbs.appdata.db":@"file__0"];
+    original = [targetDir stringByAppendingPathComponent:targetDirNests ? @"WebKit/Databases/file__0":@"file__0"];
+    backup = [backupDir stringByAppendingPathComponent:(backupDirNests ? @"WebKit/Databases":@"")];
+    backup = [backup stringByAppendingPathComponent:(rename ? @"websqldbs.appdata.db":@"file__0")];
 
     backupItem = [[CDVBackupInfo alloc] init];
     backupItem.backup = backup;
@@ -101,16 +111,32 @@
     return backupInfo;
 }
 
-+ (NSMutableArray*)createBackupInfo
++ (NSMutableArray*)createBackupInfoWithCloudBackup:(BOOL)cloudBackup
 {
+    // create backup info from backup folder to caches folder
     NSString* appLibraryFolder = [NSSearchPathForDirectoriesInDomains (NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* appDocumentsFolder = [NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString* cacheFolder = [appLibraryFolder stringByAppendingPathComponent:@"Caches"];
-    NSString* backupsFolder = [appLibraryFolder stringByAppendingPathComponent:@"Backups"];
+    NSString* backupsFolder = [appDocumentsFolder stringByAppendingPathComponent:@"Backups"];
 
-    // create the backups folder
+    // create the backups folder, if needed
     [[NSFileManager defaultManager] createDirectoryAtPath:backupsFolder withIntermediateDirectories:YES attributes:nil error:nil];
 
-    return [self createBackupInfoWithTargetDir:cacheFolder backupDir:backupsFolder rename:YES];
+    [self addSkipBackupAttributeToItemAtURL:[NSURL fileURLWithPath:backupsFolder] skip:!cloudBackup];
+
+    return [self createBackupInfoWithTargetDir:cacheFolder backupDir:backupsFolder targetDirNests:NO backupDirNests:NO rename:YES];
+}
+
++ (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL*)URL skip:(BOOL)skip
+{
+    NSAssert(IsAtLeastiOSVersion(@"5.1"), @"Cannot mark files for NSURLIsExcludedFromBackupKey on iOS less than 5.1");
+
+    NSError* error = nil;
+    BOOL success = [URL setResourceValue:[NSNumber numberWithBool:skip] forKey:NSURLIsExcludedFromBackupKey error:&error];
+    if (!success) {
+        NSLog(@"Error excluding %@ from backup %@", [URL lastPathComponent], error);
+    }
+    return success;
 }
 
 + (BOOL)copyFrom:(NSString*)src to:(NSString*)dest error:(NSError * __autoreleasing*)error
@@ -252,6 +278,12 @@
     }
 }
 
++ (void)__fixupDatabaseLocationsWithBackupType:(NSString*)backupType
+{
+    [self __verifyAndFixDatabaseLocations];
+    [self __restoreLegacyDatabaseLocationsWithBackupType:backupType];
+}
+
 + (void)__verifyAndFixDatabaseLocations
 {
     NSBundle* mainBundle = [NSBundle mainBundle];
@@ -303,44 +335,41 @@
     return dirty;
 }
 
-+ (void)__fixLegacyDatabaseLocationIssues
++ (void)__restoreLegacyDatabaseLocationsWithBackupType:(NSString*)backupType
 {
-    if (IsAtLeastiOSVersion(@"6.0")) {
-        // Ensure that the webview does not backup the databases to iCloud (We set to this true in 2.1, so need to reset it for upgraders).
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"WebKitStoreWebDataForBackup"];
+    // on iOS 6, if you toggle between cloud/local backup, you must move database locations.  Default upgrade from iOS5.1 to iOS6 is like a toggle from local to cloud.
+    if (!IsAtLeastiOSVersion(@"6.0")) {
+        return;
     }
 
-    /*
-     * There are currently two legacy storage locations:
-     *   {Lib}/WebKit/LocalStorage which was used for store database (without backup renaming) in ios <5.1 and briefly for ios6, and
-     *   {Doc}/Backups which was used to store database backups (with backup renaming) with ios5.1+ until Apple started rejecting apps
-     *      for using the {Doc} folder to save non user generated content.
-     */
     NSString* appLibraryFolder = [NSSearchPathForDirectoriesInDomains (NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString* appDocumentsFolder = [NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 
-    // targetDir is where we want our databases to end up
-    NSString* targetDir = [appLibraryFolder stringByAppendingPathComponent:@"Caches"];
+    NSMutableArray* backupInfo = [NSMutableArray arrayWithCapacity:0];
 
-    // backupDir's are the places where we may find old legacy backups
-    NSString* backupDir = [appDocumentsFolder stringByAppendingPathComponent:@"Backups"];
-    NSString* backupDir2 = [appLibraryFolder stringByAppendingPathComponent:@"WebKit/LocalStorage"];
-
-    NSMutableArray* backupInfo = [self createBackupInfoWithTargetDir:targetDir backupDir:backupDir rename:YES];
-    [backupInfo addObjectsFromArray:[self createBackupInfoWithTargetDir:targetDir backupDir:backupDir2 rename:NO]];
+    if ([backupType isEqualToString:@"cloud"]) {
+        // We would like to restore old backups/caches databases to the new destination (nested in lib folder)
+        [backupInfo addObjectsFromArray:[self createBackupInfoWithTargetDir:appLibraryFolder backupDir:[appDocumentsFolder stringByAppendingPathComponent:@"Backups"] targetDirNests:YES backupDirNests:NO rename:YES]];
+        [backupInfo addObjectsFromArray:[self createBackupInfoWithTargetDir:appLibraryFolder backupDir:[appLibraryFolder stringByAppendingPathComponent:@"Caches"] targetDirNests:YES backupDirNests:NO rename:NO]];
+    } else {
+        // For ios6 local backups we also want to restore from Backups dir -- but we don't need to do that here, since the plugin will do that itself.
+        [backupInfo addObjectsFromArray:[self createBackupInfoWithTargetDir:[appLibraryFolder stringByAppendingPathComponent:@"Caches"] backupDir:appLibraryFolder targetDirNests:NO backupDirNests:YES rename:NO]];
+    }
 
     NSFileManager* manager = [NSFileManager defaultManager];
 
     for (CDVBackupInfo* info in backupInfo) {
-        if ([info shouldRestore]) {
-            NSLog(@"Restoring old webstorage backup. From: '%@' To: '%@'.", info.backup, info.original);
-            [self copyFrom:info.backup to:info.original error:nil];
-        }
         if ([manager fileExistsAtPath:info.backup]) {
+            if ([info shouldRestore]) {
+                NSLog(@"Restoring old webstorage backup. From: '%@' To: '%@'.", info.backup, info.original);
+                [self copyFrom:info.backup to:info.original error:nil];
+            }
             NSLog(@"Removing old webstorage backup: '%@'.", info.backup);
             [manager removeItemAtPath:info.backup error:nil];
         }
     }
+
+    [[NSUserDefaults standardUserDefaults] setBool:[backupType isEqualToString:@"cloud"] forKey:@"WebKitStoreWebDataForBackup"];
 }
 
 #pragma mark -

@@ -3,6 +3,22 @@ CHANGELOG
 iOS 
 ---
 
+573067d Updated RELEASENOTES.md for 2.2.0rc2
+ded137b Updated README.md for version 2.2.0
+169995d [CB-1145] Require minimum Xcode 4.5 thus iOS 4.3 (Lion and Mountain Lion only - LLVM Compiler 4.0)
+5acde0c Updated VERSION file to 2.2.0rc2
+46577a9 Updated js to 2.2.0rc2
+ef6bb24 Remove CordovaBuildSettings.xcconfig from the default template
+516768d [CB-1698] Remove WebScriptDebugDelegate.h
+32585b2 Added TODO note for createAddressBook
+3767d5d [CB-1597] Running ./cordova/debug / cordova/emulate causes errors
+9e0bb93 [CB-1597] Running ./cordova/debug / cordova/emulate causes errors
+977513e Added deprecation notice to BackupWebStorage Cordova.plist property
+1dca15c [ios] bugfixes and comments.
+a39921b [ios] Webstorage backup to cloud/local-only
+78ba908 Removed deprecated instruction of setting of "invokeString" for custom url schemes
+35b11ff Removed Cordova Settings File guide, added web shortcut to online doc.
+ef67dcf Fix unregistering of ViewControllers in CDVURLProtocol.m
 b74752f Added 2.2.0rc1 Release Notes
 6595b90 Do not prompt user about whether to build from the emulate script.
 48d3b51 Updated cordova-js to tagged 2.2.0rc1, updated iOS version to 2.2.0rc1, updated cordova-hello-world to 2.2.0rc1
@@ -107,6 +123,10 @@ f187cdd [CB-1456] bin/diagnose_project script prints Build Settings from the pro
 BlackBerry 
 ----------
 
+6ae80d9 Fix building for BlackBerry 10
+35cd0cd [CB-1728] - updating version and tagging
+a5ab5a7 [CB-1719] - updating www/
+54d1c81 [CB-1710] - updating the javascripts
 e72c24c [CB-1647] - updating to 2.2.0rc1
 ee91b5e [CB-1637] - Updating www/
 3f7a96d [CB-1627] - updating javascript
@@ -131,6 +151,34 @@ c6040d8 [CB-1485] - missing apache header
 Android 
 -------
 
+3c5815a Update JS to new tag (again). Includes latest fix to CB-1745.
+678ae2d Disable limiting of payload size when sending data to JS.
+e4f8f44 Update JS to new 2.2.0rc2 tag.
+49566d2 Partial fix for CB-1742, still don't know what this should do for notification.confirm's cancel, so we return zero for now
+7f4ee7b Changing DroidGap back and duplicating code so that we don't have a regression on CB-1568
+32526a8 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+71a7f72 Added fix for webViewClient. CB-1568
+4d0824f Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+d56dd40 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+6aafd6d Moved the initialization of the IceCreamWebViewClient to CordovaWebView, we weren't loading the fix in properly after the refactor - CB-1742
+011b512 Update JS.
+aa2d17e Disable JS_OBJECT bridge on pre-gingerbread devices.
+0eee229 Add support for null PluginResult payloads.
+a2f35d2 CB-1743: Globalization.getDateNames will crash Android 2.2 applications
+58f58d9 Merge branch 'master' of http://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+412bb34 Pull in exec fix for Android 2.2
+652f15f Guard against NullPointerException in Compasslistenter
+8512ebb Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+f0ac173 Adding the updated blank index
+bef0d47 Starting incrementing the tag to RC2
+cba0d59 Fix exception when plugin returns a null string.
+7d3afca Tweak the useBrowserHistory deprecation message to make the date is clear
+5f1cda0 Cleaning up code, because negating string comparisons is confusing if the string itself is called false.  Also clarified the deprecation message to match the Cordova policy that we agreed on for deprecation changes
+e11bead Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+6a1e089 Change useBrowserHistory to default to true (actually)
+0aa98ac CB-1697: openDatabase of Cordova for Android uses the wrong directory separator
+f9ef38c Updating the config.xml default to be true.  See discussion on CB-1611
+a3a215a Merge in video tag changes and fix back button issue
 d3ee322 Updating Hello World
 7ec20e7 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
 08dfb13 Updating Android to 2.2.0rc1
@@ -273,10 +321,12 @@ dbfa2d7 Change bin/create to use bash as shell
 8134f86 Fixing CB-1467
 5c60b09 Updating the manifest so that it is correct
 20a19d6 Put this on the wrong branch
+06aafc9 Play <video> tags from the Webview in a Fullscreen video player. Code from the Froyo Android Browser was adapted to support <video> elements in Cordova. The WebView creates a "CustomView" (a video player) that is displayed fullscreen. It uses API level 7, work has to be done to support lower version.
 
 Windows Phone 
 -------------
 
+d805058 update to 2.2.0rc2
 25399a3 Merge pull request #21 from purplecabbage/2.2.0rc1_prep
 5efc570 Update templates, [CB-1660]
 656c3eb update files so they don't need to change with every version
@@ -294,16 +344,19 @@ ce9995e update hello world app to 2.2.0
 Bada 
 ----
 
+32d8185 updating version to 2.2.0rc2
 e815027 bumping version
 
 BadaWac 
 -------
 
+aa7f3fe updating JS and bumping VER number
 7b22e35 updating cordova version
 
 Tizen 
 -----
 
+d0c4b24 updating javascript and bumping version number
 bb7d71e bumping version number
 5470dec adding apache header license
 
@@ -314,5 +367,6 @@ Mac
 Qt 
 --
 
+81cc123 updating VERSION
 1362016 bumping version number
 ed508de adding apache header license

@@ -37,7 +37,7 @@
         </and>
     </condition>
 
-    <condition property="bbwp" value="${properties.qnx.bbwp.dir}/bbwp" else="${properties.qnx.bbwp.dir}/bbwp.exe">
+    <condition property="bbwp" value="${properties.qnx.bbwp.dir}/bbwp" else="${properties.qnx.bbwp.dir}/bbwp.bat">
         <equals arg1="${isMacOSX}" arg2="true" />
     </condition>
 

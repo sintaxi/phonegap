@@ -249,9 +249,13 @@
         // get the info after possible edit
         // if we got this far, user has already approved/ disapproved addressBook access
         ABAddressBookRef addrBook = nil;
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 60000
         if (&ABAddressBookCreateWithOptions != NULL) {
             addrBook = ABAddressBookCreateWithOptions(NULL, NULL);
-        } else {
+        }
+        else
+#endif
+        {
             // iOS 4 & 5
             addrBook = ABAddressBookCreate();
         }
@@ -323,7 +327,7 @@
                             matches = [NSMutableArray arrayWithCapacity:xferCount];
 
                             for (int k = 0; k < xferCount; k++) {
-                                CDVContact* xferContact = [[CDVContact alloc] initFromABRecord:(ABRecordRef)[foundRecords objectAtIndex:k]];
+                                CDVContact* xferContact = [[CDVContact alloc] initFromABRecord:(__bridge ABRecordRef)[foundRecords objectAtIndex:k]];
                                 [matches addObject:xferContact];
                                 xferContact = nil;
                             }
@@ -335,7 +339,7 @@
                         int testCount = [foundRecords count];
 
                         for (int j = 0; j < testCount; j++) {
-                            CDVContact* testContact = [[CDVContact alloc] initFromABRecord:(ABRecordRef)[foundRecords objectAtIndex:j]];
+                            CDVContact* testContact = [[CDVContact alloc] initFromABRecord:(__bridge ABRecordRef)[foundRecords objectAtIndex:j]];
                             if (testContact) {
                                 bFound = [testContact foundValue:filter inFields:returnFields];
                                 if (bFound) {
@@ -549,11 +553,17 @@
 
 @implementation CDVAddressBookHelper
 
+/**
+ * NOTE: workerBlock is responsible for releasing the addressBook that is passed to it
+ */
 - (void)createAddressBook:(CDVAddressBookWorkerBlock)workerBlock
 {
-    // !! caller is responsible for releasing AddressBook!!
+    // TODO: this probably should be reworked - seems like the workerBlock can just create and release its own AddressBook,
+    // and also this important warning from (http://developer.apple.com/library/ios/#documentation/ContactData/Conceptual/AddressBookProgrammingGuideforiPhone/Chapters/BasicObjects.html):
+    // "Important: Instances of ABAddressBookRef cannot be used by multiple threads. Each thread must make its own instance."
     ABAddressBookRef addressBook;
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 60000
     if (&ABAddressBookCreateWithOptions != NULL) {
         CFErrorRef error = nil;
         // CFIndex status = ABAddressBookGetAuthorizationStatus();
@@ -572,7 +582,10 @@
                         }
                     });
             });
-    } else {
+    }
+    else
+#endif
+    {
         // iOS 4 or 5 no checks needed
         addressBook = ABAddressBookCreate ();
         workerBlock (addressBook, NULL);
