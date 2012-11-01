@@ -3,6 +3,11 @@ CHANGELOG
 iOS 
 ---
 
+54efb8c Updated js, version, release notes to 2.2.0 final
+d0837cc Add more comments to CDVCommandDelegate.h.
+e545a4b [ios] Fix resign/pause event
+2792e7a [ios] change websql storage path to LocalStorage directory
+1a494d1 Removed WebScriptDebugDelegate license from LICENSE file
 573067d Updated RELEASENOTES.md for 2.2.0rc2
 ded137b Updated README.md for version 2.2.0
 169995d [CB-1145] Require minimum Xcode 4.5 thus iOS 4.3 (Lion and Mountain Lion only - LLVM Compiler 4.0)
@@ -123,6 +128,9 @@ f187cdd [CB-1456] bin/diagnose_project script prints Build Settings from the pro
 BlackBerry 
 ----------
 
+6b4fd01 [CB-1783] - updating version
+e84f049 [CB-1774] - updating www
+ddb8a1a [CB-1765] - updating javascript
 6ae80d9 Fix building for BlackBerry 10
 35cd0cd [CB-1728] - updating version and tagging
 a5ab5a7 [CB-1719] - updating www/
@@ -151,6 +159,17 @@ c6040d8 [CB-1485] - missing apache header
 Android 
 -------
 
+d9db845 CB-1795: onCreateOptionsMenu in PhoneGap 2.2.0 Release Candidate 2 isn't working anymore
+e55327b Tagging the 2.2.0 release after this commit
+bdd5a4e Merge branch 'master' of http://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+ac2e2c9 Update JS to new tag (again). Includes latest fix to CB-1745.
+76f9d49 Disable limiting of payload size when sending data to JS.
+6ec8ab9 Update JS to new 2.2.0rc2 tag.
+9c98625 Partial fix for CB-1742, still don't know what this should do for notification.confirm's cancel, so we return zero for now
+f270cde Changing DroidGap back and duplicating code so that we don't have a regression on CB-1568
+9de7efd Added fix for webViewClient. CB-1568
+7b81d31 Moved the initialization of the IceCreamWebViewClient to CordovaWebView, we weren't loading the fix in properly after the refactor - CB-1742
+876f975 CB-1691: Android menu button event doesn't fire when textbox has focus
 3c5815a Update JS to new tag (again). Includes latest fix to CB-1745.
 678ae2d Disable limiting of payload size when sending data to JS.
 e4f8f44 Update JS to new 2.2.0rc2 tag.
@@ -326,10 +345,22 @@ dbfa2d7 Change bin/create to use bash as shell
 Windows Phone 
 -------------
 
+502480b moved AudioFormatsHelper so it is available to all projects+templates
+e3defc9 updating to 2.2.0
+0257b98 Merge pull request #23 from sgrebnov/master
+3ea1b5d changes per CB-1758 license question with wp7 Notification.cs
+eafa475 fixes CB-1757 license issue with wp7 ImageExifHelper.cs
+e27db67 fixes CB-1756 license issue with wp7 AudioPlayer.cs and AudioRecorder.xaml.cs
+c7e56d7 Merge pull request #22 from sgrebnov/master
 d805058 update to 2.2.0rc2
+35a91b2 Merge remote-tracking branch 'Jesse/master'
+949b3f0 fixes Media Api Xna exception
 25399a3 Merge pull request #21 from purplecabbage/2.2.0rc1_prep
 5efc570 Update templates, [CB-1660]
 656c3eb update files so they don't need to change with every version
+997d7cb fixes Contacts Api tests
+5da07d6 fixes File Api tests
+2b144d8 Merge remote-tracking branch 'Jesse/master'
 bb6c6f4 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-wp7
 72f6c94 Merge pull request #20 from sgrebnov/master
 06dc27a fixes capture api
@@ -338,24 +369,29 @@ e224839 [CB-1491] added missing src headers
 WebOS 
 -----
 
+985d2ce merge pull request with cordova-js changes
 90107ec update webOS to 2.2.0
 ce9995e update hello world app to 2.2.0
 
 Bada 
 ----
 
+cac1ac1 updated version to 2.2.0
 32d8185 updating version to 2.2.0rc2
 e815027 bumping version
 
 BadaWac 
 -------
 
+92c21a5 updating javascript
+09b29de updated to 2.2.0
 aa7f3fe updating JS and bumping VER number
 7b22e35 updating cordova version
 
 Tizen 
 -----
 
+33bbf56 updating to 2.2.0
 d0c4b24 updating javascript and bumping version number
 bb7d71e bumping version number
 5470dec adding apache header license
@@ -367,6 +403,6 @@ Mac
 Qt 
 --
 
-81cc123 updating VERSION
+41f9403 updated version to 2.2.0
 1362016 bumping version number
 ed508de adding apache header license

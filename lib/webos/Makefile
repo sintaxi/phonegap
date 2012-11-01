@@ -43,14 +43,9 @@ UNAME := $(shell uname)
 NAME = `$(CAT) framework/appinfo.json | $(GREP) '"id"' | $(CUT) -d \" -f 4`
 VERSION = `$(CAT) framework/appinfo.json | $(GREP) '"version"' | $(CUT) -d \" -f 4`
 
-all :: js copy_js package deploy run
+all :: copy_js package deploy run
 
-custom :: js copy_js package deploy
-
-clean :: clean_libs
-
-clean_libs:
-	-$(RM_RF) lib
+custom :: copy_js package deploy
 
 package:
 ifeq ($(UNAME), Linux)
@@ -93,35 +88,4 @@ endif
 endif
 
 copy_js:
-	cp lib/cordova.js framework/cordova-$(PGVERSION).js
-
-js: lib/cordova.js
-
-lib/cordova.js: js/cordova-core.js js/acceleration.js js/accelerometer.js js/application.js js/audio.js js/camera.js js/compass.js js/contacts.js js/debugconsole.js js/device.js js/file.js js/geolocation.js js/map.js js/mojo.js js/mouse.js js/network.js js/notification.js js/orientation.js js/position.js js/service.js js/sms.js js/telephony.js js/window.js js/windowproperties.js lib/thumbs.0.5.2.js
-	$(MKPATH) lib
-	$(RM_F) $@
-	$(CAT) js/cordova-core.js >> $@
-	$(CAT) js/acceleration.js >> $@
-	$(CAT) js/accelerometer.js >> $@
-	$(CAT) js/application.js >> $@
-	$(CAT) js/audio.js >> $@
-	$(CAT) js/camera.js >> $@
-	$(CAT) js/contacts.js >> $@
-	$(CAT) js/compass.js >> $@
-	$(CAT) js/debugconsole.js >> $@
-	$(CAT) js/device.js >> $@
-	$(CAT) js/file.js >> $@
-	$(CAT) js/geolocation.js >> $@
-	$(CAT) js/map.js >> $@
-	$(CAT) js/mojo.js >> $@
-	$(CAT) js/mouse.js >> $@
-	$(CAT) js/network.js >> $@
-	$(CAT) js/notification.js >> $@
-	$(CAT) js/orientation.js >> $@
-	$(CAT) js/position.js >> $@
-	$(CAT) js/service.js >> $@
-	$(CAT) js/sms.js >> $@
-	$(CAT) js/telephony.js >> $@
-	$(CAT) js/window.js >> $@
-	$(CAT) js/windowproperties.js >> $@
-	$(CAT) lib/thumbs.0.5.2.js >> $@
+	cp lib/cordova.webos.js framework/cordova-$(PGVERSION).js

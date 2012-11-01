@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.2.0rc2">2.2.0rc2</option>
+<option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
+<option selected value="2.2.0">2.2.0</option>
 <option value="2.1.0rc2">2.1.0rc2</option>
 <option value="2.1.0rc1">2.1.0rc1</option>
 <option value="2.1.0">2.1.0</option>
@@ -2012,6 +2013,10 @@ options.params = params;
 var ft = new <a href="cordova_file_file.md.html#FileTransfer">FileTransfer</a>();
 ft.upload(fileURI, uri, win, fail, options);
 </code></pre>
+
+<p><strong>Android Quirks</strong></p>
+
+<p>If you experience problems uploading to a Nginx server then make sure you have the chunkedMode option set to false.</p>
 
 <h2>
 <a name="FileTransfer_download">download</a>

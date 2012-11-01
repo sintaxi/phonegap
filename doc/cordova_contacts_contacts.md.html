@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.2.0rc2">2.2.0rc2</option>
+<option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
+<option selected value="2.2.0">2.2.0</option>
 <option value="2.1.0rc2">2.1.0rc2</option>
 <option value="2.1.0rc1">2.1.0rc1</option>
 <option value="2.1.0">2.1.0</option>
@@ -113,6 +114,7 @@
 <option value="Contact_android_2_x_quirks">      - Android 2.X Quirks</option>
 <option value="Contact_blackberry_webworks_os_5_0_and_higher_quirks">      - BlackBerry WebWorks (OS 5.0 and higher) Quirks</option>
 <option value="Contact_ios_quirks">      - iOS Quirks</option>
+<option value="Contact_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
 <option value="Contact_bada_quirks">      - Bada Quirks</option>
 <option value="ContactAddress">ContactAddress</option>
 <option value="ContactAddress_properties">      - Properties</option>
@@ -338,6 +340,7 @@
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
+<li>Windows Phone 7</li>
 <li>Bada 1.2 &amp; 2.0</li>
 </ul>
 <h2>
@@ -421,6 +424,7 @@
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
+<li>Windows Phone 7</li>
 <li>Bada 1.2 &amp; 2.0</li>
 </ul>
 <h2>
@@ -573,6 +577,7 @@ navigator.<a href="cordova_contacts_contacts.md.html#contacts.find">contacts.fin
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
+<li>Windows Phone 7</li>
 <li>Bada 1.2 &amp; 2.0</li>
 </ul>
 <h2>
@@ -752,6 +757,36 @@ contact.remove(onSuccess,onError);
 <strong>photos:</strong> Returned Photo is stored in the application's temporary directory and a <a href="cordova_file_file.md.html#File">File</a> URL to photo is returned.  Contents of temporary folder is deleted when application exits. </li>
 <li>
 <strong>categories:</strong>  This property is not currently supported and will always be returned as <code>null</code>.</li>
+</ul>
+<h2>
+<a name="Contact_windows_phone_7_quirks">Windows Phone 7 Quirks</a>
+</h2>
+
+<ul>
+<li>
+<strong>displayName:</strong> When creating a contact, the value provided for the display name parameter differs from the display name retrieved when finding the contact. </li>
+<li>
+<strong>urls:</strong> When creating a contact, user inputs multiple web addresses in the url field and saves the contact. While pulling the information during the contact search url field do not <a href="cordova_splashscreen_splashscreen.md.html#show">show</a> up multiple web addresses</li>
+<li>
+<strong>phoneNumbers:</strong> <em>pref</em> is not supported, <em>type</em> is not supported in a <em>find</em> operation, only supports one phoneNumber of each <em>type</em>
+</li>
+<li>
+<strong>emails:</strong> <em>pref</em> is not supported, home and personal points to same email entry, supports only one entry for each <em>type</em>
+</li>
+<li>
+<strong>addresses:</strong> supports only <em>type</em> of work, home/personal, <em>type</em> home and personal points to same address entry, supports only one entry for each <em>type</em>
+</li>
+<li>
+<strong>organizations:</strong> Multiple <em>organizations</em> are not supported, does not support the attributes: <em>pref</em>, <em>type</em>, <em>department</em>
+</li>
+<li>
+<strong>note:</strong> This property is not supported, and will always be returned as <code>null</code>. </li>
+<li>
+<strong>ims:</strong> This property is not supported, and will always be returned as <code>null</code>. </li>
+<li>
+<strong>birthdays:</strong> This property is not supported, and will always be returned as <code>null</code>. </li>
+<li>
+<strong>categories:</strong> This property is not supported, and will always be returned as <code>null</code>. </li>
 </ul>
 <h2>
 <a name="Contact_bada_quirks">Bada Quirks</a>

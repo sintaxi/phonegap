@@ -10,7 +10,6 @@ Set up your environment and install the skeleton app
 -----------------------------------------------------
 Open a terminal, and navigate to the root Cordova webOS folder (where this readme.md file is located). A Makefile resides here; running make here will package your application, and install it to either the emulator, or the device. Or you can run make on individual target tasks:
 
-   - `make js` - builds Cordova.js from source javascript files to libs/Cordova.js
    - `make copy_js` - copies libs/Cordova.js to framework/Cordova.js - modify this path if you want Cordova.js in another location
    - `make package` - builds the webOS app (located in framework/) into an webOS .ipk installer package in the Cordova_root/palm/ folder
    - `make deploy` - installs the .ipk package to a device if detected, otherwise the emulator if its running 
@@ -38,9 +37,7 @@ To log from your JS code, use `console.log`
 
 Notes & Caveats
 -----------------------------------------------------
- - In order to use the vibration API on palm, your application needs to have a "com.palm.*" namespace, as vibration on webOS is a private API. The caveat of doing this is that you are essentially indicating that your app should pretend to be a "Palm app" (rather than a Nitobi app, for example) ... and as a result your app will be denied from the Palm app catalog.
- - Currently the map.show function can only accept one position, as Palm uses google maps as its native maps application, and it only can take one marker as a parameter.
- - Touch event not supported, natively. Cordova now includes event handlers for mouse & touch events - please see the example app bundled with Cordova-webOS
+ - In order to use the vibration API on webOS, your application needs to have a "com.palm.*" namespace, as vibration on webOS is a private API. The caveat of doing this is that you are essentially indicating that your app should pretend to be a "Palm app" (rather than a Nitobi app, for example) ... and as a result your app will be denied from the App Catalog.
  - If using Lawnchair, the only supported adaptor is webkitsqlite.
  - html select boxes are implemented by Cordova, not supported natively (believe it or not). only the most basic functionality is implemented, so be aware using this control could cause problems.
  - To enable verbose logging, add the file framework_config.json to your framework/www/ folder, containing the following json content: { "logLevel": 99 }
@@ -49,4 +46,4 @@ Notes & Caveats
 Helpful Links
 -----------------------------------------------------
   - Cordova Wiki: 				[wiki.apache.org/cordova](http://wiki.apache.org/cordova/)
-  - Palm webOS developer site: 	[developer.palm.com](http://developer.palm.com)
+  - HP webOS developer site: 	[developer.palm.com](http://developer.palm.com)
