@@ -31,7 +31,8 @@ Directory Structure
 	  | |-ios/
 	  | |-symbian/
 	  | |-webos/
-	  | '-windows/
+          | |-windows-phone-7
+	  | |-windows8/
 	  |-changelog ..... a changelog compiled from comments and authors
 	  |-license ....... the Apache Software License v2
 	  |-version ....... release version in plain text
