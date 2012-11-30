@@ -1,0 +1,4 @@
+CordovaStarter
+
+Starter project for building a Cordova app for Windows Phone version: 2.2.0rc2
+
