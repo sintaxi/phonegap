@@ -1,0 +1,9 @@
+
+Windows Phone 7 
+---
+
+41de5f5 update version files, and standalone template
+115a04f update to 2.3.0rc1 and fix issue with File upload
+d3cc114 update cordova-js to 2.3.0rc1
+a481d78 Merge branch 'master' of github.com:purplecabbage/incubator-cordova-wp7
+7979288 [CB-339] Should not be able to create a file or directory if the parent directory does not exist.

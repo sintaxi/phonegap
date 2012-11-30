@@ -32,9 +32,10 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.3.0rc1">2.3.0rc1</option>
 <option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
-<option selected value="2.2.0">2.2.0</option>
+<option value="2.2.0">2.2.0</option>
 <option value="2.1.0rc2">2.1.0rc2</option>
 <option value="2.1.0rc1">2.1.0rc1</option>
 <option value="2.1.0">2.1.0</option>
@@ -180,7 +181,63 @@ will create the .jar file in the form <code>cordova-x.x.x.jar</code> in the
     }
 </code></pre>
 </li>
-<li><p>Copy your application's HTML and JavaScript used to the <code>/assets/www</code> directory of your Android project</p></li>
+</ol>
+<p>In addition to this, if you are using camera, you will want to implement this as well:</p>
+
+<pre class="prettyprint"><code>@Override
+public void setActivityResultCallback(CordovaPlugin plugin) {
+    this.activityResultCallback = plugin;        
+}
+/**
+ * Launch an activity for which you would like a result when it finished. When this activity exits, 
+ * your onActivityResult() method will be called.
+ *
+ * @param command           The command object
+ * @param intent            The intent to start
+ * @param requestCode       The request code that is passed to callback to identify the activity
+ */
+public void startActivityForResult(CordovaPlugin command, Intent intent, int requestCode) {
+    this.activityResultCallback = command;
+    this.activityResultKeepRunning = this.keepRunning;
+
+    // If multitasking turned on, then disable it for activities that return results
+    if (command != null) {
+        this.keepRunning = false;
+    }
+
+    // Start activity
+    super.startActivityForResult(intent, requestCode);
+}
+
+@Override
+/**
+ * Called when an activity you launched exits, giving you the requestCode you started it with,
+ * the resultCode it returned, and any additional data from it.
+ *
+ * @param requestCode       The request code originally supplied to startActivityForResult(),
+ *                          allowing you to identify who this result came from.
+ * @param resultCode        The integer result code returned by the child activity through its setResult().
+ * @param data              An Intent, which can return result data to the caller (various data can be attached to Intent "extras").
+ */
+protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+    super.onActivityResult(requestCode, resultCode, intent);
+    CordovaPlugin callback = this.activityResultCallback;
+    if (callback != null) {
+        callback.onActivityResult(requestCode, resultCode, intent);
+    }
+}
+</code></pre>
+
+<p>Finally, remember to add the thread pool, otherwise the plugins will have no threads to run on.</p>
+
+<pre class="prettyprint"><code>@Override
+public ExecutorService getThreadPool() {
+    return threadPool;
+}
+</code></pre>
+
+<ol>
+<li>Copy your application's HTML and JavaScript used to the <code>/assets/www</code> directory of your Android project</li>
 <li>Copy <code>cordova.xml</code> and <code>plugins.xml</code> from <code>/framework/res/xml</code> to the <code>/res/xml</code> folder in your project</li>
 </ol>
 </div>

@@ -251,7 +251,9 @@ namespace WP7CordovaClassLib.Cordova.Commands
             {
                 try 
                 {
-                    uploadOptions = JSON.JsonHelper.Deserialize<UploadOptions[]>(options)[0];
+                    String obj = JSON.JsonHelper.Deserialize<String[]>(options)[0];
+
+                    uploadOptions = JSON.JsonHelper.Deserialize<UploadOptions>(obj);
                 }
                 catch (Exception)
                 {

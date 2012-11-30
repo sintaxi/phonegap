@@ -45,6 +45,10 @@
         <equals arg1="${isMacOSX}" arg2="true" />
     </condition>
 
+    <condition property="blackberry-debugtokenrequest" value="${properties.playbook.bbwp.dir}/blackberry-tablet-sdk/bin/blackberry-debugtokenrequest" else="${properties.playbook.bbwp.dir}/blackberry-tablet-sdk/bin/blackberry-debugtokenrequest.bat">
+        <equals arg1="${isMacOSX}" arg2="true" />
+    </condition>
+
     <!-- LOAD DEVICE -->
     
     <target name="load-device" depends="package-app">
@@ -65,7 +69,20 @@
     <!-- DEBUG-LOAD DEVICE -->
     
     <target name="debug-device" depends="package-app">
-        <bbwp code-sign="true" debug="true" />
+        <if>
+            <equals arg1="${properties.playbook.device.pin}" arg2="" />
+            <then>
+                <echo>
+                    If you fill in the playbook.device.pin value you can use debug tokens!
+                    This means you won't have to worry about having a unique version in config.xml every time.
+                </echo>
+                <bbwp code-sign="true" debug="true" />
+            </then>
+            <else>
+                <generate-debug-token />
+                <bbwp code-sign="false" debug="true" />
+            </else>
+        </if>
 
         <exec executable="${blackberry-deploy}" dir="." failonerror="true">
             <arg value="-installApp" />
@@ -97,6 +114,21 @@
         </exec>
     </target>
     
+    <target name="debug-simulator" depends="package-app">
+        <bbwp code-sign="false" debug="true" />
+        <echo>This tool will not open the simulator for you </echo>
+
+        <exec executable="${blackberry-deploy}" dir="." failonerror="true">
+            <arg value="-installApp" />
+            <arg value="-launchApp" />
+            <arg value="-device" />
+            <arg value="${properties.playbook.sim.ip}" />
+            <arg value="-password" />
+            <arg value="${properties.playbook.sim.password}" />
+            <arg value="-package" />
+            <arg file="${build.dir}/${cod.name}.bar" />
+        </exec>
+    </target>
     <!-- PACKAGE-APP -->
     
     <target name="package-app" depends="generate-cod-name, clean">
@@ -106,15 +138,7 @@
             <fileset dir="www" >
                 <exclude name="ext/**"/>
                 <exclude name="ext-air/**"/>
-                <exclude name="playbook/**"/>
                 <exclude name="res/resourceBundles/**"/>
-            </fileset>
-        </copy>
-        
-        <!-- Overwrite the cordova js with the playbook specific cordova js -->
-        <copy todir="${widget.dir}" overwrite="true">
-            <fileset dir="www/playbook">
-                <include name="*.js" />
             </fileset>
         </copy>
         
@@ -176,6 +200,36 @@
                     </exec>
                 </else>
             </if>
+        </sequential>
+    </macrodef>
+
+    <!-- install debug token" -->
+    <macrodef name="generate-debug-token">
+        <sequential>
+            <exec executable="${blackberry-debugtokenrequest}" dir="." failonerror="true">
+                <arg value="-storepass" />
+                <arg value="${properties.playbook.sigtool.csk.password}" />
+                <arg value="-deviceID" />
+                <arg value="0x${properties.playbook.device.pin}" />
+                <arg file="${properties.playbook.bbwp.dir}/debugtoken.bar" />
+            </exec>
+
+            <exec executable="${blackberry-deploy}" dir="." failonerror="true">
+                <arg value="-installApp" />
+                <arg value="-launchApp" />
+                <arg value="-device" />
+                <arg value="${properties.playbook.device.ip}" />
+                <arg value="-password" />
+                <arg value="${properties.playbook.device.password}" />
+                <arg value="-package" />
+                <arg file="${properties.playbook.bbwp.dir}/debugtoken.bar" />
+            </exec>
+
+            <replaceregexp 
+                file="${properties.playbook.bbwp.dir}/bin/bbwp.properties" 
+                match='&lt;debug_token&gt;.*&lt;\/debug_token&gt;'
+                replace='&lt;debug_token&gt;${properties.playbook.bbwp.dir}/debugtoken.bar&lt;/debug_token&gt;'
+                byline='true'/>
         </sequential>
     </macrodef>
 

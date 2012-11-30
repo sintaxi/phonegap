@@ -165,6 +165,101 @@
             </then>
         </if>
     </target>
+
+    <target name="debug-simulator" depends="package-app">
+        <bbwp code-sign="false" debug="true" />
+    
+        <!-- Find the simulator directory -->
+        <set-simulator-dir />
+
+        <!-- Locate BBWP simulator directory. There may be multiple, so choose the first. -->
+        <path id="bbwp.sim.path">
+            <first>
+                <fileset dir="${properties.blackberry.bbwp.dir}/simpack">
+                    <include name="**/handhelds.manifest.txt" />
+                </fileset>
+            </first>
+        </path>
+        <dirname property="bbwp.sim.dir" file="${toString:bbwp.sim.path}" />
+
+        <!-- Simulator directory: Use sim.dir property if set in project.properties file. 
+             Otherwise, use bbwp simulator directory. -->
+        <condition 
+            property="simulator.dir" 
+            value="${properties.blackberry.sim.dir}" 
+            else="${bbwp.sim.dir}">
+                <available file="${properties.blackberry.sim.dir}" type="dir" />
+        </condition>
+        <echo message="Simulator directory=${simulator.dir}" />
+
+        <!-- Simulator binary: Use sim.bin property if set in project.properties file  
+             or try setting to 'defaultSimulator.bat' in simulator directory. -->
+        <condition 
+            property="sim.bin" 
+            value="${properties.blackberry.sim.bin}" 
+            else="defaultSimulator.bat">
+                <available file="${simulator.dir}/${properties.blackberry.sim.bin}"/>
+        </condition>
+
+        <!-- If simulator executable does not exist, use the first device listed 
+             in the 'handhelds.manifest.txt' file in the simulator directory. -->
+        <loadfile 
+            property="device.list"
+            srcFile="${simulator.dir}/handhelds.manifest.txt">
+            <filterchain>
+                <tokenFilter>
+                    <stringtokenizer/>
+                </tokenFilter>
+            </filterchain>
+        </loadfile>
+
+        <propertyregex property="device"
+            input="${device.list}"
+            regexp="^\d{4}"
+            select="\0"
+            override="true" />
+        <property name="device.bin" value="${device}.bat" />
+
+        <condition
+            property="simulator.bin" 
+            value="${sim.bin}"
+            else="${device.bin}">
+                <available file="${simulator.dir}/${sim.bin}" />
+        </condition>
+        
+        <echo message="Simulator executable=${simulator.dir}/${simulator.bin}" />
+
+        <!-- Close running simulators -->
+        <echo message="Closing all running simulators..." />
+        <exec executable="${simulator.dir}/fledgecontroller.exe" dir="${simulator.dir}" spawn="false">
+            <arg value="/execute=kill" />
+        </exec>
+
+        <!-- MDS directory: Use mds.dir property if set in project.properties file. 
+             Otherwise, use bbwp MDS directory. -->
+        <condition 
+            property="mds.dir" 
+            value="${properties.blackberry.mds.dir}" 
+            else="${properties.blackberry.bbwp.dir}/mds">
+                <available file="${properties.blackberry.mds.dir}" type="dir" />
+        </condition>
+        <echo message="MDS directory=${mds.dir}" />
+        
+        <copy todir="${simulator.dir}">
+            <fileset dir="${build.dir}/StandardInstall" includes="*.cod, *.cso, *.csl, *.alx" />
+        </copy>
+        <exec executable="${mds.dir}/run.bat" dir="${mds.dir}" spawn="true" />
+        <exec executable="${simulator.dir}/${simulator.bin}" dir="${simulator.dir}" spawn="true" />
+
+        <!-- Only invoke FledgeHook.exe if it is found. Newer versions of the
+             WebWorks SDK do not include it. -->
+        <if>
+            <available file="${properties.blackberry.bbwp.dir}/FledgeHook.exe" />
+            <then>
+                <exec executable="${properties.blackberry.bbwp.dir}/FledgeHook.exe" dir="${properties.blackberry.bbwp.dir}" spawn="true" />
+            </then>
+        </if>
+    </target>
     
     <!-- PACKAGE-APP -->
     
@@ -175,8 +270,6 @@
             <fileset dir="www" >
                 <exclude name="ext-air/**"/>
                 <exclude name="ext-qnx/**"/>
-                <exclude name="playbook/**"/>
-                <exclude name="qnx/**"/>
                 <exclude name="res/resourceBundles/**" unless="${globalization}"/>
             </fileset>
         </copy>

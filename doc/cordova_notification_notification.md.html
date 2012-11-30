@@ -32,9 +32,10 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.3.0rc1">2.3.0rc1</option>
 <option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
-<option selected value="2.2.0">2.2.0</option>
+<option value="2.2.0">2.2.0</option>
 <option value="2.1.0rc2">2.1.0rc2</option>
 <option value="2.1.0rc1">2.1.0rc1</option>
 <option value="2.1.0">2.1.0</option>
@@ -271,6 +272,7 @@
 <li>Bada 1.2 &amp; 2.x</li>
 <li>webOS</li>
 <li>Tizen</li>
+<li>Windows 8</li>
 </ul>
 <h2>
 <a name="notification.alert_quick_example">Quick Example</a>
@@ -299,7 +301,7 @@ navigator.<a href="cordova_notification_notification.md.html#notification.alert"
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -373,7 +375,7 @@ you only get the last message.</li>
 <li>
 <strong>message:</strong> Dialog message (<code>String</code>)</li>
 <li>
-<strong>confirmCallback:</strong> - Callback to invoke with index of button pressed (1, 2 or 3). (<code>Function</code>)</li>
+<strong>confirmCallback:</strong> - Callback to invoke with index of button pressed (1, 2 or 3) or when the dialog is dismissed without a button press (0), (<code>Function</code>)</li>
 <li>
 <strong>title:</strong> Dialog title (<code>String</code>) (Optional, Default: "Confirm")</li>
 <li>
@@ -404,6 +406,7 @@ you only get the last message.</li>
 <li>Windows Phone 7 ( Mango )</li>
 <li>Bada 1.2 &amp; 2.x</li>
 <li>Tizen</li>
+<li>Windows 8</li>
 </ul>
 <h2>
 <a name="notification.confirm_quick_example">Quick Example</a>
@@ -435,7 +438,7 @@ function showConfirm() {
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -541,7 +544,7 @@ navigator.<a href="cordova_notification_notification.md.html#notification.beep">
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -663,7 +666,7 @@ navigator.<a href="cordova_notification_notification.md.html#notification.vibrat
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load

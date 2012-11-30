@@ -57,6 +57,12 @@
         </subant>
     </target>
 
+    <target name="debug-simulator">
+        <subant target="debug-simulator">
+            <fileset dir="." includes="${subant.file}"/>
+        </subant>
+    </target>
+
     <target name="debug-device">
         <subant target="debug-device">
             <fileset dir="." includes="${subant.file}"/>
@@ -77,6 +83,12 @@
     
     <target name="clean-device">
         <subant target="clean-device">
+            <fileset dir="." includes="${subant.file}"/>
+        </subant>
+    </target>
+    
+    <target name="package-app">
+        <subant target="package-app">
             <fileset dir="." includes="${subant.file}"/>
         </subant>
     </target>
@@ -119,6 +131,9 @@ COMMANDS
 
   build ............. Compiles and packages the project for deployment.
                         ant TARGET build
+
+  package-app ....... Packages the app into a WebWorks-compatible .zip file.
+                        ant TARGET package-app
 
   clean ............. Remove all files from the build/ directory.
                         ant TARGET clean

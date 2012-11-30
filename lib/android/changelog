@@ -1,0 +1,59 @@
+
+Android 
+---
+
+7b37249 Tagging to 2.3.0rc1
+9ca2a16 Updating JS so that InAppBrowser will work out of the box
+f1e8400 Merge branch 'master' of http://git-wip-us.apache.org/repos/asf/cordova-android
+11e0ffa Add @JavascriptInterface annotations to ExposedJsApi.
+2ee4326 updating create command
+226e72a adding release command
+65c78b8 removing ApplicationInfo.class
+6137c7c removing appinfo.jar
+5bebf11 CB-1888: Can't add a Photo from a HTTPS address to Contact
+68161d2 refactoring windows scripts
+a6473cb adding install function
+0084c6f refactoring android commands
+a87825d CB-1508: Implement InAppBrowser feature
+3566154 Add @JavascriptInterface annotations to ExposedJsApi.
+92d69e3 updating create command
+08a190e adding release command
+98339ee removing ApplicationInfo.class
+fa387fd Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+54979f2 removing appinfo.jar
+538e90f CB-1888: Can't add a Photo from a HTTPS address to Contact
+d9107bc refactoring windows scripts
+3f3a0b9 adding install function
+e1347e4 refactoring android commands
+7657faa CB-1852: Android version of model implemented, too bad it's all code names and not human readable
+28ef765 Upgrading App plugin to CordovaPlugin
+d2f5939 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+df90bdb Fixing up the tests so they crash less.
+c416c77 Fix for CB-1879 by Tom Clarkson.  Hacked in due to lack of pull request
+ce05a72 Update .gitignore
+6c19a44 CB-1864: Figured out how to simulate back button, test both the CordovaWebView back button and the general DroidGap case using the default implementation
+f4612fd Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+04b9a0b Death to tabs while working on CB-1864
+f93c438 CB-1860: NPE in onReceivedError with non local errorUrl
+e1d6084 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+9233c3a Fixing error with the tests, backbuttonmultipage wasn't added
+dfa5143 Bumping Android API version to 17
+5810a96 Adding reflection so that this compiles, need to test against HTC Desire HD 2.3.6 device before resolving CB-1845
+70473a8 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+525fd30 Merge branch 'Android_2.3.4_camera_crash' of git://github.com/IuriiO/incubator-cordova-android into null_camera
+5212cd4 Disable JS Interface on Honeycomb
+e95bde6 Correctly report the mime type of 3ga files
+4fe73cf CB-1835: Camera.getPicture gives error when get a picture from photo library with spaces in its name on Android
+78b2835 Merge branch 'master' of https://github.com/ilbambino/incubator-cordova-android
+f9a49ef Removed unnecessary import.
+b9ddc9e Camera plugin (HTC Incredible) is crashing on 2.3.4 devices without SD card
+dc459c8 CB-1829: Online/Offline events do not fire on subsequent pages of an app
+1d26239 not getting the path correctly if the URI contains a file://
+e51b489 Guard against null mimeType in MediaFile.getFormatData
+81f283e CB-1794 fixing cordova commands for paths with spaces in them
+ccdd2fd CB-1809 `create` script should print out meaningful error messages
+69f11a2 Updating the project so that the activities are clearly separated from Test and Helper code
+cf494f3 Fixing the tests so that they run as an Activity again
+d5895c6 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+2ac9873 CB-1808: FileEntry.moveTo across file systems incorrectly calls the success callback
+eb59e76 Fixing CB-1801

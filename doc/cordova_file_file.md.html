@@ -32,9 +32,10 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.3.0rc1">2.3.0rc1</option>
 <option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
-<option selected value="2.2.0">2.2.0</option>
+<option value="2.2.0">2.2.0</option>
 <option value="2.1.0rc2">2.1.0rc2</option>
 <option value="2.1.0rc1">2.1.0rc1</option>
 <option value="2.1.0">2.1.0</option>
@@ -368,7 +369,8 @@ File System Quick Example</option>
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7</li>
+<li>Windows 8</li>
 </ul>
 <hr>
 <h1><a name="FileReader">FileReader</a></h1>
@@ -432,7 +434,8 @@ File System Quick Example</option>
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7</li>
+<li>Windows 8</li>
 </ul>
 <h2>
 <a name="FileReader_read_as_data_url">Read As Data URL </a>
@@ -521,7 +524,7 @@ entry.file(win, fail);
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_file_file.md.html#FileReader">FileReader</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -660,7 +663,8 @@ entry.file(win, fail);
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7</li>
+<li>Windows 8</li>
 </ul>
 <h2>
 <a name="FileWriter_seek_quick_example">Seek Quick Example</a>
@@ -758,7 +762,7 @@ entry.createWriter(win, fail);
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_file_file.md.html#FileWriter">FileWriter</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -839,7 +843,8 @@ entry.createWriter(win, fail);
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7</li>
+<li>Windows 8</li>
 </ul>
 <h2>
 <a name="FileSystem_file_system_quick_example">
@@ -864,7 +869,7 @@ window.requestFileSystem(<a href="cordova_file_file.md.html#LocalFileSystem">Loc
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_file_file.md.html#File">File</a> System Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -957,7 +962,8 @@ window.requestFileSystem(<a href="cordova_file_file.md.html#LocalFileSystem">Loc
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7</li>
+<li>Windows 8</li>
 </ul>
 <h2>
 <a name="FileEntry_getmetadata">getMetadata</a>
@@ -1356,7 +1362,8 @@ entry.file(success, fail);
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7</li>
+<li>Windows 8</li>
 </ul>
 <h2>
 <a name="DirectoryEntry_getmetadata">getMetadata</a>
@@ -1784,7 +1791,8 @@ entry.removeRecursively(success, fail);
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7</li>
+<li>Windows 8</li>
 </ul>
 <h2>
 <a name="DirectoryReader_readentries">readEntries</a>
@@ -1863,7 +1871,8 @@ It is also possible to download a file from remote and save it on the device (on
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7</li>
+<li>Windows 8</li>
 </ul>
 <h2>
 <a name="FileTransfer_upload">upload</a>
@@ -1884,6 +1893,9 @@ It is also possible to download a file from remote and save it on the device (on
 </li>
 <li>
 <strong>options</strong> - Optional parameters such as file name and mimetype</li>
+<li>
+<strong>trustAllHosts</strong> - Optional parameter, defaults to false. If set to true then it will accept all security certificates. This is useful as Android rejects self signed security certificates. Not recommended for production use. Only supported on Android. <em>(boolean)</em>
+</li>
 </ul>
 <p><strong>Quick Example</strong></p>
 
@@ -1924,7 +1936,7 @@ ft.upload(fileURI, encodeURI("http://some.server.com/upload.php"), win, fail, op
 &lt;head&gt;
     &lt;title&gt;<a href="cordova_file_file.md.html#File">File</a> Transfer Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -2005,10 +2017,9 @@ options.fileKey="file";
 options.fileName=fileURI.substr(fileURI.lastIndexOf('/')+1);
 options.mimeType="text/plain";
 
-var params = {};
-params.headers={'headerParam':'headerValue'};
+var headers={'headerParam':'headerValue'};
 
-options.params = params;
+options.headers = headers;
 
 var ft = new <a href="cordova_file_file.md.html#FileTransfer">FileTransfer</a>();
 ft.upload(fileURI, uri, win, fail, options);
@@ -2034,6 +2045,9 @@ ft.upload(fileURI, uri, win, fail, options);
 </li>
 <li>
 <strong>errorCallback</strong> - A callback that is called if an error occurs retrieving the <a href="cordova_file_file.md.html#Metadata">Metadata</a>. Invoked with a <a href="cordova_file_file.md.html#FileError">FileError</a> object. <em>(Function)</em>
+</li>
+<li>
+<strong>trustAllHosts</strong> - Optional parameter, defaults to false. If set to true then it will accept all security certificates. This is useful as Android rejects self signed security certificates. Not recommended for production use. Only supported on Android. <em>(boolean)</em>
 </li>
 </ul>
 <p><strong>Quick Example</strong></p>
@@ -2189,7 +2203,8 @@ This parameter is ignored on WP7.</li>
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7</li>
+<li>Windows 8</li>
 </ul>
 <h2>
 <a name="Flags_quick_example">Quick Example</a>
@@ -2243,7 +2258,8 @@ lockFile = dataDir.getFile("lockfile.txt", {create: true, exclusive: true});
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7</li>
+<li>Windows 8</li>
 </ul>
 <h2>
 <a name="LocalFileSystem_request_file_system_quick_example">Request File System Quick Example</a>
@@ -2277,7 +2293,7 @@ window.resolveLocalFileSystemURI("file:///example.txt", onSuccess, onError);
   &lt;head&gt;
     &lt;title&gt;Local <a href="cordova_file_file.md.html#File">File</a> System Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -2340,7 +2356,8 @@ window.resolveLocalFileSystemURI("file:///example.txt", onSuccess, onError);
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7</li>
+<li>Windows 8</li>
 </ul>
 <h2>
 <a name="Metadata_quick_example">Quick Example</a>

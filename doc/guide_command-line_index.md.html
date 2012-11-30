@@ -32,9 +32,10 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.3.0rc1">2.3.0rc1</option>
 <option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
-<option selected value="2.2.0">2.2.0</option>
+<option value="2.2.0">2.2.0</option>
 <option value="2.1.0rc2">2.1.0rc2</option>
 <option value="2.1.0rc1">2.1.0rc1</option>
 <option value="2.1.0">2.1.0</option>
@@ -169,12 +170,17 @@ Xcode command-line tools such as <code>xcode-select</code> and <code>xcodebuild<
 
 <h3>Build a project</h3>
 
-<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/debug
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/build
 </code></pre>
 
-<h3>Launch emulator</h3>
+<h3>Run app on emulator</h3>
 
-<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/emulate
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/run
+</code></pre>
+
+<h3>Releasing</h3>
+
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/release
 </code></pre>
 
 <h3>Logging</h3>
@@ -209,22 +215,22 @@ PATH!</p>
 
 <h3>Build a project</h3>
 
-<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/debug
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/build
 </code></pre>
 
 <p>or, on <strong>Windows</strong></p>
 
-<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/debug.bat
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/build.bat
 </code></pre>
 
-<h3>Launch emulator</h3>
+<h3>Run app on emulator/device</h3>
 
-<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/emulate
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/run
 </code></pre>
 
 <p>or, on <strong>Windows</strong></p>
 
-<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/emulate.bat
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/run.bat
 </code></pre>
 
 <p>Make sure you have created at least one Android Virtual <a href="cordova_device_device.md.html#Device">Device</a>. If you did not it will ask you to create one with the <code>android</code> command.
@@ -250,17 +256,15 @@ If you have multiple AVDs, it will prompt you to select an AVD.</p>
 <pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/clean.bat
 </code></pre>
 
-<h3>Clean, build, deploy and launch</h3>
+<h3>Releasing</h3>
 
-<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/BOOM
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/release
 </code></pre>
 
 <p>or, on <strong>Windows</strong></p>
 
-<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/BOOM.bat
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/release.bat
 </code></pre>
-
-<p>Make sure you have an emulator or a device connected.</p>
 
 <h2>
 <a name="Command-Line%20Usage_blackberry">BlackBerry</a>

@@ -24,6 +24,7 @@ package org.apache.cordova.network {
     import flash.net.NetworkInfo;
     import flash.net.NetworkInterface;
 	import flash.events.Event;
+    import qnx.system.Device;
 
     import webworks.extension.DefaultExtension;
 
@@ -45,6 +46,13 @@ package org.apache.cordova.network {
 			if(_jsFunctionCallbackIDs.indexOf(param) < 0){
 				_jsFunctionCallbackIDs.push(param);
 			}
+        }
+
+        public function getDeviceInfo(id:String):void{
+            evalJavaScriptEvent(id, [{
+                "uuid" : Device.device.pin,
+                "version": Device.device.scmBundle
+            }]);
         }
 
         private function networkChange( event: Event ) : void {

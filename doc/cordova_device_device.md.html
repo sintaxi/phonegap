@@ -32,9 +32,10 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.3.0rc1">2.3.0rc1</option>
 <option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
-<option selected value="2.2.0">2.2.0</option>
+<option value="2.2.0">2.2.0</option>
 <option value="2.1.0rc2">2.1.0rc2</option>
 <option value="2.1.0rc1">2.1.0rc1</option>
 <option value="2.1.0">2.1.0</option>
@@ -96,7 +97,6 @@
 <option value="device.name_quick_example">      - Quick Example</option>
 <option value="device.name_full_example">      - Full Example</option>
 <option value="device.name_android_quirks">      - Android Quirks</option>
-<option value="device.name_iphone_quirks">      - iPhone Quirks</option>
 <option value="device.name_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
 <option value="device.name_bada_quirks">      - Bada Quirks</option>
 <option value="device.name_tizen_quirks">      - Tizen Quirks</option>
@@ -109,7 +109,6 @@
 <option value="device.platform_supported_platforms">      - Supported Platforms</option>
 <option value="device.platform_quick_example">      - Quick Example</option>
 <option value="device.platform_full_example">      - Full Example</option>
-<option value="device.platform_iphone_quirks">      - iPhone Quirks</option>
 <option value="device.platform_blackberry_quirks">      - BlackBerry Quirks</option>
 <option value="device.platform_windows_phone_7_quirks">      - Windows Phone 7 Quirks</option>
 <option value="device.uuid">device.uuid</option>
@@ -281,11 +280,12 @@ var phoneName = <a href="cordova_device_device.md.html#device.name">device.name<
 <ul>
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
-<li>iPhone</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>iOS</li>
+<li>Windows Phone 7</li>
 <li>Bada 1.2 &amp; 2.x</li>
 <li>webOS</li>
 <li>Tizen</li>
+<li>Windows 8</li>
 </ul>
 <h2>
 <a name="device.name_quick_example">Quick Example</a>
@@ -294,7 +294,7 @@ var phoneName = <a href="cordova_device_device.md.html#device.name">device.name<
 <pre class="prettyprint"><code>// Android:    Nexus One       returns "Passion" (Nexus One code name)
 //             Motorola Droid  returns "voles"
 // BlackBerry: Torch 9800      returns "9800"
-// iPhone:     All devices     returns a name set by iTunes e.g. "Joe's iPhone"
+// iOS:     All devices     returns either "iPhone", "iPod Touch", "iPhone Simulator", "iPad", "iPad Simulator"
 //
 var name = <a href="cordova_device_device.md.html#device.name">device.name</a>;
 </code></pre>
@@ -308,7 +308,7 @@ var name = <a href="cordova_device_device.md.html#device.name">device.name</a>;
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -344,18 +344,6 @@ var name = <a href="cordova_device_device.md.html#device.name">device.name</a>;
 <ul>
 <li>The product name is often the code name given during production.</li>
 <li>e.g. Nexus One returns "Passion", Motorola Droid returns "voles"</li>
-</ul>
-</li>
-</ul>
-<h2>
-<a name="device.name_iphone_quirks">iPhone Quirks</a>
-</h2>
-
-<ul>
-<li>Gets the <a class="external" href="http://developer.apple.com/iphone/library/documentation/uikit/reference/UIDevice_Class/Reference/UIDevice.html#//apple_ref/doc/uid/TP40006902-CH3-SW13">device's custom name</a> instead of the <a class="external" href="http://developer.apple.com/iphone/library/documentation/uikit/reference/UIDevice_Class/Reference/UIDevice.html#//apple_ref/doc/uid/TP40006902-CH3-SW1">device model name</a>.
-<ul>
-<li>The custom name is set by the owner in iTunes.</li>
-<li>e.g. "Joe's iPhone"</li>
 </ul>
 </li>
 </ul>
@@ -402,9 +390,10 @@ var name = <a href="cordova_device_device.md.html#device.name">device.name</a>;
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7</li>
 <li>Bada 1.2 &amp; 2.x</li>
 <li>Tizen</li>
+<li>Windows 8</li>
 </ul>
 <h2>
 <a name="device.cordova_quick_example">Quick Example</a>
@@ -422,7 +411,7 @@ var name = <a href="cordova_device_device.md.html#device.name">device.name</a>;
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -464,11 +453,12 @@ var name = <a href="cordova_device_device.md.html#device.name">device.name</a>;
 <ul>
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
-<li>iPhone</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>iOS</li>
+<li>Windows Phone 7</li>
 <li>Bada 1.2 &amp; 2.x</li>
 <li>webOS</li>
 <li>Tizen</li>
+<li>Windows 8</li>
 </ul>
 <h2>
 <a name="device.platform_quick_example">Quick Example</a>
@@ -477,7 +467,7 @@ var name = <a href="cordova_device_device.md.html#device.name">device.name</a>;
 <pre class="prettyprint"><code>// Depending on the device, a few examples are:
 //   - "Android"
 //   - "BlackBerry"
-//   - "iPhone"
+//   - "iOS"
 //   - "webOS"
 //   - "WinCE"
 //   - "Tizen"
@@ -493,7 +483,7 @@ var devicePlatform = <a href="cordova_device_device.md.html#device.platform">dev
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -519,12 +509,6 @@ var devicePlatform = <a href="cordova_device_device.md.html#device.platform">dev
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-
-<h2>
-<a name="device.platform_iphone_quirks">iPhone Quirks</a>
-</h2>
-
-<p>The iPhone returns <code>iPhone</code> as the platform. The iPad returns <code>iPad</code> as the platform.  In the simulator they will return <code>iPhone Simulator</code> and <code>iPad Simulator</code> respectively.  These are inaccurate in all cases because Apple has rebranded the iPhone operating system as <code>iOS</code>.</p>
 
 <h2>
 <a name="device.platform_blackberry_quirks">BlackBerry Quirks</a>
@@ -560,10 +544,11 @@ var devicePlatform = <a href="cordova_device_device.md.html#device.platform">dev
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7</li>
 <li>Bada 1.2 &amp; 2.x</li>
 <li>webOS</li>
 <li>Tizen</li>
+<li>Windows 8</li>
 </ul>
 <h2>
 <a name="device.uuid_quick_example">Quick Example</a>
@@ -598,7 +583,7 @@ var deviceID = <a href="cordova_device_device.md.html#device.uuid">device.uuid</
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -653,10 +638,11 @@ var deviceID = <a href="cordova_device_device.md.html#device.uuid">device.uuid</
 <li>Android 2.1+</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iPhone</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7</li>
 <li>Bada 1.2 &amp; 2.x</li>
 <li>webOS</li>
 <li>Tizen</li>
+<li>Windows 8</li>
 </ul>
 <h2>
 <a name="device.version_quick_example">Quick Example</a>
@@ -685,7 +671,7 @@ var deviceVersion = <a href="cordova_device_device.md.html#device.version">devic
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load

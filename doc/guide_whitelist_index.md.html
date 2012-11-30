@@ -32,9 +32,10 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.3.0rc1">2.3.0rc1</option>
 <option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
-<option selected value="2.2.0">2.2.0</option>
+<option value="2.2.0">2.2.0</option>
 <option value="2.1.0rc2">2.1.0rc2</option>
 <option value="2.1.0rc1">2.1.0rc1</option>
 <option value="2.1.0">2.1.0</option>
@@ -184,7 +185,7 @@
 
 <h3>Details</h3>
 
-<p>The whitelisting rules are found in <code>res/xml/cordova.xml</code> and declared with the element <code>&lt;access origin="..." /&gt;</code>.</p>
+<p>The whitelisting rules are found in <code>res/xml/config.xml</code> and declared with the element <code>&lt;access origin="..." /&gt;</code>.</p>
 
 <p>Android has full support for the whitelisting syntax.</p>
 
@@ -239,42 +240,11 @@
 
 <h3>Details</h3>
 
-<ol>
-<li>Open <code>Cordova.plist</code>.
-<ul>
-<li>In Xcode, it is found at <code>AppName/Resources/Cordova.plist</code>
-</li>
-<li>In the directory, it is found at <code>AppName/Cordova.plist</code>
-</li>
-</ul>
-</li>
-<li>Add a new <code>String</code> value under the <code>ExternalHosts</code> key.
-<ul>
-<li>We recommend using Xcode to avoid editing raw XML.</li>
-</ul>
-</li>
-</ol>
+<p>The whitelisting rules are found in <code>AppName/config.xml</code> and declared with the element <code>&lt;access origin="..." /&gt;</code>.</p>
+
+<p>iOS has full support for the whitelisting syntax.</p>
+
 <h3>Syntax</h3>
-
-<p>Access to <a class="external" href="http://google.com">google.com</a> and the secure <a class="external" href="https://google.com">google.com</a> (<code>https://</code>):</p>
-
-<pre class="prettyprint"><code>google.com
-</code></pre>
-
-<p>Access to the subdomain <a class="external" href="http://maps.google.com">maps.google.com</a>:</p>
-
-<pre class="prettyprint"><code>maps.google.com
-</code></pre>
-
-<p>Access to all the subdomains on <a class="external" href="http://google.com">google.com</a> (e.g. <a class="external" href="http://mail.google.com">mail.google.com</a> and <a class="external" href="http://docs.google.com">docs.google.com</a>):</p>
-
-<pre class="prettyprint"><code>*.google.com
-</code></pre>
-
-<p>Access to all domains (e.g. <a class="external" href="http://google.com">google.com</a> and <a class="external" href="http://developer.mozilla.org">developer.mozilla.org</a>):</p>
-
-<pre class="prettyprint"><code>*
-</code></pre>
 
 <p>Wildcards on iOS (<code>*</code>) are more flexible than the <a class="external" href="http://www.w3.org/TR/widgets-access/">W3C Widget Access</a> specification.</p>
 

@@ -1,408 +1,329 @@
 CHANGELOG
 
+
 iOS 
 ---
 
-54efb8c Updated js, version, release notes to 2.2.0 final
-d0837cc Add more comments to CDVCommandDelegate.h.
-e545a4b [ios] Fix resign/pause event
-2792e7a [ios] change websql storage path to LocalStorage directory
-1a494d1 Removed WebScriptDebugDelegate license from LICENSE file
-573067d Updated RELEASENOTES.md for 2.2.0rc2
-ded137b Updated README.md for version 2.2.0
-169995d [CB-1145] Require minimum Xcode 4.5 thus iOS 4.3 (Lion and Mountain Lion only - LLVM Compiler 4.0)
-5acde0c Updated VERSION file to 2.2.0rc2
-46577a9 Updated js to 2.2.0rc2
-ef6bb24 Remove CordovaBuildSettings.xcconfig from the default template
-516768d [CB-1698] Remove WebScriptDebugDelegate.h
-32585b2 Added TODO note for createAddressBook
-3767d5d [CB-1597] Running ./cordova/debug / cordova/emulate causes errors
-9e0bb93 [CB-1597] Running ./cordova/debug / cordova/emulate causes errors
-977513e Added deprecation notice to BackupWebStorage Cordova.plist property
-1dca15c [ios] bugfixes and comments.
-a39921b [ios] Webstorage backup to cloud/local-only
-78ba908 Removed deprecated instruction of setting of "invokeString" for custom url schemes
-35b11ff Removed Cordova Settings File guide, added web shortcut to online doc.
-ef67dcf Fix unregistering of ViewControllers in CDVURLProtocol.m
-b74752f Added 2.2.0rc1 Release Notes
-6595b90 Do not prompt user about whether to build from the emulate script.
-48d3b51 Updated cordova-js to tagged 2.2.0rc1, updated iOS version to 2.2.0rc1, updated cordova-hello-world to 2.2.0rc1
-ab21592 Update version to 2.2.0 and added interim 2.2.0 js
-53ce7aa [CB-1502] Update Capture Audio images for iPhone 5
-d1b8a3a Fixed two bugs concerning file uploads.
-0a978a6 Fixes CB-1619 Shutter stays shut
-380c4d9 Refs CB-1617 remove iOS5 only api
-237f42e Fixes CB-1617 update CDVGlobalization for ARC
-ffdc81b CDVConnection: Use multiple callback results instead of evalling JS
-ea5d5ec Update remaining stringByEvaluatingJavascriptString calls
-be29551 Update JS
-37113b1 Fix commandDelegate.evalJs to actually bundle exec() calls.
-7b4014c Fix alert dead-lock in contacts mobile-spec test.
-4d322c0 CB-1473 - add iOS implementation for globalization
-70d5b14 CB-1600 check class before casting URLResponse
-994e234 Move CDVCommandDelegateImpl into Classes directory (oops).
-e68e9d4 Add a method to CDVCommandDelegate for executing on a background thread.
-20cdaf9 Deprecate CDVCommandDelegate's execute and registerPlugin methods.
-f1ec68f Fixes CB-1515 doc new iOS plist settings
-99b424f Fixes CB-1578 remove notification observers
-4a3b220 Fixed CB-902 Contacts Permissions in iOS6
-db38469 Add a macro for deprecating symbols and use it in a couple of places.
-234df84 Remove CDVDeprecated.h. 7 months old.
-9f25460 Remove deprecated methods in CDVFile.
-3247261 Delete deprecated method "closePicker" from CDVCamera.
-686509f Remove obsolete comment.
-59ef643 Remove deprecated methods in CDVSound
-afb673b Adds CDVCommandDelegateImpl.
-88302e1 Make plugins and CommandQueue use weak refs for CDVViewController.
-15f8a5d Removing useless NSLog
-60050cb Update CDVDebug.h with better logging tools.
-6e17087 IOS6 - Fixing LocalStorage/WebSQL storage locations
-035e2fb Update core plugins to use commandDelegate::sendPluginResult
-780be09 Update JS with new exec() bridge functions.
-de046f7 Delete cordova.commandQueueFlushing flag.
-4e52b1e Add a method to CDVCommandDelegate for executing JS.
-ba7d771 Add CDVCommandDelegate::sendPluginResult and use it in CDVEcho.
-9e1aa3d Refactor most of the command queue logic into a separate class.
-5c41ef6 Update uncrustify rules for ternary operators.
-c8ac3c2 Remove setTimeout() when sending plugin results.
-1a41569 Remove commandDelegate property of CDVViewController.
-fb9169b Add --shared optional parameter to create script
-d78514e Update uncrustify hook to make the commands more copy & pastable (again)
-a07ed8d Tweaks to iOS XHR bridge:
-e7b16f4 Don't URL-encode FileTransfer.upload's response field.
-5c08162 Change create script to copy CordovaLib into new projects.
-88bb559 Convert unit tests to ARC.
-c681026 Tweak pre-commit message to make command more copy&paste-able.
-4d003a7 Move test lib and test app out of CordovaLib.
-4aea2d5 Delete unused CordovaBuildSettings.xcconfig from project template.
-f3cc105 Various spelling & grammer fixes.
-ca0cb89 Change XHR bridge mode to succeed instead of fail.
-0ac47db Implement asyncEcho in the iOS echo plugin.
-1a60935 [ios] Fixing LocalStorage not persisting on first app launch on ios6
-4ab9c41 Merge branch 'master' into plugin_reset
-0f006ec Cleanups suggested by Andrew Grieve.
-8fd987e Add onReset to CDVSound.
-17930ab Add onReset for CDVLocation.
-bdcf8e4 Add onReset to CDVFileTransfer.
-b612a58 Updating JS with default bridge now XHR_OPTIONAL_PAYLOAD.
-e9706dc Add onReset for CDVConnection.
-1252c54 Add onReset for CDVBattery.
-1a62a75 Add onReset to CDVAccelerometer.
-fd72ae2 Fix bug in FileTransfer progress events.
-d0488e3 Fixes CB-1511 force portrait in captureAudio
-c573953 [CB-1514] Xcode 4.5 - Static Analyzer Issues in CordovaLib and default template
-31797a7 [CB-1520] InvalidArgumentException when EnableLocation is Yes on Cordova.plist
-1f13eb6 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-ios
-6fa7f3d Add a comment explaining what the statements in the nativeReady eval do.
-4fe0e8b Add onReset() to plugins on iOS.
-0c0b87b Change FileTransfer's form boundary from *** to +++
-ecf289c bin/uncrustify.sh --all
-360eab9 Update JS to include FileProgress abort & progress support.
-56602c0 Minor fixes to FileTransfer.abort.
-31f894c [CB-622] Progress events for downloads
-d1ff5a7 [CB-836] Readonly property, duplicate activeTransfer, send pluginResult on abort
-7c4fa19 [CB-836] Storing connection delegates for aborting connections quicker
-de69937 [CB-622] Added upload progress to FileTransfer
-33afb30 [CB-836] Abort functionality added to FileTransfer
-4f75831 [CB-1502] Re-fix - rename asset for @2x, remove scaling
-1dd9b33 [CB-1502] Update Capture Audio images for iPhone 5 (partial fix - image is still placeholder)
-5bbae2c Added CDV_IsIPhone5 macro
-5c52975 [CB-1479] Cordova 2.1 Capture Problem if no options provided
-1c9ce2a [CB-1499] use of Camera in Cordova video mode results in field of view different than in native video mode
-4bad0e5 Default template: Re-added quotes around the product name that were clobbered by Xcode's plist writer
-ca70509 For JIRA CB-1482: Add splash screen image for iPhone 5's 4" display.
-2d42517 [CB-1461] UIWebView property check for compiling on SDKs < iOS 6
-2bbf168 [CB-1461] Added plist settings to default template
-6351d49 additional changes for CB-1461
-916c407 CB-1461 Add the two new iOS 6 UIWebView properties as Cordova.plist settings
-3368777 CB-1461 added new iOS 6 UIWebView properties
-07b54f1 [CB-1360] Conditionally add architectures based on iOS version in CordovaLib
-cf2412b Fixed 2.1.0 release notes
-c5b7427 Update cordova.ios.js.
-fe04a36 Add git hook that runs uncrustify before commits.
-934062a Add uncrustify config and script for auto-formatting code.
-681016b [CB-1465] WebView too small after closing of a ChildBrowser in landscape orientation
-4bdfe36 [CB-1486] Added missing apache source headers
-f187cdd [CB-1456] bin/diagnose_project script prints Build Settings from the project settings, not the target settings
+e5b4aaf Updated 2.3.0rc1 js
+72156c0 Updated version to 2.3.0rc1
+c1eb09f Updated default project template to include config.xml, removed Cordova.plist
+ea52434 Added 2.3.0rc1 JavaScript
+48c26ef Merge branch 'cordova.xml'
+9147fcc More review changes from Andrew.
+4c428ab Fix tabs-vs-spaces in template config.xml.
+0008a7a Removing empty method from the parser delegate.
+8936d20 Pull the parser delegate into its own files.
+5b8608e Migrate unit tests to use config.xml. Cleanups suggested by Andrew.
+0e87e6b Remove Cordova.plist from resources, add config.xml
+321420b Remove template Cordova.plist, add config.xml.
+df186ef Debug cleanup. Improved error messages for XML parsing.
+8ff5197 Working XML parsing.
+9a9242a Fix invalidating of cached UA when Locale changes with the app closed.
+38c7deb Update cordova.ios.js with change to not require cordove.iOSVCAddr
+0447deb Have the InAppBrowser not use a GUID in its UA.
+e8a7401 Use the VC's address in the User-Agent instead of a GUID.
+66fed79 Fix InAppBrowser handling of NSNull relative URLS.
+eb48666 Uncrustify
+d494d7c Add argument fetching helpers to CDVInvokedUrlCommand.
+b8c57f1 [CB-1889] Added userAgent property to CDVViewController (systemVersion and locale dependent, cached)
+9ac5969 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-ios
+cb5f1c8 adding release command for iOS
+6e60c22 Fixing autoresizingMask of imageView
+5ce5e15 Removing forced status bar rotation logic
+a37d37b Removed setWantsFullScreenLayout from CDVViewController, simplified viewWillAppear in template app.
+b51fdb3 Update fix to CB-1695 - the main Cordova UIWebView has a unique User-Agent now.
+181dd19 Integrated latest js - includes window.open (InAppBrowser)
+acc8b34 renaming commands
+2f1f022 [CB-1695] CDVURLProtocol should not apply whitelist to non-Cordova view controllers/requests
+029ed25 InAppBrowser - append GUID to the UIWebView UserAgent to differentiate the different instances (for the white-list)
+5a4b0ea Default project template -- Added InAppBrowser plugin to Cordova.plist
+f43a331 CordovaLibAppTest -- Added Globalization, InAppBrowser plugins to Cordova.plist
+cc9c2be InAppBrowser - pass on window options for _self if url is not in the whitelist (which is kicked out to the InAppBrowser)
+26a6535 Added CDVInAppBrowser implementation.
+7e6946d Fixed deprecated [AVAsset naturalSize] usage in Capture API (getFormatData)
+9c836fb Add version number to cordova.ios.js in create script.
+c65aadf Move cordova-VERSION.js from bin/templates to CordovaLib.
+9656792 Fix not being able to seek to position 0.
+8d5925e Updated deprecation notice for our minimum iOS 5.0 support
+56697f7 [CB-1824] SIGABRT when view loads - reason: '-[__NSCFBoolean isEqualToString:]: unrecognized selector
+ddc14b1 Fix unit tests not working due to lack of a command delegate.
+69c1375 Making whitelist rejection string configurable
+dac34c4 Updated bin/diagnose_project to print out conditional ARCHs build settings.
+458ffaa Updated CordovaLibAppTests to 2.2.0 JavaScript, updated Cordova.plist
 
-BlackBerry 
-----------
-
-6b4fd01 [CB-1783] - updating version
-e84f049 [CB-1774] - updating www
-ddb8a1a [CB-1765] - updating javascript
-6ae80d9 Fix building for BlackBerry 10
-35cd0cd [CB-1728] - updating version and tagging
-a5ab5a7 [CB-1719] - updating www/
-54d1c81 [CB-1710] - updating the javascripts
-e72c24c [CB-1647] - updating to 2.2.0rc1
-ee91b5e [CB-1637] - Updating www/
-3f7a96d [CB-1627] - updating javascript
-05ba03c CB-1621 Add Globalization Plug-in for BlackBerry.
-dfd79ee Made addWebworks script more robust - checks for existing references of webworks.js
-f1b9ead removed some cruft from addWebworks script
-4a8f60d Added helper script to auto add webworks.js reference to html pages
-4462079 [CB-1567] - keep dist folder around
-fd5abf6 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-blackberry-webworks
-1f95e97 Fixed building of older platforms with bb10 additions
-6ee9879 Some changes with the release of the new BlackBerry 10 SDK
-4c86c33 [CB-1541] - updating readme
-4c09715 Update framework/ext/src/org/apache/cordova/http/FileUploader.java
-000e28c [CB-1493] - updated links to use maven instead of sourceforge
-533a6c5 [CB-1493] - finally got this stuff working on windows
-adb1d9d Updated url to download jar
-b7f7e43 Left open string
-8876266 [CB-1493] - antcontrib download function for windows create script
-bf85a57 [CB-1493] - removing jar file from src and added an auto downloader for that jar
-c6040d8 [CB-1485] - missing apache header
 
 Android 
--------
+---
 
-d9db845 CB-1795: onCreateOptionsMenu in PhoneGap 2.2.0 Release Candidate 2 isn't working anymore
-e55327b Tagging the 2.2.0 release after this commit
-bdd5a4e Merge branch 'master' of http://git-wip-us.apache.org/repos/asf/incubator-cordova-android
-ac2e2c9 Update JS to new tag (again). Includes latest fix to CB-1745.
-76f9d49 Disable limiting of payload size when sending data to JS.
-6ec8ab9 Update JS to new 2.2.0rc2 tag.
-9c98625 Partial fix for CB-1742, still don't know what this should do for notification.confirm's cancel, so we return zero for now
-f270cde Changing DroidGap back and duplicating code so that we don't have a regression on CB-1568
-9de7efd Added fix for webViewClient. CB-1568
-7b81d31 Moved the initialization of the IceCreamWebViewClient to CordovaWebView, we weren't loading the fix in properly after the refactor - CB-1742
-876f975 CB-1691: Android menu button event doesn't fire when textbox has focus
-3c5815a Update JS to new tag (again). Includes latest fix to CB-1745.
-678ae2d Disable limiting of payload size when sending data to JS.
-e4f8f44 Update JS to new 2.2.0rc2 tag.
-49566d2 Partial fix for CB-1742, still don't know what this should do for notification.confirm's cancel, so we return zero for now
-7f4ee7b Changing DroidGap back and duplicating code so that we don't have a regression on CB-1568
-32526a8 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
-71a7f72 Added fix for webViewClient. CB-1568
-4d0824f Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
-d56dd40 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
-6aafd6d Moved the initialization of the IceCreamWebViewClient to CordovaWebView, we weren't loading the fix in properly after the refactor - CB-1742
-011b512 Update JS.
-aa2d17e Disable JS_OBJECT bridge on pre-gingerbread devices.
-0eee229 Add support for null PluginResult payloads.
-a2f35d2 CB-1743: Globalization.getDateNames will crash Android 2.2 applications
-58f58d9 Merge branch 'master' of http://git-wip-us.apache.org/repos/asf/incubator-cordova-android
-412bb34 Pull in exec fix for Android 2.2
-652f15f Guard against NullPointerException in Compasslistenter
-8512ebb Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
-f0ac173 Adding the updated blank index
-bef0d47 Starting incrementing the tag to RC2
-cba0d59 Fix exception when plugin returns a null string.
-7d3afca Tweak the useBrowserHistory deprecation message to make the date is clear
-5f1cda0 Cleaning up code, because negating string comparisons is confusing if the string itself is called false.  Also clarified the deprecation message to match the Cordova policy that we agreed on for deprecation changes
-e11bead Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
-6a1e089 Change useBrowserHistory to default to true (actually)
-0aa98ac CB-1697: openDatabase of Cordova for Android uses the wrong directory separator
-f9ef38c Updating the config.xml default to be true.  See discussion on CB-1611
-a3a215a Merge in video tag changes and fix back button issue
-d3ee322 Updating Hello World
-7ec20e7 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
-08dfb13 Updating Android to 2.2.0rc1
-6a5cddd Remove use of PluginResult.Status.NO_RESULT in GeoBroker.
-dc50783 Remove manual catching of JSONException where possible.
-1bc0328 Fix contact mobile-spec tests that were failing.
-e562e4e Removed overrides, fixed CB-1620
-0ffffa9 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
-0f2303e This time, we fixed the back button for real! CB-1658
-31f7f81 Merge branch 'master' into cordovaplugin_update
-fe1f57c Port Storage to use CordovaPlugin.
-29a0b01 Port SplashScreen to CordovaPlugin. Untested, no tests for it.
-621e116 Port Notification to CordovaPlugin.
-17d64cf Port NetworkManager to CordovaPlugin.
-7379d21 Port Globalization to CordovaPlugin.
-c55fd06 Fix mountain of trailing whitespace.
-d81727a Port Location listeners and plugin to CordovaPlugin.
-b582e15 Port FileUtils to CordovaPlugin.
-dd8533a Port Device to use CordovaPlugin.
-d72a8cb Port Contacts to CordovaPlugin.
-fe0876d Port CompassListener to CordovaPlugin.
-fa15763 Port Capture to use CordovaPlugin. Untested beyond compiling!
-205215d Port CameraLauncher to CordovaPlugin.
-076bfcd Port BatteryListener to CordovaPlugin.
-1051048 Port AudioHandler and AudioPlayer to CordovaPlugin.
-e1dea5b Port AccelListener to CordovaPlugin.
-891f8d0 Cleanups to CordovaPlugin.
-0d409f0 Setting browser history as the default.  This was supposed to be done earlier, sorry about that. CB-1611
-4e0c898 get commons-codec from apache archive, not osuosl
-a741c66 Updating Native Tests to correspond with changes - CB-1580
-3e6a7cb CB-1574: On Android 4.1 events are only sent on every second menu button press
-5d34aa0 Guard against null pointer exception in ES File Explorer being used to get a picture using DATA_URL
-979ae94 Merge branch 'master' of http://git-wip-us.apache.org/repos/asf/incubator-cordova-android
-8d7b85b CB-1573: Can we remove framework/src/org/apache/cordova/TempListener.java
-686977a CB-1573: Can we remove framework/src/org/apache/cordova/TempListener.java
-9c6c782 Apply trustEveryone to the current connection and not globally.
-ca9539b More tweaks to FileTransfer.
-ff25be8 Fix warnings in FileTransfer.java
-d1ab1b5 Remove @Override from interface methods
-05bc186 Change FileTransfer to use the new plugin signature.
-6e6e027 Create CordovaPlugin.java and make Plugin.java a compatibility shim.
-ec3c5b2 Delete IPlugin interface.
-5289d56 Fix NPE caused by NetworkManager sending update before JS is ready.
-6f873ff Fix default bridge mode being PRIVATE_API (should be ONLINE_EVENTS).
-467cbe9 Fixing merge conflict
-bfd1bfe CB-1564: DroidGap.loadUrl follows a path that never checks the white list
-3404a6c CB-1564: DroidGap.loadUrl follows a path that never checks the white list
-17a4b51 CB-1359 set target SDK to the highest available
-d406e2e merging conflict with create script
-0bfc993 CB-1359 simplifying API_LEVEL command
-64c6cbe Update JS snapshot after deleting callback server.
-2245db3 Delete CallbackServer.java
-6f19a50 Update .classpath file to use commons-codec-1.7.jar
-c7ce959 Remove unused async arg from PluginManager.exec().
-afcdccf Add an app-wide thead pool to CordovaInterface.
-1bf1284 Allow for predefined ANDROID_BIN value, fix for paths with spaces
-da8fbee Merge branch 'master' of http://git-wip-us.apache.org/repos/asf/incubator-cordova-android
-4021f26 Globalization plugin should return an error object and not a code
-8eab843 CB-1468 fixing paths with spaces
-1b4096b Guard against null pointer exception in ES File Explorer being used to get a picture
-54caa6e Fail the build gracefully with helpful error messages if the local.properties file is missing, or if the commons-codec jar is missing, or if ant is not at the minimum required version. Also add a little more detail to README.md.
-486eb14 Merge branch 'master' into plugin_reset
-faa034a Don't unregister the listener if it was never registered.
-2cd3ebc Fix NPE on reset with undefined NetworkListener.
-7e3af6c Add onReset() to TempListener.
-dd4de16 Add onReset to Storage.
-ba8577f Add onReset() to NetworkManager.
-6192319 Add onReset() to GeoBroker.
-fed368d Set the total field for FileTransfer upload progress events.
-20c8854 Add onReset to CompassListener.
-9318ee3 Add onReset to BatteryListener.
-8b6c957 Make AudioHandler stop and clean up on onReset()
-3131481 Make AccelListener stop listening onReset()
-6e1fdc7 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
-2a9582e Fixing CB-1521 - NullPointerException on Default Jellybean Emulator
-dd1cd46 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
-9961d9e Add onReset to Plugin API, call on navigate.
-7eb1211 Add a work-around for a FileTransfer bug on 2.3 only.
-3d62744 CB-1512: FileTransfer API and Mojolicious
-17af417 Fix up some minor FileTransfer bugs / warnings.
-df9d314 Update JS to include FileProgress abort & progress support.
-610e0c9 Add progress callbacks, abort for FileTransfer.upload and FileTransfer.download
-3688fca Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
-9bc89c7 Switching to ONLINE_EVENT
-79682f5 updating windows create script test
-c206ac0 Fixing CB-1504
-3484017 Adding headers and converting tabs to spaces
-6312457 CB-1469: Add Globalization Plug-in for Android
-f71e664 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
-80d559f removing verbosity
-772aedc Fixing CB-1462, there's a difference betwene Global and Local listeners:
-45d7c12 fixing windows appinfo.jar
-73abb20 Resolving CB-1496, this is faster than a pull request
-0baf104 Fix a deadlock in CallbackServer.java.
-302d51c Updated JS snapshot.
-d3cbfd5 Add a flag to disable exec() chaining for benchmarking.
-9e3e7e1 Remove TODO comment about calling webView from non-ui thread.
-18893bf Use a thread pool when executing async plugin operations.
-f53161d Always send as many messages native->JS in one payload as possible.
-4c9a571 Add constant to disable non-exec() messages in Native->JS bridge.
-365edca Optimize encoding of PluginResults within NativeToJsMessageQueue.
-ae9047a Refactor how PluginResults are sent to JS.
-9c0e58d Disable debug logging of loadUrl for javascript URLs.
-ee34f11 Set the initial network-available state on start-up.
-6ca6d88 Fix NPE when using LOCATION_CHANGE exec bridge.
-65a397f Abstract JS->Native API calls into a class.
-0a66907 Fix warning about .close() not being called in FileUtils.
-451688a CB-1126: Splashscreen
-d181d89 CB-1411: Add trustAllHosts option to FileTransfer.download on Android
-ac14b0d CB-1481: ContactName - name.formatted returns with a trailing white space
-0f42c65 CB-1321: IMS types returning as other
-37b3e98 CB-1362: We should add android:hardwareAccelerated=true to the template manifest.xml
-eb49e01 CB-1405: navigator.language
-e0a73f7 Spelling: throw
-e217ab2 Spelling: success
-ca58386 Spelling: substituted
-5e7efde Spelling: retrieve
-2c7c134 Spelling: polyfill
-ac4fc3e Spelling: occurred
-46db36a Spelling: necessary
-3d073be Spelling: milliseconds
-1bc49fe Spelling: explicitly
-1f7fe9a Spelling: definition
-5217abf Spelling: containing
-2ecbde8 Spelling: conjunction
-bf7fc66 Spelling: comparisons
-5a94b38 Spelling (en-us): behavior [slightly more instances of this spelling than the British]
-1bc55f5 Typo stray paren
-04c9542 Spelling: application
-17e739f Spelling: aperture
-4f5515f Spelling: after
-ae3ba12 Spelling: activities
-6b92a0f Brand: cordova
-d859bb8 adding windows createAppInfoJar
-f12bbf7 Added license headers to test java files
-b723beb [CB-1484] License headers audit
-47daaaf Fixing up the commons-codec issue - CB-1483
-9ba5bae Updating commons-codec
-dbfa2d7 Change bin/create to use bash as shell
-8134f86 Fixing CB-1467
-5c60b09 Updating the manifest so that it is correct
-20a19d6 Put this on the wrong branch
-06aafc9 Play <video> tags from the Webview in a Fullscreen video player. Code from the Froyo Android Browser was adapted to support <video> elements in Cordova. The WebView creates a "CustomView" (a video player) that is displayed fullscreen. It uses API level 7, work has to be done to support lower version.
+7b37249 Tagging to 2.3.0rc1
+9ca2a16 Updating JS so that InAppBrowser will work out of the box
+f1e8400 Merge branch 'master' of http://git-wip-us.apache.org/repos/asf/cordova-android
+11e0ffa Add @JavascriptInterface annotations to ExposedJsApi.
+2ee4326 updating create command
+226e72a adding release command
+65c78b8 removing ApplicationInfo.class
+6137c7c removing appinfo.jar
+5bebf11 CB-1888: Can't add a Photo from a HTTPS address to Contact
+68161d2 refactoring windows scripts
+a6473cb adding install function
+0084c6f refactoring android commands
+a87825d CB-1508: Implement InAppBrowser feature
+3566154 Add @JavascriptInterface annotations to ExposedJsApi.
+92d69e3 updating create command
+08a190e adding release command
+98339ee removing ApplicationInfo.class
+fa387fd Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+54979f2 removing appinfo.jar
+538e90f CB-1888: Can't add a Photo from a HTTPS address to Contact
+d9107bc refactoring windows scripts
+3f3a0b9 adding install function
+e1347e4 refactoring android commands
+7657faa CB-1852: Android version of model implemented, too bad it's all code names and not human readable
+28ef765 Upgrading App plugin to CordovaPlugin
+d2f5939 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+df90bdb Fixing up the tests so they crash less.
+c416c77 Fix for CB-1879 by Tom Clarkson.  Hacked in due to lack of pull request
+ce05a72 Update .gitignore
+6c19a44 CB-1864: Figured out how to simulate back button, test both the CordovaWebView back button and the general DroidGap case using the default implementation
+f4612fd Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+04b9a0b Death to tabs while working on CB-1864
+f93c438 CB-1860: NPE in onReceivedError with non local errorUrl
+e1d6084 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+9233c3a Fixing error with the tests, backbuttonmultipage wasn't added
+dfa5143 Bumping Android API version to 17
+5810a96 Adding reflection so that this compiles, need to test against HTC Desire HD 2.3.6 device before resolving CB-1845
+70473a8 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+525fd30 Merge branch 'Android_2.3.4_camera_crash' of git://github.com/IuriiO/incubator-cordova-android into null_camera
+5212cd4 Disable JS Interface on Honeycomb
+e95bde6 Correctly report the mime type of 3ga files
+4fe73cf CB-1835: Camera.getPicture gives error when get a picture from photo library with spaces in its name on Android
+78b2835 Merge branch 'master' of https://github.com/ilbambino/incubator-cordova-android
+f9a49ef Removed unnecessary import.
+b9ddc9e Camera plugin (HTC Incredible) is crashing on 2.3.4 devices without SD card
+dc459c8 CB-1829: Online/Offline events do not fire on subsequent pages of an app
+1d26239 not getting the path correctly if the URI contains a file://
+e51b489 Guard against null mimeType in MediaFile.getFormatData
+81f283e CB-1794 fixing cordova commands for paths with spaces in them
+ccdd2fd CB-1809 `create` script should print out meaningful error messages
+69f11a2 Updating the project so that the activities are clearly separated from Test and Helper code
+cf494f3 Fixing the tests so that they run as an Activity again
+d5895c6 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-android
+2ac9873 CB-1808: FileEntry.moveTo across file systems incorrectly calls the success callback
+eb59e76 Fixing CB-1801
 
-Windows Phone 
--------------
 
-502480b moved AudioFormatsHelper so it is available to all projects+templates
-e3defc9 updating to 2.2.0
-0257b98 Merge pull request #23 from sgrebnov/master
-3ea1b5d changes per CB-1758 license question with wp7 Notification.cs
-eafa475 fixes CB-1757 license issue with wp7 ImageExifHelper.cs
-e27db67 fixes CB-1756 license issue with wp7 AudioPlayer.cs and AudioRecorder.xaml.cs
-c7e56d7 Merge pull request #22 from sgrebnov/master
-d805058 update to 2.2.0rc2
-35a91b2 Merge remote-tracking branch 'Jesse/master'
-949b3f0 fixes Media Api Xna exception
-25399a3 Merge pull request #21 from purplecabbage/2.2.0rc1_prep
-5efc570 Update templates, [CB-1660]
-656c3eb update files so they don't need to change with every version
-997d7cb fixes Contacts Api tests
-5da07d6 fixes File Api tests
-2b144d8 Merge remote-tracking branch 'Jesse/master'
-bb6c6f4 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-wp7
-72f6c94 Merge pull request #20 from sgrebnov/master
-06dc27a fixes capture api
-e224839 [CB-1491] added missing src headers
+BlackBerry 
+---
 
-WebOS 
------
+9090a69 [CB-1918] - tagging bb
+6f8f6a7 [CB-1909] - updating /www
+67bc4cd [CB-1900] - Updating the javascripts
+5cae5fe using the right path would be good
+ef16d93 debug token support for playbook
+4506e7d add package-app target to top-level build.xml
+9c1edcc Added debug token support to the debug-device command in qnx
+721f551 normalizing device value for blackberry java
+bad44d8 Normalize BlackBerry Device values
+30c933a Updated javascript and added a debug-simulator command
+7e385cb Updated BlackBerry to only use one javascript
 
-985d2ce merge pull request with cordova-js changes
-90107ec update webOS to 2.2.0
-ce9995e update hello world app to 2.2.0
 
-Bada 
-----
+Windows 
+---
 
-cac1ac1 updated version to 2.2.0
-32d8185 updating version to 2.2.0rc2
-e815027 bumping version
+b32dd22 update cordova-js to 2.3.0 RC1
 
-BadaWac 
--------
 
-92c21a5 updating javascript
-09b29de updated to 2.2.0
-aa7f3fe updating JS and bumping VER number
-7b22e35 updating cordova version
+Windows Phone 7 
+---
 
-Tizen 
------
+41de5f5 update version files, and standalone template
+115a04f update to 2.3.0rc1 and fix issue with File upload
+d3cc114 update cordova-js to 2.3.0rc1
+a481d78 Merge branch 'master' of github.com:purplecabbage/incubator-cordova-wp7
+7979288 [CB-339] Should not be able to create a file or directory if the parent directory does not exist.
 
-33bbf56 updating to 2.2.0
-d0c4b24 updating javascript and bumping version number
-bb7d71e bumping version number
-5470dec adding apache header license
 
-Mac 
+Windows Phone 8 
 ---
 
 
-Qt 
---
 
-41f9403 updated version to 2.2.0
-1362016 bumping version number
-ed508de adding apache header license
+Bada 
+---
+
+5f4590e updating VERSION
+
+
+BadaWac 
+---
+
+54fd3ea updating VERSION file
+
+
+WebOS 
+---
+
+e3e4625 update version to 2.3.0
+
+
+Tizen 
+---
+
+b987d49 updating js and version file
+
+
+QT 
+---
+
+d073f8e updating VERSION
+81cc123 updating VERSION
+
+
+OSX 
+---
+
+
+
+Docs 
+---
+
+82efba8 tagging docs 2.3.0rc1
+611323c [CB-1940] Update iOS Whitelist Guide for new config.xml
+df1820b [CB-1939] Update iOS Project Settings for new config.xml
+01200c6 [CB-1866] iOS minimum requirements
+307256d [CB-1838] iOS - Update Device docs for corrected device.platform implementation
+8455917 [CB-1839] iOS - Update Device docs for corrected device.name implementation
+6adbf75 [CB-1894] Cordova 2.2.0 upgrading guide missing Cordova.plist changes needed
+5e57a9c CB-1935: FileTransfer.upload still documents the old way to specify headers
+aeedb99 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-docs
+53953e6 adding release doc
+727554d CB-1883: Should we document the trustAllHosts parameter for FileTransfer.download/upload?
+5bc8f5f Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-docs
+6102920 Updated the Android WebView code docs with more helpful snippets
+04dfa52 updating docs
+6356698 Adding Eclair and Honeycomb Deprecation Notices, and Minimum Requirements Issue: CB-1867
+3e5fb5c Fix typo where 'ant' is spelled 'any'
+3f835a2 Adding more info to Android Getting Started
+04d4836 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-docs
+4fbcdbb CB-1742 documentation
+c57461e Add setup environment variables to getting started Android
+8ba0943 CB-1805: Updating the docs
+
+
+MobileSpec 
+---
+
+7a610b5 Updated to 2.3.0rc1
+fab6d8e Add manual tests for InAppBrowser
+b70273b Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-mobile-spec
+56a11aa CB-1855: Add device.model to Device API.  Adding the test
+7f7ba85 Test both navigator.network.connection and navigator.connection
+
+
+CordovaJS 
+---
+
+c46b140 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-js
+6aa2be3 updating js files
+54335c8 Fix whitespace in android/platform.js
+c768740 CB-1508: Implement InAppBrowser feature for Android
+abb6cf5 CB-1508: Implement InAppBrowser feature for Android
+05bd1a4 Updating VERSION file
+05d4fd0 [ios] Get the vc header from the User-Agent instead of cordova.iOSVCAddr
+ee4a70c [all] Use argscheck in requestFileSystem.js
+1fe276b [all] Use argscheck in device.js
+4864283 [all] Use argscheck in resolveLocalFileSystemURI.
+f81be66 [all] Use argscheck in geolocation.js
+58990da [all] Use argscheck in contacts.js
+f400233 [all] Use argscheck in compass.js.
+9ba65d4 [all] Use argscheck in accelerometer.js
+bd3e925 [all] Use argscheck in globalization.js
+1dfa2ac [all] Add argscheck module.
+6798d21 Fix error message about how to install dependencies.
+8f2ccf3 remove trailing comma
+3dcdf35 [ios] Remove custom initialization of geolocation on navigator.
+7203d33 Fixed whitespace issues in InAppBrowser.js
+3e61b37 Added InAppBrowser common plugin (window.open)
+9204c35 CB-1855: Adding device.model to the Common JS
+48d5bb1 Switching back in favour of Java fix
+13840a8 CB-1879: Reverting to prompt because addJavascriptInterface is borked on Android 4.2, unable to expose methods due to annotations crashing
+166a98f addPlugin support to air and qnx managers
+a018c49 [all] Change builder functions to be normal instead of closures
+99fadd1 [all] Rename builder keys to make them consistent across common/platform
+a33b47d [all] Fix typo in bootstrap that caused modules to not be merged in.
+c0f68da Fixed whitespace and unit test for BlackBerry 10
+57dcbcc Normalizing BlackBerry device information
+75eb826 fixed another windows vs. unix path issue.
+a56d60e Merge branch 'master' of https://github.com/purplecabbage/incubator-cordova-js
+ce50b72 Clean up build and testing
+74f47a6 Updates to tests and pulled updates from Gord Tanner
+46f7216 fix issues with running blackberry tests in the browser runner
+ad3b1c9 fixed whitespace and finished up the media tests for blackberry bb10.
+759bd70 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-js
+6235f1c Updating tests based on code review (WIP)
+1fd5638 makes a lot more sense to use the userAgent to figure out what BlackBerry platform we are on
+fc85e82 Merge branch 'master' of https://github.com/mlantz/incubator-cordova-js into bb-tests
+8051761 Corrections and further test expansions
+82dc004 webworks notification tests
+2db5e4e webworks media tests
+e1be8e7 webworks accelerometer tests
+1e2d5c0 webworks logger test
+dd0df7d Corrections and further test expansions
+68f55ca Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-js
+9c2f547 Added some more BlackBerry 10 Unit Tests
+590874f webworks notification tests
+a182d1e webworks media tests
+e7c62f6 webworks accelerometer tests
+30e32b9 webworks logger test
+2d15c40 [all] Refactor network.js a bit. No functional change.
+557dab7 [all] Never use platform's navigator.connection. Always clobber
+41ef8a7 [all] Use JS getters to clobber getters in buider.js
+9799533 Unit testing blackberry specific platform code
+72bf85c fixed yet another line ending issue committed by a Mac user who doesn't realize that some of us work on other OS's
+5fb7d76 removed invalid test, MediaError constructor is not defined by the spec, duck-typing testable only
+6e92476 Merge pull request #16 from purplecabbage/CombineWP7+8
+8789b41 mass rename
+d86cd3e correct linting issue stating navigator is ReadOnly, use passed in context
+f7a572d Remove wp7 add windowsphone
+9ac1d0d Merge branch 'wp8-v2' of git://github.com/sgrebnov/incubator-cordova-js
+e67e1a8 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-js
+ea02e1e merge/update DeviceProxy.js
+58aa9b9 various W8 tweaks.
+f782859 update cordova version
+e739247 Update lib/webos/plugin/webos/compass.js
+2031552 wp7/8 compatible version of DOMStorage
+10d6ebc duplicate wp7 as wp
+a637188 [ios] Fix lint warnings recently added.
+678f1dc [ios] Add unit tests for exec bridge.
+c4362c7 Add a mock for XMLHttpRequest to be used in tests.
+8641124 [ios] Tweak exec bridge logic to not send excess XHRs.
+c3517e7 Add util methods for array.indexOf and array.remove.
+3ae88d1 Switched BB10 Battery support over to navigator.webkitBattery
+08f7fe4 Wait for DOMContentLoaded for booting of BlackBerry (BB10 requires this)
+0919268 Refactored BlackBerry into one javascript file
+0bdb835 store deviceId in Windows.Storage.ApplicationData.current.localSettings.values.deviceId, instead of global documents folder.
+beb8dda whitespace
+6f0db27 linting and hinting
+6805a3a return the uuid we worked so hard to get
+95efdcd Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-js
+425ad0b merge platform + deviceproxy
+a45667e Update lib/windows8/platform.js
+c1532c3 Update lib/windows8/plugin/windows8/DeviceProxy.js
+81c951b save device UUID in a file
+2148b3e fix bad filename callback bug
+3966b1f fix MediaError bug
+b543b5a Merge branch 'master' of git://git.apache.org/incubator-cordova-js
+4fde207 fix bugs in CaptureProxy.js
+efc20a1 Update test/window8/README.txt
+a3e734b Update test/window8/README.txt
+13ef019 rm some untested test cases
+1aa4b3e add window8 test case & readme.txt
+8bc917e Update lib/common/utils.js
+d4cd536 fix whitespace & push basic contacts module
+
+
+Hello World App 
+---
+
+9884dca [app] Version 2.3.0rc1

@@ -32,9 +32,10 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.3.0rc1">2.3.0rc1</option>
 <option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
-<option selected value="2.2.0">2.2.0</option>
+<option value="2.2.0">2.2.0</option>
 <option value="2.1.0rc2">2.1.0rc2</option>
 <option value="2.1.0rc1">2.1.0rc1</option>
 <option value="2.1.0">2.1.0</option>
@@ -264,6 +265,7 @@
 <li>Bada 2.x</li>
 <li>webOS</li>
 <li>Tizen</li>
+<li>Windows 8</li>
 </ul>
 <h2>
 <a name="connection.type_quick_example">Quick Example</a>
@@ -296,7 +298,7 @@ checkConnection();
   &lt;head&gt;
     &lt;title&gt;navigator.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -336,9 +338,9 @@ checkConnection();
 <a name="connection.type_api_change">API Change</a>
 </h2>
 
-<p>Before Cordova 2.2.0, the <a href="cordova_connection_connection.md.html#Connection">Connection</a> object existed at: <code>navigator.network.connection</code>.</p>
+<p>Before Cordova 2.3.0, the <a href="cordova_connection_connection.md.html#Connection">Connection</a> object existed at: <code>navigator.network.connection</code>.</p>
 
-<p>To match the spec, this was changed to <code>navigator.connection</code> in 2.2.0.</p>
+<p>To match the spec, this was changed to <code>navigator.connection</code> in 2.3.0.</p>
 
 <p><code>navigator.network.connection</code> still exists, but is now deprecated and will be removed in a future release.</p>
 

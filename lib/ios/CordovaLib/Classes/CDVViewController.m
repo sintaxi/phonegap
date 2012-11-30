@@ -21,11 +21,17 @@
 #import "CDV.h"
 #import "CDVCommandQueue.h"
 #import "CDVCommandDelegateImpl.h"
+#import "CDVConfigParser.h"
 
 #define degreesToRadian(x) (M_PI * (x) / 180.0)
+#define CDV_USER_AGENT_KEY @"Cordova-User-Agent"
+#define CDV_USER_AGENT_VERSION_KEY @"Cordova-User-Agent-Version"
+
+static NSString* gOriginalUserAgent = nil;
 
 @interface CDVViewController ()
 
+@property (nonatomic, readwrite, strong) NSXMLParser* configParser;
 @property (nonatomic, readwrite, strong) NSDictionary* settings;
 @property (nonatomic, readwrite, strong) CDVWhitelist* whitelist;
 @property (nonatomic, readwrite, strong) NSMutableDictionary* pluginObjects;
@@ -43,7 +49,7 @@
 
 @synthesize webView, supportedOrientations;
 @synthesize pluginObjects, pluginsMap, whitelist;
-@synthesize settings, loadFromString;
+@synthesize configParser, settings, loadFromString;
 @synthesize imageView, activityView, useSplashScreen;
 @synthesize wwwFolderName, startPage, invokeString, initialized;
 @synthesize commandDelegate = _commandDelegate;
@@ -62,6 +68,8 @@
                                                      name:UIApplicationWillResignActiveNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAppDidBecomeActive:)
                                                      name:UIApplicationDidBecomeActiveNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAppLocaleDidChange:)
+                                                     name:NSCurrentLocaleDidChangeNotification object:nil];
 
         if (IsAtLeastiOSVersion(@"4.0")) {
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAppWillEnterForeground:)
@@ -76,7 +84,6 @@
 
         self.wwwFolderName = @"www";
         self.startPage = @"index.html";
-        [self setWantsFullScreenLayout:YES];
 
         [self printMultitaskingInfo];
         [self printDeprecationNotice];
@@ -84,10 +91,6 @@
 
         // load Cordova.plist settings
         [self loadSettings];
-        // set the whitelist
-        self.whitelist = [[CDVWhitelist alloc] initWithArray:[self.settings objectForKey:@"ExternalHosts"]];
-        // register this viewcontroller with the NSURLProtocol
-        [CDVURLProtocol registerViewController:self];
     }
 }
 
@@ -107,8 +110,8 @@
 
 - (void)printDeprecationNotice
 {
-    if (!IsAtLeastiOSVersion(@"4.2")) {
-        NSLog(@"CRITICAL: For Cordova 2.0, you will need to upgrade to at least iOS 4.2 or greater. Your current version of iOS is %@.",
+    if (!IsAtLeastiOSVersion(@"5.0")) {
+        NSLog(@"CRITICAL: For Cordova 2.0, you will need to upgrade to at least iOS 5.0 or greater. Your current version of iOS is %@.",
             [[UIDevice currentDevice] systemVersion]
             );
     }
@@ -133,26 +136,32 @@
 
 - (void)loadSettings
 {
-    self.pluginObjects = [[NSMutableDictionary alloc] initWithCapacity:4];
+    CDVConfigParser* delegate = [[CDVConfigParser alloc] init];
 
     // read from Cordova.plist in the app bundle
-    NSString* appPlistName = @"Cordova";
-    NSDictionary* cordovaPlist = [[self class] getBundlePlist:appPlistName];
-    if (cordovaPlist == nil) {
-        NSLog(@"WARNING: %@.plist is missing.", appPlistName);
-        return;
-    }
-    self.settings = [[NSDictionary alloc] initWithDictionary:cordovaPlist];
-
-    // read from Plugins dict in Cordova.plist in the app bundle
-    NSString* pluginsKey = @"Plugins";
-    NSDictionary* pluginsDict = [self.settings objectForKey:@"Plugins"];
-    if (pluginsDict == nil) {
-        NSLog(@"WARNING: %@ key in %@.plist is missing! Cordova will not work, you need to have this key.", pluginsKey, appPlistName);
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"xml"];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSAssert(NO, @"ERROR: config.xml does not exist");
         return;
     }
 
-    self.pluginsMap = [pluginsDict dictionaryWithLowercaseKeys];
+    NSURL *url = [NSURL fileURLWithPath:path];
+
+    configParser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+    if (configParser == nil) {
+        NSLog(@"Failed to initialize XML parser.");
+        return;
+    }
+    [configParser setDelegate:((id<NSXMLParserDelegate>) delegate)];
+    [configParser parse];
+
+    // Get the plugin dictionary, whitelist and settings from the delegate.
+    self.pluginsMap = [delegate.pluginsDict dictionaryWithLowercaseKeys];
+    self.whitelist = [[CDVWhitelist alloc] initWithArray:delegate.whitelistHosts];
+    self.settings = delegate.settings;
+
+    // Initialize the plugin objects dict.
+    self.pluginObjects = [[NSMutableDictionary alloc] initWithCapacity:4];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -216,8 +225,8 @@
     /*
      * Fire up CDVLocalStorage to work-around WebKit storage limitations: on all iOS 5.1+ versions for local-only backups, but only needed on iOS 5.1 for cloud backup.
      */
-    if (IsAtLeastiOSVersion(@"5.1") && (([backupWebStorage isEqualToString:@"local"]) ||
-            ([backupWebStorage isEqualToString:@"cloud"] && !IsAtLeastiOSVersion(@"6.0")))) {
+    if (IsAtLeastiOSVersion(@"5.1") && (([backupWebStorageType isEqualToString:@"local"]) ||
+            ([backupWebStorageType isEqualToString:@"cloud"] && !IsAtLeastiOSVersion(@"6.0")))) {
         [self registerPlugin:[[CDVLocalStorage alloc] initWithWebView:self.webView settings:[NSDictionary dictionaryWithObjectsAndKeys:
                     @"backupType", backupWebStorageType, nil]] withClassName:NSStringFromClass([CDVLocalStorage class])];
     }
@@ -405,6 +414,41 @@
     return [[CDVCordovaView alloc] initWithFrame:bounds];
 }
 
++ (NSString*)originalUserAgent
+{
+    if (gOriginalUserAgent == nil) {
+        NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+        NSString* systemVersion = [[UIDevice currentDevice] systemVersion];
+        NSString* localeStr = [[NSLocale currentLocale] localeIdentifier];
+        NSString* systemAndLocale = [NSString stringWithFormat:@"%@ %@", systemVersion, localeStr];
+
+        NSString* cordovaUserAgentVersion = [userDefaults stringForKey:CDV_USER_AGENT_VERSION_KEY];
+        gOriginalUserAgent = [userDefaults stringForKey:CDV_USER_AGENT_KEY];
+        BOOL cachedValueIsOld = ![systemAndLocale isEqualToString:cordovaUserAgentVersion];
+
+        if ((gOriginalUserAgent == nil) || cachedValueIsOld) {
+            UIWebView* sampleWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
+            gOriginalUserAgent = [sampleWebView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+
+            [userDefaults setObject:gOriginalUserAgent forKey:CDV_USER_AGENT_KEY];
+            [userDefaults setObject:systemAndLocale forKey:CDV_USER_AGENT_VERSION_KEY];
+
+            [userDefaults synchronize];
+        }
+    }
+    return gOriginalUserAgent;
+}
+
+- (NSString*)userAgent
+{
+    if (_userAgent == nil) {
+        NSString* originalUserAgent = [[self class] originalUserAgent];
+        // Use our address as a unique number to append to the User-Agent.
+        _userAgent = [NSString stringWithFormat:@"%@ (%lld)", originalUserAgent, (long long)self];
+    }
+    return _userAgent;
+}
+
 - (void)createGapView
 {
     CGRect webViewBounds = self.view.bounds;
@@ -412,6 +456,11 @@
     webViewBounds.origin = self.view.bounds.origin;
 
     if (!self.webView) {
+        // setting the UserAgent must occur before the UIWebView is instantiated.
+        // This is read per instantiation, so it does not affect the main Cordova UIWebView
+        NSDictionary* dict = [[NSDictionary alloc] initWithObjectsAndKeys:self.userAgent, @"UserAgent", nil];
+        [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
+
         self.webView = [self newCordovaViewWithFrame:webViewBounds];
         self.webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 
@@ -419,6 +468,9 @@
         [self.view sendSubviewToBack:self.webView];
 
         self.webView.delegate = self;
+
+        // register this viewcontroller with the NSURLProtocol, only after the User-Agent is set
+        [CDVURLProtocol registerViewController:self];
     }
 }
 
@@ -487,10 +539,9 @@
     }
     [self didRotateFromInterfaceOrientation:(UIInterfaceOrientation)[[UIDevice currentDevice] orientation]];
 
-    // The iOSVCAddr is used to identify the WebView instance when using one of the XHR js->native bridge modes.
     // The .onNativeReady().fire() will work when cordova.js is already loaded.
     // The _nativeReady = true; is used when this is run before cordova.js is loaded.
-    NSString* nativeReady = [NSString stringWithFormat:@"cordova.iOSVCAddr='%lld';try{cordova.require('cordova/channel').onNativeReady.fire();}catch(e){window._nativeReady = true;}", (long long)self];
+    NSString* nativeReady = @"try{cordova.require('cordova/channel').onNativeReady.fire();}catch(e){window._nativeReady = true;}";
     [self.commandDelegate evalJs:nativeReady];
 }
 
@@ -522,29 +573,6 @@
      */
     else if ([url isFileURL]) {
         return YES;
-    } else if ([self.whitelist schemeIsAllowed:[url scheme]]) {
-        if ([self.whitelist URLIsAllowed:url] == YES) {
-            NSNumber* openAllInWhitelistSetting = [self.settings objectForKey:@"OpenAllWhitelistURLsInWebView"];
-            if ((nil != openAllInWhitelistSetting) && [openAllInWhitelistSetting boolValue]) {
-                NSLog(@"OpenAllWhitelistURLsInWebView set: opening in webview");
-                return YES;
-            }
-
-            // mainDocument will be nil for an iFrame
-            NSString* mainDocument = [theWebView.request.mainDocumentURL absoluteString];
-
-            // anchor target="_blank" - load in Mobile Safari
-            if ((navigationType == UIWebViewNavigationTypeOther) && (mainDocument != nil)) {
-                [[UIApplication sharedApplication] openURL:url];
-                return NO;
-            }
-            // other anchor target - load in Cordova webView
-            else {
-                return YES;
-            }
-        }
-
-        return NO;
     }
 
     /*
@@ -577,16 +605,19 @@
     }
 
     /*
-     * We don't have a Cordova or web/local request, load it in the main Safari browser.
-     * pass this to the application to handle.  Could be a mailto:dude@duderanch.com or a tel:55555555 or sms:55555555 facetime:55555555
+     * Handle all other types of urls (tel:, sms:), and requests to load a url in the main webview.
      */
     else {
-        NSLog(@"AppDelegate::shouldStartLoadWithRequest: Received Unhandled URL %@", url);
+        // BOOL isIFrame = ([theWebView.request.mainDocumentURL absoluteString] == nil);
 
-        if ([[UIApplication sharedApplication] canOpenURL:url]) {
-            [[UIApplication sharedApplication] openURL:url];
-        } else { // handle any custom schemes to plugins
-            [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:CDVPluginHandleOpenURLNotification object:url]];
+        if ([self.whitelist schemeIsAllowed:[url scheme]]) {
+            return [self.whitelist URLIsAllowed:url];
+        } else {
+            if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                [[UIApplication sharedApplication] openURL:url];
+            } else { // handle any custom schemes to plugins
+                [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:CDVPluginHandleOpenURLNotification object:url]];
+            }
         }
 
         return NO;
@@ -705,7 +736,7 @@
     self.imageView.tag = 1;
     self.imageView.center = center;
 
-    self.imageView.autoresizingMask = (UIViewAutoresizingFlexibleWidth & UIViewAutoresizingFlexibleHeight & UIViewAutoresizingFlexibleLeftMargin & UIViewAutoresizingFlexibleRightMargin);
+    self.imageView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin);
     [self.imageView setTransform:startupImageTransform];
     [self.view.superview addSubview:self.imageView];
 
@@ -908,6 +939,11 @@ BOOL gSplashScreenShown = NO;
     [self.commandDelegate evalJs:@"cordova.fireDocumentEvent('pause', null, true);" scheduledOnRunLoop:NO];
 }
 
+- (void)onAppLocaleDidChange:(NSNotification*)notification
+{
+    gOriginalUserAgent = nil;
+}
+
 // ///////////////////////
 
 - (void)dealloc
@@ -918,6 +954,7 @@ BOOL gSplashScreenShown = NO;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSCurrentLocaleDidChangeNotification object:nil];
 
     self.webView.delegate = nil;
     self.webView = nil;

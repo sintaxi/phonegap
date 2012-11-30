@@ -11,7 +11,7 @@
     
     <!-- Cordova win8 references -->
     <link href="/css/default.css" rel="stylesheet" />
-    <script src="/jcordova.js"></script>
+    <script src="cordova.js"></script>
 </head>
 <body>
     <button id="btnStart" onclick="start()">Start</button>
@@ -49,6 +49,7 @@
                     updateStatus("Media status callback :: " + res);
                 }
             );
+
             $("#durationDiv").innerHTML = 'Duration: ' + media.getDuration();
             updateStatus("Media starting");
 

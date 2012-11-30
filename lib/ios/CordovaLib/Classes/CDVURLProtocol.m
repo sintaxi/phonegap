@@ -33,6 +33,37 @@ static CDVWhitelist * gWhitelist = nil;
 // the actual pointer to avoid retaining.
 static NSMutableSet* gRegisteredControllers = nil;
 
+// Returns the registered view controller that sent the given request.
+// If the user-agent is not from a UIWebView, or if it's from an unregistered one,
+// then nil is returned.
+static CDVViewController *viewControllerForRequest(NSURLRequest* request)
+{
+    // The exec bridge explicitly sets the VC address in a header.
+    // This works around the User-Agent not being set for file: URLs.
+    NSString* addrString = [request valueForHTTPHeaderField:@"vc"];
+
+    if (addrString == nil) {
+        NSString* userAgent = [request valueForHTTPHeaderField:@"User-Agent"];
+        if (userAgent == nil) {
+            return nil;
+        }
+        NSUInteger bracketLocation = [userAgent rangeOfString:@"(" options:NSBackwardsSearch].location;
+        if (bracketLocation == NSNotFound) {
+            return nil;
+        }
+        addrString = [userAgent substringFromIndex:bracketLocation + 1];
+    }
+
+    long long viewControllerAddress = [addrString longLongValue];
+    @synchronized(gRegisteredControllers) {
+        if (![gRegisteredControllers containsObject:[NSNumber numberWithLongLong:viewControllerAddress]]) {
+            return nil;
+        }
+    }
+
+    return (__bridge CDVViewController*)(void*)viewControllerAddress;
+}
+
 @implementation CDVURLProtocol
 
 + (void)registerPGHttpURLProtocol {}
@@ -57,6 +88,7 @@ static NSMutableSet* gRegisteredControllers = nil;
             NSLog(@"WARNING: NO whitelist has been set in CDVURLProtocol.");
         }
     }
+
     @synchronized(gRegisteredControllers) {
         [gRegisteredControllers addObject:[NSNumber numberWithLongLong:(long long)viewController]];
     }
@@ -64,55 +96,44 @@ static NSMutableSet* gRegisteredControllers = nil;
 
 + (void)unregisterViewController:(CDVViewController*)viewController
 {
-    [gRegisteredControllers removeObject:[NSNumber numberWithLongLong:(long long)viewController]];
+    @synchronized(gRegisteredControllers) {
+        [gRegisteredControllers removeObject:[NSNumber numberWithLongLong:(long long)viewController]];
+    }
 }
 
 + (BOOL)canInitWithRequest:(NSURLRequest*)theRequest
 {
     NSURL* theUrl = [theRequest URL];
-    NSString* theScheme = [theUrl scheme];
+    CDVViewController* viewController = viewControllerForRequest(theRequest);
 
-    if ([[theUrl path] isEqualToString:@"/!gap_exec"]) {
-        NSString* viewControllerAddressStr = [theRequest valueForHTTPHeaderField:@"vc"];
-        if (viewControllerAddressStr == nil) {
-            NSLog(@"!cordova request missing vc header");
-            return NO;
-        }
-        long long viewControllerAddress = [viewControllerAddressStr longLongValue];
-        // Ensure that the CDVViewController has not been dealloc'ed.
-        CDVViewController* viewController = nil;
-        @synchronized(gRegisteredControllers) {
-            if (![gRegisteredControllers containsObject:[NSNumber numberWithLongLong:viewControllerAddress]]) {
+    if (viewController != nil) {
+        if ([[theUrl path] isEqualToString:@"/!gap_exec"]) {
+            NSString* queuedCommandsJSON = [theRequest valueForHTTPHeaderField:@"cmds"];
+            NSString* requestId = [theRequest valueForHTTPHeaderField:@"rc"];
+            if (requestId == nil) {
+                NSLog(@"!cordova request missing rc header");
                 return NO;
             }
-            viewController = (__bridge CDVViewController*)(void*)viewControllerAddress;
+            BOOL hasCmds = [queuedCommandsJSON length] > 0;
+            if (hasCmds) {
+                SEL sel = @selector(enqueCommandBatch:);
+                [viewController.commandQueue performSelectorOnMainThread:sel withObject:queuedCommandsJSON waitUntilDone:NO];
+            } else {
+                SEL sel = @selector(maybeFetchCommandsFromJs:);
+                [viewController.commandQueue performSelectorOnMainThread:sel withObject:[NSNumber numberWithInteger:[requestId integerValue]] waitUntilDone:NO];
+            }
+            // Returning NO here would be 20% faster, but it spams WebInspector's console with failure messages.
+            // If JS->Native bridge speed is really important for an app, they should use the iframe bridge.
+            // Returning YES here causes the request to come through canInitWithRequest two more times.
+            // For this reason, we return NO when cmds exist.
+            return !hasCmds;
         }
-
-        NSString* queuedCommandsJSON = [theRequest valueForHTTPHeaderField:@"cmds"];
-        NSString* requestId = [theRequest valueForHTTPHeaderField:@"rc"];
-        if (requestId == nil) {
-            NSLog(@"!cordova request missing rc header");
-            return NO;
+        // we only care about http and https connections.
+        // CORS takes care of http: trying to access file: URLs.
+        if ([gWhitelist schemeIsAllowed:[theUrl scheme]]) {
+            // if it FAILS the whitelist, we return TRUE, so we can fail the connection later
+            return ![gWhitelist URLIsAllowed:theUrl];
         }
-        BOOL hasCmds = [queuedCommandsJSON length] > 0;
-        if (hasCmds) {
-            SEL sel = @selector(enqueCommandBatch:);
-            [viewController.commandQueue performSelectorOnMainThread:sel withObject:queuedCommandsJSON waitUntilDone:NO];
-        } else {
-            SEL sel = @selector(maybeFetchCommandsFromJs:);
-            [viewController.commandQueue performSelectorOnMainThread:sel withObject:[NSNumber numberWithInteger:[requestId integerValue]] waitUntilDone:NO];
-        }
-        // Returning NO here would be 20% faster, but it spams WebInspector's console with failure messages.
-        // If JS->Native bridge speed is really important for an app, they should use the iframe bridge.
-        // Returning YES here causes the request to come through canInitWithRequest two more times.
-        // For this reason, we return NO when cmds exist.
-        return !hasCmds;
-    }
-
-    // we only care about http and https connections
-    if ([gWhitelist schemeIsAllowed:theScheme]) {
-        // if it FAILS the whitelist, we return TRUE, so we can fail the connection later
-        return ![gWhitelist URLIsAllowed:theUrl];
     }
 
     return NO;
