@@ -30,8 +30,10 @@
 @class CDVCommandDelegateImpl;
 
 @interface CDVViewController : UIViewController <UIWebViewDelegate, CDVScreenOrientationDelegate>{
-    @private
+    @protected
     CDVCommandDelegateImpl* _commandDelegate;
+    @protected
+    CDVCommandQueue* _commandQueue;
     NSString* _userAgent;
 }
 
@@ -71,5 +73,7 @@
 
 - (id)getCommandInstance:(NSString*)pluginName;
 - (void)registerPlugin:(CDVPlugin*)plugin withClassName:(NSString*)className;
+
+- (BOOL)URLisAllowed:(NSURL*)url;
 
 @end

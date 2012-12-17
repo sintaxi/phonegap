@@ -177,7 +177,7 @@
     <Folder Include="Plugins\" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="WPCordovaClassLib, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="WPCordovaClassLib, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

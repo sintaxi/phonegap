@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.3.0rc1">2.3.0rc1</option>
+<option selected value="2.3.0rc2">2.3.0rc2</option>
+<option value="2.3.0rc1">2.3.0rc1</option>
 <option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.2.0">2.2.0</option>
@@ -116,6 +117,7 @@
 <li><a href="cordova_file_file.md.html#File">File</a></li>
 <li><a href="cordova_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
 <li><a href="cordova_globalization_globalization.md.html#Globalization">Globalization</a></li>
+<li><a href="cordova_inappbrowser_inappbrowser.md.html#InAppBrowser">InAppBrowser</a></li>
 <li><a href="cordova_media_media.md.html#Media">Media</a></li>
 <li><a href="cordova_notification_notification.md.html#Notification">Notification</a></li>
 <li><a href="cordova_splashscreen_splashscreen.md.html#Splashscreen">Splashscreen</a></li>
@@ -208,9 +210,15 @@
 Starting with Cordova 2.2, the project will have a copy of CordovaLib within it instead of having
 a dependency on the copy of CordovaLib from your Cordova installation.</p>
 
-<p>If you would like your project to depend directly on your Cordova installation's version of CordovaLib, you can use:
-<code>./create --shared</code>, or change the project reference after creation using:
-<code>./update_cordova_subproject path/to/you/project</code>.</p>
+<p>If you would like your project to depend directly on your Cordova installation's version of CordovaLib, you can use:</p>
+
+<pre class="prettyprint"><code>    ./create --shared [the rest of the arguments here]
+</code></pre>
+
+<p>or change the project reference after creation using:</p>
+
+<pre class="prettyprint"><code>    ./update_cordova_subproject path/to/your/project
+</code></pre>
 
 <h2>
 <a name="Getting%20Started%20with%20iOS_deploy_to_simulator">Deploy to Simulator</a>

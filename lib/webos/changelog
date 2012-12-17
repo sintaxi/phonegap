@@ -2,4 +2,5 @@
 WebOS 
 ---
 
+50928b7 updates to cordova.js - added pause/resume document events to sysmgr calls, online/offline document events mapped to network connection service. switched from strings to constants in connection for connection type
 e3e4625 update version to 2.3.0

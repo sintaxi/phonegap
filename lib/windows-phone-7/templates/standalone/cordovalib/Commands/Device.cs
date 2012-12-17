@@ -28,26 +28,34 @@ using System.Windows.Resources;
 using System.IO;
 using System.Diagnostics;
 
-namespace WP7CordovaClassLib.Cordova.Commands
+namespace WPCordovaClassLib.Cordova.Commands
 {
     public class Device : BaseCommand
     {
         public void getDeviceInfo(string notused)
         {
 
-            string res = String.Format("\"name\":\"{0}\",\"cordova\":\"{1}\",\"platform\":\"{2}\",\"uuid\":\"{3}\",\"version\":\"{4}\"",
+            string res = String.Format("\"name\":\"{0}\",\"cordova\":\"{1}\",\"platform\":\"{2}\",\"uuid\":\"{3}\",\"version\":\"{4}\",\"model\":\"{5}\"",
                                         this.name,
                                         this.cordova,
                                         this.platform,
                                         this.uuid,
-                                        this.version);
-
-
+                                        this.version,
+                                        this.model);
 
             res = "{" + res + "}";
             //Debug.WriteLine("Result::" + res);
             DispatchCommandResult(new PluginResult(PluginResult.Status.OK, res));
         }
+
+        public string model
+        {
+            get
+            {
+                return DeviceStatus.DeviceName;
+            }
+        }
+
 
         public string name
         {
@@ -62,7 +70,7 @@ namespace WP7CordovaClassLib.Cordova.Commands
             get
             {
                 // TODO: should be able to dynamically read the Cordova version from somewhere...
-                return "2.2.0";
+                return "2.3.0";
             }
         }
 

@@ -54,15 +54,8 @@
  */
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
-    NSURL* url = [launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];
-    NSString* invokeString = nil;
-
-    if (url && [url isKindOfClass:[NSURL class]]) {
-        invokeString = [url absoluteString];
-        NSLog(@"__TESTING__ launchOptions = %@", url);
-    }
-
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
+
     self.window = [[[UIWindow alloc] initWithFrame:screenBounds] autorelease];
     self.window.autoresizesSubviews = YES;
 
@@ -70,7 +63,6 @@
     self.viewController.useSplashScreen = YES;
     self.viewController.wwwFolderName = @"www";
     self.viewController.startPage = @"index.html";
-    self.viewController.invokeString = invokeString;
 
     // NOTE: To customize the view's frame size (which defaults to full screen), override
     // [self.viewController viewWillAppear:] in your view controller.
@@ -97,6 +89,14 @@
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:CDVPluginHandleOpenURLNotification object:url]];
 
     return YES;
+}
+
+// repost the localnotification using the default NSNotificationCenter so multiple plugins may respond
+- (void)application:(UIApplication *)application
+didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    // re-post ( broadcast )
+    [[NSNotificationCenter defaultCenter] postNotificationName:CDVLocalNotification object:notification];
 }
 
 - (NSUInteger)application:(UIApplication*)application supportedInterfaceOrientationsForWindow:(UIWindow*)window

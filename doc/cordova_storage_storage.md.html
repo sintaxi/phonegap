@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.3.0rc1">2.3.0rc1</option>
+<option selected value="2.3.0rc2">2.3.0rc2</option>
+<option value="2.3.0rc1">2.3.0rc1</option>
 <option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.2.0">2.2.0</option>
@@ -159,6 +160,7 @@
 <li><a href="cordova_file_file.md.html#File">File</a></li>
 <li><a href="cordova_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
 <li><a href="cordova_globalization_globalization.md.html#Globalization">Globalization</a></li>
+<li><a href="cordova_inappbrowser_inappbrowser.md.html#InAppBrowser">InAppBrowser</a></li>
 <li><a href="cordova_media_media.md.html#Media">Media</a></li>
 <li><a href="cordova_notification_notification.md.html#Notification">Notification</a></li>
 <li><a href="cordova_splashscreen_splashscreen.md.html#Splashscreen">Splashscreen</a></li>
@@ -307,7 +309,7 @@
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Cordova is ready
     //
@@ -421,7 +423,7 @@ db.changeVersion("1.0", "1.1");
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Cordova is ready
     //
@@ -527,7 +529,7 @@ db.transaction(populateDB, errorCB, successCB);
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Cordova is ready
     //
@@ -641,7 +643,7 @@ db.transaction(queryDB, errorCB);
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Populate the database 
     //
@@ -776,7 +778,7 @@ db.transaction(queryDB, errorCB);
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Populate the database 
     //
@@ -907,7 +909,7 @@ db.transaction(queryDB, errorCB);
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 6.0 and higher)</li>
 <li>iPhone</li>
-<li>Windows Phone 7</li>
+<li>Windows Phone 7 and 8</li>
 <li>webOS</li>
 <li>Tizen</li>
 </ul>
@@ -961,7 +963,7 @@ db.transaction(queryDB, errorCB);
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Cordova is ready
     //
@@ -992,7 +994,7 @@ db.transaction(queryDB, errorCB);
 </h2>
 
 <ul>
-<li>dot notation is NOT available on Windows Phone. Be sure to use : window.<a href="cordova_storage_storage.md.html#localStorage">localStorage</a>.setItem/getItem, and not the w3 spec defined calls to window.<a href="cordova_storage_storage.md.html#localStorage">localStorage</a>.someKey = 'someValue';</li>
+<li>dot notation is NOT available on Windows Phone 7. Be sure to use : window.<a href="cordova_storage_storage.md.html#localStorage">localStorage</a>.setItem/getItem, and not the w3 spec defined calls to window.<a href="cordova_storage_storage.md.html#localStorage">localStorage</a>.someKey = 'someValue';</li>
 </ul>
 </div>
         </div>

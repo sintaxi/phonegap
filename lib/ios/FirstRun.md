@@ -22,10 +22,15 @@
 
 ## Plugins
 
-* Plugins **MUST** add their plugin mapping to their app's Cordova.plist Plugins key, if not they will not work (see your plugin's README)
-* Plugins **MUST** add any external hosts they connect to to the white-list in Cordova.plist/ExternalHosts (add hostnames **only**, NO protocols nor paths) - see the [**Domain Whitelist Guide**](http://docs.cordova.io/en/edge/guide_whitelist_index.md.html#Domain%20Whitelist%20Guide)
+* Plugins **MUST** add their plugin mapping to under their app's **config.xml** &lt;plugins&gt; key, see your plugin's README e.g.
+    
+        <plugin name="MyPluginName" value="MyPluginClass" />
+        
+* Plugins **MUST** add any external hosts they connect to to the white-list in config.xml - see the [**Domain Whitelist Guide**](http://docs.cordova.io/en/edge/guide_whitelist_index.md.html#Domain%20Whitelist%20Guide), e.g.
+
+        <access origin="www.apache.org" />
+        
 * A plugin's Objective-C code **MUST** be added to the project properly in a "group" (**YELLOW** folder), if you incorrectly added it as a folder reference it would be a blue folder (just delete the reference, and re-add)
-* A lot of plugins have changed their mapping names in **Cordova.plist**, you might have to copy and use the new **Cordova.plist** in your app.
 
 <br />
 
@@ -42,10 +47,6 @@ Please see the **Cordova Plugin Upgrade Guide.md** document included in the **gu
 
 <br />
 
-## Install CordovaLib
-
-Please see the instructions in the **README.md** document included in the source distribution
-
 ## Creating a new Cordova-based project
 
 Follow the instructions in the [**Command-Line Usage** section](http://docs.cordova.io/en/edge/guide_command-line_index.md.html#Command-Line%20Usage) of [http://docs.cordova.io](http://docs.cordova.io)
@@ -57,7 +58,7 @@ That's it! Modify the contents of the "www" directory to add your HTML, CSS and 
 
 ## Links
 
-* [http://incubator.apache.org/cordova/](http://incubator.apache.org/cordova/)
+* [http://cordova.apache.org/](http://cordova.apache.org/)
 
 
 <br />

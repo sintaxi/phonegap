@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.3.0rc1">2.3.0rc1</option>
+<option selected value="2.3.0rc2">2.3.0rc2</option>
+<option value="2.3.0rc1">2.3.0rc1</option>
 <option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.2.0">2.2.0</option>
@@ -172,6 +173,7 @@
 <li><a href="cordova_file_file.md.html#File">File</a></li>
 <li><a href="cordova_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
 <li><a href="cordova_globalization_globalization.md.html#Globalization">Globalization</a></li>
+<li><a href="cordova_inappbrowser_inappbrowser.md.html#InAppBrowser">InAppBrowser</a></li>
 <li><a href="cordova_media_media.md.html#Media">Media</a></li>
 <li><a href="cordova_notification_notification.md.html#Notification">Notification</a></li>
 <li><a href="cordova_splashscreen_splashscreen.md.html#Splashscreen">Splashscreen</a></li>
@@ -325,13 +327,9 @@
 
 <h3>iOS</h3>
 
-<h4>App/Supporting Files/Cordova.plist</h4>
+<h4>config.xml</h4>
 
-<pre class="prettyprint"><code>&lt;key&gt;Plugins&lt;/key&gt;
-&lt;dict&gt;
-    &lt;key&gt;<a href="cordova_media_media.md.html#Media">Media</a>&lt;/key&gt;
-    &lt;string&gt;CDVSound&lt;/string&gt;
-&lt;/dict&gt;
+<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_media_media.md.html#Media">Media</a>" value="CDVSound" /&gt;
 </code></pre>
 
 <h3>webOS</h3>
@@ -397,7 +395,7 @@ There are strict restrictions as to how your application interacts with other me
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7 and 8</li>
 <li>Tizen</li>
 <li>Windows 8</li>
 </ul>
@@ -442,7 +440,7 @@ There are strict restrictions as to how your application interacts with other me
 
         // Wait for Cordova to load
         //
-        document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+        document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
         // Cordova is ready
         //
@@ -555,7 +553,7 @@ There are strict restrictions as to how your application interacts with other me
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7 and 8</li>
 <li>Tizen</li>
 <li>Windows 8</li>
 </ul>
@@ -597,7 +595,7 @@ There are strict restrictions as to how your application interacts with other me
 
         // Wait for Cordova to load
         //
-        document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+        document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
         // Cordova is ready
         //
@@ -710,7 +708,7 @@ There are strict restrictions as to how your application interacts with other me
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7 and 8</li>
 <li>Tizen</li>
 <li>Windows 8</li>
 </ul>
@@ -757,7 +755,7 @@ function playAudio(url) {
 
         // Wait for Cordova to load
         //
-        document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+        document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
         // Cordova is ready
         //
@@ -870,7 +868,7 @@ function playAudio(url) {
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7 and 8</li>
 <li>Tizen</li>
 <li>Windows 8</li>
 </ul>
@@ -912,7 +910,7 @@ function playAudio(url) {
 
         // Wait for Cordova to load
         //
-        document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+        document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
         // Cordova is ready
         //
@@ -1057,7 +1055,7 @@ myMedia.play({ playAudioWhenScreenIsLocked : false })
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7 and 8</li>
 <li>Tizen</li>
 <li>Windows 8</li>
 </ul>
@@ -1089,7 +1087,7 @@ myMedia.play({ playAudioWhenScreenIsLocked : false })
 
         // Wait for Cordova to load
         //
-        document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+        document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
         // Cordova is ready
         //
@@ -1210,7 +1208,7 @@ myMedia.play({ playAudioWhenScreenIsLocked : false })
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 6.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7 and 8</li>
 <li>Tizen</li>
 <li>Windows 8</li>
 </ul>
@@ -1243,7 +1241,7 @@ myMedia.play({ playAudioWhenScreenIsLocked : false })
 
         // Wait for Cordova to load
         //
-        document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+        document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
         // Cordova is ready
         //
@@ -1354,7 +1352,7 @@ myMedia.play({ playAudioWhenScreenIsLocked : false })
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7 and 8</li>
 <li>Windows 8</li>
 </ul>
 <h2>
@@ -1395,7 +1393,7 @@ function recordAudio() {
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Record audio
     // 
@@ -1502,7 +1500,7 @@ function recordAudio() {
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7 and 8</li>
 <li>Tizen</li>
 <li>Windows 8</li>
 </ul>
@@ -1549,7 +1547,7 @@ function playAudio(url) {
 
         // Wait for Cordova to load
         //
-        document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+        document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
         // Cordova is ready
         //
@@ -1662,7 +1660,7 @@ function playAudio(url) {
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 ( Mango )</li>
+<li>Windows Phone 7 and 8</li>
 <li>Windows 8</li>
 </ul>
 <h2>
@@ -1708,7 +1706,7 @@ function recordAudio() {
 
     // Wait for Cordova to load
     //
-    document.addEventListener("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+    document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
     // Record audio
     // 

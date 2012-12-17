@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.3.0rc1">2.3.0rc1</option>
+<option selected value="2.3.0rc2">2.3.0rc2</option>
+<option value="2.3.0rc1">2.3.0rc1</option>
 <option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.2.0">2.2.0</option>
@@ -114,6 +115,7 @@
 <li><a href="cordova_file_file.md.html#File">File</a></li>
 <li><a href="cordova_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
 <li><a href="cordova_globalization_globalization.md.html#Globalization">Globalization</a></li>
+<li><a href="cordova_inappbrowser_inappbrowser.md.html#InAppBrowser">InAppBrowser</a></li>
 <li><a href="cordova_media_media.md.html#Media">Media</a></li>
 <li><a href="cordova_notification_notification.md.html#Notification">Notification</a></li>
 <li><a href="cordova_splashscreen_splashscreen.md.html#Splashscreen">Splashscreen</a></li>
@@ -138,7 +140,7 @@
 
 <p>A plugin is an Objective-C class that extends the <code>CDVPlugin</code> class.</p>
 
-<p>Each plugin class must be registered using the Cordova.plist file, under the Plugins key.</p>
+<p>Each plugin class must be registered using the config.xml file, as a &lt;plugin&gt; tag under the &lt;plugins&gt; key.</p>
 
 <h2>
 <a name="Developing%20a%20Plugin%20on%20iOS_plugin_class_mapping">Plugin Class Mapping</a>
@@ -153,10 +155,9 @@
 
 <p>Plugins with long-running requests, background activity (e.g. playing media), listeners or internal state should implement the <code>onReset</code> method and stop or clean up those activities. This method is run when the <code>UIWebView</code> navigates to a new page or refreshes, which reloads the Javascript.</p>
 
-<p>The plugin must be added to <code>Plugins</code> key (a Dictionary) of the <code>Cordova.plist</code> file in your Cordova-iOS application's project folder.</p>
+<p>The plugin must be added under the <code>&lt;plugins&gt;</code> tag of the <code>config.xml</code> file in your Cordova-iOS application's project folder.</p>
 
-<pre class="prettyprint"><code>&lt;key&gt;service_name&lt;/key&gt;
-&lt;string&gt;PluginClassName&lt;/string&gt;
+<pre class="prettyprint"><code>&lt;plugin name="service_name" value="PluginClassName" /&gt;
 </code></pre>
 
 <p>The key <code>service_name</code> should match what you use in the JavaScript <code>exec</code> call, and the value will be the name of the Objective-C class of the plugin. Without this added, the plugin may compile but will not be reachable by Cordova.</p>
@@ -165,7 +166,7 @@
 <a name="Developing%20a%20Plugin%20on%20iOS_writing_an_ios_cordova_plugin">Writing an iOS Cordova Plugin</a>
 </h2>
 
-<p>We have JavaScript fire off a plugin request to the native side. We have the iOS Objective-C plugin mapped properly via the <code>Cordova.plist</code> file. So what does the final iOS Objective-C Plugin class look like?</p>
+<p>We have JavaScript fire off a plugin request to the native side. We have the iOS Objective-C plugin mapped properly via the <code>config.xml</code> file. So what does the final iOS Objective-C Plugin class look like?</p>
 
 <p>What gets dispatched to the plugin via JavaScript's <code>exec</code> function gets passed into the corresponding Plugin class's <code>action</code> method. A plugin method has this signature:</p>
 
@@ -208,10 +209,9 @@
 <a name="Developing%20a%20Plugin%20on%20iOS_echo_plugin_ios_plugin">Echo Plugin iOS Plugin</a>
 </h2>
 
-<p>We would add the following to the <code>Plugins</code> key (a Dictionary) of the project's <code>Cordova.plist</code> file:</p>
+<p>We would add the following to the <code>&lt;plugins&gt;</code> tag of the project's <code>config.xml</code> file:</p>
 
-<pre class="prettyprint"><code>&lt;key&gt;Echo&lt;/key&gt;
-&lt;string&gt;Echo&lt;/string&gt;
+<pre class="prettyprint"><code>&lt;plugin name="Echo" value="Echo" /&gt;
 </code></pre>
 
 <p>Then we would add the following files (<code>Echo.h</code> and <code>Echo.m</code>) to the Plugins folder inside our Cordova-iOS
@@ -303,7 +303,7 @@ application folder:</p>
 </h2>
 
 <ul>
-<li>Don't forget to add your plugin's mapping to Cordova.plist - if you forgot, an error will be printed to the Xcode console log</li>
+<li>Don't forget to add your plugin's mapping to config.xml - if you forgot, an error will be printed to the Xcode console log</li>
 <li>Don't forget to add any hosts you connect to in the <a href="guide_whitelist_index.md.html#Domain%20Whitelist%20Guide">whitelist</a> - if you forgot, an error will be printed to the Xcode console log</li>
 </ul>
 <h2>

@@ -53,6 +53,7 @@ static NSString* gOriginalUserAgent = nil;
 @synthesize imageView, activityView, useSplashScreen;
 @synthesize wwwFolderName, startPage, invokeString, initialized;
 @synthesize commandDelegate = _commandDelegate;
+@synthesize commandQueue = _commandQueue;
 
 - (void)__init
 {
@@ -89,7 +90,7 @@ static NSString* gOriginalUserAgent = nil;
         [self printDeprecationNotice];
         self.initialized = YES;
 
-        // load Cordova.plist settings
+        // load config.xml settings
         [self loadSettings];
     }
 }
@@ -134,25 +135,35 @@ static NSString* gOriginalUserAgent = nil;
     NSLog(@"Multi-tasking -> Device: %@, App: %@", (backgroundSupported ? @"YES" : @"NO"), (![exitsOnSuspend intValue]) ? @"YES" : @"NO");
 }
 
+- (BOOL)URLisAllowed:(NSURL*)url
+{
+    if (self.whitelist == nil) {
+        return YES;
+    }
+
+    return [self.whitelist URLIsAllowed:url];
+}
+
 - (void)loadSettings
 {
     CDVConfigParser* delegate = [[CDVConfigParser alloc] init];
 
-    // read from Cordova.plist in the app bundle
+    // read from config.xml in the app bundle
     NSString* path = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"xml"];
+
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        NSAssert(NO, @"ERROR: config.xml does not exist");
+        NSAssert(NO, @"ERROR: config.xml does not exist. Please run cordova-ios/bin/cordova_plist_to_config_xml path/to/project.");
         return;
     }
 
-    NSURL *url = [NSURL fileURLWithPath:path];
+    NSURL* url = [NSURL fileURLWithPath:path];
 
     configParser = [[NSXMLParser alloc] initWithContentsOfURL:url];
     if (configParser == nil) {
         NSLog(@"Failed to initialize XML parser.");
         return;
     }
-    [configParser setDelegate:((id<NSXMLParserDelegate>) delegate)];
+    [configParser setDelegate:((id < NSXMLParserDelegate >)delegate)];
     [configParser parse];
 
     // Get the plugin dictionary, whitelist and settings from the delegate.
@@ -169,17 +180,23 @@ static NSString* gOriginalUserAgent = nil;
 {
     [super viewDidLoad];
 
-    NSString* startFilePath = [_commandDelegate pathForResource:self.startPage];
     NSURL* appURL = nil;
     NSString* loadErr = nil;
 
-    if (startFilePath == nil) {
-        loadErr = [NSString stringWithFormat:@"ERROR: Start Page at '%@/%@' was not found.", self.wwwFolderName, self.startPage];
-        NSLog(@"%@", loadErr);
-        self.loadFromString = YES;
-        appURL = nil;
+    if ([self.startPage rangeOfString:@"://"].location != NSNotFound) {
+        appURL = [NSURL URLWithString:self.startPage];
+    } else if ([self.wwwFolderName rangeOfString:@"://"].location != NSNotFound) {
+        appURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", self.wwwFolderName, self.startPage]];
     } else {
-        appURL = [NSURL fileURLWithPath:startFilePath];
+        NSString* startFilePath = [self.commandDelegate pathForResource:self.startPage];
+        if (startFilePath == nil) {
+            loadErr = [NSString stringWithFormat:@"ERROR: Start Page at '%@/%@' was not found.", self.wwwFolderName, self.startPage];
+            NSLog(@"%@", loadErr);
+            self.loadFromString = YES;
+            appURL = nil;
+        } else {
+            appURL = [NSURL fileURLWithPath:startFilePath];
+        }
     }
 
     // // Fix the iOS 5.1 SECURITY_ERR bug (CB-347), this must be before the webView is instantiated ////
@@ -219,7 +236,7 @@ static NSString* gOriginalUserAgent = nil;
      */
 
     if ([enableLocation boolValue]) {
-        [[self getCommandInstance:@"Geolocation"] getLocation:[CDVInvokedUrlCommand new]];
+        [[self.commandDelegate getCommandInstance:@"Geolocation"] getLocation:[CDVInvokedUrlCommand new]];
     }
 
     /*
@@ -246,7 +263,7 @@ static NSString* gOriginalUserAgent = nil;
     BOOL bounceAllowed = (bouncePreference == nil || [bouncePreference boolValue]);
 
     // prevent webView from bouncing
-    // based on UIWebViewBounce key in Cordova.plist
+    // based on UIWebViewBounce key in config.xml
     if (!bounceAllowed) {
         if ([self.webView respondsToSelector:@selector(scrollView)]) {
             ((UIScrollView*)[self.webView scrollView]).bounces = NO;

@@ -171,9 +171,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\framework\WP7CordovaClassLib.csproj">
+    <ProjectReference Include="..\framework\WPCordovaClassLib.csproj">
       <Project>{FC6A1A70-892D-46AD-9E4A-9793F72AF780}</Project>
-      <Name>WP7CordovaClassLib</Name>
+      <Name>WPCordovaClassLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />

@@ -51,7 +51,7 @@ do
         # i hate regex
         jspath=$( dirname "$fullpath" ) ; jspath=${jspath#./www} ; jspath=${jspath//\/[a-zA-Z0-9]/../} ; jspath=${jspath//[a-zA-Z0-9]/}
         sed -i "" '/<head>/ a\
-        <script type="text/javascript" src="'$jspath'js/webworks.js"></script>' $fullpath  
+        <script type="text/javascript" src="local:///chrome/webworks.js"></script>' $fullpath  
         echo "ADDING: "$fullpath
     fi
 done

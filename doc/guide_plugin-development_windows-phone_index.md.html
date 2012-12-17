@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.3.0rc1">2.3.0rc1</option>
+<option selected value="2.3.0rc2">2.3.0rc2</option>
+<option value="2.3.0rc1">2.3.0rc1</option>
 <option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.2.0">2.2.0</option>
@@ -89,7 +90,7 @@
             <h1>Developing a Plugin on Windows Phone</h1>
             <small><select><option value="Developing%2520a%2520Plugin%2520on%2520Windows%2520Phone">Developing a Plugin on Windows Phone</option>
 <option value="Developing%20a%20Plugin%20on%20Windows%20Phone_namespaces">      - Namespaces</option>
-<option value="Developing%20a%20Plugin%20on%20Windows%20Phone_interpretting_your_arguments_in_c">      - Interpretting your arguments in C#</option>
+<option value="Developing%20a%20Plugin%20on%20Windows%20Phone_interpreting_your_arguments_in_c">      - Interpreting your arguments in C#</option>
 <option value="Developing%20a%20Plugin%20on%20Windows%20Phone_passing_results_from_c_to_js">      - Passing results from C# to JS</option>
 <option value="Developing%20a%20Plugin%20on%20Windows%20Phone_handling_serialization_errors_in_your_plugin_s_c_method">      - Handling serialization errors in your plugin's C# method</option>
 <option value="Developing%20a%20Plugin%20on%20Windows%20Phone_advanced_plugin_functionality">      - Advanced Plugin Functionality</option>
@@ -111,6 +112,7 @@
 <li><a href="cordova_file_file.md.html#File">File</a></li>
 <li><a href="cordova_geolocation_geolocation.md.html#Geolocation">Geolocation</a></li>
 <li><a href="cordova_globalization_globalization.md.html#Globalization">Globalization</a></li>
+<li><a href="cordova_inappbrowser_inappbrowser.md.html#InAppBrowser">InAppBrowser</a></li>
 <li><a href="cordova_media_media.md.html#Media">Media</a></li>
 <li><a href="cordova_notification_notification.md.html#Notification">Notification</a></li>
 <li><a href="cordova_splashscreen_splashscreen.md.html#Splashscreen">Splashscreen</a></li>
@@ -154,9 +156,9 @@ and it comes with the majority of the 'plumbing' built for you already.</p>
 <li>
 <p>Include the base classes implementation</p>
 
-<pre class="prettyprint"><code>using WP7CordovaClassLib.Cordova;
-using WP7CordovaClassLib.Cordova.Commands;
-using WP7CordovaClassLib.Cordova.JSON;
+<pre class="prettyprint"><code>using WPCordovaClassLib.Cordova;
+using WPCordovaClassLib.Cordova.Commands;
+using WPCordovaClassLib.Cordova.JSON;
 </code></pre>
 </li>
 <li>
@@ -212,10 +214,10 @@ call to <code>cordova.exec</code>. For example, if you wanted to define your C# 
 </code></pre>
 
 <h2>
-<a name="Developing%20a%20Plugin%20on%20Windows%20Phone_interpretting_your_arguments_in_c">Interpretting your arguments in C#</a>
+<a name="Developing%20a%20Plugin%20on%20Windows%20Phone_interpreting_your_arguments_in_c">Interpreting your arguments in C#</a>
 </h2>
 
-<p>The data received by your plugin method is a string value, but in actuallality
+<p>The data received by your plugin method is a string value, but in actuality
 looking at our JavaScript code, we see our intention was to pass an array of strings.
 Looking back at our JS call to <code>cordova.exec</code>, we see we passed <code>[str]</code>:</p>
 

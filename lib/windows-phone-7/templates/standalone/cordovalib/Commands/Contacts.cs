@@ -24,7 +24,7 @@ using System.Windows;
 using DeviceContacts = Microsoft.Phone.UserData.Contacts;
 
 
-namespace WP7CordovaClassLib.Cordova.Commands
+namespace WPCordovaClassLib.Cordova.Commands
 {
     [DataContract]
     public class SearchOptions

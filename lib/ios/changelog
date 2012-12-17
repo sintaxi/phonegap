@@ -2,6 +2,44 @@
 iOS 
 ---
 
+33f2e00 Update guides/Changing the JavaScript to Native Bridge Mode.md
+fa6d40a Update to 2.3.0rc2
+6c67a0a Updated Plugin Upgrade Guide to 2.3.0 (also 2.2.0)
+145d457 [CB-1988] Update JavaScript for iOS to 2.3.0rc2
+46682ec Added 2.3.0 Release Notes
+c6f8c17 [CB-1550] iOS build, debug, emulate scripts should check xcode version
+8e90ed2 Added URLisAllowed method abstraction for Plugins to query (easier if we decide to make the whitelist a singleton in the future)
+fe40192 [CB-1962] Video Capture not compressing video after capture - partial revert of CB-1499
+8f4c46d Removed incubator website links to TLP http://cordova.apache.org/
+495ab52 [CB-1970] MainViewController cannot override pathForResource
+d63cf46 Merge branch 'LocalNotifications' of github.com:purplecabbage/cordova-ios
+61f15e1 Merge branch 'master' of github.com:purplecabbage/cordova-ios
+db395af add appdelegate method didReceiveLocalNotification and repost to defaultCenter
+1ba170e added local notification #define, and stubbed method
+b00d496 Allow any scheme when specifying start page as a URL.
+7e970ad Mention cordova_plist_to_config_xml in the NSAssert for config.xml
+345a982 Rename plist2xml.py -> cordova_plist_to_config_xml.
+d00dc78 Updated doc references to Cordova.plist, use new config.xml
+8d1e52f Removed "incubator" prefix from URLs (except for main website which hasn't changed over yet)
+9229bac [ios] Add support for https:// start pages (instead of just http)
+7f6d643 [CB-1957] InAppBrowser - video/audio does not stop playing when browser is closed
+67e93c9 Add a helper script to convert Cordova.plist to config.xml.
+a952761 [ios] Support startPage as URL.  If wwwFolderName or startPage start with 'http://' load resource as if is NSURL
+2335d32 Interim cordova-js that supports InAppBrowser events
+02b5fee [CB-1949][iOS] InAppBrowser - support events (loadstart, loadstop, exit)
+2ba2b39 Changed unsafe_unretained to weak since we are supporting iOS 5.0 and up only now
+8724ac6 [CB-1802] ./cordova set of CLI tools need audit to work with paths with spaces
+7443bc5 Removed usage of deprecated CDVViewController.invokeString in the default project template files.
+5bc8515 Removed double reference to config.xml in default template project (kept the one that is the first child element of the project)
+d28cfff [CB-1890] InAppBrowser: location bar url text needs indentation
+17a71e8 Fixed non-mp3 files not being able to be played using the Media API
+cf5609f [CB-1669] Issue an error when media.startRecord() is failing.
+5013589 InAppBrowser - added class check for options arg.
+6739488 Added new CDVInvokedUrlCommand argumentAtIndex method to ensure proper object type returned (if not, default is returned)
+093c982 [CB-1850] Add device.model to the Device API
+99e061c [CB-1837] Device core plugin - device.name should return the actual device string (eg iPod Touch, iPhone)
+8ea3ed4 [CB-1836] Device core plugin - device.platform should return "iOS"
+3bf3017 Renamed references of Cordova.plist to config.xml (plus uncrustify)
 e5b4aaf Updated 2.3.0rc1 js
 72156c0 Updated version to 2.3.0rc1
 c1eb09f Updated default project template to include config.xml, removed Cordova.plist
@@ -48,3 +86,17 @@ ddc14b1 Fix unit tests not working due to lack of a command delegate.
 69c1375 Making whitelist rejection string configurable
 dac34c4 Updated bin/diagnose_project to print out conditional ARCHs build settings.
 458ffaa Updated CordovaLibAppTests to 2.2.0 JavaScript, updated Cordova.plist
+46f0992 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-ios
+8656d6a Merge branch 'master' of github.com:purplecabbage/incubator-cordova-ios
+b792bf5 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-ios
+20777ab Merge branch 'master' of git://github.com/apache/incubator-cordova-ios
+ff04241 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-ios
+3c74479 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-ios
+f3a6ecc Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-ios
+bee6e9d Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-ios
+8898ae4 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-ios
+2bc366a Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-ios
+678071b Merge branch 'master' of github.com:purplecabbage/cordova-ios
+cb0e277 Merge branch 'master' of github.com:purplecabbage/cordova-ios
+61368d0 Merge pull request #2 from cordova/master
+2b2c2e6 Merge pull request #1 from shazron/view-extraction

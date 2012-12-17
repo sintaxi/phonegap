@@ -43,11 +43,19 @@
     return self;
 }
 
+- (void)onReset
+{
+    [self close:nil];
+}
+
 - (void)close:(CDVInvokedUrlCommand*)command
 {
     if (self.inAppBrowserViewController != nil) {
         [self.inAppBrowserViewController close];
+        self.inAppBrowserViewController = nil;
     }
+
+    self.callbackId = nil;
 }
 
 - (void)open:(CDVInvokedUrlCommand*)command
@@ -56,7 +64,9 @@
 
     NSString* url = [command argumentAtIndex:0];
     NSString* target = [command argumentAtIndex:1 withDefault:kInAppBrowserTargetSelf];
-    NSString* options = [command argumentAtIndex:2 withDefault:@""];
+    NSString* options = [command argumentAtIndex:2 withDefault:@"" andClass:[NSString class]];
+
+    self.callbackId = command.callbackId;
 
     if (url != nil) {
         NSURL* baseUrl = [self.webView.request URL];
@@ -74,6 +84,7 @@
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"incorrect number of arguments"];
     }
 
+    [pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
@@ -82,6 +93,7 @@
     if (self.inAppBrowserViewController == nil) {
         NSString* originalUA = [CDVViewController originalUserAgent];
         self.inAppBrowserViewController = [[CDVInAppBrowserViewController alloc] initWithUserAgent:originalUA];
+        self.inAppBrowserViewController.navigationDelegate = self;
 
         if ([self.viewController conformsToProtocol:@protocol(CDVScreenOrientationDelegate)]) {
             self.inAppBrowserViewController.orientationDelegate = (UIViewController <CDVScreenOrientationDelegate>*)self.viewController;
@@ -124,6 +136,41 @@
         [[UIApplication sharedApplication] openURL:url];
     } else { // handle any custom schemes to plugins
         [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:CDVPluginHandleOpenURLNotification object:url]];
+    }
+}
+
+#pragma mark CDVInAppBrowserNavigationDelegate
+
+- (void)browserLoadStart:(NSURL*)url
+{
+    if (self.callbackId != nil) {
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
+                                                      messageAsDictionary:@ {@"type":@"loadstart", @"url":[url absoluteString]}];
+        [pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
+
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
+    }
+}
+
+- (void)browserLoadStop:(NSURL*)url
+{
+    if (self.callbackId != nil) {
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
+                                                      messageAsDictionary:@ {@"type":@"loadstop", @"url":[url absoluteString]}];
+        [pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
+
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
+    }
+}
+
+- (void)browserExit
+{
+    if (self.callbackId != nil) {
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
+                                                      messageAsDictionary:@ {@"type":@"exit"}];
+        [pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
+
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
     }
 }
 
@@ -178,8 +225,6 @@
         self.webView.userInteractionEnabled = YES;
     }
 
-    // TODO: create nav bar, location bar
-
     self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     self.spinner.alpha = 1.000;
     self.spinner.autoresizesSubviews = YES;
@@ -221,12 +266,13 @@
     self.toolbar.opaque = NO;
     self.toolbar.userInteractionEnabled = YES;
 
-    self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, (self.view.bounds.size.height - FOOTER_HEIGHT), self.view.bounds.size.width, LOCATIONBAR_HEIGHT)];
+    CGFloat labelInset = 5.0;
+    self.addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelInset, (self.view.bounds.size.height - FOOTER_HEIGHT), self.view.bounds.size.width - labelInset, LOCATIONBAR_HEIGHT)];
     self.addressLabel.adjustsFontSizeToFitWidth = NO;
     self.addressLabel.alpha = 1.000;
     self.addressLabel.autoresizesSubviews = YES;
     self.addressLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
-    self.addressLabel.backgroundColor = [UIColor grayColor];
+    self.addressLabel.backgroundColor = [UIColor clearColor];
     self.addressLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
     self.addressLabel.clearsContextBeforeDrawing = YES;
     self.addressLabel.clipsToBounds = YES;
@@ -257,6 +303,7 @@
 
     [self.toolbar setItems:@[self.closeButton, flexibleSpaceButton, self.backButton, fixedSpaceButton, self.forwardButton]];
 
+    self.view.backgroundColor = [UIColor grayColor];
     [self.view addSubview:self.toolbar];
     [self.view addSubview:self.addressLabel];
     [self.view addSubview:self.spinner];
@@ -296,12 +343,21 @@
     [super viewDidLoad];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.webView loadHTMLString:nil baseURL:nil];
+}
+
 - (void)close
 {
     if ([self respondsToSelector:@selector(presentingViewController)]) {
         [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
     } else {
         [[self parentViewController] dismissModalViewControllerAnimated:YES];
+    }
+
+    if ((self.navigationDelegate != nil) && [self.navigationDelegate respondsToSelector:@selector(browserExit)]) {
+        [self.navigationDelegate browserExit];
     }
 }
 
@@ -333,6 +389,10 @@
     self.forwardButton.enabled = theWebView.canGoForward;
 
     [self.spinner startAnimating];
+
+    if ((self.navigationDelegate != nil) && [self.navigationDelegate respondsToSelector:@selector(browserLoadStart:)]) {
+        [self.navigationDelegate browserLoadStart:theWebView.request.URL];
+    }
 }
 
 - (void)webViewDidFinishLoad:(UIWebView*)theWebView
@@ -344,6 +404,10 @@
     self.forwardButton.enabled = theWebView.canGoForward;
 
     [self.spinner stopAnimating];
+
+    if ((self.navigationDelegate != nil) && [self.navigationDelegate respondsToSelector:@selector(browserLoadStop:)]) {
+        [self.navigationDelegate browserLoadStop:theWebView.request.URL];
+    }
 }
 
 - (void)webView:(UIWebView*)theWebView didFailLoadWithError:(NSError*)error

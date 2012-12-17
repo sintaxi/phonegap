@@ -21,7 +21,7 @@ using System.Security;
 using System.Text;
 using System.Diagnostics;
 
-namespace WP7CordovaClassLib.Cordova.Commands
+namespace WPCordovaClassLib.Cordova.Commands
 {
     /// <summary>
     /// Provides access to isolated storage
