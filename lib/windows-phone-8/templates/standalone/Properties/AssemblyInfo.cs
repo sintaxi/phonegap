@@ -15,7 +15,8 @@ using System.Resources;
 [assembly: AssemblyTrademark("Apache Cordova")]
 [assembly: AssemblyCulture("")]
 
-[assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.Satellite)]
+
+[assembly: NeutralResourcesLanguageAttribute("en-US")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 

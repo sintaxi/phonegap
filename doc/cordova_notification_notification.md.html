@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.3.0rc2">2.3.0rc2</option>
+<option value="2.3.0rc2">2.3.0rc2</option>
 <option value="2.3.0rc1">2.3.0rc1</option>
+<option selected value="2.3.0">2.3.0</option>
 <option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.2.0">2.2.0</option>
@@ -78,6 +79,7 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.1.0">2.1.0</option>
 <option value="2.0.0">2.0.0</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -97,7 +99,6 @@
 <option value="notification.alert_quick_example">      - Quick Example</option>
 <option value="notification.alert_full_example">      - Full Example</option>
 <option value="notification.alert_windows_phone_7_and_8_quirks">      - Windows Phone 7 and 8 Quirks</option>
-<option value="notification.alert_windows_8_app_quirks">      - Windows 8 App Quirks</option>
 <option value="notification.alert_bada_2_x_quirks">      - Bada 2.x Quirks</option>
 <option value="notification.confirm">notification.confirm</option>
 <option value="notification.confirm_description">      - Description</option>
@@ -343,15 +344,6 @@ navigator.<a href="cordova_notification_notification.md.html#notification.alert"
 <ul>
 <li>There is no built in browser alert, so if you want to just write alert('foo'); you can assign window.alert = navigator.<a href="cordova_notification_notification.md.html#notification.alert">notification.alert</a>;</li>
 <li>alert + confirm calls are non-blocking, and result is only available asynchronously.</li>
-</ul>
-<h2>
-<a name="notification.alert_windows_8_app_quirks">Windows 8 App Quirks</a>
-</h2>
-
-<ul>
-<li>In the other platforms, messages "stack up" - e.g. issue two <strong>alert</strong> requests and you'll get two messages overlaid. In Windows 8 apps, 
-you only get the last message.</li>
-<li>There is no built in browser alert, so if you want to just write alert('foo'); you can assign window.alert = navigator.<a href="cordova_notification_notification.md.html#notification.alert">notification.alert</a>;</li>
 </ul>
 <h2>
 <a name="notification.alert_bada_2_x_quirks">Bada 2.x Quirks</a>
@@ -619,7 +611,7 @@ navigator.<a href="cordova_notification_notification.md.html#notification.beep">
 
 <ul>
 <li>Tizen implements beep by playing an audio file via the media API.</li>
-<li>This beep file must be short, named <code>beep.wav</code> and has to be located in a 'sounds' sub-directory of the application root disctory.</li>
+<li>This beep file must be short, named <code>beep.wav</code> and has to be located in a 'sounds' sub-directory of the application root directory.</li>
 </ul>
 <hr>
 <h1><a name="notification.vibrate">notification.vibrate</a></h1>

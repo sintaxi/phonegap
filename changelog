@@ -1,9 +1,16 @@
-CHANGELOG
 
 
 iOS 
 ---
 
+330c7c3 Updated VERSION to 2.3.0
+4cd8467 Updated js to 2.3.0
+8b59a6c [CB-2095] Delete incomplete file on filetransfer.abort
+8ed848b [CB-2088] InAppBrowser - view a video file in fullscreen mode
+534a7a1 Interim js to fix 2 File API mobile-spec failures
+a88ea87 Revert enabling of ARC in the project template
+d5a82a6 Fix up invalid #pragma mark lines in our project template.
+930b1bf Update project template to have iOS 5.0 as the minimal target.
 33f2e00 Update guides/Changing the JavaScript to Native Bridge Mode.md
 fa6d40a Update to 2.3.0rc2
 6c67a0a Updated Plugin Upgrade Guide to 2.3.0 (also 2.2.0)
@@ -107,6 +114,8 @@ cb0e277 Merge branch 'master' of github.com:purplecabbage/cordova-ios
 Android 
 ---
 
+3caa45d Typo.  Missed index.html in incrementation
+7c069f1 Incrementing version to 2.3.0 final
 6efeb14 Incremeting version to 2.3.0rc2
 01f062d Saving a contact with an email type of work sets it to home
 2a42c46 CB-1973: We don't need to log three damn times!  If it wasn't for HTC, I'd remove this entirely.
@@ -183,6 +192,9 @@ eb59e76 Fixing CB-1801
 BlackBerry 
 ---
 
+1420a0c [CB-2142] - updating version
+8c013ff [CB-2120] - update javascript
+80e3ef1 Remove webworks.js from project template since it will be injected by cordova.
 d1a3abd [CB-2005] - updated version
 c7f84df [CB-1996] - Updating www
 750cda9 [CB-1987] - updating javascript
@@ -210,6 +222,8 @@ bad44d8 Normalize BlackBerry Device values
 Windows 
 ---
 
+bfc1436 updates for 2.3.0
+629817c update js for 2.3.0
 eb721c8 updates for 2.3.0rc2
 b32dd22 update cordova-js to 2.3.0 RC1
 
@@ -217,6 +231,8 @@ b32dd22 update cordova-js to 2.3.0 RC1
 Windows Phone 7 
 ---
 
+379574b update versions for 2.3.0
+a8b6d1b updates for 2.3.0 release
 04bea48 update assembly info for rc2
 476b686 update to 2.3.0rc2
 7bd2fbf oops, missed a couple renames WP7 -> WP
@@ -242,6 +258,7 @@ Windows Phone 8
 Bada 
 ---
 
+5f76b83 updating VERSION
 ae910bc updating VERSION file
 5f4590e updating VERSION
 
@@ -249,6 +266,7 @@ ae910bc updating VERSION file
 BadaWac 
 ---
 
+a65d381 updating javascript and VERSION file
 705c038 updating js and VERSION file
 54fd3ea updating VERSION file
 
@@ -256,6 +274,7 @@ BadaWac
 WebOS 
 ---
 
+65fa7c6 updated 2.3.0 updates to cordova-js libs
 50928b7 updates to cordova.js - added pause/resume document events to sysmgr calls, online/offline document events mapped to network connection service. switched from strings to constants in connection for connection type
 e3e4625 update version to 2.3.0
 
@@ -263,6 +282,7 @@ e3e4625 update version to 2.3.0
 Tizen 
 ---
 
+a5ebe1c updating javascript and VERSION
 4b15355 updating JS and VERSION file
 b987d49 updating js and version file
 
@@ -270,6 +290,7 @@ b987d49 updating js and version file
 QT 
 ---
 
+b34e260 updating VERSION file
 dbe90c5 updating VERSION
 d073f8e updating VERSION
 81cc123 updating VERSION
@@ -283,6 +304,20 @@ OSX
 Docs 
 ---
 
+af24b6c Version 2.3.0
+cd567a0 Updated iOS getting started guide
+8b69b74 [CB-2097] Embedded CordovaView docs - need to retain CDVViewController object
+c988fa6 Merge remote-tracking branch 'keiko713/jp_2.1.0' into master
+5c6ac10 [CB-2105] - fixed link for bb getting started guide
+94c825f Update and translate files related to getting-started, plugin-development, upgrading, and whitelist
+0cf828b Update files related to cordova-webview and getting-started
+8803373 Update files related to file, geolocation, media, notification and storage
+899753e Update files related to contacts, device, and events
+0f16a39 Update files related to compass and connection
+eba65e2 Update files related to accelerometer and camera
+4272ca3 Copy docs/jp/2.0.0 to docs/jp/2.1.0
+ac6c1ab Spelling fixes by jsoref
+da128e6 CB-2048: Docs need to be combed over for references to incubator
 fbe6abb 2.3.0rc2
 ed0023a This should be fixed. CB-2069
 8a54833 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-docs
@@ -329,6 +364,12 @@ c57461e Add setup environment variables to getting started Android
 MobileSpec 
 ---
 
+3c4a01c Updated version to 2.3.0
+dbd91a5 Fixes CB-2109 device.platform value in audio
+7aa6572 Spelling: writer
+02945d7 Spelling: should
+47252d8 Spelling: create
+842537f Spelling: callback
 b560189 Updated to 2.3.0rc2
 7a610b5 Updated to 2.3.0rc1
 fab6d8e Add manual tests for InAppBrowser
@@ -340,6 +381,12 @@ b70273b Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubat
 CordovaJS 
 ---
 
+24d65ab Updating the version to 2.3.0
+4082ee0 Fixed lint error in BB10 file module and got rid of BlobBuilder use
+df5c78d Add initial File API support for BB10
+2226b09 [CB-2058] [iOS] 2 File API test failures on mobile-spec 2.3.0rc2
+d8204cc Small refactor to injection of webworks.js
+877fec1 Inject BB10 WebWorks script in bootstrap
 861ff3d Incrementing version to 2.3.0rc2
 4301bc9 Bad whitespace, fixing
 46c89d1 [CB-1853] - adding in device.model
@@ -453,5 +500,6 @@ d4cd536 fix whitespace & push basic contacts module
 Hello World App 
 ---
 
+95bb86b [app] Version 2.3.0
 b6589fc [app] Version 2.3.0rc2
 9884dca [app] Version 2.3.0rc1

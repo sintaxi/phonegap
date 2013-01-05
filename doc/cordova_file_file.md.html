@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.3.0rc2">2.3.0rc2</option>
+<option value="2.3.0rc2">2.3.0rc2</option>
 <option value="2.3.0rc1">2.3.0rc1</option>
+<option selected value="2.3.0">2.3.0</option>
 <option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.2.0">2.2.0</option>
@@ -78,6 +79,7 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.1.0">2.1.0</option>
 <option value="2.0.0">2.0.0</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -417,7 +419,7 @@ File System Quick Example</option>
 <a name="FileReader_details">Details</a>
 </h2>
 
-<p>The <code><a href="cordova_file_file.md.html#FileReader">FileReader</a></code> object is a way to read files from the devices file system.  Files can be read as text or as a base64 data encoded string.  Users register their own event listners to receive the loadstart, progress, load, loadend, error and abort events.</p>
+<p>The <code><a href="cordova_file_file.md.html#FileReader">FileReader</a></code> object is a way to read files from the devices file system.  Files can be read as text or as a base64 data encoded string.  Users register their own event listeners to receive the loadstart, progress, load, loadend, error and abort events.</p>
 
 <h2>
 <a name="FileReader_supported_platforms">Supported Platforms</a>
@@ -612,7 +614,7 @@ entry.file(win, fail);
 <strong>onwritestart:</strong> Called when the write starts. . <em>(Function)</em>
 </li>
 <li>
-<strong>onprogress:</strong> Called while writing the file, reports progress (progess.loaded/progress.total). <em>(Function)</em> -NOT SUPPORTED</li>
+<strong>onprogress:</strong> Called while writing the file, reports progress (progress.loaded/progress.total). <em>(Function)</em> -NOT SUPPORTED</li>
 <li>
 <strong>onwrite:</strong> Called when the request has completed successfully.  <em>(Function)</em>
 </li>

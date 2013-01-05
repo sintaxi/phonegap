@@ -2,6 +2,14 @@
 iOS 
 ---
 
+330c7c3 Updated VERSION to 2.3.0
+4cd8467 Updated js to 2.3.0
+8b59a6c [CB-2095] Delete incomplete file on filetransfer.abort
+8ed848b [CB-2088] InAppBrowser - view a video file in fullscreen mode
+534a7a1 Interim js to fix 2 File API mobile-spec failures
+a88ea87 Revert enabling of ARC in the project template
+d5a82a6 Fix up invalid #pragma mark lines in our project template.
+930b1bf Update project template to have iOS 5.0 as the minimal target.
 33f2e00 Update guides/Changing the JavaScript to Native Bridge Mode.md
 fa6d40a Update to 2.3.0rc2
 6c67a0a Updated Plugin Upgrade Guide to 2.3.0 (also 2.2.0)

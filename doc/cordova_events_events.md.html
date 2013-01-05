@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.3.0rc2">2.3.0rc2</option>
+<option value="2.3.0rc2">2.3.0rc2</option>
 <option value="2.3.0rc1">2.3.0rc1</option>
+<option selected value="2.3.0">2.3.0</option>
 <option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.2.0">2.2.0</option>
@@ -78,6 +79,7 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.1.0">2.1.0</option>
 <option value="2.0.0">2.0.0</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -911,7 +913,7 @@ function onBatteryCritical(info) {
 <pre class="prettyprint"><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;Cordova Battery Criticaly Example&lt;/title&gt;
+    &lt;title&gt;Cordova Battery Critical Example&lt;/title&gt;
 
     &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
@@ -1144,7 +1146,7 @@ function onBatteryStatus(info) {
 <a name="menubutton_details">Details</a>
 </h2>
 
-<p>If you need to override the default menu button behaviour you can register an event listenter for the '<a href="cordova_events_events.md.html#menubutton">menubutton</a>' event.</p>
+<p>If you need to override the default menu button behaviour you can register an event listener for the '<a href="cordova_events_events.md.html#menubutton">menubutton</a>' event.</p>
 
 <p>Typically, you will want to attach an event listener with <code>document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a></code> once you receive the Cordova '<a href="cordova_events_events.md.html#deviceready">deviceready</a>' event.</p>
 

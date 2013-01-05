@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.3.0rc2">2.3.0rc2</option>
+<option value="2.3.0rc2">2.3.0rc2</option>
 <option value="2.3.0rc1">2.3.0rc1</option>
+<option selected value="2.3.0">2.3.0</option>
 <option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.2.0">2.2.0</option>
@@ -78,6 +79,7 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.1.0">2.1.0</option>
 <option value="2.0.0">2.0.0</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -151,7 +153,7 @@
 <pre class="prettyprint"><code>exec(&lt;successFunction&gt;, &lt;failFunction&gt;, &lt;service&gt;, &lt;action&gt;, [&lt;args&gt;]);
 </code></pre>
 
-<p>This will marshall a request from the UIWebView to the iOS native side, more or less boiling down to calling the <code>action</code> method on the <code>service</code> class, with the arguments passed in the <code>args</code> Array. </p>
+<p>This will marshal a request from the UIWebView to the iOS native side, more or less boiling down to calling the <code>action</code> method on the <code>service</code> class, with the arguments passed in the <code>args</code> Array. </p>
 
 <p>Plugins with long-running requests, background activity (e.g. playing media), listeners or internal state should implement the <code>onReset</code> method and stop or clean up those activities. This method is run when the <code>UIWebView</code> navigates to a new page or refreshes, which reloads the Javascript.</p>
 
@@ -185,9 +187,9 @@
 </code></pre>
 
 <ol>
-<li><a class="external" href="https://github.com/apache/incubator-cordova-ios/blob/master/CordovaLib/Classes/CDVInvokedUrlCommand.h">CDVInvokedUrlCommand.h</a></li>
-<li><a class="external" href="https://github.com/apache/incubator-cordova-ios/blob/master/CordovaLib/Classes/CDVPluginResult.h">CDVPluginResult.h</a></li>
-<li><a class="external" href="https://github.com/apache/incubator-cordova-ios/blob/master/CordovaLib/Classes/CDVCommandDelegate.h">CDVCommandDelegate.h</a></li>
+<li><a class="external" href="https://github.com/apache/cordova-ios/blob/master/CordovaLib/Classes/CDVInvokedUrlCommand.h">CDVInvokedUrlCommand.h</a></li>
+<li><a class="external" href="https://github.com/apache/cordova-ios/blob/master/CordovaLib/Classes/CDVPluginResult.h">CDVPluginResult.h</a></li>
+<li><a class="external" href="https://github.com/apache/cordova-ios/blob/master/CordovaLib/Classes/CDVCommandDelegate.h">CDVCommandDelegate.h</a></li>
 </ol>
 <h2>
 <a name="Developing%20a%20Plugin%20on%20iOS_plugin_signatures">Plugin Signatures</a>
@@ -285,8 +287,8 @@ application folder:</p>
 <p>See other methods that you can override in:</p>
 
 <ol>
-<li><a class="external" href="https://github.com/apache/incubator-cordova-ios/blob/master/CordovaLib/Classes/CDVPlugin.h">CDVPlugin.h</a></li>
-<li><a class="external" href="https://github.com/apache/incubator-cordova-ios/blob/master/CordovaLib/Classes/CDVPlugin.m">CDVPlugin.m</a></li>
+<li><a class="external" href="https://github.com/apache/cordova-ios/blob/master/CordovaLib/Classes/CDVPlugin.h">CDVPlugin.h</a></li>
+<li><a class="external" href="https://github.com/apache/cordova-ios/blob/master/CordovaLib/Classes/CDVPlugin.m">CDVPlugin.m</a></li>
 </ol>
 <p>For example, you can hook into the <a href="cordova_events_events.md.html#pause">pause</a>, <a href="cordova_events_events.md.html#resume">resume</a>, app terminate and handleOpenURL events.</p>
 
@@ -294,7 +296,7 @@ application folder:</p>
 <a name="Developing%20a%20Plugin%20on%20iOS_debugging_plugins">Debugging Plugins</a>
 </h2>
 
-<p>To debug the Objective-C side, you would use Xcode's built in debugger. For JavaScript, on iOS 5.0 you can use <a class="external" href="https://github.com/apache/incubator-cordova-weinre">Weinre, an Apache Cordova Project</a> or <a class="external" href="http://www.iwebinspector.com/">iWebInspector, a third-party utility</a></p>
+<p>To debug the Objective-C side, you would use Xcode's built in debugger. For JavaScript, on iOS 5.0 you can use <a class="external" href="https://github.com/apache/cordova-weinre">Weinre, an Apache Cordova Project</a> or <a class="external" href="http://www.iwebinspector.com/">iWebInspector, a third-party utility</a></p>
 
 <p>For iOS 6, you would use Safari 6.0 to simply attach to your app running in the iOS 6 Simulator.</p>
 

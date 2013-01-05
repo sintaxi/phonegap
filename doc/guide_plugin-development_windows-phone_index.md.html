@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.3.0rc2">2.3.0rc2</option>
+<option value="2.3.0rc2">2.3.0rc2</option>
 <option value="2.3.0rc1">2.3.0rc1</option>
+<option selected value="2.3.0">2.3.0</option>
 <option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.2.0">2.2.0</option>
@@ -78,6 +79,7 @@
 <option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.1.0">2.1.0</option>
 <option value="2.0.0">2.0.0</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
@@ -210,7 +212,7 @@ call to <code>cordova.exec</code>. For example, if you wanted to define your C# 
 
 <p>Then, in JS you would need to call exec like this:</p>
 
-<pre class="prettyprint"><code>codova.exec(win, fail, "com.mydomain.cordovaExtensions.Echo", ...);
+<pre class="prettyprint"><code>cordova.exec(win, fail, "com.mydomain.cordovaExtensions.Echo", ...);
 </code></pre>
 
 <h2>
@@ -260,16 +262,16 @@ you can can simply call:</p>
 <pre class="prettyprint"><code>DispatchCommandResult(new PluginResult(PluginResult.Status.OK, "{result:\"super awesome!\"}"));
 </code></pre>
 
-<p>If you need to signal that an error has occured, you can call <code>DispatchCommandResult</code> with a <code>PluginResult</code> object:</p>
+<p>If you need to signal that an error has occurred, you can call <code>DispatchCommandResult</code> with a <code>PluginResult</code> object:</p>
 
-<pre class="prettyprint"><code>DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, "Echo signalled an error"));
+<pre class="prettyprint"><code>DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, "Echo signaled an error"));
 </code></pre>
 
 <h2>
 <a name="Developing%20a%20Plugin%20on%20Windows%20Phone_handling_serialization_errors_in_your_plugin_s_c_method">Handling serialization errors in your plugin's C# method</a>
 </h2>
 
-<p>When interpretting your arguments, it is a good idea to use a try/catch block
+<p>When interpreting your arguments, it is a good idea to use a try/catch block
 in case we have bad input. This is a pattern used throughout the Cordova C# code:</p>
 
 <pre class="prettyprint"><code>string optVal = null;
@@ -300,7 +302,7 @@ else
 <p>See other methods that you can override in:</p>
 
 <ol>
-<li><a class="external" href="https://github.com/apache/incubator-cordova-wp7/blob/master/templates/standalone/cordovalib/Commands/BaseCommand.cs">BaseCommand.cs</a></li>
+<li><a class="external" href="https://github.com/apache/cordova-wp7/blob/master/templates/standalone/cordovalib/Commands/BaseCommand.cs">BaseCommand.cs</a></li>
 </ol>
 <p>For example, you can hook into the '<a href="cordova_events_events.md.html#pause">pause</a>' and '<a href="cordova_events_events.md.html#resume">resume</a>' application events.</p>
 
