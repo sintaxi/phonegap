@@ -43,6 +43,8 @@ namespace WPCordovaClassLib.Cordova.Commands
                                         this.version,
                                         this.model);
 
+
+
             res = "{" + res + "}";
             //Debug.WriteLine("Result::" + res);
             DispatchCommandResult(new PluginResult(PluginResult.Status.OK, res));
@@ -53,15 +55,16 @@ namespace WPCordovaClassLib.Cordova.Commands
             get
             {
                 return DeviceStatus.DeviceName;
+                //return String.Format("{0},{1},{2}", DeviceStatus.DeviceManufacturer, DeviceStatus.DeviceHardwareVersion, DeviceStatus.DeviceFirmwareVersion); 
             }
         }
-
 
         public string name
         {
             get
             {
                 return DeviceStatus.DeviceName;
+                
             }
         }
 
@@ -70,7 +73,7 @@ namespace WPCordovaClassLib.Cordova.Commands
             get
             {
                 // TODO: should be able to dynamically read the Cordova version from somewhere...
-                return "2.3.0";
+                return "2.4.0rc1";
             }
         }
 

@@ -188,6 +188,8 @@
                         <arg file="${build.dir}" />
                         <arg line="${debug.flag} -b" />
                         <arg value="${build.number}" />
+                        <arg value="--loglevel" />
+                        <arg value="error" />
                     </exec>
                 </then>
                 <else>
@@ -196,6 +198,8 @@
                         <arg value="-o" />
                         <arg file="${build.dir}" />
                         <arg line="${debug.flag}" />
+                        <arg value="--loglevel" />
+                        <arg value="error" />
                     </exec>
                 </else>
             </if>

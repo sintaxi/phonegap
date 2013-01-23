@@ -32,9 +32,10 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.4.0rc1">2.4.0rc1</option>
 <option value="2.3.0rc2">2.3.0rc2</option>
 <option value="2.3.0rc1">2.3.0rc1</option>
-<option selected value="2.3.0">2.3.0</option>
+<option value="2.3.0">2.3.0</option>
 <option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.2.0">2.2.0</option>
@@ -197,7 +198,7 @@
 <p>In the onCreate method of the class that extends DroidGap add the following two lines:</p>
 
 <pre class="prettyprint"><code>super.setIntegerProperty("splashscreen", R.drawable.splash);
-super.loadUrl("file:///android_asset/www/index.html", 10000);
+super.loadUrl(Config.getStartUrl(), 10000);
 </code></pre>
 
 <p>The first line 'super.setIntegerProperty' sets the image to be displayed as the splashscreen. If you have named your image anything other than splash.png you will have to modify this line.
@@ -259,7 +260,7 @@ The second line is the normal 'super.loadUrl' line but it has a second parameter
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_splashscreen_splashscreen.md.html#Splashscreen">Splashscreen</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -318,7 +319,7 @@ The second line is the normal 'super.loadUrl' line but it has a second parameter
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_splashscreen_splashscreen.md.html#Splashscreen">Splashscreen</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load

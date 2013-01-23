@@ -22,7 +22,6 @@ using System.Windows.Resources;
 using Microsoft.Phone.Controls;
 using Microsoft.Xna.Framework.Audio;
 using WPCordovaClassLib.Cordova.UI;
-using System.Diagnostics;
 
 namespace WPCordovaClassLib.Cordova.Commands
 {

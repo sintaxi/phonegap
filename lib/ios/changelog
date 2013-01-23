@@ -2,109 +2,46 @@
 iOS 
 ---
 
-330c7c3 Updated VERSION to 2.3.0
-4cd8467 Updated js to 2.3.0
-8b59a6c [CB-2095] Delete incomplete file on filetransfer.abort
-8ed848b [CB-2088] InAppBrowser - view a video file in fullscreen mode
-534a7a1 Interim js to fix 2 File API mobile-spec failures
-a88ea87 Revert enabling of ARC in the project template
-d5a82a6 Fix up invalid #pragma mark lines in our project template.
-930b1bf Update project template to have iOS 5.0 as the minimal target.
-33f2e00 Update guides/Changing the JavaScript to Native Bridge Mode.md
-fa6d40a Update to 2.3.0rc2
-6c67a0a Updated Plugin Upgrade Guide to 2.3.0 (also 2.2.0)
-145d457 [CB-1988] Update JavaScript for iOS to 2.3.0rc2
-46682ec Added 2.3.0 Release Notes
-c6f8c17 [CB-1550] iOS build, debug, emulate scripts should check xcode version
-8e90ed2 Added URLisAllowed method abstraction for Plugins to query (easier if we decide to make the whitelist a singleton in the future)
-fe40192 [CB-1962] Video Capture not compressing video after capture - partial revert of CB-1499
-8f4c46d Removed incubator website links to TLP http://cordova.apache.org/
-495ab52 [CB-1970] MainViewController cannot override pathForResource
-d63cf46 Merge branch 'LocalNotifications' of github.com:purplecabbage/cordova-ios
-61f15e1 Merge branch 'master' of github.com:purplecabbage/cordova-ios
-db395af add appdelegate method didReceiveLocalNotification and repost to defaultCenter
-1ba170e added local notification #define, and stubbed method
-b00d496 Allow any scheme when specifying start page as a URL.
-7e970ad Mention cordova_plist_to_config_xml in the NSAssert for config.xml
-345a982 Rename plist2xml.py -> cordova_plist_to_config_xml.
-d00dc78 Updated doc references to Cordova.plist, use new config.xml
-8d1e52f Removed "incubator" prefix from URLs (except for main website which hasn't changed over yet)
-9229bac [ios] Add support for https:// start pages (instead of just http)
-7f6d643 [CB-1957] InAppBrowser - video/audio does not stop playing when browser is closed
-67e93c9 Add a helper script to convert Cordova.plist to config.xml.
-a952761 [ios] Support startPage as URL.  If wwwFolderName or startPage start with 'http://' load resource as if is NSURL
-2335d32 Interim cordova-js that supports InAppBrowser events
-02b5fee [CB-1949][iOS] InAppBrowser - support events (loadstart, loadstop, exit)
-2ba2b39 Changed unsafe_unretained to weak since we are supporting iOS 5.0 and up only now
-8724ac6 [CB-1802] ./cordova set of CLI tools need audit to work with paths with spaces
-7443bc5 Removed usage of deprecated CDVViewController.invokeString in the default project template files.
-5bc8515 Removed double reference to config.xml in default template project (kept the one that is the first child element of the project)
-d28cfff [CB-1890] InAppBrowser: location bar url text needs indentation
-17a71e8 Fixed non-mp3 files not being able to be played using the Media API
-cf5609f [CB-1669] Issue an error when media.startRecord() is failing.
-5013589 InAppBrowser - added class check for options arg.
-6739488 Added new CDVInvokedUrlCommand argumentAtIndex method to ensure proper object type returned (if not, default is returned)
-093c982 [CB-1850] Add device.model to the Device API
-99e061c [CB-1837] Device core plugin - device.name should return the actual device string (eg iPod Touch, iPhone)
-8ea3ed4 [CB-1836] Device core plugin - device.platform should return "iOS"
-3bf3017 Renamed references of Cordova.plist to config.xml (plus uncrustify)
-e5b4aaf Updated 2.3.0rc1 js
-72156c0 Updated version to 2.3.0rc1
-c1eb09f Updated default project template to include config.xml, removed Cordova.plist
-ea52434 Added 2.3.0rc1 JavaScript
-48c26ef Merge branch 'cordova.xml'
-9147fcc More review changes from Andrew.
-4c428ab Fix tabs-vs-spaces in template config.xml.
-0008a7a Removing empty method from the parser delegate.
-8936d20 Pull the parser delegate into its own files.
-5b8608e Migrate unit tests to use config.xml. Cleanups suggested by Andrew.
-0e87e6b Remove Cordova.plist from resources, add config.xml
-321420b Remove template Cordova.plist, add config.xml.
-df186ef Debug cleanup. Improved error messages for XML parsing.
-8ff5197 Working XML parsing.
-9a9242a Fix invalidating of cached UA when Locale changes with the app closed.
-38c7deb Update cordova.ios.js with change to not require cordove.iOSVCAddr
-0447deb Have the InAppBrowser not use a GUID in its UA.
-e8a7401 Use the VC's address in the User-Agent instead of a GUID.
-66fed79 Fix InAppBrowser handling of NSNull relative URLS.
-eb48666 Uncrustify
-d494d7c Add argument fetching helpers to CDVInvokedUrlCommand.
-b8c57f1 [CB-1889] Added userAgent property to CDVViewController (systemVersion and locale dependent, cached)
-9ac5969 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-ios
-cb5f1c8 adding release command for iOS
-6e60c22 Fixing autoresizingMask of imageView
-5ce5e15 Removing forced status bar rotation logic
-a37d37b Removed setWantsFullScreenLayout from CDVViewController, simplified viewWillAppear in template app.
-b51fdb3 Update fix to CB-1695 - the main Cordova UIWebView has a unique User-Agent now.
-181dd19 Integrated latest js - includes window.open (InAppBrowser)
-acc8b34 renaming commands
-2f1f022 [CB-1695] CDVURLProtocol should not apply whitelist to non-Cordova view controllers/requests
-029ed25 InAppBrowser - append GUID to the UIWebView UserAgent to differentiate the different instances (for the white-list)
-5a4b0ea Default project template -- Added InAppBrowser plugin to Cordova.plist
-f43a331 CordovaLibAppTest -- Added Globalization, InAppBrowser plugins to Cordova.plist
-cc9c2be InAppBrowser - pass on window options for _self if url is not in the whitelist (which is kicked out to the InAppBrowser)
-26a6535 Added CDVInAppBrowser implementation.
-7e6946d Fixed deprecated [AVAsset naturalSize] usage in Capture API (getFormatData)
-9c836fb Add version number to cordova.ios.js in create script.
-c65aadf Move cordova-VERSION.js from bin/templates to CordovaLib.
-9656792 Fix not being able to seek to position 0.
-8d5925e Updated deprecation notice for our minimum iOS 5.0 support
-56697f7 [CB-1824] SIGABRT when view loads - reason: '-[__NSCFBoolean isEqualToString:]: unrecognized selector
-ddc14b1 Fix unit tests not working due to lack of a command delegate.
-69c1375 Making whitelist rejection string configurable
-dac34c4 Updated bin/diagnose_project to print out conditional ARCHs build settings.
-458ffaa Updated CordovaLibAppTests to 2.2.0 JavaScript, updated Cordova.plist
-46f0992 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-ios
-8656d6a Merge branch 'master' of github.com:purplecabbage/incubator-cordova-ios
-b792bf5 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-ios
-20777ab Merge branch 'master' of git://github.com/apache/incubator-cordova-ios
-ff04241 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-ios
-3c74479 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-ios
-f3a6ecc Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-ios
-bee6e9d Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-ios
-8898ae4 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-ios
-2bc366a Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/incubator-cordova-ios
-678071b Merge branch 'master' of github.com:purplecabbage/cordova-ios
-cb0e277 Merge branch 'master' of github.com:purplecabbage/cordova-ios
-61368d0 Merge pull request #2 from cordova/master
-2b2c2e6 Merge pull request #1 from shazron/view-extraction
+8cab22f Updated version to 2.4.0rc1
+0f84a09 Added whitelist unit test to check for query param matches
+725419c Added cordova-js 2.4.0rc1
+cbf6446 Added interim js for latest changes.
+0c4b943 Disable broken test.
+0b3934f Add a code comment that points to the PDF/User-Agent JIRA issue.
+bcc90d2 Remove a debugging log statement.
+07a223e Fix for CB-2225
+92fa3e4 Refactor User-Agent logic into a helper class.
+f392937 Fix NPE when PDF is opened in InAppBrowser.
+27ab065 Separate the echoArrayBuffer call from normal echo
+2539065 [CB-2071] InAppBrowser: allow UIWebView settings like main CordovaWebView
+013dd00 Fixes CB-2209 Contact ARC issues
+6087176 Interim js patch for [CB-2094] issue
+fc45dde Fix setting of _nativeReady when cordova.js is lazy-loaded.
+eb8cc94 [ios] CB-2215 - Implement ArrayBuffer native->js.
+adf2268 [CB-478] FileTransfer upload - handle "trustAllHosts" parameter
+f4e7a2b Fix FileTransfer.download failing for file: URLs.
+6694532 [CB-2063] InAppBrowser - support iPad presentation style, iOS transition styles
+6fe1f3d [ios] CB-2215 - Implement ArrayBuffer native->js.
+cc4688d Added a namespace prefix to a constant.
+256c6b9 Added a native uri option to DestinationType.
+5183183 [CB-2159] handleOpenURL not called on iOS
+08edbc3 Fixes static analyzer error for using mktemp (substituted with mkstemp)
+7e388ad Fix trying to mutate an immutable NSArray in CDVInvokedUrlCommand.
+20b20b8 [ios] Remove %-escaping version of FileReader.readAsText()
+f259dcd Merge branch 'master' into start_page
+192122f [CB-1946] iOS: Switch JSON serialization to NSJSONSerialization
+b4a2e4a [CB-1832] iOS: CDVCordovaView should not inherit from UIWebView
+a484850 Fixed CB-2191 and CB-2192 (removal of deprecated methods)
+4464c75 [CB-2193] Remove deprecated - iOS - CDVViewController invokeString property
+dfe407a [ios]CB-2189: support ArrayBuffer over exec bridge
+6749c17 Move start page to be specified in <content> tag.
+deabeeb Ran splashscreen images through ImageOptim.
+aeecb26 [CB-1849] Remove iOS 4/5 conditional code block, put in main block
+10d1e64 [CB-1495] iOS default splash screen images take up several megabytes
+b4c2ca3 Make cordova_plist_to_config_xml able to handle binary plist files
+3dd41ff cordova/run and cordova/emulate refer to old 'debug' script which has been renamed to 'build'
+c87e697 CordovaLibTests - update project file for iOS 5 support.
+0618b46 Adding bool plugin result message, tests
+c6a1dbe IOS fix slow contact access due to photos temp file generation
+4d94896 Add slice() support to readAsDataURL.
+edaf1c7 Add slice() support to readAsText.

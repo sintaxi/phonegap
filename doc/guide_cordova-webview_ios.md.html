@@ -32,9 +32,10 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.4.0rc1">2.4.0rc1</option>
 <option value="2.3.0rc2">2.3.0rc2</option>
 <option value="2.3.0rc1">2.3.0rc1</option>
-<option selected value="2.3.0">2.3.0</option>
+<option value="2.3.0">2.3.0</option>
 <option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.2.0">2.2.0</option>
@@ -243,14 +244,14 @@ this if you have multiple boxes!</li>
 </code></pre>
 </li>
 <li>
-<p>(<em>OPTIONAL</em>) Set the <code>startPage</code> property (defaults to <code>"index.html"</code>). This can be any URL as well:</p>
+<p>(<em>OPTIONAL</em>) Set the start page in your config.xml, the <code>&lt;content&gt;</code> tag.</p>
 
-<pre class="prettyprint"><code>viewController.startPage = @"mystartpage.html";
+<pre class="prettyprint"><code>&lt;content src="index.html" /&gt;
 </code></pre>
 
 <p>OR</p>
 
-<pre class="prettyprint"><code>viewController.startPage = @"http://apache.org";
+<pre class="prettyprint"><code>&lt;content src="http://apache.org" /&gt;
 </code></pre>
 </li>
 <li>

@@ -32,9 +32,10 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.4.0rc1">2.4.0rc1</option>
 <option value="2.3.0rc2">2.3.0rc2</option>
 <option value="2.3.0rc1">2.3.0rc1</option>
-<option selected value="2.3.0">2.3.0</option>
+<option value="2.3.0">2.3.0</option>
 <option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.2.0">2.2.0</option>
@@ -182,7 +183,7 @@ The Apple® tools required for building iOS applications run only on the OS X op
 
 <h3>Download Cordova</h3>
 
-<p>Download the latest version of <a class="external" href="http://www.apache.org/dist/incubator/cordova/">Apache Cordova</a> from http://www.apache.org/dist/incubator/cordova/.  Click on the Download icon and select cordova-X.Y.Z -incubating-src.zip to download to your machine. The X, Y and Z represent the version number of Cordova, for example 2.3.0.  The download includes the code for all of the Apache Cordova supported platforms.   </p>
+<p>Download the latest version of <a class="external" href="http://www.apache.org/dist/cordova/">Apache Cordova</a> from http://www.apache.org/dist/incubator/cordova/.  Click on the Download icon and select cordova-X.Y.Z -incubating-src.zip to download to your machine. The X, Y and Z represent the version number of Cordova, for example 2.4.0.  The download includes the code for all of the Apache Cordova supported platforms.   </p>
 
 <h3>Extract Cordova</h3>
 
@@ -435,10 +436,10 @@ return [super webViewDidFinishLoad:theWebView];
 <p>Another common method of initializing a page is to add an event listener for the deviceReady event within the handler for the body onload event as shown in the code snippet below:</p>
 
 <pre class="prettyprint"><code>  &lt;head&gt;
-    &lt;script type="text/javascript" src="cordova-2.2.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="cordova-2.4.0.js"&gt;&lt;/script&gt;
     &lt;script&gt;
       function onLoad() {
-    document.addEventListenter(
+    document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>(
       ‘<a href="cordova_events_events.md.html#deviceready">deviceready</a>’, onDeviceReady, false);
     }
     function onDeviceReady() {

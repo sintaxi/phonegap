@@ -32,9 +32,10 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.4.0rc1">2.4.0rc1</option>
 <option value="2.3.0rc2">2.3.0rc2</option>
 <option value="2.3.0rc1">2.3.0rc1</option>
-<option selected value="2.3.0">2.3.0</option>
+<option value="2.3.0">2.3.0</option>
 <option value="2.2.0rc2">2.2.0rc2</option>
 <option value="2.2.0rc1">2.2.0rc1</option>
 <option value="2.2.0">2.2.0</option>
@@ -95,8 +96,10 @@
 <option value="File_permissions">      - Permissions</option>
 <option value="File">File</option>
 <option value="File_properties">      - Properties</option>
+<option value="File_methods">      - Methods</option>
 <option value="File_details">      - Details</option>
 <option value="File_supported_platforms">      - Supported Platforms</option>
+<option value="File_slice">      - slice</option>
 <option value="FileReader">FileReader</option>
 <option value="FileReader_properties">      - Properties</option>
 <option value="FileReader_methods">      - Methods</option>
@@ -351,6 +354,14 @@ File System Quick Example</option>
 </li>
 </ul>
 <h2>
+<a name="File_methods">Methods</a>
+</h2>
+
+<ul>
+<li>
+<strong>slice</strong>: Select only a portion of the file to be read.</li>
+</ul>
+<h2>
 <a name="File_details">Details</a>
 </h2>
 
@@ -366,6 +377,42 @@ File System Quick Example</option>
 <li>iOS</li>
 <li>Windows Phone 7 and 8</li>
 <li>Windows 8</li>
+</ul>
+<h2>
+<a name="File_slice">slice</a>
+</h2>
+
+<p>Return a new <a href="cordova_file_file.md.html#File">File</a> object, for which <a href="cordova_file_file.md.html#FileReader">FileReader</a> will return only the specified portion of the file.
+Negative values for <strong>start</strong> or <strong>end</strong> are measured from the end of the file.
+The indexes are always relative to the current slice (see the full example).</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li>
+<strong>start</strong> - The index of the first byte to read, inclusive.</li>
+<li>
+<strong>end</strong> - The index of the byte after the last one to read.</li>
+</ul>
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>var slicedFile = file.slice(10, 30);
+</code></pre>
+
+<p><strong>Full Example</strong></p>
+
+<pre class="prettyprint"><code>var slice1 = file.slice(100, 400);
+var slice2 = slice1.slice(20, 35);
+
+var slice3 = file.slice(120, 135);
+// slice2 and slice3 are equivalent.
+</code></pre>
+
+<p><strong>Supported Platforms:</strong></p>
+
+<ul>
+<li>Android</li>
+<li>iOS</li>
 </ul>
 <hr>
 <h1><a name="FileReader">FileReader</a></h1>
@@ -519,7 +566,7 @@ entry.file(win, fail);
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_file_file.md.html#FileReader">FileReader</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -757,7 +804,7 @@ entry.createWriter(win, fail);
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_file_file.md.html#FileWriter">FileWriter</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -864,7 +911,7 @@ window.requestFileSystem(<a href="cordova_file_file.md.html#LocalFileSystem">Loc
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_file_file.md.html#File">File</a> System Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -1889,7 +1936,7 @@ It is also possible to download a file from remote and save it on the device (on
 <li>
 <strong>options</strong> - Optional parameters such as file name and mimetype</li>
 <li>
-<strong>trustAllHosts</strong> - Optional parameter, defaults to false. If set to true then it will accept all security certificates. This is useful as Android rejects self signed security certificates. Not recommended for production use. Only supported on Android. <em>(boolean)</em>
+<strong>trustAllHosts</strong> - Optional parameter, defaults to false. If set to true then it will accept all security certificates. This is useful as Android rejects self signed security certificates. Not recommended for production use. Supported on Android and iOS. <em>(boolean)</em>
 </li>
 </ul>
 <p><strong>Quick Example</strong></p>
@@ -1931,7 +1978,7 @@ ft.upload(fileURI, encodeURI("http://some.server.com/upload.php"), win, fail, op
 &lt;head&gt;
     &lt;title&gt;<a href="cordova_file_file.md.html#File">File</a> Transfer Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -2042,7 +2089,7 @@ ft.upload(fileURI, uri, win, fail, options);
 <strong>errorCallback</strong> - A callback that is called if an error occurs retrieving the <a href="cordova_file_file.md.html#Metadata">Metadata</a>. Invoked with a <a href="cordova_file_file.md.html#FileError">FileError</a> object. <em>(Function)</em>
 </li>
 <li>
-<strong>trustAllHosts</strong> - Optional parameter, defaults to false. If set to true then it will accept all security certificates. This is useful as Android rejects self signed security certificates. Not recommended for production use. Only supported on Android. <em>(boolean)</em>
+<strong>trustAllHosts</strong> - Optional parameter, defaults to false. If set to true then it will accept all security certificates. This is useful as Android rejects self signed security certificates. Not recommended for production use. Supported on Android and iOS. <em>(boolean)</em>
 </li>
 </ul>
 <p><strong>Quick Example</strong></p>
@@ -2078,6 +2125,38 @@ fileTransfer.download(
 <li>Android</li>
 <li>iOS</li>
 </ul>
+<p><strong>Quick Example</strong></p>
+
+<pre class="prettyprint"><code>// !! Assumes variable fileURI contains a valid URI to a text file on the device
+
+var win = function(r) {
+    console.log("Code = " + r.responseCode);
+    console.log("Response = " + r.response);
+    console.log("Sent = " + r.bytesSent);
+}
+
+var fail = function(error) {
+    alert("An error has occurred: Code = " + error.code);
+    console.log("upload error source " + error.source);
+    console.log("upload error target " + error.target);
+}
+
+var options = new <a href="cordova_file_file.md.html#FileUploadOptions">FileUploadOptions</a>();
+options.fileKey="file";
+options.fileName=fileURI.substr(fileURI.lastIndexOf('/')+1);
+options.mimeType="text/plain";
+
+var params = {};
+params.value1 = "test";
+params.value2 = "param";
+
+options.params = params;
+
+var ft = new <a href="cordova_file_file.md.html#FileTransfer">FileTransfer</a>();
+ft.upload(fileURI, encodeURI("http://some.server.com/upload.php"), win, fail, options);
+ft.abort(win, fail);
+</code></pre>
+
 <h2>
 <a name="FileTransfer_onprogress">onprogress</a>
 </h2>
@@ -2288,7 +2367,7 @@ window.resolveLocalFileSystemURI("file:///example.txt", onSuccess, onError);
   &lt;head&gt;
     &lt;title&gt;Local <a href="cordova_file_file.md.html#File">File</a> System Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
