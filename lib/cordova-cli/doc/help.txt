@@ -10,7 +10,7 @@ Global Commands
 Project-Level Commands
 
     platform(s) [add|remove|ls [name]] ... adds or removes a platform, or lists all currently-added platforms
-    plugini(s) [add|remove|ls [path]] ..... adds or removes a plugin (from the specified path), or lists all currently-added plugins
+    plugin(s) [add|remove|ls [path]] ..... adds or removes a plugin (from the specified path), or lists all currently-added plugins
     build ............................. builds a cordova project
     emulate ........................... starts emulator for cordova project
     serve <platform> [port] ........... runs a local web server for the www/ directory of the given platform

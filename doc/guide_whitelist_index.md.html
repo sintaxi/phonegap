@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.4.0rc1">2.4.0rc1</option>
+<option value="2.4.0rc1">2.4.0rc1</option>
+<option selected value="2.4.0">2.4.0</option>
 <option value="2.3.0rc2">2.3.0rc2</option>
 <option value="2.3.0rc1">2.3.0rc1</option>
 <option value="2.3.0">2.3.0</option>
@@ -101,7 +102,7 @@
 <option value="Domain%20Whitelist%20Guide_ios">      - iOS</option>
 <option value="Domain%20Whitelist%20Guide_symbian">      - Symbian</option>
 <option value="Domain%20Whitelist%20Guide_webos">      - webOS</option>
-<option value="Domain%20Whitelist%20Guide_windows_phone">      - Windows Phone</option>
+<option value="Domain%20Whitelist%20Guide_windows_phone_7_8">      - Windows Phone (7 &amp; 8)</option>
 <option value="Domain%20Whitelist%20Guide_tizen">      - Tizen</option></select></small>
         </div>
 
@@ -147,7 +148,9 @@
 <a name="Domain%20Whitelist%20Guide_overview">Overview</a>
 </h2>
 
-<p>Domain whitelisting in Apache Cordova is a security model that controls access to outside domains, such as <code>http://google.com</code>. The default security policy is to block all network access. The application developer can then declare access to specific network domains and subdomains.</p>
+<p>Domain whitelisting in Apache Cordova is a security model that controls access to outside domains, such as <code>http://google.com</code>.</p>
+
+<p>The default security policy is to allow all network access. Before moving your application to production, it is advised to review your application's whitelist. The application developer is encouraged to declare access to specific network domains and subdomains.</p>
 
 <h2>
 <a name="Domain%20Whitelist%20Guide_specification">Specification</a>
@@ -271,10 +274,19 @@
 <p>Domain whitelisting is unsupported on webOS. By default, all domains are accessible.</p>
 
 <h2>
-<a name="Domain%20Whitelist%20Guide_windows_phone">Windows Phone</a>
+<a name="Domain%20Whitelist%20Guide_windows_phone_7_8">Windows Phone (7 &amp; 8)</a>
 </h2>
 
-<p>Domain whitelisting is unsupported on Windows Phone. By default, all domains are accessible.</p>
+<p>The whitelisting rules are found in <code>config.xml</code> and declared with the element <code>&lt;access origin="..." /&gt;</code>.</p>
+
+<p>Android has full support for the whitelisting syntax.</p>
+
+<h3>Syntax</h3>
+
+<p>Access to <a class="external" href="http://google.com">google.com</a>:</p>
+
+<pre class="prettyprint"><code>&lt;access origin="http://google.com" /&gt;
+</code></pre>
 
 <h2>
 <a name="Domain%20Whitelist%20Guide_tizen">Tizen</a>

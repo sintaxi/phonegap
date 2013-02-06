@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.4.0rc1">2.4.0rc1</option>
+<option value="2.4.0rc1">2.4.0rc1</option>
+<option selected value="2.4.0">2.4.0</option>
 <option value="2.3.0rc2">2.3.0rc2</option>
 <option value="2.3.0rc1">2.3.0rc1</option>
 <option value="2.3.0">2.3.0</option>
@@ -193,6 +194,13 @@
 <pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_inappbrowser_inappbrowser.md.html#InAppBrowser">InAppBrowser</a>" value="CDVInAppBrowser" /&gt;
 </code></pre>
 
+<h3>Windows Phone 7 + 8</h3>
+
+<h4>config.xml</h4>
+
+<pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_inappbrowser_inappbrowser.md.html#InAppBrowser">InAppBrowser</a>" /&gt;
+</code></pre>
+
 <h1><a name="addEventListener">addEventListener</a></h1>
 
 <blockquote>
@@ -223,6 +231,7 @@ The function is passed an <code><a href="cordova_inappbrowser_inappbrowser.md.ht
 <ul>
 <li>Android</li>
 <li>iOS</li>
+<li>Windows Phone 7 + 8</li>
 </ul>
 <h2>
 <a name="addEventListener_quick_example">Quick Example</a>
@@ -294,6 +303,7 @@ The function is passed an <code><a href="cordova_inappbrowser_inappbrowser.md.ht
 <ul>
 <li>Android</li>
 <li>iOS</li>
+<li>Windows Phone 7 + 8</li>
 </ul>
 <h2>
 <a name="removeEventListener_quick_example">Quick Example</a>
@@ -375,6 +385,7 @@ ref.<a href="cordova_inappbrowser_inappbrowser.md.html#removeEventListener">remo
 <ul>
 <li>Android</li>
 <li>iOS</li>
+<li>Windows Phone 7 + 8</li>
 </ul>
 <h2>
 <a name="close_quick_example">Quick Example</a>
@@ -455,10 +466,31 @@ _system - always open in the system web browser
 <li>
 <p><strong>options:</strong> options for the <a href="cordova_inappbrowser_inappbrowser.md.html#InAppBrowser">InAppBrowser</a> (<code>String</code>) (Optional, Default: "location=yes")</p>
 
-<p>The options string must not contain any blank space, each feature name and value must be separated by a comma. Only the value below is supported:</p>
+<p>The options string must not contain any blank space, each feature name and value must be separated by a comma. Feature names are case insensitive. Only the value below is supported on all platforms:</p>
 
-<pre class="prettyprint"><code>    location - set to 'yes' or 'no' to turn the location bar on or off for the <a href="cordova_inappbrowser_inappbrowser.md.html#InAppBrowser">InAppBrowser</a>
-</code></pre>
+<ul>
+<li>
+<strong>location</strong> - set to 'yes' or 'no' to turn the location bar on or off for the <a href="cordova_inappbrowser_inappbrowser.md.html#InAppBrowser">InAppBrowser</a>
+</li>
+</ul>
+<h2>iOS only</h2>
+
+<ul>
+<li>
+<strong>enableViewportScale</strong> -  set to 'yes' or 'no' to prevent viewport scaling through a meta tag (defaults to 'no')</li>
+<li>
+<strong>mediaPlaybackRequiresUserAction</strong> - set to 'yes' or 'no' to not allow autoplayed HTML5 video (defaults to 'no')</li>
+<li>
+<strong>allowInlineMediaPlayback</strong> - set to 'yes' or 'no' to allow inline HTML5 media playback, also, the video element in the HTML document must also include the webkit-playsinline attribute (defaults to 'no')</li>
+<li>
+<strong>keyboardDisplayRequiresUserAction</strong> - set to 'yes' or 'no' to open the keyboard when form elements get focus via the JavaScript focus() call (defaults to 'yes')</li>
+<li>
+<strong>suppressesIncrementalRendering</strong> - set to 'yes' or 'no' to wait until all new view content has been received before it is rendered (defaults to 'no')</li>
+<li>
+<strong>presentationstyle</strong> -  set to 'pagesheet', 'formsheet' or 'fullscreen' to set the <a class="external" href="http://developer.apple.com/library/ios/documentation/UIKit/Reference/UIViewController_Class/Reference/Reference.html#//apple_ref/occ/instp/UIViewController/modalPresentationStyle">presentation style</a> (defaults to 'fullscreen')</li>
+<li>
+<strong>transitionstyle</strong> - set to 'fliphorizontal', 'crossdissolve' or 'coververtical' to set the <a class="external" href="http://developer.apple.com/library/ios/#documentation/UIKit/Reference/UIViewController_Class/Reference/Reference.html#//apple_ref/occ/instp/UIViewController/modalTransitionStyle">transition style</a> (defaults to 'coververtical')</li>
+</ul>
 </li>
 </ul>
 <h2>
@@ -468,6 +500,8 @@ _system - always open in the system web browser
 <ul>
 <li>Android</li>
 <li>iOS</li>
+<li>BlackBerry 10</li>
+<li>Windows Phone 7 + 8</li>
 </ul>
 <h2>
 <a name="window.open_quick_example">Quick Example</a>

@@ -1,0 +1,40 @@
+
+Cordova CLI 
+---
+
+45e7372 package.json @ 2.4.4. tag for 2.4.0
+68e12b4 updating blackberry to 2.4.0
+5203a27 updating to cordova-ios 2.4.0
+f6dc3ad updating to cordova-android 2.4.0
+1b91256 2.4.3. Fixes with plugins. Tests are faster. woot.
+34ee767 typo in help menu
+8296eda sped up emulate tests
+2cfdf55 tests redone for build
+f38040c bumped up to shelljs 0.1.2
+872f71e setting ios scripts to executable
+32dcdc7 more work for making tests fast
+6c74e7f sped up platform tests!
+8d4ab38 fixes for at est cleanup
+c133822 tweaked up tests for project parsers.
+47c4528 speeding up parser specs. refactoring a bit for tighter/clearner/faster tests.
+5ef109b using cli tools, bootstrap now creates a project for use as text fixtures on install. bootstrap now uses the check_requirements function for platform-specific req checks on install as well. removed old cordova project fixture that was "manually" added.
+ff34f5d CB-2294: when adding platforms, the stock app assets would be left in the platform artifacts.
+235a8d2 CB-2219: moved "check requirements" type stuff into indiv platform handlers. removes dependency on android stuff on-install.
+e8bd7a3 CB-2299 part 2: apache RAT audit for CLI.
+bb819d1 CB-2299 part 1: apache RAT audit.
+f45639a adding npmignore to fix npm installs. removed checked-in local.properties file for android
+ffe174b still trying to figure out issues with installing from npm...
+e769373 Run android config after install.
+b194da1 Fix for android configuration.
+c0bd2e5 updating project.properties in cordova-android
+07bcd0b bumping to 2.4.0 package.json version
+d61decc support for 2.4.0rc1. "vendored" the platform libs in. added Gord and Braden as contributors. removed dependency on unzip and axed the old download-cordova code.
+1a99d90 Updating README to list support for <preference> tags in config.xml
+e4a9ee9 Refix CB-2237: Preferecne support in config.xml. Now doesnt clobber default prefs for android and ios.
+92ff11f Fixes CB-2237: Support for <preference> elements in Android + iOS. Bump to 2.3.5.
+af5d44f Added support for <preference> elements in config.xml (specs included).
+161446a Fixes CB-2075: cordova-cli has trouble with projects under svn revision control. Added a "deleteSvnFolders" utility method to help with this.
+e71881f route "platforms" command to platform, same with "plugins" -> plugin
+4f9eebe Fix for CB-2074: problem when running in iPad 6.0 simulator. Empty space, multiline elements in .plist files cannot exist. Bumping to 2.3.3
+bbb3e64 fixing bad install script again.. bumping to 2.3.2
+f011bc3 got rid of old script ref. fixes CB-2182

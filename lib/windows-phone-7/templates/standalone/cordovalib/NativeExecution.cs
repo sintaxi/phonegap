@@ -90,6 +90,7 @@ namespace WPCordovaClassLib.Cordova
                     this.OnCommandResult(commandCallParams.CallbackId, res);
                 };
 
+                bc.OnCommandResult -= OnCommandResultHandler;
                 bc.OnCommandResult += OnCommandResultHandler;
 
                 EventHandler<ScriptCallback> OnCustomScriptHandler = delegate(object o, ScriptCallback script)
@@ -97,7 +98,7 @@ namespace WPCordovaClassLib.Cordova
                     this.InvokeScriptCallback(script);
                 };
 
-
+                bc.OnCustomScript -= OnCustomScriptHandler;
                 bc.OnCustomScript += OnCustomScriptHandler;
 
                 // TODO: alternative way is using thread pool (ThreadPool.QueueUserWorkItem) instead of 

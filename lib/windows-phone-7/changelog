@@ -2,6 +2,16 @@
 Windows Phone 7 
 ---
 
+5f91344 Merge pull request #2 from purplecabbage/2.4.0Prep
+2eaa323 Merge branch 'CB-1593' of git://github.com/bennmapes/cordova-wp7 into 2.4.0Prep
+a307fae update version number in various files
+99fa6ce update JS
+0c8cda2 add Globalization Command
+89c984c Merge pull request #1 from purplecabbage/2.4.0rc2Prep
+cc70f02 branch for 2.4.0 RC2 changes
+e29b40c remove unused templating project
+d18c94b [CB-1593] Fix for multiple callbacks when playing a media file
+9d6837c [CB-1593] Fix for media not playing on the first try due to 'ArgumentException'
 73ffd3f addition of config.xml to projects
 651c4fc removed dll
 093d654 removing dll, build it

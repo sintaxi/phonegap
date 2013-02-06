@@ -288,7 +288,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                 if (!Media.players.ContainsKey(mediaOptions.Id))
                 {
                     audio = new AudioPlayer(this, mediaOptions.Id);
-                    Media.players.Add(mediaOptions.Id, audio);
+                    Media.players[mediaOptions.Id] = audio;
                 }
                 else
                 {

@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.4.0rc1">2.4.0rc1</option>
+<option value="2.4.0rc1">2.4.0rc1</option>
+<option selected value="2.4.0">2.4.0</option>
 <option value="2.3.0rc2">2.3.0rc2</option>
 <option value="2.3.0rc1">2.3.0rc1</option>
 <option value="2.3.0">2.3.0</option>
@@ -646,13 +647,13 @@ function onOnline() {
     // it will call the event `<a href="cordova_events_events.md.html#deviceready">deviceready</a>`.
     //
     function onLoad() {
+        document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>("<a href="cordova_events_events.md.html#online">online</a>", onOnline, false);
         document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
     }
 
     // Cordova is loaded and it is now safe to make calls Cordova methods
     //
     function onDeviceReady() {
-        document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>("<a href="cordova_events_events.md.html#online">online</a>", onOnline, false);
     }
 
     // Handle the <a href="cordova_events_events.md.html#online">online</a> event

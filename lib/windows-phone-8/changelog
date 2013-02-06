@@ -2,9 +2,23 @@
 Windows Phone 8 
 ---
 
+afd0ebd Merge pull request #4 from purplecabbage/CB-2382
+257ea02 rename some old refs from Gap=>Cordova
+96b1b88 added helpful text so devs know what happened when whitelist exceptions occur
+936c03a unpack audio resource to isolated storage before playing
+0d9b525 defaults to create the 'full' template
+36822de command line to create a new project
+b183792 Merge pull request #3 from purplecabbage/2.4.0Prep
+ebf0bca update version in Device.cs
+7a3497b update version + js files for 2.4.0
+7676730 Merge pull request #2 from purplecabbage/2.4.0rc2Prep
+24e321b re-add globalization.cs, lost when plugins removed, updated all refs for 2.4.0rc2
+a0c3938 2.4.0rc2 prep
+bc135b5 Merge pull request #1 from sgrebnov/master
 d9bd6ab reorg so InAppBrowser is accessible to all projects + ConfigHandler, added config.xml to all templates
 bef9a81 2.4.0rc1 release prep
 224c484 more consolidation of props between wp7+wp8
 0799dc0 consolidation of commands with wp7
 51480ff updates for CLI project creation
 5089d5a Empty contact sanity check
+24894ab fixes unit test project wrong file references

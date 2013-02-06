@@ -37,13 +37,13 @@
                           IsScriptEnabled="True" 
                           Foreground="White"
                           Background="Black"
-                          Navigated="GapBrowser_Navigated" 
-                          Loaded="GapBrowser_Loaded" 
-                          Unloaded="GapBrowser_Unloaded" 
-                          ScriptNotify="GapBrowser_ScriptNotify" 
-                          LoadCompleted="GapBrowser_LoadCompleted" 
-                          Navigating="GapBrowser_Navigating" 
-                          NavigationFailed="GapBrowser_NavigationFailed" 
+                          Navigated="CordovaBrowser_Navigated" 
+                          Loaded="CordovaBrowser_Loaded" 
+                          Unloaded="CordovaBrowser_Unloaded" 
+                          ScriptNotify="CordovaBrowser_ScriptNotify" 
+                          LoadCompleted="CordovaBrowser_LoadCompleted" 
+                          Navigating="CordovaBrowser_Navigating" 
+                          NavigationFailed="CordovaBrowser_NavigationFailed" 
                           IsGeolocationEnabled="True">
             <phone:WebBrowser.Projection>
                 <PlaneProjection x:Name="BrowserProjector" CenterOfRotationX="0" RotationY="-180"/>

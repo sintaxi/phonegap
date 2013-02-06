@@ -119,9 +119,6 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\plugins\www\plugins\Globalization\Globalization.cs">
-      <Link>Globalization.cs</Link>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -206,10 +203,9 @@
     <Content Include="www\camera\index.html" />
     <Content Include="www\compass\index.html" />
     <Content Include="www\contacts\index.html" />
-    <Content Include="www\cordova-2.2.0.js" />
+    <Content Include="www\cordova-2.4.0.js" />
     <Content Include="www\cordova.js" />
     <Content Include="www\events\index.html" />
-    <Content Include="www\globalization.js" />
     <Content Include="www\index.html">
       <SubType>Designer</SubType>
     </Content>

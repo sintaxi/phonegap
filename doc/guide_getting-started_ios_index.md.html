@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.4.0rc1">2.4.0rc1</option>
+<option value="2.4.0rc1">2.4.0rc1</option>
+<option selected value="2.4.0">2.4.0</option>
 <option value="2.3.0rc2">2.3.0rc2</option>
 <option value="2.3.0rc1">2.3.0rc1</option>
 <option value="2.3.0">2.3.0</option>
@@ -183,18 +184,18 @@ The Apple® tools required for building iOS applications run only on the OS X op
 
 <h3>Download Cordova</h3>
 
-<p>Download the latest version of <a class="external" href="http://www.apache.org/dist/cordova/">Apache Cordova</a> from http://www.apache.org/dist/incubator/cordova/.  Click on the Download icon and select cordova-X.Y.Z -incubating-src.zip to download to your machine. The X, Y and Z represent the version number of Cordova, for example 2.4.0.  The download includes the code for all of the Apache Cordova supported platforms.   </p>
+<p>Download the latest version of <a class="external" href="http://www.apache.org/dist/cordova/">Apache Cordova</a> from http://www.apache.org/dist/cordova/.  Click on the Download icon and select cordova-X.Y.Z-src.zip to download to your machine. The X, Y and Z represent the version number of Cordova, for example 2.4.0.  The download includes the code for all of the Apache Cordova supported platforms.   </p>
 
 <h3>Extract Cordova</h3>
 
 <p>To access the code it will need to be extracted from the archive (.zip) file.</p>
 
 <ol>
-<li><p>Navigate to the folder where you downloaded the code.  Find the cordova-X.Y.Z-incubating-src.zip file.   
+<li><p>Navigate to the folder where you downloaded the code.  Find the cordova-X.Y.Z-src.zip file.   
 Note: The file names change with each new version of Cordova.  The file name will be different if you are using an updated or newer version of Cordova. </p></li>
 <li><p>Using the Finder® app, double click the file to extract. This will create a directory named, cordova-X.Y.Z.   </p></li>
-<li><p>Expand this folder and locate the incubator-cordova-ios.zip file and double click to extract it.   </p></li>
-<li><p>The code for iOS is within the incubator-cordova-ios directory structure.</p></li>
+<li><p>Expand this folder and locate the cordova-ios.zip file and double click to extract it.   </p></li>
+<li><p>The code for iOS is within the cordova-ios directory structure.</p></li>
 </ol>
 <h2>
 <a name="Getting%20Started%20with%20iOS_project_creation">Project Creation</a>
@@ -216,7 +217,7 @@ Note: The file names change with each new version of Cordova.  The file name wil
 <li><p>In Finder, navigate to the Applications Folder. Find and expand the Utilities Folder. </p></li>
 <li><p>Locate the Terminal app and double click to open it.  </p></li>
 <li>
-<p>In Finder, navigate to the incubator-cordova-ios directory from the downloaded and extracted Cordova code and expand it if necessary.   Highlight the bin directory as shown:</p>
+<p>In Finder, navigate to the cordova-ios directory from the downloaded and extracted Cordova code and expand it if necessary.   Highlight the bin directory as shown:</p>
 
 <p><img src="img/guide/getting-started/ios/bin_dir_listing.png" alt="" title=""></p>
 
@@ -289,7 +290,7 @@ Note: The file names change with each new version of Cordova.  The file name wil
 <li>
 <p><strong>Additional Scripts</strong></p>
 
-<p>Within the incubator-cordova-ios/bin directory there is an additional script that changes the location of the CordovaLib directory to refer to a shared location after the project has been created, </p>
+<p>Within the cordova-ios/bin directory there is an additional script that changes the location of the CordovaLib directory to refer to a shared location after the project has been created, </p>
 
 <pre class="prettyprint"><code> ./update_cordova_subproject path/to/your/project 
 </code></pre>

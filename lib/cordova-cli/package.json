@@ -1,6 +1,6 @@
 {
   "name": "cordova",
-  "version": "2.4.0",
+  "version": "2.4.4",
   "preferGlobal": "true",
   "description": "Cordova command line interface tool",
   "main": "cordova",
@@ -23,11 +23,11 @@
   "dependencies": {
     "colors":">=0.6.0",
     "elementtree":"0.1.3",
-    "plugman":"git://github.com/filmaj/plugman.git#0.5.5",
-    "plist":"git://github.com/filmaj/node-plist.git",
+    "plugman":"git+https://github.com/imhotep/plugman.git#0.5.7",
+    "plist":"git+https://github.com/filmaj/node-plist.git",
     "xcode":"0.5.1",
     "express":"3.0",
-    "shelljs":"0.0.8",
+    "shelljs":"0.1.2",
     "ncallbacks":"1.0.0",
     "request":"2.11.4",
     "semver":"1.1.0",

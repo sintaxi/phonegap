@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.4.0rc1">2.4.0rc1</option>
+<option value="2.4.0rc1">2.4.0rc1</option>
+<option selected value="2.4.0">2.4.0</option>
 <option value="2.3.0rc2">2.3.0rc2</option>
 <option value="2.3.0rc1">2.3.0rc1</option>
 <option value="2.3.0">2.3.0</option>
@@ -264,7 +265,7 @@ public class Echo extends CordovaPlugin {
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("echo")) {
             String message = args.getString(0); 
-            this.echo(message);
+            this.echo(message, callbackContext);
             return true;
         }
         return false;

@@ -23,6 +23,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Phone.Controls;
 using System.Diagnostics;
+using System.Windows.Resources;
 
 namespace WPCordovaClassLib.Cordova.Commands
 {
@@ -132,7 +133,7 @@ namespace WPCordovaClassLib.Cordova.Commands
         /// </summary>
         public void Dispose()
         {
-            Debug.WriteLine("Dispose :: " + this.audioFile);
+            //Debug.WriteLine("Dispose :: " + this.audioFile);
             if (this.player != null)
             {
                 this.stopPlaying();
@@ -243,7 +244,6 @@ namespace WPCordovaClassLib.Cordova.Commands
                             if (grid != null)
                             {
 
-                                //Microsoft.Xna.Framework.Media.MediaPlayer.Play(
                                 this.player = grid.FindName("playerMediaElement") as MediaElement;
                                 if (this.player == null) // still null ?
                                 {
@@ -276,6 +276,37 @@ namespace WPCordovaClassLib.Cordova.Commands
                     {
                         using (IsolatedStorageFile isoFile = IsolatedStorageFile.GetUserStoreForApplication())
                         {
+                            if (!isoFile.FileExists(filePath))
+                            {
+                                // try to unpack it from the dll into isolated storage
+                                StreamResourceInfo fileResourceStreamInfo = Application.GetResourceStream(new Uri(filePath, UriKind.Relative));
+                                if (fileResourceStreamInfo != null)
+                                {
+                                    using (BinaryReader br = new BinaryReader(fileResourceStreamInfo.Stream))
+                                    {
+                                        byte[] data = br.ReadBytes((int)fileResourceStreamInfo.Stream.Length);          
+
+                                        string[] dirParts = filePath.Split('/');
+                                        string dirName = "";
+                                        for (int n = 0; n < dirParts.Length - 1; n++)
+                                        {
+                                            dirName += dirParts[n] + "/";
+                                        }
+                                        if (!isoFile.DirectoryExists(dirName))
+                                        {
+                                            isoFile.CreateDirectory(dirName);
+                                        }
+
+                                        using (IsolatedStorageFileStream outFile = isoFile.OpenFile(filePath, FileMode.Create))
+                                        {
+                                            using (BinaryWriter writer = new BinaryWriter(outFile))
+                                            {
+                                                writer.Write(data);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                             if (isoFile.FileExists(filePath))
                             {
                                 using (IsolatedStorageFileStream stream = new IsolatedStorageFileStream(filePath, FileMode.Open, isoFile))
@@ -285,10 +316,8 @@ namespace WPCordovaClassLib.Cordova.Commands
                             }
                             else
                             {
-                                Debug.WriteLine("Error: source doesn't exist :: " + filePath);
-                                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, 1),false);
+                                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, 1), false);
                                 return;
-                                //throw new ArgumentException("Source doesn't exist");
                             }
                         }
                     }
@@ -296,7 +325,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                 }
                 catch (Exception e)
                 {
-                    Debug.WriteLine("Error: " + e.Message);
+                    Debug.WriteLine("Error in AudioPlayer::startPlaying : " + e.Message);
                     this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorStartingPlayback),false);
                 }
             }

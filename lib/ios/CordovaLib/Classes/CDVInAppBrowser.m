@@ -130,8 +130,10 @@
     self.inAppBrowserViewController.webView.scalesPageToFit = browserOptions.enableviewportscale;
     self.inAppBrowserViewController.webView.mediaPlaybackRequiresUserAction = browserOptions.mediaplaybackrequiresuseraction;
     self.inAppBrowserViewController.webView.allowsInlineMediaPlayback = browserOptions.allowinlinemediaplayback;
-    self.inAppBrowserViewController.webView.keyboardDisplayRequiresUserAction = browserOptions.keyboarddisplayrequiresuseraction;
-    self.inAppBrowserViewController.webView.suppressesIncrementalRendering = browserOptions.suppressesincrementalrendering;
+    if (IsAtLeastiOSVersion(@"6.0")) {
+        self.inAppBrowserViewController.webView.keyboardDisplayRequiresUserAction = browserOptions.keyboarddisplayrequiresuseraction;
+        self.inAppBrowserViewController.webView.suppressesIncrementalRendering = browserOptions.suppressesincrementalrendering;
+    }
 
     if (self.viewController.modalViewController != self.inAppBrowserViewController) {
         [self.viewController presentModalViewController:self.inAppBrowserViewController animated:YES];
@@ -233,27 +235,23 @@
 
     webViewBounds.size.height -= FOOTER_HEIGHT;
 
-    if (!self.webView) {
-        [CDVUserAgentUtil setUserAgent:_userAgent];
+    self.webView = [[UIWebView alloc] initWithFrame:webViewBounds];
+    self.webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 
-        self.webView = [[UIWebView alloc] initWithFrame:webViewBounds];
-        self.webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+    [self.view addSubview:self.webView];
+    [self.view sendSubviewToBack:self.webView];
 
-        [self.view addSubview:self.webView];
-        [self.view sendSubviewToBack:self.webView];
+    self.webView.delegate = self;
+    self.webView.backgroundColor = [UIColor whiteColor];
 
-        self.webView.delegate = self;
-        self.webView.backgroundColor = [UIColor whiteColor];
-
-        self.webView.clearsContextBeforeDrawing = YES;
-        self.webView.clipsToBounds = YES;
-        self.webView.contentMode = UIViewContentModeScaleToFill;
-        self.webView.contentStretch = CGRectFromString(@"{{0, 0}, {1, 1}}");
-        self.webView.multipleTouchEnabled = YES;
-        self.webView.opaque = YES;
-        self.webView.scalesPageToFit = NO;
-        self.webView.userInteractionEnabled = YES;
-    }
+    self.webView.clearsContextBeforeDrawing = YES;
+    self.webView.clipsToBounds = YES;
+    self.webView.contentMode = UIViewContentModeScaleToFill;
+    self.webView.contentStretch = CGRectFromString(@"{{0, 0}, {1, 1}}");
+    self.webView.multipleTouchEnabled = YES;
+    self.webView.opaque = YES;
+    self.webView.scalesPageToFit = NO;
+    self.webView.userInteractionEnabled = YES;
 
     self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     self.spinner.alpha = 1.000;
@@ -381,6 +379,11 @@
 
 - (void)close
 {
+    if (_userAgentLockToken != 0) {
+        [CDVUserAgentUtil releaseLock:_userAgentLockToken];
+        _userAgentLockToken = 0;
+    }
+
     if ([self respondsToSelector:@selector(presentingViewController)]) {
         [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
     } else {
@@ -395,8 +398,17 @@
 - (void)navigateTo:(NSURL*)url
 {
     NSURLRequest* request = [NSURLRequest requestWithURL:url];
+    _requestedURL = url;
 
-    [self.webView loadRequest:request];
+    if (_userAgentLockToken != 0) {
+        [self.webView loadRequest:request];
+    } else {
+        [CDVUserAgentUtil acquireLock:^(NSInteger lockToken) {
+                _userAgentLockToken = lockToken;
+                [CDVUserAgentUtil setUserAgent:_userAgent lockToken:lockToken];
+                [self.webView loadRequest:request];
+            }];
+    }
 }
 
 - (void)goBack:(id)sender
@@ -421,12 +433,8 @@
 
     [self.spinner startAnimating];
 
-    NSURL* url = theWebView.request.URL;
-    // This is probably a bug, but it works on iOS 5 and 6 to know when a PDF
-    // is being loaded.
-    _isPDF = [[url absoluteString] length] == 0;
-
     if ((self.navigationDelegate != nil) && [self.navigationDelegate respondsToSelector:@selector(browserLoadStart:)]) {
+        NSURL* url = theWebView.request.URL;
         if (url == nil) {
             url = _requestedURL;
         }
@@ -455,8 +463,9 @@
     //    from it must pass through its white-list. This *does* break PDFs that
     //    contain links to other remote PDF/websites.
     // More info at https://issues.apache.org/jira/browse/CB-2225
-    if (_isPDF) {
-        [CDVUserAgentUtil setUserAgent:_prevUserAgent];
+    BOOL isPDF = [@"true" isEqualToString:[theWebView stringByEvaluatingJavaScriptFromString:@"document.body==null"]];
+    if (isPDF) {
+        [CDVUserAgentUtil setUserAgent:_prevUserAgent lockToken:_userAgentLockToken];
     }
 
     if ((self.navigationDelegate != nil) && [self.navigationDelegate respondsToSelector:@selector(browserLoadStop:)]) {

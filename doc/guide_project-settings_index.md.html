@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.4.0rc1">2.4.0rc1</option>
+<option value="2.4.0rc1">2.4.0rc1</option>
+<option selected value="2.4.0">2.4.0</option>
 <option value="2.3.0rc2">2.3.0rc2</option>
 <option value="2.3.0rc1">2.3.0rc1</option>
 <option value="2.3.0">2.3.0</option>
@@ -91,7 +92,9 @@
         </div>
         <div id="subheader">
             <h1>Project Settings</h1>
-            <small></small>
+            <small><select><option value="Project%2520Settings">Project Settings</option>
+<option value="Project%20Settings_platform_specific_properties">      - Platform-Specific Properties</option>
+<option value="Project%20Settings_config_xml_elements">      - config.xml Elements</option></select></small>
         </div>
 
         <div id="sidebar">
@@ -132,10 +135,79 @@
             <div id="content">
                 <h1><a name="Project%20Settings">Project Settings</a></h1>
 
+<p>You can set various application configuration parameters using a platform-agnostic configuration file, <code>config.xml</code>.
+This file is based on the W3C <a class="external" href="http://www.w3.org/TR/widgets/">Packaged Web Apps (Widgets)</a> specification. </p>
+
+<p>The location of the <code>config.xml</code> file is different depending on the platform. The contents, in general, are not. </p>
+
+<h2>
+<a name="Project%20Settings_platform_specific_properties">Platform-Specific Properties</a>
+</h2>
+
+<p>As with any abstraction layer, Apache Cordova cannot be a perfect silver bullet. As such, some native and platform-specific
+properties, characterstics and behaviours are encapsulated as much as possible as <code>&lt;preference&gt;</code> elements inside the
+<code>config.xml</code> file. The following sub-sections linked to are guides which go into more details about these preferences.</p>
+
 <ul>
 <li><a href="guide_project-settings_ios_index.md.html#Project%20Settings%20for%20iOS">Project Settings for iOS</a></li>
+<li><a href="guide_project-settings_android_index.md.html#Project%20Settings%20for%20Android">Project Settings for Android</a></li>
+<li>
+<a href="guide_project-settings_index.md.html#Project%20Settings">Project Settings</a> for BlackBerry</li>
+<li>
+<a href="guide_project-settings_index.md.html#Project%20Settings">Project Settings</a> for Windows Phone 7</li>
+<li><a href="guide_project-settings_wp8_index.md.html#Project%20Settings%20for%20Windows%20Phone%208">Project Settings for Windows Phone 8</a></li>
+<li>
+<a href="guide_project-settings_index.md.html#Project%20Settings">Project Settings</a> for Windows 8</li>
+<li>
+<a href="guide_project-settings_index.md.html#Project%20Settings">Project Settings</a> for webOS</li>
+<li>
+<a href="guide_project-settings_index.md.html#Project%20Settings">Project Settings</a> for Bada</li>
+<li>
+<a href="guide_project-settings_index.md.html#Project%20Settings">Project Settings</a> for FirefoxOS</li>
 </ul>
-</div>
+<h2>
+<a name="Project%20Settings_config_xml_elements">config.xml Elements</a>
+</h2>
+
+<p>The <a class="external" href="http://cordova.io">Apache Cordova</a> project strives abstract away native platform specifics via web-inspired and web-based
+abstractions that are heavily standards driven and adopted by the web community. Please take a few minutes to familiarize
+yourself with the <a class="external" href="http://www.w3.org/TR/widgets/">config.xml specification</a>, to understand the type of application metadata the
+Apache Cordova project aims to abstract and provide simple entry points for.</p>
+
+<p>An example:</p>
+
+<pre class="prettyprint"><code>    &lt;cordova&gt;
+        &lt;preference name="MySetting" value="true" /&gt;
+        &lt;plugins&gt;
+            &lt;plugin name="MyPlugin" value="MyPluginClass" /&gt;
+        &lt;/plugins&gt;
+        &lt;access origin="*" /&gt;
+    &lt;/cordova&gt;
+</code></pre>
+
+<p>A list of supported elements across major platforms which are supported in Apache Cordova follow.</p>
+
+<h3><code>&lt;plugin&gt;</code></h3>
+
+<p>These elements map to native APIs that the application will be able to access. At runtime, the Apache Cordova framework checks
+the <code>&lt;plugin&gt;</code> elements and maps them to native code to enable your Cordova application to access device APIs otherwise
+unavailable to typical web-based applications.</p>
+
+<h4>
+<code>&lt;plugin&gt;</code> quirks</h4>
+
+<ul>
+<li>Android supports <code>&lt;feature&gt;</code> elements as analogues to <code>&lt;plugin&gt;</code>.</li>
+</ul>
+<h3><code>&lt;access&gt;</code></h3>
+
+<p>These elements define how your whitelist works. Please see the <a href="guide_whitelist_index.md.html#Domain%20Whitelist%20Guide">Domain Whitelist Guide</a> for more information.  </p>
+
+<h3><code>&lt;content&gt;</code></h3>
+
+<p>This element defines the start page of your application, relative to the project's standard web assets root folder. The default is "index.html". </p>
+
+            </div>
         </div>
 
         <!-- Functionality and Syntax Highlighting -->

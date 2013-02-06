@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.4.0rc1">2.4.0rc1</option>
+<option value="2.4.0rc1">2.4.0rc1</option>
+<option selected value="2.4.0">2.4.0</option>
 <option value="2.3.0rc2">2.3.0rc2</option>
 <option value="2.3.0rc1">2.3.0rc1</option>
 <option value="2.3.0">2.3.0</option>
@@ -93,6 +94,7 @@
             <h1>Command-Line Usage</h1>
             <small><select><option value="Command-Line%2520Usage">Command-Line Usage</option>
 <option value="Command-Line%20Usage_supported_platforms">      - Supported Platforms</option>
+<option value="Command-Line%20Usage_windows_phone_8">      - Windows Phone 8</option>
 <option value="Command-Line%20Usage_ios">      - iOS</option>
 <option value="Command-Line%20Usage_android">      - Android</option>
 <option value="Command-Line%20Usage_blackberry">      - BlackBerry</option></select></small>
@@ -153,7 +155,26 @@ Cordova projects.</p>
 <li><a href="#Command-Line%20Usage_ios">iOS</a></li>
 <li><a href="#Command-Line%20Usage_android">Android</a></li>
 <li><a href="#Command-Line%20Usage_blackberry">BlackBerry</a></li>
+<li><a href="#Command-Line%20Usage_wp8">Windows Phone 8</a></li>
 </ul>
+<h2>
+<a name="Command-Line%20Usage_windows_phone_8">Windows Phone 8</a>
+</h2>
+
+<p>The Windows Phone 8 command line tools support creating new projects.</p>
+
+<h3>Create a project</h3>
+
+<p>Run the <code>create</code> command with the following parameters:</p>
+
+<ul>
+<li>Path to your new Cordova WP8 project</li>
+<li>Package Name, following reverse-domain style convention ( this becomes the default Namespace )</li>
+<li>Project name</li>
+</ul>
+<!-- --><pre class="prettyprint"><code>$ ./path/to/cordova-wp8/bin/create /path/to/my_new_cordova_project com.example.cordova_project_name CordovaProjectName
+</code></pre>
+
 <h2>
 <a name="Command-Line%20Usage_ios">iOS</a>
 </h2>

@@ -2,10 +2,31 @@
 Android 
 ---
 
+db099e7 Preparing for 2.4.0
+fcc01bc Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-android
+a18dacf CB-2296 - Adding the screenshot configuration
+77f9cae CB-1961 update to create script for android/windows
+3610bbf CB-2296: Adding deprecation notices for removing the setProperties methods
+d5e3be9 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-android
+80b369d CB-2296: Added parsing for Integer and Boolean parameters in config.xml
+d29eb84 Tagging 2.4.0rc2
+381ce53 Merge branch 'puritytool'
+2e20bb0 [CB-2293] Fix typo bufferSize->bytesRead.
+56cd247 Fix for CB-2284. 401s are appearing when we hit them
+431ca99 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-android
+6ced2ff CB-2292: Added a check for width and height. You can't scale nothing because you can't divide by zero.
+31055bb Update to purity, adding better touch support
+24a53e3 hey new line
+2ab113b Removing notice about incubation in the readme.
+9a0481a tweaking readme
+09035eb Setting template AndroidManifest values for version to 1.0 and code to 1.
+1adf268 Updates to tests, including the use of Purity
+23f57ad Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-android into puritytool
 d9b15cf Updating with fixed JS from CB-2279
 dbfe12a Partial fix for CB-2269, we probably shoudln't call Config.init twice
 2b32dfd Partial Fix for CB-2269   * Moved Config.init call into DroidGap for the most common use-case   * The CordovaWebView docuemntation still has to be updated   * The template has to be changed, since we don't want to have two different types of config
 679de40 2.4.0rc1 updating
+66f15fd Adding purity to the test suite.  Purity is a test class that may be renamed later
 038f0e4 Upgrading Test Project properties to 4.2
 033bfcc This should be Android 4.2, not Google APIs
 fa87c08 Merge branch 'master' into arraybuffers

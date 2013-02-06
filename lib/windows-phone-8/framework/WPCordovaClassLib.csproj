@@ -164,6 +164,9 @@
     <Compile Include="..\templates\standalone\cordovalib\Commands\GeoLocation.cs">
       <Link>CordovaLib\Commands\GeoLocation.cs</Link>
     </Compile>
+    <Compile Include="..\templates\standalone\cordovalib\Commands\Globalization.cs">
+      <Link>CordovaLib\Commands\Globalization.cs</Link>
+    </Compile>
     <Compile Include="..\templates\standalone\cordovalib\Commands\ImageExifHelper.cs">
       <Link>CordovaLib\Commands\ImageExifHelper.cs</Link>
     </Compile>

@@ -3,6 +3,21 @@
 iOS 
 ---
 
+53953e1 Updated to 2.4.0
+6612ae9 Updated cordova-js to 2.4.0
+187bf21 Removed unused project setting in config.xml
+03b8854 Updated RELEASENOTES for 2.4.0
+95cf721 Tagging 2.4.0rc2
+34d5299 Delete obsolete instructions in bin/README.md
+9867e4d Fix usage message of update_cordova_subproject.
+c9ed42f including a manual relpath function
+97e7c2c Fixes CB-2209 (again) Contact ARC update
+be6e4d3 Fix CB-2271 - Multiple Cordova Views.
+b8f7515 CB-2225 Take Two
+70dad32 Fix InAppBrowser on iOS 5.
+41955f9 [CB-2290] iOS: 'CDVJSON.h' file not found when adding a plugin
+3dae613 Don't send callbacks when there are no listeners.
+db22768 [CB-2235] Fixed file transfer whitelisting.
 8cab22f Updated version to 2.4.0rc1
 0f84a09 Added whitelist unit test to check for query param matches
 725419c Added cordova-js 2.4.0rc1
@@ -51,10 +66,31 @@ edaf1c7 Add slice() support to readAsText.
 Android 
 ---
 
+db099e7 Preparing for 2.4.0
+fcc01bc Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-android
+a18dacf CB-2296 - Adding the screenshot configuration
+77f9cae CB-1961 update to create script for android/windows
+3610bbf CB-2296: Adding deprecation notices for removing the setProperties methods
+d5e3be9 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-android
+80b369d CB-2296: Added parsing for Integer and Boolean parameters in config.xml
+d29eb84 Tagging 2.4.0rc2
+381ce53 Merge branch 'puritytool'
+2e20bb0 [CB-2293] Fix typo bufferSize->bytesRead.
+56cd247 Fix for CB-2284. 401s are appearing when we hit them
+431ca99 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-android
+6ced2ff CB-2292: Added a check for width and height. You can't scale nothing because you can't divide by zero.
+31055bb Update to purity, adding better touch support
+24a53e3 hey new line
+2ab113b Removing notice about incubation in the readme.
+9a0481a tweaking readme
+09035eb Setting template AndroidManifest values for version to 1.0 and code to 1.
+1adf268 Updates to tests, including the use of Purity
+23f57ad Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-android into puritytool
 d9b15cf Updating with fixed JS from CB-2279
 dbfe12a Partial fix for CB-2269, we probably shoudln't call Config.init twice
 2b32dfd Partial Fix for CB-2269   * Moved Config.init call into DroidGap for the most common use-case   * The CordovaWebView docuemntation still has to be updated   * The template has to be changed, since we don't want to have two different types of config
 679de40 2.4.0rc1 updating
+66f15fd Adding purity to the test suite.  Purity is a test class that may be renamed later
 038f0e4 Upgrading Test Project properties to 4.2
 033bfcc This should be Android 4.2, not Google APIs
 fa87c08 Merge branch 'master' into arraybuffers
@@ -102,6 +138,14 @@ a0d2b96 Merge commit and hacking on CordovaWebView
 BlackBerry 
 ---
 
+73cd722 Small fix for create script - cordova scripts didn't have proper permissions after being copied
+e391d5f CB-2381: fix for create scripts using sample application name + package all the time
+0d46453 Fixed up some references to create and ant scripts to reflect the name/activity changes
+39456ad [CB-2355] - updating javascript
+93bd701 Changing instructions in ./bin/create; terminology of "activity" is Android-specific.
+5c3226f Updating javascript
+f500bba [CB-2300] - whoops accidently deleted a file
+2b68338 [CB-2300] - fixing up create scripts to be more inline with the other projects
 415d116 [CB-2257] - updating and tagging blackberry
 969ad96 [CB-2247] - updating javascript
 b768bb1 Use loglevel param in BlackBerry 10 build
@@ -112,12 +156,23 @@ b768bb1 Use loglevel param in BlackBerry 10 build
 Windows 
 ---
 
+671f179 update to 2.4.0 js/version
 c2973d2 updated to 2.4.0rc1
 
 
 Windows Phone 7 
 ---
 
+5f91344 Merge pull request #2 from purplecabbage/2.4.0Prep
+2eaa323 Merge branch 'CB-1593' of git://github.com/bennmapes/cordova-wp7 into 2.4.0Prep
+a307fae update version number in various files
+99fa6ce update JS
+0c8cda2 add Globalization Command
+89c984c Merge pull request #1 from purplecabbage/2.4.0rc2Prep
+cc70f02 branch for 2.4.0 RC2 changes
+e29b40c remove unused templating project
+d18c94b [CB-1593] Fix for multiple callbacks when playing a media file
+9d6837c [CB-1593] Fix for media not playing on the first try due to 'ArgumentException'
 73ffd3f addition of config.xml to projects
 651c4fc removed dll
 093d654 removing dll, build it
@@ -132,42 +187,70 @@ e718a04 code cleanup
 Windows Phone 8 
 ---
 
+afd0ebd Merge pull request #4 from purplecabbage/CB-2382
+257ea02 rename some old refs from Gap=>Cordova
+96b1b88 added helpful text so devs know what happened when whitelist exceptions occur
+936c03a unpack audio resource to isolated storage before playing
+0d9b525 defaults to create the 'full' template
+36822de command line to create a new project
+b183792 Merge pull request #3 from purplecabbage/2.4.0Prep
+ebf0bca update version in Device.cs
+7a3497b update version + js files for 2.4.0
+7676730 Merge pull request #2 from purplecabbage/2.4.0rc2Prep
+24e321b re-add globalization.cs, lost when plugins removed, updated all refs for 2.4.0rc2
+a0c3938 2.4.0rc2 prep
+bc135b5 Merge pull request #1 from sgrebnov/master
 d9bd6ab reorg so InAppBrowser is accessible to all projects + ConfigHandler, added config.xml to all templates
 bef9a81 2.4.0rc1 release prep
 224c484 more consolidation of props between wp7+wp8
 0799dc0 consolidation of commands with wp7
 51480ff updates for CLI project creation
 5089d5a Empty contact sanity check
+24894ab fixes unit test project wrong file references
 
 
 Bada 
 ---
 
+434e5ed updating VERSION
 603ce18 updating version
 
 
 BadaWac 
 ---
 
+e35647c updating version to 2.4.0
 400e92d Updating javascript and VERSION
 
 
 WebOS 
 ---
 
+43efeb7 update to 2.4.0 cordova-js libs
+7845f22 Merge branch 'master' of https://github.com/hermwong/cordova-webos
+e2f6b08 accidently merged file to wrong repository
+df55643 Added support for the back-gesture (mapped to backbutton)
+533f4ba merging changes to webos platform.js
 3868d63 update cordova-js libs to 2.4.0
 675a6e9 update version to 2.4.0
+2c21c41 update cordova-js libs to 2.4.0
+2650232 update version to 2.4.0
+56eedf2 accidently merged file to wrong repository
+0358155 Added support for the back-gesture (mapped to backbutton)
+732f9db merging changes to webos platform.js
 
 
 Tizen 
 ---
 
+5787952 updating version to 2.4.0
 34440c2 updating js and version
 
 
 QT 
 ---
 
+eb874aa updating VERSION
 d6477ea updating version
 
 
@@ -179,6 +262,21 @@ OSX
 Docs 
 ---
 
+8778e58 Version 2.4.0
+595f7d0 updates for Windows Phone changes in 2.4.0
+c11bec1 CB-2229: defaults for whitelist are to allow all. added more detail to windows phone documentation
+a1c4729 CB-1365: moving config.xml example to top-level guide. formatting for ios + android sub-guides.
+0dec28f Updated config.xml documentation as per CB-2315
+b673518 [CB-2278] Docs reference old incubator links
+0a0b693 CB-1365: overview of config.xml documentation. added stubs for platform-specific project settings.
+3d36159 [CB-2312] Add BB10 support InAppBrowser docs
+dd18031 [CB-2311] Add docs for iOS specific InAppBrowser window.open options
+b8e58c5 Added iOS 2.3.0 to 2.4.0 Upgrading doc
+76db225 Removed un-needed step of iOS Upgrade (2.2 to 2.3)
+3ce8a03 CB-2307: Missed param when the docs were last updated
+461f74e Adding settings after further inspecting CB-2296
+258bc46 Created document, only have one preference that is affected by config.xml.  This needs to be fixed before we can do more with the docs.
+704c2a1 [CB-2291] Change full example of "online" event to reflect timing change (for 2.2.0 and above)
 f52c214 Version 2.4.0rc1
 f4dd201 iOS: Getting Started bad example
 c4f27e0 [CB-2203] CordovaLib and upgrading instructions for iOS
@@ -197,6 +295,13 @@ b7e445d Adapt edge docs to start pages in config.xml
 MobileSpec 
 ---
 
+66a4bd7 start of moving/rename for benchmarks
+80766b2 update another ref to a cordova.js rc
+cfdb312 update version for 2.4.0
+f5d892e Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-mobile-spec
+de3adea add test for generic CELL connection type
+e3c14ed Added inAppBrowser test helper
+44205c4 Add some links to InAppBrowser test page.
 8618d1d Tagging 2.4.0rc1
 9cf7235 [CB-2235] Encoded spaces to fix a test.
 28b8986 Add a manual test for <input type=file>.
@@ -214,6 +319,19 @@ f9186fe Add tests for reading sliced files.
 CordovaJS 
 ---
 
+ac725f6 Tagging 2.4.0
+d1b4a20 [CB-2287] - fix for checking that the audio.src are defined in the right places
+a089aa7 [Win8] update version number for 2.4.0
+2c88eb5 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-js
+e784eee Tagging 2.4.0rc2
+8f56179 Renamed b2g to firefoxos
+349c6e1 [FirefoxOS] removed unneeded return
+44c2a45 Initial wireup of B2G (Firefox OS) platform
+29b266b fixed whitespaces
+840e56a removed reference to Ripple in readme
+dd45b30 [blackberry] Remove trailing comma.
+df2d02d InAppBrowser+FileTransfer fix added back in
+1d846e2 merge issues
 7122371 [android] Fix exec bridge when calls contain null.
 369d1ea [android] Remove uses of Function.prototype.bind.
 1aa3643 Merge branch 'symbolmapping'
@@ -228,6 +346,9 @@ c2fe975 [all] Use modulemapper.getOriginalSymbol() in FileReader
 3c6b56e Use modulemapper for the File plugin.
 b1634b6 Merge branch 'master' into arraybuffers
 bded37f CB-2165: The saveToPhotoAlbum option for Camera.getPicture does not work with Cordova 2.2/Android
+1d80d91 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-js
+974cfe7 [WP7+8] added InAppBrowser to WP7+8
+99b4f3d added Connection static type CELL for generic cellular connections where speed/type cannot be determined
 d989ba1 [all] Turns on modulemapper.
 403d931 [all] Implementation of modulemapper + tests.
 2e6ebcc [all] Expose the module map.
@@ -276,12 +397,38 @@ c7e7cea Use the real size for slicing.
 Hello World App 
 ---
 
+355cb8b [app] Version 2.4.0
 c930c1e [app] Version 2.4.0rc1
 
 
 Cordova CLI 
 ---
 
+45e7372 package.json @ 2.4.4. tag for 2.4.0
+68e12b4 updating blackberry to 2.4.0
+5203a27 updating to cordova-ios 2.4.0
+f6dc3ad updating to cordova-android 2.4.0
+1b91256 2.4.3. Fixes with plugins. Tests are faster. woot.
+34ee767 typo in help menu
+8296eda sped up emulate tests
+2cfdf55 tests redone for build
+f38040c bumped up to shelljs 0.1.2
+872f71e setting ios scripts to executable
+32dcdc7 more work for making tests fast
+6c74e7f sped up platform tests!
+8d4ab38 fixes for at est cleanup
+c133822 tweaked up tests for project parsers.
+47c4528 speeding up parser specs. refactoring a bit for tighter/clearner/faster tests.
+5ef109b using cli tools, bootstrap now creates a project for use as text fixtures on install. bootstrap now uses the check_requirements function for platform-specific req checks on install as well. removed old cordova project fixture that was "manually" added.
+ff34f5d CB-2294: when adding platforms, the stock app assets would be left in the platform artifacts.
+235a8d2 CB-2219: moved "check requirements" type stuff into indiv platform handlers. removes dependency on android stuff on-install.
+e8bd7a3 CB-2299 part 2: apache RAT audit for CLI.
+bb819d1 CB-2299 part 1: apache RAT audit.
+f45639a adding npmignore to fix npm installs. removed checked-in local.properties file for android
+ffe174b still trying to figure out issues with installing from npm...
+e769373 Run android config after install.
+b194da1 Fix for android configuration.
+c0bd2e5 updating project.properties in cordova-android
 07bcd0b bumping to 2.4.0 package.json version
 d61decc support for 2.4.0rc1. "vendored" the platform libs in. added Gord and Braden as contributors. removed dependency on unzip and axed the old download-cordova code.
 1a99d90 Updating README to list support for <preference> tags in config.xml

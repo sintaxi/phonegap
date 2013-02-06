@@ -205,7 +205,7 @@ namespace WPCordovaClassLib
             }
         }
 
-        void GapBrowser_Loaded(object sender, RoutedEventArgs e)
+        void CordovaBrowser_Loaded(object sender, RoutedEventArgs e)
         {
             this.bmHelper.ScrollDisabled = this.DisableBouncyScrolling;
 
@@ -319,7 +319,7 @@ namespace WPCordovaClassLib
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("ERROR: Exception in GapBrowser_Loaded :: {0}", ex.Message);
+                Debug.WriteLine("ERROR: Exception in CordovaBrowser_Loaded :: {0}", ex.Message);
             }
         }
 
@@ -376,7 +376,7 @@ namespace WPCordovaClassLib
             }
         }
 
-        void GapBrowser_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        void CordovaBrowser_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
             string nativeReady = "(function(){ cordova.require('cordova/channel').onNativeReady.fire()})();";
 
@@ -397,20 +397,17 @@ namespace WPCordovaClassLib
         }
 
 
-        void GapBrowser_Navigating(object sender, NavigatingEventArgs e)
+        void CordovaBrowser_Navigating(object sender, NavigatingEventArgs e)
         {
             if (!configHandler.URLIsAllowed(e.Uri.ToString()))
             {
+                Debug.WriteLine("Whitelist exception: Stopping browser from navigating to :: " + e.Uri.ToString());
                 e.Cancel = true;
                 return;
             }
 
             this.PageDidChange = true;
-            // Debug.WriteLine("GapBrowser_Navigating to :: " + e.Uri.ToString());
             this.nativeExecution.ResetAllCommands();
-
-            // TODO: check whitelist / blacklist
-            // NOTE: Navigation can be cancelled by setting :        e.Cancel = true;
         }
 
         /*
@@ -422,7 +419,7 @@ namespace WPCordovaClassLib
          *  it is simply output to the debugger output, and the method returns.
          * 
          **/
-        void GapBrowser_ScriptNotify(object sender, NotifyEventArgs e)
+        void CordovaBrowser_ScriptNotify(object sender, NotifyEventArgs e)
         {
             string commandStr = e.Value;
 
@@ -472,19 +469,19 @@ namespace WPCordovaClassLib
             this.configHandler.URLIsAllowed(url);
         }
 
-        private void GapBrowser_Unloaded(object sender, RoutedEventArgs e)
+        private void CordovaBrowser_Unloaded(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void GapBrowser_NavigationFailed(object sender, System.Windows.Navigation.NavigationFailedEventArgs e)
+        private void CordovaBrowser_NavigationFailed(object sender, System.Windows.Navigation.NavigationFailedEventArgs e)
         {
-            Debug.WriteLine("GapBrowser_NavigationFailed :: " + e.Uri.ToString());
+            Debug.WriteLine("CordovaBrowser_NavigationFailed :: " + e.Uri.ToString());
         }
 
-        private void GapBrowser_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        private void CordovaBrowser_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
-            Debug.WriteLine("GapBrowser_Navigated :: " + e.Uri.ToString());
+            Debug.WriteLine("CordovaBrowser_Navigated :: " + e.Uri.ToString());
         }
 
 

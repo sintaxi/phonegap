@@ -110,7 +110,7 @@
         </copy>
         
         <!-- change file permission for cordova scripts because ant copy doesn't preserve file permissions -->
-        <chmod dir="${template.project.dir}/cordova" perm="700" includes="*"/>
+        <chmod dir="${project.path}/cordova" perm="700" includes="*"/>
         
         <!-- update project files to reference cordova.x.x.x.js -->
         <replaceregexp match="cordova\.js" replace="${js.basename}" byline="true">
@@ -204,7 +204,7 @@ Getting Started:
 
         <!-- update config.xml to have a default name-->
         <replace file="${dist.project.path}/www/config.xml" token="__NAME__" value="cordovaExample"/>        
-        
+        <replace file="${dist.project.path}/www/config.xml" token="__PACKAGE__" value="org.apache.cordova.example"/> 
         <echo>
 Distribution Complete!
 ======================

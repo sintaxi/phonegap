@@ -19,13 +19,13 @@
 # create a cordova/blackberry project
 # 
 # USAGE
-#   ./create [path appname]
+#   ./create [path package appname]
 #
 set -e
 
 if [ -n "$1" ] && [ "$1" == "-h" ]
 then
-    echo 'usage: create path appname'
+    echo 'usage: create path package appname'
     echo 'After you have created your application, make sure to customize the project.properties file inside your app directory with your environment specifics!'
     exit 0
 fi
@@ -34,7 +34,8 @@ BUILD_PATH="$( cd "$( dirname "$0" )/.." && pwd )"
 VERSION=$(cat "$BUILD_PATH/VERSION")
 
 PROJECT_PATH="${1:-"./example"}"
-APPNAME=${2:-"cordovaExample"}
+PACKAGE=${2:-"org.apache.cordova.example"}
+NAME=${3:-"cordovaExample"}
 
 # clobber any existing example
 if [ -d "$PROJECT_PATH" ]
@@ -74,18 +75,17 @@ then
         mv ant-contrib-1.0b3.jar "$BUILD_PATH"/bin/templates/project/lib/ant-contrib
     fi
     
-	echo "Building cordova-$VERSION.jar and cordova-$VERSION.js ..."
-	(cd "$BUILD_PATH" && "$ANT" dist &> /dev/null )
-	
-	# copy project template
-	echo "Copying assets and resources ..."
-	cp -r "$BUILD_PATH/dist/sample/." "$PROJECT_PATH"
+	echo "Creating BlackBerry project..."
+	(cd "$BUILD_PATH" && "$ANT" create -Dproject.path="$PROJECT_PATH" &> /dev/null )
+    # interpolate the activity and package into config.xml
+    echo "Updating config.xml ..."
+    sed -i '' -e "s/__NAME__/${NAME}/g" "$MANIFEST_PATH"
+    sed -i '' -e "s/__PACKAGE__/${PACKAGE}/g" "$MANIFEST_PATH"
 else
 	# copy project template if in distribution
 	echo "Copying assets and resources ..."
 	cp -r "$BUILD_PATH/sample/." "$PROJECT_PATH"
+    echo "Updating config.xml ..."
+    sed -i '' -e "s/cordovaExample/${NAME}/g" "$MANIFEST_PATH"
+    sed -i '' -e "s/org.apache.cordova.example/${PACKAGE}/g" "$MANIFEST_PATH"
 fi
-
-# interpolate the app name into config.xml
-echo "Updating config.xml ..."
-sed -i '' -e "s/__NAME__/${APPNAME}/g" "$MANIFEST_PATH"

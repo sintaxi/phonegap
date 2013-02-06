@@ -31,7 +31,7 @@
 
 @end
 
-@interface CDVInAppBrowser : CDVPlugin <CDVInAppBrowserNavigationDelegate>{}
+@interface CDVInAppBrowser : CDVPlugin <CDVInAppBrowserNavigationDelegate>
 
 @property (nonatomic, retain) CDVInAppBrowserViewController* inAppBrowserViewController;
 @property (nonatomic, copy) NSString* callbackId;
@@ -46,7 +46,7 @@
     NSURL* _requestedURL;
     NSString* _userAgent;
     NSString* _prevUserAgent;
-    BOOL _isPDF;
+    NSInteger _userAgentLockToken;
 }
 
 @property (nonatomic, strong) IBOutlet UIWebView* webView;
