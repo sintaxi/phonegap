@@ -1,0 +1,19 @@
+
+BlackBerry 
+---
+
+fb75902 [CB-2341] - updating instructions in readme and some other small fixes
+3d04262 [CB-2365] - updating bb version
+73cd722 Small fix for create script - cordova scripts didn't have proper permissions after being copied
+e391d5f CB-2381: fix for create scripts using sample application name + package all the time
+0d46453 Fixed up some references to create and ant scripts to reflect the name/activity changes
+39456ad [CB-2355] - updating javascript
+93bd701 Changing instructions in ./bin/create; terminology of "activity" is Android-specific.
+5c3226f Updating javascript
+f500bba [CB-2300] - whoops accidently deleted a file
+2b68338 [CB-2300] - fixing up create scripts to be more inline with the other projects
+415d116 [CB-2257] - updating and tagging blackberry
+969ad96 [CB-2247] - updating javascript
+b768bb1 Use loglevel param in BlackBerry 10 build
+5d59b78 updated to latest SDK version
+0d2daab BlackBerry 10 InAppBrowser Support
