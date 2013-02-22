@@ -111,6 +111,14 @@ namespace WPCordovaClassLib.Cordova.Commands
         {
         }
 
+        /// <summary>
+        /// Occurs when the application is being loaded, and the config.xml has an autoload entry
+        /// </summary>    
+        public virtual void OnInit()
+        {
+
+        }
+
 
         /// <summary>
         /// Occurs when the application is being deactivated.

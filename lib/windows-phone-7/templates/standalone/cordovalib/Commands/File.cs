@@ -1009,7 +1009,7 @@ namespace WPCordovaClassLib.Cordova.Commands
 
             IsolatedStorageFile.GetUserStoreForApplication();
 
-            if (size > (10 * 1024 * 1024)) // 10 MB, compier will clean this up!
+            if (size > (10 * 1024 * 1024)) // 10 MB, compiler will clean this up!
             {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, QUOTA_EXCEEDED_ERR));
                 return;

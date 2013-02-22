@@ -228,6 +228,10 @@ namespace WPCordovaClassLib.Cordova.Commands
                         }
                     }
                     browser = null;
+                    string message = "{\"type\":\"exit\"}";
+                    PluginResult result = new PluginResult(PluginResult.Status.OK, message);
+                    result.KeepCallback = false;
+                    this.DispatchCommandResult(result);
                 });
             }
         }
@@ -240,7 +244,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                 fwdButton.IsEnabled = browser.CanGoForward;
 
             }
-            string message = "{\"type\":\"locationChanged\", \"location\":\"" + e.Uri.AbsoluteUri + "\"}";
+            string message = "{\"type\":\"loadstop\", \"url\":\"" + e.Uri.AbsoluteUri + "\"}";
             PluginResult result = new PluginResult(PluginResult.Status.OK, message);
             result.KeepCallback = true;
             this.DispatchCommandResult(result);
@@ -248,7 +252,7 @@ namespace WPCordovaClassLib.Cordova.Commands
 
         void browser_NavigationFailed(object sender, System.Windows.Navigation.NavigationFailedEventArgs e)
         {
-            string message = "{\"type\":\"navigationError\",\"location\":\"" + e.Uri.AbsoluteUri + "\"}";
+            string message = "{\"type\":\"error\",\"url\":\"" + e.Uri.AbsoluteUri + "\"}";
             PluginResult result = new PluginResult(PluginResult.Status.ERROR, message);
             result.KeepCallback = true;
             this.DispatchCommandResult(result);
@@ -256,7 +260,7 @@ namespace WPCordovaClassLib.Cordova.Commands
 
         void browser_Navigating(object sender, NavigatingEventArgs e)
         {
-            string message = "{\"type\":\"locationAboutToChange\",\"location\":\"" + e.Uri.AbsoluteUri + "\"}";
+            string message = "{\"type\":\"loadstart\",\"url\":\"" + e.Uri.AbsoluteUri + "\"}";
             PluginResult result = new PluginResult(PluginResult.Status.OK, message);
             result.KeepCallback = true;
             this.DispatchCommandResult(result);

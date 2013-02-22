@@ -19,7 +19,7 @@
 # under the License.
 #
 -->
-<cordova>
+<widget>
 
   <plugins>
     <plugin name="Device"/>
@@ -46,4 +46,4 @@
 
   <access origin="*"/>
 
-</cordova>
+</widget>

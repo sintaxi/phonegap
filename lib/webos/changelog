@@ -2,15 +2,6 @@
 WebOS 
 ---
 
-43efeb7 update to 2.4.0 cordova-js libs
-7845f22 Merge branch 'master' of https://github.com/hermwong/cordova-webos
-e2f6b08 accidently merged file to wrong repository
-df55643 Added support for the back-gesture (mapped to backbutton)
-533f4ba merging changes to webos platform.js
-3868d63 update cordova-js libs to 2.4.0
-675a6e9 update version to 2.4.0
-2c21c41 update cordova-js libs to 2.4.0
-2650232 update version to 2.4.0
-56eedf2 accidently merged file to wrong repository
-0358155 Added support for the back-gesture (mapped to backbutton)
-732f9db merging changes to webos platform.js
+cda994f update webOS to 2.5.0
+e1b14c0 update to 2.5.0 version of cordova.js
+8f8430c update to latest version of files in hello world app

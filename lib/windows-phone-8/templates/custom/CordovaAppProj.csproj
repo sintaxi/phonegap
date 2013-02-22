@@ -92,7 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="config.xml" />
-    <Content Include="www\cordova-2.4.0.js" />
+    <Content Include="www\cordova-2.5.0.js" />
     <Content Include="www\css\index.css" />
     <Content Include="www\js\index.js" />
     <Content Include="www\img\cordova.png" />

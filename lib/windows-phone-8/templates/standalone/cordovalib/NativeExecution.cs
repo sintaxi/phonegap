@@ -61,6 +61,16 @@ namespace WPCordovaClassLib.Cordova
             CommandFactory.ResetAllCommands();
         }
 
+        public void AutoLoadCommand(string commandService)
+        {
+            BaseCommand bc = CommandFactory.CreateByServiceName(commandService);
+            if (bc != null)
+            {
+                bc.OnInit();
+            }
+
+        }
+
         /// <summary>
         /// Executes command and returns result back.
         /// </summary>

@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.5.0rc1">2.5.0rc1</option>
 <option value="2.4.0rc1">2.4.0rc1</option>
-<option selected value="2.4.0">2.4.0</option>
+<option value="2.4.0">2.4.0</option>
 <option value="2.3.0rc2">2.3.0rc2</option>
 <option value="2.3.0rc1">2.3.0rc1</option>
 <option value="2.3.0">2.3.0</option>
@@ -57,36 +58,14 @@
 <option value="1.6.0">1.6.0</option>
 <option value="1.5.0rc1">1.5.0rc1</option>
 <option value="1.5.0">1.5.0</option>
-<option value="1.4.1">1.4.1</option>
-<option value="1.4.0rc1">1.4.0rc1</option>
-<option value="1.4.0">1.4.0</option>
-<option value="1.3.0">1.3.0</option>
-<option value="1.2.0">1.2.0</option>
-<option value="1.1.0">1.1.0</option>
-<option value="1.0.0rc3">1.0.0rc3</option>
-<option value="1.0.0rc2">1.0.0rc2</option>
-<option value="1.0.0rc1">1.0.0rc1</option>
-<option value="1.0.0">1.0.0</option>
-<option value="0.9.6">0.9.6</option>
-<option value="0.9.5.1">0.9.5.1</option>
-<option value="0.9.5">0.9.5</option>
-<option value="0.9.4">0.9.4</option>
-<option value="0.9.3">0.9.3</option>
-<option value="0.9.2">0.9.2</option>
-</optgroup>
-<optgroup label="Español" value="es"><option value="1.0.0">1.0.0</option></optgroup>
-<optgroup label="Français" value="fr">
-<option value="1.3.0">1.3.0</option>
-<option value="1.2.0">1.2.0</option>
-<option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.2.0">2.2.0</option>
 <option value="2.1.0">2.1.0</option>
 <option value="2.0.0">2.0.0</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
-<option value="0.9.5">0.9.5</option>
 </optgroup>
 <optgroup label="Korean" value="kr"><option value="2.0.0">2.0.0</option></optgroup></select></small>
         </div>
@@ -439,7 +418,7 @@ There are strict restrictions as to how your application interacts with other me
       &lt;head&gt;
         &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -594,7 +573,7 @@ There are strict restrictions as to how your application interacts with other me
       &lt;head&gt;
         &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -754,7 +733,7 @@ function playAudio(url) {
       &lt;head&gt;
         &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -909,7 +888,7 @@ function playAudio(url) {
       &lt;head&gt;
         &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -1036,6 +1015,15 @@ myMedia.play({ numberOfLoops: 2 })
 myMedia.play({ playAudioWhenScreenIsLocked : false })
 </code></pre>
 </li>
+<li>
+<p><strong>order of file search</strong></p>
+
+<p>When only a file name or simple path is provided, iOS will search in the www for the file and then in the application documents/tmp directory.</p>
+
+<pre class="prettyprint"><code>var myMedia = new <a href="cordova_media_media.md.html#Media">Media</a>("audio/beer.mp3")
+myMedia.play()  // will first look for file in www/audio/beer.mp3 then in &lt;application&gt;/documents/tmp/audio/beer.mp3
+</code></pre>
+</li>
 </ul>
 <hr>
 <h1><a name="media.release">media.release</a></h1>
@@ -1086,7 +1074,7 @@ myMedia.play({ playAudioWhenScreenIsLocked : false })
       &lt;head&gt;
         &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -1240,7 +1228,7 @@ myMedia.play({ playAudioWhenScreenIsLocked : false })
       &lt;head&gt;
         &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -1392,7 +1380,7 @@ function recordAudio() {
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -1473,7 +1461,15 @@ function recordAudio() {
 </h2>
 
 <ul>
-<li>The file to record to must already exist and should be of type .wav. The <a href="cordova_file_file.md.html#File">File</a> API's can be used to create the file.</li>
+<li>iOS only records to files of type .wav and returns an error if the file name extension is not correct.</li>
+<li>If a full path is not provided the recording will be placed in the <application>/documents/tmp directory.  This can be accessed via the <a href="cordova_file_file.md.html#File">File</a> apis using <a href="cordova_file_file.md.html#LocalFileSystem">LocalFileSystem</a>.TEMPORARY.  Subdirectories are not created at record time and must already exist.  Thus,  myRecording.wav will work but recordings/myRecording.wav will not if the recordings directory does not already exist at <application>/documents/tmp/.</application></application>
+</li>
+<li>
+<p>Files can be recorded and played back using the documents URI:</p>
+
+<pre class="prettyprint"><code>var myMedia = new <a href="cordova_media_media.md.html#Media">Media</a>("documents://beer.mp3")
+</code></pre>
+</li>
 </ul>
 <h2>
 <a name="media.startRecord_tizen_quirks">Tizen Quirks</a>
@@ -1546,7 +1542,7 @@ function playAudio(url) {
       &lt;head&gt;
         &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
 
-        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -1705,7 +1701,7 @@ function recordAudio() {
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load

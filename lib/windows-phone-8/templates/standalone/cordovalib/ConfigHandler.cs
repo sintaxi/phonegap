@@ -14,7 +14,18 @@ namespace WPCordovaClassLib.CordovaLib
 {
     class ConfigHandler
     {
-        protected List<string> AllowedPlugins;
+        public class PluginConfig
+        {
+            public PluginConfig(string name, bool autoLoad = false)
+            {
+                Name = name;
+                isAutoLoad = autoLoad;
+            }
+            public string Name;
+            public bool isAutoLoad;
+        }
+
+        protected Dictionary<string, PluginConfig> AllowedPlugins;
         protected List<string> AllowedDomains;
         protected Dictionary<string, string> Preferences;
 
@@ -23,7 +34,7 @@ namespace WPCordovaClassLib.CordovaLib
 
         public ConfigHandler()
         {
-            AllowedPlugins = new List<string>();
+            AllowedPlugins = new Dictionary<string, PluginConfig>();
             AllowedDomains = new List<string>();
             Preferences = new Dictionary<string, string>();
         }
@@ -33,37 +44,6 @@ namespace WPCordovaClassLib.CordovaLib
             return Preferences[key];
         }
 
-/*
-    - (BOOL)URLIsAllowed:(NSURL*)url
-{
-    if (self.expandedWhitelist == nil) {
-        return NO;
-    }
-
-    if (self.allowAll) {
-        return YES;
-    }
-
-    // iterate through settings ExternalHosts, check for equality
-    NSEnumerator* enumerator = [self.expandedWhitelist objectEnumerator];
-    id regex = nil;
-    NSString* urlHost = [url host];
-
-    // if the url host IS found in the whitelist, load it in the app (however UIWebViewNavigationTypeOther kicks it out to Safari)
-    // if the url host IS NOT found in the whitelist, we do nothing
-    while (regex = [enumerator nextObject]) {
-        NSPredicate* regex_test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-
-        if ([regex_test evaluateWithObject:urlHost] == YES) {
-            // if it matches at least one rule, return
-            return YES;
-        }
-    }
-
-    NSLog(@"%@", [self errorStringForURL:url]);
-    // if we got here, the url host is not in the white-list, do nothing
-    return NO;
-}*/
         protected static string[] AllowedSchemes = {"http","https","ftp","ftps"};
         protected bool SchemeIsAllowed(string scheme)
         {
@@ -75,10 +55,10 @@ namespace WPCordovaClassLib.CordovaLib
 
             if (origin == "*")
             {
-                AllowAllPlugins = true;
+                AllowAllDomains = true;
             }
 
-            if (AllowAllPlugins)
+            if (AllowAllDomains)
             {
                 return;
             }
@@ -173,7 +153,24 @@ namespace WPCordovaClassLib.CordovaLib
 
         public bool IsPluginAllowed(string key)
         {
-            return AllowAllPlugins || AllowedPlugins.Contains(key);
+            return AllowAllPlugins || AllowedPlugins.Keys.Contains(key);
+        }
+
+        public string[] AutoloadPlugins {
+            get
+            {
+                var res = from results in AllowedPlugins.TakeWhile(p => p.Value.isAutoLoad)
+                          select results.Value.Name ;
+
+                foreach(var s in res)
+                {
+                    Debug.WriteLine(s);
+                }
+                //string[] res = from results in (AllowedPlugins.Where(p => p.Value.isAutoLoad) )
+                //                select (string)results.Key;
+
+                return new string[] { "", "asd" };
+            }
         }
 
 
@@ -188,20 +185,24 @@ namespace WPCordovaClassLib.CordovaLib
                 XDocument document = XDocument.Parse(sr.ReadToEnd());
 
                 var plugins = from results in document.Descendants("plugin")
-                              select new { name = (string)results.Attribute("name") };
-
+                              select new
+                              {
+                                  name = (string)results.Attribute("name"),
+                                  autoLoad = results.Attribute("onload")
+                              };
 
                 foreach (var plugin in plugins)
                 {
                     Debug.WriteLine("plugin " + plugin.name);
-                    if (plugin.name == "*")
+                    PluginConfig pConfig = new PluginConfig(plugin.name, plugin.autoLoad != null && plugin.autoLoad.Value == "true");
+                    if (pConfig.Name == "*")
                     {
                         AllowAllPlugins = true;
-                        break;
+                        // break; wait, don't, some still could be autoload
                     }
                     else
                     {
-                        AllowedPlugins.Add(plugin.name);
+                        AllowedPlugins.Add(pConfig.Name, pConfig);
                     }
                 }
 

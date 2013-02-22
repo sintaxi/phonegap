@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.5.0rc1">2.5.0rc1</option>
 <option value="2.4.0rc1">2.4.0rc1</option>
-<option selected value="2.4.0">2.4.0</option>
+<option value="2.4.0">2.4.0</option>
 <option value="2.3.0rc2">2.3.0rc2</option>
 <option value="2.3.0rc1">2.3.0rc1</option>
 <option value="2.3.0">2.3.0</option>
@@ -57,36 +58,14 @@
 <option value="1.6.0">1.6.0</option>
 <option value="1.5.0rc1">1.5.0rc1</option>
 <option value="1.5.0">1.5.0</option>
-<option value="1.4.1">1.4.1</option>
-<option value="1.4.0rc1">1.4.0rc1</option>
-<option value="1.4.0">1.4.0</option>
-<option value="1.3.0">1.3.0</option>
-<option value="1.2.0">1.2.0</option>
-<option value="1.1.0">1.1.0</option>
-<option value="1.0.0rc3">1.0.0rc3</option>
-<option value="1.0.0rc2">1.0.0rc2</option>
-<option value="1.0.0rc1">1.0.0rc1</option>
-<option value="1.0.0">1.0.0</option>
-<option value="0.9.6">0.9.6</option>
-<option value="0.9.5.1">0.9.5.1</option>
-<option value="0.9.5">0.9.5</option>
-<option value="0.9.4">0.9.4</option>
-<option value="0.9.3">0.9.3</option>
-<option value="0.9.2">0.9.2</option>
-</optgroup>
-<optgroup label="Español" value="es"><option value="1.0.0">1.0.0</option></optgroup>
-<optgroup label="Français" value="fr">
-<option value="1.3.0">1.3.0</option>
-<option value="1.2.0">1.2.0</option>
-<option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.2.0">2.2.0</option>
 <option value="2.1.0">2.1.0</option>
 <option value="2.0.0">2.0.0</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
-<option value="0.9.5">0.9.5</option>
 </optgroup>
 <optgroup label="Korean" value="kr"><option value="2.0.0">2.0.0</option></optgroup></select></small>
         </div>
@@ -168,7 +147,9 @@
 <strong>Copy</strong> the <strong>www/cordova-2.4.0.js</strong> file from the new project into your <strong>www</strong> folder, and delete your <strong>www/cordova-2.3.0.js</strong> file</li>
 <li>
 <strong>Update</strong> the Cordova script reference in your <strong>www/index.html</strong> file (and any other files that contain the script reference) to point to the new <strong>cordova-2.4.0.js</strong> file</li>
-<li>Update (or replace, if you never changed the file) your <strong>MainViewController.m</strong> according to the one from the new project.</li>
+<li>Update (or replace, if you never changed the files) your <strong>MainViewController.m</strong> file according to the one from the new project (see <a class="external" href="https://git-wip-us.apache.org/repos/asf?p=cordova-ios.git;a=blobdiff;f=bin/templates/project/__TESTING__/Classes/MainViewController.m;h=5f9eeac15c2437cd02a6eb5835b48374e9b94100;hp=89da1082d06ba5e5d0dffc5b2e75a3a06d5c2aa6;hb=b4a2e4ae0445ba7aec788090dce9b822d67edfd8;hpb=a484850f4610e73c7b20cd429a7794ba829ec997">this diff</a>).</li>
+<li>Update (or replace, if you never changed the file) your <strong>AppDelegate.m</strong> file according to the one from the new project (see <a class="external" href="https://git-wip-us.apache.org/repos/asf?p=cordova-ios.git;a=blobdiff;f=bin/templates/project/__TESTING__/Classes/AppDelegate.m;h=6dc7bfc84f0ecede4cc43d2a3256ef7c5383b9fe;hp=1ca3dafeb354c4442b7e149da4f281675aa6b740;hb=6749c17640c5fed8a7d3a0b9cca204b89a855baa;hpb=deabeeb6fcb35bac9360b053c8bf902b45e6de4d">this diff</a>)</li>
+<li>In your <strong>config.xml</strong> file, <a class="external" href="https://git-wip-us.apache.org/repos/asf?p=cordova-ios.git;a=blobdiff;f=bin/templates/project/__TESTING__/config.xml;h=7d67508b70914aa921a16e79f79c00512502a8b6;hp=337d38da6f40c7432b0bce05aa3281d797eec40a;hb=6749c17640c5fed8a7d3a0b9cca204b89a855baa;hpb=deabeeb6fcb35bac9360b053c8bf902b45e6de4d">add this new line</a>.</li>
 <li>Delete your <strong>"cordova"</strong> folder, and copy the <strong>"cordova"</strong> folder from the new project into your project's root folder <strong>(in 2.4.0, this has fixed scripts)</strong> </li>
 <li>Delete your <strong>"CordovaLib"</strong> folder, and copy the <strong>"CordovaLib"</strong> folder from the new project into your project's root folder</li>
 </ol>

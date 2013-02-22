@@ -18,7 +18,7 @@ Getting Started
  - if you prefer, you may add the project instead to the "Silverlight for Windows Phone" subfolder of "Visual C#".  This is up to you, and only affects where the project template is shown when creating a new project. Also, You may need to create this folder.
 - Launch Visual Studio 2010 and select to create a new project
  - CordovaStarter should be listed as an option, give your new project a name
-  - Note: The description will let you know the version of Cordova you are targetting, if you have multiple templates.
+  - Note: The description will let you know the version of Cordova you are targeting, if you have multiple templates.
  - If you do not see it, you may have to select the top level 'Visual C#' to see it
 - Build and Run it!
 

@@ -302,6 +302,5 @@ namespace WPCordovaClassLib.Cordova.UI
                 dtXna = null;
             }
         }
-
     }
 }

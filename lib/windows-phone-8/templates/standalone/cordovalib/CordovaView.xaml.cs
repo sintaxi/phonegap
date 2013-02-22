@@ -378,6 +378,12 @@ namespace WPCordovaClassLib
 
         void CordovaBrowser_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
+            string[] autoloadPlugs = this.configHandler.AutoloadPlugins;
+            foreach (string plugName in autoloadPlugs)
+            {
+               // nativeExecution.ProcessCommand(commandCallParams); 
+            }
+
             string nativeReady = "(function(){ cordova.require('cordova/channel').onNativeReady.fire()})();";
 
             try
@@ -466,7 +472,14 @@ namespace WPCordovaClassLib
 
         public void LoadPage(string url)
         {
-            this.configHandler.URLIsAllowed(url);
+            if (this.configHandler.URLIsAllowed(url))
+            {
+                this.CordovaBrowser.Navigate(new Uri(url, UriKind.RelativeOrAbsolute));
+            }
+            else
+            {
+                Debug.WriteLine("Oops, Can't load url based on config.xml :: " + url);
+            }
         }
 
         private void CordovaBrowser_Unloaded(object sender, RoutedEventArgs e)

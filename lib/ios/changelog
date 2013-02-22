@@ -2,61 +2,51 @@
 iOS 
 ---
 
-53953e1 Updated to 2.4.0
-6612ae9 Updated cordova-js to 2.4.0
-187bf21 Removed unused project setting in config.xml
-03b8854 Updated RELEASENOTES for 2.4.0
-95cf721 Tagging 2.4.0rc2
-34d5299 Delete obsolete instructions in bin/README.md
-9867e4d Fix usage message of update_cordova_subproject.
-c9ed42f including a manual relpath function
-97e7c2c Fixes CB-2209 (again) Contact ARC update
-be6e4d3 Fix CB-2271 - Multiple Cordova Views.
-b8f7515 CB-2225 Take Two
-70dad32 Fix InAppBrowser on iOS 5.
-41955f9 [CB-2290] iOS: 'CDVJSON.h' file not found when adding a plugin
-3dae613 Don't send callbacks when there are no listeners.
-db22768 [CB-2235] Fixed file transfer whitelisting.
-8cab22f Updated version to 2.4.0rc1
-0f84a09 Added whitelist unit test to check for query param matches
-725419c Added cordova-js 2.4.0rc1
-cbf6446 Added interim js for latest changes.
-0c4b943 Disable broken test.
-0b3934f Add a code comment that points to the PDF/User-Agent JIRA issue.
-bcc90d2 Remove a debugging log statement.
-07a223e Fix for CB-2225
-92fa3e4 Refactor User-Agent logic into a helper class.
-f392937 Fix NPE when PDF is opened in InAppBrowser.
-27ab065 Separate the echoArrayBuffer call from normal echo
-2539065 [CB-2071] InAppBrowser: allow UIWebView settings like main CordovaWebView
-013dd00 Fixes CB-2209 Contact ARC issues
-6087176 Interim js patch for [CB-2094] issue
-fc45dde Fix setting of _nativeReady when cordova.js is lazy-loaded.
-eb8cc94 [ios] CB-2215 - Implement ArrayBuffer native->js.
-adf2268 [CB-478] FileTransfer upload - handle "trustAllHosts" parameter
-f4e7a2b Fix FileTransfer.download failing for file: URLs.
-6694532 [CB-2063] InAppBrowser - support iPad presentation style, iOS transition styles
-6fe1f3d [ios] CB-2215 - Implement ArrayBuffer native->js.
-cc4688d Added a namespace prefix to a constant.
-256c6b9 Added a native uri option to DestinationType.
-5183183 [CB-2159] handleOpenURL not called on iOS
-08edbc3 Fixes static analyzer error for using mktemp (substituted with mkstemp)
-7e388ad Fix trying to mutate an immutable NSArray in CDVInvokedUrlCommand.
-20b20b8 [ios] Remove %-escaping version of FileReader.readAsText()
-f259dcd Merge branch 'master' into start_page
-192122f [CB-1946] iOS: Switch JSON serialization to NSJSONSerialization
-b4a2e4a [CB-1832] iOS: CDVCordovaView should not inherit from UIWebView
-a484850 Fixed CB-2191 and CB-2192 (removal of deprecated methods)
-4464c75 [CB-2193] Remove deprecated - iOS - CDVViewController invokeString property
-dfe407a [ios]CB-2189: support ArrayBuffer over exec bridge
-6749c17 Move start page to be specified in <content> tag.
-deabeeb Ran splashscreen images through ImageOptim.
-aeecb26 [CB-1849] Remove iOS 4/5 conditional code block, put in main block
-10d1e64 [CB-1495] iOS default splash screen images take up several megabytes
-b4c2ca3 Make cordova_plist_to_config_xml able to handle binary plist files
-3dd41ff cordova/run and cordova/emulate refer to old 'debug' script which has been renamed to 'build'
-c87e697 CordovaLibTests - update project file for iOS 5 support.
-0618b46 Adding bool plugin result message, tests
-c6a1dbe IOS fix slow contact access due to photos temp file generation
-4d94896 Add slice() support to readAsDataURL.
-edaf1c7 Add slice() support to readAsText.
+b706341 CDVWebViewDelegate header was not public.
+474088f Fixes CB-571 Media updates
+43c3a45 Updated cordova.ios.js to latest 2.5.0rc1 tag
+0005897 Implement useSplashScreen without using a setting
+1bfff2d [CB-2389] Distinguish top-level from sub-frame navigations.
+7d64f65 Updated version to 2.5.0rc1
+0fad4fd [CB-2469] Update JavaScript for iOS (2.5.0rc1)
+0e711f8 [CB=2324] iOS config.xml document should use <widget> instead of <cordova>
+57c3c08 [CB-2342] Media API allows non-whitelisted audio to be played
+96c587b Change default value of splash screen fade to be quicker.
+c5d3c00 [CB-2276] Move Splashscreen logic out of CDVViewController
+fa03d93 Add a notification so plugins will know when page loads occur.
+8bfa788 Make CDVLocalStorage use onReset
+45de648 [CB-1693] Allow plugins to be loaded on start-up.
+b55609e [CB-2443] Removed classSettings initializer from CDVPlugin
+fadf267 [CB-2443] Add pluginInitialize method to CDVPlugin.
+8d22b4c [CB-1547] Take two: Ignore iframe navigations in webview delegate methods
+a24f146 [CB-1547] Ignore iframe navigations in webview delegate methods
+09d5c8f [CB-2276] Remove CDVViewController CDVCapture
+53a839c [CB-2276] Remove CDVViewController from CDVSound
+70af80b [CB-2276] Remove CDVViewController from CDVLocation
+a606ee2 [CB-2276] Add whitelist method to CommandDelegate
+81e3332 [CB-2433] Deprecation notice for window.Settings
+4001ae1 [CB-2275] Add NSURLCache to app template.
+299a324 function name was wrong (case sensitive)
+3c3b0c0 CB-2207 Use a custom script for www/ copying.
+587d663 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-ios
+40e350e Don't call onReset for iframe navigation
+fb49c5d Add option for ipad/iphone in cordova/emulate
+7f29bed Fix /bin/create script to work with GNU sed in path
+6e19115 Use correct MIME-type for asset-library responses.
+4fd9731 Uncrustify CDVFile and CDVFileTransfer
+9614ceb [CB-2213] Added native URI request handling.
+c71f9e6 [CB-2213] Skipped image scaling when possible.
+5b09c79 [CB-2213] Added NATIVE_URI to FileTransfer.upload.
+8149df9 [CB-2213] Updated a NATIVE_URI error (getParent).
+2f6bb31 [CB-2213] Updated errors for write and truncate.
+e9a1f8e [CB-2213] Added NATIVE_URI to copyTo and moveTo.
+b3ed4ef [CB-2213] Added the AssetsLibrary framework.
+2cf8369 [CB-2213] Added NATIVE_URI to three methods.
+2af83b1 [CB-2213] Added NATIVE_URI to getMetadata.
+5adf243 [CB-2213] Added NATIVE_URI to readAsDataURL.
+3a09ca2 [CB-2213] Added NATIVE_URI to getFileMetadata.
+c3df2af [CB-2334] Add "body" property to FileTransferError object on iOS
+923b2fd [CB-2379] Update CordovaLib Project Settings according to Xcode 4.6 recommendations
+6fe71ae Run uncrustify on CDVPlugin.m
+ae46724 [CB-2280, CB-2281] SplashScreen fade and rotation
+9e39f7e [CB-2395] Fix CDVViewController UserAgent lock

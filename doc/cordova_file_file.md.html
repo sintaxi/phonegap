@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.5.0rc1">2.5.0rc1</option>
 <option value="2.4.0rc1">2.4.0rc1</option>
-<option selected value="2.4.0">2.4.0</option>
+<option value="2.4.0">2.4.0</option>
 <option value="2.3.0rc2">2.3.0rc2</option>
 <option value="2.3.0rc1">2.3.0rc1</option>
 <option value="2.3.0">2.3.0</option>
@@ -57,36 +58,14 @@
 <option value="1.6.0">1.6.0</option>
 <option value="1.5.0rc1">1.5.0rc1</option>
 <option value="1.5.0">1.5.0</option>
-<option value="1.4.1">1.4.1</option>
-<option value="1.4.0rc1">1.4.0rc1</option>
-<option value="1.4.0">1.4.0</option>
-<option value="1.3.0">1.3.0</option>
-<option value="1.2.0">1.2.0</option>
-<option value="1.1.0">1.1.0</option>
-<option value="1.0.0rc3">1.0.0rc3</option>
-<option value="1.0.0rc2">1.0.0rc2</option>
-<option value="1.0.0rc1">1.0.0rc1</option>
-<option value="1.0.0">1.0.0</option>
-<option value="0.9.6">0.9.6</option>
-<option value="0.9.5.1">0.9.5.1</option>
-<option value="0.9.5">0.9.5</option>
-<option value="0.9.4">0.9.4</option>
-<option value="0.9.3">0.9.3</option>
-<option value="0.9.2">0.9.2</option>
-</optgroup>
-<optgroup label="Español" value="es"><option value="1.0.0">1.0.0</option></optgroup>
-<optgroup label="Français" value="fr">
-<option value="1.3.0">1.3.0</option>
-<option value="1.2.0">1.2.0</option>
-<option value="1.1.0">1.1.0</option>
 </optgroup>
 <optgroup label="Japanese" value="jp">
+<option value="2.2.0">2.2.0</option>
 <option value="2.1.0">2.1.0</option>
 <option value="2.0.0">2.0.0</option>
 <option value="1.9.0">1.9.0</option>
 <option value="1.8.1">1.8.1</option>
 <option value="1.7.0">1.7.0</option>
-<option value="0.9.5">0.9.5</option>
 </optgroup>
 <optgroup label="Korean" value="kr"><option value="2.0.0">2.0.0</option></optgroup></select></small>
         </div>
@@ -567,7 +546,7 @@ entry.file(win, fail);
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_file_file.md.html#FileReader">FileReader</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -805,7 +784,7 @@ entry.createWriter(win, fail);
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_file_file.md.html#FileWriter">FileWriter</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -912,7 +891,7 @@ window.requestFileSystem(<a href="cordova_file_file.md.html#LocalFileSystem">Loc
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_file_file.md.html#File">File</a> System Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load
@@ -1932,7 +1911,7 @@ It is also possible to download a file from remote and save it on the device (on
 <strong>successCallback</strong> - A callback that is called with a <a href="cordova_file_file.md.html#Metadata">Metadata</a> object. <em>(Function)</em>
 </li>
 <li>
-<strong>errorCallback</strong> - A callback that is called if an error occurs retrieving the <a href="cordova_file_file.md.html#Metadata">Metadata</a>. Invoked with a <a href="cordova_file_file.md.html#FileError">FileError</a> object. <em>(Function)</em>
+<strong>errorCallback</strong> - A callback that is called if an error occurs retrieving the <a href="cordova_file_file.md.html#Metadata">Metadata</a>. Invoked with a <a href="cordova_file_file.md.html#FileTransferError">FileTransferError</a> object. <em>(Function)</em>
 </li>
 <li>
 <strong>options</strong> - Optional parameters such as file name and mimetype</li>
@@ -1979,7 +1958,7 @@ ft.upload(fileURI, encodeURI("http://some.server.com/upload.php"), win, fail, op
 &lt;head&gt;
     &lt;title&gt;<a href="cordova_file_file.md.html#File">File</a> Transfer Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
         // Wait for Cordova to load
@@ -2087,7 +2066,7 @@ ft.upload(fileURI, uri, win, fail, options);
 <strong>successCallback</strong> - A callback that is called with a <a href="cordova_file_file.md.html#FileEntry">FileEntry</a> object. <em>(Function)</em>
 </li>
 <li>
-<strong>errorCallback</strong> - A callback that is called if an error occurs retrieving the <a href="cordova_file_file.md.html#Metadata">Metadata</a>. Invoked with a <a href="cordova_file_file.md.html#FileError">FileError</a> object. <em>(Function)</em>
+<strong>errorCallback</strong> - A callback that is called if an error occurs retrieving the <a href="cordova_file_file.md.html#Metadata">Metadata</a>. Invoked with a <a href="cordova_file_file.md.html#FileTransferError">FileTransferError</a> object. <em>(Function)</em>
 </li>
 <li>
 <strong>trustAllHosts</strong> - Optional parameter, defaults to false. If set to true then it will accept all security certificates. This is useful as Android rejects self signed security certificates. Not recommended for production use. Supported on Android and iOS. <em>(boolean)</em>
@@ -2368,7 +2347,7 @@ window.resolveLocalFileSystemURI("file:///example.txt", onSuccess, onError);
   &lt;head&gt;
     &lt;title&gt;Local <a href="cordova_file_file.md.html#File">File</a> System Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.4.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for Cordova to load

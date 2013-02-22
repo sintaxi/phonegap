@@ -43,7 +43,9 @@ cordova-cli has a single global `create` command that creates new cordova projec
 - `plugin [ls | list]` list all plugins added to the project
 - `plugin add <path-to-plugin> [<path-to-plugin> ...]` add one (or more) plugins to the project
 - `plugin [rm | remove] <plugin-name> [<plugin-name> ...]` remove one (or more) added plugins
-- `build [<platform> [<platform> [...]]]` compile the app and deploy to a connected + compatible device. With no parameters builds for all platforms added to the project, otherwise builds for the specified platforms
+- `prepare [platform...]` copies files into the specified platforms, or all platforms. it is then ready for building by Eclipse/Xcode/etc.
+- `compile [platform...]` compiles and deploys the app to a connected and compatible device. With no parameters, builds for all platforms, otherwise builds for the specified platforms.
+- `build [<platform> [<platform> [...]]]` an alias for `cordova prepare` followed by `cordova compile`
 - `emulate [<platform> [<platform> [...]]]` launch emulators and deploy app to them. With no parameters emulates for all platforms added to the project, otherwise emulates for the specified platforms
 - `serve <platform> [port]` launch a local web server for that platform's www directory on the given port (default 8000).
 
@@ -96,7 +98,7 @@ These are located under the `.cordova/hooks` directory in the root of your cordo
 
 ## Module-level Hooks
 
-If you are using cordova-cli as a module within a larger node application, you can also use the standard `EventEmitter` methods to attach to the events. The events include `before_build`, `before_docs`, `before_emulate`, `before_platform_add`, `before_platform_ls`, `before_platform_rm`, `before_plugin_add`, `before_plugin_ls` and `before_plugin_rm`. Additionally, there are `after_` flavours of all the above events.
+If you are using cordova-cli as a module within a larger node application, you can also use the standard `EventEmitter` methods to attach to the events. The events include `before_build`, `before_compile`, `before_docs`, `before_emulate`, `before_platform_add`, `before_platform_ls`, `before_platform_rm`, `before_plugin_add`, `before_plugin_ls`, `before_plugin_rm` and `before_prepare`. Additionally, there are `after_` flavours of all the above events.
 
 # Examples
 
