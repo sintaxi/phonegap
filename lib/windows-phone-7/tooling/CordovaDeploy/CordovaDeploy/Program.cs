@@ -64,7 +64,7 @@ namespace CordovaDeploy
         static Guid ReadAppId(string root)
         {
             Guid appID = Guid.Empty;
-            string manifestFilePath = root + @"\WMAppManifest.xml";
+            string manifestFilePath = root + @"\Properties\WMAppManifest.xml";
 
             if (File.Exists(manifestFilePath))
             {
@@ -157,7 +157,7 @@ namespace CordovaDeploy
             }
 
 
-            xapFilePath = Directory.GetFiles(root, "*.xap").FirstOrDefault();
+            xapFilePath = Directory.GetFiles(root + @"\Bin\Debug", "*.xap").FirstOrDefault();
             if (string.IsNullOrEmpty(xapFilePath))
             {
                 Log(string.Format("Error: could not find application .xap in folder {0}", root));

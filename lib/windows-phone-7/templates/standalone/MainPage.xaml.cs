@@ -35,7 +35,7 @@ using System.Windows.Resources;
 
 
 
-namespace CordovaApp
+namespace $safeprojectname$
 {
     public partial class MainPage : PhoneApplicationPage
     {

@@ -7,16 +7,12 @@
 * [nodejs](http://nodejs.org/)
 * SDKs for every platform you wish to support
   - [BlackBerry WebWorks SDK](http://developer.blackberry.com)
-  - [iOS SDK](http://developer.apple.com)
+  - [iOS SDK](http://developer.apple.com) with the latest Xcode and Xcode Command Line Tools
   - [Android SDK](http://developer.android.com) - **NOTE** This tool
     will not work unless you have the absolute latest updates for all
     Android SDK components. Also you will need the SDK's `tools` and `platform-tools` directories on your __system path__ otherwise Android support will fail.
 
 cordova-cli has been tested on Mas OS X and Linux.
-
-If you are using cordova-cli for building iOS applications, you will need to run the latest Mac OS with the latest XCode (4.5+) and XCode Command Line Tools.
-
-In it's prototype stages, cordova-cli only works with Cordova v2.3.0.
 
 # Install
 

@@ -2,6 +2,8 @@
 Windows Phone 8 
 ---
 
+fa0465a Merge pull request #7 from purplecabbage/2.5.0_ReleasePrep
+6e000cf update js from cordova-js
 a450ea8 2.5.0rc1 release prep
 066d798 Merge pull request #6 from purplecabbage/CB-2323
 45548b2 <cordova> becomes <widget>

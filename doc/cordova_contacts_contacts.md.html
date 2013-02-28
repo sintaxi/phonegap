@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.5.0rc1">2.5.0rc1</option>
+<option value="2.5.0rc1">2.5.0rc1</option>
+<option selected value="2.5.0">2.5.0</option>
 <option value="2.4.0rc1">2.4.0rc1</option>
 <option value="2.4.0">2.4.0</option>
 <option value="2.3.0rc2">2.3.0rc2</option>
@@ -380,7 +381,7 @@
 
 <p><a href="cordova_contacts_contacts.md.html#contacts.find">contacts.find</a> is an asynchronous function that queries the device contacts database and returns an array of <code><a href="cordova_contacts_contacts.md.html#Contact">Contact</a></code> objects.  The resulting objects are passed to the <code><a href="cordova_contacts_contacts.md.html#contactSuccess">contactSuccess</a></code> callback function specified by the <strong><a href="cordova_contacts_contacts.md.html#contactSuccess">contactSuccess</a></strong> parameter.  </p>
 
-<p>Users must specify the contact fields to be used as a search qualifier in the <strong><a href="cordova_contacts_contacts.md.html#contactFields">contactFields</a></strong> parameter.  Only the fields specified in the <strong><a href="cordova_contacts_contacts.md.html#contactFields">contactFields</a></strong> parameter will be returned as properties of the <code><a href="cordova_contacts_contacts.md.html#Contact">Contact</a></code> objects that are passed to the <strong><a href="cordova_contacts_contacts.md.html#contactSuccess">contactSuccess</a></strong> callback function.  A zero-length <strong><a href="cordova_contacts_contacts.md.html#contactFields">contactFields</a></strong> parameter will result in an array of <code><a href="cordova_contacts_contacts.md.html#Contact">Contact</a></code> objects with only the <code>id</code> property populated. A <strong><a href="cordova_contacts_contacts.md.html#contactFields">contactFields</a></strong> value of ["*"] will return all contact fields. </p>
+<p>Users must specify the contact fields to be used as a search qualifier in the <strong><a href="cordova_contacts_contacts.md.html#contactFields">contactFields</a></strong> parameter.  Only the fields specified in the <strong><a href="cordova_contacts_contacts.md.html#contactFields">contactFields</a></strong> parameter will be returned as properties of the <code><a href="cordova_contacts_contacts.md.html#Contact">Contact</a></code> objects that are passed to the <strong><a href="cordova_contacts_contacts.md.html#contactSuccess">contactSuccess</a></strong> callback function.  A zero-length <strong><a href="cordova_contacts_contacts.md.html#contactFields">contactFields</a></strong> parameter is invalid and will result in a <code><a href="cordova_contacts_contacts.md.html#ContactError">ContactError</a>.INVALID_ARGUMENT_ERROR</code> . A <strong><a href="cordova_contacts_contacts.md.html#contactFields">contactFields</a></strong> value of ["*"] will return all contact fields. </p>
 
 <p>The <strong><a href="cordova_contacts_contacts.md.html#contactFindOptions">contactFindOptions</a>.filter</strong> string can be used as a search filter when querying the contacts database.  If provided, a case-insensitive, partial value match is applied to each field specified in the <strong><a href="cordova_contacts_contacts.md.html#contactFields">contactFields</a></strong> parameter.  If a match is found in a comparison with <em>any</em> of the specified fields, the contact is returned.</p>
 

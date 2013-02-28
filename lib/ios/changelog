@@ -2,6 +2,12 @@
 iOS 
 ---
 
+b8796d1 [CB-2556] Update JavaScript for iOS (2.5.0)
+d9b5ee7 Updated Release Notes for 2.5.0
+addb867 [CB-2544] Document "onload" attribute of <plugin> element in Plugin Upgrade Guide
+91332c2 [CB-2510] [1/2] Updated Plugin Upgrade Guide for 2.4.0 -> 2.5.0
+d7d815d [CB-2516] Additional Plugin Note on Upgrading from 2.3.0 to 2.4.0
+dfc6a99 [CB-2411] Added camera popover repositioning.
 b706341 CDVWebViewDelegate header was not public.
 474088f Fixes CB-571 Media updates
 43c3a45 Updated cordova.ios.js to latest 2.5.0rc1 tag

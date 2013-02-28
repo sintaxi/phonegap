@@ -2,8 +2,14 @@
 Windows Phone 7 
 ---
 
+b1f4e54 Merge pull request #5 from purplecabbage/2.5.0_ReleasePrep
+66e2337 update versions
+fd3b790 Merge pull request #4 from bennmapes/scripting
+2a0b166 Added development scripts
+2c2b582 merger of cli tooling
 bdead5b updated built js
 896f3cb 2.5.0 release prep
+d037ab8 [CB-2403] Added scripts for distribution build.
 11cf614 merge, cleanup
 b3c7b81 CB2444 - events not fired
 bdc5243 Merge pull request #3 from purplecabbage/CB-2323

@@ -54,7 +54,7 @@ Contacts::Run(const String& command) {
 			}
 			AppLogDebug("Method %S callbackId %S contactId %d", method.GetPointer(), callbackId.GetPointer(), cid);
 			Create(cid);
-		// Finding an exisiting contact by Name/Phone Number/Email
+		// Finding an existing contact by Name/Phone Number/Email
 		} else if(method == L"org.apache.cordova.Contacts.find" && !callbackId.IsEmpty()) {
 			String filter;
 			strTok.GetNextToken(filter);

@@ -29,7 +29,7 @@ extern "C"
 _EXPORT_ int OspMain(int argc, char *pArgv[]);
 
 /**
- * The entry function of bada application called by the operating system.
+ * The entry function of Bada application called by the operating system.
  */
 int
 OspMain(int argc, char *pArgv[])

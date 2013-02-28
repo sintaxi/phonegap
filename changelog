@@ -3,6 +3,12 @@
 iOS 
 ---
 
+b8796d1 [CB-2556] Update JavaScript for iOS (2.5.0)
+d9b5ee7 Updated Release Notes for 2.5.0
+addb867 [CB-2544] Document "onload" attribute of <plugin> element in Plugin Upgrade Guide
+91332c2 [CB-2510] [1/2] Updated Plugin Upgrade Guide for 2.4.0 -> 2.5.0
+d7d815d [CB-2516] Additional Plugin Note on Upgrading from 2.3.0 to 2.4.0
+dfc6a99 [CB-2411] Added camera popover repositioning.
 b706341 CDVWebViewDelegate header was not public.
 474088f Fixes CB-571 Media updates
 43c3a45 Updated cordova.ios.js to latest 2.5.0rc1 tag
@@ -56,6 +62,7 @@ ae46724 [CB-2280, CB-2281] SplashScreen fade and rotation
 Android 
 ---
 
+fb1455a Preparing to tag 2.5.0
 5462edd Updating the JS for 2.5.0rc1
 fef51f1 Apparently the JS was wrong when tagging
 5cd1773 Tagging 2.5.0rc1.  Updating files
@@ -82,6 +89,8 @@ dd86d7a [CB-2095] Delete file on FileTransfer.download fail
 BlackBerry 
 ---
 
+780161d [CB-2575] - updating version
+a1c430b [CB-2555] - updating javascript
 3d43c04 [CB-2478] - update BB
 3f9ccd1 [CB-2468] - updating javascript
 
@@ -89,14 +98,21 @@ BlackBerry
 Windows 
 ---
 
+2cf28ab 2.5.0 release prep
 de20d41 2.5.0rc1 release prep
 
 
 Windows Phone 7 
 ---
 
+b1f4e54 Merge pull request #5 from purplecabbage/2.5.0_ReleasePrep
+66e2337 update versions
+fd3b790 Merge pull request #4 from bennmapes/scripting
+2a0b166 Added development scripts
+2c2b582 merger of cli tooling
 bdead5b updated built js
 896f3cb 2.5.0 release prep
+d037ab8 [CB-2403] Added scripts for distribution build.
 11cf614 merge, cleanup
 b3c7b81 CB2444 - events not fired
 bdc5243 Merge pull request #3 from purplecabbage/CB-2323
@@ -122,6 +138,8 @@ e22f3f8 Spelling: beginning
 Windows Phone 8 
 ---
 
+fa0465a Merge pull request #7 from purplecabbage/2.5.0_ReleasePrep
+6e000cf update js from cordova-js
 a450ea8 2.5.0rc1 release prep
 066d798 Merge pull request #6 from purplecabbage/CB-2323
 45548b2 <cordova> becomes <widget>
@@ -135,19 +153,37 @@ f3547e1 Events were wrong, not fired correctly
 Bada 
 ---
 
+03c285b Updating Bada JS, VERSION to 2.5.0
+e357b1a Merge https://github.com/jsoref/incubator-cordova-bada
 46efcec Updating Bada JS, VERSION to 2.5.0rc1
 cfcd8a8 updating Device.cpp
+a022be0 Brand: Bada
+3f9b8e1 Spelling: running
+30558c4 Spelling: reachability
+f23f031 Spelling: writing
+f7bd2a6 Spelling: occurred
+cc7c3a6 Spelling: existing
+0462f96 Spelling: print [Code Change]
 
 
 BadaWac 
 ---
 
+3abaa1f fixing deviceReady again
+9acb1d3 Updating bada-wac JS, VERSION to 2.5.0
+a5e05ba CB-2344 fixing deviceReady event not firing
+ae73208 Merge https://github.com/jsoref/incubator-cordova-bada-wac
 37e752c Updating bada-wac JS, VERSION to 2.5.0rc1
+a407503 Brand: JavaScript
+4d46001 Brand: cordova
 
 
 WebOS 
 ---
 
+e937e5c update cordova-js libs to the 2.5.0 tagged versions
+122c41f update webos cordova-js files to latest versions 2.5.0
+e49a6e0 [CB-2323] verify that webOS config uses <widget>; update inline comments to state that config.xml not used by cordova-webos
 cda994f update webOS to 2.5.0
 e1b14c0 update to 2.5.0 version of cordova.js
 8f8430c update to latest version of files in hello world app
@@ -156,12 +192,14 @@ e1b14c0 update to 2.5.0 version of cordova.js
 Tizen 
 ---
 
+d6a62db Updating tizen JS, VERSION to 2.5.0
 98e937e Updating tizen JS, VERSION to 2.5.0rc1
 
 
 QT 
 ---
 
+e80b4fc Updating Qt JS, VERSION to 2.5.0
 ca7c54c Updating Qt JS, VERSION to 2.5.0rc1
 
 
@@ -173,9 +211,19 @@ OSX
 Docs 
 ---
 
+bc56c4b Version 2.5.0
+888deea CB-1931: empty array in contacts.find() will result in an error.
+7c8c09b Merge branch 'refs/heads/next'
+8bf8fd9 [CB-2510][2/2] Instructions for upgrading iOS to 2.5 from 2.4
+d2cce8f CB-2507: Updating the docs
+b58149e [CB-2320] updated project settings guide for webos
+0e83aca Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-docs
+4c5e503 CB-2515: add lessons learned to the list of pre-reqs
+995f990 Merge branch 'overscroll' of github.com:mwoghiren/cordova-docs
 10e89b5 Version 2.5.0rc1
 dc5de67 [CB-571]  iOS Audio updates
 6d1cf0b [CB-2511] update webos upgrade guide
+689c48c [CB-2504] Documented disallowOverscroll.
 74ce422 Convert tabs to space in sqlresult document.
 50c5392 fix example code for storage api
 0df12dd [CB-2449] iOS Cordova Upgrade Guide - missing step
@@ -209,6 +257,8 @@ b9bd36c CB-2316: config.xml documentation for BlackBerry.
 MobileSpec 
 ---
 
+4550411 2.5.0
+87d07d6 [CB-2411] Added a popover repositioning test.
 842e603 2.5.0rc1
 f86d530 CB-2331: adding "body" property on FileTransferError object.
 10e1d54 Add a test page for splashscreen.
@@ -235,6 +285,42 @@ d27c80d CB-2049: use new audio file for audio tests (Jesse must be happy!). audi
 CordovaJS 
 ---
 
+c5437f0 Merge branch 'master' into next
+81e89d6 fixing deviceready
+03a4b30 switch alert to console.error for fail to load webworks.js
+7cb3604 Implement FileTransfer with XHR for qnx
+54660e9 Merge branch 'next'
+f50d20a 2.5.0
+ac2fcf1 [Android] Fixing failing jake tests
+f4142e7 CB-2530 and CB-2239 Multipart plugin result
+aa5548f Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-js
+91d53eb CB-2103: File Transfer didn't send the body to the FileTransferError constructor.
+05913de CB-2103: Forgot to send the response body to the error callback. Fixed now.
+efefa97 [2526] Ensure navigator keeps "this" object for native functions
+6abe4c9 Add onPluginsReady event, and join on it before firing onDeviceReady
+48220f8 merging iOS popover change [CB-2411]
+73b6ece [IOS] [COMMON] Added a handle to camera popovers. [CB-2411]
+ad13c9a [all] Minor clean-up in bootstrap. No logic change.
+c218442 Revert "[webos] modulemapper refactor for platform plugins."
+b5f8842 Revert "[win] Move plugin logic out of platform.js"
+2ed6452 Revert "[win8] modulemapper refactor for App plugin."
+fab071a Revert "[win8] modulemapper refactor for commandProxy."
+6151266 Revert "[windowsphone] modulemapper refactor for console."
+c59a6b1 Revert "[windowsphone] modulemapper refactor for CordovaCommandResult"
+f88c86b Revert "[windowsphone] Move InAppBrowser into symbols.js"
+bdd4256 Revert "[windowsphone] Move FileTransfer into symbols.js."
+d4d3d1d Revert "[all] Remove remaining usage of builder."
+1de6aaf Merge branch 'next'
+64a70f9 [iOS] Fixing regression in exec [CB-2503]
+cded0ad [all] Remove remaining usage of builder.
+c169dea [windowsphone] Move FileTransfer into symbols.js.
+0737cba [windowsphone] Move InAppBrowser into symbols.js
+82fa093 [windowsphone] modulemapper refactor for CordovaCommandResult
+2484bf2 [windowsphone] modulemapper refactor for console.
+02677af [win8] modulemapper refactor for commandProxy.
+4c8d451 [win8] modulemapper refactor for App plugin.
+c5865e2 [win] Move plugin logic out of platform.js
+fd44297 [webos] modulemapper refactor for platform plugins.
 521bbd6 Add missing filetransfer symbols.js files
 04e4cea 2.5.0rc1!
 efdf3ea [common] CB-2103: added "body" property to FileTransferError.
@@ -274,12 +360,15 @@ b5cd734 fixed some minor whitespace issues
 Hello World App 
 ---
 
+bc41902 Version 2.5.0
 874b2b8 Version 2.5.0rc1
 
 
 Cordova CLI 
 ---
 
+0aef8e9 2.5.0 (2.5.1 for npm). Uses ios, android, blackberry v2.5.0 now.
+7f9a61e Remove mention of specific cordova version from README, add requirement for xcode + cli xcode tools.
 2bb8bac 2.5.0rc1 (2.5.0 in package.json). Removed old test related to webworks scripts. Updated lbiraries to 2.5.0rc1. Added a VERSION file.
 c687ba1 2.4.10
 07dd924 woops syntax error in package.json

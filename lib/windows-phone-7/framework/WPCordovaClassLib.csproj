@@ -29,6 +29,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WPCordovaClassLib</RootNamespace>
     <AssemblyName>WPCordovaClassLib</AssemblyName>
+    <AssemblyVersion>$(BaseVersionNumber)</AssemblyVersion>
+    <AssemblyFileVersion>$(VersionNumber)</AssemblyFileVersion>
+    <AssemblyDescription>$(VersionNumber)</AssemblyDescription>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
     <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
@@ -283,8 +286,14 @@
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
+    <AssemblyInfo
+      AssemblyVersion="  "
+      AssemblyFileVersion="$(VersionNumber)"
+      AssemblyDescription="$(VersionNumber)"
+    >
+    </AssemblyInfo>
   </Target>
   <Target Name="AfterBuild">
-  </Target>
-  -->
+  </Target>-->
+  
 </Project>

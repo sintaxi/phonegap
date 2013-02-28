@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.5.0rc1">2.5.0rc1</option>
+<option value="2.5.0rc1">2.5.0rc1</option>
+<option selected value="2.5.0">2.5.0</option>
 <option value="2.4.0rc1">2.4.0rc1</option>
 <option value="2.4.0">2.4.0</option>
 <option value="2.3.0rc2">2.3.0rc2</option>
@@ -135,7 +136,12 @@
 <p>Operating System: </p>
 
 <ul>
-<li>Windows 8, Windows 8 Pro</li>
+<li>Windows 8 or Windows 8 Pro
+<ul>
+<li>The 64-bit version (x64) of Windows is required for the SDK.</li>
+<li>The Pro version is recommended so you can run a device emulator.</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -148,36 +154,37 @@
 </ul>
 </li>
 <li>
-<p>Windows Phone 8 Emulator:</p>
+<p>Windows Phone 8 Emulator</p>
 
 <ul>
-<li>Windows 8 Pro edition or greater</li>
-<li>Requires a processor that supports Second Level Address Translation (SLAT)</li>
+<li>The phone emulator uses Hyper-V, so this list includes those pre-reqs.</li>
+<li>Windows 8 Pro 64-bit edition or greater</li>
+<li>Requires a processor that supports virtualization and <a class="external" href="http://en.wikipedia.org/wiki/Second_Level_Address_Translation">Second Level Address Translation (SLAT)</a>
+<ul>
+<li>See the <a class="external" href="http://ark.intel.com/Products/VirtualizationTechnology">list of Intel processors that support VT-x (virtualization) and EPT (SLAT)</a>
+</li>
+</ul>
+</li>
+<li>Enable the virtualization capability (i.e., VT-x on Intel) in your BIOS settings, as usually this is disabled by default.</li>
 </ul>
 </li>
 <li>
 <p>SDK + IDE ( Visual Studio )</p>
 
 <ul>
-<li>VS Express for Windows Phone ( included in the SDK )</li>
-<li>Visual Studio Professional, Premium, or Ultimate</li>
+<li>Visual Studio 2012 Professional, Premium, or Ultimate. Note that Visual Studio Express for Windows Phone (included in the SDK) is not recommended because you can not build the template (see below) with VS Express, as it does not have the "Export Template" functionality, which is only in VS Pro or higher.</li>
 </ul>
 </li>
+<li><p>Register and pay for a <a class="external" href="http://dev.windowsphone.com/en-us/publish">Windows Phone Dev Center</a> account if you want to install your app on a real device and/or submit it to Market Place.</p></li>
 </ul>
-<p>Note: Running in Virtual Machine might present some challenges. You can read this blog post that gives insight on the solutions to develop for Windows Phone on a Mac: http://aka.ms/BuildaWP8apponaMac</p>
+<p>Note: Running the SDK in Virtual Machine might present some challenges. You can read this blog post that gives insight on the solutions to develop for <a class="external" href="http://aka.ms/BuildaWP8apponaMac">Windows Phone on a Mac</a>.</p>
 
-<p>Necessary for Installing on <a href="cordova_device_device.md.html#Device">Device</a> and Submitting to Market Place:</p>
-
-<ul>
-<li>•   Register for the <a class="external" href="http://dev.windowsphone.com/en-us/publish">Windows Phone Developer Center</a>
-</li>
-</ul>
 <h2>
 <a name="Getting%20Started%20with%20Windows%20Phone%208_2_install_sdk_cordova">2. Install SDK + Cordova</a>
 </h2>
 
 <ul>
-<li>Download and install <a class="external" href="http://www.microsoft.com/en-us/download/details.aspx?id=35471">Windows Phone  SDK</a>
+<li>Download and install <a class="external" href="http://www.microsoft.com/en-us/download/details.aspx?id=35471">Windows Phone SDK</a>
 </li>
 <li>Download the latest copy of <a class="external" href="http://phonegap.com/download">Cordova</a> and extract its contents. We will be working with the subfolder: lib\windows-phone-8\</li>
 <li>copy the file CordovaWP8AppFull-x.x.x.zip to the folder : \My Documents\Visual Studio 2012\Templates\ProjectTemplates\</li>
@@ -186,8 +193,9 @@
 <a name="Getting%20Started%20with%20Windows%20Phone%208_2_1_building_the_template">2.1. Building the template</a>
 </h2>
 
-<p>Note: this step may not be required.  If the lib\windows-phone directory already contains a file CordovaStarter-x.x.x.zip then you may skip this step )
-In order to simplify the development process, Cordova comes with a Visual Studio template that allows creating a Cordova application rapidly. This template can be modified if needed and the below steps indicate how to proceed if you want to modify and re-generate the template.</p>
+<p>Note: this step may not be required.  If the lib\windows-phone directory already contains a file CordovaStarter-x.x.x.zip then you may skip this step.</p>
+
+<p>In order to simplify the development process, Cordova comes with a Visual Studio template that allows creating a Cordova application rapidly. This template can be modified if needed and the below steps indicate how to proceed if you want to modify and re-generate the template.</p>
 
 <ul>
 <li>Open the file lib\windows-phone\templates\standalone\CordovaSolution.sln in Visual Studio Express for Windows Phone</li>
@@ -202,8 +210,9 @@ In order to simplify the development process, Cordova comes with a Visual Studio
 <a name="Getting%20Started%20with%20Windows%20Phone%208_2_2_about_the_different_templates">2.2 About the different templates</a>
 </h2>
 
-<p>Apache Cordova for Windows Phone 8 supports 2 different types of templates. <br>
-The 'Full' template includes a pre-built dll containing all the framework code for Apache Cordova.  This template will create a project that is easy to update, as you can simply replace the JavaScript and .dll in your project and rebuild when a new version comes out. The downside of this approach is that because the dll contains ALL of the Cordova API, it requires all available permissions even if the APIs are not called.  When you submit an app to the App store, Microsoft will run a static analyzer against your application, and detect that you require all available permissions, and place a disclaimer on you app that is presented to the user when they choose to install your app.  Users may be discouraged if they see a required permission that does not make sense ( ie, why does this drawing program need access to my media library and contacts ).</p>
+<p>Apache Cordova for Windows Phone 8 supports 2 different types of templates.  </p>
+
+<p>The 'Full' template includes a pre-built dll containing all the framework code for Apache Cordova.  This template will create a project that is easy to update, as you can simply replace the JavaScript and .dll in your project and rebuild when a new version comes out. The downside of this approach is that because the dll contains ALL of the Cordova API, it requires all available permissions even if the APIs are not called.  When you submit an app to the App store, Microsoft will run a static analyzer against your application, and detect that you require all available permissions, and place a disclaimer on you app that is presented to the user when they choose to install your app.  Users may be discouraged if they see a required permission that does not make sense ( ie, why does this drawing program need access to my media library and contacts ).</p>
 
 <p>The 'Stand-Alone' template includes ALL the source code for Apache Cordova.  This project is easier to fine-tune to use just the features you need, thereby working around the permissions issues of the 'Full' template, however this type of project will be more difficult to update, as you will need to update individual files within your project and manage any dependancies yourself.  In order to exclude an API you are not using, you can simply right-click-select the Command class file in Visual Studio and choose 'do not include in project'.</p>
 
