@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.6.0rc1">2.6.0rc1</option>
 <option value="2.5.0rc1">2.5.0rc1</option>
-<option selected value="2.5.0">2.5.0</option>
+<option value="2.5.0">2.5.0</option>
 <option value="2.4.0rc1">2.4.0rc1</option>
 <option value="2.4.0">2.4.0</option>
 <option value="2.3.0rc2">2.3.0rc2</option>
@@ -198,6 +199,7 @@
 
 <pre class="prettyprint"><code>loadstart - event fired when the <a href="cordova_inappbrowser_inappbrowser.md.html#InAppBrowser">InAppBrowser</a> starts to load a URL 
 loadstop - event fired when the <a href="cordova_inappbrowser_inappbrowser.md.html#InAppBrowser">InAppBrowser</a> finished loading a URL
+loaderror - event fired when the <a href="cordova_inappbrowser_inappbrowser.md.html#InAppBrowser">InAppBrowser</a> encounters an error loading a URL
 exit - event fired when the <a href="cordova_inappbrowser_inappbrowser.md.html#InAppBrowser">InAppBrowser</a> window is closed
 </code></pre>
 </li>
@@ -241,9 +243,10 @@ ref.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEven
     //
     function onDeviceReady() {
          var ref = <a href="cordova_inappbrowser_inappbrowser.md.html#window.open">window.open</a>('http://apache.org', '_blank', 'location=yes');
-         ref.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>('loadstart', function() { alert('start: ' + event.url); });
-         ref.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>('loadstop', function() { alert('stop: ' + event.url); });
-         ref.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>('exit', function() { alert(event.type); });
+         ref.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>('loadstart', function(event) { alert('start: ' + event.url); });
+         ref.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>('loadstop', function(event) { alert('stop: ' + event.url); });
+         ref.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>('loaderror', function(event) { alert('error: ' + event.message); });
+         ref.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>('exit', function(event) { alert(event.type); });
     }
 
     &lt;/script&gt;
@@ -270,6 +273,7 @@ ref.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEven
 
 <pre class="prettyprint"><code>loadstart - event fired when the <a href="cordova_inappbrowser_inappbrowser.md.html#InAppBrowser">InAppBrowser</a> starts to load a URL 
 loadstop - event fired when the <a href="cordova_inappbrowser_inappbrowser.md.html#InAppBrowser">InAppBrowser</a> finished loading a URL
+loaderror - event fired when the <a href="cordova_inappbrowser_inappbrowser.md.html#InAppBrowser">InAppBrowser</a> encounters an error loading a URL
 exit - event fired when the <a href="cordova_inappbrowser_inappbrowser.md.html#InAppBrowser">InAppBrowser</a> window is closed
 </code></pre>
 </li>
@@ -322,10 +326,15 @@ ref.<a href="cordova_inappbrowser_inappbrowser.md.html#removeEventListener">remo
         alert(event.type + ' - ' + event.url);
     }
 
+    function iabLoadError(event) {
+        alert(event.type + ' - ' + event.message);
+    }
+
     function iabClose(event) {
          alert(event.type);
          iabRef.<a href="cordova_inappbrowser_inappbrowser.md.html#removeEventListener">removeEventListener</a>('loadstart', iabLoadStart);
          iabRef.<a href="cordova_inappbrowser_inappbrowser.md.html#removeEventListener">removeEventListener</a>('loadstop', iabLoadStop);
+         iabRef.<a href="cordova_inappbrowser_inappbrowser.md.html#removeEventListener">removeEventListener</a>('loaderror', iabLoadError);
          iabRef.<a href="cordova_inappbrowser_inappbrowser.md.html#removeEventListener">removeEventListener</a>('exit', iabClose);
     }
 
@@ -335,6 +344,7 @@ ref.<a href="cordova_inappbrowser_inappbrowser.md.html#removeEventListener">remo
          iabRef = <a href="cordova_inappbrowser_inappbrowser.md.html#window.open">window.open</a>('http://apache.org', '_blank', 'location=yes');
          iabRef.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>('loadstart', iabLoadStart);
          iabRef.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>('loadstop', iabLoadStop);
+         iabRef.<a href="cordova_inappbrowser_inappbrowser.md.html#removeEventListener">removeEventListener</a>('loaderror', iabLoadError);
          iabRef.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>('exit', iabClose);
     }
 

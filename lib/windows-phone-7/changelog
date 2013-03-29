@@ -2,31 +2,19 @@
 Windows Phone 7 
 ---
 
-b1f4e54 Merge pull request #5 from purplecabbage/2.5.0_ReleasePrep
-66e2337 update versions
-fd3b790 Merge pull request #4 from bennmapes/scripting
-2a0b166 Added development scripts
-2c2b582 merger of cli tooling
-bdead5b updated built js
-896f3cb 2.5.0 release prep
-d037ab8 [CB-2403] Added scripts for distribution build.
-11cf614 merge, cleanup
-b3c7b81 CB2444 - events not fired
-bdc5243 Merge pull request #3 from purplecabbage/CB-2323
-451850c <cordova> becomes <widget>
-68d024a Merge branch 'topic' of git://github.com/bennmapes/cordova-wp7
-249cfe0 Fixed null pointer exception when this.player.Source is null in the startPlaying method of Audio player. Error callback now works multiple times.
-59c3e55 Brand: WebKit
-f2b5a6b Spelling: the rest
-4a4d7be Spelling: targeting
-724e4f2 Spelling: sentinel
-33a50f8 Spelling: preferred
-c88f414 Spelling: overridden
-3f5dcd9 Spelling: notify
-bc930a0 Spelling: initialization
-bbf08ab Spelling: information
-6a8d6ba Spelling: indeterminate
-be3b21f Spelling: explicitly
-ed37b95 Spelling: determines
-2fc7c46 Spelling: compiler
-e22f3f8 Spelling: beginning
+37751cf updated js files
+404152e update version to 2.6.0rc1
+77431c1 Merge branch 'master' of github.com:purplecabbage/cordova-wp7
+8df8c7c Merge pull request #8 from bennmapes/CB-2830
+6b735cf Merge pull request #9 from bennmapes/CB-2833
+2f055ae [CB-2833] Changed git repo urls in scripts
+200958b [CB-2830] Delete old cordova js on reversion
+8093768 check args.Length before using it
+eb43851 error in string.format of exception hander
+aaa4a2e Merge pull request #6 from bennmapes/create_script
+797e501 Merge pull request #7 from purplecabbage/CB2592
+1607639 Invokation->Invocation
+acdef7a Remove CordovaMediaonStatus, and CordovaCommandResult
+0819634 Fixed up dev scripts to work with cordova-cli
+65443b1 removing CordovaCommandResult dependency
+aeb213b added OnInit method to basecommand, virtual

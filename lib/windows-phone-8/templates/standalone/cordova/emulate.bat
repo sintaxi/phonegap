@@ -1,6 +1,6 @@
-
 @echo off
 goto start
+
 
 Licensed to the Apache Software Foundation (ASF) under one
 or more contributor license agreements.  See the NOTICE file
@@ -19,6 +19,5 @@ software distributed under the License is distributed on an
 specific language governing permissions and limitations
 under the License.
 
-
 :start
-CordovaDeploy ../Bin/Debug -d:1
+cscript "__PATH_TO_TOOLING_SCRIPTS__\deploy.js" __PATH_TO_PROJ__ -emulate //nologo

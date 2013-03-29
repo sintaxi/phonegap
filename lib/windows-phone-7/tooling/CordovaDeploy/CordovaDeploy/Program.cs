@@ -126,7 +126,7 @@ namespace CordovaDeploy
                 ListDevices();
                 return;
             }
-            else if (args[1].StartsWith("-d:"))
+            else if (args.Length > 1 && args[1].StartsWith("-d:"))
             {
                 deviceIndex = int.Parse(args[1].Substring(3));
             }

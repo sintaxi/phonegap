@@ -20,6 +20,7 @@
 #import "CDVPlugin.h"
 #import "CDVInvokedUrlCommand.h"
 #import "CDVScreenOrientationDelegate.h"
+#import "CDVWebViewDelegate.h"
 
 @class CDVInAppBrowserViewController;
 
@@ -27,6 +28,7 @@
 
 - (void)browserLoadStart:(NSURL*)url;
 - (void)browserLoadStop:(NSURL*)url;
+- (void)browserLoadError:(NSError*)error forUrl:(NSURL*)url;
 - (void)browserExit;
 
 @end
@@ -47,6 +49,7 @@
     NSString* _userAgent;
     NSString* _prevUserAgent;
     NSInteger _userAgentLockToken;
+    CDVWebViewDelegate* _webViewDelegate;
 }
 
 @property (nonatomic, strong) IBOutlet UIWebView* webView;

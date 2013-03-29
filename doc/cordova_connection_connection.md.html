@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.6.0rc1">2.6.0rc1</option>
 <option value="2.5.0rc1">2.5.0rc1</option>
-<option selected value="2.5.0">2.5.0</option>
+<option value="2.5.0">2.5.0</option>
 <option value="2.4.0rc1">2.4.0rc1</option>
 <option value="2.4.0">2.4.0</option>
 <option value="2.3.0rc2">2.3.0rc2</option>
@@ -158,6 +159,8 @@
 <li>
 <a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_4G</li>
 <li>
+<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL</li>
+<li>
 <a href="cordova_connection_connection.md.html#Connection">Connection</a>.NONE</li>
 </ul>
 <h2>
@@ -263,6 +266,7 @@
     states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_2G]  = 'Cell 2G connection';
     states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_3G]  = 'Cell 3G connection';
     states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_4G]  = 'Cell 4G connection';
+    states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL]     = 'Cell generic connection';
     states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.NONE]     = 'No network connection';
 
     alert('<a href="cordova_connection_connection.md.html#Connection">Connection</a> type: ' + states[networkState]);
@@ -303,6 +307,7 @@ checkConnection();
         states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_2G]  = 'Cell 2G connection';
         states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_3G]  = 'Cell 3G connection';
         states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_4G]  = 'Cell 4G connection';
+        states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL]     = 'Cell generic connection';
         states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.NONE]     = 'No network connection';
 
         alert('<a href="cordova_connection_connection.md.html#Connection">Connection</a> type: ' + states[networkState]);
@@ -334,7 +339,7 @@ checkConnection();
 <li>iOS cannot detect the type of cellular network connection.
 <ul>
 <li>
-<code>navigator.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a></code> is set to <code><a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_2G</code> for all cellular data.</li>
+<code>navigator.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a></code> is set to <code><a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_2G</code> for all cellular data.  This is deprecated as of 2.6.0 and will be changed to return <code><a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL</code> in a future release.</li>
 </ul>
 </li>
 </ul>
@@ -363,6 +368,12 @@ checkConnection();
 
 <ul>
 <li>When running in the emulator, always detects <code>navigator.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a></code> as <code><a href="cordova_connection_connection.md.html#Connection">Connection</a>.UNKNOWN</code>.</li>
+<li>Windows Phone cannot detect the type of cellular network connection.
+<ul>
+<li>
+<code>navigator.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a></code> is set to <code><a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL</code> for all cellular data.</li>
+</ul>
+</li>
 </ul>
 <h2>
 <a name="connection.type_tizen_quirks">Tizen Quirks</a>

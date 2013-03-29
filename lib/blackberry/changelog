@@ -2,7 +2,14 @@
 BlackBerry 
 ---
 
-780161d [CB-2575] - updating version
-a1c430b [CB-2555] - updating javascript
-3d43c04 [CB-2478] - update BB
-3f9ccd1 [CB-2468] - updating javascript
+9a26b94 [CB-2766] - updated version
+4ab1a56 [CB-2745] - updating javascript again
+a6bd8cd [CB-2756] - updating www/ for bb
+5f2c12d [CB-2745] - updating javascript
+f3ee54c [CB-2809] resolveFileSystemURI now reports native IllegalArgument exception, getEntryFromURI now handles query strings
+e50fcd5 [CB-2646] removed mistaken modification to mkdir file access
+3dba2ed [CB-2646] added fileSize method to file utilities
+1e9e95a Fix create script for Linux
+c0af8ba [CB-2696] amended ControlledAccessException error reporting with additional cause of file system edge case
+c57ceeb [CB-2649] ammended solution: includes Absolute Value function wrapper, preventing negative values for directory names, as - symbol was causing a crash
+703b93b [CB-2649] fix, removes app temp directory name generation based on the CordovaExtension getAppID method, and replaces it with random generation. Also catches offending exception with appropriate error message logging

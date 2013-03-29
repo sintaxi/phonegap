@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.6.0rc1">2.6.0rc1</option>
 <option value="2.5.0rc1">2.5.0rc1</option>
-<option selected value="2.5.0">2.5.0</option>
+<option value="2.5.0">2.5.0</option>
 <option value="2.4.0rc1">2.4.0rc1</option>
 <option value="2.4.0">2.4.0</option>
 <option value="2.3.0rc2">2.3.0rc2</option>
@@ -76,6 +77,7 @@
 <option value="Developing%20a%20Plugin%20on%20iOS_plugin_class_mapping">      - Plugin Class Mapping</option>
 <option value="Developing%20a%20Plugin%20on%20iOS_plugin_initialization_and_lifetime">      - Plugin Initialization and Lifetime</option>
 <option value="Developing%20a%20Plugin%20on%20iOS_writing_an_ios_cordova_plugin">      - Writing an iOS Cordova Plugin</option>
+<option value="Developing%20a%20Plugin%20on%20iOS_ios_cdvpluginresult_message_types">      - iOS CDVPluginResult message types</option>
 <option value="Developing%20a%20Plugin%20on%20iOS_plugin_signatures">      - Plugin Signatures</option>
 <option value="Developing%20a%20Plugin%20on%20iOS_echo_plugin_ios_plugin">      - Echo Plugin iOS Plugin</option>
 <option value="Developing%20a%20Plugin%20on%20iOS_threading">      - Threading</option>
@@ -185,6 +187,29 @@
 <li><a class="external" href="https://github.com/apache/cordova-ios/blob/master/CordovaLib/Classes/CDVPluginResult.h">CDVPluginResult.h</a></li>
 <li><a class="external" href="https://github.com/apache/cordova-ios/blob/master/CordovaLib/Classes/CDVCommandDelegate.h">CDVCommandDelegate.h</a></li>
 </ol>
+<h2>
+<a name="Developing%20a%20Plugin%20on%20iOS_ios_cdvpluginresult_message_types">iOS CDVPluginResult message types</a>
+</h2>
+
+<p>Using CDVPluginResult you can return a variety of result types back to your javascript callbacks, using class methods that look like:</p>
+
+<pre class="prettyprint"><code>+ (CDVPluginResult*)resultWithStatus:(CDVCommandStatus)statusOrdinal messageAs...
+</code></pre>
+
+<p>The types you can create are: <code>String</code>, <code>Int</code>, <code>Double</code>, <code>Bool</code>, <code>Array</code>, <code>Dictionary</code>, <code>ArrayBuffer</code>, and <code>Multipart</code>.  Or, don't attach any arguments (just send a status).  Or, return an Error.  You can even chose to not send any plugin result at all (your callback will not fire).</p>
+
+<h3>Notes</h3>
+
+<ul>
+<li>
+<code>messageAsArrayBuffer</code> expects <code>NSData*</code> and will convert to an <code>ArrayBuffer</code> for your javascript callback (and <code>ArrayBuffers</code> sent to a plugin from javascript are converted to <code>NSData*</code>).</li>
+<li>
+<code>messageAsMultipart</code> expects an <code>NSArray*</code> containing any of the other supported types, and will send the whole array as the <code>arguments</code> to your javascript callback.
+<ul>
+<li>Quirk: this is not just syntactic sugar (though it is sweet).  This way, all of the arguments are serialized/deserialized as necessary.  e.g. it is safe to return <code>NSData*</code> as multipart, but not as <code>Array</code>/<code>Dictionary</code>.</li>
+</ul>
+</li>
+</ul>
 <h2>
 <a name="Developing%20a%20Plugin%20on%20iOS_plugin_signatures">Plugin Signatures</a>
 </h2>

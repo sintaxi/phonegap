@@ -287,8 +287,8 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
     <AssemblyInfo
-      AssemblyVersion="  "
-      AssemblyFileVersion="$(VersionNumber)"
+      AssemblyVersion="$(BaseVersion)"
+      AssemblyFileVersion="$(BaseVersion)"
       AssemblyDescription="$(VersionNumber)"
     >
     </AssemblyInfo>

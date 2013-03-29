@@ -71,7 +71,7 @@ namespace WPCordovaClassLib.Cordova.Commands
 
         }
 
-
+        [Obsolete]
         public void InvokeCustomScript(ScriptCallback script, bool removeHandler)
         {
             if (this.OnCustomScript != null)

@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.6.0rc1">2.6.0rc1</option>
 <option value="2.5.0rc1">2.5.0rc1</option>
-<option selected value="2.5.0">2.5.0</option>
+<option value="2.5.0">2.5.0</option>
 <option value="2.4.0rc1">2.4.0rc1</option>
 <option value="2.4.0">2.4.0</option>
 <option value="2.3.0rc2">2.3.0rc2</option>
@@ -284,15 +285,18 @@ If you have multiple AVDs, it will prompt you to select an AVD.</p>
 
 <ul>
 <li>Path to your new Cordova BlackBerry project</li>
+<li>Placeholder package name</li>
 <li>Application name</li>
 </ul>
-<!-- --><pre class="prettyprint"><code>$ /path/to/cordova-blackberry-webworks/bin/create /path/to/my_new_cordova_project CordovaProjectName
+<!-- --><pre class="prettyprint"><code>$ /path/to/cordova-blackberry-webworks/bin/create /path/to/my_new_cordova_project com.example.cordova_project_name CordovaProjectName
 </code></pre>
 
 <p>or, on <strong>Windows</strong></p>
 
-<pre class="prettyprint"><code>$ /path/to/cordova-blackberry-webworks/bin/create.bat /path/to/my_new_cordova_project CordovaProjectName
+<pre class="prettyprint"><code>$ /path/to/cordova-blackberry-webworks/bin/create.bat /path/to/my_new_cordova_project com.example.cordova_project_name CordovaProjectName
 </code></pre>
+
+<p>Note: the package name placeholder (com.example.cordova<em>project</em>name) is ignored on the Blackberry platform, but is required for use of the crossplatform tools</p>
 
 <h3>Build a project</h3>
 
@@ -302,15 +306,15 @@ This is necessary for things like supplying your BlackBerry signing key
 password, location of the BlackBerry WebWorks SDK, and location of
 BlackBerry simulator executables.</p>
 
-<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/debug
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/build &lt;platform&gt;
 </code></pre>
 
 <p>or, on <strong>Windows</strong></p>
 
-<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/debug.bat
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/build.bat &lt;platform&gt;
 </code></pre>
 
-<h3>Launch emulator</h3>
+<h3>Launch simulator</h3>
 
 <p>For BlackBerry projects, please make sure you customize the
 <code>project.properties</code> file in the root of your Cordova project folder.
@@ -318,12 +322,22 @@ This is necessary for things like supplying your BlackBerry signing key
 password, location of the BlackBerry WebWorks SDK, and location of
 BlackBerry simulator executables.</p>
 
-<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/emulate
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/run &lt;platform&gt;
+</code></pre>
+
+<p>and then choose 'no' when prompted with: </p>
+
+<pre class="prettyprint"><code>Do you have a BlackBerry device connected to your computer? (y/n)
 </code></pre>
 
 <p>or, on <strong>Windows</strong></p>
 
-<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/emulate.bat
+<pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/run &lt;platform&gt;
+</code></pre>
+
+<p>and then choose 'no' when prompted with: </p>
+
+<pre class="prettyprint"><code>Do you have a BlackBerry device connected to your computer? (y/n)
 </code></pre>
 
 <h3>Logging</h3>

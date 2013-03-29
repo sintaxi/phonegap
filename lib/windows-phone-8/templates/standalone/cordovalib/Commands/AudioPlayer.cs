@@ -58,7 +58,7 @@ namespace WPCordovaClassLib.Cordova.Commands
         private const int MediaErrorStopState = 8;
 
         //TODO: get rid of this callback, it should be universal
-        private const string CallbackFunction = "CordovaMediaonStatus";
+        //private const string CallbackFunction = "CordovaMediaonStatus";
 
         #endregion
 
@@ -133,7 +133,6 @@ namespace WPCordovaClassLib.Cordova.Commands
         /// </summary>
         public void Dispose()
         {
-            //Debug.WriteLine("Dispose :: " + this.audioFile);
             if (this.player != null)
             {
                 this.stopPlaying();
@@ -148,6 +147,33 @@ namespace WPCordovaClassLib.Cordova.Commands
             this.FinalizeXnaGameLoop();
         }
 
+        private void InvokeCallback(int message, string value, bool removeHandler)
+        {
+            string args = string.Format("('{0}',{1},{2});", this.id, message, value);
+            string callback = @"(function(id,msg,value){
+                try {
+                    if (msg == Media.MEDIA_ERROR) {
+                        value = {'code':value};
+                    }
+                    Media.onStatus(id,msg,value);
+                }
+                catch(e) {
+                    console.log('Error calling Media.onStatus :: ' + e);
+                }
+            })" + args;
+            this.handler.InvokeCustomScript(new ScriptCallback("eval", new string[] { callback }), false);
+        }
+
+        private void InvokeCallback(int message, int value, bool removeHandler)
+        {
+            InvokeCallback(message, value.ToString(), removeHandler);
+        }
+
+        private void InvokeCallback(int message, double value, bool removeHandler)
+        {
+            InvokeCallback(message, value.ToString(), removeHandler);
+        }
+
         /// <summary>
         /// Starts recording, data is stored in memory
         /// </summary>
@@ -156,7 +182,7 @@ namespace WPCordovaClassLib.Cordova.Commands
         {
             if (this.player != null)
             {
-                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorPlayModeSet),false);
+                InvokeCallback(MediaError, MediaErrorPlayModeSet, false);
             }
             else if (this.recorder == null)
             {
@@ -176,13 +202,14 @@ namespace WPCordovaClassLib.Cordova.Commands
                 }
                 catch (Exception)
                 {
-                    this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorStartingRecording),false);
+                    InvokeCallback(MediaError, MediaErrorStartingRecording, false);
+                    //this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorStartingRecording),false);
                 }
             }
             else
             {
-
-                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorAlreadyRecording),false);
+                InvokeCallback(MediaError, MediaErrorAlreadyRecording, false);
+                //this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorAlreadyRecording),false);
             }
         }
 
@@ -224,7 +251,8 @@ namespace WPCordovaClassLib.Cordova.Commands
         {
             if (this.recorder != null)
             {
-                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorRecordModeSet),false);
+                InvokeCallback(MediaError, MediaErrorRecordModeSet, false);
+                //this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorRecordModeSet),false);
                 return;
             }
 
@@ -316,7 +344,8 @@ namespace WPCordovaClassLib.Cordova.Commands
                             }
                             else
                             {
-                                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, 1), false);
+                                InvokeCallback(MediaError, MediaErrorPlayModeSet, false);
+                                //this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, 1), false);
                                 return;
                             }
                         }
@@ -326,7 +355,8 @@ namespace WPCordovaClassLib.Cordova.Commands
                 catch (Exception e)
                 {
                     Debug.WriteLine("Error in AudioPlayer::startPlaying : " + e.Message);
-                    this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorStartingPlayback),false);
+                    InvokeCallback(MediaError, MediaErrorStartingPlayback, false);
+                    //this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorStartingPlayback),false);
                 }
             }
             else
@@ -338,7 +368,8 @@ namespace WPCordovaClassLib.Cordova.Commands
                 }
                 else
                 {
-                    this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorResumeState),false);
+                    InvokeCallback(MediaError, MediaErrorResumeState, false);
+                    //this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorResumeState),false);
                 }
             }
         }
@@ -351,7 +382,8 @@ namespace WPCordovaClassLib.Cordova.Commands
             if (this.player != null)
             {
                 this.duration = this.player.NaturalDuration.TimeSpan.TotalSeconds;
-                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaDuration, this.duration),false);
+                InvokeCallback(MediaDuration, this.duration, false);
+                //this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaDuration, this.duration),false);
                 if (!this.prepareOnly)
                 {
                     this.player.Play();
@@ -379,7 +411,8 @@ namespace WPCordovaClassLib.Cordova.Commands
         private void MediaFailed(object sender, RoutedEventArgs arg)
         {
             player.Stop();
-            this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError.ToString(), "Media failed"),false);
+            InvokeCallback(MediaError, MediaErrorStartingPlayback, false);
+            //this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError.ToString(), "Media failed"),false);
         }
 
         /// <summary>
@@ -392,7 +425,8 @@ namespace WPCordovaClassLib.Cordova.Commands
             {
                 TimeSpan tsPos = new TimeSpan(0, 0, 0, 0, milliseconds);
                 this.player.Position = tsPos;
-                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaPosition, milliseconds / 1000.0f),false);
+                InvokeCallback(MediaPosition, milliseconds / 1000.0f, false);
+                //this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaPosition, milliseconds / 1000.0f),false);
             }
         }
 
@@ -420,7 +454,8 @@ namespace WPCordovaClassLib.Cordova.Commands
             }
             else
             {
-                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorPauseState),false);
+                InvokeCallback(MediaError, MediaErrorPauseState, false);
+                //this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaError, MediaErrorPauseState),false);
             }
         }
 
@@ -494,7 +529,8 @@ namespace WPCordovaClassLib.Cordova.Commands
         {
             if (this.state != state)
             {
-                this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaState, state),false);
+                InvokeCallback(MediaState, state, false);
+                //this.handler.InvokeCustomScript(new ScriptCallback(CallbackFunction, this.id, MediaState, state),false);
             }
 
             this.state = state;

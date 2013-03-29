@@ -74,7 +74,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Xml" />
-    <Reference Include="WPCordovaClassLib, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="WPCordovaClassLib, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -101,7 +101,7 @@
     <Content Include="config.xml" />
     <Content Include="CordovaLib\WPCordovaClassLib.dll" />
     <Content Include="CordovaSourceDictionary.xml" />
-    <Content Include="www\cordova-2.5.0.js" />
+    <Content Include="www\cordova-2.6.0rc1.js" />
     <Content Include="www\img\logo.png" />
     <Content Include="www\js\index.js" />
     <None Include="BuildManifestProcessor.js" />

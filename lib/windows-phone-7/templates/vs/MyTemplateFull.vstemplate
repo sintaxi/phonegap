@@ -1,13 +1,13 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
-    <Name>CordovaWP7_2_5_0_Full</Name>
-    <Description>Cordova 2.5.0 for Windows Phone 7.5 using Cordova from a library DLL</Description>
+    <Name>CordovaWP7_2_6_0rc1_Full</Name>
+    <Description>Cordova 2.6.0rc1 for Windows Phone 7.5 using Cordova from a library DLL</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
     <SortOrder>1000</SortOrder>
     <CreateNewFolder>true</CreateNewFolder>
-    <DefaultName>CordovaWP7_2_5_0_Full</DefaultName>
+    <DefaultName>CordovaWP7_2_6_0rc1_Full</DefaultName>
     <ProvideDefaultName>true</ProvideDefaultName>
     <LocationField>Enabled</LocationField>
     <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
@@ -41,7 +41,7 @@
       <Folder Name="Service References" TargetFolderName="Service References" />
       <ProjectItem ReplaceParameters="false" TargetFileName="SplashScreenImage.jpg">SplashScreenImage.jpg</ProjectItem>
       <Folder Name="www" TargetFolderName="www">
-        <ProjectItem ReplaceParameters="true" TargetFileName="cordova-2.5.0.js">cordova-2.5.0.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="cordova-2.6.0rc1.js">cordova-2.6.0rc1.js</ProjectItem>
         <Folder Name="css" TargetFolderName="css">
           <ProjectItem ReplaceParameters="true" TargetFileName="index.css">index.css</ProjectItem>
         </Folder>

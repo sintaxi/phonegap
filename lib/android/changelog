@@ -2,25 +2,64 @@
 Android 
 ---
 
-fb1455a Preparing to tag 2.5.0
-5462edd Updating the JS for 2.5.0rc1
-fef51f1 Apparently the JS was wrong when tagging
-5cd1773 Tagging 2.5.0rc1.  Updating files
-cb19205 CB-2458: gracefully exit with back button If users do extra initialization, we can get NPEs when hitting the back button before loadUrl() has been called. -Null fenced code in startOfHistory() that gave us an NPE when hitting Back button with useBrowserHistory=true -Call finish() in Back button code when no history since with useBrowserHistory=true it would just hang while the app inits -Call loadUrlIntoView() first in handleDestory() since with useBrowserHistory=false, the default behavior would try to use the baseUrl which is null
-892f96e CB-2282: Turning on AppCache
-13ef58a Updated XML for the test project
-a45d5a9 CB-1605: Going through Eclipse warnings, removing the unused imports
-a31714f CB-2447: This is a non-trivial task.  Migrated test plugin to modern plugin API.
-23d2a80 Merge branch 'CB-2447' of git://github.com/jamesjong/cordova-android
-c20b233 CB-2446: Ugly, but workable fix
-8613551 minor readme stuff
-2ab01da Adding link to cordova.io in readme
-790636c CB-2447: Remove use of deprecate org.apache.cordova.api.Plugin
-2393883 [CB-2213] Add NATIVE_URI to the quick-return logic.
-674b870 [CB-2297] Fix for geolocaion database error
-83d9248 Update framework/src/org/apache/cordova/ContactAccessorSdk5.java
-f9d27e4 CB-2408: There should be a check for the browser history, but the logic intentionally doesn't match
-2683803 Add check for build targets in create script
-dd86d7a [CB-2095] Delete file on FileTransfer.download fail
-1246a81 [CB-2213] Added NATIVE_URI support.
-8ab7278 Code clean-up of FileTransfer
+ff6ef1e JS Changed once again, this will require a retag of 2.6.0rc1
+b7e67ff Merge branch '2.6.x' of https://git-wip-us.apache.org/repos/asf/cordova-android into 2.6.x
+4ab4606 Fixing CB-1700, we had the file names reversed, so exif was never being written right.  Needed to upload a file to debug this thing
+957f2fd Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-android into 2.6.x
+cdbe9c7 Fix NPE in InAppBrowser.
+73c7994 Fix NPE in InAppBrowser.
+0c74090 Log a message when exec() is made to an unregistered plugin.
+f60d54e [CB-2305] Add InAppBrowser injectSriptCode command to support InAppBrowser.executeScript and InAppBrowser.insertCSS APIs
+85c2563 Grabbed the wrong JS
+31bc015 Pre-2.6 prep
+b028ad3 CB-2675: Add prompt dialog to Notification API
+d2e4e35 [CB-2715] Simplified readAsBinaryHelper.
+1f37200 [CB-1957] Stop any playing media when closing InAppBrowser
+77178da [CB-2308] [android] Report errors when InAppBrowser fails to load page
+1648f16 Implemented a conditional check to support providing the duration limit for the Android platform SDK 8 and above. The value is passed using the string literal value to ensure the logic is not dependent on SDK version specifics.
+9fa6cea Implemented a conditional check to allow for the duration to be provided on the Android platform for SDK 8 and above.
+66b827e [CB-2632] Implement FileReader.readAsBinaryString
+7755a90 Add a new type to the Native->JS bridge for binary strings.
+d25b73f [CB-2546] Moved read calls to a background thread.
+ac2969c [CB-2435] Split common methods out of FileUtils into FileHelpers
+ee38b2e Use pushd/popd instead of subshell
+0f70e04 [CB-1933] Changed button labels to an array.
+9fc1e72 CB-2668: Thanks for supplying a patch, but please make sure it actually builds.
+0d4d0b8 Adding workaround for ICS asset URLs with spaces
+fcd2c98 [CB-2418] Fix geolocation's velocity field broken on Android
+e0d0d6c CB-2459: Customize InAppBrowser location bar
+ce1a961 CB-2640: Allow InAppBrowser to open tel, sms, market urls
+c71a08a Merge branches 'leon' and 'master'
+17bfcea Merge branch 'master' of git://github.com/sweetleon/cordova-android into leon
+5e8959b Removing baseURL because it doesn't actually do anything.  If we want to make sure remote websites work, we whitelist them
+9924dc0 So much for squashing, I should have branched this.
+7388c03 Making framework only apply for http resources for now, so we don't break non-http handling.  I had to squash this to make it pretty
+ad45128 Making framework only apply for http resources for now, so we don't break non-http handling
+409b9af CB-2099: Android Whitelisting now blocks images and JS with an empty response
+7cc8fd7 Allow plugins to capture shouldInterceptRequest()
+42c8105 CB-2623: Updated windows script, now it works here too for once
+9a71cc5 CB-2623: Added partial work on update script
+c543b74 CB-2623 Adding update script to Android
+7caac32 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-android
+5d68d5a CB-2198: Removing option to use our broken URL stack as a history as per deprecation policy.
+7187f87 Add readAsBinaryString and readAsArrayBuffer support
+fb81f3e CB-2596: Fixing the menubutton for text fields
+0ae49ed moveFile handles absolute paths by not pre-pending anything to them
+b8e5aaf ignore IntelliJ files
+aa4820c [CB-861] Header support for FileTransfer download
+5d79d6e Merge branch 'next'
+c668eeb Added CallbackContext success message with an int parameter
+62421ee CB-2530: Update callbackFromNative syntax to args
+e791f29 CB-2333: Probably should be re-factored as a do..while, but need to handle when there is no EOL char in buffer
+06947cc CB-2333: Adding body property to FileTransferError object on Android
+8c97474 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-android
+77a8568 CB-2522: We used buttons in older versions to send the post, not the submit event.  Disabled form saving
+e2dadbd Fix return types of getJSONObject and optJSONObject in CordovaArgs
+17b668a CB-2085: Fixing deleted database for ChildBrowser
+a30c2b6 CB-2504: Merged overscroll disallowance, needed to deal with merge conflict with the InAppStorage toggle
+2660eeb Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-android
+f415664 [CB-2504] Allow the disabling of overscroll glow.
+5092b29 [CB-2518] Enable Geolocation in InAppBrowser
+d5be901 Merge branch 'next'
+fdb3679 Merge branch 'next'
+11beb37 Setting to turn off Online Storage

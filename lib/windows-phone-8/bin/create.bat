@@ -1,1 +1,2 @@
-cscript bin\\create.js $*
+@echo off
+cscript "%~dp0\create.js" %*  //nologo

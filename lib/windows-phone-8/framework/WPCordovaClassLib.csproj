@@ -29,6 +29,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WPCordovaClassLib</RootNamespace>
     <AssemblyName>WPCordovaClassLib</AssemblyName>
+    <AssemblyVersion>$(BaseVersionNumber)</AssemblyVersion>
+    <AssemblyFileVersion>$(BaseVersionNumber)</AssemblyFileVersion>
+    <AssemblyDescription>$(VersionNumber)</AssemblyDescription>
     <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
     <SilverlightVersion>
     </SilverlightVersion>

@@ -2,13 +2,23 @@
 Windows Phone 8 
 ---
 
-fa0465a Merge pull request #7 from purplecabbage/2.5.0_ReleasePrep
-6e000cf update js from cordova-js
-a450ea8 2.5.0rc1 release prep
-066d798 Merge pull request #6 from purplecabbage/CB-2323
-45548b2 <cordova> becomes <widget>
-c9133fe Merge pull request #5 from purplecabbage/CB-2212
-871efd9 checks app resources if iso file does not exist, added mime types for html+js
-60256d1 Merge branch 'CB2212-FileResource' of github.com:purplecabbage/cordova-wp8
-f3547e1 Events were wrong, not fired correctly
-54e6606 detect instances where item is a resource, and use a stream instead of iso-store, wip
+6a6a518 Merge branch 'master' of github.com:purplecabbage/cordova-wp8
+2d79dd6 2.6.0 rc1 updates
+2b98697 Merge pull request #14 from bennmapes/CB-2831
+bf8a2c9 Merge pull request #13 from bennmapes/CB-2832
+ee6cacf Merge pull request #12 from bennmapes/CB-2833
+79fc580 Merge pull request #11 from bennmapes/CB-2830
+f054018 [CB-2831] Removed automatic template laoding into VS
+72c6337 [CB-2832] Fixed zipping script to ensure all items are copied
+b585640 [CB-2833] Changed git repo urls in scripts
+54bc1ac [CB-2830] Delete old cordova js on reversion
+6850b09 ignore template files
+18911e8 Merge pull request #8 from bennmapes/scripting
+a0ca12d Added developer support and cli scripts
+cf00526 fix warnings for unused variable Exception ex
+c652707 Merge pull request #10 from purplecabbage/CB-2692
+5f9fe30 add WP8 tooling to deploy apps from the command line
+970cf90 Merge pull request #9 from purplecabbage/CB2592
+e14552a Oops, all calls were Synchronous for a moment there
+f19295d Remove CordovaMediaonResult
+57bc645 Removed dependency on CordovaCommandResult, removed obsolete 'cast' param from callbacks

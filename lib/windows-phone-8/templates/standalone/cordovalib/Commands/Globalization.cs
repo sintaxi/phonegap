@@ -439,7 +439,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                 PluginResult result = new PluginResult(PluginResult.Status.OK, this.WrapIntoJSON(locale));
                 this.DispatchCommandResult(result);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 this.DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new GlobalizationError()));
             }
@@ -457,7 +457,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                 PluginResult result = new PluginResult(PluginResult.Status.OK, this.WrapIntoJSON(language));
                 this.DispatchCommandResult(result);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 this.DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new GlobalizationError()));
             }
@@ -481,7 +481,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                 string[] args = JSON.JsonHelper.Deserialize<string[]>(options);
                 globalOptions = JSON.JsonHelper.Deserialize<GlobalizationOptions>(args[0]);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
                 return;
@@ -495,7 +495,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                 bool isDaylightSavingTime = localZone.IsDaylightSavingTime(date);
                 this.DispatchCommandResult(new PluginResult(PluginResult.Status.OK, this.WrapIntoJSON(isDaylightSavingTime, "dst")));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 this.DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new GlobalizationError()));
             }
@@ -515,7 +515,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                 PluginResult result = new PluginResult(PluginResult.Status.OK, this.WrapIntoJSON(firstDayOfWeek));
                 this.DispatchCommandResult(result);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 this.DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new GlobalizationError()));
             }
@@ -538,7 +538,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                 string[] args = JSON.JsonHelper.Deserialize<string[]>(options);
                 globalOptions = JSON.JsonHelper.Deserialize<GlobalizationOptions>(args[0]);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
                 return;
@@ -620,7 +620,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                 string formattedValue = string.Format(CultureInfo.CurrentCulture, format, date);
                 this.DispatchCommandResult(new PluginResult(PluginResult.Status.OK, this.WrapIntoJSON(formattedValue)));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 this.DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new GlobalizationError(ErrorCode.FormattingError)));
             }
@@ -639,7 +639,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                 string[] args = JSON.JsonHelper.Deserialize<string[]>(options);
                 globalOptions = JSON.JsonHelper.Deserialize<GlobalizationOptions>(args[0]);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
                 return;
@@ -726,7 +726,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                 this.DispatchCommandResult(new PluginResult(PluginResult.Status.OK, dateFormat));
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 this.DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new GlobalizationError(ErrorCode.ParsingError)));
             }
@@ -745,7 +745,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                 string[] args = JSON.JsonHelper.Deserialize<string[]>(options);
                 globalOptions = JSON.JsonHelper.Deserialize<GlobalizationOptions>(args[0]);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
                 return;
@@ -828,7 +828,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                 DatePattern datePattern = new DatePattern(pattern, localZone.DisplayName, localZone.BaseUtcOffset.TotalSeconds, 0);
                 this.DispatchCommandResult(new PluginResult(PluginResult.Status.OK, datePattern));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 this.DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new GlobalizationError(ErrorCode.PatternError)));
             }
@@ -847,7 +847,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                 string[] args = JSON.JsonHelper.Deserialize<string[]>(options);
                 globalOptions = JSON.JsonHelper.Deserialize<GlobalizationOptions>(args[0]);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
                 return;
@@ -905,7 +905,7 @@ namespace WPCordovaClassLib.Cordova.Commands
 
                 this.DispatchCommandResult(new PluginResult(PluginResult.Status.OK, this.WrapIntoJSON(namesArray)));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 this.DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new GlobalizationError()));
             }
@@ -924,7 +924,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                 string[] args = JSON.JsonHelper.Deserialize<string[]>(options);
                 globalOptions = JSON.JsonHelper.Deserialize<GlobalizationOptions>(args[0]);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
                 return;
@@ -961,7 +961,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                 this.DispatchCommandResult(new PluginResult(PluginResult.Status.OK, this.WrapIntoJSON(formattedValue)));
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 this.DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new GlobalizationError(ErrorCode.FormattingError)));
             }
@@ -980,7 +980,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                 string[] args = JSON.JsonHelper.Deserialize<string[]>(options);
                 globalOptions = JSON.JsonHelper.Deserialize<GlobalizationOptions>(args[0]);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
                 return;
@@ -1026,7 +1026,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                 this.DispatchCommandResult(new PluginResult(PluginResult.Status.OK, this.WrapIntoJSON(value)));
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 this.DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new GlobalizationError(ErrorCode.ParsingError)));
             }
@@ -1046,7 +1046,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                 string[] args = JSON.JsonHelper.Deserialize<string[]>(options);
                 globalOptions = JSON.JsonHelper.Deserialize<GlobalizationOptions>(args[0]);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
                 return;
@@ -1086,7 +1086,7 @@ namespace WPCordovaClassLib.Cordova.Commands
 
                 this.DispatchCommandResult(new PluginResult(PluginResult.Status.OK, pattern));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 this.DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new GlobalizationError(ErrorCode.PatternError)));
             }
@@ -1105,7 +1105,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                 string[] args = JSON.JsonHelper.Deserialize<string[]>(options);
                 globalOptions = JSON.JsonHelper.Deserialize<GlobalizationOptions>(args[0]);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
                 return;
@@ -1131,14 +1131,13 @@ namespace WPCordovaClassLib.Cordova.Commands
                 // CultureInfo cultureInfo = new CultureInfo(currencyCode);
                 // NumberFormatInfo numberFormat = cultureInfo.NumberFormat;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 this.DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, new GlobalizationError(ErrorCode.FormattingError)));
             }
         }
 
         #endregion
-
 
         #region private methods
 

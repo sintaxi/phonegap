@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.6.0rc1">2.6.0rc1</option>
 <option value="2.5.0rc1">2.5.0rc1</option>
-<option selected value="2.5.0">2.5.0</option>
+<option value="2.5.0">2.5.0</option>
 <option value="2.4.0rc1">2.4.0rc1</option>
 <option value="2.4.0">2.4.0</option>
 <option value="2.3.0rc2">2.3.0rc2</option>
@@ -93,6 +94,10 @@
 <option value="FileReader_abort_quick_example">      - Abort Quick Example</option>
 <option value="FileReader_full_example">      - Full Example</option>
 <option value="FileReader_ios_quirks">      - iOS Quirks</option>
+<option value="FileReader_read_as_binary_string">      - Read As Binary String</option>
+<option value="FileReader_quick_example">      - Quick Example</option>
+<option value="FileReader_read_as_array_buffer">      - Read As Array Buffer</option>
+<option value="FileReader_quick_example">      - Quick Example</option>
 <option value="FileWriter">FileWriter</option>
 <option value="FileWriter_properties">      - Properties</option>
 <option value="FileWriter_methods">      - Methods</option>
@@ -139,6 +144,7 @@ File System Quick Example</option>
 <option value="DirectoryEntry_getdirectory">      - getDirectory</option>
 <option value="DirectoryEntry_getfile">      - getFile</option>
 <option value="DirectoryEntry_removerecursively">      - removeRecursively</option>
+<option value="DirectoryEntry_blackberry_quirks">      - BlackBerry Quirks</option>
 <option value="DirectoryReader">DirectoryReader</option>
 <option value="DirectoryReader_methods">      - Methods</option>
 <option value="DirectoryReader_supported_platforms">      - Supported Platforms</option>
@@ -437,11 +443,15 @@ var slice3 = file.slice(120, 135);
 
 <ul>
 <li>
-<strong>abort</strong>: Aborts reading file. </li>
+<strong>abort</strong>: Aborts reading file.</li>
 <li>
 <strong>readAsDataURL</strong>: Read file and return data as a base64 encoded data url.</li>
 <li>
 <strong>readAsText</strong>: Reads text file.</li>
+<li>
+<strong>readAsBinaryString</strong>: Reads file as binary and returns a binary string.</li>
+<li>
+<strong>readAsArrayBuffer</strong>: Reads file as an ArrayBuffer.</li>
 </ul>
 <h2>
 <a name="FileReader_details">Details</a>
@@ -614,6 +624,64 @@ entry.file(win, fail);
 <li>
 <strong>encoding</strong> parameter is not supported, UTF8 encoding is always used.</li>
 </ul>
+<h2>
+<a name="FileReader_read_as_binary_string">Read As Binary String</a>
+</h2>
+
+<p>Currently supported on iOS and Android only.</p>
+
+<p><strong>Parameters:</strong>
+- file - the file object to read</p>
+
+<h2>
+<a name="FileReader_quick_example">Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>function win(file) {
+    var reader = new <a href="cordova_file_file.md.html#FileReader">FileReader</a>();
+    reader.onloadend = function(evt) {
+        console.log("read success");
+        console.log(evt.target.result);
+    };
+    reader.readAsBinaryString(file);
+};
+
+var fail = function(evt) {
+    console.log(error.code);
+};
+
+entry.file(win, fail);
+</code></pre>
+
+<h2>
+<a name="FileReader_read_as_array_buffer">Read As Array Buffer</a>
+</h2>
+
+<p>Currently supported on iOS and Android only.</p>
+
+<p><strong>Parameters:</strong>
+- file - the file object to read</p>
+
+<h2>
+<a name="FileReader_quick_example">Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>function win(file) {
+    var reader = new <a href="cordova_file_file.md.html#FileReader">FileReader</a>();
+    reader.onloadend = function(evt) {
+        console.log("read success");
+        console.log(new Uint8Array(evt.target.result));
+    };
+    reader.readAsArrayBuffer(file);
+};
+
+var fail = function(evt) {
+    console.log(error.code);
+};
+
+entry.file(win, fail);
+</code></pre>
+
 <hr>
 <h1><a name="FileWriter">FileWriter</a></h1>
 
@@ -1793,6 +1861,26 @@ function fail(error) {
 entry.removeRecursively(success, fail);
 </code></pre>
 
+<h2>
+<a name="DirectoryEntry_blackberry_quirks">BlackBerry Quirks</a>
+</h2>
+
+<p>May fail with a ControlledAccessException in the following cases:</p>
+
+<ul>
+<li>Access is attempted on an directory created by a previous installation of an application.</li>
+</ul>
+<blockquote>
+  <p>solution: insure temporary directories are cleaned manually, or by the application before reinstall</p>
+</blockquote>
+
+<ul>
+<li>if device is connected by usb</li>
+</ul>
+<blockquote>
+  <p>solution: disconnect usb cable from device and run again</p>
+</blockquote>
+
 <hr>
 <h1><a name="DirectoryReader">DirectoryReader</a></h1>
 
@@ -2072,6 +2160,8 @@ ft.upload(fileURI, uri, win, fail, options);
 <li>
 <strong>trustAllHosts</strong> - Optional parameter, defaults to false. If set to true then it will accept all security certificates. This is useful as Android rejects self signed security certificates. Not recommended for production use. Supported on Android and iOS. <em>(boolean)</em>
 </li>
+<li>
+<strong>options</strong> - Optional parameters, currently only supports headers (such as Authorization (Basic Authentication), etc).</li>
 </ul>
 <p><strong>Quick Example</strong></p>
 
@@ -2090,6 +2180,12 @@ fileTransfer.download(
         console.log("download error source " + error.source);
         console.log("download error target " + error.target);
         console.log("upload error code" + error.code);
+    },
+    false,
+    {
+        headers: {
+            "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+        }
     }
 );
 </code></pre>

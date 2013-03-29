@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.6.0rc1">2.6.0rc1</option>
 <option value="2.5.0rc1">2.5.0rc1</option>
-<option selected value="2.5.0">2.5.0</option>
+<option value="2.5.0">2.5.0</option>
 <option value="2.4.0rc1">2.4.0rc1</option>
 <option value="2.4.0">2.4.0</option>
 <option value="2.3.0rc2">2.3.0rc2</option>
@@ -145,9 +146,9 @@ The <code>config.xml</code> file is located in your <code>&lt;project folder&gt;
 <p>Various preferences (as <strong>&lt;preference&gt;</strong> tags) default on not breaking existing apps. The available preferences are:</p>
 
 <ol>
-<li><p><strong>UIWebViewBounce (boolean, defaults to true)</strong> - set to false if you don't want the WebView to rubber-band</p></li>
+<li><p><strong>DisallowOverscroll (boolean, defaults to false)</strong> - set to true if you don't want the WebView to rubber-band</p></li>
 <li><p><strong>TopActivityIndicator (string, defaults to 'gray')</strong> - this is the top spinning throbber in the status/battery bar, valid values are "whiteLarge", "white" and "gray"</p></li>
-<li><p><strong>EnableLocation (boolean, defaults to false)</strong> - set to true, to initialize the <a href="cordova_geolocation_geolocation.md.html#Geolocation">Geolocation</a> plugin at start-up (so the fix on your location can be more accurate)</p></li>
+<li><p><strong>EnableLocation (boolean, defaults to false)</strong> - set to true, to initialize the <a href="cordova_geolocation_geolocation.md.html#Geolocation">Geolocation</a> plugin at start-up (so the fix on your location can be more accurate) <strong>DEPRECATED</strong>: please set the <strong>onload</strong> attribute of the <strong><a href="cordova_geolocation_geolocation.md.html#Geolocation">Geolocation</a></strong> plugin to <strong>true</strong> instead.</p></li>
 <li><p><strong>EnableViewportScale (boolean, defaults to false)</strong> - set to true to prevent viewport scaling through a meta tag</p></li>
 <li><p><strong>AutoHideSplashScreen (boolean, defaults to true)</strong> - set to false to control when the splashscreen is hidden through a JavaScript API</p></li>
 <li><p><strong>FadeSplashScreen (boolean, defaults to true)</strong> - set to false to prevent the splash-screen to fade in and out when showing/hiding it.</p></li>
@@ -158,6 +159,8 @@ The <code>config.xml</code> file is located in your <code>&lt;project folder&gt;
 <li><p><strong>BackupWebStorage (string, defaults to 'cloud')</strong> - valid values are 'none', 'cloud' and 'local'. Set to 'cloud' to allow the web storage data to be backed up to iCloud, and set to 'local' to only allow local backups (iTunes sync). Set to 'none' to not allow any backups of web storage.</p></li>
 <li><p><strong>KeyboardDisplayRequiresUserAction (boolean, defaults to true)</strong> - set to false to open the keyboard when form elements get focus via the JavaScript focus() call.</p></li>
 <li><p><strong>SuppressesIncrementalRendering (boolean, defaults to false)</strong> - set to true to wait until all new view content has been received before it is rendered.</p></li>
+<li><p><strong>HideKeyboardFormAccessoryBar (boolean, defaults to false)</strong> - set to true to <a href="cordova_splashscreen_splashscreen.md.html#hide">hide</a> the additional toolbar that is on top of the keyboard (this is the toolbar that has the Prev, Next and Done buttons)</p></li>
+<li><p><strong>KeyboardShrinksView (boolean, defaults to false)</strong> -  set to true to shrink the WebView when the keyboard comes up. The WebView shrinks instead of the viewport shrinking and the page scrollable. This applies to apps that position their elements relative to the bottom of the WebView. This is the default behaviour on Android, and makes a lot of sense when building apps as opposed to webpages.</p></li>
 </ol>
 </div>
         </div>

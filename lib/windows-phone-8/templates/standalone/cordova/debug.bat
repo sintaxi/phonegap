@@ -1,4 +1,3 @@
-
 @echo off
 goto start
 
@@ -21,48 +20,4 @@ specific language governing permissions and limitations
 under the License.
 
 :start
-
-
-if /i "%1"=="help" goto usage
-if /i "%1"=="-help" goto usage
-if /i "%1"=="--help" goto usage
-if /i "%1"=="/help" goto usage
-if /i "%1"=="/?" goto usage
-
-
-if defined VCINSTALLDIR goto start-msbuild
-if not defined VS100COMNTOOLS goto msbuild-missing
-if not exist "%VS100COMNTOOLS%\..\..\vc\vcvarsall.bat" goto msbuild-missing
-call "%VS100COMNTOOLS%\..\..\vc\vcvarsall.bat"
-if not defined VCINSTALLDIR goto msbuild-missing
-goto start-msbuild
-
-
-:builderror
-echo Error level 1
-goto exit
-
-:msbuild-missing
-echo Error! Cannot run msbuild from this command prompt.  Try running a VS Command prompt.
-goto exit
-
-
-:start-msbuild
-cd ..
-msbuild /clp:NoSummary;NoItemAndPropertyList;Verbosity=minimal /nologo /p:Configuration=Debug
-cd cordova
-if errorlevel 1 goto builderror
-goto deploy
-
-:usage
-echo "Usage: %0"
-echo "solution file is expected to be in the parent folder."
-goto exit
-
-:deploy
-CordovaDeploy ../Bin/Debug -d:1
-
-
-:exit
-
-
+cscript "__PATH_TO_TOOLING_SCRIPTS__\deploy.js" __PATH_TO_PROJ__ -debug //nologo

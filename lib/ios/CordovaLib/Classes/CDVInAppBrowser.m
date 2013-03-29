@@ -165,7 +165,7 @@
 {
     if (self.callbackId != nil) {
         CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
-                                                      messageAsDictionary:@ {@"type":@"loadstart", @"url":[url absoluteString]}];
+                                                      messageAsDictionary:@{@"type":@"loadstart", @"url":[url absoluteString]}];
         [pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
 
         [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
@@ -176,7 +176,18 @@
 {
     if (self.callbackId != nil) {
         CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
-                                                      messageAsDictionary:@ {@"type":@"loadstop", @"url":[url absoluteString]}];
+                                                      messageAsDictionary:@{@"type":@"loadstop", @"url":[url absoluteString]}];
+        [pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
+
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
+    }
+}
+
+- (void)browserLoadError:(NSError*)error forUrl:(NSURL*)url
+{
+    if (self.callbackId != nil) {
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
+                                                      messageAsDictionary:@{@"type":@"loaderror", @"url":[url absoluteString], @"code": [NSNumber numberWithInt:error.code], @"message": error.localizedDescription}];
         [pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
 
         [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
@@ -187,7 +198,7 @@
 {
     if (self.callbackId != nil) {
         CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
-                                                      messageAsDictionary:@ {@"type":@"exit"}];
+                                                      messageAsDictionary:@{@"type":@"exit"}];
         [pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
 
         [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
@@ -209,6 +220,7 @@
     if (self != nil) {
         _userAgent = userAgent;
         _prevUserAgent = prevUserAgent;
+        _webViewDelegate = [[CDVWebViewDelegate alloc] initWithDelegate:self];
         [self createViews];
     }
 
@@ -229,7 +241,7 @@
     [self.view addSubview:self.webView];
     [self.view sendSubviewToBack:self.webView];
 
-    self.webView.delegate = self;
+    self.webView.delegate = _webViewDelegate;
     self.webView.backgroundColor = [UIColor whiteColor];
 
     self.webView.clearsContextBeforeDrawing = YES;
@@ -391,10 +403,10 @@
         [self.webView loadRequest:request];
     } else {
         [CDVUserAgentUtil acquireLock:^(NSInteger lockToken) {
-                _userAgentLockToken = lockToken;
-                [CDVUserAgentUtil setUserAgent:_userAgent lockToken:lockToken];
-                [self.webView loadRequest:request];
-            }];
+            _userAgentLockToken = lockToken;
+            [CDVUserAgentUtil setUserAgent:_userAgent lockToken:lockToken];
+            [self.webView loadRequest:request];
+        }];
     }
 }
 
@@ -419,14 +431,18 @@
     self.forwardButton.enabled = theWebView.canGoForward;
 
     [self.spinner startAnimating];
+}
 
+- (BOOL)webView:(UIWebView*)theWebView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
     if ((self.navigationDelegate != nil) && [self.navigationDelegate respondsToSelector:@selector(browserLoadStart:)]) {
-        NSURL* url = theWebView.request.URL;
+        NSURL* url = request.URL;
         if (url == nil) {
             url = _requestedURL;
         }
         [self.navigationDelegate browserLoadStart:url];
     }
+    return YES;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView*)theWebView
@@ -450,7 +466,7 @@
     //    from it must pass through its white-list. This *does* break PDFs that
     //    contain links to other remote PDF/websites.
     // More info at https://issues.apache.org/jira/browse/CB-2225
-    BOOL isPDF = [@"true" isEqualToString:[theWebView stringByEvaluatingJavaScriptFromString:@"document.body==null"]];
+    BOOL isPDF = [@"true" isEqualToString :[theWebView stringByEvaluatingJavaScriptFromString:@"document.body==null"]];
     if (isPDF) {
         [CDVUserAgentUtil setUserAgent:_prevUserAgent lockToken:_userAgentLockToken];
     }
@@ -471,6 +487,11 @@
     [self.spinner stopAnimating];
 
     self.addressLabel.text = @"Load Error";
+
+    if ((self.navigationDelegate != nil) && [self.navigationDelegate respondsToSelector:@selector(browserLoadError:forUrl:)]) {
+        NSURL* url = theWebView.request.URL;
+        [self.navigationDelegate browserLoadError:error forUrl:url];
+    }
 }
 
 #pragma mark CDVScreenOrientationDelegate
