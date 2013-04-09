@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("WPCordovaClassLib")]
-[assembly: AssemblyDescription("2.6.0rc1")]
+[assembly: AssemblyDescription("2.6.0")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Apache Cordova")]
 [assembly: AssemblyProduct("WPCordovaClassLib")]

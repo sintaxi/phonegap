@@ -2,6 +2,8 @@
 Android 
 ---
 
+34b606b Prep for 2.6.0 final
+d1932ad CB-1796: Let's make sure we actually write the file instead of just writing EXIF to NOTHING
 ff6ef1e JS Changed once again, this will require a retag of 2.6.0rc1
 b7e67ff Merge branch '2.6.x' of https://git-wip-us.apache.org/repos/asf/cordova-android into 2.6.x
 4ab4606 Fixing CB-1700, we had the file names reversed, so exif was never being written right.  Needed to upload a file to debug this thing

@@ -143,7 +143,13 @@
   <ItemGroup>
     <Content Include="config.xml" />
     <Content Include="CordovaLib\WPCordovaClassLib.dll" />
-    <Content Include="www\cordova-2.6.0rc1.js" />
+    <Content Include="Images\appbar.back.rest.png" />
+    <Content Include="Images\appbar.close.rest.png" />
+    <Content Include="Images\appbar.feature.video.rest.png" />
+    <Content Include="Images\appbar.next.rest.png" />
+    <Content Include="Images\appbar.save.rest.png" />
+    <Content Include="Images\appbar.stop.rest.png" />
+    <Content Include="www\cordova-2.6.0.js" />
     <Content Include="www\img\logo.png" />
     <Content Include="www\js\index.js" />
     <Content Include="www\css\index.css" />

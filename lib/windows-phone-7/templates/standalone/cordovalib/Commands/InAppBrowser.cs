@@ -112,7 +112,6 @@ namespace WPCordovaClassLib.Cordova.Commands
                     if (frame != null)
                     {
                         PhoneApplicationPage page = frame.Content as PhoneApplicationPage;
-                        WebBrowser br = (page.FindName("CordovaView") as CordovaView).Browser;
 
                         if (page != null)
                         {

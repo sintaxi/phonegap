@@ -102,7 +102,9 @@ This file is what you should be editing to modify your application's metadata. A
 
 # Hooks
 
-Projects created by cordova-cli have `before` and `after` hooks for each [project command](#project_commands). There are two types of hooks: project-specific ones and module-level ones.
+Projects created by cordova-cli have `before` and `after` hooks for each [project command](#project_commands).
+
+There are two types of hooks: project-specific ones and module-level ones. Both of these types of hooks receive the project root folder as a parameter.
 
 ## Project-specific Hooks
 
@@ -115,6 +117,8 @@ These are located under the `.cordova/hooks` directory in the root of your cordo
 ## Module-level Hooks
 
 If you are using cordova-cli as a module within a larger node application, you can also use the standard `EventEmitter` methods to attach to the events. The events include `before_build`, `before_compile`, `before_docs`, `before_emulate`, `before_platform_add`, `before_platform_ls`, `before_platform_rm`, `before_plugin_add`, `before_plugin_ls`, `before_plugin_rm` and `before_prepare`. Additionally, there are `after_` flavours of all the above events.
+
+Once you `require('cordova')` in your node project, you will have the usual `EventEmitter` methods available (`on`, `off` or `removeListener`, and `emit` or `trigger`).
 
 # Examples
 

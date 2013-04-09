@@ -23,6 +23,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Xna.Framework.Audio;
 using WPCordovaClassLib.Cordova.UI;
 
+
 namespace WPCordovaClassLib.Cordova.Commands
 {
     public class Notification : BaseCommand
@@ -30,7 +31,7 @@ namespace WPCordovaClassLib.Cordova.Commands
         static ProgressBar progressBar = null;
         const int DEFAULT_DURATION = 5;
 
-        private NotificationBox notifBox;
+        private NotificationBox notifyBox;
 
         private PhoneApplicationPage Page
         {
@@ -83,7 +84,6 @@ namespace WPCordovaClassLib.Cordova.Commands
         {
             Deployment.Current.Dispatcher.BeginInvoke(() =>
             {
-
                 string[] args = JSON.JsonHelper.Deserialize<string[]>(options);
                 AlertOptions alertOpts = new AlertOptions();
                 alertOpts.message = args[0];
@@ -96,16 +96,22 @@ namespace WPCordovaClassLib.Cordova.Commands
                     Grid grid = page.FindName("LayoutRoot") as Grid;
                     if (grid != null)
                     {
-                        notifBox = new NotificationBox();
-                        notifBox.PageTitle.Text = alertOpts.title;
-                        notifBox.SubTitle.Text = alertOpts.message;
+                        var previous = notifyBox;
+                        notifyBox = new NotificationBox();
+                        notifyBox.Tag = previous;
+                        notifyBox.PageTitle.Text = alertOpts.title;
+                        notifyBox.SubTitle.Text = alertOpts.message;
                         Button btnOK = new Button();
                         btnOK.Content = alertOpts.buttonLabel;
                         btnOK.Click += new RoutedEventHandler(btnOK_Click);
                         btnOK.Tag = 1;
-                        notifBox.ButtonPanel.Children.Add(btnOK);
-                        grid.Children.Add(notifBox);
-                        page.BackKeyPress += page_BackKeyPress;
+                        notifyBox.ButtonPanel.Children.Add(btnOK);
+                        grid.Children.Add(notifyBox);
+
+                        if (previous == null)
+                        {
+                            page.BackKeyPress += page_BackKeyPress;
+                        }
                     }
                 }
                 else
@@ -131,9 +137,11 @@ namespace WPCordovaClassLib.Cordova.Commands
                     Grid grid = page.FindName("LayoutRoot") as Grid;
                     if (grid != null)
                     {
-                        notifBox = new NotificationBox();
-                        notifBox.PageTitle.Text = alertOpts.title;
-                        notifBox.SubTitle.Text = alertOpts.message;
+                        var previous = notifyBox;
+                        notifyBox = new NotificationBox();
+                        notifyBox.Tag = previous; 
+                        notifyBox.PageTitle.Text = alertOpts.title;
+                        notifyBox.SubTitle.Text = alertOpts.message;
 
                         string[] labels = alertOpts.buttonLabel.Split(',');
                         for (int n = 0; n < labels.Length; n++)
@@ -142,11 +150,14 @@ namespace WPCordovaClassLib.Cordova.Commands
                             btn.Content = labels[n];
                             btn.Tag = n;
                             btn.Click += new RoutedEventHandler(btnOK_Click);
-                            notifBox.ButtonPanel.Children.Add(btn);
+                            notifyBox.ButtonPanel.Children.Add(btn);
                         }
 
-                        grid.Children.Add(notifBox);
-                        page.BackKeyPress += page_BackKeyPress;
+                        grid.Children.Add(notifyBox);
+                        if (previous == null)
+                        {
+                            page.BackKeyPress += page_BackKeyPress;
+                        }
                     }
                 }
                 else
@@ -159,15 +170,19 @@ namespace WPCordovaClassLib.Cordova.Commands
         void page_BackKeyPress(object sender, System.ComponentModel.CancelEventArgs e)
         {
             PhoneApplicationPage page = sender as PhoneApplicationPage;
-            if (page != null && notifBox != null)
+
+            if (page != null && notifyBox != null)
             {
                 Grid grid = page.FindName("LayoutRoot") as Grid;
                 if (grid != null)
                 {
-                    grid.Children.Remove(notifBox);
+                    grid.Children.Remove(notifyBox);
+                    notifyBox = notifyBox.Tag as NotificationBox;
                 }
-                notifBox = null;
-                page.BackKeyPress -= page_BackKeyPress;
+                if (notifyBox == null)
+                {
+                    page.BackKeyPress -= page_BackKeyPress;
+                }
                 e.Cancel = true;
             }
 
@@ -177,12 +192,17 @@ namespace WPCordovaClassLib.Cordova.Commands
         void btnOK_Click(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
+            FrameworkElement notifBoxParent = null;
             int retVal = 0;
             if (btn != null)
             {
                 retVal = (int)btn.Tag + 1;
+
+                notifBoxParent = btn.Parent as FrameworkElement;
+                while ((notifBoxParent = notifBoxParent.Parent as FrameworkElement) != null &&
+                       !(notifBoxParent is NotificationBox));
             }
-            if (notifBox != null)
+            if (notifBoxParent != null)
             {
                 PhoneApplicationPage page = Page;
                 if (page != null)
@@ -190,10 +210,15 @@ namespace WPCordovaClassLib.Cordova.Commands
                     Grid grid = page.FindName("LayoutRoot") as Grid;
                     if (grid != null)
                     {
-                        grid.Children.Remove(notifBox);
+                        grid.Children.Remove(notifBoxParent);
+                    }
+                    notifyBox = notifBoxParent.Tag as NotificationBox;
+                    if (notifyBox == null)
+                    {
+                        page.BackKeyPress -= page_BackKeyPress;
                     }
                 }
-                notifBox = null;
+                
             }
             DispatchCommandResult(new PluginResult(PluginResult.Status.OK, retVal));
         }
@@ -231,7 +256,7 @@ namespace WPCordovaClassLib.Cordova.Commands
             DispatchCommandResult();
         }
 
-        // Display an inderminate progress indicator
+        // Display an indeterminate progress indicator
         public void activityStart(string unused)
         {
 
@@ -265,7 +290,7 @@ namespace WPCordovaClassLib.Cordova.Commands
         }
 
 
-        // Remove our inderminate progress indicator
+        // Remove our indeterminate progress indicator
         public void activityStop(string unused)
         {
             Deployment.Current.Dispatcher.BeginInvoke(() =>

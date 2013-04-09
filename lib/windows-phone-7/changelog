@@ -2,6 +2,17 @@
 Windows Phone 7 
 ---
 
+5c74aca add images for full template
+33e2af8 remove unused ref to CordovaView.Browser
+a9c6bbe fix standalone template refs to PGView which does not exist and add images for use by InAppBrowser
+91fc060 removed temp bunk added by Benn
+c328e4f Merge tag '2.6.0' of git://github.com/bennmapes/cordova-wp7
+567e17d 2.6.0 prep
+2dbd98f Merge branch 'master' of github.com:purplecabbage/cordova-wp7
+4dd39a7 notif boxes store ref to previous so they can be dismissed in order
+906ac31 notification alert handles backbutton correctly with multiple alerts
+001e15e Merge pull request #10 from bennmapes/CB-2832
+f658c74 [CB-2832] Fixed zipping script to ensure all items are copied
 37751cf updated js files
 404152e update version to 2.6.0rc1
 77431c1 Merge branch 'master' of github.com:purplecabbage/cordova-wp7

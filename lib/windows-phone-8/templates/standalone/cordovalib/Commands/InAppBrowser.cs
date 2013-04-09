@@ -42,20 +42,20 @@ namespace WPCordovaClassLib.Cordova.Commands
             //BrowserOptions opts = JSON.JsonHelper.Deserialize<BrowserOptions>(options);
             string urlLoc = args[0];
             string target = args[1];
-/*
-    _self - opens in the Cordova WebView if url is in the white-list, else it opens in the InAppBrowser 
-    _blank - always open in the InAppBrowser 
-    _system - always open in the system web browser 
-*/
-            switch (target) 
+            /*
+                _self - opens in the Cordova WebView if url is in the white-list, else it opens in the InAppBrowser 
+                _blank - always open in the InAppBrowser 
+                _system - always open in the system web browser 
+            */
+            switch (target)
             {
-                case "_blank" :
+                case "_blank":
                     ShowInAppBrowser(urlLoc);
                     break;
-                case "_self" :
+                case "_self":
                     ShowCordovaBrowser(urlLoc);
                     break;
-                case "_system" :
+                case "_system":
                     ShowSystemBrowser(urlLoc);
                     break;
             }
@@ -65,7 +65,7 @@ namespace WPCordovaClassLib.Cordova.Commands
 
         private void ShowCordovaBrowser(string url)
         {
-            Uri loc = new Uri(url,UriKind.RelativeOrAbsolute);
+            Uri loc = new Uri(url, UriKind.RelativeOrAbsolute);
             Deployment.Current.Dispatcher.BeginInvoke(() =>
             {
                 PhoneApplicationFrame frame = Application.Current.RootVisual as PhoneApplicationFrame;
@@ -75,7 +75,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                     if (page != null)
                     {
                         CordovaView cView = page.FindName("CordovaView") as CordovaView;
-                        if(cView != null)
+                        if (cView != null)
                         {
                             WebBrowser br = cView.Browser;
                             br.Navigate(loc);
@@ -111,7 +111,8 @@ namespace WPCordovaClassLib.Cordova.Commands
                     if (frame != null)
                     {
                         PhoneApplicationPage page = frame.Content as PhoneApplicationPage;
-                        WebBrowser br = (page.FindName("CordovaView") as CordovaView).Browser;
+
+                        string baseImageUrl = "Images/";
 
                         if (page != null)
                         {
@@ -137,7 +138,8 @@ namespace WPCordovaClassLib.Cordova.Commands
 
                             backButton = new ApplicationBarIconButton();
                             backButton.Text = "Back";
-                            backButton.IconUri = new Uri("/Images/appbar.back.rest.png", UriKind.Relative);
+
+                            backButton.IconUri = new Uri(baseImageUrl + "appbar.back.rest.png", UriKind.Relative);
                             backButton.Click += new EventHandler(backButton_Click);
                             backButton.IsEnabled = false;
                             bar.Buttons.Add(backButton);
@@ -145,14 +147,14 @@ namespace WPCordovaClassLib.Cordova.Commands
 
                             fwdButton = new ApplicationBarIconButton();
                             fwdButton.Text = "Forward";
-                            fwdButton.IconUri = new Uri("/Images/appbar.next.rest.png", UriKind.Relative);
+                            fwdButton.IconUri = new Uri(baseImageUrl + "appbar.next.rest.png", UriKind.Relative);
                             fwdButton.Click += new EventHandler(fwdButton_Click);
                             fwdButton.IsEnabled = false;
                             bar.Buttons.Add(fwdButton);
 
                             ApplicationBarIconButton closeBtn = new ApplicationBarIconButton();
                             closeBtn.Text = "Close";
-                            closeBtn.IconUri = new Uri("/Images/appbar.close.rest.png", UriKind.Relative);
+                            closeBtn.IconUri = new Uri(baseImageUrl + "appbar.close.rest.png", UriKind.Relative);
                             closeBtn.Click += new EventHandler(closeBtn_Click);
                             bar.Buttons.Add(closeBtn);
 
@@ -166,7 +168,7 @@ namespace WPCordovaClassLib.Cordova.Commands
 
         void browser_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
-            
+
         }
 
         void fwdButton_Click(object sender, EventArgs e)
@@ -178,7 +180,7 @@ namespace WPCordovaClassLib.Cordova.Commands
                     browser.GoForward();
                     //browser.InvokeScript("execScript", "history.forward();");
                 }
-                catch(Exception)
+                catch (Exception)
                 {
 
                 }
@@ -207,7 +209,7 @@ namespace WPCordovaClassLib.Cordova.Commands
         }
 
 
-        public void close(string options="")
+        public void close(string options = "")
         {
             if (browser != null)
             {

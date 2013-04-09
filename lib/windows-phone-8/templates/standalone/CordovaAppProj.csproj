@@ -139,6 +139,7 @@
     <Compile Include="cordovalib\Commands\File.cs" />
     <Compile Include="cordovalib\Commands\FileTransfer.cs" />
     <Compile Include="cordovalib\Commands\GeoLocation.cs" />
+    <Compile Include="cordovalib\Commands\Globalization.cs" />
     <Compile Include="cordovalib\Commands\ImageExifHelper.cs" />
     <Compile Include="cordovalib\Commands\InAppBrowser.cs" />
     <Compile Include="cordovalib\Commands\Media.cs" />
@@ -207,8 +208,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="config.xml" />
+    <Content Include="Images\appbar.back.rest.png" />
+    <Content Include="Images\appbar.close.rest.png" />
+    <Content Include="Images\appbar.feature.video.rest.png" />
+    <Content Include="Images\appbar.next.rest.png" />
+    <Content Include="Images\appbar.save.rest.png" />
+    <Content Include="Images\appbar.stop.rest.png" />
     <Content Include="resources\notification-beep.wav" />
-    <Content Include="www\cordova-2.6.0rc1.js" />
+    <Content Include="www\cordova-2.6.0.js" />
     <Content Include="www\img\logo.png" />
     <Content Include="www\js\index.js" />
     <None Include="VERSION" />

@@ -22,7 +22,7 @@ namespace WPCordovaClassLib.Cordova.Commands
     public abstract class BaseCommand : IDisposable
     {
         /*
-         *  All commands + plugins must extend BaseCommand, because they are dealt with as BaseCommands in PGView.xaml.cs
+         *  All commands + plugins must extend BaseCommand, because they are dealt with as BaseCommands in CordovaView.xaml.cs
          *  
          **/
 

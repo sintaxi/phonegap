@@ -2,6 +2,14 @@
 Windows Phone 8 
 ---
 
+ab2e84e fix for missing images on InAppBrowser application bar
+d8f1d20 issues with InAppBrowser fixed in template
+2922d08 updates for 2.6.0 release
+9d360e8 alerts + confirms are dismissed in order CB-2821
+87e0d98 Merge pull request #16 from purplecabbage/CB-2500
+a9e2a6b Merge branch 'CB-2500' of git://github.com/cmarcelk/cordova-wp8 into CB-2500
+a7ff6a0 Merge pull request #15 from purplecabbage/CB2821
+26501df remove some differences between template project variable naming, rename some gap references
 6a6a518 Merge branch 'master' of github.com:purplecabbage/cordova-wp8
 2d79dd6 2.6.0 rc1 updates
 2b98697 Merge pull request #14 from bennmapes/CB-2831
@@ -22,3 +30,4 @@ c652707 Merge pull request #10 from purplecabbage/CB-2692
 e14552a Oops, all calls were Synchronous for a moment there
 f19295d Remove CordovaMediaonResult
 57bc645 Removed dependency on CordovaCommandResult, removed obsolete 'cast' param from callbacks
+59555ed CB-2500: handle multiple concurrent alerts
