@@ -2,30 +2,21 @@
 Windows Phone 7 
 ---
 
-5c74aca add images for full template
-33e2af8 remove unused ref to CordovaView.Browser
-a9c6bbe fix standalone template refs to PGView which does not exist and add images for use by InAppBrowser
-91fc060 removed temp bunk added by Benn
-c328e4f Merge tag '2.6.0' of git://github.com/bennmapes/cordova-wp7
-567e17d 2.6.0 prep
-2dbd98f Merge branch 'master' of github.com:purplecabbage/cordova-wp7
-4dd39a7 notif boxes store ref to previous so they can be dismissed in order
-906ac31 notification alert handles backbutton correctly with multiple alerts
-001e15e Merge pull request #10 from bennmapes/CB-2832
-f658c74 [CB-2832] Fixed zipping script to ensure all items are copied
-37751cf updated js files
-404152e update version to 2.6.0rc1
-77431c1 Merge branch 'master' of github.com:purplecabbage/cordova-wp7
-8df8c7c Merge pull request #8 from bennmapes/CB-2830
-6b735cf Merge pull request #9 from bennmapes/CB-2833
-2f055ae [CB-2833] Changed git repo urls in scripts
-200958b [CB-2830] Delete old cordova js on reversion
-8093768 check args.Length before using it
-eb43851 error in string.format of exception hander
-aaa4a2e Merge pull request #6 from bennmapes/create_script
-797e501 Merge pull request #7 from purplecabbage/CB2592
-1607639 Invokation->Invocation
-acdef7a Remove CordovaMediaonStatus, and CordovaCommandResult
-0819634 Fixed up dev scripts to work with cordova-cli
-65443b1 removing CordovaCommandResult dependency
-aeb213b added OnInit method to basecommand, virtual
+ee19e9c updated cordova-js
+6116de3 preping for 2.7.x
+9acef80 pre-2.7.0 prep
+eab9e15 CB-2541 notification.confirm native side buttonLabels takes string[] or s,t,r,i,n,g
+0b107ab Merge pull request #17 from bennmapes/update
+1266d3a rename project and solution on create
+4551e1e Updated project structure and moved all commands to the plugin folder for future splitting out
+68922b9 Merge pull request #16 from purplecabbage/2.7Reorg
+2eef9a5 Merge pull request #15 from bennmapes/reorg
+84a683a Moved cordova scripts to remaining template, added cli support
+bbf6934 Merge branch 'master' of github.com:purplecabbage/cordova-wp7 into 2.7Reorg
+1dd6d99 Merge pull request #14 from purplecabbage/CB2959
+fa0662a fix for csproj wildcard www inclusion
+7179d3f remove full template, all projects will be 'StandAlone'
+84261e8 Merge pull request #13 from bennmapes/tooling
+d1b3ff8 tooling and cli scripts update
+7de2a08 Merge pull request #11 from bennmapes/CB-2736
+ab9ac6e [CB-2736] Fixed error when resolving file uri from getPicture

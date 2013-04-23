@@ -25,10 +25,14 @@ set -e
 
 if [ -n "$1" ] && [ "$1" == "-h" ]
 then
-    echo 'usage: create path package appname'
-    echo 'After you have created your application, make sure to customize the project.properties file inside your app directory with your environment specifics!'
-    exit 0
+  echo "Usage: $0 <path_to_new_project> <package_name> <project_name>"
+  echo "    <path_to_new_project>: Path to your new Cordova iOS project"
+  echo "    <package_name>: Package name, following reverse-domain style convention (ignored on BlackBerry platforms)"
+  echo "    <project_name>: Project name"
+  echo 'After you have created your application, make sure to customize the project.properties file inside your app directory with your environment specifics!'
+  exit 0;
 fi
+
 
 BUILD_PATH="$( cd "$( dirname "$0" )/.." && pwd )"
 VERSION=$(cat "$BUILD_PATH/VERSION")

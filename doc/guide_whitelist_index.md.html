@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.7.0rc1">2.7.0rc1</option>
 <option value="2.6.0rc1">2.6.0rc1</option>
-<option selected value="2.6.0">2.6.0</option>
+<option value="2.6.0">2.6.0</option>
 <option value="2.5.0rc1">2.5.0rc1</option>
 <option value="2.5.0">2.5.0</option>
 <option value="2.4.0rc1">2.4.0rc1</option>
@@ -256,6 +257,8 @@
 <p>The whitelisting rules are found in <code>AppName/config.xml</code> and declared with the element <code>&lt;access origin="..." /&gt;</code>.</p>
 
 <p>iOS has full support for the whitelisting syntax.</p>
+
+<p>Note: origins specified without a protocol (i.e. <code>www.apache.org</code> instead of <code>http://www.apache.org</code>) will default to all of http, https, ftp, and ftps.</p>
 
 <h3>Syntax</h3>
 

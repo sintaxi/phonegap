@@ -2,93 +2,50 @@
 iOS 
 ---
 
-8afed3f [CB-2902] re-added long/short tags to template dict, fixed subExifIFD offset
-3181b0b [CB-2896] fixed error in exif subifd offset calculation for tag 8769
-4685ecc [CB-2896] split writing of working tags off here, multipart tags not supported
-4dd1c81 Updated cordova.js to 2.6.0
-360a3ad Updated VERSION to 2.6.0
-c9be68b [CB-2732] Only set camera device when allowed.
-ebc74ec [CB-2848] ShowSplashScreenSpinner not used
-30a9e5c Added updated 2.6.0rc1 cordova.js
-fda308b [CB-2790] removed old splice code, replaced with JpegHeaderWriter api calls
-99a1cc9 [CB-2790] added splice function to header writer: accepts jpeg as NSData, and splices in exif data specified by a string
-b586157 Merge branch 'refs/heads/CB-1285'
-24e7373 [commenting] removed xcode auto header block
-42341ff [CB-1285] fixed unsued var warning, and incomplete implementation warning
-f1d58e8 [CB-1285] uncrustify and added project files to pbxproj
-7ab7246 [CB-1285] replaced debugging copy (per byte) with block copy in data splice, removed logging
-ac0cb7c [CB-1285] added exif binary string splice operation to camera jpeg case, removed auto header
-9e64894 [CB-1285] readded public helper functions supporting splice into existing jpeg nsdata operation
-268e852 Updated the Plugin Upgrade Guide
-59b65a2 Updated RELEASENOTES for 2.6.0rc1
-8a605b3 Merge remote-tracking branch 'upstream/master' into CB-1285
-9ce85c2 Added __CORDOVA_IOS__ macro
-ee862a3 Updated version to 2.6.0rc1
-b4b84fd [CB-2759] Update www/ Application for iOS
-185389c Added 2.6.0rc1 cordova-js
-8b01442 Added KeyboardShrinksView preference to CordovaLibTest config.xml
-c960151 [CB-1285] added unit tests for CDVJpegHeaderWriter, tests rational approximation and utility functions involved in the creation of the APP1 data block in a JPEG header. For test of APP1 data block integrity, best method is to read resulting image
-fbebe8f [CB-1285] added support for additional metadata provided by camera in iOS updates, tested and refined rational approximation algorith, added support for additional datatypes
-a5b8e24 Merge remote-tracking branch 'upstream/master' into CB-1285
-8d28567 [CB-2732] Only set camera device when allowed.
-cd4eae0 CB-2691: Splashscreen should block user interaction
-e9e67d0 Remove some unnecessary argument checks in CDVNotification
-0b0b431 CB-2674 Add prompt to Notification API for iOS
-411440d Make sure version of uncrustify is correct in the pre-commit hook
-e875192 [CB-2384] Re-fix - Add new iOS Project Setting to suppress the form accessory bar above the keyboard
-ebb1e34 [CB-2308] [ios] Report errors when InAppBrowser fails to load page
-93c1416 [CB-2308] Correctly delegate to CDVInAppBrowser webView:didFailLoadWithError
-66caa6a [CB-2699] Bug in dynamic loading of a plugin at CDVViewController's registerPlugin method
-8e31e9f Interim .js for [CB-52] FileTransfer Basic Auth
-e5af640 CB-2672	InAppBrowserBug fixed
-9e47ed8 Uncrustified with v0.60 of the tool (up from 0.59).
-b2e9707 [CB-2633] Add FileReader.readAsBinaryString()
-f9ba26e [CB-2652] Make FileReader.readAs*() functions run on a background thread
-b6e3bb4 Add an associatedObject field to CDVPluginResult.
-52702d8 Use noCopy versions of NSString init in Base64 code.
-7923974 [CB-1285] removed dead code in implementation, fixed xcode warnings, commented
-7ea1e2d [CB-1285] initial commit of exif header writer source, with appropriate license, migrated from incubator repo
-8e4a7ae [CB-2194] Remove deprecated - iOS - CDVCommandDelegate registerPlugin method
-b694e3c [CB-2195] Remove deprecated - iOS - BackupWebStorage Cordova.plist property change from boolean to string
-32f1260 CB-2491: Deprecate current Connection cell setting
-37e9e16 [CB-1688] Added a camera direction option.
-57982de Changed UIWebViewBounce to DisallowOverscroll.
-ec411f1 [CB-1933] Changed button labels to an array.
-a28c771 Fixed static analyzer issues.
-36acdf5 [CB-2638] Fix iOS project warnings on Retina imgs
-dfa5d0a [CB-2618] xcode build from Network Drive Fails
-258e5d4 [CB-2634] Copy www fails w spaces in filenames
-24cdf44 Retain cycle fix
-97b89ed [CB-2384] Add new iOS Project Setting to suppress the form accessory bar above the keyboard
-942d33c CB-2436 Wrong splashscreen is displayed when UILaunchImageFile is set
-1c88d9f CB-1452 Media position incorrect after being set beyond duration
-ef327d1 [CB-2631] Fix crash when bad url given to FT.upload
-7219c3c Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-ios
-76a8be5 Implement readAsArrayBuffer
-4dc06fd [CB-2545] Deprecate "EnableLocation" Project Setting - use the "onload" attribute of the <plugin> element
-c5bbcb8 [CB-2605] icon-72@2x.png not included in xcode project template
-65924ef [CB-2220] Fix splash screen positioning when image is the size of device
-9473991 Remove NSLogs accidentally checked in.
-822d3a2 [CB-2389] Fix page load detection for late-loaded iframes
-227452b [CB-861] Header support for FileTransfer download
-92146ff CB-2527: Update iPad splash images to correct sizes
-06dcb91 [CB-2220] Size the splash screen in the same way as the launch image
-45844dd Merge branch 'refs/heads/next'
-3a518ac Merge branch 'refs/heads/next'
-e69bd2c Merge branch 'refs/heads/next'
-7a039c6 [CB-2220] Fix splashscreen origin when status bar is present
-5bd3492 CB-2530 and CB-2239 Multipart plugin result
-9096527 Revert accidentaly change in PluginResult that broke threading.
-95f16a6 Add KeyboardShrinksView preference to project template
-a2de90b Sort preferences in project template.
-8641880 [CB-2523] Add setting to shrink webview when keyboard pops up
-0b40821 Add a define that turns on logging of exec() bridge
-fa4b4ab Merge branch 'refs/heads/next'
-633da1b merging popover change [CB-2411]
-59b6066 CB-2502: Fixing CDVViewController.commandDelegate property declaration
-8301c41 Merge branch 'refs/heads/next'
-a1f0efd merge in CB571 audio updates
-23428dd Merge branch 'refs/heads/next'
-bfdb287 [CB-2461] Distinguish sub-frame from top-level loads in InAppBrowser.
-f55d0d9 Merge branch 'next'
-709d607 [CB-1547] Scope notifications to WebViews
+1e26f40 [CB-2698] Fix load detection when pages have redirects. (cherry picked from commit 7e0a32892a540295e7de5da6a4832dfdaf337ac0)
+2f21c6e Typo for CORDOVA_2_7_0
+d5186c1 Updated RELEASENOTES for 2.7.0rc1
+8598461 Updated VERSION to 2.7.0rc1
+6303f93 Update tagged 2.7.0rc1 cordova-js
+cce2cdd Fix FileTransfer unit test. HTTP Method was being set to null.
+c8f31c3 Update JS snapshot
+75ed2bb [CB-3067] Revert CDVURLProtocol to not whitelist file urls
+d8d9f3b [CB-3066] Fire onNativeReady from JS, as bridge is available immediately
+ee35807 [CB-3067]: fixing ios5 whitelist of file url
+df1d295 InAppBrowser: Don't inject iframe bridge until necessary.
+0376206 [CB-3069] Fix InAppBrowser load events (for non-redirecting pages)
+c6e7114 [CB-3048] Add --arc flag to create script, support arc in template.
+c017fda [CB-3052] iOS Exif SubIFD offsets incorrect
+fbef36b [CB-3039] iOS Exif date length mismtach
+a691bd6 CB-3032: Add whitelist support for custom schemes.
+d7fb7bf [CB-2911] Updated resolveLocalFileSystemURI.
+5e8e269 Interim .js for the deleted 'Debug Console' plugin
+9facafb [CB-3021] Can no longer import CDVPlugin.h from plugin Objective-C++ code
+27de7de [CB-2960] Changing the volume of a sound already playing
+1b22bd8 [CB-2725] follow links in www copy script
+064239b [CB-2824] Remove DebugConsole plugin
+c9f2332 [CB-2653] Delay executeScript/insertCSS callback until resources have loaded; pass JS results to callback
+d2ffc92 Updated cordova.js to 2.6.0
+d7ecb8e Updated VERSION to 2.6.0
+60eb7f1 [CB-2732] Only set camera device when allowed.
+997359f [CB-2902] re-added long/short tags to template dict, fixed subExifIFD offset
+355b3ac Merge remote-tracking branch 'apache/master'
+850c4bd [CB-2849] Fix bin/create when CordovaLib parent dir has a space
+deb60d8 [CB-2896] fixed error in exif subifd offset calculation for tag 8769
+c08e414 [CB-2848] ShowSplashScreenSpinner not used
+7d6d985 CB-2725: Fix www deploy issues with symlinks
+cb01eab Merge remote-tracking branch 'apache/master'
+a0d8dc7 [CB-2896] split writing of working tags off here, multipart tags not supported
+bd48a6b Style fixups (uncrustify 0.6.0)
+5addd3d [CB-2587] Added plugin timing for plugins that are loaded on startup (plugin 'onload' attribute)
+cb8e66c [CB-2788] add ./bin/check_reqs script to iOS
+5d8a01a Added updated 2.6.0rc1 cordova.js
+42f48fb [CB-1518] Request content length in parallel with download for gzipped content
+7aa2607 [CB-2190] Allow FileTransfer uploads to continue in background
+43edb03 [CB-51] Added httpMethod for file transfer options (defaults to POST)
+d6a3576 [CB-2537] Implement streaming downloads for FileTransfer
+3e007c3 [CB-2790] removed old splice code, replaced with JpegHeaderWriter api calls
+e078f62 [CB-2790] added splice function to header writer: accepts jpeg as NSData, and splices in exif data specified by a string
+9a6a689 [CB-2653] Simplify InAppBrowser.injectScriptCode.
+40c98b8 Fix NPE in InAppBrowser's error callback.
+452db15 [CB-2305] Add InAppBrowser injectSriptCode command to support InAppBrowser.executeScript and InAppBrowser.insertCSS APIs

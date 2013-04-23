@@ -2,66 +2,37 @@
 Android 
 ---
 
-34b606b Prep for 2.6.0 final
-d1932ad CB-1796: Let's make sure we actually write the file instead of just writing EXIF to NOTHING
-ff6ef1e JS Changed once again, this will require a retag of 2.6.0rc1
-b7e67ff Merge branch '2.6.x' of https://git-wip-us.apache.org/repos/asf/cordova-android into 2.6.x
-4ab4606 Fixing CB-1700, we had the file names reversed, so exif was never being written right.  Needed to upload a file to debug this thing
-957f2fd Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-android into 2.6.x
-cdbe9c7 Fix NPE in InAppBrowser.
-73c7994 Fix NPE in InAppBrowser.
-0c74090 Log a message when exec() is made to an unregistered plugin.
-f60d54e [CB-2305] Add InAppBrowser injectSriptCode command to support InAppBrowser.executeScript and InAppBrowser.insertCSS APIs
-85c2563 Grabbed the wrong JS
-31bc015 Pre-2.6 prep
-b028ad3 CB-2675: Add prompt dialog to Notification API
-d2e4e35 [CB-2715] Simplified readAsBinaryHelper.
-1f37200 [CB-1957] Stop any playing media when closing InAppBrowser
-77178da [CB-2308] [android] Report errors when InAppBrowser fails to load page
-1648f16 Implemented a conditional check to support providing the duration limit for the Android platform SDK 8 and above. The value is passed using the string literal value to ensure the logic is not dependent on SDK version specifics.
-9fa6cea Implemented a conditional check to allow for the duration to be provided on the Android platform for SDK 8 and above.
-66b827e [CB-2632] Implement FileReader.readAsBinaryString
-7755a90 Add a new type to the Native->JS bridge for binary strings.
-d25b73f [CB-2546] Moved read calls to a background thread.
-ac2969c [CB-2435] Split common methods out of FileUtils into FileHelpers
-ee38b2e Use pushd/popd instead of subshell
-0f70e04 [CB-1933] Changed button labels to an array.
-9fc1e72 CB-2668: Thanks for supplying a patch, but please make sure it actually builds.
-0d4d0b8 Adding workaround for ICS asset URLs with spaces
-fcd2c98 [CB-2418] Fix geolocation's velocity field broken on Android
-e0d0d6c CB-2459: Customize InAppBrowser location bar
-ce1a961 CB-2640: Allow InAppBrowser to open tel, sms, market urls
-c71a08a Merge branches 'leon' and 'master'
-17bfcea Merge branch 'master' of git://github.com/sweetleon/cordova-android into leon
-5e8959b Removing baseURL because it doesn't actually do anything.  If we want to make sure remote websites work, we whitelist them
-9924dc0 So much for squashing, I should have branched this.
-7388c03 Making framework only apply for http resources for now, so we don't break non-http handling.  I had to squash this to make it pretty
-ad45128 Making framework only apply for http resources for now, so we don't break non-http handling
-409b9af CB-2099: Android Whitelisting now blocks images and JS with an empty response
-7cc8fd7 Allow plugins to capture shouldInterceptRequest()
-42c8105 CB-2623: Updated windows script, now it works here too for once
-9a71cc5 CB-2623: Added partial work on update script
-c543b74 CB-2623 Adding update script to Android
-7caac32 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-android
-5d68d5a CB-2198: Removing option to use our broken URL stack as a history as per deprecation policy.
-7187f87 Add readAsBinaryString and readAsArrayBuffer support
-fb81f3e CB-2596: Fixing the menubutton for text fields
-0ae49ed moveFile handles absolute paths by not pre-pending anything to them
-b8e5aaf ignore IntelliJ files
-aa4820c [CB-861] Header support for FileTransfer download
-5d79d6e Merge branch 'next'
-c668eeb Added CallbackContext success message with an int parameter
-62421ee CB-2530: Update callbackFromNative syntax to args
-e791f29 CB-2333: Probably should be re-factored as a do..while, but need to handle when there is no EOL char in buffer
-06947cc CB-2333: Adding body property to FileTransferError object on Android
-8c97474 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-android
-77a8568 CB-2522: We used buttons in older versions to send the post, not the submit event.  Disabled form saving
-e2dadbd Fix return types of getJSONObject and optJSONObject in CordovaArgs
-17b668a CB-2085: Fixing deleted database for ChildBrowser
-a30c2b6 CB-2504: Merged overscroll disallowance, needed to deal with merge conflict with the InAppStorage toggle
-2660eeb Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-android
-f415664 [CB-2504] Allow the disabling of overscroll glow.
-5092b29 [CB-2518] Enable Geolocation in InAppBrowser
-d5be901 Merge branch 'next'
-fdb3679 Merge branch 'next'
-11beb37 Setting to turn off Online Storage
+b22990c cordova-js wasn't properly auto-incremented either
+832998b 2.7.0rc1 prep
+c798d13 Update JS snapshot for 2.7.0
+bf3e024 [CB-3066] Fire onNativeReady from JS, as bridge is available immediately
+191f31b [CB-2432] Don't try and write exif info for images from picasa
+d3b7903 Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-android
+99e7d1e Merge branches 'sunshine' and 'master'
+b13166f [CB-2432] Fix Camera.getPicture() for picasa images
+80fe445 Use FileHelper in IceCreamCordovaWebViewClient.
+791574c Make URL parsing more robust in FileHelper.
+ac61ebf Merge branch 'master' of github.com:SunshineTech/cordova-android into sunshine
+cb99ed0 Fixing URL transformation algorithm
+4864d52 [CB-2202] Remove Plugin.java (was deprecated).
+b2d6167 [CB-2963] Re-enable sending messages in batches.
+383b3da [CB-3024] expanded help string for cl create script
+c65c259 CB-2200: Remove deprecated Android device.name
+e7e2730 Fixing CB-2955, breaking CB-2085, use localStorage, NOT WebSQL
+bb9615e Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-android
+18877bf Adding additional condition that the phone must be made by HTC for the setNavDump to be set to true to try and work around CB-2907, if it's still a problem on HTC devices running Android 2.2, that's just the luck of the draw.
+778b784 [CB-2908] Fix the DroidGap activity Lifecycle broken issue
+5ff900f Fixup for CB-2654.
+ba31424 Keep the splashscreen image ratio instead of streatching it. An ImageView is used to be able to use ScaleType.CENTER_CROP, which is similar to the background-size:cover CSS property
+1782111 [CB-2654] Delay executeScript/insertCSS callback until resources have loaded; pass JS results to callback
+1fa6330 [CB-2666] Added check for null arguments.
+b42c918 Prep for 2.6.0 final
+f12262e Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-android
+334cf45 Fixing CB-1700, we had the file names reversed, so exif was never being written right.  Needed to upload a file to debug this thing
+b7bb722 CB-1796: Let's make sure we actually write the file instead of just writing EXIF to NOTHING
+64ff204 Updating JS
+282367c [CB-1517] Properly report download progress for GZIP-encoded resources
+36c33a5 CB-1944: Better error messages for Create script
+5ee7e81 [CB-51] Added httpMethod for upload (defaults to POST)
+f485944 Fixed protocol regex bug. Unknown protocol support Added whitelist support for unknown protocols
+2bf6509 Modify Issue CB-2273.

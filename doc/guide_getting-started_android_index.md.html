@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.7.0rc1">2.7.0rc1</option>
 <option value="2.6.0rc1">2.6.0rc1</option>
-<option selected value="2.6.0">2.6.0</option>
+<option value="2.6.0">2.6.0</option>
 <option value="2.5.0rc1">2.5.0rc1</option>
 <option value="2.5.0">2.5.0</option>
 <option value="2.4.0rc1">2.4.0rc1</option>
@@ -175,11 +176,7 @@
 </h2>
 
 <ul>
-<li>Download and install <a class="external" href="http://www.eclipse.org/downloads/">Eclipse Classic</a>
-</li>
 <li>Download and install <a class="external" href="http://developer.android.com/sdk/index.html">Android SDK</a>
-</li>
-<li>Download and install <a class="external" href="http://developer.android.com/sdk/eclipse-adt.html#installing">ADT Plugin</a>
 </li>
 <li>Download the latest copy of <a class="external" href="http://phonegap.com/download">PhoneGap</a> and extract its contents. We will be working with the Android directory.</li>
 </ul>
@@ -238,9 +235,10 @@
 
 <pre class="prettyprint"><code>&lt;project_folder_path&gt; is the path to your new Cordova Android project
 &lt;package_name&gt; is the package name, e.g. com.YourCompany.YourAppName
-&lt;project_name&gt; is the project name, e.g. YourApp (Must not contain spaces)
+&lt;project_name&gt; is the project name, e.g. YourApp (Must not contain spaces and dashes)
 </code></pre>
 </li>
+<li><p>If you're getting an 'An unexpected error occurred" error, try the command again prefixed with <code>sudo</code></p></li>
 <li><p>Launch Eclipse, and select menu item <strong>New Project</strong>
 <img src="img/guide/getting-started/android/eclipse_new_project.png" alt="" title=""></p></li>
 <li>Select the directory you used for <code>&lt;project_folder_path&gt;</code>

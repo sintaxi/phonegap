@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.7.0rc1">2.7.0rc1</option>
 <option value="2.6.0rc1">2.6.0rc1</option>
-<option selected value="2.6.0">2.6.0</option>
+<option value="2.6.0">2.6.0</option>
 <option value="2.5.0rc1">2.5.0rc1</option>
 <option value="2.5.0">2.5.0</option>
 <option value="2.4.0rc1">2.4.0rc1</option>
@@ -227,16 +228,16 @@
 <a name="Getting%20Started%20with%20BlackBerry_6_hello_world">6.  Hello World</a>
 </h2>
 
-<p>Build the Cordova sample project by typing <code>ant target build</code> in your command prompt/terminal while you are in your project's directory. Replace <code>target</code> with either <code>qnx</code> <code>playbook</code> or <code>blackberry</code>. For example...</p>
+<p>Build the Cordova sample project by typing <code>./cordova/build &lt;target&gt;</code> in your command prompt/terminal while you are in your project's directory. Replace <code>&lt;target&gt;</code> with either <code>qnx</code> <code>playbook</code> or <code>blackberry</code>. For example...</p>
 
 <p>BlackBerry 10 (QNX)
-- <code>ant qnx build</code></p>
+- <code>./cordova/build qnx</code></p>
 
 <p>BlackBerry PlayBook
-- <code>ant playbook build</code></p>
+- <code>./cordova/build playbook</code></p>
 
 <p>BlackBerry Smartphone (OS5-7)
-- <code>ant blackberry build</code></p>
+- <code>./cordova/build blackberry</code></p>
 
 <h2>
 <a name="Getting%20Started%20with%20BlackBerry_7a_deploy_to_simulator">7A.  Deploy to Simulator</a>
@@ -267,16 +268,18 @@
 - <code>blackberry.sim.bin</code>
 - Note: On windows file separator '\' must be escaped when specifying directories.  For example <code>C:\\Program Files\\BlackBerry\\Simulator</code>.  </p>
 
-<p>While in your project directory, in command prompt/terminal type <code>ant target load-simulator</code>. Replace <code>target</code> with either <code>qnx</code>, <code>playbook</code>, or <code>blackberry</code>. Note, for BlackBerry 10 and PlayBook, the simulator virtual image must already be started.  For example...</p>
+<p>While in your project directory, in command prompt/terminal type <code>./cordova/run &lt;target&gt;</code>. Replace <code>&lt;target&gt;</code> with either <code>qnx</code>, <code>playbook</code>, or <code>blackberry</code>. Note, for BlackBerry 10 and PlayBook, the simulator virtual image must already be started.  For example...</p>
 
 <p>BlackBerry 10 (QNX)
-- <code>ant qnx load-simulator</code></p>
+- <code>./cordova/run qnx</code></p>
 
 <p>BlackBerry PlayBook
-- <code>ant playbook load-simulator</code></p>
+- <code>./cordova/run playbook</code></p>
 
 <p>BlackBerry Smartphone (OS5-7)
-- <code>ant blackberry load-simulator</code></p>
+- <code>./cordova/run blackberry</code></p>
+
+<p>Answer 'n' when prompted "Do you have a BlackBerry device connected to your computer? (y/n)"</p>
 
 <p>The application will be installed to the home screen of the simulator. Note, on BlackBerry OS 5 the application is installed in the Downloads folder.</p>
 
@@ -304,16 +307,18 @@
 - Smartphone (Optional)
 - <code>blackberry.sigtool.password</code></p>
 
-<p>While in your project directory, in command prompt/terminal type <code>ant target load-device</code>. Replace <code>target</code> with either <code>qnx</code>, <code>playbook</code>, or <code>blackberry</code>.  For example...</p>
+<p>While in your project directory, in command prompt/terminal type <code>./cordova/run &lt;target&gt;</code>. Replace <code>&lt;target&gt;</code> with either <code>qnx</code>, <code>playbook</code>, or <code>blackberry</code>.  For example...</p>
 
 <p>BlackBerry 10 (QNX)
-- <code>ant qnx load-device</code></p>
+- <code>./cordova/run qnx</code></p>
 
 <p>BlackBerry PlayBook
-- <code>ant playbook load-device</code></p>
+- <code>./cordova/run playbook</code></p>
 
 <p>BlackBerry Smartphone (OS5-7)
-- <code>ant blackberry load-device</code></p>
+- <code>./cordova/run blackberry</code></p>
+
+<p>Answer "y" when prompted "Do you have a BlackBerry device connected to your computer? (y/n)"</p>
 
 <p>The application will be installed to the home screen of the device. Note, on BlackBerry OS 5 the application is installed in the Downloads folder.</p>
 

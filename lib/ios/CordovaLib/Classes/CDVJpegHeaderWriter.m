@@ -20,8 +20,15 @@
 #import "CDVJpegHeaderWriter.h"
 #include "CDVExif.h"
 
-// tag info shorthand, tagno: tag number, typecode: data type:, components: number of components
+/* macros for tag info shorthand:
+   tagno        : tag number
+   typecode     : data type
+   components   : number of components
+   appendString (TAGINF_W_APPEND only) : string to append to data
+      Exif date data format include an extra 0x00 to the end of the data
+ */
 #define TAGINF(tagno, typecode, components) [NSArray arrayWithObjects: tagno, typecode, components, nil]
+#define TAGINF_W_APPEND(tagno, typecode, components, appendString) [NSArray arrayWithObjects: tagno, typecode, components, appendString, nil]
 
 const uint mJpegId = 0xffd8; // JPEG format marker
 const uint mExifMarker = 0xffe1; // APP1 jpeg header marker
@@ -38,7 +45,7 @@ const uint mTiffLength = 0x2a; // after byte align bits, next to bits are 0x002a
     // supported tags for exif IFD
     IFD0TagFormatDict = [[NSDictionary alloc] initWithObjectsAndKeys:
                   //      TAGINF(@"010e", [NSNumber numberWithInt:EDT_ASCII_STRING], @0), @"ImageDescription",
-                        TAGINF(@"0132", [NSNumber numberWithInt:EDT_ASCII_STRING], @20), @"DateTime",
+                        TAGINF_W_APPEND(@"0132", [NSNumber numberWithInt:EDT_ASCII_STRING], @20, @"00"), @"DateTime",
                         TAGINF(@"010f", [NSNumber numberWithInt:EDT_ASCII_STRING], @0), @"Make",
                         TAGINF(@"0110", [NSNumber numberWithInt:EDT_ASCII_STRING], @0), @"Model",
                         TAGINF(@"0131", [NSNumber numberWithInt:EDT_ASCII_STRING], @0), @"Software",
@@ -68,8 +75,8 @@ const uint mTiffLength = 0x2a; // after byte align bits, next to bits are 0x002a
                            //TAGINF(@"9202",[NSNumber numberWithInt:EDT_URATIONAL],@1), @"ApertureValue",
                            //TAGINF(@"9203",[NSNumber numberWithInt:EDT_SRATIONAL],@1), @"BrightnessValue",
                            TAGINF(@"a001",[NSNumber numberWithInt:EDT_USHORT],@1), @"ColorSpace",
-                           TAGINF(@"9004",[NSNumber numberWithInt:EDT_ASCII_STRING],@20), @"DateTimeDigitized",
-                           TAGINF(@"9003",[NSNumber numberWithInt:EDT_ASCII_STRING],@20), @"DateTimeOriginal",
+                           TAGINF_W_APPEND(@"9004",[NSNumber numberWithInt:EDT_ASCII_STRING],@20,@"00"), @"DateTimeDigitized",
+                           TAGINF_W_APPEND(@"9003",[NSNumber numberWithInt:EDT_ASCII_STRING],@20,@"00"), @"DateTimeOriginal",
                            TAGINF(@"a402", [NSNumber numberWithInt:EDT_USHORT], @1), @"ExposureMode",
                            TAGINF(@"8822", [NSNumber numberWithInt:EDT_USHORT], @1), @"ExposureProgram",
                            //TAGINF(@"829a", [NSNumber numberWithInt:EDT_URATIONAL], @1), @"ExposureTime",
@@ -167,12 +174,14 @@ const uint mTiffLength = 0x2a; // after byte align bits, next to bits are 0x002a
     NSString * tiffheader = @"4d4d002a";
     //first IFD offset from the Tiff header to IFD0. Since we are writing it, we know it's address 0x08
     NSString * ifd0offset = @"00000008";
+    // current offset to next data area
+    int currentDataOffset = 0;
     
     //data labeled as TIFF in UIImagePickerControllerMediaMetaData is part of the EXIF IFD0 portion of APP1
-    exifIFD = [self createExifIFDFromDict: [datadict objectForKey:@"{TIFF}"] withFormatDict: IFD0TagFormatDict isIFD0:YES];
+    exifIFD = [self createExifIFDFromDict: [datadict objectForKey:@"{TIFF}"] withFormatDict: IFD0TagFormatDict isIFD0:YES currentDataOffset:&currentDataOffset];
 
     //data labeled as EXIF in UIImagePickerControllerMediaMetaData is part of the EXIF Sub IFD portion of APP1
-    subExifIFD = [self createExifIFDFromDict: [datadict objectForKey:@"{Exif}"] withFormatDict: SubIFDTagFormatDict isIFD0:NO];
+    subExifIFD = [self createExifIFDFromDict: [datadict objectForKey:@"{Exif}"] withFormatDict: SubIFDTagFormatDict isIFD0:NO currentDataOffset:&currentDataOffset];
     /*
     NSLog(@"SUB EXIF IFD %@  WITH SIZE: %d",exifIFD,[exifIFD length]);
     
@@ -192,8 +201,11 @@ const uint mTiffLength = 0x2a; // after byte align bits, next to bits are 0x002a
 }
 
 // returns hex string representing a valid exif information file directory constructed from the datadict and formatdict
-- (NSString*) createExifIFDFromDict : (NSDictionary*) datadict withFormatDict : (NSDictionary*) formatdict isIFD0 : (BOOL) ifd0flag {
-    NSArray * datakeys = [datadict allKeys]; // all known data keys 
+- (NSString*) createExifIFDFromDict : (NSDictionary*) datadict
+                     withFormatDict : (NSDictionary*) formatdict
+                             isIFD0 : (BOOL) ifd0flag
+                  currentDataOffset : (int*) dataoffset {
+    NSArray * datakeys = [datadict allKeys]; // all known data keys
     NSArray * knownkeys = [formatdict  allKeys]; // only keys in knowkeys are considered for entry in this IFD
     NSMutableArray * ifdblock = [[NSMutableArray alloc] initWithCapacity: [datadict count]]; // all ifd entries
     NSMutableArray * ifddatablock = [[NSMutableArray alloc] initWithCapacity: [datadict count]]; // data block entries
@@ -225,13 +237,13 @@ const uint mTiffLength = 0x2a; // after byte align bits, next to bits are 0x002a
     NSMutableString * exifstr = [[NSMutableString alloc] initWithCapacity: [ifdblock count] * 24];
     NSMutableString * dbstr = [[NSMutableString alloc] initWithCapacity: 100];
     
-    int addr=0; // current offset/address in datablock
+    int addr=*dataoffset; // current offset/address in datablock
     if (ifd0flag) {
         // calculate offset to datablock based on ifd file entry count
-        addr = 14+(12*([ifddatablock count]+1)); // +1 for tag 0x8769, exifsubifd offset
+        addr += 14+(12*([ifddatablock count]+1)); // +1 for tag 0x8769, exifsubifd offset
     } else {
-        // same calculation as above, but no exifsubifd offset
-        addr = 14+12*[ifddatablock count];
+        // current offset + numSubIFDs (2-bytes) + 12*numSubIFDs + endMarker (4-bytes)
+        addr += 2+(12*[ifddatablock count])+4;
     }
     
     for (int i = 0; i < [ifdblock count]; i++) {
@@ -244,8 +256,14 @@ const uint mTiffLength = 0x2a; // after byte align bits, next to bits are 0x002a
             [exifstr appendFormat : @"%@%@", entry, data];
         } else {
             [exifstr appendFormat : @"%@%08x", entry, addr];
-            [dbstr appendFormat: @"%@", data]; 
+            [dbstr appendFormat: @"%@", data];
             addr+= [data length] / 2;
+            /*
+            NSLog(@"=====data-length[%i]=======",[data length]);
+            NSLog(@"addr-offset[%i]",addr);
+            NSLog(@"entry[%@]",entry);
+            NSLog(@"data[%@]",data);
+             */
         }
     }
     
@@ -258,7 +276,8 @@ const uint mTiffLength = 0x2a; // after byte align bits, next to bits are 0x002a
         [self appendExifOffsetTagTo: exifstr
                         withOffset : offset];
         entrycount++;
-    } 
+    }
+    *dataoffset = addr;
     return [[NSString alloc] initWithFormat: @"%04x%@%@%@",
             entrycount,
             exifstr,
@@ -307,6 +326,7 @@ const uint mTiffLength = 0x2a; // after byte align bits, next to bits are 0x002a
     NSMutableString * datastr = nil;
     NSNumber * tmp = nil;
     NSNumber * formatcode = [dataformat objectAtIndex:1];
+    NSUInteger formatItemsCount = [dataformat count];
     NSNumber * num = @0;
     NSNumber * denom = @0;
     
@@ -317,6 +337,11 @@ const uint mTiffLength = 0x2a; // after byte align bits, next to bits are 0x002a
             datastr = [[NSMutableString alloc] init];
             for (int i = 0; i < [data length]; i++) {
                 [datastr appendFormat:@"%02x",[data characterAtIndex:i]];
+            }
+            if (formatItemsCount > 3) {
+                // We have additional data to append.
+                // currently used by Date format to append final 0x00 but can be used by other data types as well in the future
+                [datastr appendString:[dataformat objectAtIndex:3]];
             }
             if ([datastr length] < 8) {
                 NSString * format = [NSString stringWithFormat:@"%%0%dd", 8 - [datastr length]];

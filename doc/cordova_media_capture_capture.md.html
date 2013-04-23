@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.7.0rc1">2.7.0rc1</option>
 <option value="2.6.0rc1">2.6.0rc1</option>
-<option selected value="2.6.0">2.6.0</option>
+<option value="2.6.0">2.6.0</option>
 <option value="2.5.0rc1">2.5.0rc1</option>
 <option value="2.5.0">2.5.0</option>
 <option value="2.4.0rc1">2.4.0rc1</option>
@@ -129,8 +130,6 @@
 <option value="CaptureImageOptions">CaptureImageOptions</option>
 <option value="CaptureImageOptions_properties">      - Properties</option>
 <option value="CaptureImageOptions_quick_example">      - Quick Example</option>
-<option value="CaptureImageOptions_android_quirks">      - Android Quirks</option>
-<option value="CaptureImageOptions_blackberry_webworks_quirks">      - BlackBerry WebWorks Quirks</option>
 <option value="CaptureImageOptions_ios_quirks">      - iOS Quirks</option>
 <option value="capture.captureVideo">capture.captureVideo</option>
 <option value="capture.captureVideo_description">      - Description</option>
@@ -142,7 +141,6 @@
 <option value="CaptureVideoOptions">CaptureVideoOptions</option>
 <option value="CaptureVideoOptions_properties">      - Properties</option>
 <option value="CaptureVideoOptions_quick_example">      - Quick Example</option>
-<option value="CaptureVideoOptions_android_quirks">      - Android Quirks</option>
 <option value="CaptureVideoOptions_blackberry_webworks_quirks">      - BlackBerry WebWorks Quirks</option>
 <option value="CaptureVideoOptions_ios_quirks">      - iOS Quirks</option>
 <option value="CaptureError">CaptureError</option>
@@ -414,7 +412,7 @@ navigator.device.<a href="cordova_media_capture_capture.md.html#capture.captureA
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_media_capture_capture.md.html#Capture">Capture</a> Audio&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.6.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8" src="json2.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
@@ -505,8 +503,6 @@ navigator.device.<a href="cordova_media_capture_capture.md.html#capture.captureA
 <strong>limit:</strong> The maximum number of audio clips the device user can record in a single capture operation.  The value must be greater than or equal to 1 (defaults to 1).</li>
 <li>
 <strong>duration:</strong> The maximum duration of an audio sound clip, in seconds.</li>
-<li>
-<strong>mode:</strong> The selected audio mode.  The value must match one of the elements in <code>capture.supportedAudioModes</code>.</li>
 </ul>
 <h2>
 <a name="CaptureAudioOptions_quick_example">Quick Example</a>
@@ -524,7 +520,6 @@ navigator.device.<a href="cordova_media_capture_capture.md.html#capture.captureA
 
 <ul>
 <li>The <strong>duration</strong> parameter is not supported.  Recording lengths cannot be limited programmatically.</li>
-<li>The <strong>mode</strong> parameter is not supported.  The audio recording format cannot be altered programmatically.  Recordings are encoded using Adaptive Multi-Rate (AMR) format (audio/amr).</li>
 </ul>
 <h2>
 <a name="CaptureAudioOptions_blackberry_webworks_quirks">BlackBerry WebWorks Quirks</a>
@@ -532,7 +527,6 @@ navigator.device.<a href="cordova_media_capture_capture.md.html#capture.captureA
 
 <ul>
 <li>The <strong>duration</strong> parameter is not supported.  Recording lengths cannot be limited programmatically.</li>
-<li>The <strong>mode</strong> parameter is not supported.  The audio recording format cannot be altered programmatically.  Recordings are encoded using Adaptive Multi-Rate (AMR) format (audio/amr).</li>
 </ul>
 <h2>
 <a name="CaptureAudioOptions_ios_quirks">iOS Quirks</a>
@@ -540,7 +534,6 @@ navigator.device.<a href="cordova_media_capture_capture.md.html#capture.captureA
 
 <ul>
 <li>The <strong>limit</strong> parameter is not supported. One recording can be created for each invocation.</li>
-<li>The <strong>mode</strong> parameter is not supported.  The audio recording format cannot be altered programmatically.  Recordings are encoded using Waveform Audio (WAV) format (audio/wav).</li>
 </ul>
 <hr>
 <h1><a name="capture.captureImage">capture.captureImage</a></h1>
@@ -614,7 +607,7 @@ navigator.device.<a href="cordova_media_capture_capture.md.html#capture.captureI
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_media_capture_capture.md.html#Capture">Capture</a> Image&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.6.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8" src="json2.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
@@ -717,8 +710,6 @@ navigator.<a href="cordova_media_capture_capture.md.html#capture.captureImage">c
 <ul>
 <li>
 <strong>limit:</strong> The maximum number of images the device user can capture in a single capture operation.  The value must be greater than or equal to 1 (defaults to 1).</li>
-<li>
-<strong>mode:</strong> The selected image mode.  The value must match one of the elements in <code>capture.supportedImageModes</code>.</li>
 </ul>
 <h2>
 <a name="CaptureImageOptions_quick_example">Quick Example</a>
@@ -731,26 +722,11 @@ navigator.device.<a href="cordova_media_capture_capture.md.html#capture.captureI
 </code></pre>
 
 <h2>
-<a name="CaptureImageOptions_android_quirks">Android Quirks</a>
-</h2>
-
-<ul>
-<li>The <strong>mode</strong> parameter is not supported.  The image size and format cannot be altered programmatically; however, the image size can be altered by the device user.  Images are saved in JPEG format (image/jpeg).</li>
-</ul>
-<h2>
-<a name="CaptureImageOptions_blackberry_webworks_quirks">BlackBerry WebWorks Quirks</a>
-</h2>
-
-<ul>
-<li>The <strong>mode</strong> parameter is not supported.  The image size and format cannot be altered programmatically; however, the image size can be altered by the device user.  Images are saved in JPEG format (image/jpeg).</li>
-</ul>
-<h2>
 <a name="CaptureImageOptions_ios_quirks">iOS Quirks</a>
 </h2>
 
 <ul>
 <li>The <strong>limit</strong> parameter is not supported. One image is taken per invocation.</li>
-<li>The <strong>mode</strong> parameter is not supported.  The image size and format cannot be altered programmatically.  Images are saved in JPEG format (image/jpeg).</li>
 </ul>
 <hr>
 <h1><a name="capture.captureVideo">capture.captureVideo</a></h1>
@@ -817,7 +793,7 @@ navigator.device.<a href="cordova_media_capture_capture.md.html#capture.captureV
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_media_capture_capture.md.html#Capture">Capture</a> Video&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.6.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8" src="json2.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
@@ -933,8 +909,6 @@ navigator.device.<a href="cordova_media_capture_capture.md.html#capture.captureV
 <strong>limit:</strong> The maximum number of video clips the device user can capture in a single capture operation.  The value must be greater than or equal to 1 (defaults to 1).</li>
 <li>
 <strong>duration:</strong> The maximum duration of a video clip, in seconds.</li>
-<li>
-<strong>mode:</strong> The selected video capture mode.  The value must match one of the elements in <code>capture.supportedVideoModes</code>.</li>
 </ul>
 <h2>
 <a name="CaptureVideoOptions_quick_example">Quick Example</a>
@@ -947,20 +921,11 @@ navigator.device.<a href="cordova_media_capture_capture.md.html#capture.captureV
 </code></pre>
 
 <h2>
-<a name="CaptureVideoOptions_android_quirks">Android Quirks</a>
-</h2>
-
-<ul>
-<li>The <strong>duration</strong> parameter is not supported.  Recording lengths cannot be limited programmatically.</li>
-<li>The <strong>mode</strong> parameter is not supported.  The video size and format cannot be altered programmatically; however, these parameters can be changed by the device user. By default, videos are recorded in 3GPP (video/3gpp) format.</li>
-</ul>
-<h2>
 <a name="CaptureVideoOptions_blackberry_webworks_quirks">BlackBerry WebWorks Quirks</a>
 </h2>
 
 <ul>
 <li>The <strong>duration</strong> parameter is not supported.  Recording lengths cannot be limited programmatically.</li>
-<li>The <strong>mode</strong> parameter is not supported.  The video size and format cannot be altered programmatically; however, these parameters can be changed by the device user. By default, videos are recorded in 3GPP (video/3gpp) format.</li>
 </ul>
 <h2>
 <a name="CaptureVideoOptions_ios_quirks">iOS Quirks</a>
@@ -969,7 +934,6 @@ navigator.device.<a href="cordova_media_capture_capture.md.html#capture.captureV
 <ul>
 <li>The <strong>limit</strong> parameter is not supported.  One video is recorded per invocation.</li>
 <li>The <strong>duration</strong> parameter is not supported.  Recording lengths cannot be limited programmatically.</li>
-<li>The <strong>mode</strong> parameter is not supported.  The video size and format cannot be altered programmatically. By default, videos are recorded in MOV (video/quicktime) format.</li>
 </ul>
 <hr>
 <h1><a name="CaptureError">CaptureError</a></h1>
