@@ -2,6 +2,11 @@
 iOS 
 ---
 
+60f9348 Updated RELEASENOTES for 2.7.0
+8c5a8e0 [CB-3254] Update www/ Application for iOS
+3348bda Updated VERSION to 2.7.0
+c164681 Updated cordova-js for 2.7.0
+3a5d577 [CB-3295] Send InAppBrowser loadstart events when redirects occur (cherry picked from commit 3ac92e817c59996bb5a046081e3a39256dfc0358)
 1e26f40 [CB-2698] Fix load detection when pages have redirects. (cherry picked from commit 7e0a32892a540295e7de5da6a4832dfdaf337ac0)
 2f21c6e Typo for CORDOVA_2_7_0
 d5186c1 Updated RELEASENOTES for 2.7.0rc1

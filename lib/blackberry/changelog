@@ -2,6 +2,8 @@
 BlackBerry 
 ---
 
+be140a5 Update to version 2.7.0
+baa789c [CB-3232] Update bin/create to be run from any directory.
 493deb9 [CB-3102] - updated version and tagged
 1c63bd5 [CB-3078] - updated javascript
 cdb5ad1 [CB-3024] help string updated with parameter usage

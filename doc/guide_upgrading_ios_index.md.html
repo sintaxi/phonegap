@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.7.0rc1">2.7.0rc1</option>
+<option value="2.7.0rc1">2.7.0rc1</option>
+<option selected value="2.7.0">2.7.0</option>
 <option value="2.6.0rc1">2.6.0rc1</option>
 <option value="2.6.0">2.6.0</option>
 <option value="2.5.0rc1">2.5.0rc1</option>
@@ -99,6 +100,7 @@
         <div id="subheader">
             <h1>Upgrading Cordova iOS</h1>
             <small><select><option value="Upgrading%2520Cordova%2520iOS">Upgrading Cordova iOS</option>
+<option value="Upgrading%20Cordova%20iOS_upgrading_cordova_2_6_0_projects_to_2_7_0">      - Upgrading Cordova 2.6.0 projects to 2.7.0</option>
 <option value="Upgrading%20Cordova%20iOS_upgrading_cordova_2_5_0_projects_to_2_6_0">      - Upgrading Cordova 2.5.0 projects to 2.6.0</option>
 <option value="Upgrading%20Cordova%20iOS_upgrading_cordova_2_4_0_projects_to_2_5_0">      - Upgrading Cordova 2.4.0 projects to 2.5.0</option>
 <option value="Upgrading%20Cordova%20iOS_upgrading_cordova_2_3_0_projects_to_2_4_0">      - Upgrading Cordova 2.3.0 projects to 2.4.0</option>
@@ -159,6 +161,27 @@
 
 <p>Please note that <strong>Xcode 4.5 is required</strong>. To submit to the Apple App Store, you must use the latest shipped version of the iOS SDK, which is iOS 6. The iOS 6 SDK requires Xcode 4.5.</p>
 
+<h2>
+<a name="Upgrading%20Cordova%20iOS_upgrading_cordova_2_6_0_projects_to_2_7_0">Upgrading Cordova 2.6.0 projects to 2.7.0</a>
+</h2>
+
+<ol>
+<li>
+<strong>Download and extract the Cordova 2.7.0 source</strong> to a <strong>permanent folder location</strong> on your hard drive (say to ~/Documents/Cordova-2.7.0)</li>
+<li>
+<strong>Quit Xcode</strong> if it is running.</li>
+<li>
+<strong>Navigate</strong> to the directory where you put the downloaded source above, using <strong>Terminal.app</strong>.</li>
+<li>
+<a href="guide_command-line_index.md.html#Command-Line%20Usage_ios"><strong>Create a new project</strong></a> from the command-line tools - you will have to grab the assets from this new project</li>
+<li>
+<strong>Copy</strong> the <strong>www/cordova-2.7.0.js</strong> file from the new project into your <strong>www</strong> folder, and delete your <strong>www/cordova-2.6.0.js</strong> file</li>
+<li>
+<strong>Update</strong> the Cordova script reference in your <strong>www/index.html</strong> file (and any other files that contain the script reference) to point to the new <strong>cordova-2.7.0.js</strong> file</li>
+<li>Update (or replace, if you never changed the file) your <strong>AppDelegate.m</strong> file according to the one from the new project (see <a class="external" href="https://git-wip-us.apache.org/repos/asf?p=cordova-ios.git;a=blobdiff;f=bin/templates/project/__TESTING__/Classes/AppDelegate.m;h=5c05ac80e056753c0e8736f887ba9f28d5b0774c;hp=623ad8ec3c46f656ea18c6c3a190d650dd64e479;hb=c6e71147386d4ad94b07428952d1aae0a9cbf3f5;hpb=c017fda8af00375a453cf27cfc488647972e9a23">this diff</a>)</li>
+<li>In your <strong>config.xml</strong> file, <a class="external" href="https://git-wip-us.apache.org/repos/asf?p=cordova-ios.git;a=blobdiff;f=bin/templates/project/__TESTING__/config.xml;h=537705d76a5ef6bc5e57a8ebfcab78c02bb4110b;hp=8889726d9a8f8c530fe1371c56d858c34552992a;hb=064239b7b5fa9a867144cf1ee8b2fb798ce1f988;hpb=c9f233250d4b800f3412eeded811daaafb17b2cc">remove this line</a>.</li>
+<li>Delete your <strong>"CordovaLib"</strong> folder, and copy the <strong>"CordovaLib"</strong> folder from the new project into your project's root folder</li>
+</ol>
 <h2>
 <a name="Upgrading%20Cordova%20iOS_upgrading_cordova_2_5_0_projects_to_2_6_0">Upgrading Cordova 2.5.0 projects to 2.6.0</a>
 </h2>

@@ -93,7 +93,7 @@ then
     fi
     
 	echo "Creating BlackBerry project..."
-	(cd "$BUILD_PATH" && "$ANT" create -Dproject.path="$PROJECT_PATH" &> /dev/null )
+	("$ANT" create -Dproject.path="$PROJECT_PATH" -f "$BUILD_PATH/build.xml" &> /dev/null)
     # interpolate the activity and package into config.xml
     echo "Updating config.xml ..."
     replace "s/__NAME__/${NAME}/g" "$MANIFEST_PATH"

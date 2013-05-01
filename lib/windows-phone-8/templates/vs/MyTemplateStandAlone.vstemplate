@@ -1,13 +1,13 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
-    <Name>CordovaWP8_2.7.0rc1</Name>
-    <Description>Cordova 2.7.0rc1 for Windows Phone 8 using the Cordova source code directly.</Description>
+    <Name>CordovaWP8_2_7_0</Name>
+    <Description>Cordova 2.7.0 for Windows Phone 8 using the Cordova source code directly.</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
     <SortOrder>1000</SortOrder>
     <CreateNewFolder>true</CreateNewFolder>
-    <DefaultName>CordovaWP8_2.7.0rc1</DefaultName>
+    <DefaultName>CordovaWP8_2_7_0</DefaultName>
     <ProvideDefaultName>true</ProvideDefaultName>
     <LocationField>Enabled</LocationField>
     <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
@@ -96,7 +96,7 @@
       <ProjectItem ReplaceParameters="false" TargetFileName="SplashScreenImage.jpg">SplashScreenImage.jpg</ProjectItem>
       <ProjectItem ReplaceParameters="false" TargetFileName="VERSION">VERSION</ProjectItem>
       <Folder Name="www" TargetFolderName="www">
-        <ProjectItem ReplaceParameters="true" TargetFileName="cordova-2.7.0rc1.js">cordova-2.7.0rc1.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="cordova-2.7.0.js">cordova-2.7.0.js</ProjectItem>
         <Folder Name="css" TargetFolderName="css">
           <ProjectItem ReplaceParameters="true" TargetFileName="index.css">index.css</ProjectItem>
         </Folder>

@@ -2,6 +2,11 @@
 Android 
 ---
 
+909e664 Updating JS for Android
+a308100 Prep for 2.7.0 final
+fea8c5d Merge branch '2.7.x' of https://git-wip-us.apache.org/repos/asf/cordova-android into 2.7.x
+a890c81 This should be 2.7.0rc1
+665c1bd [CB-3226] Fix: plugins can intercept urls with "?", "#", "%20"(cherry picked from commit 53982272d694b0bcc2093e8374b3a6fdd64b97fa)
 b22990c cordova-js wasn't properly auto-incremented either
 832998b 2.7.0rc1 prep
 c798d13 Update JS snapshot for 2.7.0

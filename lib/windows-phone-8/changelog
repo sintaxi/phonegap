@@ -2,6 +2,10 @@
 Windows Phone 8 
 ---
 
+f35aa9f Merge pull request #24 from purplecabbage/2.7.0_ReleasePrep
+51367c7 updated version number and js
+8242689 [CB-3406] InAppBrowser script not enabled in time (cherry picked from commit 3c157b6c58822c573dc6290d9a0ca809eb8a4cc0)
+3c157b6 [CB-3406] InAppBrowser script not enabled in time
 12c4ed1 updated cordova-js
 1bdcf18 fixed logic error with args parsing
 dd6c010 deleted temp bs

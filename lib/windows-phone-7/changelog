@@ -2,6 +2,9 @@
 Windows Phone 7 
 ---
 
+e4a2884 2.7.0 version change
+7557167 re-applied fix to old file fml (cherry picked from commit 43deeaa88dddc7b34a9b5581eba6820fd5ac887c)
+97e195a [CB-3406] InAppBrowser script not enabled in time (cherry picked from commit ca5a6e4e6c2d968c357d77ce66ca5fcd39cc53d6)
 ee19e9c updated cordova-js
 6116de3 preping for 2.7.x
 9acef80 pre-2.7.0 prep

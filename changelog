@@ -3,6 +3,11 @@
 iOS 
 ---
 
+60f9348 Updated RELEASENOTES for 2.7.0
+8c5a8e0 [CB-3254] Update www/ Application for iOS
+3348bda Updated VERSION to 2.7.0
+c164681 Updated cordova-js for 2.7.0
+3a5d577 [CB-3295] Send InAppBrowser loadstart events when redirects occur (cherry picked from commit 3ac92e817c59996bb5a046081e3a39256dfc0358)
 1e26f40 [CB-2698] Fix load detection when pages have redirects. (cherry picked from commit 7e0a32892a540295e7de5da6a4832dfdaf337ac0)
 2f21c6e Typo for CORDOVA_2_7_0
 d5186c1 Updated RELEASENOTES for 2.7.0rc1
@@ -55,6 +60,11 @@ e078f62 [CB-2790] added splice function to header writer: accepts jpeg as NSData
 Android 
 ---
 
+909e664 Updating JS for Android
+a308100 Prep for 2.7.0 final
+fea8c5d Merge branch '2.7.x' of https://git-wip-us.apache.org/repos/asf/cordova-android into 2.7.x
+a890c81 This should be 2.7.0rc1
+665c1bd [CB-3226] Fix: plugins can intercept urls with "?", "#", "%20"(cherry picked from commit 53982272d694b0bcc2093e8374b3a6fdd64b97fa)
 b22990c cordova-js wasn't properly auto-incremented either
 832998b 2.7.0rc1 prep
 c798d13 Update JS snapshot for 2.7.0
@@ -94,6 +104,8 @@ f485944 Fixed protocol regex bug. Unknown protocol support Added whitelist suppo
 BlackBerry 
 ---
 
+be140a5 Update to version 2.7.0
+baa789c [CB-3232] Update bin/create to be run from any directory.
 493deb9 [CB-3102] - updated version and tagged
 1c63bd5 [CB-3078] - updated javascript
 cdb5ad1 [CB-3024] help string updated with parameter usage
@@ -107,12 +119,17 @@ f3ee54c [CB-2809] resolveFileSystemURI now reports native IllegalArgument except
 Windows 
 ---
 
+e0917c8 updated project to include new js (cherry picked from commit c9a9ca0bf2ecc7528a5fc840a6f0641672c238a2)
+f08ac9c major cleanup, overhaul for 2.7.0, removed bunk template (cherry picked from commit 3797c9c6c74a91a09f16b39cfb88b79efa0b49a5)
 199321c updated to 2.7.0rc1 including updated mobile spec tests
 
 
 Windows Phone 7 
 ---
 
+e4a2884 2.7.0 version change
+7557167 re-applied fix to old file fml (cherry picked from commit 43deeaa88dddc7b34a9b5581eba6820fd5ac887c)
+97e195a [CB-3406] InAppBrowser script not enabled in time (cherry picked from commit ca5a6e4e6c2d968c357d77ce66ca5fcd39cc53d6)
 ee19e9c updated cordova-js
 6116de3 preping for 2.7.x
 9acef80 pre-2.7.0 prep
@@ -136,6 +153,10 @@ ab9ac6e [CB-2736] Fixed error when resolving file uri from getPicture
 Windows Phone 8 
 ---
 
+f35aa9f Merge pull request #24 from purplecabbage/2.7.0_ReleasePrep
+51367c7 updated version number and js
+8242689 [CB-3406] InAppBrowser script not enabled in time (cherry picked from commit 3c157b6c58822c573dc6290d9a0ca809eb8a4cc0)
+3c157b6 [CB-3406] InAppBrowser script not enabled in time
 12c4ed1 updated cordova-js
 1bdcf18 fixed logic error with args parsing
 dd6c010 deleted temp bs
@@ -160,6 +181,10 @@ c768aa6 Merge pull request #18 from bennmapes/tooling
 OSX 
 ---
 
+4db81a4 Updated VERSION to 2.7.0
+cf28923 Updated cordova-js for 2.7.0
+ddf18fb Updated RELEASENOTES for 2.7.0
+c69e875 Added WebGL support.
 e5ce543 Updated RELEASENOTES for 2.7.0
 0b2b3ff Updated VERSION to 2.7.0
 d08ed20 Updated cordova-js to 2.7.0rc1
@@ -176,6 +201,12 @@ d691710 Fixed ShellUtils.
 Docs 
 ---
 
+d7b1c1e [iOS] Added Upgrading docs for 2.6.0 to 2.7.0
+28fbd31 Version 2.7.0
+a048dc5 [CB-2794] correct camera.getPicture destinationType default
+0aa3919 Add Windows Phone upgrade guide to 2.7.0rc1
+218ebe5 added guides for upgrading and clarified that these instructions apply to both WP7 + WP8
+f7f7b99 Updated docs to reflect tooling/cli changes
 dc55db0 Version 2.7.0rc1
 e1130cc [CB-3192] Update edge docs to reference next version with x.x.x
 065b796 Fixing CB-2789. Removing mode parameter from capture options
@@ -199,6 +230,10 @@ ba2c097 [CB-2807] - close function is supported in InAppBrowser
 MobileSpec 
 ---
 
+c048761 Updated version to 2.7.0
+3fc5df0 [CB-3295] Add assertions for InAppBrowser load events (cherry picked from commit dc2f6f4ab175ddd987ef614c1f75fb678bbb4ccd)
+c004cd3 [CB-3220] Fixed CompassHeading test for no params.
+9c5c087 Add an iframe with an invalid URL to test CDVWebViewDelegate
 0ee6bf7 Updated version to 2.7.0rc1
 f664195 Fix InAppBrowser error case tests to specify target="_blank"
 6e1fa00 Fix style & script injection tests for InAppBrowser
@@ -213,8 +248,15 @@ ef60456 [CB-2913] squashed commits of toetag script, tags jasmine unit tests wit
 CordovaJS 
 ---
 
+cd29cf0 Prep for 2.7.0 tagging, please don't let this be retagged
+0dceeca Merge branch '2.7.x' of https://git-wip-us.apache.org/repos/asf/cordova-js into 2.7.x
+130c57a Incrementing version
+0b94579 [CB-3210] Remove old exec signature from iOSExec
+6d7a99b [Windows8][CB-3214] (cherry picked from commit 766ac951231b87c1a5ace025b20727fd8d9895e2)
+4770459 Fixing merge conflicts from not updating VERSION
 360bd3e Ok, really updated version this time
 c71daa2 Merging version update
+da1caec Merge branch 'master' of https://git-wip-us.apache.org/repos/asf/cordova-js
 c524f9f [all] fix jake lint warnings
 da022b0 [CB-3066] Add missing license headers to new files
 aa03f53 [CB-3066] Fire onNativeReady from JS, as bridge is available immediately
@@ -255,12 +297,20 @@ f76d02f [CB-51] Added httpMethod for file transfer options (allows PUT or POST, 
 Hello World App 
 ---
 
+0a1ec9b Version 2.7.0
 236c0a6 Version 2.7.0rc1
 
 
 Cordova CLI 
 ---
 
+22066bc Version 2.7.0 (npm 2.7.2)
+ed56f81 [CB-3238] Update cordova-blackberry to 2.7.0
+e94c9a1 [CB-3238] Update cordova-android to 2.7.0
+aa8a57b [CB-3238] Update cordova-ios to 2.7.0
+8eb4c10 [CB-3228] Fix 'cordova build blackberry' to use cordova.js
+b94b9ae [npm] Version 2.7.1-rc.1
+a2a8e85 [CB-3227] Fix missing build script in iOS project.
 d9a153c Version 2.7.0-rc.1
 0476a19 CB-3183 handle missing plugins directory
 0b4ca24 [npm] Version 2.6.2

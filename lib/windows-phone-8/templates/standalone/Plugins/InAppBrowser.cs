@@ -120,14 +120,13 @@ namespace WPCordovaClassLib.Cordova.Commands
                             if (grid != null)
                             {
                                 browser = new WebBrowser();
-                                browser.Navigate(loc);
-
+                                browser.IsScriptEnabled = true;
                                 browser.LoadCompleted += new System.Windows.Navigation.LoadCompletedEventHandler(browser_LoadCompleted);
 
                                 browser.Navigating += new EventHandler<NavigatingEventArgs>(browser_Navigating);
                                 browser.NavigationFailed += new System.Windows.Navigation.NavigationFailedEventHandler(browser_NavigationFailed);
                                 browser.Navigated += new EventHandler<System.Windows.Navigation.NavigationEventArgs>(browser_Navigated);
-                                browser.IsScriptEnabled = true;
+                                browser.Navigate(loc);
                                 //browser.IsGeolocationEnabled = opts.isGeolocationEnabled;
                                 grid.Children.Add(browser);
                             }

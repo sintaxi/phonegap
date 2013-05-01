@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.7.0rc1">2.7.0rc1</option>
+<option value="2.7.0rc1">2.7.0rc1</option>
+<option selected value="2.7.0">2.7.0</option>
 <option value="2.6.0rc1">2.6.0rc1</option>
 <option value="2.6.0">2.6.0</option>
 <option value="2.5.0rc1">2.5.0rc1</option>
@@ -283,8 +284,8 @@ The method itself returns a <a href="cordova_camera_camera.md.html#CameraPopover
 <p>The return value will be sent to the <code><a href="cordova_camera_camera.md.html#cameraSuccess">cameraSuccess</a></code> function, in one of the following formats, depending on the <code><a href="cordova_camera_camera.md.html#cameraOptions">cameraOptions</a></code> you specify:</p>
 
 <ul>
-<li>A <code>String</code> containing the Base64 encoded photo image (default). </li>
-<li>A <code>String</code> representing the image file location on local storage.  </li>
+<li>A <code>String</code> containing the Base64 encoded photo image.</li>
+<li>A <code>String</code> representing the image file location on local storage (default).</li>
 </ul>
 <p>You can do whatever you want with the encoded image or URI, for example:</p>
 
@@ -378,7 +379,7 @@ function onFail(message) {
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_media_capture_capture.md.html#Capture">Capture</a> Photo&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     var pictureSource;   // picture source
