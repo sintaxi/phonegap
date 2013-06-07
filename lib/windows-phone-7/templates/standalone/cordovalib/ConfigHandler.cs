@@ -13,16 +13,29 @@ namespace WPCordovaClassLib.CordovaLib
 {
     class ConfigHandler
     {
-        protected List<string> AllowedPlugins;
+        public class PluginConfig
+        {
+            public PluginConfig(string name, bool autoLoad = false)
+            {
+                Name = name;
+                isAutoLoad = autoLoad;
+            }
+            public string Name;
+            public bool isAutoLoad;
+        }
+
+        protected Dictionary<string, PluginConfig> AllowedPlugins;
         protected List<string> AllowedDomains;
         protected Dictionary<string, string> Preferences;
+
+        public string ContentSrc { get; private set; }
 
         protected bool AllowAllDomains = false;
         protected bool AllowAllPlugins = false;
 
         public ConfigHandler()
         {
-            AllowedPlugins = new List<string>();
+            AllowedPlugins = new Dictionary<string, PluginConfig>();
             AllowedDomains = new List<string>();
             Preferences = new Dictionary<string, string>();
         }
@@ -32,37 +45,6 @@ namespace WPCordovaClassLib.CordovaLib
             return Preferences[key];
         }
 
-/*
-    - (BOOL)URLIsAllowed:(NSURL*)url
-{
-    if (self.expandedWhitelist == nil) {
-        return NO;
-    }
-
-    if (self.allowAll) {
-        return YES;
-    }
-
-    // iterate through settings ExternalHosts, check for equality
-    NSEnumerator* enumerator = [self.expandedWhitelist objectEnumerator];
-    id regex = nil;
-    NSString* urlHost = [url host];
-
-    // if the url host IS found in the whitelist, load it in the app (however UIWebViewNavigationTypeOther kicks it out to Safari)
-    // if the url host IS NOT found in the whitelist, we do nothing
-    while (regex = [enumerator nextObject]) {
-        NSPredicate* regex_test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-
-        if ([regex_test evaluateWithObject:urlHost] == YES) {
-            // if it matches at least one rule, return
-            return YES;
-        }
-    }
-
-    NSLog(@"%@", [self errorStringForURL:url]);
-    // if we got here, the url host is not in the white-list, do nothing
-    return NO;
-}*/
         protected static string[] AllowedSchemes = {"http","https","ftp","ftps"};
         protected bool SchemeIsAllowed(string scheme)
         {
@@ -182,9 +164,54 @@ namespace WPCordovaClassLib.CordovaLib
 
         public bool IsPluginAllowed(string key)
         {
-            return AllowAllPlugins || AllowedPlugins.Contains(key);
+            return AllowAllPlugins || AllowedPlugins.Keys.Contains(key);
         }
 
+        private void LoadPluginFeatures(XDocument document)
+        {
+            var plugins = from results in document.Descendants("plugin")
+                          select new
+                          {
+                              name = (string)results.Attribute("name"),
+                              autoLoad = results.Attribute("onload")
+                          };
+
+            foreach (var plugin in plugins)
+            {
+                Debug.WriteLine("Warning: Deprecated use of <plugin> by plugin : " + plugin.name);
+                PluginConfig pConfig = new PluginConfig(plugin.name, plugin.autoLoad != null && plugin.autoLoad.Value == "true");
+                if (pConfig.Name == "*")
+                {
+                    AllowAllPlugins = true;
+                    // break; wait, don't, some still could be autoload
+                }
+                else
+                {
+                    AllowedPlugins[pConfig.Name] = pConfig;
+                }
+            }
+
+            var features = document.Descendants("feature");
+
+
+            foreach (var feature in features)
+            {
+                var name = feature.Attribute("name");
+                var values = from results in feature.Descendants("param")
+                             where ((string)results.Attribute("name") == "wp-package")
+                             select results;
+
+                var value = values.FirstOrDefault();
+                if (value != null)
+                {
+                    string key = (string)value.Attribute("value");
+                    Debug.WriteLine("Adding feature.value=" + key);
+                    var onload = value.Attribute("onload");
+                    PluginConfig pConfig = new PluginConfig(key, onload != null && onload.Value == "true");
+                    AllowedPlugins[key] = pConfig;
+                }
+            }
+        }
 
         public void LoadAppPackageConfig()
         {
@@ -196,23 +223,7 @@ namespace WPCordovaClassLib.CordovaLib
                 //This will Read Keys Collection for the xml file
                 XDocument document = XDocument.Parse(sr.ReadToEnd());
 
-                var plugins = from results in document.Descendants("plugin")
-                              select new { name = (string)results.Attribute("name") };
-
-
-                foreach (var plugin in plugins)
-                {
-                    Debug.WriteLine("plugin " + plugin.name);
-                    if (plugin.name == "*")
-                    {
-                        AllowAllPlugins = true;
-                        break;
-                    }
-                    else
-                    {
-                        AllowedPlugins.Add(plugin.name);
-                    }
-                }
+                LoadPluginFeatures(document);
 
                 var preferences = from results in document.Descendants("preference")
                                   select new
@@ -223,6 +234,7 @@ namespace WPCordovaClassLib.CordovaLib
 
                 foreach (var pref in preferences)
                 {
+                    Preferences[pref.name] = pref.value;
                     Debug.WriteLine("pref" + pref.name + ", " + pref.value);
                 }
 
@@ -236,6 +248,13 @@ namespace WPCordovaClassLib.CordovaLib
                 foreach (var accessElem in accessList)
                 {
                     AddWhiteListEntry(accessElem.origin, accessElem.subdomains);
+                }
+
+                var contentsTag = document.Descendants("content").FirstOrDefault();
+                if (contentsTag != null)
+                {
+                    var src = contentsTag.Attribute("src");
+                    ContentSrc = (string)src.Value;
                 }
             }
             else

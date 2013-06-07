@@ -69,6 +69,7 @@ namespace WPCordovaClassLib.Cordova
         public Status Result { get; private set; }
         public string Message { get; set; }
         public bool KeepCallback { get; set; }
+        public string CallbackId { get; set; }
 
         /// <summary>
         /// Whether command succeded or not
@@ -113,6 +114,7 @@ namespace WPCordovaClassLib.Cordova
 
         }
 
+        [Obsolete]
         public string ToCallbackString(string callbackId, string successCallback, string errorCallback)
         {
             if (this.IsSuccess)

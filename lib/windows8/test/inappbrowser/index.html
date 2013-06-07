@@ -27,7 +27,7 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"> <!-- ISO-8859-1 -->
     <title>Cordova Mobile Spec</title>
     <link rel="stylesheet" href="../master.css" type="text/css" media="screen" title="no title" charset="utf-8">
-    <script type="text/javascript" charset="utf-8" src="../cordova.js"></script>      
+    <script type="text/javascript" charset="utf-8" src="../cordova-incl.js"></script>      
 
       
     <script type="text/javascript" charset="utf-8">
@@ -54,23 +54,69 @@
         },1000);
     }
 
-    function doOpen(url, target, params) {
+    function doOpen(url, target, params, numExpectedRedirects) {
+        numExpectedRedirects = numExpectedRedirects || 0;
         var iab = window.open(url, target, params);
         if (!iab) {
             alert('window.open returned ' + iab);
             return;
         }
+        var counts;
+        var lastLoadStartURL;
+        var wasReset = false;
+        function reset()  {
+            counts = {
+                'loaderror': 0,
+                'loadstart': 0,
+                'loadstop': 0,
+                'exit': 0
+            };
+            lastLoadStartURL = '';
+        }
+        reset();
+
         function logEvent(e) {
-            if (e.type == 'loaderror') {
-                console.log('IAB event=' + e.type + ' code=' + e.code + ' message=' + e.message);
-            } else {
-                console.log('IAB event=' + e.type);
+            console.log('IAB event=' + JSON.stringify(e));
+            counts[e.type]++;
+            // Verify that event.url gets updated on redirects.
+            if (e.type == 'loadstart') {
+                if (e.url == lastLoadStartURL) {
+                    alert('Unexpected: loadstart fired multiple times for the same URL.');
+                }
+                lastLoadStartURL = e.url;
+            }
+            // Verify the right number of loadstart events were fired.
+            if (e.type == 'loadstop' || e.type == 'loaderror') {
+                if (e.url != lastLoadStartURL) {
+                    alert('Unexpected: ' + e.type + ' event.url != loadstart\'s event.url');
+                }
+                if (numExpectedRedirects === 0 && counts['loadstart'] !== 1) {
+                    // Do allow a loaderror without a loadstart (e.g. in the case of an invalid URL).
+                    if (!(e.type == 'loaderror' && counts['loadstart'] === 0)) {
+                        alert('Unexpected: got multiple loadstart events. (' + counts['loadstart'] + ')');
+                    }
+                } else if (numExpectedRedirects > 0 && counts['loadstart'] < (numExpectedRedirects+1)) {
+                    alert('Unexpected: should have got at least ' + (numExpectedRedirects+1) + ' loadstart events, but got ' + counts['loadstart']);
+                }
+                wasReset = true;
+                numExpectedRedirects = 0;
+                reset();
+            }
+            // Verify that loadend / loaderror was called.
+            if (e.type == 'exit') {
+                var numStopEvents = counts['loadstop'] + counts['loaderror'];
+                if (numStopEvents === 0 && !wasReset) {
+                    alert('Unexpected: browser closed without a loadstop or loaderror.')
+                } else if (numStopEvents > 1) {
+                    alert('Unexpected: got multiple loadstop/loaderror events.');
+                }
             }
         }
         iab.addEventListener('loaderror', logEvent, false);
         iab.addEventListener('loadstart', logEvent, false);
         iab.addEventListener('loadstop', logEvent, false);
         iab.addEventListener('exit', logEvent, false);
+
         return iab;
     }
 
@@ -160,8 +206,8 @@
     <div class="btn large" onclick="doOpen('http://www.apple.com', 'random_string');">Target=Random: InAppBrowser</div>
     <div class="btn large" onclick="doOpen('http://www.apple.com', 'random_string', 'location=no');">Target=Random, no location bar: InAppBrowser</div>
     <h1>Page with redirect</h1>
-    <div class="btn large" onclick="doOpen('http://google.com', 'random_string', 'location=no');">http://google.com (should 301)</div>
-    <div class="btn large" onclick="doOpen('http://www.zhihu.com/answer/16714076', 'random_string', 'location=no');">http://www.zhihu.com/answer/16714076 (should 302)</div>
+    <div class="btn large" onclick="doOpen('http://google.com', 'random_string', '', 1);">http://google.com (should 301)</div>
+    <div class="btn large" onclick="doOpen('http://goo.gl/pUFqg', 'random_string', '', 2);">http://www.zhihu.com/answer/16714076 (should 302)</div>
     <h1>PDF URL</h1>
     <div class="btn large" onclick="doOpen('http://www.stluciadance.com/prospectus_file/sample.pdf');">Remote URL</div>
     <div class="btn large" onclick="doOpen('local.pdf', '_blank');">Local URL</div>

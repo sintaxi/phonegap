@@ -95,36 +95,40 @@ namespace WPCordovaClassLib.Cordova
 
                 EventHandler<PluginResult> OnCommandResultHandler = delegate(object o, PluginResult res)
                 {
-                    this.OnCommandResult(commandCallParams.CallbackId, res);
+                    if (res.CallbackId == null || res.CallbackId == commandCallParams.CallbackId)
+                    {
+                        this.OnCommandResult(commandCallParams.CallbackId, res);
+                        if (!res.KeepCallback)
+                        {
+                            bc.RemoveResultHandler(commandCallParams.CallbackId);
+                        }
+                    }
                 };
 
-                bc.OnCommandResult += OnCommandResultHandler;
+                //bc.OnCommandResult += OnCommandResultHandler;
+                bc.AddResultHandler(commandCallParams.CallbackId, OnCommandResultHandler);
 
                 EventHandler<ScriptCallback> OnCustomScriptHandler = delegate(object o, ScriptCallback script)
                 {
                     this.InvokeScriptCallback(script);
                 };
 
-
                 bc.OnCustomScript += OnCustomScriptHandler;
 
-                ThreadStart methodInvocation = () =>
+                ThreadStart methodInvokation = () =>
                 {
-
                     try
                     {
-                        bc.InvokeMethodNamed(commandCallParams.Action, commandCallParams.Args);
+                        bc.InvokeMethodNamed(commandCallParams.CallbackId,commandCallParams.Action, commandCallParams.Args);
                     }
                     catch (Exception ex)
                     {
                         Debug.WriteLine("ERROR: Exception in ProcessCommand :: " + ex.Message);
-                        bc.OnCommandResult -= OnCommandResultHandler;
+                        bc.RemoveResultHandler(commandCallParams.CallbackId);
                         bc.OnCustomScript -= OnCustomScriptHandler;
 
                         Debug.WriteLine("ERROR: failed to InvokeMethodNamed :: " + commandCallParams.Action + " on Object :: " + commandCallParams.Service);
-
                         this.OnCommandResult(commandCallParams.CallbackId, new PluginResult(PluginResult.Status.INVALID_ACTION));
-
                         return;
                     }
                 };
@@ -133,19 +137,19 @@ namespace WPCordovaClassLib.Cordova
                 {
                     // Due to some issues with the IsolatedStorage in current version of WP8 SDK we have to run all File Api commands synchronously.
                     // TODO: test this in WP8 RTM
-                    methodInvocation.Invoke();
+                    methodInvokation.Invoke();
                 }
                 else
                 {
-                    new Thread(methodInvocation).Start();
+                    new Thread(methodInvokation).Start();
                 }
 
-                    
+
             }
             catch (Exception ex)
             {
                 // ERROR
-                Debug.WriteLine(String.Format("ERROR: Unable to execute command :: {0}:{1}:{2} ",
+                Debug.WriteLine(String.Format("ERROR: Unable to execute command :: {0}:{1}:{3} ",
                     commandCallParams.Service, commandCallParams.Action, ex.Message));
 
                 this.OnCommandResult(commandCallParams.CallbackId, new PluginResult(PluginResult.Status.ERROR));
@@ -171,6 +175,12 @@ namespace WPCordovaClassLib.Cordova
             if (String.IsNullOrEmpty(callbackId))
             {
                 Debug.WriteLine("ERROR: OnCommandResult missing callbackId argument");
+                return;
+            }
+
+            if (!String.IsNullOrEmpty(result.CallbackId) && callbackId != result.CallbackId)
+            {
+                Debug.WriteLine("Multiple Overlapping Results :: " + result.CallbackId + " :: " + callbackId);
                 return;
             }
 

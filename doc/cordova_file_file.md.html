@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
-<option selected value="2.7.0">2.7.0</option>
+<option value="2.7.0">2.7.0</option>
 <option value="2.6.0rc1">2.6.0rc1</option>
 <option value="2.6.0">2.6.0</option>
 <option value="2.5.0rc1">2.5.0rc1</option>
@@ -244,6 +245,7 @@ File System Quick Example</option>
 <ul>
 <li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
 <li><a href="guide_command-line_index.md.html#Command-Line%20Usage">Command-Line Usage</a></li>
+<li><a href="guide_privacy_index.md.html#Privacy%20Guide">Privacy Guide</a></li>
 <li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
 <li><a href="guide_project-settings_index.md.html#Project%20Settings">Project Settings</a></li>
 <li><a href="guide_plugin-development_index.md.html#Plugin%20Development%20Guide">Plugin Development Guide</a></li>
@@ -2039,28 +2041,26 @@ It is also possible to download a file from remote and save it on the device (on
 <pre class="prettyprint"><code>// !! Assumes variable fileURI contains a valid URI to a text file on the device
 
 var win = function(r) {
-    console.log("Code = " + r.responseCode);
-    console.log("Response = " + r.response);
-    console.log("Sent = " + r.bytesSent);
+  console.log("Code = " + r.responseCode);
+  console.log("Response = " + r.response);
+  console.log("Sent = " + r.bytesSent);
 }
-
 var fail = function(error) {
-    alert("An error has occurred: Code = " + error.code);
-    console.log("upload error source " + error.source);
-    console.log("upload error target " + error.target);
+  alert("An error has occurred: Code = " + error.code);
+  console.log("upload error source " + error.source);
+  console.log("upload error target " + error.target);
 }
 
 var options = new <a href="cordova_file_file.md.html#FileUploadOptions">FileUploadOptions</a>();
 options.fileKey="file";
 options.fileName=fileURI.substr(fileURI.lastIndexOf('/')+1);
 options.mimeType="text/plain";
-</code></pre>
 
-<p>var params = {};
-    params.value1 = "test";
-    params.value2 = "param";</p>
+var params = {};
+params.value1 = "test";
+params.value2 = "param";
 
-<pre class="prettyprint"><code>options.params = params;
+options.params = params;
 
 var ft = new <a href="cordova_file_file.md.html#FileTransfer">FileTransfer</a>();
 ft.upload(fileURI, encodeURI("http://some.server.com/upload.php"), win, fail, options);
@@ -2603,6 +2603,8 @@ entry.getMetadata(win, null);
 <strong>target</strong> URI to the target (String)</li>
 <li>
 <strong>http_status</strong> HTTP status code.  This attribute is only available when a response code is received from the HTTP connection. (Number)</li>
+<li>
+<strong>body</strong> Response body. This attribute is only available when a response is received from the HTTP connection. Available only on Android, iOS. (String)</li>
 </ul>
 <h2>
 <a name="FileTransferError_constants">Constants</a>

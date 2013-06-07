@@ -27,7 +27,7 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8"> <!-- ISO-8859-1 -->
     <title>Cordova Mobile Spec</title>
     <link rel="stylesheet" href="../master.css" type="text/css" media="screen" title="no title" charset="utf-8">
-    <script type="text/javascript" charset="utf-8" src="../cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../cordova-incl.js"></script>
 
 
 <script type="text/javascript" charset="utf-8">
@@ -71,8 +71,16 @@
     }
 
     function setPicture(url, callback) {
+		try {
+			window.atob(url);
+			// if we got here it is a base64 string (DATA_URL)
+			url = "data:image/jpeg;base64," + url;
+		} catch (e) {
+			// not DATA_URL
+		    log('URL: ' + url.slice(0, 100));
+		}    
+    
         pictureUrl = url;
-        log('URL: ' + url.slice(0, 100));
         var img = document.getElementById('camera_image');
         var startTime = new Date();
         img.src = url;
@@ -94,6 +102,8 @@
                 fileEntry = e;
                 logCallback('resolveLocalFileSystemURI()', true)(e);
             }, logCallback('resolveLocalFileSystemURI()', false));
+        } else if (pictureUrl.indexOf('data:image/jpeg;base64' == 0)) {
+        	// do nothing
         } else {
             var path = pictureUrl.replace(/^file:\/\/(localhost)?/, '').replace(/%20/g, ' ');
             fileEntry = new FileEntry('image_name.png', path);
@@ -279,7 +289,7 @@
             var value = el.value;
             if (value === '') continue;
             if (el.isBool) {
-                ret[el.keyName] = !!value;
+                ret[el.keyName] = !!+value;
             } else {
                 ret[el.keyName] = +value;
             }

@@ -31,7 +31,7 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         
         <phone:WebBrowser x:Name="CordovaBrowser" 
-                          Opacity="0"
+                          Opacity="0.0"
                           HorizontalAlignment="Stretch"  
                           VerticalAlignment="Stretch" 
                           IsScriptEnabled="True" 
@@ -45,15 +45,13 @@
                           Navigating="CordovaBrowser_Navigating" 
                           NavigationFailed="CordovaBrowser_NavigationFailed" 
                           IsGeolocationEnabled="True">
-            <phone:WebBrowser.Projection>
-                <PlaneProjection x:Name="BrowserProjector" CenterOfRotationX="0" RotationY="-180"/>
-            </phone:WebBrowser.Projection>
-            <phone:WebBrowser.Resources>
-                <Storyboard x:Name="RotateIn" BeginTime="0:0:0.5">
-                    <DoubleAnimation
-                        Storyboard.TargetName="BrowserProjector"
-                        Storyboard.TargetProperty="RotationY"
-                        To="0" Duration="0:0:0.6"/>
+
+            <phone:WebBrowser.Resources>      
+                <Storyboard x:Name="FadeIn">
+                    <DoubleAnimation Duration="0:0:0.6" 
+                            To="1.0"
+                            Storyboard.TargetName="CordovaBrowser" 
+                            Storyboard.TargetProperty="Opacity"/>
                 </Storyboard>
             </phone:WebBrowser.Resources>
 

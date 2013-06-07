@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
-<option selected value="2.7.0">2.7.0</option>
+<option value="2.7.0">2.7.0</option>
 <option value="2.6.0rc1">2.6.0rc1</option>
 <option value="2.6.0">2.6.0</option>
 <option value="2.5.0rc1">2.5.0rc1</option>
@@ -165,6 +166,7 @@
 <ul>
 <li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
 <li><a href="guide_command-line_index.md.html#Command-Line%20Usage">Command-Line Usage</a></li>
+<li><a href="guide_privacy_index.md.html#Privacy%20Guide">Privacy Guide</a></li>
 <li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
 <li><a href="guide_project-settings_index.md.html#Project%20Settings">Project Settings</a></li>
 <li><a href="guide_plugin-development_index.md.html#Plugin%20Development%20Guide">Plugin Development Guide</a></li>
@@ -513,7 +515,7 @@ function showConfirm() {
 
 <p>Shows a customizable prompt dialog box.</p>
 
-<pre class="prettyprint"><code>navigator.<a href="cordova_notification_notification.md.html#notification.prompt">notification.prompt</a>(message, promptCallback, [title], [buttonLabels])
+<pre class="prettyprint"><code>navigator.<a href="cordova_notification_notification.md.html#notification.prompt">notification.prompt</a>(message, promptCallback, [title], [buttonLabels], [defaultText])
 </code></pre>
 
 <ul>
@@ -525,6 +527,8 @@ function showConfirm() {
 <strong>title:</strong> Dialog title (<code>String</code>) (Optional, Default: "Prompt")</li>
 <li>
 <strong>buttonLabels:</strong> Array of strings for the button labels (<code>Array</code>) (Optional, Default: ["OK","Cancel"])</li>
+<li>
+<strong>defaultText:</strong> Default textbox input value (<code>String</code>) (Optional, Default: "Default text")</li>
 </ul>
 <h2>
 <a name="notification.prompt_description">Description</a>
@@ -570,7 +574,8 @@ function showPrompt() {
         'Please enter your name',  // message
         onPrompt,                  // callback to invoke
         'Registration',            // title
-        ['Ok','Exit']              // buttonLabels
+        ['Ok','Exit'],             // buttonLabels
+        'Jane Doe'                 // defaultText
     );
 }
 </code></pre>
@@ -609,7 +614,8 @@ function showPrompt() {
             'Please enter your name',  // message
             onPrompt,                  // callback to invoke
             'Registration',            // title
-            ['Ok','Exit']              // buttonLabels
+            ['Ok','Exit'],             // buttonLabels
+            'Jane Doe'                 // defaultText
         );
     }
 

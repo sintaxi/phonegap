@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
-<option selected value="2.7.0">2.7.0</option>
+<option value="2.7.0">2.7.0</option>
 <option value="2.6.0rc1">2.6.0rc1</option>
 <option value="2.6.0">2.6.0</option>
 <option value="2.5.0rc1">2.5.0rc1</option>
@@ -160,6 +161,7 @@
 <ul>
 <li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
 <li><a href="guide_command-line_index.md.html#Command-Line%20Usage">Command-Line Usage</a></li>
+<li><a href="guide_privacy_index.md.html#Privacy%20Guide">Privacy Guide</a></li>
 <li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
 <li><a href="guide_project-settings_index.md.html#Project%20Settings">Project Settings</a></li>
 <li><a href="guide_plugin-development_index.md.html#Plugin%20Development%20Guide">Plugin Development Guide</a></li>
@@ -176,6 +178,8 @@
 <blockquote>
   <p>The <code>camera</code> object provides access to the device's default camera application.</p>
 </blockquote>
+
+<p><strong>Important privacy note:</strong> Collection and use of images from a device's camera raises important privacy issues.  Your app's <a href="guide_getting-started_index.md.html">privacy policy</a> should discuss how the app uses the camera and whether the images recorded are shared with any other parties.  In addition, if the app's use of the camera is not apparent in the user interface, you should provide a just-in-time notice prior to your app accessing the camera (if the device operating system doesn't do so already).  That notice should provide the same information noted above, as well as obtaining the user's permission (e.g., by presenting choices for "OK" and "No Thanks").  For more information, please see the <a href="guide_privacy_index.md.html#Privacy%20Guide">Privacy Guide</a>.</p>
 
 <h2>
 <a name="Camera_methods">Methods</a>
@@ -295,7 +299,7 @@ The method itself returns a <a href="cordova_camera_camera.md.html#CameraPopover
 <li>Save the data locally (<code>LocalStorage</code>, <a class="external" href="http://brianleroux.github.com/lawnchair/">Lawnchair</a>, etc)</li>
 <li>Post the data to a remote server</li>
 </ul>
-<p><strong>Note:</strong> The image quality of pictures taken using the camera on newer devices is quite good, and images from the Photo Album will not be downscaled to a lower quality, even if a quality parameter is specified.  <strong><em>Encoding such images using Base64 has caused memory issues on many newer devices.  Therefore, using FILE</em>URI as the '<a href="cordova_camera_camera.md.html#Camera">Camera</a>.destinationType' is highly recommended._</strong></p>
+<p><strong>Note:</strong> The image quality of pictures taken using the camera on newer devices is quite good, and images from the Photo Album will not be downscaled to a lower quality, even if a quality parameter is specified.  <strong><em>Encoding such images using Base64 has caused memory issues on many newer devices.  Therefore, using FILE_URI as the '<a href="cordova_camera_camera.md.html#Camera">Camera</a>.destinationType' is highly recommended.</em></strong></p>
 
 <h2>
 <a name="camera.getPicture_supported_platforms">Supported Platforms</a>
@@ -652,7 +656,8 @@ function cameraCallback(imageData) {
 
 <ul>
 <li>Set <code>quality</code> below 50 to avoid memory error on some devices.</li>
-<li>When <code>destinationType.FILE_URI</code> is used, photos are saved in the application's temporary directory.  Developers may delete the contents of this directory using the navigator.fileMgr APIs if storage space is a concern.</li>
+<li>When <code>destinationType.FILE_URI</code> is used, photos are saved in the application's temporary directory. </li>
+<li>Images saved to the photo album using the <code>saveToPhotoAlbum</code> parameter does not contain the same image metadata as compared to the image returned from <a href="cordova_camera_camera.md.html#camera.getPicture">camera.getPicture</a>.  For example, the image saved to the photo album does not contain any GPS metadata.</li>
 </ul>
 <h2>
 <a name="cameraOptions_windows_phone_7_and_8_quirks">Windows Phone 7 and 8 Quirks</a>

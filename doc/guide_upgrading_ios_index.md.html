@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
-<option selected value="2.7.0">2.7.0</option>
+<option value="2.7.0">2.7.0</option>
 <option value="2.6.0rc1">2.6.0rc1</option>
 <option value="2.6.0">2.6.0</option>
 <option value="2.5.0rc1">2.5.0rc1</option>
@@ -100,6 +101,7 @@
         <div id="subheader">
             <h1>Upgrading Cordova iOS</h1>
             <small><select><option value="Upgrading%2520Cordova%2520iOS">Upgrading Cordova iOS</option>
+<option value="Upgrading%20Cordova%20iOS_upgrading_cordova_2_7_0_projects_to_2_8_0">      - Upgrading Cordova 2.7.0 projects to 2.8.0</option>
 <option value="Upgrading%20Cordova%20iOS_upgrading_cordova_2_6_0_projects_to_2_7_0">      - Upgrading Cordova 2.6.0 projects to 2.7.0</option>
 <option value="Upgrading%20Cordova%20iOS_upgrading_cordova_2_5_0_projects_to_2_6_0">      - Upgrading Cordova 2.5.0 projects to 2.6.0</option>
 <option value="Upgrading%20Cordova%20iOS_upgrading_cordova_2_4_0_projects_to_2_5_0">      - Upgrading Cordova 2.4.0 projects to 2.5.0</option>
@@ -146,6 +148,7 @@
 <ul>
 <li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
 <li><a href="guide_command-line_index.md.html#Command-Line%20Usage">Command-Line Usage</a></li>
+<li><a href="guide_privacy_index.md.html#Privacy%20Guide">Privacy Guide</a></li>
 <li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
 <li><a href="guide_project-settings_index.md.html#Project%20Settings">Project Settings</a></li>
 <li><a href="guide_plugin-development_index.md.html#Plugin%20Development%20Guide">Plugin Development Guide</a></li>
@@ -161,6 +164,41 @@
 
 <p>Please note that <strong>Xcode 4.5 is required</strong>. To submit to the Apple App Store, you must use the latest shipped version of the iOS SDK, which is iOS 6. The iOS 6 SDK requires Xcode 4.5.</p>
 
+<h2>
+<a name="Upgrading%20Cordova%20iOS_upgrading_cordova_2_7_0_projects_to_2_8_0">Upgrading Cordova 2.7.0 projects to 2.8.0</a>
+</h2>
+
+<ol>
+<li>
+<strong>Download and extract the Cordova 2.8.0 source</strong> to a <strong>permanent folder location</strong> on your hard drive (say to ~/Documents/Cordova-2.8.0)</li>
+<li>
+<strong>Quit Xcode</strong> if it is running.</li>
+<li>
+<strong>Navigate</strong> to the directory where you put the downloaded source above, using <strong>Terminal.app</strong>.</li>
+<li>
+<a href="guide_command-line_index.md.html#Command-Line%20Usage_ios"><strong>Create a new project</strong></a> from the command-line tools - you will have to grab the assets from this new project</li>
+<li>
+<strong>Copy</strong> the <strong>www/cordova.js</strong> (note that it does not have a version suffix anymore, the version is in the file itself in the header) file from the new project into your <strong>www</strong> folder, and delete your <strong>www/cordova-2.7.0.js</strong> file</li>
+<li>
+<strong>Update</strong> the Cordova script reference in your <strong>www/index.html</strong> file (and any other files that contain the script reference) to point to the new <strong>cordova.js</strong> file</li>
+<li>
+<p>Update any &lt;plugin&gt; tags that are in your <strong>config.xml</strong> to &lt;feature&gt; tags. Note that existing &lt;plugin&gt; tags will still work, but are deprecated. You can copy this information in the <strong>config.xml</strong> for a new project. For example:</p>
+
+<pre class="prettyprint"><code>&lt;plugins&gt;
+    &lt;plugin name="LocalStorage" value="CDVLocalStorage" /&gt;
+    &lt;!-- other plugins --&gt;
+&lt;/plugins&gt;
+
+
+&lt;!-- change to: (note that a &lt;feature&gt; tag is on the same level as &lt;plugins&gt; --&gt;
+&lt;feature name="LocalStorage"&gt;
+    &lt;param name="ios-package" value="CDVLocalStorage" /&gt;
+&lt;/feature&gt;
+&lt;!-- other &lt;feature&gt; tags --&gt;
+</code></pre>
+</li>
+<li><p>Delete your <strong>"CordovaLib"</strong> folder, and copy the <strong>"CordovaLib"</strong> folder from the new project into your project's root folder</p></li>
+</ol>
 <h2>
 <a name="Upgrading%20Cordova%20iOS_upgrading_cordova_2_6_0_projects_to_2_7_0">Upgrading Cordova 2.6.0 projects to 2.7.0</a>
 </h2>

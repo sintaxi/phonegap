@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Resources;
 using System.Xml.Linq;
@@ -29,6 +28,8 @@ namespace WPCordovaClassLib.CordovaLib
         protected List<string> AllowedDomains;
         protected Dictionary<string, string> Preferences;
 
+        public string ContentSrc { get; private set; }
+
         protected bool AllowAllDomains = false;
         protected bool AllowAllPlugins = false;
 
@@ -44,7 +45,7 @@ namespace WPCordovaClassLib.CordovaLib
             return Preferences[key];
         }
 
-        protected static string[] AllowedSchemes = {"http","https","ftp","ftps"};
+        protected static string[] AllowedSchemes = { "http", "https", "ftp", "ftps" };
         protected bool SchemeIsAllowed(string scheme)
         {
             return AllowedSchemes.Contains(scheme);
@@ -108,16 +109,15 @@ namespace WPCordovaClassLib.CordovaLib
 
         public bool URLIsAllowed(string url)
         {
-            // Debug.WriteLine("Testing URLIsAllowed : " + url);
             // easy case first
-            if (this.AllowAllDomains )
+            if (this.AllowAllDomains)
             {
                 return true;
             }
             else
             {
                 // start simple
-                Uri uri = new Uri(url,UriKind.RelativeOrAbsolute);
+                Uri uri = new Uri(url, UriKind.RelativeOrAbsolute);
                 if (uri.IsAbsoluteUri)
                 {
                     if (this.SchemeIsAllowed(uri.Scheme))
@@ -134,7 +134,7 @@ namespace WPCordovaClassLib.CordovaLib
                             {
                                 // make sure it is at the start, and not part of the query string
                                 // special case :: http://some.other.domain/page.html?x=1&g=http://build.apache.org/
-                                if ( Regex.IsMatch(uri.Scheme + "://" +  uri.Host + "/", pattern) ||
+                                if (Regex.IsMatch(uri.Scheme + "://" + uri.Host + "/", pattern) ||
                                      (!Regex.IsMatch(uri.PathAndQuery, pattern)))
                                 {
                                     return true;
@@ -156,23 +156,63 @@ namespace WPCordovaClassLib.CordovaLib
             return AllowAllPlugins || AllowedPlugins.Keys.Contains(key);
         }
 
-        public string[] AutoloadPlugins {
+        public string[] AutoloadPlugins
+        {
             get
             {
+                // TODO:
                 var res = from results in AllowedPlugins.TakeWhile(p => p.Value.isAutoLoad)
-                          select results.Value.Name ;
-
-                foreach(var s in res)
-                {
-                    Debug.WriteLine(s);
-                }
-                //string[] res = from results in (AllowedPlugins.Where(p => p.Value.isAutoLoad) )
-                //                select (string)results.Key;
+                          select results.Value.Name;
 
                 return new string[] { "", "asd" };
             }
         }
 
+        private void LoadPluginFeatures(XDocument document)
+        {
+            var plugins = from results in document.Descendants("plugin")
+                          select new
+                          {
+                              name = (string)results.Attribute("name"),
+                              autoLoad = results.Attribute("onload")
+                          };
+
+            foreach (var plugin in plugins)
+            {
+                Debug.WriteLine("Warning: Deprecated use of <plugin> by plugin : " + plugin.name);
+                PluginConfig pConfig = new PluginConfig(plugin.name, plugin.autoLoad != null && plugin.autoLoad.Value == "true");
+                if (pConfig.Name == "*")
+                {
+                    AllowAllPlugins = true;
+                    // break; wait, don't, some still could be autoload
+                }
+                else
+                {
+                    AllowedPlugins[pConfig.Name] = pConfig;
+                }
+            }
+
+            var features = document.Descendants("feature");
+    
+
+            foreach (var feature in features)
+            {
+                var name = feature.Attribute("name");
+                var values = from results in feature.Descendants("param")
+                             where ((string)results.Attribute("name") == "wp-package")
+                             select results;
+
+                var value = values.FirstOrDefault();
+                if(value != null)
+                {
+                    string key = (string)value.Attribute("value");
+                    Debug.WriteLine("Adding feature.value=" + key);
+                    var onload = value.Attribute("onload");
+                    PluginConfig pConfig = new PluginConfig(key,onload != null && onload.Value == "true");
+                    AllowedPlugins[key] = pConfig;
+                }
+            }
+        }
 
         public void LoadAppPackageConfig()
         {
@@ -184,27 +224,7 @@ namespace WPCordovaClassLib.CordovaLib
                 //This will Read Keys Collection for the xml file
                 XDocument document = XDocument.Parse(sr.ReadToEnd());
 
-                var plugins = from results in document.Descendants("plugin")
-                              select new
-                              {
-                                  name = (string)results.Attribute("name"),
-                                  autoLoad = results.Attribute("onload")
-                              };
-
-                foreach (var plugin in plugins)
-                {
-                    Debug.WriteLine("plugin " + plugin.name);
-                    PluginConfig pConfig = new PluginConfig(plugin.name, plugin.autoLoad != null && plugin.autoLoad.Value == "true");
-                    if (pConfig.Name == "*")
-                    {
-                        AllowAllPlugins = true;
-                        // break; wait, don't, some still could be autoload
-                    }
-                    else
-                    {
-                        AllowedPlugins.Add(pConfig.Name, pConfig);
-                    }
-                }
+                LoadPluginFeatures(document);
 
                 var preferences = from results in document.Descendants("preference")
                                   select new
@@ -215,6 +235,7 @@ namespace WPCordovaClassLib.CordovaLib
 
                 foreach (var pref in preferences)
                 {
+                    Preferences[pref.name] = pref.value;
                     Debug.WriteLine("pref" + pref.name + ", " + pref.value);
                 }
 
@@ -228,6 +249,13 @@ namespace WPCordovaClassLib.CordovaLib
                 foreach (var accessElem in accessList)
                 {
                     AddWhiteListEntry(accessElem.origin, accessElem.subdomains);
+                }
+
+                var contentsTag = document.Descendants("content").FirstOrDefault();
+                if (contentsTag != null)
+                {
+                    var src = contentsTag.Attribute("src");
+                    ContentSrc = (string)src.Value;
                 }
             }
             else

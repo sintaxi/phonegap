@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
-<option selected value="2.7.0">2.7.0</option>
+<option value="2.7.0">2.7.0</option>
 <option value="2.6.0rc1">2.6.0rc1</option>
 <option value="2.6.0">2.6.0</option>
 <option value="2.5.0rc1">2.5.0rc1</option>
@@ -103,7 +104,14 @@
 <option value="Command-Line%20Usage_supported_platforms">      - Supported Platforms</option>
 <option value="Command-Line%20Usage_windows_phone">      - Windows Phone</option>
 <option value="Command-Line%20Usage_ios">      - iOS</option>
-<option value="Command-Line%20Usage_android">      - Android</option></select></small>
+<option value="Command-Line%20Usage_android">      - Android</option>
+<option value="Command-Line%20Usage_blackberry_10">      - BlackBerry 10</option>
+<option value="Command-Line%20Usage_create">      - create</option>
+<option value="Command-Line%20Usage_target">      - target</option>
+<option value="Command-Line%20Usage_build">      - build</option>
+<option value="Command-Line%20Usage_run">      - run</option>
+<option value="Command-Line%20Usage_plugin">      - plugin</option>
+<option value="Command-Line%20Usage_windows_8">      - Windows 8</option></select></small>
         </div>
 
         <div id="sidebar">
@@ -131,6 +139,7 @@
 <ul>
 <li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
 <li><a href="guide_command-line_index.md.html#Command-Line%20Usage">Command-Line Usage</a></li>
+<li><a href="guide_privacy_index.md.html#Privacy%20Guide">Privacy Guide</a></li>
 <li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
 <li><a href="guide_project-settings_index.md.html#Project%20Settings">Project Settings</a></li>
 <li><a href="guide_plugin-development_index.md.html#Plugin%20Development%20Guide">Plugin Development Guide</a></li>
@@ -161,14 +170,16 @@ Cordova projects.</p>
 <li><a href="#Command-Line%20Usage_ios">iOS</a></li>
 <li><a href="#Command-Line%20Usage_android">Android</a></li>
 <li><a href="#Command-Line%20Usage_blackberry">BlackBerry</a></li>
-<li><a href="#Command-Line%20Usage_wp8">Windows Phone 8</a></li>
+<li><a href="#Command-Line%20Usage_blackberry_10">BlackBerry 10</a></li>
+<li><a href="#Command-Line%20Usage_windows_phone">Windows Phone</a></li>
+<li><a href="#Command-Line%20Usage_windows_8">Windows 8</a></li>
 </ul>
 <h2>
 <a name="Command-Line%20Usage_windows_phone">Windows Phone</a>
 </h2>
 
 <p>The Windows Phone command line tools support creating, building and
-running new projects.</p>
+running new projects.  Commands must be run from a cmd or powershell prompt.</p>
 
 <h3>Create a project</h3>
 
@@ -389,7 +400,7 @@ BlackBerry simulator executables.</p>
 <pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/run &lt;platform&gt;
 </code></pre>
 
-<p>and then choose 'no' when prompted with: </p>
+<p>and then choose 'no' when prompted with:</p>
 
 <pre class="prettyprint"><code>Do you have a BlackBerry device connected to your computer? (y/n)
 </code></pre>
@@ -399,7 +410,7 @@ BlackBerry simulator executables.</p>
 <pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/run &lt;platform&gt;
 </code></pre>
 
-<p>and then choose 'no' when prompted with: </p>
+<p>and then choose 'no' when prompted with:</p>
 
 <pre class="prettyprint"><code>Do you have a BlackBerry device connected to your computer? (y/n)
 </code></pre>
@@ -414,7 +425,165 @@ application's logs (including any calls to <code>console.log</code>) on your dev
 by holding down the ALT key from the home screen and hitting "lglg"
 keys.</p>
 
-            </div>
+<h2>
+<a name="Command-Line%20Usage_blackberry_10">BlackBerry 10</a>
+</h2>
+
+<p>Command-line tools are based on shell scripts. If you need help with a command, type the command with the <code>-h</code> or <code>-help</code> arguments, which are supported by all commands and which will provide descriptions for each of the available arguments.</p>
+
+<p>The following commands are available:</p>
+
+<h2>
+<a name="Command-Line%20Usage_create">create</a>
+</h2>
+
+<p>The 'create' command creates a new project:</p>
+
+<p><code>
+bin/create &lt;path-to-project&gt;
+</code></p>
+
+<h2>
+<a name="Command-Line%20Usage_target">target</a>
+</h2>
+
+<p>The <code>target</code> command allows you to manage the BlackBerry device(s) or simulator that you will use to test your app. You can add or remove a target, or set a target as the default target.</p>
+
+<h3>Add a target</h3>
+
+<p><code>
+&lt;path-to-project&gt;/cordova/target  add  &lt;name&gt;  &lt;ip-address&gt;  &lt;device | simulator&gt;  [-p | --password &lt;password&gt;]  [--pin &lt;device-pin&gt;]
+</code></p>
+
+<p>where</p>
+
+<ul>
+<li>
+<code>&lt;name&gt;</code>  specifies a unique name for the target.</li>
+<li>
+<code>&lt;ip-address&gt;</code>  specifies the ip address of the BlackBerry device or simulator.</li>
+<li>
+<code>-p|--password &lt;password&gt;</code>  specifies the password for the device or simulator. This is required only if the device or simulator is password protected.</li>
+<li>
+<code>--pin &lt;device-pin&gt;</code>  specifies the PIN of the BlackBerry device, which identifies that device as a valid host for the debug token. This argument is required only if you are creating a debug token.</li>
+</ul>
+<h3>Remove a target</h3>
+
+<p><code>
+&lt;path-to-project&gt;/cordova/target  remove  &lt;name&gt;
+</code></p>
+
+<h3>Set a target as the default</h3>
+
+<p><code>
+&lt;path-to-project&gt;/cordova/target  default  &lt;name&gt;
+</code></p>
+
+<h2>
+<a name="Command-Line%20Usage_build">build</a>
+</h2>
+
+<p>The <code>build</code> command builds the project as a .bar file. You can build your app in either release mode (which produces a signed .bar file) or in debug mode (which produces an unsigned .bar file).</p>
+
+<h3>Build your project in release mode</h3>
+
+<p><code>
+&lt;path-to-project&gt;/cordova/build  release  -k|--keystorepass &lt;password&gt;  [-b|--buildId &lt;number&gt;]  [-p|--params &lt;params-JSON-file&gt;]
+</code>
+where</p>
+
+<ul>
+<li>
+<code>-k|--keystorepass &lt;password&gt;</code>  specifies the password you defined when you configured your computer to sign applications.</li>
+<li>
+<code>-b|--buildId &lt;number&gt;</code>  specifies the build version number of your application. Typically, this number should be incremented from the previous signed version. This argument is optional.</li>
+<li>
+<code>-p|--params &lt;params-JSON-file&gt;</code>  specifies a JSON file containing additional parameters to pass to downstream tools. This argument is optional.</li>
+</ul>
+<h3>Build your project in debug mode</h3>
+
+<p><code>
+&lt;path-to-project&gt;/cordova/build  debug  [&lt;target&gt;]  [-k|--keystorepass &lt;password&gt;]  [-p|--params &lt;params-JSON-file&gt;]  [-ll|--loglevel &lt;error|warn|verbose&gt;]
+</code></p>
+
+<p>where</p>
+
+<ul>
+<li>
+<code>&lt;target&gt;</code>  specifies the name of a previously added target. If <code>&lt;target&gt;</code>  is not specified, the default target is used, if one has been created. This argument is only required if you want the script to deploy your app to a BlackBerry device or simulator and you have not created a default target. Additionally, if <code>&lt;target&gt;</code>  is a device, then that device must be connected to your computer by USB connection or be connected to the same Wi-Fi network as your computer.</li>
+<li>
+<code>-k|--keystorepass &lt;password&gt;</code>  specifies the password you defined when you configured your computer to sign applications. This password is also used to create your debug token. This argument is only required if you want the script to create and install the debug token for you.</li>
+<li>
+<code>-p|--params &lt;params-JSON-file&gt;</code>  specifies a JSON file containing additional parameters to pass to downstream tools.</li>
+<li>
+<code>-ll|--loglevel &lt;level&gt;</code>  specifies the log level. The log level may be one of <code>error</code>, <code>warn</code>, or <code>verbose</code>.</li>
+</ul>
+<p>If you have previously defined a default target (and previously installed a debug token, if that target is a BlackBerry device), you can run the script with no arguments, and the script will package your app and deploy it to the default target. For example:</p>
+
+<p><code>
+&lt;path-to-project&gt;/cordova/build debug
+</code></p>
+
+<h2>
+<a name="Command-Line%20Usage_run">run</a>
+</h2>
+
+<p>The <code>run</code> command deploys the app on the specified BlackBerry device or a simulator. Before deploying your app, you must first create a target for the device or simulator you want to deploy your app to. The deploy script will deploy the most recent build of your app.</p>
+
+<p><code>
+&lt;path-to-project&gt;/cordova/run &lt;target&gt;
+</code></p>
+
+<p>where
+-   <code>&lt;target&gt;</code>specifies the name of a previously added target. If <code>&lt;target&gt;</code>is a device, then that device must be connected to your computer by USB connection or be connected to the same Wi-Fi network as your computer.</p>
+
+<h2>
+<a name="Command-Line%20Usage_plugin">plugin</a>
+</h2>
+
+<p>The <code>target</code> command allows you to add and remove plugins</p>
+
+<h3>Fetch a locally-hosted plugin</h3>
+
+<p><code>
+&lt;path-to-project&gt;/cordova/plugin fetch &lt;path-to-plugin&gt;
+</code></p>
+
+<h3>View a list of installed plugins</h3>
+
+<p><code>
+&lt;path-to-project&gt;/cordova/plugin ls
+</code></p>
+
+<h3>Add a plugin</h3>
+
+<p><code>
+&lt;path-to-project&gt;/cordova/plugin add &lt;name&gt;
+</code></p>
+
+<h3>Remove a plugin</h3>
+
+<p><code>
+&lt;path-to-project&gt;/cordova/plugin rm &lt;name&gt;
+</code></p>
+
+<h2>
+<a name="Command-Line%20Usage_windows_8">Windows 8</a>
+</h2>
+
+<p>The Windows 8 command line tools support creating new projects only.
+Commands must be run from a cmd or powershell prompt.</p>
+
+<h3>Create a project</h3>
+
+<p>Run the <code>create</code> command with the following parameters:</p>
+
+<ul>
+<li>Path to your new Cordova Windows 8 project</li>
+<li>Package Name, following reverse-domain style convention ( this becomes the default Namespace )</li>
+<li>Project name</li>
+</ul>
+</div>
         </div>
 
         <!-- Functionality and Syntax Highlighting -->

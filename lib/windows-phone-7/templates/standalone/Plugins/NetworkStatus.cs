@@ -50,6 +50,11 @@ namespace WPCordovaClassLib.Cordova.Commands
             DeviceNetworkInformation.NetworkAvailabilityChanged += new EventHandler<NetworkNotificationEventArgs>(ChangeDetected);
         }
 
+        public override void OnResume(object sender, Microsoft.Phone.Shell.ActivatedEventArgs e)
+        {
+            this.getConnectionInfo("");
+        }
+
         public void getConnectionInfo(string empty)
         {
             HasCallback = true;

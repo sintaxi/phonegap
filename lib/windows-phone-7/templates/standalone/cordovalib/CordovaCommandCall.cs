@@ -23,6 +23,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace WPCordovaClassLib.Cordova
 {
@@ -46,7 +47,6 @@ namespace WPCordovaClassLib.Cordova
             if (string.IsNullOrEmpty(commandStr))
             {
                 return null;
-                //throw new ArgumentNullException("commandStr");
             }
 
             string[] split = commandStr.Split('/');
@@ -56,20 +56,32 @@ namespace WPCordovaClassLib.Cordova
             }
 
             CordovaCommandCall commandCallParameters = new CordovaCommandCall();
-
             commandCallParameters.Service = split[0];
             commandCallParameters.Action = split[1];
             commandCallParameters.CallbackId = split[2];
-            commandCallParameters.Args = split.Length <= 3 ? String.Empty : String.Join("/", split.Skip(3));
 
+            try
+            {
+                string arg = split.Length <= 3 ? "[]" : String.Join("/", split.Skip(3));
+                if (!arg.StartsWith("[")) // save the exception
+                {
+                    arg = string.Format("[{0}]", arg);
+                }
+                List<string> args = JSON.JsonHelper.Deserialize<List<string>>(arg);
+                args.Add(commandCallParameters.CallbackId);
+                commandCallParameters.Args = JSON.JsonHelper.Serialize(args.ToArray());
+            }
+            catch (Exception)
+            {
+                return null; 
+            }
             // sanity check for illegal names
             // was failing with ::
-            // 1, Device1, {"status":1,"message":"{\"name\":\"XD.....
+            // CordovaCommandResult :: 1, Device1, {"status":1,"message":"{\"name\":\"XD.....
             if (commandCallParameters.Service.IndexOfAny(new char[] { '@', ':', ',', '!', ' ' }) > -1)
             {
                 return null;
             }
-
 
             return commandCallParameters;
         }

@@ -16,6 +16,8 @@ using System;
 using System.Reflection;
 using Microsoft.Phone.Shell;
 using System.Diagnostics;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace WPCordovaClassLib.Cordova.Commands
 {
@@ -30,16 +32,36 @@ namespace WPCordovaClassLib.Cordova.Commands
 
         public event EventHandler<ScriptCallback> OnCustomScript;
 
+        public string CurrentCommandCallbackId { get; set; }
+
         public BaseCommand()
         {
+            ResultHandlers = new Dictionary<string, EventHandler<PluginResult>>();
             PhoneApplicationService service = PhoneApplicationService.Current;
             service.Activated += this.OnResume;
             service.Deactivated += this.OnPause;
         }
 
+        protected Dictionary<string, EventHandler<PluginResult>> ResultHandlers;
+        public void AddResultHandler(string callbackId, EventHandler<PluginResult> handler)
+        {
+            ResultHandlers.Add(callbackId, handler);
+        }
+        public bool RemoveResultHandler(string callbackId)
+        {
+            return ResultHandlers.Remove(callbackId);
+        }
+
         /*
          *  InvokeMethodNamed will call the named method of a BaseCommand subclass if it exists and pass the variable arguments list along.
          **/
+
+        public object InvokeMethodNamed(string callbackId, string methodName, params object[] args)
+        {
+            //Debug.WriteLine(string.Format("InvokeMethodNamed:{0} callbackId:{1}",methodName,callbackId));
+            this.CurrentCommandCallbackId = callbackId;
+            return InvokeMethodNamed(methodName, args);
+        }
 
         public object InvokeMethodNamed(string methodName, params object[] args)
         {
@@ -58,7 +80,6 @@ namespace WPCordovaClassLib.Cordova.Commands
                 PropertyInfo pInfo = this.GetType().GetProperty(methodName);
                 if (pInfo != null)
                 {
-
                     object res = pInfo.GetValue(this, null);
 
                     DispatchCommandResult(new PluginResult(PluginResult.Status.OK, res));
@@ -89,51 +110,59 @@ namespace WPCordovaClassLib.Cordova.Commands
             this.DispatchCommandResult(new PluginResult(PluginResult.Status.NO_RESULT));
         }
 
-        public void DispatchCommandResult(PluginResult result)
+        public void DispatchCommandResult(PluginResult result,string callbackId="")
         {
-            if (this.OnCommandResult != null)
+            if (!string.IsNullOrEmpty(callbackId)) 
             {
-                this.OnCommandResult(this, result);
-
-                if (!result.KeepCallback)
-                {
-                    this.Dispose();
-                }
-
+                result.CallbackId = callbackId;
             }
+            else
+            {
+                result.CallbackId = this.CurrentCommandCallbackId;
+            }
+
+            if (ResultHandlers.ContainsKey(result.CallbackId))
+            {
+                ResultHandlers[result.CallbackId](this, result);
+            }
+            else if (this.OnCommandResult != null)
+            {
+                OnCommandResult(this, result);
+            }
+            else
+            {
+                Debug.WriteLine("Failed to locate callback for id : " + result.CallbackId);
+            }
+
+            if (!result.KeepCallback)
+            {
+                this.Dispose();
+            }
+
         }
 
 
         /// <summary>
         /// Occurs when the application is being deactivated.
         /// </summary>        
-        public virtual void OnReset()
-        {
-        }
+        public virtual void OnReset() {}
 
         /// <summary>
         /// Occurs when the application is being loaded, and the config.xml has an autoload entry
         /// </summary>    
-        public virtual void OnInit()
-        {
-
-        }
+        public virtual void OnInit() {}
 
 
         /// <summary>
         /// Occurs when the application is being deactivated.
         /// </summary>        
-        public virtual void OnPause(object sender, DeactivatedEventArgs e)
-        {
-        }
+        public virtual void OnPause(object sender, DeactivatedEventArgs e) {}
 
         /// <summary>
         /// Occurs when the application is being made active after previously being put
         /// into a dormant state or tombstoned.
         /// </summary>        
-        public virtual void OnResume(object sender, Microsoft.Phone.Shell.ActivatedEventArgs e)
-        {
-        }
+        public virtual void OnResume(object sender, Microsoft.Phone.Shell.ActivatedEventArgs e) {}
 
         public void Dispose()
         {

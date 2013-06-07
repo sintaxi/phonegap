@@ -32,8 +32,9 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
+<option selected value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
-<option selected value="2.7.0">2.7.0</option>
+<option value="2.7.0">2.7.0</option>
 <option value="2.6.0rc1">2.6.0rc1</option>
 <option value="2.6.0">2.6.0</option>
 <option value="2.5.0rc1">2.5.0rc1</option>
@@ -141,6 +142,12 @@
 <option value="media.seekTo_quick_example">      - Quick Example</option>
 <option value="media.seekTo_full_example">      - Full Example</option>
 <option value="media.seekTo_blackberry_webworks_quirks">      - BlackBerry WebWorks Quirks</option>
+<option value="media.setVolume">media.setVolume</option>
+<option value="media.setVolume_paramters">      - Paramters</option>
+<option value="media.setVolume_description">      - Description</option>
+<option value="media.setVolume_supported_platforms">      - Supported Platforms</option>
+<option value="media.setVolume_quick_example">      - Quick Example</option>
+<option value="media.setVolume_full_example">      - Full Example</option>
 <option value="media.startRecord">media.startRecord</option>
 <option value="media.startRecord_description">      - Description</option>
 <option value="media.startRecord_supported_platforms">      - Supported Platforms</option>
@@ -194,6 +201,7 @@
 <ul>
 <li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
 <li><a href="guide_command-line_index.md.html#Command-Line%20Usage">Command-Line Usage</a></li>
+<li><a href="guide_privacy_index.md.html#Privacy%20Guide">Privacy Guide</a></li>
 <li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
 <li><a href="guide_project-settings_index.md.html#Project%20Settings">Project Settings</a></li>
 <li><a href="guide_plugin-development_index.md.html#Plugin%20Development%20Guide">Plugin Development Guide</a></li>
@@ -269,6 +277,8 @@
 <a href="cordova_media_media.md.html#media.release">media.release</a>: Releases the underlying OS'es audio resources.</li>
 <li>
 <a href="cordova_media_media.md.html#media.seekTo">media.seekTo</a>: Moves the position within the audio file.</li>
+<li>
+<a href="cordova_media_media.md.html#media.setVolume">media.setVolume</a>: Set the volume for audio playback.</li>
 <li>
 <a href="cordova_media_media.md.html#media.startRecord">media.startRecord</a>: Start recording audio file.</li>
 <li>
@@ -371,8 +381,9 @@
 <h3>Windows Phone Quirks</h3>
 
 <pre class="prettyprint"><code>Only one media file can be played back at a time.
-There are strict restrictions as to how your application interacts with other media. See http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh184838(v=vs.92).aspx
 </code></pre>
+
+<p>There are strict restrictions as to how your application interacts with other media. See the <a class="external" href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh184838(v=vs.92).aspx">Microsoft documentation for details</a>.</p>
 
 <hr>
 <h1><a name="media.getCurrentPosition">media.getCurrentPosition</a></h1>
@@ -1350,6 +1361,176 @@ myMedia.play()  // will first look for file in www/audio/beer.mp3 then in &lt;ap
 <ul>
 <li>This API is not supported on BlackBerry OS 5 devices.</li>
 </ul>
+<hr>
+<h1><a name="media.setVolume">media.setVolume</a></h1>
+
+<p>Set the volume for an audio file.</p>
+
+<pre class="prettyprint"><code><a href="cordova_media_media.md.html#media.setVolume">media.setVolume</a>(volume);
+</code></pre>
+
+<h2>
+<a name="media.setVolume_paramters">Paramters</a>
+</h2>
+
+<ul>
+<li>
+<strong>volume</strong>: The volume to set for playback.  The value must be within the range of 0.0 to 1.0.</li>
+</ul>
+<h2>
+<a name="media.setVolume_description">Description</a>
+</h2>
+
+<p>Function <code><a href="cordova_media_media.md.html#media.setVolume">media.setVolume</a></code> is an asynchronous function that sets the volume during audio playback.</p>
+
+<h2>
+<a name="media.setVolume_supported_platforms">Supported Platforms</a>
+</h2>
+
+<ul>
+<li>Android</li>
+<li>iOS</li>
+</ul>
+<h2>
+<a name="media.setVolume_quick_example">Quick Example</a>
+</h2>
+
+<pre class="prettyprint"><code>// Play audio
+//
+function playAudio(url) {
+    // Play the audio file at url
+    var my_media = new <a href="cordova_media_media.md.html#Media">Media</a>(url,
+        // success callback
+        function() {
+            console.log("playAudio():Audio Success");
+        },
+        // error callback
+        function(err) {
+            console.log("playAudio():Audio Error: "+err);
+    });
+
+    // Play audio
+    my_media.play();
+
+    // Mute volume after 2 seconds
+    setTimeout(function() {
+        my_media.setVolume('0.0');
+    }, 2000);
+
+    // Set volume to 1.0 after 5 seconds
+    setTimeout(function() {
+        my_media.setVolume('1.0');
+    }, 5000);
+}
+</code></pre>
+
+<h2>
+<a name="media.setVolume_full_example">Full Example</a>
+</h2>
+
+<pre class="prettyprint"><code>    &lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                          "http://www.w3.org/TR/html4/strict.dtd"&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;<a href="cordova_media_media.md.html#Media">Media</a> Example&lt;/title&gt;
+
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8"&gt;
+
+        // Wait for Cordova to load
+        //
+        document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
+
+        // Cordova is ready
+        //
+        function onDeviceReady() {
+            playAudio("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
+        }
+
+        // Audio player
+        //
+        var my_media = null;
+        var mediaTimer = null;
+
+        // Play audio
+        //
+        function playAudio(src) {
+            // Create <a href="cordova_media_media.md.html#Media">Media</a> object from src
+            my_media = new <a href="cordova_media_media.md.html#Media">Media</a>(src, onSuccess, onError);
+
+            // Play audio
+            my_media.play();
+
+            // Update my_media position every second
+            if (mediaTimer == null) {
+                mediaTimer = setInterval(function() {
+                    // get my_media position
+                    my_media.getCurrentPosition(
+                        // success callback
+                        function(position) {
+                            if (position &gt; -1) {
+                                setAudioPosition((position) + " sec");
+                            }
+                        },
+                        // error callback
+                        function(e) {
+                            console.log("Error getting pos=" + e);
+                            setAudioPosition("Error: " + e);
+                        }
+                    );
+                }, 1000);
+            }
+        }
+
+        // Set audio volume
+        //
+        function setVolume(volume) {
+            if (my_media) {
+                my_media.setVolume(volume);
+            }
+        }
+
+        // Stop audio
+        //
+        function stopAudio() {
+            if (my_media) {
+                my_media.stop();
+            }
+            clearInterval(mediaTimer);
+            mediaTimer = null;
+        }
+
+        // onSuccess Callback
+        //
+        function onSuccess() {
+            console.log("playAudio():Audio Success");
+        }
+
+        // onError Callback
+        //
+        function onError(error) {
+            alert('code: '    + error.code    + '\n' + 
+                  'message: ' + error.message + '\n');
+        }
+
+        // Set audio position
+        //
+        function setAudioPosition(position) {
+            document.getElementById('audio_position').innerHTML = position;
+        }
+
+        &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;a href="#" class="btn large" onclick="playAudio('http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3');"&gt;Play Audio&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="setVolume('0.0');"&gt;Mute Audio&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="setVolume('1.0');"&gt;Unmute Audio&lt;/a&gt;
+        &lt;a href="#" class="btn large" onclick="stopAudio();"&gt;Stop Playing Audio&lt;/a&gt;
+        &lt;p id="audio_position"&gt;&lt;/p&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre>
+
 <hr>
 <h1><a name="media.startRecord">media.startRecord</a></h1>
 
