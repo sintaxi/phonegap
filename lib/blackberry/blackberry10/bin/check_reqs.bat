@@ -34,12 +34,59 @@ for %%X in (npm) do (
   )
 )
 
+set FOUNDPACKAGER=
+for %%X in (blackberry-nativepackager.bat) do (
+  if not defined FOUNDPACKAGER (
+    set FOUNDPACKAGER=%%~$PATH:X
+  )
+)
+
+set FOUNDDEPLOYER=
+for %%X in (blackberry-deploy.bat) do (
+  if not defined FOUNDDEPLOYER (
+    set FOUNDDEPLOYER=%%~$PATH:X
+  )
+)
+
+set FOUNDSIGNER=
+for %%X in (blackberry-signer.bat) do (
+  if not defined FOUNDSIGNER (
+    set FOUNDSIGNER=%%~$PATH:X
+  )
+)
+
+set FOUNDJAVA=
+for %%e in (%PATHEXT%) do (
+  for %%X in (java%%e) do (
+    if not defined FOUNDJAVA (
+      set FOUNDJAVA=%%~$PATH:X
+    )
+  )
+)
+
+
 if not defined FOUNDNODE (
-  echo "npm cannot be found on the path. Aborting."
+  echo npm cannot be found on the path. Aborting.
   exit /b 1
 )
 if not defined FOUNDNPM (
-  echo "Node cannot be found on the path. Aborting."
+  echo node cannot be found on the path. Aborting.
+  exit /b 1
+)
+if not defined FOUNDJAVA (
+  echo java cannot be found on the path. Aborting.
+  exit /b 1
+)
+if not defined FOUNDPACKAGER (
+  echo blackberry-nativepackager cannot be found on the path. Aborting.
+  exit /b 1
+)
+if not defined FOUNDDEPLOYER (
+  echo blackberry-deploy cannot be found on the path. Aborting.
+  exit /b 1
+)
+if not defined FOUNDSIGNER (
+  echo blackberry-signer cannot be found on the path. Aborting.
   exit /b 1
 )
 

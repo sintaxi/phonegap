@@ -34,7 +34,6 @@ Requires
 - Java JDK 1.5 or greater
 - Apache ANT 1.8.0 or greater
 - Android SDK [http://developer.android.com](http://developer.android.com)
-- Apache Commons Codec [http://commons.apache.org/codec/](http://commons.apache.org/codec/)
 
  
 Cordova Android Developer Tools
@@ -53,7 +52,6 @@ the dependencies:
 General Commands
 
     ./bin/create [path package activity] ... create the ./example app or a cordova android project
-    ./bin/bench ............................ generate a bench proj
     ./bin/autotest ......................... test the cli tools
     ./bin/test ............................. run mobile-spec
 
@@ -103,11 +101,7 @@ Note: The Developer Tools handle this.  This is only to be done if the tooling f
 you are developing directly against the framework.
 
 
-To create your `cordova.jar` file, copy the commons codec:
-
-    mv commons-codec-1.7.jar framework/libs
-
-then run in the framework directory:
+To create your `cordova.jar` file, run in the framework directory:
 
     android update project -p . -t android-17
     ant jar

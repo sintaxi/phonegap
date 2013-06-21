@@ -130,6 +130,7 @@ else
     mkdir -p "$PROJECT_PATH/CordovaFramework/CordovaFramework/"
     cp -r "$BINDIR/../CordovaFramework/CordovaFramework/" "$PROJECT_PATH/CordovaFramework/CordovaFramework/"
     cp "$BINDIR/../CordovaFramework/VERSION" "$PROJECT_PATH/CordovaFramework"
+    cp "$BINDIR/../CordovaFramework/cordova.js" "$PROJECT_PATH/CordovaFramework"
     cp "$BINDIR/../CordovaFramework/CordovaFramework.xcodeproj/project.pbxproj" "$PROJECT_PATH/CordovaFramework/CordovaFramework.xcodeproj"
     # Make the sub-project reference to Cordova have the correct path.
     "$BINDIR/update_cordova_subproject" "$R.xcodeproj/project.pbxproj" "$PROJECT_PATH/CordovaFramework/CordovaFramework.xcodeproj/project.pbxproj" > /dev/null

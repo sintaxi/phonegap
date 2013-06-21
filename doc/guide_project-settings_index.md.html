@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.8.0">2.8.0</option>
+<option selected value="2.9.0rc1">2.9.0rc1</option>
+<option value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
 <option value="2.7.0">2.7.0</option>
 <option value="2.6.0rc1">2.6.0rc1</option>
@@ -145,9 +146,9 @@
                 <h1><a name="Project%20Settings">Project Settings</a></h1>
 
 <p>You can set various application configuration parameters using a platform-agnostic configuration file, <code>config.xml</code>.
-This file is based on the W3C <a class="external" href="http://www.w3.org/TR/widgets/">Packaged Web Apps (Widgets)</a> specification. </p>
+This file is based on the W3C <a class="external" href="http://www.w3.org/TR/widgets/">Packaged Web Apps (Widgets)</a> specification.</p>
 
-<p>The location of the <code>config.xml</code> file is different depending on the platform. The contents, in general, are not. </p>
+<p>The location of the <code>config.xml</code> file is different depending on the platform. The contents, in general, are not.</p>
 
 <h2>
 <a name="Project%20Settings_platform_specific_properties">Platform-Specific Properties</a>
@@ -160,19 +161,13 @@ properties, characteristics and behaviours are encapsulated as much as possible 
 <ul>
 <li><a href="guide_project-settings_ios_index.md.html#Project%20Settings%20for%20iOS">Project Settings for iOS</a></li>
 <li><a href="guide_project-settings_android_index.md.html#Project%20Settings%20for%20Android">Project Settings for Android</a></li>
-<li>
-<a href="guide_project-settings_index.md.html#Project%20Settings">Project Settings</a> for BlackBerry</li>
-<li>
-<a href="guide_project-settings_index.md.html#Project%20Settings">Project Settings</a> for Windows Phone 7</li>
+<li><a href="guide_project-settings_blackberry_index.md.html#Project%20Settings%20for%20BlackBerry">Project Settings for BlackBerry</a></li>
+<li><a href="guide_project-settings_wp7_index.md.html#Project%20Settings%20for%20Windows%20Phone%207">Project Settings for Windows Phone 7</a></li>
 <li><a href="guide_project-settings_wp8_index.md.html#Project%20Settings%20for%20Windows%20Phone%208">Project Settings for Windows Phone 8</a></li>
-<li>
-<a href="guide_project-settings_index.md.html#Project%20Settings">Project Settings</a> for Windows 8</li>
-<li>
-<a href="guide_project-settings_index.md.html#Project%20Settings">Project Settings</a> for webOS</li>
-<li>
-<a href="guide_project-settings_index.md.html#Project%20Settings">Project Settings</a> for Bada</li>
-<li>
-<a href="guide_project-settings_index.md.html#Project%20Settings">Project Settings</a> for FirefoxOS</li>
+<li><a href="guide_project-settings_windows8_index.md.html#Project%20Settings%20for%20Windows%208">Project Settings for Windows 8</a></li>
+<li><a href="guide_project-settings_webos_index.md.html#Project%20Settings%20for%20webOS">Project Settings for webOS</a></li>
+<li><a href="guide_project-settings_bada_index.md.html#Project%20Settings%20for%20Bada">Project Settings for Bada</a></li>
+<li><a href="guide_project-settings_firefoxos_index.md.html#Project%20Settings%20for%20FirefoxOS">Project Settings for FirefoxOS</a></li>
 </ul>
 <h2>
 <a name="Project%20Settings_config_xml_elements">config.xml Elements</a>
@@ -198,17 +193,22 @@ Apache Cordova project aims to abstract and provide simple entry points for.</p>
 
 <h3><code>&lt;plugin&gt;</code></h3>
 
-<p>These elements map to native APIs that the application will be able to access. At runtime, the Apache Cordova framework checks
-the <code>&lt;plugin&gt;</code> elements and maps them to native code to enable your Cordova application to access device APIs otherwise
-unavailable to typical web-based applications.</p>
+<p>These elements map to native APIs that the application accesses. At
+runtime, the Apache Cordova framework checks the <code>&lt;plugin&gt;</code> elements
+and maps them to native code to enable your Cordova application to
+access device APIs otherwise unavailable to typical web-based
+applications.</p>
 
 <h3><code>&lt;access&gt;</code></h3>
 
-<p>These elements define how your whitelist works. Please see the <a href="guide_whitelist_index.md.html#Domain%20Whitelist%20Guide">Domain Whitelist Guide</a> for more information.  </p>
+<p>These elements define how your whitelist works. Please see the
+<a href="guide_whitelist_index.md.html#Domain%20Whitelist%20Guide">Domain Whitelist Guide</a> for more information.</p>
 
 <h3><code>&lt;content&gt;</code></h3>
 
-<p>This element defines the start page of your application, relative to the project's standard web assets root folder. The default is "index.html". </p>
+<p>This element defines your application's start page relative to the
+project's standard web assets root folder. The default is
+<code>index.html</code>.</p>
 
             </div>
         </div>

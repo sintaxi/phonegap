@@ -26,6 +26,12 @@
 CURRENT_DIR=$(pwd)
 BIN_DIR=$(dirname "$0")
 
+#Run check_reqs before doing anything and exit if there's an error
+"$BIN_DIR"/check_reqs
+if [ ${?} -ne 0 ]; then
+    exit 1
+fi
+
 #Run npm install every time (even if node_modules folder is present) to cover platform upgrade
 cd "$BIN_DIR"/..
 #Removed sudo usage so that node modules are not ownder by root

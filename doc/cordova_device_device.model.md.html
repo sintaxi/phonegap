@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.8.0">2.8.0</option>
+<option selected value="2.9.0rc1">2.9.0rc1</option>
+<option value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
 <option value="2.7.0">2.7.0</option>
 <option value="2.6.0rc1">2.6.0rc1</option>
@@ -159,7 +160,9 @@
 <a name="device.model_description">Description</a>
 </h2>
 
-<p><code><a href="cordova_device_device.model.md.html#device.model">device.model</a></code> returns the name of the device's model or product. This value is set by the device manufacturer and may be different across versions of the same product.</p>
+<p>The <code><a href="cordova_device_device.model.md.html#device.model">device.model</a></code> returns the name of the device's model or
+product. The value is set by the device manufacturer and may be
+different across versions of the same product.</p>
 
 <h2>
 <a name="device.model_supported_platforms">Supported Platforms</a>
@@ -182,7 +185,7 @@
 <pre class="prettyprint"><code>// Android:    Nexus One       returns "Passion" (Nexus One code name)
 //             Motorola Droid  returns "voles"
 // BlackBerry: Torch 9800      returns "9800"
-// iOS:     for the iPad Mini, will return iPad2,5. iPhone 5 is iPhone 5,1. See http://theiphonewiki.com/wiki/index.php?title=Models
+// iOS:     for the iPad Mini, returns iPad2,5; iPhone 5 is iPhone 5,1. See http://theiphonewiki.com/wiki/index.php?title=Models
 //
 var model = <a href="cordova_device_device.model.md.html#device.model">device.model</a>;
 </code></pre>
@@ -196,23 +199,22 @@ var model = <a href="cordova_device_device.model.md.html#device.model">device.mo
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_device_device.md.html#Device">Device</a> Properties Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for Cordova to load
+    // Wait for device API libraries to load
     //
     document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
-    // Cordova is ready
+    // device APIs are available
     //
     function onDeviceReady() {
         var element = document.getElementById('deviceProperties');
-
-        element.innerHTML = '<a href="cordova_device_device.md.html#Device">Device</a> Name: '     + <a href="cordova_device_device.md.html#device.name">device.name</a>     + '&lt;br /&gt;' + 
-                            '<a href="cordova_device_device.md.html#Device">Device</a> Cordova: '  + <a href="cordova_device_device.md.html#device.cordova">device.cordova</a> + '&lt;br /&gt;' + 
-                            '<a href="cordova_device_device.md.html#Device">Device</a> Platform: ' + <a href="cordova_device_device.md.html#device.platform">device.platform</a> + '&lt;br /&gt;' + 
-                            '<a href="cordova_device_device.md.html#Device">Device</a> UUID: '     + <a href="cordova_device_device.md.html#device.uuid">device.uuid</a>     + '&lt;br /&gt;' + 
-                            '<a href="cordova_device_device.md.html#Device">Device</a> Model: '    + <a href="cordova_device_device.model.md.html#device.model">device.model</a>     + '&lt;br /&gt;' + 
+        element.innerHTML = '<a href="cordova_device_device.md.html#Device">Device</a> Name: '     + <a href="cordova_device_device.md.html#device.name">device.name</a>     + '&lt;br /&gt;' +
+                            '<a href="cordova_device_device.md.html#Device">Device</a> Cordova: '  + <a href="cordova_device_device.md.html#device.cordova">device.cordova</a>  + '&lt;br /&gt;' +
+                            '<a href="cordova_device_device.md.html#Device">Device</a> Platform: ' + <a href="cordova_device_device.md.html#device.platform">device.platform</a> + '&lt;br /&gt;' +
+                            '<a href="cordova_device_device.md.html#Device">Device</a> UUID: '     + <a href="cordova_device_device.md.html#device.uuid">device.uuid</a>     + '&lt;br /&gt;' +
+                            '<a href="cordova_device_device.md.html#Device">Device</a> Model: '    + <a href="cordova_device_device.model.md.html#device.model">device.model</a>    + '&lt;br /&gt;' +
                             '<a href="cordova_device_device.md.html#Device">Device</a> Version: '  + <a href="cordova_device_device.md.html#device.version">device.version</a>  + '&lt;br /&gt;';
     }
 
@@ -229,33 +231,30 @@ var model = <a href="cordova_device_device.model.md.html#device.model">device.mo
 </h2>
 
 <ul>
-<li>Gets the <a class="external" href="http://developer.android.com/reference/android/os/Build.html#PRODUCT">product name</a> instead of the <a class="external" href="http://developer.android.com/reference/android/os/Build.html#MODEL">model name</a>.
-<ul>
-<li>The product name is often the code name given during production.</li>
-<li>e.g. Nexus One returns "Passion", Motorola Droid returns "voles"</li>
-</ul>
-</li>
+<li>Gets the <a class="external" href="http://developer.android.com/reference/android/os/Build.html#PRODUCT">product name</a> instead of the <a class="external" href="http://developer.android.com/reference/android/os/Build.html#MODEL">model name</a>, which is often the production code name. For example, the Nexus One returns <code>Passion</code>, and Motorola Droid returns <code>voles</code>.</li>
 </ul>
 <h2>
 <a name="device.model_windows_phone_7_and_8_quirks">Windows Phone 7 and 8 Quirks</a>
 </h2>
 
 <ul>
-<li>returns the manufacturer specified <a href="#device%20model">device model</a>, for example, the Samsung Focus returns 'SGH-i917'</li>
+<li>Returns the <a href="#device%20model">device model</a> specified by the manufacturer. For example, the Samsung Focus returns <code>SGH-i917</code>.</li>
 </ul>
 <h2>
 <a name="device.model_bada_quirks">Bada Quirks</a>
 </h2>
 
 <ul>
-<li>returns the manufacturer model name. For example 'Samsung Wave S8500'</li>
+<li>Returns the manufacturer model name, for example, <code>Samsung Wave S8500</code>
+</li>
 </ul>
 <h2>
 <a name="device.model_tizen_quirks">Tizen Quirks</a>
 </h2>
 
 <ul>
-<li>returns the <a href="#device%20model">device model</a> assigned by the vendor. For example 'TIZEN'</li>
+<li>Returns the <a href="#device%20model">device model</a> assigned by the vendor, for example, <code>TIZEN</code>
+</li>
 </ul>
 </div>
         </div>

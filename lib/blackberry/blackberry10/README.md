@@ -96,5 +96,5 @@ Now the plugin can be installed by name:
 
 Plugins hosted remotely can be installed by name without using fetch. To see a list of available remote plugins use:
 
-`<path to project>/cordova/plugin list`
+`<path to project>/cordova/plugin ls`
 

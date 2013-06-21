@@ -17,15 +17,36 @@
 #       under the License.
 #
 #!/bin/sh
-if command -v node >/dev/null 2>&1; then
-    if command -v npm >/dev/null 2>&1; then
-        node "$( dirname "$0" )/check_reqs.js" "$@"
-    else
-        echo "npm cannot be found on the path. Aborting."
-        exit 1
-    fi
+
+NODE=$(command -v node)
+NPM=$(command -v npm)
+JAVA=$(command -v java)
+PACKAGER=$(command -v blackberry-nativepackager)
+DEPLOYER=$(command -v blackberry-deploy)
+SIGNER=$(command -v blackberry-signer)
+
+if [ -z "$NODE" ]; then
+    echo node cannot be found on the path. Aborting.
+    EXIT_CODE=1
+elif [ -z "$NPM" ]; then
+    echo npm cannot be found on the path. Aborting.
+    EXIT_CODE=1
+elif [ -z "$JAVA" ]; then
+    echo java cannot be found on the path. Aborting.
+    EXIT_CODE=1
+elif [ -z "$PACKAGER" ]; then
+    echo blackberry-nativepackager cannot be found on the path. Aborting.
+    EXIT_CODE=1
+elif [ -z "$DEPLOYER" ]; then
+    echo blackberry-deploy cannot be found on the path. Aborting.
+    EXIT_CODE=1
+elif [ -z "$SIGNER" ]; then
+    echo blackberry-signer cannot be found on the path. Aborting.
+    EXIT_CODE=1
 else
-    echo "Node cannot be found on the path. Aborting."
-    exit 1
+    node "$( dirname "$0" )/check_reqs.js" "$@"
+    EXIT_CODE=0
 fi
+
+exit $EXIT_CODE
 

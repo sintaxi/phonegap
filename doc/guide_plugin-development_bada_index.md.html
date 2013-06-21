@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.8.0">2.8.0</option>
+<option selected value="2.9.0rc1">2.9.0rc1</option>
+<option value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
 <option value="2.7.0">2.7.0</option>
 <option value="2.6.0rc1">2.6.0rc1</option>
@@ -144,7 +145,7 @@
 
 <p>Plugins are only supported on Bada 2.0 and above. Bada 1.2 does not support plugins.</p>
 
-<p>The Bada implementation is a full javascript implementation. Therefore, adding a custom plugin involves updating CordovaJS with your plugin code. Follow these steps to add a simple <em>Hello World</em> plugin:</p>
+<p>The Bada implementation is a full JavaScript implementation. Therefore, adding a custom plugin involves updating CordovaJS with your plugin code. Follow these steps to add a simple <em>Hello World</em> plugin:</p>
 
 <ol>
 <li>
@@ -154,7 +155,7 @@
 </code></pre>
 </li>
 <li>
-<p>Create a new javascript file under <strong>lib/bada/plugin/bada/</strong> and name it <em>HelloWorld.js</em>. Add the following content:</p>
+<p>Create a new JavaScript file under <strong>lib/bada/plugin/bada/</strong> and name it <em>HelloWorld.js</em>. Add the following content:</p>
 
 <pre class="prettyprint"><code>function HelloWorld() {
 }
@@ -174,7 +175,7 @@ module.exports = new HelloWorld();
 <pre class="prettyprint"><code>objects: {
     ...
     HelloWorld: {
-        'cordova/plugin/bada/HelloWorld' 
+        'cordova/plugin/bada/HelloWorld'
     },
     ...
 }
@@ -191,7 +192,7 @@ module.exports = new HelloWorld();
 </code></pre>
 </li>
 <li>
-<p>Now you can write your user-facing javascript however you like but remember that in order for your plugin to execute you need to call the following method</p>
+<p>Now you can write your user-facing JavaScript however you like but remember that in order for your plugin to execute you need to call the following method</p>
 
 <pre class="prettyprint"><code>exec(success, fail, 'HelloWorld', 'printHello', ['Jackson!']);
 </code></pre>
@@ -203,12 +204,12 @@ fail is the failure callback that gets executed if the plugin fails
 Finally, the last argument is your plugin parameters (if any).</p>
 </li>
 <li>
-<p>Run the following command to generate the new common javascript (make sure you have the jake npm module installed)</p>
+<p>Run the following command to generate the new common JavaScript (make sure you have the jake npm module installed)</p>
 
 <pre class="prettyprint"><code>jake
 </code></pre>
 </li>
-<li><p>Copy the newly generated javascript under <strong>pkg/cordova.bada.js</strong> to your Bada project under <strong>Res/js</strong></p></li>
+<li><p>Copy the newly generated JavaScript under <strong>pkg/cordova.bada.js</strong> to your Bada project under <strong>Res/js</strong></p></li>
 <li><p>That is it! You can now add new Bada plugins and implement the many features that are not currently supported by Cordova Bada.</p></li>
 </ol>
 </div>

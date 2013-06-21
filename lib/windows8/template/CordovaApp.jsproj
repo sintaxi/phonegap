@@ -53,6 +53,10 @@
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="images\logo.png" />
+    <Content Include="images\smalllogo.png" />
+    <Content Include="images\splashscreen.png" />
+    <Content Include="images\storelogo.png" />
     <Content Include="www\cordova.js" />
     <Content Include="www\css\index.css" />
     <Content Include="www\img\logo.png" />

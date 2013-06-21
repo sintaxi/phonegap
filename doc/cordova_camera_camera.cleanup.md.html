@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.8.0">2.8.0</option>
+<option selected value="2.9.0rc1">2.9.0rc1</option>
+<option value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
 <option value="2.7.0">2.7.0</option>
 <option value="2.6.0rc1">2.6.0rc1</option>
@@ -145,7 +146,8 @@
             <div id="content">
                 <h1><a name="camera.cleanup">camera.cleanup</a></h1>
 
-<p>Cleans up the image files that were taken by the camera, that were stored in a temporary storage location.</p>
+<p>Removes intermediate photos taken by the camera from temporary
+storage.</p>
 
 <pre class="prettyprint"><code>navigator.<a href="cordova_camera_camera.cleanup.md.html#camera.cleanup">camera.cleanup</a>( <a href="cordova_camera_camera.md.html#cameraSuccess">cameraSuccess</a>, <a href="cordova_camera_camera.md.html#cameraError">cameraError</a> );
 </code></pre>
@@ -154,7 +156,10 @@
 <a name="camera.cleanup_description">Description</a>
 </h2>
 
-<p>Cleans up the image files stored in the temporary storage location, when the function <code><a href="cordova_camera_camera.md.html#camera.getPicture">camera.getPicture</a></code> is used with  <code><a href="cordova_camera_camera.md.html#Camera">Camera</a>.sourceType = <a href="cordova_camera_camera.md.html#Camera">Camera</a>.PictureSourceType.CAMERA</code> and <code><a href="cordova_camera_camera.md.html#Camera">Camera</a>.destinationType = <a href="cordova_camera_camera.md.html#Camera">Camera</a>.DestinationType.FILE_URI</code></p>
+<p>Removes intermediate image files that are kept in temporary storage
+after calling <code><a href="cordova_camera_camera.md.html#camera.getPicture">camera.getPicture</a></code>. Applies only when the value of
+<code><a href="cordova_camera_camera.md.html#Camera">Camera</a>.sourceType</code> equals <code><a href="cordova_camera_camera.md.html#Camera">Camera</a>.PictureSourceType.CAMERA</code> and the
+<code><a href="cordova_camera_camera.md.html#Camera">Camera</a>.destinationType</code> equals <code><a href="cordova_camera_camera.md.html#Camera">Camera</a>.DestinationType.FILE_URI</code>.</p>
 
 <h2>
 <a name="camera.cleanup_supported_platforms">Supported Platforms</a>
@@ -167,7 +172,7 @@
 <a name="camera.cleanup_example">Example</a>
 </h2>
 
-<pre class="prettyprint"><code>navigator.<a href="cordova_camera_camera.cleanup.md.html#camera.cleanup">camera.cleanup</a>(onSuccess, onFail); 
+<pre class="prettyprint"><code>navigator.<a href="cordova_camera_camera.cleanup.md.html#camera.cleanup">camera.cleanup</a>(onSuccess, onFail);
 
 function onSuccess() {
     console.log("<a href="cordova_camera_camera.md.html#Camera">Camera</a> cleanup success.")

@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.8.0">2.8.0</option>
+<option selected value="2.9.0rc1">2.9.0rc1</option>
+<option value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
 <option value="2.7.0">2.7.0</option>
 <option value="2.6.0rc1">2.6.0rc1</option>
@@ -178,8 +179,11 @@ Cordova projects.</p>
 <a name="Command-Line%20Usage_windows_phone">Windows Phone</a>
 </h2>
 
-<p>The Windows Phone command line tools support creating, building and
-running new projects.  Commands must be run from a cmd or powershell prompt.</p>
+<p>The Windows Phone command-line tools support creating, building, and
+running new projects. Commands must be run from a cmd or powershell prompt.</p>
+
+<p>The WP8 repo now includes code for building both WP7 + WP8 apps.
+The repo has subfolders for each: wp7/ and wp8/</p>
 
 <h3>Create a project</h3>
 
@@ -190,7 +194,11 @@ running new projects.  Commands must be run from a cmd or powershell prompt.</p>
 <li>Package Name, following reverse-domain style convention ( this becomes the default Namespace )</li>
 <li>Project name</li>
 </ul>
-<!-- --><pre class="prettyprint"><code>$ C:\path\to\cordova-wp8\bin\create C:\path\to\my_new_cordova_project com.example.cordova_project_name CordovaProjectName
+<!-- --><pre class="prettyprint"><code>// create a new wp8 Cordova project
+$ C:\path\to\cordova-wp8\wp8\bin\create C:\path\to\my_new_cordova_project com.example.cordova_project_name CordovaProjectName
+
+// create a new wp7 Cordova project
+$ C:\path\to\cordova-wp8\wp7\bin\create C:\path\to\my_new_cordova_project com.example.cordova_project_name CordovaProjectName
 </code></pre>
 
 <h3>Building your project (cleans then builds)</h3>
@@ -328,9 +336,11 @@ PATH!</p>
 
     $ C:\path\to\my_new_cordova_project\cordova\run.bat [Target] [Build]
 
-
-Make sure you have created at least one Android Virtual <a href="cordova_device_device.md.html#Device">Device</a>. If you did not it will ask you to create one with the `android` command.
-By default the `run` command will look for a connected device, if no device is found it will look for any started emulators. If you have multiple AVDs, you can specify a target ID.
+Make sure you create at least one Android Virtual <a href="cordova_device_device.md.html#Device">Device</a>, otherwise
+you're prompted to do so with the `android` command.  If you have
+multiple AVDs, you're prompted to select one. By default the `run`
+command will detect a connected device. When no device is found,
+it will detect a running emulator.
 
 ### Logging
 
@@ -347,7 +357,6 @@ or, on *Windows*
 or, on *Windows*
 
     $ C:\path\to\my_new_cordova_project\cordova\clean.bat
-
 
 ## BlackBerry
 
@@ -371,15 +380,17 @@ Run the `create` command with the following parameters:
 <pre class="prettyprint"><code>$ /path/to/cordova-blackberry-webworks/bin/create.bat /path/to/my_new_cordova_project com.example.cordova_project_name CordovaProjectName
 </code></pre>
 
-<p>Note: the package name placeholder (com.example.cordova<em>project</em>name) is ignored on the Blackberry platform, but is required for use of the crossplatform tools</p>
+<p><strong>NOTE:</strong> The Blackberry platform ignores the package name placeholder
+(<code>com.example.cordova_project_name</code>), but it's still required for use by
+cross-platform tools.</p>
 
 <h3>Build a project</h3>
 
 <p>For BlackBerry projects, please make sure you customize the
-<code>project.properties</code> file in the root of your Cordova project folder.
-This is necessary for things like supplying your BlackBerry signing key
-password, location of the BlackBerry WebWorks SDK, and location of
-BlackBerry simulator executables.</p>
+<code>project.properties</code> file in your Cordova project's root directory.
+You need to do so to supply your BlackBerry signing key password, and
+specify locations for the BlackBerry WebWorks SDK and BlackBerry
+simulator executables.</p>
 
 <pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/build &lt;platform&gt;
 </code></pre>
@@ -393,9 +404,9 @@ BlackBerry simulator executables.</p>
 
 <p>For BlackBerry projects, please make sure you customize the
 <code>project.properties</code> file in the root of your Cordova project folder.
-This is necessary for things like supplying your BlackBerry signing key
-password, location of the BlackBerry WebWorks SDK, and location of
-BlackBerry simulator executables.</p>
+You need to do so to supply your BlackBerry signing key password, and
+specify locations for the BlackBerry WebWorks SDK and BlackBerry
+simulator executables.</p>
 
 <pre class="prettyprint"><code>$ /path/to/my_new_cordova_project/cordova/run &lt;platform&gt;
 </code></pre>
@@ -417,13 +428,12 @@ BlackBerry simulator executables.</p>
 
 <h3>Logging</h3>
 
-<p>Unfortunately streaming logs directly from the device is not
-supported at this time. However, BlackBerry offers built-in Web
-Inspector support for Playbook and BlackBerry smartphone devices running
-BlackBerry OS 7.0 and above. Additionally, you can access your
-application's logs (including any calls to <code>console.log</code>) on your device
-by holding down the ALT key from the home screen and hitting "lglg"
-keys.</p>
+<p>Unfortunately, streaming logs directly from the device is currently
+unsupported. However, BlackBerry offers built-in Web Inspector support
+for Playbook and BlackBerry smartphone devices running BlackBerry OS
+7.0 and above. You can also access your application's logs (including
+any calls to <code>console.log</code>) on your device by holding down the ''ALT''
+key from the home screen and typing ''lglg'' keys.</p>
 
 <h2>
 <a name="Command-Line%20Usage_blackberry_10">BlackBerry 10</a>

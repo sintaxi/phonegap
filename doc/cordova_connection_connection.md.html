@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.8.0">2.8.0</option>
+<option selected value="2.9.0rc1">2.9.0rc1</option>
+<option value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
 <option value="2.7.0">2.7.0</option>
 <option value="2.6.0rc1">2.6.0rc1</option>
@@ -157,10 +158,8 @@
                 <h1><a name="Connection">Connection</a></h1>
 
 <blockquote>
-  <p>The <code>connection</code> object gives access to the device's cellular and wifi connection information.</p>
+  <p>The <code>connection</code> object, exposed via <code>navigator.connection</code>,  provides information about the device's cellular and wifi connection.</p>
 </blockquote>
-
-<p>This object is exposed as <code>navigator.connection</code>.</p>
 
 <h2>
 <a name="Connection_properties">Properties</a>
@@ -258,13 +257,14 @@
 <hr>
 <h1><a name="connection.type">connection.type</a></h1>
 
-<p>Checks the active network connection that is being used.</p>
+<p>Checks the currently active network connection.</p>
 
 <h2>
 <a name="connection.type_description">Description</a>
 </h2>
 
-<p>This property is a fast way to determine the device's network connection state, and type of connection.</p>
+<p>This property offers a fast way to determine the device's network
+connection state, and type of connection.</p>
 
 <h2>
 <a name="connection.type_supported_platforms">Supported Platforms</a>
@@ -312,34 +312,34 @@ checkConnection();
   &lt;head&gt;
     &lt;title&gt;navigator.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
-    // Wait for Cordova to load
-    // 
+    // Wait for device API libraries to load
+    //
     document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>("<a href="cordova_events_events.md.html#deviceready">deviceready</a>", onDeviceReady, false);
 
-    // Cordova is loaded and it is now safe to make calls Cordova methods
+    // device APIs are available
     //
     function onDeviceReady() {
         checkConnection();
     }
 
-    function checkConnection() {
-        var networkState = navigator.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a>;
+        function checkConnection() {
+            var networkState = navigator.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a>;
 
-        var states = {};
-        states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.UNKNOWN]  = 'Unknown connection';
-        states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.ETHERNET] = 'Ethernet connection';
-        states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.WIFI]     = 'WiFi connection';
-        states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_2G]  = 'Cell 2G connection';
-        states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_3G]  = 'Cell 3G connection';
-        states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_4G]  = 'Cell 4G connection';
-        states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL]     = 'Cell generic connection';
-        states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.NONE]     = 'No network connection';
+            var states = {};
+            states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.UNKNOWN]  = 'Unknown connection';
+            states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.ETHERNET] = 'Ethernet connection';
+            states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.WIFI]     = 'WiFi connection';
+            states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_2G]  = 'Cell 2G connection';
+            states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_3G]  = 'Cell 3G connection';
+            states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_4G]  = 'Cell 4G connection';
+            states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL]     = 'Cell generic connection';
+            states[<a href="cordova_connection_connection.md.html#Connection">Connection</a>.NONE]     = 'No network connection';
 
-        alert('<a href="cordova_connection_connection.md.html#Connection">Connection</a> type: ' + states[networkState]);
-    }
+            alert('<a href="cordova_connection_connection.md.html#Connection">Connection</a> type: ' + states[networkState]);
+        }
 
     &lt;/script&gt;
   &lt;/head&gt;
@@ -353,11 +353,11 @@ checkConnection();
 <a name="connection.type_api_change">API Change</a>
 </h2>
 
-<p>Before Cordova 2.3.0, the <a href="cordova_connection_connection.md.html#Connection">Connection</a> object existed at: <code>navigator.network.connection</code>.</p>
-
-<p>To match the spec, this was changed to <code>navigator.connection</code> in 2.3.0.</p>
-
-<p><code>navigator.network.connection</code> still exists, but is now deprecated and will be removed in a future release.</p>
+<p>Until Cordova 2.3.0, the <code><a href="cordova_connection_connection.md.html#Connection">Connection</a></code> object was accessed via
+<code>navigator.network.connection</code>, after which it was changed to
+<code>navigator.connection</code> to match the W3C specification.  It's still
+available at its original location, but is deprecated and will
+eventually be removed.</p>
 
 <h2>
 <a name="connection.type_ios_quirks">iOS Quirks</a>
@@ -376,7 +376,7 @@ checkConnection();
 </h2>
 
 <ul>
-<li>Bada can only detect a WiFi or cellular connection.
+<li>Bada can only distinguish a WiFi and cellular connection.
 <ul>
 <li>
 <code>navigator.<a href="cordova_connection_connection.md.html#connection.type">connection.type</a></code> is set to <code><a href="cordova_connection_connection.md.html#Connection">Connection</a>.CELL_2G</code> for all cellular data.</li>

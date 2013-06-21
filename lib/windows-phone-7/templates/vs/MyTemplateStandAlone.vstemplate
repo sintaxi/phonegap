@@ -1,13 +1,13 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
-    <Name>CordovaWP7_2_8_0</Name>
-    <Description>Cordova 2.8.0 for Windows Phone 7.5 using the Cordova source code directly.</Description>
+    <Name>CordovaWP7_2_9_0rc1</Name>
+    <Description>Cordova 2.9.0rc1 for Windows Phone 7.5 using the Cordova source code directly.</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
     <SortOrder>1000</SortOrder>
     <CreateNewFolder>true</CreateNewFolder>
-    <DefaultName>CordovaWP7_2_8_0</DefaultName>
+    <DefaultName>CordovaWP7_2_9_0rc1</DefaultName>
     <ProvideDefaultName>true</ProvideDefaultName>
     <LocationField>Enabled</LocationField>
     <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
@@ -23,16 +23,15 @@
       <ProjectItem ReplaceParameters="true" TargetFileName="BuildManifestProcessor.js">BuildManifestProcessor.js</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="config.xml">config.xml</ProjectItem>
       <Folder Name="cordovalib" TargetFolderName="cordovalib">
+        <ProjectItem ReplaceParameters="true" TargetFileName="BaseCommand.cs">BaseCommand.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="BrowserMouseHelper.cs">BrowserMouseHelper.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="CommandFactory.cs">CommandFactory.cs</ProjectItem>
-        <Folder Name="Commands" TargetFolderName="Commands">
-          <ProjectItem ReplaceParameters="true" TargetFileName="BaseCommand.cs">BaseCommand.cs</ProjectItem>
-        </Folder>
         <ProjectItem ReplaceParameters="true" TargetFileName="ConfigHandler.cs">ConfigHandler.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="CordovaCommandCall.cs">CordovaCommandCall.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="CordovaView.xaml">CordovaView.xaml</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="CordovaView.xaml.cs">CordovaView.xaml.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="DOMStorageHelper.cs">DOMStorageHelper.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ImageExifHelper.cs">ImageExifHelper.cs</ProjectItem>
         <Folder Name="JSON" TargetFolderName="JSON">
           <ProjectItem ReplaceParameters="true" TargetFileName="JsonHelper.cs">JsonHelper.cs</ProjectItem>
         </Folder>
@@ -67,7 +66,6 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="FileTransfer.cs">FileTransfer.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="GeoLocation.cs">GeoLocation.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="Globalization.cs">Globalization.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="ImageExifHelper.cs">ImageExifHelper.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="InAppBrowser.cs">InAppBrowser.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="Media.cs">Media.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="MimeTypeMapper.cs">MimeTypeMapper.cs</ProjectItem>

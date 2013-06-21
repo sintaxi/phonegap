@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.8.0">2.8.0</option>
+<option selected value="2.9.0rc1">2.9.0rc1</option>
+<option value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
 <option value="2.7.0">2.7.0</option>
 <option value="2.6.0rc1">2.6.0rc1</option>
@@ -105,7 +106,7 @@
 <option value="Getting%20Started%20with%20BlackBerry_2_install_the_webworks_sdk">      - 2.  Install the WebWorks SDK</option>
 <option value="Getting%20Started%20with%20BlackBerry_3_register_for_signing_keys">      - 3.  Register for Signing Keys</option>
 <option value="Getting%20Started%20with%20BlackBerry_4_install_cordova">      - 4.  Install Cordova</option>
-<option value="Getting%20Started%20with%20BlackBerry_5_setup_new_project">      - 5.  Setup New Project</option>
+<option value="Getting%20Started%20with%20BlackBerry_5_set_up_new_project">      - 5.  Set up New Project</option>
 <option value="Getting%20Started%20with%20BlackBerry_6_hello_world">      - 6.  Hello World</option>
 <option value="Getting%20Started%20with%20BlackBerry_7a_deploy_to_simulator">      - 7A.  Deploy to Simulator</option>
 <option value="Getting%20Started%20with%20BlackBerry_7b_deploy_to_device_windows_and_mac">      - 7B.  Deploy to Device (Windows and Mac)</option>
@@ -151,7 +152,7 @@
             <div id="content">
                 <h1><a name="Getting%20Started%20with%20BlackBerry">Getting Started with BlackBerry</a></h1>
 
-<p>Cordova for BlackBerry makes use of the <a class="external" href="https://bdsc.webapps.blackberry.com/html5">BlackBerry WebWorks framework</a>. BlackBerry WebWorks tooling is available for Windows or Mac environments. </p>
+<p>Cordova for BlackBerry makes use of the <a class="external" href="https://bdsc.webapps.blackberry.com/html5">BlackBerry WebWorks framework</a>. BlackBerry WebWorks tooling is available for Windows or Mac environments.</p>
 
 <p>WebWorks applications can ONLY be deployed to the following BlackBerry platforms:</p>
 
@@ -195,7 +196,7 @@
 <a name="Getting%20Started%20with%20BlackBerry_3_register_for_signing_keys">3.  Register for Signing Keys</a>
 </h2>
 
-<p>If you wish to publish your application on BlackBerry App World, or deploy on an actual device you’ll need to register for a set of free Code Signing Keys.  </p>
+<p>If you wish to publish your application on BlackBerry App World, or deploy on an actual device you’ll need to register for a set of free Code Signing Keys.</p>
 
 <p>To register for Signing Keys visit, and complete the <a class="external" href="https://www.blackberry.com/SignedKeys">BlackBerry Keys Order Form</a>.</p>
 
@@ -205,10 +206,10 @@
 <a name="Getting%20Started%20with%20BlackBerry_4_install_cordova">4.  Install Cordova</a>
 </h2>
 
-<p>Download the latest copy of <a class="external" href="http://phonegap.com/download">PhoneGap</a> and extract its contents to your local machine.</p>
+<p>Download and extract the latest copy of <a class="external" href="http://phonegap.com/download">PhoneGap</a>.</p>
 
 <h2>
-<a name="Getting%20Started%20with%20BlackBerry_5_setup_new_project">5.  Setup New Project</a>
+<a name="Getting%20Started%20with%20BlackBerry_5_set_up_new_project">5.  Set up New Project</a>
 </h2>
 
 <ul>
@@ -259,17 +260,17 @@
 <p>BlackBerry 10
 - <code>qnx.sim.ip</code>
 - <code>qnx.sim.password</code>
-- Note: IP address of simulator obtained when placing the simulator in developer mode through simulator security settings. Simulator password can be set through simulator security settings.</p>
+- <strong>NOTE:</strong> IP address of simulator obtained when placing the simulator in developer mode through simulator security settings. Simulator password can be set through simulator security settings.</p>
 
 <p>Playbook
-- <code>playbook.sim.ip</code> : 
+- <code>playbook.sim.ip</code> :
 - <code>playbook.sim.password</code>
-- Note: IP address of simulator obtained when placing the simulator in developer mode through simulator security settings. Simulator password can be set through simulator security settings.</p>
+- <strong>NOTE:</strong> IP address of simulator obtained when placing the simulator in developer mode through simulator security settings. Simulator password can be set through simulator security settings.</p>
 
 <p>Smartphone (Optional)
-- <code>blackberry.sim.dir</code> 
+- <code>blackberry.sim.dir</code>
 - <code>blackberry.sim.bin</code>
-- Note: On windows file separator '\' must be escaped when specifying directories.  For example <code>C:\\Program Files\\BlackBerry\\Simulator</code>.  </p>
+- <strong>NOTE:</strong> On windows file separator '\' must be escaped when specifying directories.  For example <code>C:\\Program Files\\BlackBerry\\Simulator</code>.</p>
 
 <p>While in your project directory, in command prompt/terminal type <code>./cordova/run &lt;target&gt;</code>. Replace <code>&lt;target&gt;</code> with either <code>qnx</code>, <code>playbook</code>, or <code>blackberry</code>. Note, for BlackBerry 10 and PlayBook, the simulator virtual image must already be started.  For example...</p>
 
@@ -282,15 +283,15 @@
 <p>BlackBerry Smartphone (OS5-7)
 - <code>./cordova/run blackberry</code></p>
 
-<p>Answer 'n' when prompted "Do you have a BlackBerry device connected to your computer? (y/n)"</p>
+<p>When prompted <strong>Do you have a BlackBerry device connected to your computer? (y/n)</strong>, answer <strong>n</strong>.</p>
 
-<p>The application will be installed to the home screen of the simulator. Note, on BlackBerry OS 5 the application is installed in the Downloads folder.</p>
+<p>The application is installed to the simulator's home screen. Note that on BlackBerry OS 5, it is installed in the <code>Downloads</code> folder.</p>
 
 <h2>
 <a name="Getting%20Started%20with%20BlackBerry_7b_deploy_to_device_windows_and_mac">7B.  Deploy to Device (Windows and Mac)</a>
 </h2>
 
-<p>To deploy your app to a device you must have registered for, and setup BlackBerry Code Signing Keys.  See section 3 for details. Also, to deploy apps on BlackBerry 10 or PlayBook, the device must be set to Development Mode which can be enabled from the Settings &gt; Security menu.</p>
+<p>To deploy your app to a device you must have registered for, and setup BlackBerry Code Signing Keys.  See section 3 for details. Also, to deploy apps on BlackBerry 10 or PlayBook, the device must be set to Development Mode which can be enabled from the <strong>Settings → Security</strong> menu.</p>
 
 <ul>
 <li>Open the project.properties file with your favorite editor and customize the following properties:</li>
@@ -321,9 +322,9 @@
 <p>BlackBerry Smartphone (OS5-7)
 - <code>./cordova/run blackberry</code></p>
 
-<p>Answer "y" when prompted "Do you have a BlackBerry device connected to your computer? (y/n)"</p>
+<p>When prompted <strong>Do you have a BlackBerry device connected to your computer? (y/n)</strong>, answer <strong>y</strong>.</p>
 
-<p>The application will be installed to the home screen of the device. Note, on BlackBerry OS 5 the application is installed in the Downloads folder.</p>
+<p>The application is installed to the device's home screen. Note, on BlackBerry OS 5 the application is installed in the Downloads folder.</p>
 
 <h2>
 <a name="Getting%20Started%20with%20BlackBerry_additional_information">Additional Information</a>

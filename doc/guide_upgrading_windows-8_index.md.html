@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.8.0">2.8.0</option>
+<option selected value="2.9.0rc1">2.9.0rc1</option>
+<option value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
 <option value="2.7.0">2.7.0</option>
 <option value="2.6.0rc1">2.6.0rc1</option>
@@ -101,6 +102,7 @@
         <div id="subheader">
             <h1>Upgrading Cordova Windows 8</h1>
             <small><select><option value="Upgrading%2520Cordova%2520Windows%25208">Upgrading Cordova Windows 8</option>
+<option value="Upgrading%20Cordova%20Windows%208_upgrade_to_2_9_0_from_2_8_0">      - Upgrade to 2.9.0 from 2.8.0</option>
 <option value="Upgrading%20Cordova%20Windows%208_upgrade_to_2_8_0_from_2_7_0">      - Upgrade to 2.8.0 from 2.7.0</option></select></small>
         </div>
 
@@ -145,6 +147,17 @@
 
 <p>This document is for people who need to upgrade their Cordova versions from an older version to a current version of Cordova. This applies to applications targetting Windows 8 and the Windows Store.</p>
 
+<h2>
+<a name="Upgrading%20Cordova%20Windows%208_upgrade_to_2_9_0_from_2_8_0">Upgrade to 2.9.0 from 2.8.0</a>
+</h2>
+
+<p>The following commands should be done from within Visual Studio to be sure that the any project references are updated/deleted.</p>
+
+<ol>
+<li>Remove cordova-2.8.0.js from the www directory in your project.</li>
+<li>Add cordova.js file from the source to the www directory in your project. ( note that the file no longer contains a version number in the file name )</li>
+<li>Build and test!</li>
+</ol>
 <h2>
 <a name="Upgrading%20Cordova%20Windows%208_upgrade_to_2_8_0_from_2_7_0">Upgrade to 2.8.0 from 2.7.0</a>
 </h2>

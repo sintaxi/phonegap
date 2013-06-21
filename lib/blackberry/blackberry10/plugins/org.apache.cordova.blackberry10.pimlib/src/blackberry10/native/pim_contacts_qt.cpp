@@ -673,7 +673,7 @@ std::string PimContactsQt::replaceAll(const std::string& s, const std::string& s
     return temp;
 }
 std::string PimContactsQt::replaceString(const std::string& s) {
-    std::string temp = replaceAll(replaceAll(replaceAll(replaceAll(s), "\n", "\\\\n"), "\r", ""), "\t", "\\\\t");
+    std::string temp = replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(s), "\n", "\\\\n"), "\r", ""), "\t", "\\\\t"), "\"", "\"");
     return temp;
 }
 
@@ -804,7 +804,9 @@ void PimContactsQt::populateField(const bbpim::Contact& contact, bbpim::Attribut
                         QString format = "yyyy-MM-dd";
                         contactItem[typeIter->second] = Json::Value(currentAttr.valueAsDateTime().date().toString(format).toStdString());
                     } else {
-                        contactItem[typeIter->second] = Json::Value(currentAttr.value().toStdString());
+                        std::string value = currentAttr.value().toStdString();
+                        value = replaceString(value);
+                        contactItem[typeIter->second] = Json::Value(value);
                     }
                 }
             }

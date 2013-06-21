@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.8.0">2.8.0</option>
+<option selected value="2.9.0rc1">2.9.0rc1</option>
+<option value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
 <option value="2.7.0">2.7.0</option>
 <option value="2.6.0rc1">2.6.0rc1</option>
@@ -104,7 +105,7 @@
 <option value="Getting%20Started%20with%20Symbian_video_tutorials">      - Video Tutorials:</option>
 <option value="Getting%20Started%20with%20Symbian_1_requirements">      - 1. Requirements</option>
 <option value="Getting%20Started%20with%20Symbian_2_install_sdk_cordova">      - 2. Install SDK + Cordova</option>
-<option value="Getting%20Started%20with%20Symbian_3_setup_new_project">      - 3. Setup New Project</option>
+<option value="Getting%20Started%20with%20Symbian_3_set_up_new_project">      - 3. Set up New Project</option>
 <option value="Getting%20Started%20with%20Symbian_4_hello_world">      - 4. Hello World</option>
 <option value="Getting%20Started%20with%20Symbian_5a_deploy_to_simulator">      - 5A. Deploy to Simulator</option>
 <option value="Getting%20Started%20with%20Symbian_5b_deploy_to_device">      - 5B. Deploy to Device
@@ -174,11 +175,11 @@
 </h2>
 
 <ul>
-<li>Download and install <a class="external" href="http://www.cygwin.com/setup.exe">cygwin</a> (Windows only). Make sure you select "make" as it is not included by default</li>
-<li>Download the latest copy of [<a class="external" href="http://phonegap.com/download">PhoneGap</a> and extract its contents. We will be working with the Android directory.</li>
+<li>Download and install <a class="external" href="http://www.cygwin.com/setup.exe">cygwin</a> (Windows only). Make sure you select <code>make</code> as it is not included by default.</li>
+<li>Download and extract the latest copy of [<a class="external" href="http://phonegap.com/download">PhoneGap</a>. You will be working in the Android directory.</li>
 </ul>
 <h2>
-<a name="Getting%20Started%20with%20Symbian_3_setup_new_project">3. Setup New Project</a>
+<a name="Getting%20Started%20with%20Symbian_3_set_up_new_project">3. Set up New Project</a>
 </h2>
 
 <ul>
@@ -189,17 +190,17 @@
 </h2>
 
 <ul>
-<li>Open up index.html located in phonegap/symbian/framework/www with your favourite editor. </li>
-<li>In the <code>body</code> tag, remove the line <code>"Build your phonegap app here! Dude!"</code> and add the line <code>&lt;h1&gt;Hello World&lt;/h1&gt;</code>
+<li>Edit the <code>index.html</code> file located in <code>phonegap/symbian/framework/www</code>.</li>
+<li>In the <code>body</code> tag, remove the line <code>Build your phonegap app here! Dude!</code> and add the line <code>&lt;h1&gt;Hello World&lt;/h1&gt;</code>
 </li>
-<li>In cygwin/terminal, type make. This will produce phonegap-symbian.wrt/app.wgz. </li>
+<li>In <code>cygwin/terminal</code>, type <code>make</code>. This produces a <code>phonegap-symbian.wrt/app.wgz</code> file.</li>
 </ul>
 <h2>
 <a name="Getting%20Started%20with%20Symbian_5a_deploy_to_simulator">5A. Deploy to Simulator</a>
 </h2>
 
 <ul>
-<li>For Mac or Linux you should install <a class="external" href="http://www.aptana.org/products/studio2/download">Aptana Studio</a> and <a class="external" href="http://www.forum.nokia.com/info/sw.nokia.com/id/00d62bd8-4214-4c86-b608-5f11b94dad54/Nokia_WRT_Plug_in_for_Aptana_Studio.html">Nokia WRT Plug-in for Aptana Studio</a>. This has a browser-based javascript emulator</li>
+<li>For Mac or Linux you should install <a class="external" href="http://www.aptana.org/products/studio2/download">Aptana Studio</a> and <a class="external" href="http://www.forum.nokia.com/info/sw.nokia.com/id/00d62bd8-4214-4c86-b608-5f11b94dad54/Nokia_WRT_Plug_in_for_Aptana_Studio.html">Nokia WRT Plug-in for Aptana Studio</a>. This has a browser-based JavaScript emulator</li>
 <li>For Windows you can download the <a class="external" href="http://www.forum.nokia.com/info/sw.nokia.com/id/ec866fab-4b76-49f6-b5a5-af0631419e9c/S60_All_in_One_SDKs.html">S60 SDK</a> which includes the S60 Emulator</li>
 <li>Load the phonegap-symbian.wrt/app.wgz file into the emulator.</li>
 </ul>
