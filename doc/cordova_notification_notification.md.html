@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.9.0rc1">2.9.0rc1</option>
+<option value="2.9.0rc1">2.9.0rc1</option>
+<option selected value="2.9.0">2.9.0</option>
 <option value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
 <option value="2.7.0">2.7.0</option>
@@ -110,7 +111,6 @@
 <option value="notification.alert_quick_example">      - Quick Example</option>
 <option value="notification.alert_full_example">      - Full Example</option>
 <option value="notification.alert_windows_phone_7_and_8_quirks">      - Windows Phone 7 and 8 Quirks</option>
-<option value="notification.alert_bada_2_x_quirks">      - Bada 2.x Quirks</option>
 <option value="notification.confirm">notification.confirm</option>
 <option value="notification.confirm_description">      - Description</option>
 <option value="notification.confirm_confirmcallback">      - confirmCallback</option>
@@ -118,8 +118,6 @@
 <option value="notification.confirm_quick_example">      - Quick Example</option>
 <option value="notification.confirm_full_example">      - Full Example</option>
 <option value="notification.confirm_windows_phone_7_and_8_quirks">      - Windows Phone 7 and 8 Quirks</option>
-<option value="notification.confirm_bada_2_x_quirks">      - Bada 2.x Quirks</option>
-<option value="notification.confirm_bada_1_2_quirks">      - Bada 1.2 Quirks</option>
 <option value="notification.prompt">notification.prompt</option>
 <option value="notification.prompt_description">      - Description</option>
 <option value="notification.prompt_promptcallback">      - promptCallback</option>
@@ -165,7 +163,9 @@
 </ul>
 <h1>Guides</h1>
 <ul>
-<li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
+<li><a href="guide_overview_index.md.html#Overview">Overview</a></li>
+<li><a href="guide_getting-started_index.md.html#Platform%20Guides">Platform Guides</a></li>
+<li><a href="guide_cli_index.md.html#The%20Cordova%20Command-line%20Interface">The Cordova Command-line Interface</a></li>
 <li><a href="guide_command-line_index.md.html#Command-Line%20Usage">Command-Line Usage</a></li>
 <li><a href="guide_privacy_index.md.html#Privacy%20Guide">Privacy Guide</a></li>
 <li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
@@ -212,15 +212,6 @@
 <pre class="prettyprint"><code>&lt;uses-permission android:name="android.permission.VIBRATE" /&gt;
 </code></pre>
 
-<h3>Bada</h3>
-
-<h4>manifest.xml</h4>
-
-<pre class="prettyprint"><code>&lt;Privilege&gt;
-    &lt;Name&gt;SYSTEM_SERVICE&lt;/Name&gt;
-&lt;/Privilege&gt;
-</code></pre>
-
 <h3>BlackBerry WebWorks</h3>
 
 <h4>www/plugins.xml</h4>
@@ -238,11 +229,6 @@
 <h4>config.xml</h4>
 
 <pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_notification_notification.md.html#Notification">Notification</a>" value="CDVNotification" /&gt;
-</code></pre>
-
-<h3>webOS</h3>
-
-<pre class="prettyprint"><code>No permissions are required.
 </code></pre>
 
 <h3>Windows Phone</h3>
@@ -291,10 +277,8 @@ typically less customizable.</p>
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 and 8</li>
-<li>Bada 1.2 &amp; 2.x</li>
-<li>webOS</li>
 <li>Tizen</li>
+<li>Windows Phone 7 and 8</li>
 <li>Windows 8</li>
 </ul>
 <h2>
@@ -324,7 +308,7 @@ navigator.<a href="cordova_notification_notification.md.html#notification.alert"
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for device API libraries to load
@@ -374,13 +358,6 @@ navigator.<a href="cordova_notification_notification.md.html#notification.alert"
 </li>
 <li><p>Both <code>alert</code> and <code>confirm</code> are non-blocking calls, results of which are only available asynchronously.</p></li>
 </ul>
-<h2>
-<a name="notification.alert_bada_2_x_quirks">Bada 2.x Quirks</a>
-</h2>
-
-<ul>
-<li>Uses JavaScript's <code>alert</code> function.</li>
-</ul>
 <hr>
 <h1><a name="notification.confirm">notification.confirm</a></h1>
 
@@ -427,9 +404,8 @@ indexing, so the value is <code>1</code>, <code>2</code>, <code>3</code>, etc.</
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 and 8</li>
-<li>Bada 1.2 &amp; 2.x</li>
 <li>Tizen</li>
+<li>Windows Phone 7 and 8</li>
 <li>Windows 8</li>
 </ul>
 <h2>
@@ -462,7 +438,7 @@ function showConfirm() {
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for device API libraries to load
@@ -511,20 +487,6 @@ function showConfirm() {
 </code></pre>
 </li>
 <li><p>Calls to <code>alert</code> and <code>confirm</code> are non-blocking, so the result is only available asynchronously.</p></li>
-</ul>
-<h2>
-<a name="notification.confirm_bada_2_x_quirks">Bada 2.x Quirks</a>
-</h2>
-
-<ul>
-<li>Calls to <code>confirm</code> uses the browser's built-in <code>alert</code> function.</li>
-</ul>
-<h2>
-<a name="notification.confirm_bada_1_2_quirks">Bada 1.2 Quirks</a>
-</h2>
-
-<ul>
-<li>Ignores button names, so always evaluates as <code>'OK|Cancel'</code>.</li>
 </ul>
 <hr>
 <h1><a name="notification.prompt">notification.prompt</a></h1>
@@ -609,7 +571,7 @@ function showPrompt() {
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_notification_notification.md.html#Notification">Notification</a> Prompt Dialog Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for device API libraries to load
@@ -676,9 +638,8 @@ function showPrompt() {
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 and 8</li>
-<li>Bada 1.2 &amp; 2.x</li>
 <li>Tizen</li>
+<li>Windows Phone 7 and 8</li>
 </ul>
 <h2>
 <a name="notification.beep_quick_example">Quick Example</a>
@@ -697,7 +658,7 @@ navigator.<a href="cordova_notification_notification.md.html#notification.beep">
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for device API libraries to load
@@ -800,7 +761,6 @@ navigator.<a href="cordova_notification_notification.md.html#notification.beep">
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 and 8</li>
-<li>Bada 1.2 &amp; 2.x</li>
 </ul>
 <h2>
 <a name="notification.vibrate_quick_example">Quick Example</a>
@@ -820,7 +780,7 @@ navigator.<a href="cordova_notification_notification.md.html#notification.vibrat
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_notification_notification.md.html#Notification">Notification</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for device API libraries to load

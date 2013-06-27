@@ -6,13 +6,13 @@ using System.Resources;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CordovaAppProj")]
-[assembly: AssemblyDescription("2.0.0.0")]
+[assembly: AssemblyTitle("CordovaWP7AppProj")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Apache Cordova")]
-[assembly: AssemblyProduct("CordovaAppProj")]
-[assembly: AssemblyCopyright("Copyright © Apache Cordova 2013")]
-[assembly: AssemblyTrademark("Apache Cordova")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("CordovaWP7AppProj")]
+[assembly: AssemblyCopyright("Copyright ©")]
+[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 [assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.Satellite)]

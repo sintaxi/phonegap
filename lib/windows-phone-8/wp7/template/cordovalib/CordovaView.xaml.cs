@@ -383,7 +383,7 @@ namespace WPCordovaClassLib
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("Error calling js to fire nativeReady event. Did you include cordova-x.x.x.js in your html script tag?");
+                Debug.WriteLine("Error calling js to fire nativeReady event. Did you include cordova.js in your html script tag?");
             }
 
             if (this.CordovaBrowser.Opacity < 1)

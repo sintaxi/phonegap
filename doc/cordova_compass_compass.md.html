@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.9.0rc1">2.9.0rc1</option>
+<option value="2.9.0rc1">2.9.0rc1</option>
+<option selected value="2.9.0">2.9.0</option>
 <option value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
 <option value="2.7.0">2.7.0</option>
@@ -129,9 +130,8 @@
 <option value="compassError_example">      - Example</option>
 <option value="compassOptions">compassOptions</option>
 <option value="compassOptions_options">      - Options</option>
-<option value="compassOptions_windows_phone_7_and_8_quirks">      - Windows Phone 7 and 8 Quirks</option>
-<option value="compassOptions_bada_quirks">      - Bada Quirks</option>
 <option value="compassOptions_tizen_quirks">      - Tizen Quirks</option>
+<option value="compassOptions_windows_phone_7_and_8_quirks">      - Windows Phone 7 and 8 Quirks</option>
 <option value="compassHeading">compassHeading</option>
 <option value="compassHeading_properties">      - Properties</option>
 <option value="compassHeading_description">      - Description</option>
@@ -166,7 +166,9 @@
 </ul>
 <h1>Guides</h1>
 <ul>
-<li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
+<li><a href="guide_overview_index.md.html#Overview">Overview</a></li>
+<li><a href="guide_getting-started_index.md.html#Platform%20Guides">Platform Guides</a></li>
+<li><a href="guide_cli_index.md.html#The%20Cordova%20Command-line%20Interface">The Cordova Command-line Interface</a></li>
 <li><a href="guide_command-line_index.md.html#Command-Line%20Usage">Command-Line Usage</a></li>
 <li><a href="guide_privacy_index.md.html#Privacy%20Guide">Privacy Guide</a></li>
 <li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
@@ -220,11 +222,6 @@
 <pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_compass_compass.md.html#Compass">Compass</a>" value="org.apache.cordova.CompassListener" /&gt;
 </code></pre>
 
-<h3>Bada</h3>
-
-<pre class="prettyprint"><code>No permissions are required.
-</code></pre>
-
 <h3>BlackBerry WebWorks</h3>
 
 <pre class="prettyprint"><code>No permissions are required.
@@ -235,11 +232,6 @@
 <h4>config.xml</h4>
 
 <pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_compass_compass.md.html#Compass">Compass</a>" value="CDVLocation" /&gt;
-</code></pre>
-
-<h3>webOS</h3>
-
-<pre class="prettyprint"><code>No permissions are required.
 </code></pre>
 
 <h3>Windows Phone</h3>
@@ -284,10 +276,8 @@ object using the <code><a href="cordova_compass_compass.md.html#compassSuccess">
 <ul>
 <li>Android</li>
 <li>iOS</li>
-<li>Windows Phone 7 and 8 ( if available in hardware )</li>
-<li>Bada 1.2 &amp; 2.x</li>
-<li>webOS</li>
 <li>Tizen</li>
+<li>Windows Phone 7 and 8 ( if available in hardware )</li>
 <li>Windows 8</li>
 </ul>
 <h2>
@@ -314,7 +304,7 @@ navigator.<a href="cordova_compass_compass.md.html#compass.getCurrentHeading">co
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_compass_compass.md.html#Compass">Compass</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for device API libraries to load
@@ -380,10 +370,8 @@ ID can be used with <code><a href="cordova_compass_compass.md.html#compass.clear
 <ul>
 <li>Android</li>
 <li>iOS</li>
-<li>Windows Phone 7 and 8 (if available in hardware)</li>
-<li>Bada 1.2 &amp; 2.x</li>
-<li>webOS</li>
 <li>Tizen</li>
+<li>Windows Phone 7 and 8 (if available in hardware)</li>
 <li>Windows 8</li>
 </ul>
 <h2>
@@ -415,7 +403,7 @@ var watchID = navigator.<a href="cordova_compass_compass.md.html#compass.watchHe
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_compass_compass.md.html#Compass">Compass</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // The watch id references the current `watchHeading`
@@ -512,10 +500,8 @@ with time intervals.</p>
 <ul>
 <li>Android</li>
 <li>iOS</li>
-<li>Windows Phone 7 and 8 ( if available in hardware )</li>
-<li>Bada 1.2 &amp; 2.x</li>
-<li>webOS</li>
 <li>Tizen</li>
+<li>Windows Phone 7 and 8 ( if available in hardware )</li>
 <li>Windows 8</li>
 </ul>
 <h2>
@@ -538,7 +524,7 @@ navigator.<a href="cordova_compass_compass.md.html#compass.clearWatch">compass.c
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_compass_compass.md.html#Compass">Compass</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // The watch id references the current `watchHeading`
@@ -672,23 +658,15 @@ navigator.<a href="cordova_compass_compass.md.html#compass.clearWatch">compass.c
 <code>filter</code> is not supported.</li>
 </ul>
 <h2>
-<a name="compassOptions_windows_phone_7_and_8_quirks">Windows Phone 7 and 8 Quirks</a>
-</h2>
-
-<ul>
-<li>
-<code>filter</code> is not supported.</li>
-</ul>
-<h2>
-<a name="compassOptions_bada_quirks">Bada Quirks</a>
-</h2>
-
-<ul>
-<li>
-<code>filter</code> is not supported.</li>
-</ul>
-<h2>
 <a name="compassOptions_tizen_quirks">Tizen Quirks</a>
+</h2>
+
+<ul>
+<li>
+<code>filter</code> is not supported.</li>
+</ul>
+<h2>
+<a name="compassOptions_windows_phone_7_and_8_quirks">Windows Phone 7 and 8 Quirks</a>
 </h2>
 
 <ul>

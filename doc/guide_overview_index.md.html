@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.9.0rc1">2.9.0rc1</option>
+<option value="2.9.0rc1">2.9.0rc1</option>
+<option selected value="2.9.0">2.9.0</option>
 <option value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
 <option value="2.7.0">2.7.0</option>
@@ -130,7 +131,9 @@
 </ul>
 <h1>Guides</h1>
 <ul>
-<li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
+<li><a href="guide_overview_index.md.html#Overview">Overview</a></li>
+<li><a href="guide_getting-started_index.md.html#Platform%20Guides">Platform Guides</a></li>
+<li><a href="guide_cli_index.md.html#The%20Cordova%20Command-line%20Interface">The Cordova Command-line Interface</a></li>
 <li><a href="guide_command-line_index.md.html#Command-Line%20Usage">Command-Line Usage</a></li>
 <li><a href="guide_privacy_index.md.html#Privacy%20Guide">Privacy Guide</a></li>
 <li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
@@ -213,7 +216,7 @@ modify.</p></li>
 additional project files required to compile within each SDK.  For
 this to work, you must install each targeted platform's SDK.
 <!-- XREF
-(See Installing Platform SDKs for instructions.)
+(See the <a href="guide_getting-started_index.md.html#Platform Guides">Platform Guides</a> for instructions.)
 XREF -->
 As indicated in the Platform Support table below, you may need to
 run the CLI on different operating systems depending on the targeted
@@ -231,7 +234,7 @@ and install them directly on a device.</p></li>
 platform-specific SDK tools, which may provide a richer set of
 options. 
 <!-- XREF
-(See Platform Development Guide for details about each platform's SDK tool set.)
+(See the <a href="guide_getting-started_index.md.html#Platform Guides">Platform Guides</a> for details about each platform's SDK tool set.)
 XREF -->
 An SDK environment is more appropriate if you want implement a hybrid
 app that mixes web-based and native application components.
@@ -259,23 +262,6 @@ available for each mobile platform:</p>
 
 <!-- START HTML -->
 
-<p><style></style></p>
-
-<p>.p { background-color: gold; }
-.p::before { content: "(partial)";  }
-.u { background-color: #dddddd; }
-/* .u::before { content: "";  } */
-.y { background-color: lightgreen; }
-.y::before { content: "\2714";     margin-right: 6px;  }
-tr&gt; th:first-of-type { text-align: right }
-td , th[colspan]:first-of-type { text-align: center } 
-.n { background-color: pink; }
-.n::before { content: "\2718"; margin-right: 6px;  }</p>
-
-<p>/* each cell is classed one of: y=yes; n=no; p=partial; u=unknown */</p>
-
-<p></p>
-
 <table class="compat" width="100%">
 <thead><tr>
 <th>
@@ -284,13 +270,9 @@ td , th[colspan]:first-of-type { text-align: center }
         <th>Blackberry</th>
         <th>Blackberry 10</th>
         <th>iOS</th>
-        <th>Symbian</th>
-        <th>WebOS</th>
         <th>Windows<br>Phone 7</th>
         <th>Windows<br>Phone 8</th>
         <th>Windows<br>8</th>
-        <th>Bada</th>
-        <th>Tizen</th>
     </tr></thead>
 <tbody>
 <tr>
@@ -299,13 +281,9 @@ td , th[colspan]:first-of-type { text-align: center }
         <td data-col="blackberry" class="y">Mac, Windows</td>
         <td data-col="blackberry10" class="y">Mac, Windows</td>
         <td data-col="ios" class="y">Mac</td>
-        <td data-col="symbian" class="u"></td>
-        <td data-col="webos" class="u"></td>
         <td data-col="winphone7" class="y">Windows</td>
         <td data-col="winphone8" class="y">Windows</td>
         <td data-col="win8" class="u"></td>
-        <td data-col="bada" class="u"></td>
-        <td data-col="tizen" class="u"></td>
     </tr>
 <tr>
 <th><a href="#">PhoneGap<br>Build</a></th>
@@ -313,13 +291,9 @@ td , th[colspan]:first-of-type { text-align: center }
         <td data-col="blackberry" class="y"></td>
         <td data-col="blackberry10" class="y"></td>
         <td data-col="ios" class="y"></td>
-        <td data-col="symbian" class="y"></td>
-        <td data-col="webos" class="y"></td>
         <td data-col="winphone7" class="u"></td>
         <td data-col="winphone8" class="y"></td>
         <td data-col="win8" class="u"></td>
-        <td data-col="bada" class="u"></td>
-        <td data-col="tizen" class="u"></td>
     </tr>
 <tr>
 <th><a href="guide_getting-started_index.md.html">IDE platform support</a></th>
@@ -327,13 +301,9 @@ td , th[colspan]:first-of-type { text-align: center }
         <td data-col="blackberry" class="y"><a href="guide_getting-started_blackberry_index.md.html">      </a></td>
         <td data-col="blackberry10" class="y"><a href="guide_getting-started_blackberry10_index.md.html">      </a></td>
         <td data-col="ios" class="y"><a href="guide_getting-started_ios_index.md.html">             </a></td>
-        <td data-col="symbian" class="y"><a href="guide_getting-started_symbian_index.md.html">         </a></td>
-        <td data-col="webos" class="y"><a href="guide_getting-started_webos_index.md.html">           </a></td>
         <td data-col="winphone7" class="y"><a href="guide_getting-started_windows-phone-7_index.md.html"> </a></td>
         <td data-col="winphone8" class="y"><a href="guide_getting-started_windows-phone-8_index.md.html"> </a></td>
         <td data-col="win8" class="y"><a href="guide_getting-started_windows-8_index.md.html">       </a></td>
-        <td data-col="bada" class="y"><a href="guide_getting-started_bada_index.md.html">            </a></td>
-        <td data-col="tizen" class="y"><a href="guide_getting-started_tizen_index.md.html">           </a></td>
     </tr>
 <tr>
 <th><a href="#">Embedded<br>WebView</a></th>
@@ -341,13 +311,9 @@ td , th[colspan]:first-of-type { text-align: center }
         <td data-col="blackberry" class="n"></td>
         <td data-col="blackberry10" class="n"></td>
         <td data-col="ios" class="y"><a href="guide_cordova-webview_ios.md.html"></a></td>
-        <td data-col="symbian" class="n"></td>
-        <td data-col="webos" class="n"></td>
         <td data-col="winphone7" class="n"></td>
         <td data-col="winphone8" class="n"></td>
         <td data-col="win8" class="n"></td>
-        <td data-col="bada" class="n"></td>
-        <td data-col="tizen" class="n"></td>
     </tr>
 <tr>
 <th><a href="guide_plugin-development_index.md.html">Plug-in<br>Interface</a></th>
@@ -355,13 +321,9 @@ td , th[colspan]:first-of-type { text-align: center }
         <td data-col="blackberry" class="y"><a href="guide_plugin-development_blackberry_index.md.html"></a></td>
         <td data-col="blackberry10" class="y"><a href="guide_plugin-development_blackberry10_index.md.html"></a></td>
         <td data-col="ios" class="y"><a href="guide_plugin-development_ios_index.md.html"></a></td>
-        <td data-col="symbian" class="n"></td>
-        <td data-col="webos" class="n"></td>
         <td data-col="winphone7" class="y"><a href="guide_plugin-development_windows-phone_index.md.html"></a></td>
         <td data-col="winphone8" class="n"></td>
         <td data-col="win8" class="n"></td>
-        <td data-col="bada" class="y"><a href="guide_plugin-development_bada_index.md.html"></a></td>
-        <td data-col="tizen" class="n"></td>
     </tr>
 <tr>
 <th></th>
@@ -373,13 +335,9 @@ td , th[colspan]:first-of-type { text-align: center }
         <td data-col="blackberry" class="y"></td>
         <td data-col="blackberry10" class="y"></td>
         <td data-col="ios" class="y"></td>
-        <td data-col="symbian" class="y"></td>
-        <td data-col="webos" class="y"></td>
         <td data-col="winphone7" class="y"></td>
         <td data-col="winphone8" class="y"></td>
         <td data-col="win8" class="y"></td>
-        <td data-col="bada" class="y"></td>
-        <td data-col="tizen" class="y"></td>
     </tr>
 <tr>
 <th><a href="cordova_camera_camera.md.html">Camera</a></th>
@@ -387,13 +345,9 @@ td , th[colspan]:first-of-type { text-align: center }
         <td data-col="blackberry" class="y"></td>
         <td data-col="blackberry10" class="y"></td>
         <td data-col="ios" class="y"></td>
-        <td data-col="symbian" class="y"></td>
-        <td data-col="webos" class="y"></td>
         <td data-col="winphone7" class="y"></td>
         <td data-col="winphone8" class="y"></td>
         <td data-col="win8" class="y"></td>
-        <td data-col="bada" class="y"></td>
-        <td data-col="tizen" class="y"></td>
     </tr>
 <tr>
 <th><a href="cordova_media_capture_capture.md.html">Capture</a></th>
@@ -401,13 +355,9 @@ td , th[colspan]:first-of-type { text-align: center }
         <td data-col="blackberry" class="y"></td>
         <td data-col="blackberry10" class="y"></td>
         <td data-col="ios" class="y"></td>
-        <td data-col="symbian" class="n"></td>
-        <td data-col="webos" class="n"></td>
         <td data-col="winphone7" class="y"></td>
         <td data-col="winphone8" class="y"></td>
         <td data-col="win8" class="n"></td>
-        <td data-col="bada" class="n"></td>
-        <td data-col="tizen" class="n"></td>
     </tr>
 <tr>
 <th><a href="cordova_compass_compass.md.html">Compass</a></th>
@@ -415,13 +365,9 @@ td , th[colspan]:first-of-type { text-align: center }
         <td data-col="blackberry" class="n"></td>
         <td data-col="blackberry10" class="n"></td>
         <td data-col="ios" class="y">(3GS+)</td>
-        <td data-col="symbian" class="n"></td>
-        <td data-col="webos" class="y"></td>
         <td data-col="winphone7" class="y"></td>
         <td data-col="winphone8" class="y"></td>
         <td data-col="win8" class="y"></td>
-        <td data-col="bada" class="y"></td>
-        <td data-col="tizen" class="y"></td>
     </tr>
 <tr>
 <th><a href="cordova_connection_connection.md.html">Connection</a></th>
@@ -429,13 +375,9 @@ td , th[colspan]:first-of-type { text-align: center }
         <td data-col="blackberry" class="y"></td>
         <td data-col="blackberry10" class="y"></td>
         <td data-col="ios" class="y"></td>
-        <td data-col="symbian" class="y"></td>
-        <td data-col="webos" class="y"></td>
         <td data-col="winphone7" class="y"></td>
         <td data-col="winphone8" class="y"></td>
         <td data-col="win8" class="y"></td>
-        <td data-col="bada" class="y"></td>
-        <td data-col="tizen" class="y"></td>
     </tr>
 <tr>
 <th><a href="cordova_contacts_contacts.md.html">Contacts</a></th>
@@ -443,13 +385,9 @@ td , th[colspan]:first-of-type { text-align: center }
         <td data-col="blackberry" class="y"></td>
         <td data-col="blackberry10" class="y"></td>
         <td data-col="ios" class="y"></td>
-        <td data-col="symbian" class="y"></td>
-        <td data-col="webos" class="n"></td>
         <td data-col="winphone7" class="y"></td>
         <td data-col="winphone8" class="y"></td>
         <td data-col="win8" class="y"></td>
-        <td data-col="bada" class="y"></td>
-        <td data-col="tizen" class="y"></td>
     </tr>
 <tr>
 <th><a href="cordova_device_device.md.html">Device</a></th>
@@ -457,13 +395,9 @@ td , th[colspan]:first-of-type { text-align: center }
         <td data-col="blackberry" class="y"></td>
         <td data-col="blackberry10" class="y"></td>
         <td data-col="ios" class="y"></td>
-        <td data-col="symbian" class="y"></td>
-        <td data-col="webos" class="y"></td>
         <td data-col="winphone7" class="y"></td>
         <td data-col="winphone8" class="y"></td>
         <td data-col="win8" class="y"></td>
-        <td data-col="bada" class="y"></td>
-        <td data-col="tizen" class="y"></td>
     </tr>
 <tr>
 <th><a href="cordova_events_events.md.html">Events</a></th>
@@ -471,13 +405,9 @@ td , th[colspan]:first-of-type { text-align: center }
         <td data-col="blackberry" class="y"></td>
         <td data-col="blackberry10" class="y"></td>
         <td data-col="ios" class="y"></td>
-        <td data-col="symbian" class="y"></td>
-        <td data-col="webos" class="y"></td>
         <td data-col="winphone7" class="y"></td>
         <td data-col="winphone8" class="y"></td>
         <td data-col="win8" class="y"></td>
-        <td data-col="bada" class="y"></td>
-        <td data-col="tizen" class="y"></td>
     </tr>
 <tr>
 <th><a href="cordova_file_file.md.html">File</a></th>
@@ -485,13 +415,9 @@ td , th[colspan]:first-of-type { text-align: center }
         <td data-col="blackberry" class="y"></td>
         <td data-col="blackberry10" class="y"></td>
         <td data-col="ios" class="y"></td>
-        <td data-col="symbian" class="n"></td>
-        <td data-col="webos" class="n"></td>
         <td data-col="winphone7" class="y"></td>
         <td data-col="winphone8" class="y"></td>
         <td data-col="win8" class="y"></td>
-        <td data-col="bada" class="n"></td>
-        <td data-col="tizen" class="y"></td>
     </tr>
 <tr>
 <th><a href="cordova_geolocation_geolocation.md.html">Geolocation</a></th>
@@ -499,13 +425,9 @@ td , th[colspan]:first-of-type { text-align: center }
         <td data-col="blackberry" class="y"></td>
         <td data-col="blackberry10" class="y"></td>
         <td data-col="ios" class="y"></td>
-        <td data-col="symbian" class="y"></td>
-        <td data-col="webos" class="y"></td>
         <td data-col="winphone7" class="y"></td>
         <td data-col="winphone8" class="y"></td>
         <td data-col="win8" class="y"></td>
-        <td data-col="bada" class="y"></td>
-        <td data-col="tizen" class="y"></td>
     </tr>
 <tr>
 <th><a href="cordova_globalization_globalization.md.html">Globalization</a></th>
@@ -513,13 +435,9 @@ td , th[colspan]:first-of-type { text-align: center }
         <td data-col="blackberry" class="y"></td>
         <td data-col="blackberry10" class="y"></td>
         <td data-col="ios" class="y"></td>
-        <td data-col="symbian" class="n"></td>
-        <td data-col="webos" class="y"></td>
         <td data-col="winphone7" class="n"></td>
         <td data-col="winphone8" class="y"></td>
         <td data-col="win8" class="n"></td>
-        <td data-col="bada" class="n"></td>
-        <td data-col="tizen" class="n"></td>
     </tr>
 <tr>
 <th><a href="cordova_inappbrowser_inappbrowser.md.html">InAppBrowser</a></th>
@@ -527,13 +445,9 @@ td , th[colspan]:first-of-type { text-align: center }
         <td data-col="blackberry" class="y"></td>
         <td data-col="blackberry10" class="y"></td>
         <td data-col="ios" class="y"></td>
-        <td data-col="symbian" class="y"></td>
-        <td data-col="webos" class="y"></td>
         <td data-col="winphone7" class="y"></td>
         <td data-col="winphone8" class="y"></td>
         <td data-col="win8" class="y"></td>
-        <td data-col="bada" class="y"></td>
-        <td data-col="tizen" class="y"></td>
     </tr>
 <tr>
 <th><a href="cordova_media_media.md.html">Media</a></th>
@@ -541,13 +455,9 @@ td , th[colspan]:first-of-type { text-align: center }
         <td data-col="blackberry" class="n"></td>
         <td data-col="blackberry10" class="n"></td>
         <td data-col="ios" class="y"></td>
-        <td data-col="symbian" class="n"></td>
-        <td data-col="webos" class="n"></td>
         <td data-col="winphone7" class="y"></td>
         <td data-col="winphone8" class="y"></td>
         <td data-col="win8" class="y"></td>
-        <td data-col="bada" class="n"></td>
-        <td data-col="tizen" class="y"></td>
     </tr>
 <tr>
 <th><a href="cordova_notification_notification.md.html">Notification</a></th>
@@ -555,13 +465,9 @@ td , th[colspan]:first-of-type { text-align: center }
         <td data-col="blackberry" class="y"></td>
         <td data-col="blackberry10" class="y"></td>
         <td data-col="ios" class="y"></td>
-        <td data-col="symbian" class="y"></td>
-        <td data-col="webos" class="y"></td>
         <td data-col="winphone7" class="y"></td>
         <td data-col="winphone8" class="y"></td>
         <td data-col="win8" class="y"></td>
-        <td data-col="bada" class="y"></td>
-        <td data-col="tizen" class="y"></td>
     </tr>
 <tr>
 <th><a href="cordova_splashscreen_splashscreen.md.html">Splashscreen</a></th>
@@ -569,13 +475,9 @@ td , th[colspan]:first-of-type { text-align: center }
         <td data-col="blackberry" class="n"></td>
         <td data-col="blackberry10" class="n"></td>
         <td data-col="ios" class="y"></td>
-        <td data-col="symbian" class="n"></td>
-        <td data-col="webos" class="n"></td>
         <td data-col="winphone7" class="n"></td>
         <td data-col="winphone8" class="n"></td>
         <td data-col="win8" class="n"></td>
-        <td data-col="bada" class="n"></td>
-        <td data-col="tizen" class="n"></td>
     </tr>
 <tr>
 <th><a href="cordova_storage_storage.md.html">Storage</a></th>
@@ -583,13 +485,9 @@ td , th[colspan]:first-of-type { text-align: center }
         <td data-col="blackberry" class="y"></td>
         <td data-col="blackberry10" class="y"></td>
         <td data-col="ios" class="y"></td>
-        <td data-col="symbian" class="y"></td>
-        <td data-col="webos" class="y"></td>
         <td data-col="winphone7" class="y"></td>
         <td data-col="winphone8" class="y"></td>
         <td data-col="win8" class="y"></td>
-        <td data-col="bada" class="n"></td>
-        <td data-col="tizen" class="y"></td>
     </tr>
 </tbody>
 </table>

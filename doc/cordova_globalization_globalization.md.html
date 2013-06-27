@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.9.0rc1">2.9.0rc1</option>
+<option value="2.9.0rc1">2.9.0rc1</option>
+<option selected value="2.9.0">2.9.0</option>
 <option value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
 <option value="2.7.0">2.7.0</option>
@@ -203,7 +204,9 @@
 </ul>
 <h1>Guides</h1>
 <ul>
-<li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
+<li><a href="guide_overview_index.md.html#Overview">Overview</a></li>
+<li><a href="guide_getting-started_index.md.html#Platform%20Guides">Platform Guides</a></li>
+<li><a href="guide_cli_index.md.html#The%20Cordova%20Command-line%20Interface">The Cordova Command-line Interface</a></li>
 <li><a href="guide_command-line_index.md.html#Command-Line%20Usage">Command-Line Usage</a></li>
 <li><a href="guide_privacy_index.md.html#Privacy%20Guide">Privacy Guide</a></li>
 <li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
@@ -320,7 +323,7 @@ popup dialog with the text <code>language: English</code>:</p>
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;getPreferredLanguage Example&lt;/title&gt;
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     function checkLanguage() {
@@ -395,7 +398,7 @@ dialog with the text <code>locale: en\_US</code>.</p>
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;getLocaleName Example&lt;/title&gt;
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     function checkLocale() {
@@ -483,7 +486,7 @@ options:</p>
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;dateToString Example&lt;/title&gt;
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     function checkDateString() {
@@ -602,7 +605,7 @@ integer represents an array index.</p>
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;stringToDate Example&lt;/title&gt;
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     function checkStringDate() {
@@ -708,7 +711,7 @@ a popup dialog with text such as <code>pattern: M/d/yyyy h:mm a</code>:</p>
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;getDatePattern Example&lt;/title&gt;
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     function checkDatePattern() {
@@ -806,7 +809,7 @@ a series of twelve popup dialogs, one per month, with text similar to
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;getDateNames Example&lt;/title&gt;
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     function checkDateNames() {
@@ -886,7 +889,7 @@ timezone, this should display a popup dialog with text similar to
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;isDayLightSavingsTime Example&lt;/title&gt;
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     function checkDayLightSavings() {
@@ -958,7 +961,7 @@ popup dialog with text similar to <code>day: 1</code>.</p>
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;getFirstDayOfWeek Example&lt;/title&gt;
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     function checkFirstDay() {
@@ -1036,7 +1039,7 @@ dialog with text similar to <code>number: 3.142</code>:</p>
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;numberToString Example&lt;/title&gt;
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     function checkNumber() {
@@ -1119,7 +1122,7 @@ popup dialog with text similar to <code>number: 1234.56</code>:</p>
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;stringToNumber Example&lt;/title&gt;
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     function checkNumber() {
@@ -1242,7 +1245,7 @@ grouping: ,
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;getNumberPattern Example&lt;/title&gt;
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     function checkPattern() {
@@ -1368,7 +1371,7 @@ grouping: ,
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;getCurrencyPattern Example&lt;/title&gt;
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     function checkPattern() {
@@ -1455,7 +1458,7 @@ popup dialog with the text similar to <code>code: 3</code> and <code>message:</c
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_globalization_globalization.md.html#GlobalizationError">GlobalizationError</a> Example&lt;/title&gt;
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     function successCallback(date) {

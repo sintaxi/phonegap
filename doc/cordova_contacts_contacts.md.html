@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.9.0rc1">2.9.0rc1</option>
+<option value="2.9.0rc1">2.9.0rc1</option>
+<option selected value="2.9.0">2.9.0</option>
 <option value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
 <option value="2.7.0">2.7.0</option>
@@ -130,7 +131,6 @@
 <option value="Contact_blackberry_webworks_os_5_0_and_higher_quirks">      - BlackBerry WebWorks (OS 5.0 and higher) Quirks</option>
 <option value="Contact_ios_quirks">      - iOS Quirks</option>
 <option value="Contact_windows_phone_7_and_8_quirks">      - Windows Phone 7 and 8 Quirks</option>
-<option value="Contact_bada_quirks">      - Bada Quirks</option>
 <option value="ContactAddress">ContactAddress</option>
 <option value="ContactAddress_properties">      - Properties</option>
 <option value="ContactAddress_details">      - Details</option>
@@ -140,7 +140,6 @@
 <option value="ContactAddress_android_2_x_quirks">      - Android 2.X Quirks</option>
 <option value="ContactAddress_blackberry_webworks_os_5_0_and_higher_quirks">      - BlackBerry WebWorks (OS 5.0 and higher) Quirks</option>
 <option value="ContactAddress_ios_quirks">      - iOS Quirks</option>
-<option value="ContactAddress_bada_quirks">      - Bada Quirks</option>
 <option value="ContactField">ContactField</option>
 <option value="ContactField_properties">      - Properties</option>
 <option value="ContactField_details">      - Details</option>
@@ -150,13 +149,11 @@
 <option value="ContactField_android_quirks">      - Android Quirks</option>
 <option value="ContactField_blackberry_webworks_os_5_0_and_higher_quirks">      - BlackBerry WebWorks (OS 5.0 and higher) Quirks</option>
 <option value="ContactField_ios_quirks">      - iOS Quirks</option>
-<option value="ContactField_bada_quirks">      - Bada Quirks</option>
 <option value="ContactFindOptions">ContactFindOptions</option>
 <option value="ContactFindOptions_properties">      - Properties</option>
 <option value="ContactFindOptions_supported_platforms">      - Supported Platforms</option>
 <option value="ContactFindOptions_quick_example">      - Quick Example</option>
 <option value="ContactFindOptions_full_example">      - Full Example</option>
-<option value="ContactFindOptions_bada_quirks">      - Bada Quirks</option>
 <option value="ContactName">ContactName</option>
 <option value="ContactName_properties">      - Properties</option>
 <option value="ContactName_details">      - Details</option>
@@ -166,7 +163,6 @@
 <option value="ContactName_android_quirks">      - Android Quirks</option>
 <option value="ContactName_blackberry_webworks_os_5_0_and_higher_quirks">      - BlackBerry WebWorks (OS 5.0 and higher) Quirks</option>
 <option value="ContactName_ios_quirks">      - iOS Quirks</option>
-<option value="ContactName_bada_quirks">      - Bada Quirks</option>
 <option value="ContactOrganization">ContactOrganization</option>
 <option value="ContactOrganization_properties">      - Properties</option>
 <option value="ContactOrganization_details">      - Details</option>
@@ -176,7 +172,6 @@
 <option value="ContactOrganization_android_2_x_quirks">      - Android 2.X Quirks</option>
 <option value="ContactOrganization_blackberry_webworks_os_5_0_and_higher_quirks">      - BlackBerry WebWorks (OS 5.0 and higher) Quirks</option>
 <option value="ContactOrganization_ios_quirks">      - iOS Quirks</option>
-<option value="ContactOrganization_bada_2_0_quirks">      - Bada 2.0 Quirks</option>
 <option value="ContactError">ContactError</option>
 <option value="ContactError_properties">      - Properties</option>
 <option value="ContactError_constants">      - Constants</option>
@@ -213,7 +208,9 @@
 </ul>
 <h1>Guides</h1>
 <ul>
-<li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
+<li><a href="guide_overview_index.md.html#Overview">Overview</a></li>
+<li><a href="guide_getting-started_index.md.html#Platform%20Guides">Platform Guides</a></li>
+<li><a href="guide_cli_index.md.html#The%20Cordova%20Command-line%20Interface">The Cordova Command-line Interface</a></li>
 <li><a href="guide_command-line_index.md.html#Command-Line%20Usage">Command-Line Usage</a></li>
 <li><a href="guide_privacy_index.md.html#Privacy%20Guide">Privacy Guide</a></li>
 <li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
@@ -284,15 +281,6 @@
 &lt;uses-permission android:name="android.permission.WRITE_CONTACTS" /&gt;
 </code></pre>
 
-<h3>Bada</h3>
-
-<h4>manifest.xml</h4>
-
-<pre class="prettyprint"><code>&lt;Privilege&gt;
-    &lt;Name&gt;ADDRESSBOOK&lt;/Name&gt;
-&lt;/Privilege&gt;
-</code></pre>
-
 <h3>BlackBerry WebWorks</h3>
 
 <h4>www/plugins.xml</h4>
@@ -313,11 +301,6 @@
 <h4>config.xml</h4>
 
 <pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_contacts_contacts.md.html#Contacts">Contacts</a>" value="CDVContacts" /&gt;
-</code></pre>
-
-<h3>webOS</h3>
-
-<pre class="prettyprint"><code>No permissions are required.
 </code></pre>
 
 <h3>Windows Phone</h3>
@@ -357,7 +340,6 @@ database, for which you need to invoke the <code><a href="cordova_contacts_conta
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 and 8</li>
-<li>Bada 1.2 &amp; 2.0</li>
 </ul>
 <h2>
 <a name="contacts.create_quick_example">Quick Example</a>
@@ -375,7 +357,7 @@ database, for which you need to invoke the <code><a href="cordova_contacts_conta
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for device API libraries to load
@@ -454,7 +436,6 @@ specified in the <strong><a href="cordova_contacts_contacts.md.html#contactField
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 and 8</li>
-<li>Bada 1.2 &amp; 2.0</li>
 <li>Windows 8</li>
 </ul>
 <h2>
@@ -485,7 +466,7 @@ navigator.<a href="cordova_contacts_contacts.md.html#contacts.find">contacts.fin
 &lt;html&gt;
     &lt;head&gt;
         &lt;title&gt;<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
-        &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
         &lt;script type="text/javascript" charset="utf-8"&gt;
 
             // Wait for device API libraries to load
@@ -611,7 +592,6 @@ for details.</p>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
 <li>Windows Phone 7 and 8</li>
-<li>Bada 1.2 &amp; 2.0</li>
 <li>Windows 8</li>
 </ul>
 <h2>
@@ -677,7 +657,7 @@ function onError(<a href="cordova_contacts_contacts.md.html#contactError">contac
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for device API libraries to load
@@ -818,22 +798,6 @@ function onError(<a href="cordova_contacts_contacts.md.html#contactError">contac
 <li>
 <strong>categories</strong>: Not supported, returning <code>null</code>.</li>
 </ul>
-<h2>
-<a name="Contact_bada_quirks">Bada Quirks</a>
-</h2>
-
-<ul>
-<li>
-<strong>displayName</strong>: Not supported.</li>
-<li>
-<strong>birthday</strong>: Not supported.</li>
-<li>
-<strong>photos</strong>: This property should be a list with one URL to a photo</li>
-<li>
-<strong>categories</strong>: Not supported.</li>
-<li>
-<strong>ims</strong>: Not supported.</li>
-</ul>
 <hr>
 <h1><a name="ContactAddress">ContactAddress</a></h1>
 
@@ -885,7 +849,6 @@ a <code><a href="cordova_contacts_contacts.md.html#ContactAddress">ContactAddres
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Bada 1.2 &amp; 2.0</li>
 <li>Windows Phone 7 and 8</li>
 <li>Windows 8</li>
 </ul>
@@ -930,7 +893,7 @@ navigator.<a href="cordova_contacts_contacts.md.html#contacts.find">contacts.fin
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for device API libraries to load
@@ -1020,17 +983,6 @@ navigator.<a href="cordova_contacts_contacts.md.html#contacts.find">contacts.fin
 <li>
 <strong>formatted</strong>: Currently not supported.</li>
 </ul>
-<h2>
-<a name="ContactAddress_bada_quirks">Bada Quirks</a>
-</h2>
-
-<ul>
-<li>
-<strong>formatted</strong>: Not supported.</li>
-<li>
-<strong>type</strong>: Has to be either <code>WORK</code> or <code>HOME</code>
-</li>
-</ul>
 <hr>
 <h1><a name="ContactField">ContactField</a></h1>
 
@@ -1081,7 +1033,6 @@ string.</p>
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Bada 1.2 &amp; 2.0</li>
 <li>Windows Phone 7 and 8</li>
 <li>Windows 8</li>
 </ul>
@@ -1112,7 +1063,7 @@ string.</p>
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for device API libraries to load
@@ -1199,14 +1150,6 @@ string.</p>
 <li>
 <strong>pref</strong>: Not supported, returning <code>false</code>.</li>
 </ul>
-<h2>
-<a name="ContactField_bada_quirks">Bada Quirks</a>
-</h2>
-
-<ul>
-<li>
-<strong>type</strong>: For email or address fields, property must be <em>WORK</em> or <em>HOME</em>. For phone fields, must be <em>WORK</em>, <em>HOME</em>, <em>VOICE</em>, <em>FAX</em>, <em>MSG</em>, <em>CELL</em>, <em>PAGER</em>, <em>BBS</em>, <em>MODEM</em>, <em>CAR</em>, <em>ISDN</em>,<em>VIDEO</em>, or <em>PCS</em>.</li>
-</ul>
 <hr>
 <h1><a name="ContactFindOptions">ContactFindOptions</a></h1>
 
@@ -1230,7 +1173,6 @@ string.</p>
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Bada 1.2 &amp; 2.0</li>
 <li>Windows Phone 7 and 8</li>
 <li>Windows 8</li>
 </ul>
@@ -1269,7 +1211,7 @@ navigator.<a href="cordova_contacts_contacts.md.html#contacts.find">contacts.fin
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for device API libraries to load
@@ -1311,12 +1253,6 @@ navigator.<a href="cordova_contacts_contacts.md.html#contacts.find">contacts.fin
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-
-<h2>
-<a name="ContactFindOptions_bada_quirks">Bada Quirks</a>
-</h2>
-
-<p><strong>filter</strong>: Property can only apply to the following: <em>firstName</em>, <em>lastName</em>, <em>nickname</em>, <em>phoneNumber</em>, <em>email</em>, and <em>address</em>.</p>
 
 <hr>
 <h1><a name="ContactName">ContactName</a></h1>
@@ -1361,7 +1297,6 @@ navigator.<a href="cordova_contacts_contacts.md.html#contacts.find">contacts.fin
 <li>Android 2.X</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Bada 1.2 &amp; 2.0</li>
 <li>Windows Phone 7 and 8</li>
 <li>Windows 8</li>
 </ul>
@@ -1399,7 +1334,7 @@ navigator.<a href="cordova_contacts_contacts.md.html#contacts.find">contacts.fin
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for device API libraries to load
@@ -1477,19 +1412,6 @@ navigator.<a href="cordova_contacts_contacts.md.html#contacts.find">contacts.fin
 <li>
 <strong>formatted</strong>: Partially supported.  Returns iOS Composite Name, but is read-only.</li>
 </ul>
-<h2>
-<a name="ContactName_bada_quirks">Bada Quirks</a>
-</h2>
-
-<ul>
-<li>
-<strong>formatted</strong>: Not supported</li>
-<li>
-<strong>middleName</strong>: Not supported
-_ <strong>honorificPrefix</strong>: Not supported</li>
-<li>
-<strong>honorificSuffix</strong>: Not supported</li>
-</ul>
 <hr>
 <h1><a name="ContactOrganization">ContactOrganization</a></h1>
 
@@ -1531,7 +1453,6 @@ properties.  A <code><a href="cordova_contacts_contacts.md.html#Contact">Contact
 <li>Android</li>
 <li>BlackBerry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Bada 1.2</li>
 <li>Windows Phone 7 and 8</li>
 <li>Windows 8</li>
 </ul>
@@ -1570,7 +1491,7 @@ navigator.<a href="cordova_contacts_contacts.md.html#contacts.find">contacts.fin
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_contacts_contacts.md.html#Contact">Contact</a> Example&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     // Wait for device API libraries to load
@@ -1654,14 +1575,6 @@ navigator.<a href="cordova_contacts_contacts.md.html#contacts.find">contacts.fin
 <strong>department</strong>: Partially supported.  The first department name is stored in the iOS <strong>kABPersonDepartmentProperty</strong> field.</li>
 <li>
 <strong>title</strong>: Partially supported.  The first title is stored in the iOS <strong>kABPersonJobTitleProperty</strong> field.</li>
-</ul>
-<h2>
-<a name="ContactOrganization_bada_2_0_quirks">Bada 2.0 Quirks</a>
-</h2>
-
-<ul>
-<li>
-<code><a href="cordova_contacts_contacts.md.html#ContactOrganization">ContactOrganization</a></code> is not supported.</li>
 </ul>
 <hr>
 <h1><a name="ContactError">ContactError</a></h1>

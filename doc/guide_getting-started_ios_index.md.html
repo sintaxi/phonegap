@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.9.0rc1">2.9.0rc1</option>
+<option value="2.9.0rc1">2.9.0rc1</option>
+<option selected value="2.9.0">2.9.0</option>
 <option value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
 <option value="2.7.0">2.7.0</option>
@@ -100,16 +101,16 @@
 <optgroup label="Korean" value="kr"><option value="2.0.0">2.0.0</option></optgroup></select></small>
         </div>
         <div id="subheader">
-            <h1>Getting Started with iOS</h1>
-            <small><select><option value="Getting%2520Started%2520with%2520iOS">Getting Started with iOS</option>
-<option value="Getting%20Started%20with%20iOS_introduction">      - Introduction</option>
-<option value="Getting%20Started%20with%20iOS_install_cordova">      - Install Cordova</option>
-<option value="Getting%20Started%20with%20iOS_project_creation">      - Project Creation</option>
-<option value="Getting%20Started%20with%20iOS_running_the_application">      - Running the Application</option>
-<option value="Getting%20Started%20with%20iOS_results">      - Results</option>
-<option value="Getting%20Started%20with%20iOS_common_problems">      - Common Problems</option>
-<option value="Getting%20Started%20with%20iOS_next_steps">      - Next Steps</option>
-<option value="Getting%20Started%20with%20iOS_resources">      - Resources</option></select></small>
+            <h1>iOS Platform Guide</h1>
+            <small><select><option value="iOS%2520Platform%2520Guide">iOS Platform Guide</option>
+<option value="iOS%20Platform%20Guide_introduction">      - Introduction</option>
+<option value="iOS%20Platform%20Guide_install_cordova">      - Install Cordova</option>
+<option value="iOS%20Platform%20Guide_project_creation">      - Project Creation</option>
+<option value="iOS%20Platform%20Guide_running_the_application">      - Running the Application</option>
+<option value="iOS%20Platform%20Guide_results">      - Results</option>
+<option value="iOS%20Platform%20Guide_common_problems">      - Common Problems</option>
+<option value="iOS%20Platform%20Guide_next_steps">      - Next Steps</option>
+<option value="iOS%20Platform%20Guide_resources">      - Resources</option></select></small>
         </div>
 
         <div id="sidebar">
@@ -135,7 +136,9 @@
 </ul>
 <h1>Guides</h1>
 <ul>
-<li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
+<li><a href="guide_overview_index.md.html#Overview">Overview</a></li>
+<li><a href="guide_getting-started_index.md.html#Platform%20Guides">Platform Guides</a></li>
+<li><a href="guide_cli_index.md.html#The%20Cordova%20Command-line%20Interface">The Cordova Command-line Interface</a></li>
 <li><a href="guide_command-line_index.md.html#Command-Line%20Usage">Command-Line Usage</a></li>
 <li><a href="guide_privacy_index.md.html#Privacy%20Guide">Privacy Guide</a></li>
 <li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
@@ -149,10 +152,10 @@
 
         <div id="scrollable">
             <div id="content">
-                <h1><a name="Getting%20Started%20with%20iOS">Getting Started with iOS</a></h1>
+                <h1><a name="iOS%20Platform%20Guide">iOS Platform Guide</a></h1>
 
 <h2>
-<a name="Getting%20Started%20with%20iOS_introduction">Introduction</a>
+<a name="iOS%20Platform%20Guide_introduction">Introduction</a>
 </h2>
 
 <p>Apache Cordova is a library used to create native mobile applications using Web technologies.  The application is created using HTML, CSS and JavaScript and compiled for each specific platform using the platform native tools.  Cordova provides a standard set of JavaScript APIs to access device features on all supported platforms. This document describes how to get started using Apache Cordova for the iOS platform.</p>
@@ -185,30 +188,29 @@ The Apple® tools required for building iOS applications run only on the OS X op
 <li>
 <p><strong>iOS <a href="cordova_device_device.md.html#Device">Device</a></strong></p>
 
-<p>You can test many of the Cordova features using the iOS simulator installed with the iOS SDK and Xcode, but you need an actual device to fully test all of the device features your applications use before submitting to the App Store.  The device must have at least iOS 5.x installed, the minimum iOS version supported as of Cordova 2.3.  Devices that support at least iOS 5 include all iPad® models, iPhone® 3GS and above, and iPod® Touch 3rd Generation or later. To install apps onto a device, you must also be a member of Apple's <a class="external" href="https://developer.apple.com/programs/ios/">iOS Developer Program</a>.  The program costs $99 per year. This Getting Started guide shows how to deploy the application to the iOS simulator, in which case developer program registration is not required.</p>
+<p>You can test many of the Cordova features using the iOS simulator installed with the iOS SDK and Xcode, but you need an actual device to fully test all of the device features your applications use before submitting to the App Store.  The device must have at least iOS 5.x installed, the minimum iOS version supported as of Cordova 2.3.  Devices that support at least iOS 5 include all iPad® models, iPhone® 3GS and above, and iPod® Touch 3rd Generation or later. To install apps onto a device, you must also be a member of Apple's <a class="external" href="https://developer.apple.com/programs/ios/">iOS Developer Program</a>.  The program costs $99 per year. This platform guide shows how to deploy the application to the iOS simulator, in which case developer program registration is not required.</p>
 </li>
 </ul>
 <h2>
-<a name="Getting%20Started%20with%20iOS_install_cordova">Install Cordova</a>
+<a name="iOS%20Platform%20Guide_install_cordova">Install Cordova</a>
 </h2>
 
 <h3>Download Cordova</h3>
 
-<p>Download the latest version of <a class="external" href="http://phonegap.com/download">PhoneGap</a> from http://phonegap.com/download.  Click on the Download icon and select cordova-X.Y.Z-src.zip to download to your machine. The X, Y and Z represent the version number of Cordova, for example 2.9.0.  The download includes the code for all of the Apache Cordova supported platforms.</p>
+<p>Download the latest version of <a class="external" href="http://phonegap.com/download">PhoneGap</a> from http://phonegap.com/download.  Click on the Download icon and select cordova-x.x.x-src.zip to download to your machine. The download includes the code for all of the Apache Cordova supported platforms.</p>
 
 <h3>Extract Cordova</h3>
 
 <p>To access the code, it needs to be extracted from the archive (.zip) file:</p>
 
 <ol>
-<li><p>Navigate to the folder where you downloaded the code.  Find the cordova-X.Y.Z-src.zip file.
-<strong>NOTE:</strong> The filenames change with each incremental version of Cordova.</p></li>
-<li><p>Using the Finder® app, double-click the file to extract. This creates a directory named <code>cordova-X.Y.Z</code>.</p></li>
+<li><p>Navigate to the folder where you downloaded the code.  Find the version-specific cordova-x.x.x-src.zip file.</p></li>
+<li><p>Using the Finder® app, double-click the file to extract. This creates a directory named <code>cordova-x.x.x</code>.</p></li>
 <li><p>Expand this folder and locate the cordova-ios.zip file and double-click to extract it.</p></li>
 <li><p>The code for iOS is within the cordova-ios directory structure.</p></li>
 </ol>
 <h2>
-<a name="Getting%20Started%20with%20iOS_project_creation">Project Creation</a>
+<a name="iOS%20Platform%20Guide_project_creation">Project Creation</a>
 </h2>
 
 <p>Xcode projects for Cordova are created by invoking a script file via the command line. The following steps explain how to create the necessary directory structure, open and use the Terminal application to create a new project, and execute the create script.</p>
@@ -313,7 +315,7 @@ project files.  This tutorial uses <code>~/Documents/CordovaXY</code>, where the
 </li>
 </ul>
 <h2>
-<a name="Getting%20Started%20with%20iOS_running_the_application">Running the Application</a>
+<a name="iOS%20Platform%20Guide_running_the_application">Running the Application</a>
 </h2>
 
 <h3>Open the Project</h3>
@@ -359,7 +361,7 @@ project files.  This tutorial uses <code>~/Documents/CordovaXY</code>, where the
 <li><p>Click the <strong>run</strong> button to build, deploy and run the application on your device.</p></li>
 </ol>
 <h2>
-<a name="Getting%20Started%20with%20iOS_results">Results</a>
+<a name="iOS%20Platform%20Guide_results">Results</a>
 </h2>
 
 <p>The running HelloWorld app is shown below.  The <a href="cordova_device_device.md.html#Device">Device</a> is Ready line should be slowly pulsating.</p>
@@ -367,7 +369,7 @@ project files.  This tutorial uses <code>~/Documents/CordovaXY</code>, where the
 <p><img src="img/guide/getting-started/ios/HelloWorldStandard.png" alt="" title=""></p>
 
 <h2>
-<a name="Getting%20Started%20with%20iOS_common_problems">Common Problems</a>
+<a name="iOS%20Platform%20Guide_common_problems">Common Problems</a>
 </h2>
 
 <h3>Deprecation Warnings</h3>
@@ -436,16 +438,20 @@ return [super webViewDidFinishLoad:theWebView];
 </li>
 </ol>
 <h2>
-<a name="Getting%20Started%20with%20iOS_next_steps">Next Steps</a>
+<a name="iOS%20Platform%20Guide_next_steps">Next Steps</a>
 </h2>
 
 <h3>Building Your Own Applications</h3>
 
 <p><strong>Include Cordova</strong></p>
 
-<p>All of the code for the sample application is contained within the <code>www</code> directory in the Xcode project structure.  The starting page is named index.html.  Any page that uses Cordova must include the cordova-*.js file for the associated Cordova version and platform.  The format of the JavaScript file name is cordova-x.y.z where x represents the major version number, y the minor version and z any point release.  For example, the Cordova 2.2.0 file was named cordova-2.2.0.js.   The sample HelloWorld application includes this file from index.html.</p>
+<p>All of the code for the sample application is contained within the
+  Xcode project's <code>www</code> directory, where the starting page is named
+  <code>index.html</code>.  Any page that invokes Cordova APIs must reference the
+  version-specific <code>cordova-x.x.x.js</code> file, as shown in the sample
+  <code>HelloWorld</code> application's <code>index.html</code>:</p>
 
-<pre class="prettyprint"><code>  &lt;script type="text/javascript" src="cordova-2.2.0.js"&gt;&lt;/script&gt;
+<pre class="prettyprint"><code>  &lt;script type="text/javascript" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
   &lt;script type="text/javascript" src="js/index.js"&gt;&lt;/script&gt;
   &lt;script type="text/javascript"&gt;
       app.initialize();
@@ -459,7 +465,7 @@ return [super webViewDidFinishLoad:theWebView];
 <p>Another common way to initialize a page is to add a <code>deviceReady</code> event listener from the body's <code>onload</code> event handler as shown below:</p>
 
 <pre class="prettyprint"><code>  &lt;head&gt;
-    &lt;script type="text/javascript" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script&gt;
       function onLoad() {
     document.<a href="cordova_inappbrowser_inappbrowser.md.html#addEventListener">addEventListener</a>(
@@ -501,7 +507,7 @@ return [super webViewDidFinishLoad:theWebView];
 <p>You should customize the application with your own icons and splash screens.  The sample application includes Cordova specific images in the Apple required sizes and resolutions as examples.  The Cordova Specific settings are located in the config.xml file and documented in the Cordova <a href="guide_project-settings_index.md.html#Project%20Settings">Project Settings</a> Guide. Refer to the Resources section for more Apple specific information about building iOS Apps.</p>
 
 <h2>
-<a name="Getting%20Started%20with%20iOS_resources">Resources</a>
+<a name="iOS%20Platform%20Guide_resources">Resources</a>
 </h2>
 
 <h3>Apple</h3>

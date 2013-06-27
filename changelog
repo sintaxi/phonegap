@@ -1,7 +1,9 @@
-Cordova Commits from 2.8.0 -> 2.9.0rc1
+Cordova Commits from 2.8.0 -> 2.9.0
 
 cordova-android
 ---
+6aff54b Incrementing versions and updating code
+24a0e89 Accidentally commented "build" out when running ./run --emulator. Whoops D:
 e01678d Dealing with the retagging of cordova.js
 2b6a683 CB-3902: Explicitly add market URIs to CordovaWebViewClient so this always works, not just sometimes
 1f58d8e [CB-3625] [CB-3338] updated windows cli scripts and added version option
@@ -50,6 +52,10 @@ abba254 CB-3358: Remove one more reference to commons-codec
 8077091 Update JS snapshot to version 2.8.0rc1
 cordova-ios
 ---
+00e62aa Updated VERSION to 2.9.0
+7790478 Updated js to 2.9.0
+c2cda90 [CB-3530] Updated unit tests
+fe5a9a5 [CB-3999] Video Capture ignores duration option
 5aea4e1 Updated RELEASENOTES for 2.9.0rc1
 61a8ba2 Updated CDVAvailability version to 2.9.0
 f1caddf [CB-3530] PhoneGap app crashes on iOS with error "CDVWebViewDelegate: Navigation started when state=1" (for navigation to an anchor on the same page)
@@ -85,6 +91,7 @@ bd99537 Update RELEASENOTES for 2.8.0
 4c63589 [CB-2840] Nil checks to avoid crash when network disconnected
 cordova-blackberry
 ---
+0b0b170 [CB-4007] updated VERSION and cordova js to 2.9.0
 58db1ea [CB-3951] renamed debug token bar constant string, removing illegal character
 132d48f [CB-3914] updated bb platform javascript
 041e448 [CB-3401] renamed blackberry root folder to bbos
@@ -131,6 +138,9 @@ c5f1f43 [CB-3442] cordova-ver.js to cordova.js
 abc1914 Escape double quotes in PIM lib
 cordova-windows
 ---
+47fe25f update to 2.9.0
+de22aea Set VERSION to 2.9.0rc1 (via coho)
+6dda3d5 Update JS snapshot to version 2.9.0rc1 (via coho)
 64ea55e Update version to 2.9.0rc1
 a2800bb update cordova.js
 8833849 test create script
@@ -156,6 +166,8 @@ c5f587c removed bin from gitignore
 63e87ce pulled in 2.8 fork changes but reverted version files
 cordova-wp7
 ---
+347b9f4 [CB-4009] Cordova 2.9.0
+71b6add Update JS snapshot to version 2.9.0rc1 (via coho)
 81d2975 updating cordovajs with xhr patch for windows phone
 7d9a6b9 re-built cordova..js for 2.9.0rc1
 ca50cc3 Cordova Version 2.9.0rc1
@@ -189,6 +201,13 @@ d4ca7f6 Allow app names with spaces
 27a573c Update JS snapshot to version 2.8.0rc1
 cordova-wp8
 ---
+770951b updated cordova.js
+1c5804b update assembly info for 2.9.0
+c46cd67 update version numbers
+35c3eff Removed version from cordova.js error message
+804b3c8 Buttons were disabled on WP7
+fcec07b remove overly verbose log messages
+99c41a3 Revert "update js for 2.9.0rc1"
 dce565e update branch version
 2ba52b2 update js for 2.9.0rc1
 d9e0b3f CLI Script fixes
@@ -234,6 +253,8 @@ de0b1ee Removed cordova js building from dist script
 fe79571 Update JS snapshot to version 2.8.0rc1
 cordova-osx
 ---
+80ee89d Updated VERSION to 2.9.0
+a308c2f Updated js to 2.9.0
 8dd8c7b Updated RELEASENOTES for 2.9.0rc1
 65cc099 Added missing licenses after running Apache RAT
 97c0ff8 Updated CDVAvailability version to 2.9.0
@@ -250,6 +271,15 @@ c06d41f [CB-3171] Add deprecation notice for use of <plugin> in config.xml in OS
 2b58823 [CB-2200] Remove deprecated device.name field.
 cordova-docs
 ---
+9d15299 Version 2.9.0
+0f8d134 [CB-3999] remove note about duration not being supported on ios
+f204d7a [CB-3744] InAppBrowser docs errors / cleanup
+698bb9d [CB-3744] InAppBrowser docs errors / cleanup
+f79915d Add some methods to InAppBrowser's ToC
+78a4445 Updated WP7+WP8 instructions for new location of command-line create commands
+02a5fc8 Revert "added info for new WP8+WP7 combined repos"
+5666b80 added info for new WP8+WP7 combined repos
+adabc73 [CB-3366] adjusted for new plugin spec in config.xml
 2a329eb [CB-3920] iOS 2.8 to 2.9 upgrade guide
 a556a4d [CB-3921] upgrade guide for 2.8.0 to 2.9.0
 19850f6 [CB-3922] Upgrade guide for wp7/wp8
@@ -322,6 +352,7 @@ d33b887 stub
 1cf6a8c add stubs
 cordova-mobile-spec
 ---
+4cb28c7 Updating version for 2.9.0 final
 b6a7389 Set VERSION to 2.9.0rc1
 e31b38e Skip tests properly on old Android versions
 31aae40 [CB-3789] Remove device.name from mobile-spec (removed in 2.8)
@@ -338,6 +369,10 @@ e2bd12a [CB-2734] added PLAT support for WP7, WP8, Windows8 and allow Windows8 t
 54ed08e [CB-2789] Updating mobile-spec capture API tests to match code
 cordova-js
 ---
+83dc4bd Updating version file
+d2ee43f Fixing grunt file with Jarrod's help
+1777d2e [CB-3834] Missing double quotes in iOS deprecation notice
+273e0a3 [all] CB-3960 Convert Jakefile -> Gruntfile.js
 002f33d moved plugin loader script injection to a function so it can also be called when xhr fails just because the json file is not present.
 e2020c3 Combine XHR + script injection technqieues to load the plugins list (either .json or .js file).
 3d85be0 more robust error handling.
@@ -356,9 +391,16 @@ adb0205 [CB-3739][Tizen][Tizen SDK 2.1 Nectarine] - splashscreen
 dcbd189 CB-3420: add hidden option to InAppBrowser
 cordova-app-hello-world
 ---
+64da512 Incrementing version
 d76ac85 Set VERSION to 2.9.0rc1
 cordova-cli
 ---
+87db44d 2.9.0
+86504f0 npm version 2.9.0. updated tag to use for libs to 2.9.0
+2c4e668 fix CB378 - adding support for non-semver 2 digit versions of xcodebuild, eg 5.0
+debf54d Added "bugs" entry to package.json, so issue link shows up on npmjs.org.
+d9241b0 [CB-3737] Parser specs reviewed, not touch filesystem anymore. Super fast execution. Yay.
+9fb8646 Further work on [CB-3737]. ios parser specs should be in order.
 1110ed9 npm version @ 2.9.0rc1. Stock cordova libs now pull in 2.9.0rc1 tag.
 8170738 Fix for [CB-3836]. Clarified BB10 requirements and updated blackberry min reqs check.
 761159f 2.8.25. Fixes [CB-3846]: make sure to lazy load libraries whenever prepare is called, as well as platform. Added a helper lazy_load.based_on_config method that looks into .cordova/config.json and lazy loads appropriate stock or custom libraries.

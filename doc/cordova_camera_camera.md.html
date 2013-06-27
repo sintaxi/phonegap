@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.9.0rc1">2.9.0rc1</option>
+<option value="2.9.0rc1">2.9.0rc1</option>
+<option selected value="2.9.0">2.9.0</option>
 <option value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
 <option value="2.7.0">2.7.0</option>
@@ -122,11 +123,9 @@
 <option value="cameraOptions_options">      - Options</option>
 <option value="cameraOptions_android_quirks">      - Android Quirks</option>
 <option value="cameraOptions_blackberry_quirks">      - BlackBerry Quirks</option>
-<option value="cameraOptions_webos_quirks">      - webOS Quirks</option>
 <option value="cameraOptions_ios_quirks">      - iOS Quirks</option>
-<option value="cameraOptions_windows_phone_7_and_8_quirks">      - Windows Phone 7 and 8 Quirks</option>
-<option value="cameraOptions_bada_1_2_quirks">      - Bada 1.2 Quirks</option>
 <option value="cameraOptions_tizen_quirks">      - Tizen Quirks</option>
+<option value="cameraOptions_windows_phone_7_and_8_quirks">      - Windows Phone 7 and 8 Quirks</option>
 <option value="CameraPopoverOptions">CameraPopoverOptions</option>
 <option value="CameraPopoverOptions_camerapopoveroptions">      - CameraPopoverOptions</option>
 <option value="CameraPopoverOptions_quick_example">      - Quick Example</option>
@@ -161,7 +160,9 @@
 </ul>
 <h1>Guides</h1>
 <ul>
-<li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
+<li><a href="guide_overview_index.md.html#Overview">Overview</a></li>
+<li><a href="guide_getting-started_index.md.html#Platform%20Guides">Platform Guides</a></li>
+<li><a href="guide_cli_index.md.html#The%20Cordova%20Command-line%20Interface">The Cordova Command-line Interface</a></li>
 <li><a href="guide_command-line_index.md.html#Command-Line%20Usage">Command-Line Usage</a></li>
 <li><a href="guide_privacy_index.md.html#Privacy%20Guide">Privacy Guide</a></li>
 <li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
@@ -207,18 +208,6 @@
 <pre class="prettyprint"><code>&lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /&gt;
 </code></pre>
 
-<h3>Bada</h3>
-
-<h4>manifest.xml</h4>
-
-<pre class="prettyprint"><code>&lt;Privilege&gt;
-    &lt;Name&gt;CAMERA&lt;/Name&gt;
-&lt;/Privilege&gt;
-&lt;Privilege&gt;
-    &lt;Name&gt;RECORDING&lt;/Name&gt;
-&lt;/Privilege&gt;
-</code></pre>
-
 <h3>BlackBerry WebWorks</h3>
 
 <h4>www/plugins.xml</h4>
@@ -240,11 +229,6 @@
 <h4>config.xml</h4>
 
 <pre class="prettyprint"><code>&lt;plugin name="<a href="cordova_camera_camera.md.html#Camera">Camera</a>" value="CDVCamera" /&gt;
-</code></pre>
-
-<h3>webOS</h3>
-
-<pre class="prettyprint"><code>No permissions are required.
 </code></pre>
 
 <h3>Windows Phone</h3>
@@ -328,10 +312,8 @@ than <code>DATA_URL</code>.</p>
 <li>Android</li>
 <li>Blackberry WebWorks (OS 5.0 and higher)</li>
 <li>iOS</li>
-<li>Windows Phone 7 and 8</li>
-<li>Bada 1.2</li>
-<li>webOS</li>
 <li>Tizen</li>
+<li>Windows Phone 7 and 8</li>
 <li>Windows 8</li>
 </ul>
 <h2>
@@ -415,7 +397,7 @@ function onFail(message) {
   &lt;head&gt;
     &lt;title&gt;<a href="cordova_media_capture_capture.md.html#Capture">Capture</a> Photo&lt;/title&gt;
 
-    &lt;script type="text/javascript" charset="utf-8" src="cordova-2.9.0.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" charset="utf-8"&gt;
 
     var pictureSource;   // picture source
@@ -672,26 +654,20 @@ function cameraCallback(imageData) {
 <li>Ignores the <code>cameraDirection</code> parameter.</li>
 </ul>
 <h2>
-<a name="cameraOptions_webos_quirks">webOS Quirks</a>
-</h2>
-
-<ul>
-<li>Ignores the <code>quality</code> parameter.</li>
-<li>Ignores the <code>sourceType</code> parameter.</li>
-<li>Ignores the <code>allowEdit</code> parameter.</li>
-<li>
-<code><a href="cordova_camera_camera.md.html#Camera">Camera</a>.MediaType</code> is not supported.</li>
-<li>Ignores the <code>correctOrientation</code> parameter.</li>
-<li>Ignores the <code>saveToPhotoAlbum</code> parameter.</li>
-<li>Ignores the <code>cameraDirection</code> parameter.</li>
-</ul>
-<h2>
 <a name="cameraOptions_ios_quirks">iOS Quirks</a>
 </h2>
 
 <ul>
 <li>Set <code>quality</code> below 50 to avoid memory errors on some devices.</li>
 <li>When using <code>destinationType.FILE_URI</code>, photos are saved in the application's temporary directory.  You may delete the contents of this directory using the <code>navigator.fileMgr</code> APIs if storage space is a concern.</li>
+</ul>
+<h2>
+<a name="cameraOptions_tizen_quirks">Tizen Quirks</a>
+</h2>
+
+<ul>
+<li>options not supported</li>
+<li>always returns a FILE URI</li>
 </ul>
 <h2>
 <a name="cameraOptions_windows_phone_7_and_8_quirks">Windows Phone 7 and 8 Quirks</a>
@@ -701,22 +677,6 @@ function cameraCallback(imageData) {
 <li>Ignores the <code>allowEdit</code> parameter.</li>
 <li>Ignores the <code>correctOrientation</code> parameter.</li>
 <li>Ignores the <code>cameraDirection</code> parameter.</li>
-</ul>
-<h2>
-<a name="cameraOptions_bada_1_2_quirks">Bada 1.2 Quirks</a>
-</h2>
-
-<ul>
-<li>options not supported</li>
-<li>always returns a FILE URI</li>
-</ul>
-<h2>
-<a name="cameraOptions_tizen_quirks">Tizen Quirks</a>
-</h2>
-
-<ul>
-<li>options not supported</li>
-<li>always returns a FILE URI</li>
 </ul>
 <hr>
 <h1><a name="CameraPopoverOptions">CameraPopoverOptions</a></h1>

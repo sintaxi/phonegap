@@ -140,7 +140,6 @@ namespace WPCordovaClassLib.Cordova.Commands
 
                             backButton.IconUri = new Uri(baseImageUrl + "appbar.back.rest.png", UriKind.Relative);
                             backButton.Click += new EventHandler(backButton_Click);
-                            backButton.IsEnabled = false;
                             bar.Buttons.Add(backButton);
 
 
@@ -148,7 +147,6 @@ namespace WPCordovaClassLib.Cordova.Commands
                             fwdButton.Text = "Forward";
                             fwdButton.IconUri = new Uri(baseImageUrl + "appbar.next.rest.png", UriKind.Relative);
                             fwdButton.Click += new EventHandler(fwdButton_Click);
-                            fwdButton.IsEnabled = false;
                             bar.Buttons.Add(fwdButton);
 
                             ApplicationBarIconButton closeBtn = new ApplicationBarIconButton();

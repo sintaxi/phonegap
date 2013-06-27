@@ -32,7 +32,8 @@
             <small>
                 <select><optgroup label="English" value="en">
 <option value="edge">edge</option>
-<option selected value="2.9.0rc1">2.9.0rc1</option>
+<option value="2.9.0rc1">2.9.0rc1</option>
+<option selected value="2.9.0">2.9.0</option>
 <option value="2.8.0">2.8.0</option>
 <option value="2.7.0rc1">2.7.0rc1</option>
 <option value="2.7.0">2.7.0</option>
@@ -129,7 +130,9 @@
 </ul>
 <h1>Guides</h1>
 <ul>
-<li><a href="guide_getting-started_index.md.html#Getting%20Started%20Guides">Getting Started Guides</a></li>
+<li><a href="guide_overview_index.md.html#Overview">Overview</a></li>
+<li><a href="guide_getting-started_index.md.html#Platform%20Guides">Platform Guides</a></li>
+<li><a href="guide_cli_index.md.html#The%20Cordova%20Command-line%20Interface">The Cordova Command-line Interface</a></li>
 <li><a href="guide_command-line_index.md.html#Command-Line%20Usage">Command-Line Usage</a></li>
 <li><a href="guide_privacy_index.md.html#Privacy%20Guide">Privacy Guide</a></li>
 <li><a href="guide_upgrading_index.md.html#Upgrading%20Guides">Upgrading Guides</a></li>
@@ -153,7 +156,7 @@ the <code>CordovaWebView</code> as its main view, regardless of whether the
 legacy <code>DroidGap</code> approach is used.</p>
 
 <p>If you're unfamiliar with Android application development, please read
-the Getting Started guide to developing a Cordova Application before
+the <a href="guide_getting-started_android_index.md.html#Android%20Platform%20Guide">Android Platform Guide</a> to developing a Cordova Application before
 attempting to include a WebView. It's not the main way to author
 Android Cordova applications. These instructions are currently manual,
 but may be eventually be automated.</p>
@@ -174,7 +177,7 @@ but may be eventually be automated.</p>
 <ol>
 <li>Use <code>bin/create</code> to fetch the <code>commons-codec-1.6.jar</code> file.</li>
 <li>
-<code>cd</code> into <code>/framework</code> and run <code>ant jar</code> to build the cordova jar. It creates the .jar file formed as <code>cordova-2.9.0.jar</code> in the <code>/framework</code> folder.</li>
+<code>cd</code> into <code>/framework</code> and run <code>ant jar</code> to build the cordova jar. It creates the .jar file formed as <code>cordova-x.x.x.jar</code> in the <code>/framework</code> folder.</li>
 <li>Copy the cordova jar into your Android project's <code>/libs</code> directory.</li>
 <li>
 <p>Edit your application's <code>main.xml</code> file (under <code>/res/xml</code>) to look like the following, with the <code>layout_height</code>, <code>layout_width</code> and <code>id</code> modified to suit your application:</p>
