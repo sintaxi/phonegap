@@ -1,0 +1,36 @@
+
+obj
+Bin
+*.csproj.user
+*.suo
+*.cache
+Thumbs.db
+
+/temp/*
+
+*.dll
+
+# Ignore template zip files
+*.zip
+
+
+ 
+# Other useful stuff
+*.bak
+*.cache
+*.log
+*.swp
+*.user
+
+*.DS_Store
+
+
+#We want to allow some bin folders ...
+!wp7/bin/
+!wp8/bin/
+
+
+
+
+
+ 

@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<title>Device Info</title>
+        <script src='cordova.win7.js'></script>
+	</head>
+	<body>
+        <div id='state'></div>
+        <script>
+		    document.addEventListener('deviceready', function () {
+		        document.getElementById('state').innerHTML = 'Platform: ' + device.platform + ' v' + device.version + '<br>Name: ' + device.name + '<br>UUID: ' + device.uuid;
+		    }, false);
+		</script>
+	</body>
+</html>

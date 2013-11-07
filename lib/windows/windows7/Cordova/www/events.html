@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html lang='en'>
+	<head>
+        <title>Events Test</title>
+        <script src='cordova.win7.js'></script>
+	</head>
+	<body>
+        <div id='state'></div>
+        <script>
+          document.addEventListener('deviceready', function () { document.getElementById('state').innerHTML = 'Ready!'; }, false);
+          document.addEventListener('pause', function () { document.getElementById('state').innerHTML = 'Paused!'; }, false);
+          document.addEventListener('resume', function () { document.getElementById('state').innerHTML = 'Resumed!'; }, false);
+          document.addEventListener('backbutton', function () { document.getElementById('state').innerHTML = 'Back!'; }, false);
+        </script>
+	</body>
+</html>

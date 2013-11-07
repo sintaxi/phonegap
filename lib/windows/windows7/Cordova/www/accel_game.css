@@ -1,0 +1,23 @@
+body{
+background-color:#000;
+}
+
+#box{
+width: 500px;
+height: 500px;
+border: 1px solid #333;
+margin: 0 auto;
+background: #FFF;
+text-align: center;
+}
+
+h1 {
+text-align: center;
+font-variant: small-caps;
+color: #FFF;
+}
+
+#valueX, #valueY, #valueZ, #valueL, #valueR,#valueU,#valueD {
+font-variant: small-caps;
+color: #FFF;
+}

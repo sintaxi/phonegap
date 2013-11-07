@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>Device Info</title>
+        <script type="text/javascript" src='cordova.win7.js'></script>
+    </head>
+    <body>
+        <div id='state'></div>
+        <div id='filesystem'></div>
+        <br/>
+        <div id='entry'></div>
+        <script type="text/javascript">
+             function onFileSystemSuccess(fileSystem) {
+                 document.getElementById('filesystem').innerHTML = 'File system name: ' + fileSystem.name
+                         + '<br>Root name: ' + fileSystem.root.name
+                          + '<br>Root path: ' + fileSystem.root.fullPath;
+            }
+
+            function fail(error) {
+                document.getElementById('state').innerHTML = 'Error, code: ' + error.code;
+            }
+
+            document.addEventListener('deviceready', function () {
+                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
+            }, false);
+        </script>
+    </body>
+</html>

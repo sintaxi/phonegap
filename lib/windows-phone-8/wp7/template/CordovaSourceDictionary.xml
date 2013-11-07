@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- This file is auto-generated, do not edit! -jm -->
-<CordovaSourceDictionary>
-    <FilePath Value="www\cordova.js"/>
-    <FilePath Value="www\index.html"/>
-    <FilePath Value="www\css\index.css"/>
-    <FilePath Value="www\img\logo.png"/>
-    <FilePath Value="www\js\index.js"/>
-</CordovaSourceDictionary>

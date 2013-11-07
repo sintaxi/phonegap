@@ -1,0 +1,40 @@
+// Copyright 2012 Intel Corporation
+//
+// Licensed to the Apache Software Foundation (ASF) under one
+// or more contributor license agreements.  See the NOTICE file
+// distributed with this work for additional information
+// regarding copyright ownership.  The ASF licenses this file
+// to you under the Apache License, Version 2.0 (the
+// "License"); you may not use this file except in compliance
+// with the License.  You may obtain a copy of the License at
+// 
+//    http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations
+// under the License.
+
+#include "resource.h"
+#include "winuser.rh"
+
+IDD_CaptureSettings DIALOGEX 0, 0, 350, 130
+
+CAPTION "Capture Settings"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,236,109,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,290,109,50,14
+    COMBOBOX        IDC_Camera,85,11,250,300,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_Microphone,85,35,250,300,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_Resolution,85,59,250,300,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_VideoEncoder,85,83,250,300,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Camera:",IDC_STATIC,15,14,60,8
+    LTEXT           "Microphone:",IDC_STATIC,15,37,60,8
+    LTEXT           "Resolution:",IDC_STATIC,15,61,60,8
+    LTEXT           "Video Encoder:",IDC_STATIC,15,85,60,8
+END
+
+IDB_ToolBar BITMAP "toolbar.bmp"

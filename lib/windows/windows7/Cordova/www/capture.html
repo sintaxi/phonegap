@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Video & Photo Recording Test</title>
+    
+        <script type='text/javascript' charset='utf-8' src='cordova.win7.js'></script>
+    
+        <script language='javascript'>
+            function got_video(media_array) {
+                var video = document.getElementById('video');
+                video.src = media_array[0].fullPath;
+            }
+            function got_photo(media_array) {
+                var photo = document.getElementById('photo');
+                photo.src = media_array[0].fullPath;
+            }
+            function get_video() {
+                navigator.device.capture.captureVideo(got_video);
+		    }
+		    function get_photo() {
+		        navigator.device.capture.captureImage(got_photo);
+		    }
+         </script>
+	</head>
+	<body>
+        <input type='button' onclick='get_video()' value='Get Video'/> 
+        <video width=640 controls='controls' id='video'>
+        <source src='' type='video/mp4'/>
+        </video>
+        <br>
+        <input type='button' onclick='get_photo()' value='Get Photo'/> 
+        <img src='' id='photo' width=640/>
+    </body>
+</html>

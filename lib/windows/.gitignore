@@ -1,0 +1,11 @@
+*.user
+.DS_Store
+bld
+*.opensdf
+*.suo
+*.sdf
+Debug
+obj
+Thumbs.db
+
+windows8/test/bin/

@@ -28,13 +28,10 @@ Directory Structure
 	  |-lib/ ........... platform code for supported operating systems
 	  | |-android/
 	  | |-blackberry/
-	  | |-cordova-cli/
 	  | |-ios/
-	  | |-osx/
-      | |-windows-phone-7
-      | |-windows-phone-8
+      | |-windows-phone
 	  | |-windows8/
-	  |-changelog ..... a changelog compiled from comments and authors
+	  |-RELEASENOTES.md ..... a changelog compiled from comments and authors
 	  |-license ....... the Apache Software License v2
 	  |-version ....... release version in plain text
 	  '-readme.md ..... release readme
