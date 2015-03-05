@@ -1,38 +1,24 @@
-PhoneGap
-========
+# PhoneGap
 
-> PhoneGap is a web platform that exposes native mobile device apis and data to JavaScript. PhoneGap is a distribution of [Apache Cordova](http://cordova.io).
+> Easily create apps using the web technologies you know and love: HTML, CSS, and JavaScript
 
+## Getting Started
 
-Get Started
------------
+- [Learn about PhoneGap](http://phonegap.com/)
+- [Learn about PhoneGap Enterprise](http://enterprise.phonegap.com/)
 
-[Getting Started Guides](http://docs.phonegap.com/guide_getting-started_index.md.html)
+## Projects
 
-Community
----------
+- [PhoneGap CLI](https://github.com/phonegap/phonegap-cli)
+- [PhoneGap Desktop App](https://github.com/phonegap/phonegap-app-desktop)
+- [PhoneGap Mobile App](https://github.com/phonegap/phonegap-app-developer)
+- [Apache Cordova](http://cordova.io/)
 
-- [Website](http://phonegap.com)
-- [Documentation](http://docs.phonegap.com/)
+_Check out the [Github Organization](https://github.com/phonegap) for all of our projects._
+
+## Community
+
 - [Twitter](http://twitter.com/phonegap)
 - [Facebook](http://facebook.com/phonegap)
-- [Wiki](http://wiki.phonegap.com/)
 - [Mailing List](http://groups.google.com/group/phonegap)
-- [Issue Tracker](https://issues.apache.org/jira/browse/CB)
 - [IRC](http://webchat.freenode.net/?channels=#phonegap)
-
-Directory Structure
--------------------
-
-	  |-doc/ ........... source documentation
-	  |-lib/ ........... platform code for supported operating systems
-	  | |-android/
-	  | |-blackberry/
-	  | |-ios/
-      | |-windows-phone
-	  | |-windows8/
-	  |-RELEASENOTES.md ..... a changelog compiled from comments and authors
-	  |-license ....... the Apache Software License v2
-	  |-version ....... release version in plain text
-	  '-readme.md ..... release readme
-
